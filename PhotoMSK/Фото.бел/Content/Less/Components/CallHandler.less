@@ -1,0 +1,203 @@
+// out: ../../css/Components/callHandler.css, compress: true
+// Name:            CallHandler
+// Description:     Defines styles for CallHandler
+//
+// Component:       `callHandler`
+//
+//
+// Element:         `callHandler__*`
+//                  `callHandler__*`
+//
+// Modifiers:       `callHandler--*`
+//                  `callHandler--*`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+
+@ch-avatar-height:                    50px;
+
+@ch-call-height:                      40px;
+
+/* ========================================================================
+   Component: CallHandler
+ ========================================================================== */
+.callHandler{
+    position: fixed;
+    right: 10px;
+    bottom: 50px;
+    width: 270px;
+
+    // Element 'callHandler__content'
+    &__content{
+        float: left;
+        width: 270px;
+        margin-top: 10px;
+        background: rgba(255,255,255,1);
+        border-radius: 100px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    // Element 'callHandler__avatar'
+    &__avatar{
+        float: left;
+        width: @ch-avatar-height;
+        height: @ch-avatar-height;
+        border-radius: @ch-avatar-height;
+        overflow: hidden;
+        vertical-align: top;
+        margin: 5px;
+        background: #ddd;
+        border: 4px solid #ddd;
+        text-align: center;
+    }
+
+    // Element 'callHandler__info'
+    &__info{
+        float: left;
+        width: 150px;
+        padding-left: 5px;
+
+        & .name{
+            margin-top: 12px;
+            font-size: 16px;
+            font-weight: 400;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        & .phone{
+            margin: 4px 0 0 0;
+        }
+    }
+
+    // Element 'callHandler__call'
+    &__call{
+        position: relative;
+        float: right;
+        width: @ch-call-height;
+        height: @ch-call-height;
+        margin: 10px;
+
+        &-back{
+            position: relative;
+            width: @ch-call-height;
+            height: @ch-call-height;
+            border-radius: @ch-call-height;
+            text-align: center;
+            color: #fff;
+            background: #49AE65;
+            z-index: 11;
+            -webkit-animation: pulsate 2s infinite;
+            animation: pulsate 2s infinite;
+            -moz-animation: pulsate 2s infinite;
+        }
+
+        &-wave{
+            position: absolute;
+            width: @ch-call-height;
+            height: @ch-call-height;
+            top: 0;
+            left: 0;
+            border-radius: 100%;
+            z-index: 10;
+            background: #49AE65;
+            -webkit-animation: wave 2s infinite;
+            animation: wave 2s infinite;
+            -moz-animation: wave 2s infinite;
+        }
+
+        & i{
+            font-size: 24px;
+            line-height: @ch-call-height;
+        }
+    }
+}
+
+@-webkit-keyframes pulsate {
+  0% {
+    transform: scale(1); }
+  5% {
+    transform: scale(1); }
+  10% {
+    transform: scale(0.9); }
+  14% {
+    transform: scale(1.2); }
+  20% {
+    transform: scale(1); }
+  23% {
+    transform: scale(1); }
+  100% {
+    transform: scale(1); } }
+@-moz-keyframes pulsate {
+  0% {
+    transform: scale(1); }
+  5% {
+    transform: scale(1); }
+  10% {
+    transform: scale(0.9); }
+  14% {
+    transform: scale(1.2); }
+  20% {
+    transform: scale(1); }
+  23% {
+    transform: scale(1); }
+  100% {
+    transform: scale(1); } }
+@keyframes pulsate {
+  0% {
+    transform: scale(1); }
+  5% {
+    transform: scale(1); }
+  10% {
+    transform: scale(0.9); }
+  14% {
+    transform: scale(1.2); }
+  20% {
+    transform: scale(1); }
+  23% {
+    transform: scale(1); }
+  100% {
+    transform: scale(1); } }
+
+@-webkit-keyframes wave {
+  0% {
+    transform: scale(1);
+    opacity: 1; }
+  13% {
+    transform: scale(1);
+    opacity: 1; }
+  54% {
+    transform: scale(1.6);
+    opacity: 0; }
+  100% {
+    transform: scale(3);
+    opacity: 0; } }
+@-moz-keyframes wave {
+  0% {
+    transform: scale(1);
+    opacity: 1; }
+  13% {
+    transform: scale(1);
+    opacity: 1; }
+  54% {
+    transform: scale(1.6);
+    opacity: 0; }
+  100% {
+    transform: scale(3);
+    opacity: 0; } }
+@keyframes wave {
+  0% {
+    transform: scale(1);
+    opacity: 1; }
+  13% {
+    transform: scale(1);
+    opacity: 1; }
+  54% {
+    transform: scale(1.6);
+    opacity: 0; }
+  100% {
+    transform: scale(3);
+    opacity: 0; }
+}

@@ -1,0 +1,76 @@
+﻿<div class="modal"  data-ng-class="{'uk-open' : state.open}">
+    <div class="modal__dialog modal__dialog--large">
+        <a data-msk-href class="modal__close close"></a>
+        <section class="booking__header" data-ng-cloak>
+
+            <div class="booking__header__times">
+                <p class="month">{{start.format("MMM")}}</p>
+                <p class="day">{{start.format("DD")}}</p>
+                <P class="day_name">{{start.format("dd")}}</P>
+            </div>
+
+            <div class="booking__header__clock" data-ng-cloak>
+                <div class="start">
+                    <p class="hour">{{start.format("hh")}}</p>
+                    <p class="minutes">{{start.format("mm")}}</p>
+                </div>
+
+                <div class="divider">до</div>
+
+                <div class="end">
+                    <p class="hour">{{end.format("hh")}}</p>
+                    <p class="minutes">{{start.format("mm")}}</p>
+                </div>
+            </div>
+
+            <a data-msk-href class="modal__close close icon-cross-circle" data-ng-click="closeModal()"></a>
+        </section>
+        <section class="panel panel--box margin--top" data-ng-cloak>
+            <ul class="grid grid--small grid-col--large-1-6 grid-col--medium-1-4 grid-col--small-1-2">
+                <li ng-repeat="hall in bookinngs" class="margin--bottom-small">
+                    <div data-calendarid="{{hall.calendarID}}" data-ng-click="addHall(hall.calendarID)" ng-if="hall.canBook" ng-class="{'active' : isSelected(hall.calendarID)}" class="button button--white button--radio border--radius col--1-1">
+                        <p class="margin--reset text--truncate">
+                        <p class="margin--reset text--bold" data-ng-bind="hall.title" data-ng-cloak></p>
+                        </p>
+
+                        <div class="button__radio__img" data-ng-class="{'button__radio__img--selected' : isSelected(hall.calendarID)}">
+                            <img src="{{hall.image}}" alt="фотография зала {{hall.name}}">
+                        </div>
+
+                        <p class="margin--reset">
+                            <span class="text--small text--muted margin--reset">Всего:&nbsp;</span>
+                            <span class="text--bold">{{hall.price | number}}</span>
+                        </p>
+                    </div>
+                    <div data-calendarid="{{hall.calendarID}}" data-ng-if="!hall.canBook" class="button button--muted button--radio button--radio-unselect border--radius col--1-1">
+                        <p class="margin--reset text--truncate">
+                        <p class="margin--reset text--bold" data-ng-bind="hall.title" data-ng-cloak></p>
+                        </p>
+
+                        <div class="button__radio__img button__radio__img--unselected">
+                            <img src="{{hall.image}}" alt="фотография зала {{hall.name}}">
+                        </div>
+
+                        <p class="margin--reset">
+                            <span class="text--small text--muted margin--reset">Всего:&nbsp;</span>
+                            <span class="text--bold">{{hall.price | number}}</span>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <div class="modal__footer">
+            <button class="button button--footer button--success col--1-1" data-ng-click="shoppingCart()">Добавить в корзину</button>
+        </div>
+
+        <!-- <div class="margin--v-xlarge text--center" data-ng-if="!friendlyRoute">
+            <i class="text--h1 text--yellow icon-spinner8"></i>
+        </div> -->
+    </div>
+    <div class="text--center">
+        <small class="text--white text--small">
+            www.fotobrief.ru — мы стараемся сделать лучший фотопортал.
+        </small>
+    </div>
+</div>

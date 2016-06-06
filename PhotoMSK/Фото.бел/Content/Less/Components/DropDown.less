@@ -1,0 +1,133 @@
+// out: ../../css/Components/Dropdown.css, compress: true
+// Name:            DropDown
+// Description:     DropDown element
+//
+// Component:       `Dropdown`
+//
+// Modifiers:       `dropdown--large`
+//                  `dropdown--small`
+//                  `dropdown--mini`
+//
+// ========================================================================
+
+// Variables
+@dropdown-account-background:                   #373f52;
+@dropdown-account-width:                        400px;
+
+@dropdown-menu-divider-padding:                 20px;
+@dropdown-menu-padding:                         20px;
+
+@dropdown-arrow-top-height:                     8px;
+
+// ========================================================================
+
+.dropdown{
+    position: relative;
+}
+
+.open .dropdown__menu{
+    display: block;
+}
+
+// *** Elements
+.dropdown__menu {
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+    min-width: 200px;
+    background: #fff;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    z-index: 1000;
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+
+    &:after{
+        content: " ";
+        border: solid transparent;
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        visibility: visible;
+        border-width: @dropdown-arrow-top-height;
+        border-bottom-color: #fff;
+        top: (@dropdown-arrow-top-height * -1) * 2;
+        right: 50%;
+        margin-right: (@dropdown-arrow-top-height * -1);
+    }
+
+    & > li > a {
+        display: block;
+        padding: (@dropdown-menu-padding / 2) @dropdown-menu-padding;
+        clear: both;
+        font-weight: 300;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        color: #333;
+        white-space: nowrap;
+
+        &:hover {
+            color: #262626;
+            text-decoration: none;
+            background-color: #f5f5f5;
+        }
+    }
+
+    & .divider{
+        display: block;
+        margin: 0 @dropdown-menu-padding;
+        background: #ddd;
+        height: 1px;
+    }
+
+    &__divider{
+        border-bottom: 1px solid #ebebeb;
+
+        &--title{
+            padding: (@dropdown-menu-divider-padding / 4) @dropdown-menu-divider-padding;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: #f5f5f5;
+
+            color: #171717;
+            border-bottom: 1px solid #ebebeb;
+        }
+    }
+}
+
+// *** Status and logout panel
+.dropdown{
+    &__status{
+        display: inline-block;
+    }
+
+    &__logout{
+        display: inline-block;
+    }
+}
+
+// *** Modificators
+// * dropwodn__menu--account
+.dropdown__menu{
+    &--account{
+        background: @dropdown-account-background;
+        width: @dropdown-account-width;
+    }
+}
+
+/// Arrow position
+
+.arrow-top-center:after{
+    border-top-color: transparent;
+    border-top-width: 0;
+    border-bottom-width: 10px;
+    border-bottom-color: #fff;
+    top: -10px;
+    bottom: auto;
+}

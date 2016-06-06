@@ -1,0 +1,91 @@
+
+<aside class="aside-menu" data-ng-if="showLeftMenu" data-ng-class="{'view--medium' : viewMode}">
+    <!-- <div class="aside-menu__account dropdown" style="background-image: url({{selectedRouteLeftMenu.coverImage}});" uib-dropdown dropdown-append-to-body> -->
+    <div class="aside-menu__account dropdown" uib-dropdown dropdown-append-to-body>
+
+        <a data-msk-href class="dropdown-toggle" uib-dropdown-toggle>
+            <img data-ng-src="{{selectedRouteLeftMenu.imageUrl}}" width="40" class="aside-menu__avatar" alt="">
+
+            <p class="margin--top-mini text--bold text--small" data-ng-if="selectedRouteLeftMenu.routeType == 'Photostudio'">{{selectedRouteLeftMenu.name}} студия</p>
+            <p class="margin--top-mini text--bold text--small" data-ng-if="selectedRouteLeftMenu.routeType == 'Photoshop'">{{selectedRouteLeftMenu.name}} магазин</p>
+            <p class="margin--top-mini text--bold text--small" data-ng-if="selectedRouteLeftMenu.routeType == 'Photorent'">{{selectedRouteLeftMenu.name}} аренда</p>
+            <p class="margin--top-mini text--bold text--small" data-ng-if="selectedRouteLeftMenu.routeType == 'Photographer'">{{selectedRouteLeftMenu.name}} фотограф</p>
+            <small class="text--small text--muted">сменить профиль&nbsp;<i class="text--small icon-chevron-down"></i></small>
+        </a>
+        <ul uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body" class="modal--route arrow-top-center">
+            <!-- <li>Фотостудии</li> -->
+            <li class="dropdown__menu__divider--title">
+                Фотостудии
+            </li>
+            <li data-ng-repeat="item in routes | filter:{ routeType: 'Photostudio' }">
+                <a data-msk-href data-ng-click="setRoute(item)">
+                    <img src="{{item.imageUrl}}" alt="{{item.name}}" class="avatar avatar--small float--left margin--right-mini" data-ng-if="item.imageUrl != null">
+                    <div class="avatar avatar--empty avatar--small float--left margin--right-mini" data-ng-if="item.imageUrl == null"></div>
+                    <span>{{item.name}}</span>
+                </a>
+            </li>
+            <li class="dropdown__menu__divider--title">
+                Магазины
+            </li>
+            <li data-ng-repeat="item in routes | filter:{ routeType: 'Photoshop' }">
+                <a data-msk-href data-ng-click="setRoute(item)">
+                    <img src="{{item.imageUrl}}" alt="{{item.name}}" class="avatar avatar--small float--left margin--right-mini" data-ng-if="item.imageUrl != null">
+                    <div class="avatar avatar--empty avatar--small float--left margin--right-mini" data-ng-if="item.imageUrl == null"></div>
+                    <span>{{item.name}}</span>
+                </a>
+            </li>
+            <li class="dropdown__menu__divider--title">
+                Прокат техники
+            </li>
+            <li data-ng-repeat="item in routes | filter:{ routeType: 'Photorent' }">
+                <a data-msk-href data-ng-click="setRoute(item)">
+                    <img src="{{item.imageUrl}}" alt="{{item.name}}" class="avatar avatar--small float--left margin--right-mini" data-ng-if="item.imageUrl != null">
+                    <div class="avatar avatar--empty avatar--small float--left margin--right-mini" data-ng-if="item.imageUrl == null"></div>
+                    <span>{{item.name}}</span>
+                </a>
+            </li>
+            <li class="dropdown__menu__divider--title">
+                Фотографы
+            </li>
+            <li data-ng-repeat="item in routes | filter:{ routeType: 'Photographer' }">
+                <a data-msk-href data-ng-click="setRoute(item)">
+                    <img src="{{item.imageUrl}}" alt="{{item.lastName}} {{item.firstName}}" class="avatar avatar--small float--left margin--right-mini" data-ng-if="item.imageUrl != null">
+                    <div class="avatar avatar--empty avatar--small float--left margin--right-mini" data-ng-if="item.imageUrl == null"></div>
+                    <span>{{item.lastName}} {{item.firstName}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="aside-menu__balance">
+        <span>0</span>&nbsp;<small class="aside-menu__balance__currency">руб.</small>
+    </div>
+
+    <div class="aside-menu__scroll" data-ng-if="selectedRouteLeftMenu.routeType == 'Photostudio'">
+        <div data-ng-include src="'Scripts/admin/components/shared/RouteMenuType/_PhotostudioType.html'"></div>
+    </div>
+    <div class="aside-menu__scroll" data-ng-if="selectedRouteLeftMenu.routeType == 'Photoshop'">
+        <div data-ng-include src="'Scripts/admin/components/shared/RouteMenuType/_PhotoshopType.html'"></div>
+    </div>
+    <div class="aside-menu__scroll" data-ng-if="selectedRouteLeftMenu.routeType == 'Photorent'">
+        <div data-ng-include src="'Scripts/admin/components/shared/RouteMenuType/_PhotorentType.html'"></div>
+    </div>
+    <div class="aside-menu__scroll" data-ng-if="selectedRouteLeftMenu.routeType == 'Photographer'">
+        <div data-ng-include src="'Scripts/admin/components/shared/RouteMenuType/_PhotographerType.html'"></div>
+    </div>
+
+    <!-- <footer class="aside-menu__footer">
+        <p>
+            Copyright (c) 2016 Фото.бел
+        </p>
+        <a data-msk-href>Terms & Privacy</a>
+    </footer> -->
+
+    <div class="aside-menu__mode" data-ng-cloak>
+        <a data-msk-href class="link--reset" data-ng-click="changeViewMode()">
+            <i class="text--h4 icon-keyboard_arrow_left" data-ng-if="!viewMode"></i>
+            <i class="text--h4 icon-keyboard_arrow_right" data-ng-if="viewMode"></i>
+            &nbsp;
+            <span data-ng-if="!viewMode">свернуть</span>
+        </a>
+    </div>
+</aside>

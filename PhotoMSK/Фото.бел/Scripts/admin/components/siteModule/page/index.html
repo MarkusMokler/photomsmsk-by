@@ -1,0 +1,67 @@
+﻿<div class="content--admin">
+
+    <div><data-bread-crumbs /></div>
+
+    <div class="container--fluid">
+        <div class="grid">
+            <div class="col--1-5">
+                <a href="/admin/photostudio/{{shortcut}}/pages/create" class="button col--1-1">
+                    <i class="icon-plus"></i>&nbsp;<span class="text--bold">Добавить</span>
+                </a>
+
+                <p class="text--h5 text--bold margin--top">Справочник</p>
+                <ul class="list list--vertical list--dotted">
+                    <li><a data-ng-href target="_blank" class="text--muted">Типы меню</a></li>
+                    <li><a data-ng-href target="_blank" class="text--muted">Отображение элементов меню</a></li>
+                    <li><a data-ng-href target="_blank" class="text--muted">Создание выпадающего меню</a></li>
+                    <li><a data-msk-href class="text--small">ещё...</a></li>
+                </ul>
+            </div>
+            <div class="col--4-5">
+                <div class="panel panel--box panel--white panel--shadow">
+                    <table class="table table--hover table--middle">
+                        <thead>
+                            <tr>
+                                <th>Название</th>
+                                <th class="text--center">Публикация</th>
+                                <th>Тип страницы</th>
+                                <th class="text--center">Доступ</th>
+                                <th>Кем создана</th>
+                                <th class="text--center">...</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="item in routePages">
+                                <td>
+                                    <a data-msk-href clas class="uk-link-muted uk-link-dotted">{{item.title}}</a>
+                                    <p class="text--small text--muted margin--top-mini" data-ng-if="item.slug">
+                                        (Slug: {{item.slug}})
+                                    </p>
+                                </td>
+                                <td class="text--center">
+                                    <a data-msk-href class="button button--mini button--rounded" data-ng-class="item.published ? 'button--success icon-check' : 'icon-remove'"></a>
+                                </td>
+                                <td>
+                                    <div data-ng-if="item.pageType=='textPage'">Текстовая страница</div>
+                                    <div data-ng-if="item.pageType=='landingPage'">Лендинг</div>
+                                    <div data-ng-if="item.pageType=='requestPage'">Страница-запрос</div>
+                                </td>
+                                <td class="text--center">Все</td>
+                                <td>
+                                    <a data-msk-href class="text--muted link--line">{{item.userInformation.FirstName}} {{item.userInformation.firstName}} </a>
+                                    <p class="text--small">
+                                        <small class="text--muted">(Дата: )</small>
+                                    </p>
+                                </td>
+                                <td class="text--center">
+                                    <a data-msk-href data-ng-click="setAsDefault(item)" class="button button--small button--rounded icon-star_border"></a>
+                                    <a data-msk-href class="button button--small button--rounded icon-more_horiz"></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+﻿</div>

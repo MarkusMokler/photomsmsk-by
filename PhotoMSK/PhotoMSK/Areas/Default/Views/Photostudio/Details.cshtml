@@ -1,0 +1,426 @@
+﻿@model PhotoMSK.Areas.Default.ViewData.Photostudio.DetailsViewData
+@{
+    ViewBag.Title = "Фотостудия " + Model.Item.Name;
+    ViewBag.Description = Model.Item.Description;
+    ViewBag.Image = Model.Item.ImageUrl;
+}
+
+@section scripts
+{
+    @Scripts.Render("~/Scripts/marked")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <style>
+        #hall-select li:hover {
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
+            border-radius: 3px;
+            color: #666;
+        }
+
+        .booking-calendar table td {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        window.routeImage='@Model.Item.ImageUrl';
+        App.owner = '@Model.Item.ID';
+        var view = new App.Views.Photostudio.StudioDetails({ model: @Model.Item.ToJson() });
+         
+        view.render();
+        view.wallView.wallCollection.reset(@Model.Item.Wall.ToJson());
+
+        $("#subscribe").click(function() {
+
+            $.post("/Api/Subscription", { RouteID: "@Model.Item.ID" }, function() {}
+            );
+        });
+    });
+    </script>
+}
+
+<div class="photostudio-title-image">
+    <div class="cover">
+
+        <div class="data_wrap uk-float-right photostudio-pulse">
+            <div class="pulse_wrap">
+                <div class="value photo_rating" data-bind="rating">@string.Format("{0:##.###}", Model.Item.Raiting.Total)</div>
+                <div class="label">
+                    <span id="pulse"></span>
+                    <span class="text">Пульс</span>
+                </div>
+            </div>
+            <div class="info uk-float-left">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="label">Просмотров</span>
+                            </td>
+                            <td>
+                                <span class="value photo_views_count" title="219">@Model.Item.PageViews</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="label">Нравится</span>
+                            </td>
+                            <td>
+                                <span class="value photo_votes_count">@Model.Item.Raiting.Likes</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="label">Не нравится</span>
+                            </td>
+                            <td>
+                                <span class="value photo_votes_count">@Model.Item.Raiting.Dislikes</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="label">Подписаны</span>
+                            </td>
+                            <td>
+                                <span class="value photo_favorites_count">8</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <img src="@Model.Item.CoverImageUrl" />
+        <div class="fade"></div>
+
+    </div>
+    <img src="@Model.Item.ImageUrl" class="photo" />
+</div>
+
+<div class="uk-main-page-body">
+    @Html.Partial("_Breadcrumbs")
+    <div class="uk-container uk-container-center">
+        <div class="uk-grid">
+            <div class="uk-width-1-1 uk-text-center photostudio-title">
+                <h1 class="hall-title">@Model.Item.Name</h1>
+                <div class="uk-comment-meta">@Model.Item.StudioType</div>
+                <hr />
+            </div>
+
+            <div class="uk-width-1-1 pad-top-20">
+                <div class="uk-grid">
+
+                    <div class="uk-width-large-6-10 uk-width-small-1-1 uk-push-4-10">
+
+                        <div id="sync1" class="owl-carousel">
+                            @foreach (var item in Model.Item.Photos.OrderByDescending(x => x.UploadDate))
+                            {
+                                <div class="item item-big uk-text-center">
+                                    <img src="@item.Url" alt="" />
+                                </div>
+                            }
+                        </div>
+
+                        <div id="sync2" class="owl-carousel">
+                            @foreach (var item in Model.Item.Photos.OrderByDescending(x => x.UploadDate))
+                            {
+                                <div class="item item-small">
+                                    <img src="@item.Url" alt="" />
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                    <div class="uk-width-large-4-10 uk-width-small-1-1 uk-pull-6-10">
+                        <ul class="uk-tab uk-tab-events uk-text-center" data-uk-tab="{connect:'#tab-content'}">
+                            <li class="uk-active"><a href="" class="uk-navbar-nav-subtitle">КОНТАКТЫ<div>студии</div></a></li>
+                            <li><a href="" class="uk-navbar-nav-subtitle">ОТЗЫВЫ<div>студии</div></a></li>
+                            <li><a href="" class="uk-navbar-nav-subtitle">КАРТА<div>проезда</div></a></li>
+                        </ul>
+
+                        <ul id="tab-content" class="uk-switcher uk-margin">
+                            <li>
+                                <table class="uk-table uk-table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <td>Адрес:</td>
+                                            <td><i class="icon-map-pin"></i> @Model.Item.Adress</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Метро:</td>
+                                            <td>@Model.Item.MetroStation</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Телефоны:</td>
+                                            <td>
+                                                <i class="icon-phone"></i>
+                                                @foreach (var item in Model.Item.Phones)
+                                                {
+                                                    @item.Number
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Время работы:</td>
+                                            <td><i class="icon-clock"></i> 09:00 — 22:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Сайт:</td>
+                                            <td><i class="icon-global"></i> <a href="@Model.Item.Site">@Model.Item.Site</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+
+                            <li class="uk-active">
+                                <table class="uk-table uk-table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Основное:</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Гримерка:</td>
+                                            <td><div class="availability yes"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Аренда оборудования:</td>
+                                            <td><div class="availability yes"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Душ:</td>
+                                            <td><div class="availability no"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Парковка:</td>
+                                            <td><div class="availability yes"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Услуги фотографа:</td>
+                                            <td><div class="availability yes"></div></td>
+                                        </tr>
+                                    </tbody>
+                                    <thead>
+                                        <tr>
+                                            <th>Оборудование:</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Импульсный свет:</td>
+                                            <td><strong>Rekam Master 800</strong> (3 шт.)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Постоянный свет:</td>
+                                            <td><div class="availability no"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Естественный свет:</td>
+                                            <td><div class="availability yes"></div></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                            <li>
+
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="online-booking-calendar" class="uk-container uk-container-center">
+        <div class="uk-grid uk-grid-small">
+            <div class="uk-width-large-7-10 uk-width-small-1-1">
+                <h1 class="bold">Онлайн бронирование</h1>
+                <hr />
+                <div class="uk-wall-box-body">
+                    <div class="uk-panel uk-panel-box">
+                        <div class="role-booking-calendar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-3-10 uk-hidden-small">
+                <h1>Информация о брони</h1>
+                <hr />
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <text>
+                        <div class="uk-alert uk-alert-warning">
+                            Онлайн бронирование доступно после авторизации войдите или @Html.ActionLink("зарегистрируйтесь", "Register", "Account")
+                        </div>
+                    </text>
+                }
+                else
+                {
+                    if (Model.Item.AllowOnlineBooking)
+                    {
+                        <text>
+                            <div class="uk-alert uk-alert-success">
+                                Видео урок о том, как можно забронировать студию онлайн смотрите <a class="role-booking-toturial" href="#">тут</a>.
+                            </div>
+                        </text>
+                    }
+                    else
+                    {
+                        <text>
+                            <div class="uk-alert uk-alert-success">
+                                Видео урок о том, как можно забронировать студию онлайн смотрите <a href="#">тут</a>.
+                            </div>
+                        </text>
+                    }
+                }
+
+                <div class="uk-wall-box-body">
+                    <div class="uk-panel uk-panel-header uk-panel-box">
+                        <h3 class="uk-panel-title"><i class="uk-icon-shopping-cart uk-text-muted"></i> Ваш заказ</h3>
+                        <ul id="booking" class="uk-list uk-list-line near-places"></ul>
+
+                        @if (Model.Item.AllowOnlineBooking)
+                        {
+                            <text>
+
+                                <hr class="small-line" />
+                                <div class="">
+                                    <span class="uk-h3 bold">Итого:</span>
+                                    <span class="uk-h3 uk-float-right"><span class="role-booking-total-price">0</span> <small class="uk-text-muted">бел. руб.</small></span>
+                                </div>
+                                <div class="uk-margin">
+                                    <input type="submit" class="bold uk-button uk-button-reviews uk-button-reviews-warning uk-button-reviews-warning-border border-500 uk-width-1-1 role-booking-button" value="Забронировать">
+                                </div>
+                            </text>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="uk-container uk-container-center photostudio">
+        <div class="uk-grid">
+            @* Halls *@
+            <div class="uk-width-large-3-10 uk-width-small-1-1">
+                <h1>Залы</h1>
+                <hr />
+                @foreach (var item in Model.Item.Halls)
+                {
+                    <div class="uk-grid">
+                        <article class="uk-width-1-1">
+                            <img class="uk-float-left uk-width-1-2 image-wripping" src="@item.TeaserImageUrl" />
+
+                            <h1 class="small-hall-title">@item.Name</h1>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span class="label uk-text-muted">Площадь:</span>
+                                        </td>
+                                        <td>
+                                            <span class="value" title="219"><strong>@String.Format("{0:0}", item.Square) </strong> кв.м.</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="label uk-text-muted">Стоимость: </span>
+                                        </td>
+                                        <td>
+                                            <span class="value"><small>от</small> <strong>@item.MinimumPrice</strong></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            @Html.ActionLink("Подробнее", "Details", "Hall", new { id = item.ID }, new { @class = "uk-button uk-button-read-more uk-button-small uk-float-right" })
+                        </article>
+                    </div>
+                }
+
+                @* ---- Payment/Deliver ------- *@
+                <div class="uk-width-1-1 pad-top-20">
+                    <ul class="uk-tab uk-tab-events uk-text-center" data-uk-tab="{connect:'#tab-content-payments'}">
+                        <li class="uk-active"><a href="" class="uk-navbar-nav-subtitle">ОПЛАТА<div>студии</div></a></li>
+                        <li><a href="" class="uk-navbar-nav-subtitle">Правила<div>студии</div></a></li>
+                    </ul>
+
+                    <ul id="tab-content-payments" class="uk-switcher uk-margin">
+                        <li class="uk-active">
+                            <ul class="uk-subnav uk-text-center payments">
+                                <li><a href=""><img src="@Url.Content("../../Content/images/payments/icon_webpay.png")" /></a></li>
+                                <li><a href=""><img src="@Url.Content("../../Content/images/payments/icon_assist.png")" /></a></li>
+                                <li><a href=""><img src="@Url.Content("../../Content/images/payments/icon_erip.png")" /></a></li>
+                                <li><a href=""><img src="@Url.Content("../../Content/images/payments/icon_ipay.png")" /></a></li>
+                                <li><a href=""><img src="@Url.Content("../../Content/images/payments/icon_visa.png")" /></a></li>
+                                <li><a href=""><img src="@Url.Content("../../Content/images/payments/icon_mastercard.png")" /></a></li>
+                                <li><a href=""><img src="@Url.Content("../../Content/images/payments/icon_yandexmoney.png")" /></a></li>
+                                <li><a href=""><img src="@Url.Content("../../Content/images/payments/icon_paypal.png")" /></a></li>
+                                <li><a href=""><img src="@Url.Content("../../Content/images/payments/icon_qiwi.png")" /></a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <ul class="uk-subnav">
+                                <ol>
+                                    <li>Item 1</li>
+                                    <li>
+                                        Item 2
+                                        <ol>
+                                            <li>Item 1</li>
+                                            <li>
+                                                Item 2
+                                                <ol>
+                                                    <li>Item 1</li>
+                                                    <li>Item 2</li>
+                                                </ol>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li>Item 3</li>
+                                    <li>Item 4</li>
+                                </ol>
+                            </ul>
+                        </li>
+                    </ul>
+
+
+                </div>
+            </div>
+
+            <div id="wall-placeholder" class="uk-width-large-5-10 uk-width-small-1-1" data-role-wall-placeholder>
+
+            </div>
+            @* ADS *@
+            <div class="uk-width-large-2-10 uk-hidden-small">
+                <h1>Рядом</h1>
+                <hr />
+                <div>
+                    <ul class="uk-list uk-list-line near-places">
+                        @for (int i = 0; i < 5; i++)
+                        {
+                            <li>
+                                <article class="uk-comment">
+                                    <header class="uk-comment-header">
+                                        <img class="uk-comment-avatar" src="http://static.relax.by/images/common/galleries/10335166/54d0b40b689cc07cece3d289361c871a.jpg" width="50" height="50" alt="">
+                                        <h4 class="uk-comment-title">BLACK HALL BAR</h4>
+                                        <div class="uk-comment-meta">100 метров</div>
+                                    </header>
+                                </article>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <h1>Реклама</h1>
+                <hr />
+
+                <div>
+                    @Html.Action("DisplayAddPartial", new { Controller = "Ads", Area = "Default" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

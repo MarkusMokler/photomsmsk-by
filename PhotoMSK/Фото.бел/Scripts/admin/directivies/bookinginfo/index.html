@@ -1,0 +1,165 @@
+<div>
+    <label class="label">Телефон</label>
+    <div>
+        <div
+            angucomplete-alt
+            remote-url={{usersByPhoneUrl}}
+            id="UserPhone"
+            placeholder="+375"
+            pause="500"
+            selected-object="selected"
+            title-field="firstName,lastName"
+            description-field="userPhone"
+            image-field="userPhoto"
+            model="results"
+            remote-url-request-formatter="remoteUrlRequestEn"
+            searching="user.userPhone"
+            input-class="input col--large-1-1 col--small-1-1 ui-autocomplete-input"
+            no-results="noResults"></div>
+    </div>
+    <div id="client-placeholder" data-ng-if="selected!=null && selected.length!=0">
+        <div>
+            <div class="booking-image text--center">
+                <!-- <img class="border--rounded" data-ng-src="{{selected.image}}"> -->
+                <div class="position--relative">
+                    <img src="{{selected.image}}" class="avatar--border-solid border--rounded" alt="">
+                    <div class="avatar__desc">
+                        <span class="text--bold">0,000,000</span>
+                        <small class="text--small text--muted">руб.</small>
+                    </div>
+                </div>
+
+                <p class="text--h3 text--center text--bold" data-ng-bind="selected.title">Ольга Рыбакина</p>
+
+                <div class="text--center">
+                    <p><i class="text--small text--muted icon-cog"></i>&nbsp;<span data-ng-bind="selected.description"></span></p>
+                    <!-- <p><i class="text--small text--muted icon-cog"></i>&nbsp;<a data-msk-href="" href="javascript:void(0);"><span class="text--small ng-binding">+375293814440</span></a></p> -->
+                </div>
+
+                <!-- <p class="text--h2" data-ng-bind="selected.title"></p> -->
+                <!-- <p class="text--h4" data-ng-bind="selected.description"></p> -->
+
+
+                <p data-ng-if="selected.originalObject.clientType=='Photographer'" class="text--muted text--small">Фотограф</p>
+                <p data-ng-if="selected.originalObject.clientType=='Photomodel'" class="text--muted text--small">Модель</p>
+                <p data-ng-if="selected.originalObject.clientType=='Visagiste'" class="text--muted text--small">Визажист</p>
+                <p data-ng-if="selected.originalObject.clientType=='Organizer'" class="text--muted text--small">Организатор</p>
+                <p data-ng-if="selected.originalObject.clientType=='Stylist'" class="text--muted text--small">Стилист</p>
+                <p data-ng-if="selected.originalObject.clientType=='Leading'" class="text--muted text--small">Ведущий</p>
+                <p data-ng-if="selected.originalObject.clientType=='Designer'" class="text--muted text--small">Дизайнер</p>
+                <p data-ng-if="selected.originalObject.clientType=='Client'" class="text--muted text--small">Клиент</p>
+
+                <p class="text--small text--muted" data-ng-if="selected.originalObject.clientType == null"><i class="icon-block text--red"></i>&nbsp;Тип не определен</p>
+            </div>
+            <div id="penalty-list-placeholder"></div>
+        </div>
+    </div>
+    <div data-ng-if="noResults">
+        <p class="text--h4">Создание нового клиента:</p>
+        <span data-ng-bind="userMessage"></span>
+        <div>
+            <span class="label">Имя</span>
+            <input type="text" class="input col--1-1" placeholder="Имя" data-ng-model="user.firstName"/>
+        </div>
+        <div>
+            <span class="label">Фамилия</span>
+            <input type="text" class="input col--1-1" placeholder="Фамилия" data-ng-model="user.lastName"/>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="text--right">
+        <button class="button button--mini button--primary border--radius" data-ng-click="more.isMore = !more.isMore">Дополнительно</button>
+    </div>
+    <div id="aditional-block" class="role-aditional-form" data-ng-show="more.isMore">
+        <div class="grid">
+            <div class="col--1-1">
+                <label class="label">
+                    Описание
+                </label>
+                <input class="input col--1-1" name="role-description" placeholder="Описание" data-ng-model="more.Description" type="text">
+            </div>
+            <div class="col--1-1">
+                <label class="label">
+                    Сумма аренды
+                </label>
+                <div class="input__group">
+                    <input class="input col--1-1" name="role-price" placeholder="Сумма" data-ng-model="more.Price" type="text">
+                    <span class="input__group__desc">
+                        <span>руб.</span>
+                    </span>
+                </div>
+            </div>
+            <div class="col--1-1">
+                <span class="label">
+                    Тэги
+                </span>
+                <tags-input data-ng-model="more.Tags"></tags-input>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ul id="booking" class="uk-list uk-list-line near-places"></ul>
+
+<div class="tab" data-ng-if="selected!=null && selected.length!=0 && !noResults">
+    <div class="tab__header">
+        <a msk-href data-ng-click="tab='tab1'" data-ng-class="{active : tab == 'tab1'}" class="tab__item">Штрафы
+            <small class="text--small">({{selected.originalObject.penalties.length}})</small>
+        </a>
+        <a msk-href data-ng-click="tab='tab2'" data-ng-class="{active : tab == 'tab2'}" class="tab__item">Аренды
+            <small class="text--small">({{selected.originalObject.events.length}})</small>
+        </a>
+        <a msk-href data-ng-click="tab='tab3'" data-ng-class="{active : tab == 'tab3'}" class="tab__item">Скидки</a>
+    </div>
+    <div data-ng-if="tab=='tab1'" class="tab__content">
+        <ul class="penalty__list">
+            <li data-ng-repeat="(key,value) in selected.originalObject.penalties | limitTo:15" class="penalty__item grid grid--medium">
+                <div class="penalty__item__days col--2-10">
+                    <small class="penalty__item__month" data-ng-bind="value.date | date:'MMM'"></small>
+                    <span class="penalty__item__day" data-ng-bind="value.date | date:'dd'"></span>
+                    <small class="penalty__item__month" data-ng-bind="value.date | date:'hh:mm'"></small>
+                </div>
+                <div class="penalty__item__times col--5-10">
+                    <p class="penalty__item__route">
+                        <span data-ng-bind="value.route"></span>
+                    </p>
+                    <p class="penalty__item__desc">
+                        <span data-ng-bind="value.description | date:'hh:mm'"></span>
+                    </p>
+                </div>
+
+                <div class="penalty__item__price col--3-10">
+                    <p>{{value.price | number}}</p>
+                    <small class="penalty__item__price__currency text--small text--muted">руб.</small>
+                    <br>
+                    <a data-msk-href data-ng-click="removePenalty(key)">
+                        <small class="penalty__item__price__currency text--small">Закрыть претензию</small>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div data-ng-if="tab=='tab2'" class="tab__content">
+        <ul class="penalty__list">
+            <li data-ng-repeat="event in selected.originalObject.events | limitTo:15" class="penalty__item grid grid--medium">
+                <div class="penalty__item__days col--2-10">
+                    <span class="penalty__item__day" data-ng-bind="event.start | date:'dd'"></span>
+                    <small class="penalty__item__month" data-ng-bind="event.start | date:'MMM'"></small>
+                </div>
+                <div class="penalty__item__times col--5-10">
+                    <p class="penalty__item__times__start">
+                        <span data-ng-bind="event.start | date:'hh:mm'"></span>
+                    </p>
+                    <p class="penalty__item__times__end">
+                        <span data-ng-bind="event.end | date:'hh:mm'"></span>
+                    </p>
+                </div>
+                <div class="penalty__item__price col--3-10">
+                    <p class="text--truncate">{{event.price | number}}</p>
+                    <small class="penalty__item__price__currency text--small text--muted">руб.</small>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

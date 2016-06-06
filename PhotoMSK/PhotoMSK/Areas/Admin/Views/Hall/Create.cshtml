@@ -1,0 +1,63 @@
+﻿@model PhotoMSK.Data.Models.Hall
+
+@{
+    ViewBag.Title = "Добавление нового зала";
+}
+<div class="uk-container uk-container-center pad-top-40">
+    <div class="uk-grid">
+        <div class="uk-width-6-10 uk-offset-2-10">
+            <h4 class="title-dotted">
+                Добавление нового зала
+            </h4>
+            @Html.ValidationSummary(true)
+            <div class="uk-grid role-step-1" data-uk-grid-margin="">
+                @Html.HiddenFor(x => x.PhotostudioID, new { @class = "input-ms" })
+                <div class="uk-width-1-2">
+                    <label class="label-ms show">
+                        Название зала
+                        <i class="icon-help2" data-uk-tooltip title="Название должно содержать буквы русского или английского алфавита."></i>
+                    </label>
+                    @Html.TextBoxFor(model => model.Name, new { @class = "input-ms" })
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+                <div class="uk-width-1-2">
+                    <label class="label-ms">
+                        Площадь зала
+                        <i class="icon-help2" data-uk-tooltip title="Ссылка, по которой вы можете быстро зайти на страницу студии."></i>
+                    </label>
+                    <div class="input-group">
+                        @Html.TextBoxFor(model => model.Square, new { @class = "input-ms" })
+                        @Html.ValidationMessageFor(model => model.Square)
+                    </div>
+                </div>
+                <div class="uk-width-1-1">
+                    <div class="uk-width-1-1">
+                        <label class="label-ms show">
+                            Описание
+                            <i class="icon-help2" data-uk-tooltip title="Опишите коротко студию."></i>
+                        </label>
+                        @Html.TextAreaFor(model => model.Description, new { @class = "input-ms", rows = 5 })
+                        @Html.ValidationMessageFor(model => model.Description)
+                    </div>
+                </div>
+                <div class="uk-width-1-1 pad-top-40 uk-text-right">
+                    @Html.ActionLink("отмена", "Manage", "Account", null, new { @class = "reset" })
+                    <button value="" class="btn-ms primary role-save-button" data-role-save-button>Создать</button>
+                </div>
+            </div>
+            <h4 class="title-dotted">
+                Финиш
+            </h4>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            const create = new App.Halls.HallCreate({ photostudioID: '@Model.PhotostudioID', photostudioShortcut: '@Model.Photostudio.Shortcut' });
+            create.render();
+        })
+    </script>
+}

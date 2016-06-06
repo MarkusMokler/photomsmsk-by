@@ -1,0 +1,67 @@
+﻿@model PhotoMSK.Areas.Default.ViewData.Photostudio.DetailsViewData
+
+<div class="uk-grid uk-grid-small">
+    <div class="uk-width-large-7-10 uk-width-small-1-1">
+        <h1 class="bold">Онлайн бронирование</h1>
+        <hr />
+        <div class="uk-wall-box-body">
+            <div class="uk-panel uk-panel-box">
+                <div class="role-booking-calendar"></div>
+            </div>
+        </div>
+    </div>
+    <div class="uk-width-3-10 uk-hidden-small">
+        <h1>Информация о брони</h1>
+        <hr />
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <text>
+                <div class="uk-alert uk-alert-warning">
+                    Онлайн бронирование доступно после авторизации войдите или @Html.ActionLink("зарегистрируйтесь", "Register", "Account")
+                </div>
+            </text>
+        }
+        else
+        {
+            if (Model.Item.AllowOnlineBooking)
+            {
+                <text>
+                    <div class="uk-alert uk-alert-success">
+                        Видео урок о том, как можно забронировать студию онлайн смотрите <a class="role-booking-toturial" href="#">тут</a>.
+                    </div>
+                </text>
+            }
+            else
+            {
+                <text>
+                    <div class="uk-alert uk-alert-success">
+                        Видео урок о том, как можно забронировать студию онлайн смотрите <a href="#">тут</a>.
+                    </div>
+                </text>
+            }
+        }
+
+        <div class="uk-wall-box-body">
+            <div class="uk-panel uk-panel-header uk-panel-box">
+                <h3 class="uk-panel-title"><i class="uk-icon-shopping-cart uk-text-muted"></i> Ваш заказ</h3>
+                <ul id="booking" class="uk-list uk-list-line near-places"></ul>
+
+                @if (Model.Item.AllowOnlineBooking)
+                {
+                    <text>
+
+                        <hr class="small-line" />
+                        <div class="">
+                            <span class="uk-h3 bold">Итого:</span>
+                            <span class="uk-h3 uk-float-right"><span class="role-booking-total-price">0</span> <small class="uk-text-muted">бел. руб.</small></span>
+                        </div>
+                        <div class="uk-margin">
+                            <input type="submit" class="bold uk-button uk-button-reviews uk-button-reviews-warning uk-button-reviews-warning-border border-500 uk-width-1-1 role-booking-button" value="Забронировать">
+                        </div>
+                    </text>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

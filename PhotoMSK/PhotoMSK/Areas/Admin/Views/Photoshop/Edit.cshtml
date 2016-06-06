@@ -1,0 +1,60 @@
+﻿@model PhotoMSK.Models.EditViewModel.Routes.PhotoshopEditModel
+
+@{
+    ViewBag.Title = "Редактирование фотомагазина";
+}
+
+<div class="uk-container uk-container-center">
+    <div class="uk-grid" data-uk-grid-margin>
+        <div class="uk-width-1-1">
+            <ul class="uk-tab uk-tab-events" data-uk-tab="{connect:'#tab-content'}">
+                <li><a href="#">Контактная информация</a></li>
+                <li><a href="#">Телефоны и адрес</a></li>
+                <li><a href="#">Образцы документов</a></li>
+                <li><a href="#">Участники</a></li>
+                <li><a href="#">Pro</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="uk-panel uk-panel-space uk-panel--white uk-panel--shadow uk-panel--border-radius">
+        <div class="uk-width-1-1">
+            <ul id="tab-content" class="uk-switcher uk-margin-large">
+                <li>
+                    <div class="uk-grid" data-uk-grid-margin>
+                        @Html.Partial("../Shared/RouteCreate/_CoverAndAvatar", Model)
+                        @Html.Partial("../Shared/RouteCreate/_TitleShortcutDescription", Model)
+                        @Html.Partial("../Shared/RouteCreate/_ButtonSave", Model)
+                    </div>
+                </li>
+                <li>
+                    <div class="uk-grid" data-uk-grid-margin>
+                        @Html.Partial("../Shared/RouteCreate/_Phone", Model)
+                        @Html.Partial("../Shared/RouteCreate/_Location", Model)
+                        @Html.Partial("../Shared/RouteCreate/_Map", Model)
+                        @Html.Partial("../Shared/RouteEdit/_SocialNetwork", Model)
+                        @Html.Partial("../Shared/RouteCreate/_ButtonSave", Model)
+                    </div>
+                </li>
+                <li>
+                    <div class="uk-grid" data-uk-grid-margin>
+                        @Html.Partial("../Shared/RouteCreate/_LegalInformation", Model)
+                        @Html.Partial("../Shared/RouteCreate/_Image", Model)
+                        @Html.Partial("../Shared/RouteCreate/_ButtonSave", Model)
+                    </div>
+                </li>
+                <li>
+                    <div class="uk-grid" data-uk-grid-margin>
+                        @Html.Partial("../Shared/RouteEdit/_Participants", Model)
+                        @Html.Partial("../Shared/RouteCreate/_ButtonSave", Model)
+                    </div>
+                </li>
+                <li>
+                    <div class="uk-grid" data-uk-grid-margin>
+                        @Html.Partial("../Shared/RouteEdit/_Pro", Model)
+                        @Html.Partial("../Shared/RouteCreate/_ButtonSave", Model)
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

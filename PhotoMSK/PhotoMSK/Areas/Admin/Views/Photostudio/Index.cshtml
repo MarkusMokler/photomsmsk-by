@@ -1,0 +1,114 @@
+﻿@using PhotoMSK.Extensiolns
+@model PhotoMSK.ViewModels.Route.PhotostudioViewModel.Detaills
+@{
+    ViewBag.Title = "Бронирование";
+}
+
+<div class="uk-container uk-container-center pad-top-20">
+    <div class="uk-grid">
+        <div class="uk-width-7-10">
+            <h1>Онлайн бронирование студии <i class="icon-streetsign uk-float-right uk-text-muted" data-uk-tooltip="{pos:'left'}" title="Тур: «Как забронировать студию?»"></i></h1>
+            <hr />
+            <div class="role-booking-calendar">
+
+            </div>
+        </div>
+
+        <div class="uk-width-3-10">
+            <h1>Клиент<i class="icon-circle-cross uk-float-right uk-text-muted" data-uk-tooltip="{pos:'left'}" title="Очистить поля"></i></h1>
+            <hr />
+            <div class="uk-wall-box-body">
+                <div class="uk-panel uk-panel-header uk-panel-box">
+                    <div class="uk-width-large-1-1 uk-width-small-1-1 uk-position-relative">
+                        <label class="label-ms">Телефон</label>
+                        <input class="input-ms uk-width-large-1-1 uk-width-small-1-1 uk-margin-bottom-remove role-user-information-search" data-val="true" id="UserName" name="UserName" type="tel" value="+375">
+                        @*@Html.TextBox("id", "", new { @class = "uk-width-1-1 uk-text-bold input-ms role-user-information-search", id = "mobile-number", type = "text"})*@
+                        <div class="uk-dropdown uk-dropdown-search" style="position: absolute;">
+
+                        </div>
+                    </div>
+
+                    <div id="client-placeholder">
+
+                    </div>
+                    <div class="pad-top-10">
+                        <button class="uk-button uk-button-mini uk-button-primary uk-align-right role-aditional-show">+ Дополнительно</button>
+                        <div id="aditional-block" class="role-aditional-form" style="display: none">
+                            <div class="uk-grid pad-bottom-20">
+                                <div class="uk-width-1-1">
+                                    <label class="label-ms">
+                                        Описание
+                                    </label>
+                                    <input class="input-ms role-aditional-description" id="role-description" name="role-description" type="text" placeholder="Описание">
+                                </div>
+                                <div class="uk-width-1-1">
+                                    <label class="label-ms">
+                                        Сумма аренды
+                                    </label>
+                                    <div class="input-group">
+                                        <input class="input-ms role-aditional-price" id="role-price" name="role-price" type="text" placeholder="Сумма">
+                                        <span class="input-group-btn">
+                                            <span>бел. руб.</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-1">
+                                    <label class="label-ms">
+                                        Тэги
+                                    </label>
+                                    <div class="input-group">
+                                        <input class="input-ms role-aditional-tags" id="role-price" name="role-price" type="text" placeholder="Сумма">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul id="booking" class="uk-list uk-list-line near-places"></ul>
+
+
+
+                    <hr class="small-line">
+                    <div class="">
+                        <span class="uk-h3 bold">Итого:</span>
+                        <span class="uk-h3 uk-float-right"><span class="role-booking-total-price">0</span> <small class="uk-text-muted">бел. руб.</small></span>
+                    </div>
+                    <div class="uk-margin">
+                        <input type="submit" class="bold uk-button uk-button-reviews uk-button-reviews-warning uk-button-reviews-warning-border booking-button border-500 uk-width-1-1" value="Забронировать">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="uk-container uk-container-center">
+    <div class="uk-grid">
+        <div class="uk-width-8-10">
+            <div class="uk-grid">
+                <div class="uk-width-7-10">
+                    <div class="booking-calendar">
+                        <div id="calendar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+
+    @Styles.Render("~/Content/tag-it")
+    @Scripts.Render("~/bundles/tag-it")
+    <script>
+        App.owner= '@Model.ID';
+        $(function() {
+
+            var booking = new App.Views.Photostudio.StudioBooking({
+                model: @Model.ToJson()
+                });
+            booking.render();
+        })
+    </script>
+}

@@ -1,0 +1,36 @@
+﻿
+<div class="grid">
+    <div class="col--1-1">
+        <span class="uk-form-heading text--muted">Список созданных арендных мест</span>
+        <hr class="small-line uk-margin-small-top" />
+    </div>
+</div>
+
+<div class="grid">
+
+    <div class="col--1-4">
+        <div class="panel uk-panel-space-15" ng-repeat="item in items | filter:{ routeType: 'Photorent' }">
+            <div class="phototechnics-teaser-item">
+                <a href="">
+                    <img class="uk-border-circle" src="{{item.imageUrl}}">
+                </a>
+                <div class="public-teaser-description">
+                    <h3 class="text--center phototechnics-teaser-title uk-margin-bottom-remove uk-margin-top">
+                        <a class="uk-link-muted" href="">
+                            {{item.name}}
+                        </a>
+                    </h3>
+
+                    <ul class="uk-subnav uk-subnav-line uk-margin-remove uk-text-nowrap uk-margin-top">
+                        <li class="uk-vertical-align-middle"><span class="uk-badge uk-badge-success uk-link-fff">Активный</span></li>
+                        <li><a href="" class="uk-navbar-nav-subtitle uk-link-999 text--center"><i class="icon-pencil"></i>
+                            <div>изменить</div></a></li>
+                        <li><a href="" class="uk-navbar-nav-subtitle uk-link-999 text--center"><i class="icon-trash"></i>
+                            <div>удалить</div></a></li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

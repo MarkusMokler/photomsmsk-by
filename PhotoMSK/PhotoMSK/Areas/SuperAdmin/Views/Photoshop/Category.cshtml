@@ -1,0 +1,133 @@
+﻿@model KeyValuePair<IList<PhotoMSK.Data.Models.Routes.Category>, IList<PhotoMSK.Data.Models.Routes.Brand>>
+
+@{
+    ViewBag.Title = "Список категорий";
+}
+<div class="uk-container uk-container-center">
+    <div class="uk-grid">
+        <div class="uk-width-1-1">
+            <a class="uk-button uk-button-primary" href="#">Добавить элемент</a>
+        </div>
+    </div>
+</div>
+
+<div class="uk-container uk-container-center uk-margin-large-top">
+    <div class="uk-grid uk-grid-divider">
+        <div class="uk-width-medium-1-4">
+
+            <div class="uk-panel uk-panel-divider">
+                <ul class="uk-nav uk-nav-menu uk-nav-side uk-nav-parent-icon" data-uk-switcher="{connect:'#tab-content', toggle:' > *:not(.uk-nav-header)'}">
+                    <li class="uk-nav-header uk-margin-small-bottom">Cозданые категории:</li>
+                    @foreach (var item in Model.Key)
+                    {
+                        <li>
+                            <a href="">@item.Name</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+            <div class="uk-panel uk-panel-divider">
+                <a class="uk-button" href="#modal-create-category" data-uk-modal>Добавить категорию</a>
+                <a class="uk-button uk-button-success" href="#">Импорт</a>
+            </div>
+        </div>
+
+        <div class="uk-width-medium-3-4">
+            <table class="uk-table uk-table-middle">
+                <thead>
+                    <tr>
+                        <th style="width: 15px;"></th>
+                        <th>Продукт</th>
+                        <th>Цены</th>
+                        <th>Действие</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th colspan="3">Итого: </th>
+                        <th>12 235</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+
+                    @foreach (var item in Model.Key)
+                    {
+                        foreach (var item2 in item.PhototechnicsViewModel)
+                        {
+                            <tr class="uk-show-hide">
+                                <td>
+                                    <small class="uk-text-muted">
+                                        1
+                                    </small>
+                                </td>
+                                <td>
+                                    <img src="@item2.ImageUrl" width="30" height="30" class="uk-border-circle uk-margin-small-right">
+                                    <a href="#" class="uk-link-muted uk-link-dotted">@item2.Name</a>
+                                </td>
+                                <td>
+                                    @foreach (var itemPrice in item2.Prices)
+                                    {
+                                        <div>
+                                            <b>@itemPrice.Price</b> <small class="uk-text-muted">@itemPrice.Currency</small>
+                                        </div>
+                                    }
+                                </td>
+                                <td style="width: 160px;">
+                                    <div class="uk-show-hide-element">
+                                        <a href="#" class="uk-button uk-button-mini">изменить</a>
+                                        <a href="#" class="uk-button uk-button-danger-hover uk-button-mini">удалить</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                    @*<tr class="uk-show-hide">
+                            <td>
+                                <span><i class="uk-icon-circle uk-text-success"></i></span>
+                            </td>
+                            <td>
+                                <img src="http://ph1.photomsk.by/PhototechnicsViewModel/nikon_d3100_kit_18_55mm_vr_1.jpg" width="30" height="30" class="uk-border-circle uk-margin-small-right">
+                                <a href="#" class="uk-link-muted uk-link-dotted">Бодики</a>
+                            </td>
+                            <td>
+                                <b>450</b>-<b>570</b> <small class="uk-text-muted">USD</small>
+                            </td>
+                            <td style="width: 160px;">
+                                <div class="uk-show-hide-element">
+                                    <a href="#" class="uk-button uk-button-mini">изменить</a>
+                                    <a href="#" class="uk-button uk-button-danger-hover uk-button-mini">удалить</a>
+                                </div>
+                            </td>
+                        </tr>*@
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
+
+<div id="modal-create-category" class="uk-modal">
+    <div class="uk-modal-dialog uk-modal-dialog-phones">
+        <form action="" method="post" role="form">
+            <a href="" class="uk-modal-close uk-close"></a>
+
+            <section class="uk-panel uk-panel-box uk-margin-top">
+
+                <div class="uk-width-large-1-1 uk-width-small-1-1">
+                    <label class="label-ms">Название категории</label>
+                    <input class="input-msk uk-width-large-1-1 uk-width-small-1-1" data-val="true" data-val-length="The field UserName must be a string with a minimum length of 3 and a maximum length of 160." data-val-length-max="160" data-val-length-min="3" data-val-regex="Логин введен не верно" data-val-regex-pattern="^[A-Za-z0-9_-]{3,15}$" data-val-required="The UserName field is required." id="UserName" name="UserName" type="text" value="">
+                    <span class="field-validation-valid" data-valmsg-for="UserName" data-valmsg-replace="true"></span>
+                </div>
+
+            </section>
+            <div class="uk-margin uk-text-right">
+                <button class="uk-button uk-button-primary" type="submit">Добавить</button>
+                <button class="uk-button uk-modal-close" type="submit">отменить</button>
+            </div>
+        </form>
+
+    </div>
+</div>

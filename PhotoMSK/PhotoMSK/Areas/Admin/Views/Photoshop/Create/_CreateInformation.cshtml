@@ -1,0 +1,76 @@
+﻿@model PhotoMSK.Data.Models.Routes.Photoshop
+<div class="uk-grid" data-uk-grid-margin>
+    <div class="uk-width-1-1">
+        <section class="uk-margin-remove">
+            <div class="uk-section">
+                <span class="uk-section__counter">1</span>
+                <span class="uk-section__title">Загрузка обложки</span>
+            </div>
+            <div class="form-banner">
+                <div class="form-banner__cover">
+                    <div id="role-cover">
+                        <img class="uk-border-rounded" src="@Url.Content("~/Content/images/no-cover-image.jpg")" alt="Ковер публичной страницы">
+                    </div>
+                    <div class="form-banner__button-cover form-banner__button--border uk-link-reset">
+                        <a id="role-change-cover" href="#">Изменить обложку</a>
+                    </div>
+                </div>
+                <div class="form-banner__avatar">
+                    <div id="role-avatar" class="form-banner__relation">
+                        <img class="uk-border-circle uk-border-white" src="@Url.Content("~/Content/images/no-avatar.png")" width="85" height="85" alt="Аватарка страницы">
+                        <div class="form-banner__button">
+                            <a id="role-change-avatar" class="form-banner__button-avatar form-banner__button--border uk-link-reset" href="#">Загрузить логотип</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="uk-width-1-1">
+        <section>
+            <div class="uk-section">
+                <span class="uk-section__counter">2&nbsp;</span>
+                <span class="uk-section__title">Информация о магазине</span>
+            </div>
+
+            <div class="uk-grid">
+                <div class="uk-width-1-2">
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-1-1">
+                            <label class="label-ms">Название магазина</label>
+                            @Html.TextBoxFor(model => model.Name, new { @class = "input-ms uk-width-large-1-1 uk-width-small-1-1",data_role_input_required="" })
+                            @Html.ValidationMessageFor(model => model.Name)
+                        </div>
+                        <div class="uk-width-1-1">
+                            <label class="label-ms">Короткая ссылка <i class="icon-help2" data-uk-tooltip title="Это ссылка позволит мгновенно перейти к вашей странице"></i></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">www.photomsk.by/</div>
+                                @*<input class="form-control input-ms uk-width-large-1-1 uk-width-small-1-1" id="Shortcut" name="Shortcut" type="text" value="">*@
+                                @Html.TextBoxFor(model => model.Shortcut, new { @class = "form-control input-ms uk-width-large-1-1 uk-width-small-1-1", data_role_input_required = "" })
+                                    @Html.ValidationMessageFor(model => model.Shortcut)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-2">
+                    <label class="label-ms">Коротко о магазине <i class="icon-help2" data-uk-tooltip title="Опишите кратко ваши преимущества"></i></label>
+                    @Html.TextAreaFor(model => model.Description, new { @class = "input-ms uk-width-large-1-1 uk-width-small-1-1", rows = 7, data_role_input_optional = "" })
+                    @Html.ValidationMessageFor(model => model.Description)
+                </div>
+
+            </div>
+        </section>
+    </div>
+    
+
+    <div class="uk-width-1-1 pad-top-40">
+        <div class="uk-grid">
+            <div class="uk-width-1-2 uk-text-center">
+                <button class="uk-button" data-role-to-adminpanel>Назад</button>
+            </div>
+            <div class="uk-width-1-2 uk-text-center">
+                <button class="uk-button uk-button-next-step" disabled data-role-next-step>Продолжить</button>
+            </div>
+        </div>
+    </div>
+</div>

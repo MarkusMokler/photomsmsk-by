@@ -1,0 +1,79 @@
+<section class="widget-bar">
+    <ul class="widget-bar__tab">
+        <li data-ng-class="{'active' : widgetTab == 'tab1'}"><a data-msk-href data-ng-click="widgetTab = 'tab1'" class="icon-widgets"></a></li>
+        <li data-ng-class="{'active' : widgetTab == 'tab2'}"><a data-msk-href data-ng-click="widgetTab = 'tab2'" class="icon-wallpaper"></a></li>
+        <li data-ng-class="{'active' : widgetTab == 'tab3'}"><a data-msk-href data-ng-click="widgetTab = 'tab3'" class="icon-folder_open"></a></li>
+        <li data-ng-class="{'active' : widgetTab == 'tab4'}"><a data-msk-href data-ng-click="widgetTab = 'tab4'" class="icon-cog"></a></li>
+    </ul>
+
+    <ul>
+        <li data-ng-if="widgetTab == 'tab1'">
+            <div class="widget-bar__content">
+
+                <div class="widget-bar__content__title">
+                    <a data-msk-href>Виджеты<i class="text--small float--right icon-keyboard_arrow_down"></i></a>
+                </div>
+                <ul class="ng-first" ui-sortable="widgetsOptions" ng-model="baseWidgets">
+                    <li ng-repeat="item in baseWidgets">
+                        <a>
+                            <i class="icon-{{item.type}}"></i>
+                            <small class="text--small text--muted" data-ng-if="item.type == 'gallery'">Галерея</small>
+                            <small class="text--small text--muted" data-ng-if="item.type == 'description'">Описание</small>
+                            <small class="text--small text--muted" data-ng-if="item.type == 'splitWidget'">Разделитель</small>
+                            <small class="text--small text--muted" data-ng-if="item.type == 'containerWidget'">Контейнер</small>
+                            <small class="text--small text--muted" data-ng-if="item.type == 'faqWidget'">Вопросы</small>
+                            <small class="text--small text--muted" data-ng-if="item.type == 'headerWidget'">Заголовок</small>
+                            <small class="text--small text--muted" data-ng-if="item.type == 'descriptionWidget'">Описание</small>
+                            <small class="text--small text--muted" data-ng-if="item.type == 'calendarWidget'">Календарь</small>
+                            <small class="text--small text--muted" data-ng-if="item.type == 'menuWidget'">Меню</small>
+                            <small class="text--small text--muted" data-ng-if="item.type == 'hallWidget'">Зал</small>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="clear--fix"></div>
+
+            </div>
+        </li>
+        <li data-ng-if="widgetTab == 'tab2'">
+            <div class="widget-bar__content">
+                <div class="widget-bar__content__title">
+                    <a data-msk-href data-ng-click="filemanagerShow = !filemanagerShow">
+                        <i class="icon-folder text--yellow"></i>
+                        <span>Папка<small class="text--small">&nbsp;(12)</small></span>
+                        <i class="text--small float--right icon-keyboard_arrow_down"></i>
+                    </a>
+                </div>
+
+                <div class="widget-bar__filemanager" data-ng-if="filemanagerShow">
+                    <ul class="file-manager__tree">
+                        <li class="parent active" data-ng-click="state.currentFolderID=null" data-ng-class="{'open' : tree_open}">
+                            <a>
+                                <i class="icon-folder text--yellow"></i>
+                                <span>Название папки<small class="text--small">&nbsp;(12)</small></span>
+                            </a>
+                            <ul>
+                                <folder-entry ng-repeat="item in folders" folder="item" route="routeShortcut" selected="state" />
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <hr class="margin--reset" data-ng-if="filemanagerShow">
+
+                <ul class="widget-bar__elements" data-ng-model="files.elements" ui-sortable="sortableOptions">
+                    <li class="widget-bar__elements__img" data-ng-repeat="item in files.elements" style="background-image: url({{item.attachment.url}})">
+                        <span class="icon-cog"></span>
+                        <img src="{{item.attachment.url}}" />
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+    </ul>
+    <div class="widget-bar__footer">
+        <p class="text--center text--muted text--small margin--reset">
+            Widget Bar ver. 0.1
+        </p>
+    </div>
+</section>

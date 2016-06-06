@@ -1,0 +1,78 @@
+﻿@using PhotoMSK.Extensiolns
+@using PhotoMSK.ViewModels.Route
+@model PhotoMSK.Areas.Default.ViewData.WhiteLabelViewData
+
+
+@helper DisplayMenu(IList<MenuItemViewModel> list, string str)
+{
+    var ordernum = list.Last().Order;
+
+    if (!string.IsNullOrEmpty(str))
+    {
+        ordernum = ordernum.Replace(str + '.', "");
+    }
+
+    if (string.IsNullOrEmpty(ordernum))
+    { return; }
+
+    if (ordernum.Contains('.'))
+    {
+        ordernum = ordernum.Split('.').First();
+    }
+
+    var count = int.Parse(ordernum);
+
+    for (var i = 0; i <= count; i++)
+    {
+        var prefix = string.IsNullOrEmpty(str) ? "" + i : str + "." + i;
+        var item = list.FirstOrDefault(x => x.Order == prefix);
+
+        if (item == null)
+        {
+            continue;
+        }
+
+        <li @if (list.Count(x => x.Order.StartsWith(prefix)) > 1) { <text> data-uk-dropdown </text>        }>
+
+            <a href="@item.Link">@item.Name</a>
+            @if (list.Count(x => x.Order.StartsWith(prefix)) > 1)
+            {
+                <div class="uk-dropdown uk-dropdown-navbar">
+                    <ul class="uk-nav uk-nav-navbar">
+                        @DisplayMenu(list.Where(x => x.Order.StartsWith(prefix)).ToList(), prefix)
+                    </ul>
+                </div>
+            }
+        </li>
+    }
+}
+<nav class="uk-navbar">
+    <div class="uk-container uk-container-center">
+        <ul class="uk-navbar-nav uk-subnav uk-subnav-line">
+            <li><a href="@Html.MakeUrl(Model.Route,"catalog")" class="color-orange"><i class="uk-icon-shopping-cart"></i> Каталог</a></li>
+            <li><a href="@Html.MakeUrl(Model.Route,"news")">Новости</a></li>
+            <li><a href="@Html.MakeUrl(Model.Route, "about")">О магазине</a></li>
+            @if (Model.Menu != null && Model.Menu.Any(x => !string.IsNullOrEmpty(x.Order)))
+            {
+                @DisplayMenu(Model.Menu.Where(x => !string.IsNullOrEmpty(x.Order)).OrderBy(x => x.Order).ToList(), "");
+            }
+        </ul>
+        <div class="uk-navbar-content uk-navbar-flip  uk-hidden-small">
+            <form class="uk-form uk-margin-remove uk-search uk-display-inline-block">
+                <input class="uk-search" type="text" placeholder="Поиск товара..." data-role-search-input>
+                <button class="uk-button uk-button-warning"><i class="uk-icon-search"></i></button>
+                <div class="uk-dropdown uk-dropdown-search uk-dropdown-search-450 uk-dropdown-flip ">
+                    <ul class="uk-nav uk-nav-search uk-autocomplete-results">
+                        <li class="uk-nav-header uk-text-center">Результат поиска</li>
+                        <li class="uk-nav-divider uk-skip"></li>
+                        <li>
+                            <ul data-role-search-results-placeholder></ul>
+                        </li>
+                        <li class="uk-nav-divider uk-skip"></li>
+                        <li data-moreresults="true"><a href="#" onclick="jQuery(this).closest('form').submit();">Показать все результаты поиска</a></li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,250 @@
+<!-- <div class="studio__teaser" style="background-image: url({{item.coverImageUrl}});">
+    <div class="studio__overlay"></div>
+
+    <div class="studio__title">
+        <div class="container container--center">
+            <div class="grid grid--small">
+                <div class="col--1-10">
+                    <div class="studio__avatar margin--top-small">
+                        <img src="{{item.imageUrl}}" class="border--rounded" alt="">
+                        <div class="studio__verification">
+                            <i class="icon-verified_user text--green"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col--8-10">
+                    <h1 class="studio__name">Студия {{item.name}}</h1>
+                    <p class="studio__adress">
+                        г.<span class="studio__adress-city">{{item.city}}</span>,&nbsp;<span class="studio__adress-str">{{item.adress}}</span>
+                        <a data-msk-href class="button button--mini button--success border--rounded">показать на карте</a>
+                    </p>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="col--1-10">
+                    <div class="studio__slider margin--top-large">
+                        <a data-msk-href class="button button--rounded"><i class="icon-chevron-left"></i></a>
+                        <a data-msk-href class="button button--rounded"><i class="icon-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- <div data-ng-if="!WhiteLabel">
+    <data-bread-crumbs/>
+</div> -->
+
+<!-- <div class="studio__menu">
+    <div class="container container--center">
+        <ul>
+            <li><a data-msk-href>Информация</a></li>
+            <li><a data-msk-href>Главная</a></li>
+            <li><a data-msk-href>Степы</a></li>
+        </ul>
+    </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- ***************************************************************************** -->
+<!-- ***************************************************************************** -->
+<!-- ***************************************************************************** -->
+
+
+<div class="studio__teaser" style="background-image: url({{item.coverImageUrl}});">
+    <div class="studio__overlay"></div>
+
+    <div class="studio__title">
+        <div class="container container--center">
+            <div class="grid grid--small">
+                <div class="col--1-10">
+                    <div class="margin--top-small">
+                        <img src="{{item.imageUrl}}" class="border--rounded" alt="">
+                    </div>
+                </div>
+                <div class="col--8-10">
+                    <h1 class="studio__name">Студия {{item.name}}</h1>
+                    <p class="studio__adress">
+                        г.<span class="studio__adress-city">{{item.city}}</span>,&nbsp;<span class="studio__adress-str">{{item.adress}}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container container--center">
+    <div class="grid grid--small">
+        <div class="col--3-4">
+            <!-- <p class="text--title" data-ng-cloak>Студия
+                {{item.name}}</p> -->
+
+            <ul class="tab tab--full">
+                <li>
+                    <a class="active" data-msk-href>Информация</a>
+                </li>
+                <li>
+                    <a data-msk-href>Оборудование</a>
+                </li>
+                <li>
+                    <a data-msk-href>Декор</a>
+                </li>
+                <li>
+                    <a data-msk-href>Отзывы</a>
+                </li>
+                <li>
+                    <a data-msk-href>Акции</a>
+                </li>
+                <li>
+                    <a data-msk-href>Оплата</a>
+                </li>
+            </ul>
+
+            <p class="ph-desc margin--top-small" data-ng-bind="item.description" data-ng-cloak></p>
+            <hr/>
+        </div>
+        <aside class="col--1-4">
+            <!-- <ul class="panel panel--white panel--border ph-option">
+                <li>
+                    <p class="ph-option__title" data-ng-bind="item.halls.length"></p>
+                    <span class="ph-option__desc">залa(ов)</span>
+                </li>
+                <li>
+                    <p class="ph-option__title">0</p>
+                    <span class="ph-option__desc">Площадь, м<sup class="text--small">2</sup>
+                    </span>
+                </li>
+                <li>
+                    <p class="ph-option__title">0</p>
+                    <span class="ph-option__desc">руб.</span>
+                </li>
+            </ul> -->
+            <div class="panel panel--white panel--border panel--box margin--reset">
+                <a href="tel:{{phone.number}}" class="button button--large button--warning border--rounded text--bold col--1-1" data-ng-repeat="phone in item.phones" data-ng-cloak>{{phone.number}}</a>
+            </div>
+            <!-- <div class="panel margin--reset">
+                <img src="http://miepvuz.ru/data/modules/aoobjects/15/scheme/3635" alt="Фотостудия {{item.name}} на карте">
+            </div> -->
+            <!-- <ul class="panel panel--white ph-option__informer margin--reset text--center">
+                <li class="text--success">
+                    <i class="icon-checkmark-circle"></i>
+                    <p>Проверeно 1 день назад</p>
+                </li> -->
+                <!-- <li class="text--success">
+                    <i class="icon-license"></i>
+                    <p>Без комиссии оплата услуг</p>
+                </li> -->
+            <!-- </ul> -->
+            <!-- <ul class="pane panel--box panel--white ph-option__list margin--reset">
+                <li>
+                    <span>Опубликована</span>
+                    <span data-ng-bind="item.creationTime | date:'dd MMM yyyy'" data-ng-cloak></span>
+                </li>
+            </ul> -->
+        </aside>
+    </div>
+
+</div>
+
+<div class="container container--center">
+    <div id="online-booking-calendar" class="margin--top">
+        <div class="grid grid--small">
+            <div class="col--7-10">
+                <p class="text--h3 text--bold">Онлайн бронирование</p>
+                <hr/>
+            </div>
+            <div class="col--3-10">
+                <p class="text--h3">Информация о брони</p>
+                <hr/>
+            </div>
+        </div>
+        <div class="grid grid--small">
+            <div class="col--1-1">
+                <div class="calendar panel panel__booking">
+                    <div class="grid grid--collapse">
+                        <div class="col--7-10 panel__booking--calendar">
+                            <data-admin-booking-calendar dataurl="dataUrl" shortcut="item.shortcut" calendars="calendars" adminside="isAdmin" />
+                        </div>
+
+                        <div class="col--3-10">
+                            <div class="panel__auth" data-ng-if="!authService.isAuth()">
+                                <i class="panel__auth-lock icon-lock"></i>
+                                <a data-msk-href class="link link--dotted text--muted">Вы не авторизированы</a>
+                            </div>
+
+                            <data-admin-shopping-cart/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="photostudio">
+        <div class="grid">
+
+            <div class="col--large-5-10 col--medium-5-10">
+                <p class="text--h1">Залы</p>
+                <hr/>
+
+                <div data-ng-repeat="hall in item.halls">
+                    <article class="hall">
+                        <div class="hall__photo">
+                            <div class="hall__img">
+                                <img src="{{hall.teaserImageUrl}}" alt="зал {{hall.name}}"/>
+                            </div>
+                            <div class="hall__name">
+                                <small class="hall__name__type">зал</small>
+                                <span class="hall__name__text">{{hall.name}}</span>
+                            </div>
+                            <div class="hall__bookmark">
+                                <i class="icon-turned_in_not"></i>
+                            </div>
+                        </div>
+                        <div class="hall__desc">
+
+                            <div class="hall__desc__text">
+                                <p>Площадь: <span class="text--bold">{{hall.square}}</span> кв. м.</p>
+
+                                <hr class="divider--wave">
+
+                                <div class="hall__price grid grid--collapse grid-col--1-2 text--center">
+                                    <div>
+                                        <p class="text--muted margin--small">пн, вт, ср, чт</p>
+                                        <span class="text--h3 text--bold">{{hall.minimumPrice | number}}</span>&nbsp;<small class="text--muted">руб.</small>
+                                    </div>
+                                    <div>
+                                        <p class="margin--small text--muted text--red">пт, сб, вс, празд.</p>
+                                        <span class="text--h3 text--bold">-</span>&nbsp;<small class="text--muted">руб.</small>
+                                    </div>
+                                </div>
+
+                                <div class="text--right margin--top">
+                                    <a href="/photostudio/halls/{{hall.id}}" class="button button--small border--rounded">подробнее</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<master-booking data-ng-if="shortcut" shortcut="shortcut" open="isMasterBooking"></master-booking>
+<calendars-booking data-ng-if="!shortcut" open="isMasterBooking"></calendars-booking>

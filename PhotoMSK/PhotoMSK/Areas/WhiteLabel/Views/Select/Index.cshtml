@@ -1,0 +1,45 @@
+﻿@model IList<PhotoMSK.Data.Models.RouteEntity>
+@{
+    ViewBag.Title = "Страница выбора аккаунта";
+}
+<div class="uk-container uk-container-center">
+    <div class="uk-grid">
+        <div class="uk-width-1-1 uk-text-center">
+            <h2>Один аккаунт — весь мир PhotoMSK!</h2>
+            <span class="uk-text-muted">Выберите аккаунт для входа</span>
+        </div>
+    </div>
+    <div class="uk-grid">
+        <div class="uk-width-1-5">
+
+            <div data-uk-sticky="{top:30}">
+                <h5 class="uk-text-bold">Справочник</h5>
+                <ul class="uk-list uk-list-space uk-list-dotted">
+                    <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">Типы аккаунтов</a></li>
+                    <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">Отображение аккаунтов</a></li>
+                    <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">PRO аккаунт</a></li>
+                    <li><a href="#" class="uk-text-small">ещё...</a></li>
+                </ul>    
+            </div>
+
+        </div>
+        <div class="uk-width-3-5">
+            <div class="uk-panel uk-panel-content-box">
+                <ul class="uk-list">
+                    @foreach (var item in Model)
+                    {
+                        <li>
+                            <div class="uk-panel uk-panel-hover uk-show-hide">
+                                <img src="@item.ImageUrl" class="uk-border-circle uk-float-left uk-margin-right" alt="@item.GetName()" height="70" width="70" />
+                                <p class="uk-h5 uk-text-bold uk-margin-remove">@item.GetName();</p>
+                                <i class="uk-text-muted uk-text-small">@item.Shortcut</i>
+                                
+                                <a href="/WhiteLabel/select/set/@item.ID" class="uk-show-hide-element uk-button uk-button-success uk-float-right">Войти</a>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

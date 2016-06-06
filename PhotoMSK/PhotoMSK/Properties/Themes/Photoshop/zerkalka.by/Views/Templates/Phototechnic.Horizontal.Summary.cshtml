@@ -1,0 +1,31 @@
+﻿@using PhotoMSK.ViewModels.Route.Summary
+<section class="uk-panel uk-population-products-item uk-panel-box-white uk-show-hide">
+    <div class="uk-grid">
+
+        <div class="uk-width-2-10 uk-text-center">
+            <a href="@Html.Raw(PhototechnicsDefinition.Url)" class="uk-link-reset">
+                <img src="@Html.Raw(PhototechnicsDefinition.Image)" alt="@Html.Raw(PhototechnicsDefinition.Name)">
+            </a>
+        </div>
+
+        <div class="uk-width-6-10">
+            <p class="uk-h5">
+                <a href="@Html.Raw(PhototechnicsDefinition.Url)" class="uk-link-reset uk-link-line">@Html.Raw(PhototechnicsDefinition.Name)</a>
+            </p>
+            <p class="uk-text-small uk-text-muted">
+                @Html.Raw(PhototechnicsDefinition.ShortDescription)
+            </p>
+        </div>
+
+        <div class="uk-width-2-10">
+            <p class="uk-margin-bottom-remove uk-text-brand-color">
+                <b>@Html.Raw(PhototechnicsDefinition.Price) бел. руб</b>
+            </p>
+            <a class="uk-button uk-button-cart uk-show-hide-element" data-role-add-to-cart>
+                <span>В корзину</span>
+                <i class="uk-icon-shopping-cart"></i>
+            </a>
+        </div>
+    </div>
+</section>
+

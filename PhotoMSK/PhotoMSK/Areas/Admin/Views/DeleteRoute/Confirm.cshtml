@@ -1,0 +1,43 @@
+﻿@model PhotoMSK.Data.Models.RouteEntity
+<div class="uk-container uk-container-center" id="confirm-window">
+    <div class="uk-grid">
+        <div class="uk-width-2-4 uk-push-1-4">
+            <section class="uk-panel uk-panel-box uk-panel--white uk-margin-large-top">
+                <header class="uk-text-center">
+                    <img src="@Model.ImageUrl" class="uk-border-circle" width="60" height="60" alt=""/>
+                    <h2 class="uk-text-bold">Причина удаления</h2>
+                    <p class="uk-text-muted uk-margin-top-remove">Вы хотите удалить ваши данные с <a href="#" class="uk-link-reset uk-link--line">www.photomsk.by</a>
+                    </p>
+                    <p class="uk-text-bold uk-margin-bottom-remove">Нам очень важно знать причину удаления ваших данных?</p>
+                    <small class="uk-text-muted uk-text-small">нам это очень важно.</small>
+                </header>
+
+                <ul class="uk-list uk-list-space">
+                    <li><label class="radio" for="r1"><input type="radio" name="unsub-reason" value="NORMAL" id="r1"><span>I no longer want to receive these emails</span></label></li>
+                    <li><label class="radio" for="r2"><input type="radio" name="unsub-reason" value="NOSIGNUP" id="r2"><span>I never signed up for this mailing list</span></label></li>
+                    <li><label class="radio" for="r3"><input type="radio" name="unsub-reason" value="INAPPROPRIATE" id="r3"><span>The emails are inappropriate</span></label></li>
+                    <li><label class="radio" for="r4"><input type="radio" name="unsub-reason" value="SPAM" id="r4"><span>The emails are spam and should be reported</span></label></li>
+                    <li>
+                        <label class="radio" for="r5"><input type="radio" name="unsub-reason" value="OTHER" id="r5"><span>Other (fill in reason below)</span></label><br>
+                        <textarea id="unsub-reason-desc" name="unsub-reason-desc" row="2" class="uk-width-1-1" placeholder="select other options..." style="display: none"></textarea>
+                    </li>
+                </ul>
+
+                <div class="uk-text-center">
+                    <a href="@this.Request.UrlReferrer" class="uk-text-muted uk-margin-right">« вернуться на сайт</a>
+                    <button class="uk-button uk-button-success" data-role-select-reason>Принять</button>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var сonfirmView = new App.Views.ConfirmView({
+            shortcut: '@Model.Shortcut',
+            id: '@Model.ID'
+        });
+        сonfirmView.render();
+    })
+</script>

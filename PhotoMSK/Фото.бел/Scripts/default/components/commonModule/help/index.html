@@ -1,0 +1,92 @@
+﻿<div class="l-side">
+    <div class="container container--center  -60">
+        <div class="grid">
+            <div class="col--large-3-10 uk-push-2-10 col--small-1-1">
+                <div class="grid">
+                    <div class="col--1-1">
+                        <img src="@Url.Content("~/Content/images/logo-black-big.png")" alt="PhotoMSK.by" />
+                    </div>
+
+                    <div class="col--1-1  ">
+                        <h1 class="  uk-margin-bottom-remove">Поздравляем!</h1>
+                        <small class="text--muted">Вы создали <span class="uk-link-dotted" data-uk-tooltip title="Приватный профиль не отображается на сайте">приватный</span> профиль на сайте. Теперь выбор остался только за вами!</small>
+                    </div>
+                    <div class="col--1-1 text--center    ">
+                        <a href="~/">
+                            <i class="icon-laptop uk-icon-large"></i>
+                            <br />
+                            <small class="uk-link-line">перейти на сайт</small>
+                        </a>
+                    </div>
+                    <div class="col--1-1">
+                        <div class="orbullet">ИЛИ</div>
+                        <div class="orbullet-divider"></div>
+                    </div>
+
+                    <div class="col--1-1">
+                        <p>Добавить <span class="uk-link-dotted" data-uk-tooltip title="Этот профиль смогут увидеть все посетители сайта">публичный</span> профиль на сайт:</p>
+                    </div>
+
+                    <div class="col--1-1  ">
+                        <ul class="uk-list">
+                            <li>
+                                <header class="uk-comment-header">
+                                    <div class="uk-comment-avatar">
+                                        <i class="icon-camera uk-icon-large"></i>
+                                    </div>
+                                    <h4 class="uk-comment-title"><a href="@Url.Action("Create", new { Area = "Admin", Controller = "Photostudio" })" class="uk-link-muted uk-link-line">Фотостудия</a></h4>
+                                    <div class="uk-comment-meta">Покажите вашу студию и залы людям.</div>
+                                </header>
+                            </li>
+                            <li class="uk-nav-divider"></li>
+                            <li>
+                                <header class="uk-comment-header">
+                                    <div class="uk-comment-avatar">
+                                        <i class="icon-profile-male uk-icon-large"></i>
+                                    </div>
+                                    <h4 class="uk-comment-title"><a href="@Url.Action("Create", new { Area = "Admin", Controller = "Photographer" })" class=" uk-link-muted uk-link-line">Фотограф</a></h4>
+                                    <div class="uk-comment-meta">У вас есть шикарные работы - покажите их!</div>
+                                </header>
+                            </li>
+                            <li class="uk-nav-divider"></li>
+                            <li>
+                                <header class="uk-comment-header">
+                                    <div class="uk-comment-avatar">
+                                        <i class="icon-profile-female uk-icon-large"></i>
+                                    </div>
+                                    <h4 class="uk-comment-title"><a href="@Url.Action("Create", new { Area = "Admin", Controller = "Model" })" class=" uk-link-muted uk-link-line">Модель</a></h4>
+                                    <div class="uk-comment-meta">Мы ищем именно Вас для съемок.</div>
+                                </header>
+                            </li>
+                            <li class="uk-nav-divider"></li>
+                            <li>
+                                <header class="uk-comment-header">
+                                    <div class="uk-comment-avatar">
+                                        <i class="icon-map uk-icon-large"></i>
+                                    </div>
+                                    <h4 class="uk-comment-title"><a href="@Url.Action("Create", new { Area = "Admin", Controller = "Masterclass" })" class=" uk-link-muted uk-link-line">Мастер класс</a></h4>
+                                    <div class="uk-comment-meta">Мы соберем максимум людей для МК.</div>
+                                </header>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="r-side uk-hidden-small">
+    <div class="promo">
+        <h1 class="promo-main-head"><span class="promo-head-part">Глобальный </span> <br>сайт для фото</h1>
+        <div class="promo-content">
+            <div class="promo-message">
+                <div class="promo-message-decore">
+                    <span class="date">@DateTime.Now.Day <sup>@DateTime.Now.ToString("MMMM")</sup></span>
+                    <p class="city">
+                        Приватный профиль разрешает вам: комментировать, лайкать, просматривать работы других фотографов.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

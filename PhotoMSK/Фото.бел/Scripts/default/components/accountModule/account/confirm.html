@@ -1,0 +1,34 @@
+﻿<div class="container container--center  ">
+    <div class="grid">
+        <div class="col--1-1 text--center">
+            <h1><i class="icon-checkmark"></i></h1>
+            <hr />
+        </div>
+
+        <div class="col--4-10 uk-push-1-10">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+
+                    @Html.ValidationSummary(true)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.item.confirmCode, "Введите код из СМС")
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.item.confirmCode, new { placeholder = "Введите код из СМС" })
+                            @Html.ValidationMessageFor(model => model.item.confirmCode)
+                        </div>
+                        <input type="submit" value="Отправить" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+
+            <div class="col--1-2">
+                @Html.ActionLink("Вернуться на главную", "Index", "Home")
+            </div>
+
+        </div>
+    </div>
+</div>

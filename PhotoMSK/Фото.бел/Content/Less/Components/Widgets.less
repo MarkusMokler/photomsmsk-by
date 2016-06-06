@@ -1,0 +1,85 @@
+// out: ../../css/Components/Widgets.css, compress: true
+// Name:            Widgets
+// Description:     Defines styles for Widgets
+//
+// Component:       `widgets`
+//
+//
+// Element:         `widgets__empty-img`
+//                  `widgets__*`
+//                  `widgets__*`
+//                  `widgets__*`
+//                  `widgets__*`
+//
+// Modifiers:       `widgets--*`
+//                  `widgets--*`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+
+@w-padding:                             10px;
+
+@w-gallery-height:                     130px;
+
+/* ========================================================================
+   Component: widgets
+ ========================================================================== */
+.widgets {
+    position: relative;
+    padding-top: @w-padding;
+    padding-bottom: @w-padding;
+
+    &:hover{
+        background: rgba(255, 199, 22, 0.1);
+
+        & .widgets__action{
+            visibility: visible;
+            // transition: all 200ms;
+        }
+    }
+
+    // Element 'widgets__action'
+    &__action{
+        position: absolute;
+        right: 0;
+        top: 0;
+        visibility: hidden;
+        // transition: all 200ms;
+    }
+
+    // Element 'widgets__empty-img'
+    &__empty-img{
+        display: inline-block;
+        width: 100%;
+        height: @w-gallery-height;
+        // border: 3px dotted #ddd;
+        background: #3EC6FF;
+        margin-right: -4px;
+        border-radius: 20px;
+        font-size: 70px;
+        line-height: @w-gallery-height;
+        // color: #eee;
+        color: #fff;
+        text-align: center;
+    }
+
+    // Element 'widgets__empty-title'
+    &__empty-title{
+        background: #ddd;
+        border-radius: 50px;
+        color: transparent;
+        margin-bottom: 15px;
+    }
+
+    // Element 'widgets__empty-text'
+    &__empty-text{
+        display: block;
+        width: 100%;
+        white-space: nowrap;
+        background: #eee;
+        border-radius: 50px;
+        color: transparent;
+        margin-bottom: 6px;
+    }
+}

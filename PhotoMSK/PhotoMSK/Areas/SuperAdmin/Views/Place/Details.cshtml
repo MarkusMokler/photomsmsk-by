@@ -1,0 +1,392 @@
+﻿@using PhotoMSK.Data.Models
+@using PhotoMSK.Data.Models.Attachments
+@using PhotoMSK.Extensiolns
+@using PhotoMSK.Models
+@model PhotoMSK.Data.Models.Routes.Place
+@{
+    ViewBag.Title = "Фотоаппарат";
+   
+    Photo photo = Model.Photos.OrderByDescending(x => x.UploadDate).FirstOrDefault();
+
+
+    string imageLink = Url.Content("~/Content/images/no-avatar.png");
+
+    if (photo != null)
+    {
+        imageLink = photo.Url;
+    }
+}
+
+@section scripts
+{
+    @Scripts.Render("~/Scripts/marked")
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<div class="uk-container uk-container-center pad-top">
+    <div class="uk-grid">
+        <div class="uk-width-1-1">
+
+            <div class="images-photostudio">
+                <img src="@imageLink" alt="" class="uk-width-8-10 uk-push-2-10" style="height: 325px;">
+                <div class="box-photostudio-rooms">
+                    <h1>2</h1>
+                </div>
+                <div class="images-photostudio-title">
+                    <h1>@Model.Title</h1>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="uk-container uk-container-center">
+    <div class="uk-grid">
+        <div class="uk-width-2-10">
+            <div style="height: 20px;"></div>
+
+            @*
+                <div class="uk-thumbnail">
+                    <img id="logo" src="@imageLink" />
+                    <div class="uk-thumbnail-caption">Фотостудия @Model.Name</div>
+                </div>
+                <ul class="uk-list uk-list-line">
+                    <li>@Html.ActionLink("Редактировать", "Edit", "Photostudio", new { id = Model.ID }, null)</li>
+                    <li>Рекламировать</li>
+                    <li>Статистика</li>
+                            <li class="uk-nav-divider"></li>
+                            <li>Редактировать</li>
+                </ul>
+
+                <input id="photo_change" type="file" />
+            *@
+
+
+            <ul class="uk-nav uk-nav-side uk-nav-parent-icon" data-uk-nav="{multiple:true}">
+                <li class="uk-nav-header">Меню</li>
+                <li class="uk-nav-divider"></li>
+                <li><a href="">Главная</a></li>
+                <li><a href="">Стена</a></li>
+                <li><a href="">Фотографии</a></li>
+
+                <li class="uk-parent">
+                    <a href="#">Где купить</a>
+                    <ul class="uk-nav-sub">
+                        @*@foreach (var hall in Model.Halls)
+                            {
+                                <li><a href="#">@hall.Name</a></li>
+                            }*@
+                        <li><a href="#">Все компании</a></li>
+                    </ul>
+
+                </li>
+                <li class="uk-parent">
+                    <a href="#">Где арендовать</a>
+                    <ul class="uk-nav-sub">
+                        @*@foreach (var hall in Model.Halls)
+                            {
+                                <li><a href="#">@hall.Name</a></li>
+                            }*@
+                        <li><a href="#">Все компании</a></li>
+                    </ul>
+
+                </li>
+                <li class="uk-nav-divider"></li>
+                <li class="uk-parent">
+                    <a href="#">Редактировать</a>
+                    <ul class="uk-nav-sub">
+                        <li><a href="">Профиль</a></li>
+                        <li>
+                        <li>@Html.ActionLink("Страницу", "Edit", "Photostudio", new {id = Model.ID}, null)</li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="uk-width-8-10">
+
+            <div class="uk-grid">
+                <div class="uk-width-7-10">
+                    <div class="photostudio-specification">
+                        <h1 class="article-section">Характеристики <span class="title-slash-green">/</span></h1>
+                        <table class="uk-table">
+                            <caption>Характеристики фотоаппарата</caption>
+                            <thead>
+                                <tr>
+                                    <th>Table Heading</th>
+                                    <th>Table Heading</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <td>Table Footer</td>
+                                    <td>Table Footer</td>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <tr>
+                                    <td>Table Data</td>
+                                    <td>Table Data</td>
+                                </tr>
+                                <tr>
+                                    <td>Table Data</td>
+                                    <td>Table Data</td>
+                                </tr>
+                                <tr>
+                                    <td>Table Data</td>
+                                    <td>Table Data</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="height: 20px;"></div>
+                    <div class="uk-form">
+                        <fieldset>
+                            <legend>Новая запись</legend>
+                            <div class="uk-form-row">
+                                <input type="text" id="news-title" placeholder="Начните писать для создания новости" class="uk-form-large">
+                            </div>
+                            <div id="news-extends" class="uk-form-row" style="display: none">
+                                <div class="uk-form-row"><textarea id="news-description" data-uk-markdownarea=""></textarea></div>
+                                <div class="uk-form-row">
+                                    <div id="upload-drop" class="uk-placeholder">
+                                        Info text... <a class="uk-form-file">Select a file<input id="upload-select" type="file"></a>.
+                                    </div>
+                                    <div id="progressbar" class="uk-progress uk-hidden">
+                                        <div class="uk-progress-bar" style="width: 0%;">...</div>
+                                    </div>
+                                </div>
+                                <div class="uk-form-row">
+                                    <div class="uk-autocomplete" data-uk-autocomplete="{source:'my-autocomplete.json'}">
+                                        <input type="text">
+                                        <script type="text/autocomplete">
+                                            <ul class="uk-nav uk-nav-autocomplete uk-autocomplete-results">
+                                                {{~items}}
+                                                <li data-value="{{ $item.value }}">
+                                                    <a>
+                                                        {{ $item.title }}
+                                                        <div>{{{ $item.text }}}</div>
+                                                    </a>
+                                                </li>
+                                                {{/items}}
+                                            </ul>
+                                        </script>
+                                    </div>
+                                    <button class="uk-icon-button uk-icon-music"></button>
+                                    <button class="uk-icon-button uk-icon-youtube-play"></button>
+                                    <button id="news-publish" class="uk-button uk-button-primary">Опубликовать</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div style="height: 20px;"></div>
+                    @foreach (WallPost news in Model.Wall.OrderByDescending(x => x.Date).Take(10).Select(x => x.WallPost))
+                    {
+                        <div class="article-item">
+                            @{
+                                Photo attachment = news.Attacments.OfType<Photo>().FirstOrDefault();
+                            }
+                            @if (attachment != null)
+                            {
+                                <div class="image-article">
+                                    <a href="#">
+
+                                        <img src="@attachment.Url" alt="" style="width: 100%;">
+                                    </a>
+                                </div>
+                            }
+                            <div class="article-title-anti">
+                                <h2>@news.Title</h2>
+                            </div>
+
+                            <div class="article-sub-title">
+                                <a href="#">Новшества со стороныфотографа не заканчиваются,а только развиваются...</a>
+                            </div>
+
+                            <div class="article-meta">
+                                <div class="article-meta-date">
+                                    <p>@news.Date.ToString("dd mm yyyy")<p />
+                                </div>
+                            </div>
+
+                            <div class="article-content">
+                                <p>
+                                    @Html.Markdown(@news.Desctiption)
+                                </p>
+                            </div>
+
+                            <div class="article-spliter">
+                                <hr>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="uk-width-2-10">
+                    <div class="best-ph">
+                        <h1 class="article-section">Лучший фотограф <span class="title-slash-green">/</span></h1>
+
+                        <div class="best-ph-image">
+                            <img src="http://ppcdn.500px.org/46371346/9ae1257367d549dbb50bd8b96c7747c179cc3581/2048.jpg" alt="" class="photo_password_white">
+                        </div>
+                        <div class="rating-line">
+                            <div class="rating-line-fill" style="width: 87%;"></div>
+                        </div>
+
+                        <div class="rating-meta">
+                            <div class="left small">Рейтинг 100</div>
+                            <div class="right small">Баллов 720</div>
+                        </div>
+
+                        <div class="clear"></div>
+
+                        <div class="ph-information">
+                            <div class="left">
+                                <img src="http://ppcdn.500px.org/40644916/73e41e6ce7dcefcdf0d3428ea3f148dae32e6eb6/2048.jpg" alt="">
+                            </div>
+                            <div style="margin-left: 60px; padding: 12px 0 0 16px;">
+                                <strong>ANDREW IVASKIV</strong>
+                                <p class="small">Фотограф</p><p>
+                                                             </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="best-photo">
+                        <h1 class="article-section">Лучшее фото <span class="title-slash-green">/</span></h1>
+
+                        <div class="best-ph-image">
+                            <img src="http://ppcdn.500px.org/59145724/54339d3ea588717f54fcfe6ab62d7164c8f2757a/2048.jpg" alt="" class="photo_password_white">
+                        </div>
+                        <div class="rating-line">
+                            <div class="rating-line-fill" style="width: 87%;"></div>
+                        </div>
+
+                        <div class="rating-meta">
+                            <div class="left small">Рейтинг 100</div>
+                            <div class="right small">Баллов 720</div>
+                        </div>
+
+                        <div class="clear"></div>
+
+                        <div class="ph-information">
+                            <div class="left">
+                                <img src="http://ppcdn.500px.org/58519640/fc9e42cfff436fbd35a2c00aee58d7469e4868ce/2048.jpg" alt="">
+                            </div>
+                            <div style="margin-left: 60px; padding: 12px 0 0 16px;">
+                                <strong>ANDREW IVASKIV</strong>
+                                <p class="small">Фотограф</p><p>
+                                                             </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <div class="best-20-ph uk-text-center">
+                            <p>Фотографы</p>
+                            <h1>Недели</h1>
+                            <br>
+                            <p>только лучшее</p>
+                            <div class="cliped">
+                                <h1>20</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+        @*
+                <div class="uk-width-2-10">
+                    <div class="best-ph">
+                        <h1 class="article-section">Лучший фотограф <span class="title-slash-green">/</span></h1>
+
+                        <div class="best-ph-image">
+                            <img src="http://ppcdn.500px.org/46371346/9ae1257367d549dbb50bd8b96c7747c179cc3581/2048.jpg" alt="" class="photo_password_white">
+                    </div>
+                        <div class="rating-line">
+                            <div class="rating-line-fill" style="width: 87%;"></div>
+                        </div>
+
+                        <div class="rating-meta">
+                            <div class="left small">Рейтинг 100</div>
+                            <div class="right small">Баллов 720</div>
+                </div>
+
+                        <div class="clear"></div>
+
+                        <div class="ph-information">
+                            <div class="left">
+                                <img src="http://ppcdn.500px.org/40644916/73e41e6ce7dcefcdf0d3428ea3f148dae32e6eb6/2048.jpg" alt="">
+            </div>
+                            <div style="padding:12px 0 0 16px;margin-left:60px;">
+                                <strong>ANDREW IVASKIV</strong>
+                                <p class="small">Фотограф</p><p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="best-photo">
+                        <h1 class="article-section">Лучшее фото <span class="title-slash-green">/</span></h1>
+
+                        <div class="best-ph-image">
+                            <img src="http://ppcdn.500px.org/59145724/54339d3ea588717f54fcfe6ab62d7164c8f2757a/2048.jpg" alt="" class="photo_password_white">
+                        </div>
+                        <div class="rating-line">
+                            <div class="rating-line-fill" style="width: 87%;"></div>
+                        </div>
+
+                        <div class="rating-meta">
+                            <div class="left small">Рейтинг 100</div>
+                            <div class="right small">Баллов 720</div>
+                        </div>
+
+                        <div class="clear"></div>
+
+                        <div class="ph-information">
+                            <div class="left">
+                                <img src="http://ppcdn.500px.org/58519640/fc9e42cfff436fbd35a2c00aee58d7469e4868ce/2048.jpg" alt="">
+                            </div>
+                            <div style="padding:12px 0 0 16px;margin-left:60px;">
+                                <strong>ANDREW IVASKIV</strong>
+                                <p class="small">Фотограф</p><p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <div class="best-20-ph uk-text-center">
+                            <p>Фотографы</p>
+                            <h1>Недели</h1>
+                            <br>
+                            <p>только лучшее</p>
+                            <div class="cliped">
+                                <h1>20</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        *@
+
+    </div>
+</div>
+<div id="myModal" class="uk-modal">
+    <div class="uk-modal-dialog">
+        <a class="uk-modal-close uk-close"></a>
+        <h2>Проверка</h2>
+        <button id="save">Save</button>
+    </div>
+</div>

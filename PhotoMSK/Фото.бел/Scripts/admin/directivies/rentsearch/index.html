@@ -1,0 +1,21 @@
+<div class="panel panel__header panel--box panel--white panel--shadow">
+    <div class="grid grid--small">
+        <div class="col--1-1">
+            <div class="input__group">
+                <input type="search" class="input input--search input--small border--rounded margin--reset col--1-1">
+                <i class="icon-magnifier text--muted"></i>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <ul class="tech__list">
+        <li data-ng-repeat="it in item.elements |filter:search">
+            <a data-msk-href data-ng-click="setData(it)" class="tech__item">
+                <img src="{{it.image}}" alt="{{it.name}}"/>
+                {{it.name}}
+            </a>
+        </li>
+    </ul>
+</div>

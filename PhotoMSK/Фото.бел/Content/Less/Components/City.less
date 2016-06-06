@@ -1,0 +1,85 @@
+// out: ../../css/Components/City.css, compress: true
+// Name:            City
+// Description:     Defines styles for City
+//
+// Component:       `city`
+//
+//
+// Element:         `city__*`
+//                  `city__*`
+//
+// Modifiers:       `city--*`
+//                  `city--*`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+
+
+
+
+/* ========================================================================
+   Component: City
+ ========================================================================== */
+.city{
+
+    // Element 'city__countries'
+    &__countries{
+        & a{
+            position: relative;
+            font-size: 24px;
+            line-height: 34px;
+            color: #7c7c7c;
+            transition: all 250ms;
+
+            &.active,
+            &:hover{
+                color: #fff;
+            }
+        }
+    }
+
+    // Element 'city__cities'
+    &__cities{
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        -o-column-count: 3;
+        column-count: 3;
+        -webkit-column-gap: 50px;
+        -moz-column-gap: 50px;
+        -o-column-gap: 50px;
+        column-gap: 50px;
+    }
+
+    // Element 'city__list'
+    &__list{
+        position: relative;
+        margin: 0;
+        padding: 0;
+
+        & li {
+            margin-bottom: 5px;
+            padding-left: 20px;
+
+            & a{
+                font-size: 14px;
+                line-height: 18px;
+                color: #dbdbdb;
+
+                &.active{
+                    border-bottom: 1px solid;
+                }
+            }
+
+            & .letter {
+                position: absolute;
+                font-size: 14px;
+                line-height: 18px;
+                left: 0;
+                display: inline-block;
+                width: 20px;
+                color: #666;
+            }
+        }
+    }
+}

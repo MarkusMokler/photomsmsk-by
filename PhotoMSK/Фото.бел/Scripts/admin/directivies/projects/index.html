@@ -1,0 +1,45 @@
+﻿<!--Страница проектов-->
+<div class="grid grid--small grid--divider">
+    <div class="col--2-10">
+        <ul class="uk-nav uk-nav-menu uk-nav-side uk-nav-parent-icon  " data-uk-switcher="{connect:'#tab-projects', toggle:'> *:not(.uk-nav-header)'}">
+            <li aria-expanded="false"><a data-msk-href>Все</a></li>
+            <li aria-expanded="false" class="uk-nav-divider"></li>
+            <li aria-expanded="true" class="active"><a data-msk-href>Активны</a></li>
+            <li aria-expanded="false"><a data-msk-href>Неактивны</a></li>
+        </ul>
+    </div>
+    <div class="col--8-10">
+        <ul class="grid grid--small grid-col--1-2 grid-col--large-1-6 grid-col--medium-1-4">
+            <li class="margin--bottom-small" data-ng-repeat="project in projects">
+                <div class="panel panel--box">
+                    <div class="uk-panel-teaser">
+                        <img class="avatar--border" alt="{{project.name}}" src="/Content/images/no-avatar.png" data-ng-src="{{project.coverImageUrl}}" height="200" width="200">
+                    </div>
+                    <h2 class="uk-panel-title">
+                        <a data-msk-href>{{project.name}}</a>
+                    </h2>
+                    <ul class="uk-subnav uk-subnav-line uk-margin-remove">
+                        <li>
+                            <a class="uk-navbar-nav-subtitle text--center">
+                                <i class="uk-icon-eye"></i>
+                                <div>Просмотреть</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/photographer/{{selectedRouteLeftMenu.shortcut}}/project/{{project.id}}/edit" class="uk-navbar-nav-subtitle text--center">
+                                <i class="uk-icon-pencil"></i>
+                                <div>Изменить</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/photographer/{{selectedRouteLeftMenu.shortcut}}/project/{{project.id}}/delete" class="uk-navbar-nav-subtitle text--center">
+                                <i class="icon-trash"></i>
+                                <div>Удалить</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

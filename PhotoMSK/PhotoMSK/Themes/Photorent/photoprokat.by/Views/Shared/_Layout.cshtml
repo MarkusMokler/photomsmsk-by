@@ -1,0 +1,228 @@
+﻿@using PhotoMSK.Extensiolns
+@using StackExchange.Profiling
+@model PhotoMSK.Areas.Default.ViewData.WhiteLabelViewData
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photoprokat.by - Лучший прокат в минске</title>
+    <meta name="Description" content="@ViewBag.Description">
+    <meta name="og:image" property="og:image" content="@ViewBag.Image" />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Styles.Render(UiKit216.StyleBundle)
+    @Styles.Render("~/Content/jquery-ui")
+    @*@Styles.Render("~/Content/site-style")*@
+    <link rel="stylesheet" href="@Url.Content("~/Themes/Photorent/photoprokat.by/Content/Siteless.css")" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto:100,400,300,900|Roboto+Condensed:300,400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function () {
+                try {
+                    w.yaCounter27817356 = new Ya.Metrika({
+                        id: 27817356,
+                        webvisor: true,
+                        clickmap: true,
+                        trackLinks: true,
+                        accurateTrackBounce: true
+                    });
+                } catch (e) { }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function () {
+                try {
+                    w.yaCounter25774385 = new Ya.Metrika({
+                        id: 25774385,
+                        webvisor: true,
+                        clickmap: true,
+                        trackLinks: true,
+                        accurateTrackBounce: true
+                    });
+                } catch (e) { }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <!-- /Yandex.Metrika counter -->
+</head>
+<body>
+    @if (IsSectionDefined("MainTopMenu"))
+    {
+        @RenderSection("MainTopMenu", false)
+    }
+
+
+    <div class="uk-container uk-container-center">
+        @if (IsSectionDefined("ToolbarL") || IsSectionDefined("ToolbarR"))
+        {
+
+            <section class="uk-section-toolbar uk-block">
+                <div class="uk-grid uk-grid-small uk-margin-top" data-uk-grid-margin>
+                    @if (IsSectionDefined("ToolbarL"))
+                    {
+                        @RenderSection("ToolbarL", false)
+                    }
+                    @if (IsSectionDefined("ToolbarR"))
+                    {
+                        @RenderSection("ToolbarR", false)
+                    }
+                </div>
+            </section>
+        }
+        @if (ViewBag.Logo != null || ViewBag.Headerbar != null)
+        {
+            <section class="uk-section-headerbar uk-block">
+                @if (ViewBag.Logo != null)
+                {
+                    <a class="uk-logo" href="/">
+                        @RenderSection("Logo", false)
+                    </a>
+                }
+                @if (ViewBag.Headerbar != null)
+                {
+                    @RenderSection("Headerbar", false)
+                }
+            </section>
+        }
+        @if (ViewBag.Menu != null || ViewBag.Search != null)
+        {
+            <nav class="uk-section-navbar uk-block">
+                @if (ViewBag.Menu != null)
+                {
+                    @RenderSection("Menu", false)
+                }
+                @if (ViewBag.Search != null)
+                {
+                    <div class="uk-navbar-flip">
+                        <div class="uk-navbar-content">
+                            @RenderSection("Search", false)
+                        </div>
+                    </div>
+                }
+            </nav>
+        }
+        @if (IsSectionDefined("TopA"))
+        {
+            <section class="uk-section-top-a uk-block">
+                @RenderSection("TopA", false)
+            </section>
+        }
+        @if (IsSectionDefined("TopB"))
+        {
+            <section class="uk-section-top-b uk-block">
+                @RenderSection("TopB", false)
+            </section>
+        }
+
+        <div class="uk-section-middle">
+            <div class="uk-section-main uk-block">
+                @if (IsSectionDefined("MainTop"))
+                {
+                    <section class="uk-section-main-top uk-block">
+                        @RenderSection("MainTop", false)
+                    </section>
+                }
+
+                @if (IsSectionDefined("Main"))
+                {
+                    <section class="uk-section-main uk-block">
+                        @RenderSection("Main", false)
+                    </section>
+                }
+
+                <section class="uk-section-content">
+
+                    @RenderBody()
+
+                </section>
+
+                @if (IsSectionDefined("MainBottom"))
+                {
+                    <section class="uk-section-main-bottom uk-block">
+                        @RenderSection("MainBottom", false)
+                    </section>
+                }
+            </div>
+
+            @if (IsSectionDefined("SidebarA"))
+            {
+                <aside class="uk-section-sidebar-a">
+                    @RenderSection("SidebarA", false)
+                </aside>
+            }
+
+            @if (IsSectionDefined("SidebarB"))
+            {
+                <aside class="uk-section-sidebar-b">
+                    @RenderSection("SidebarB", false)>
+                </aside>
+            }
+        </div>
+
+        @if (ViewBag.BottomA != null)
+        {
+            <section class="uk-section-bottom-a uk-grid">
+                @RenderSection("BottomA", false)
+            </section>
+        }
+        @if (ViewBag.BottomB != null)
+        {
+            <section class="uk-section-bottom-b uk-grid">
+                @RenderSection("BottomB", false)
+            </section>
+        }
+
+        @if (IsSectionDefined("Footer"))
+        {
+            <footer class="uk-section-footer">
+                @RenderSection("Footer", false)
+            </footer>
+        }
+
+        @Html.Partial("~/Areas/Default/Views/Shared/_Templates.cshtml")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render(UiKit216.ScriptBundle)
+
+        <script src="@Url.Content("~/Scripts/jquery.signalR-2.2.0.min.js")"></script>
+        <script src="@Url.Content("~/signalr/hubs")"></script>
+        @Scripts.Render("~/Backbone")
+        @Scripts.Render("~/App")
+        @MiniProfiler.RenderIncludes()
+        @RenderSection("scripts", required: false)
+
+
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <noscript><div><img src="//mc.yandex.ru/watch/25774385" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+        <!-- /Yandex.Metrika counter -->
+        <div id="config-settings" data-upload-url="@Html.GetUploadUrl()"></div>
+    </div>
+</body>
+</html>

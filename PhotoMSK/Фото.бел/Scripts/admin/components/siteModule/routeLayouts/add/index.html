@@ -1,0 +1,53 @@
+﻿<div class="content--admin">
+
+    <div><data-bread-crumbs /></div>
+
+    <div class="clear-fix"></div>
+
+    <div class="container--fluid-widget">
+        <div class="grid">
+            <div class="col--1-1">
+                <div class="panel panel--box panel--white panel--shadow">
+                    <ul class="grid grid--small grid-col--1-4">
+                        <li>
+                            <label class="label label--rounded">Название</label>
+                            <input class="input input--small input--rounded col--1-1" type="text" data-ng-model="rpLayout.name" placeholder="Название...">
+                        </li>
+                        <li>
+                            <label class="label label--rounded">Категория</label>
+                            <input class="input input--small input--rounded col--1-1" type="text" data-ng-model="rpLayout.category" placeholder="Категория...">
+                        </li>
+                        <li>
+                            <label class="label label--rounded">Разметка</label>
+                            <select class="input input--small input--select input--rounded col--1-1" data-ng-model="selectedLayout" data-ng-options="layout.name for layout in layouts"></select>
+                        </li>
+                        <li>
+                            <label class="label label--rounded">&nbsp;</label>
+                            <button class="button button--small button--success border--rounded col--1-1" data-msk-href data-ng-click="saveRPLayout()">Сохранить</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="container--fluid-widget">
+        <div class="grid">
+            <div class="col--1-1">
+                <div class="panel panel--box panel--white panel--shadow">
+                    <div class="grid">
+                        <div class="col--1-1">
+                            <div>
+                                <data-html-viewer code="selectedLayout.content" page="selectedLayout"></data-html-viewer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <widget-bar></widget-bar>
+</div>

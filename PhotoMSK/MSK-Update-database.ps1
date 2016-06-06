@@ -1,0 +1,1 @@
+Update-Database -ProjectName Photomsk.Data -StartUpProjectName ‘ото.бел -verbose

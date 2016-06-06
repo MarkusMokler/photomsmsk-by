@@ -1,0 +1,48 @@
+﻿<div>
+    <div style="width: 100%;">
+        <div id="calendar"></div>
+    </div>
+</div>
+
+@section scripts
+{
+   
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $('#calendar').fullCalendar({
+                defaultView: 'agendaWeek',
+                lang: "ru",
+                slotDuration: "00:30",
+                snapDuration: "01:00",
+                allDaySlot: false,
+                firstDay: 1,
+                columnFormat: {
+                    month: 'ddd',
+                    week: '%D/% #ddd/#',
+                    day: '(#)dddd(/#) M/d'
+                },
+                eventRender: function (event, element) {
+                    if (event.title == 'online') {
+                        element.find('.fc-title').html('<span class="uk-badge uk-badge-warning">Онлайн</span>');
+                    }
+                },
+                eventSources: [
+                    {
+                        url: '/Api/Events',
+                        type: 'GET',
+                        data: {
+                            calendarID: '{{Item.CalendarID}}',
+                        },
+                        error: function() {
+                            alert('there was an error while fetching events!');
+                        },
+                        color: '{{Item.Color}}', // a non-ajax option
+                        textColor: 'black' // a non-ajax option
+                    }
+                ]
+            });
+
+        });
+    </script>
+}

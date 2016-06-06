@@ -1,0 +1,120 @@
+﻿@model PhotoMSK.Data.Models.SaleCard
+<div class="uk-container uk-container-center pad-top-40">
+
+    <div class="uk-plastic-card-field">
+        <div class="uk-grid" data-uk-grid-margin>
+            <div class="uk-width-6-10 uk-push-1-10">
+                <h4 class="title-dotted">
+                    Редактирование пластиковой карточки
+                </h4>
+                <div class="uk-grid">
+                    <div class="uk-width-2-3">
+                        <div class="uk-grid">
+                            <div class="uk-width-2-3">
+                                <label class="label-ms">Номер карты <i class="icon-help2" data-uk-tooltip title="Введите номер карты в формате 000 0000"></i></label>
+                                @Html.TextBoxFor(n => n.CardNumber, new { @class = "input-ms uk-width-large-1-1 uk-width-small-1-1" })
+                                <input class="input-ms uk-width-large-1-1 uk-width-small-1-1" id="number" name="number" type="text">
+                                <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="uk-width-1-3">
+                                <label class="label-ms">Пин</label>
+                                <input class="input-ms uk-width-large-1-1 uk-width-small-1-1" id="cvc" name="cvc" type="text">
+                                <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="uk-grid">
+                            <div class="uk-width-1-2">
+                                <label class="label-ms">Фамилия</label>
+                                @Html.TextBoxFor(n => n.UserInformation.LastName, new { @class = "input-ms uk-width-large-1-1 uk-width-small-1-1" })
+                                <input class="input-ms uk-width-large-1-1 uk-width-small-1-1" id="name" name="name" type="text">
+                                <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="uk-width-1-2">
+                                <label class="label-ms">Имя</label>
+                                <input class="input-ms uk-width-large-1-1 uk-width-small-1-1" id="LastName" name="LastName" type="text">
+                                <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-width-1-3">
+                        <div class="uk-plastic-card-wrapper"></div>
+                    </div>
+                </div>
+                <h4 class="title-dotted">
+                    Паспортные данные
+                </h4>
+                <div class="uk-grid">
+                    <div class="uk-width-1-4">
+                        <label class="label-ms">Дата рождения</label>
+                        <input class="input-ms uk-width-large-1-1 uk-width-small-1-1" id="name" name="name" type="text" data-uk-datepicker="{format:'DD.MM.YYYY'}">
+                        <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                    </div>
+                    <div class="uk-width-1-4">
+                        <label class="label-ms">Номер паспорта</label>
+                        <input class="input-ms uk-width-large-1-1 uk-width-small-1-1" id="LastName" name="LastName" type="text">
+                        <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                    </div>
+                    <div class="uk-width-2-4">
+                        <label class="label-ms">Идентификационный номер</label>
+                        <input class="input-ms uk-width-large-1-1 uk-width-small-1-1" id="LastName" name="LastName" type="text">
+                        <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div class="uk-grid">
+                    <div class="uk-width-1-4">
+                        <label class="label-ms">Дата выдачи</label>
+                        <input class="input-ms uk-width-large-1-1 uk-width-small-1-1" id="name" name="name" type="text" data-uk-datepicker="{format:'DD.MM.YYYY'}">
+                        <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                    </div>
+                    <div class="uk-width-1-4">
+                        <label class="label-ms">Дата окончания</label>
+                        <input class="input-ms uk-width-large-1-1 uk-width-small-1-1" id="expiry" name="expiry" type="text" placeholder="ММ/ГГГГ">
+                        <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                    </div>
+                    <div class="uk-width-2-4">
+                        <label class="label-ms">Кем выдан</label>
+                        <input class="input-ms uk-width-large-1-1 uk-width-small-1-1" id="LastName" name="LastName" type="text">
+                        <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+                <h4 class="title-dotted pad-top-20">
+                    Адрес
+                </h4>
+                <div class="uk-grid">
+                    <div class="uk-width-1-4">
+                        <label class="label-ms">Страна</label>
+                        <input class="input-ms uk-width-large-1-1 uk-width-small-1-1" id="name" name="name" type="text" placeholder="Беларусь">
+                        <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                    </div>
+                    <div class="uk-width-1-4">
+                        <label class="label-ms">Город</label>
+                        <input class="input-ms uk-width-large-1-1 uk-width-small-1-1" id="expiry" name="expiry" type="text" placeholder="Минск">
+                        <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                    </div>
+                    <div class="uk-width-2-4">
+                        <label class="label-ms">Улица</label>
+                        <input class="input-ms uk-width-large-1-1 uk-width-small-1-1" id="LastName" name="LastName" type="text" placeholder="Улица Дом Кв">
+                        <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="uk-width-6-10 uk-text-right">
+                <a class="reset" href="@Url.Action("Manage", "Account")">отмена</a>
+                <input type="submit" class="uk-button uk-button-success uk-button-large role-save-button" value="Сохранить">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/plastic-card")
+    <script>
+        $('.uk-plastic-card-field').card({
+            container: $('.uk-plastic-card-wrapper')
+        })
+    </script>
+}

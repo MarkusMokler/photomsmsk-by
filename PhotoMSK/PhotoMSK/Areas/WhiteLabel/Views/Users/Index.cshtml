@@ -1,0 +1,109 @@
+﻿
+<div class="uk-container uk-container-center">
+    <div class="uk-grid uk-flex uk-flex-middle">
+        <div class="uk-width-1-5">
+            <a href="#">
+                <img src="@Url.Content("/Content/images/logo-shape-black.svg")" alt="" />
+            </a>
+        </div>
+        <div class="uk-width-4-5 uk-margin-small-top">
+            <ul class="uk-breadcrumb">
+                <li><a href="#" class="uk-text-bold uk-link-muted">Все сотрудники</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="uk-grid">
+        <div class="uk-width-1-5">
+
+            <div class="uk-button-back uk-text-center">
+                <a href="@Url.Action("Create", "Users")" class="uk-button-add uk-button uk-width-1-1 uk-flex uk-flex-middle">
+                    <i class="uk-icon-plus button-add"></i>&nbsp;<span class="uk-text-bold">Сотрудник</span>
+                </a>
+            </div>
+
+            <div class="uk-panel uk-panel-box uk-panel-box-item">
+                <span class="uk-text-bold"><span>Нужна помощь?</span></span>
+
+                <p class="uk-text-muted">Проконсультируем по вопросам работы с сайтом.</p>
+                <p>
+                    <a href="#" class="uk-button uk-width-1-1">Заказать звонок</a>
+                </p>
+            </div>
+
+            <h5 class="uk-text-bold">Справочник</h5>
+            <ul class="uk-list uk-list-space uk-list-dotted">
+                <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">Типы меню</a></li>
+                <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">Отображение элементов меню</a></li>
+                <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">Создание выпадающего меню</a></li>
+                <li><a href="#" class="uk-text-small">ещё...</a></li>
+            </ul>
+        </div>
+
+        <div class="uk-width-4-5">
+            <div class="uk-panel uk-panel-content-box">
+                @*<div>
+                    <div class="uk-button-group" data-uk-button-radio="">
+                        <button class="uk-button">Работающие</button>
+                        <button class="uk-button">Уволенные</button>
+                        <button class="uk-button uk-active">Все</button>
+                    </div>
+                </div>*@
+                
+                <ul id="status-users" class="uk-subnav">
+                    <li><a href="" data-uk-filter="filter-a" class="uk-button">Работающие</a></li>
+                    <li><a href="" data-uk-filter="filter-b" class="uk-button">Уволенные</a></li>
+                    <li><a href="" data-uk-filter="" class="uk-button">Все</a></li>
+                </ul>
+                
+                <table class="uk-table uk-table-hover uk-table-middle" data-uk-grid="{controls: '#status-users'}">
+                    <thead>
+                        <tr>
+                            <th>Имя</th>
+                            <th>Начало работы</th>
+                            <th>Должность</th>
+                            <th>Статус</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-uk-filter="filter-a">
+                            <td>
+                                <div>
+                                    <img src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="45" height="45" class="uk-border-rounded uk-margin-small-right">
+                                    <a href="#" class="uk-link-muted uk-link-dotted">Лунцевич Роман</a>
+                                    <small><a href="tel:+37529000000" class="uk-text-muted">+375-(29)-000-00-00</a></small>
+                                </div>
+                            </td>
+                            <td><strong>01 окт, 2014</strong></td>
+                            <td>Администратор</td>
+                            <td>
+                                <i>работает</i>
+                            </td>
+                        </tr>
+                        <tr data-uk-filter="filter-b">
+                            <td>
+                                <div>
+                                    <img src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="45" height="45" class="uk-border-rounded uk-margin-small-right">
+                                    <a href="#" class="uk-link-muted uk-link-dotted">Лунцевич Иван</a>
+                                    <small><a href="tel:+37529000000" class="uk-text-muted">+375-(29)-000-00-00</a></small>
+                                </div>
+                            </td>
+                            <td><strong>01 окт, 2014</strong></td>
+                            <td>Администратор</td>
+                            <td>
+                                <i>Уволен</i>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="3">Всего 2 сотрудника</th>
+                            <th>...</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

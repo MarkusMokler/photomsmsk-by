@@ -1,0 +1,226 @@
+<div class="content--admin">
+    <div><data-bread-crumbs /></div>
+
+    <div class="container--fluid">
+        <div class="grid">
+            <div class="col--1-1">
+                <div class="file-manager panel panel--box panel--white panel--shadow">
+                    <div class="file-manager__top-bar panel__teaser">
+                        <div class="grid grid--divider">
+                            <div class="col--5-10">
+                                &nbsp;
+                            </div>
+                            <div class="col--3-10">
+                                <ul class="list list--horizontal">
+                                    <li>
+                                        <a data-msk-href data-ng-click="uploadZone = !uploadZone" class="button button--rounded icon-photo_size_select_small text--muted" uib-tooltip="Скрыть область загрузки"></a>
+                                    </li>
+                                    <li>
+                                        <a data-msk-href data-ng-click="createNewFolder()" class="button button--rounded icon-create_new_folder text--muted" uib-tooltip="Создать новую папку"></a>
+                                    </li>
+                                    <li data-ng-if="!mediaModel.hideItemCommands && mediaModel.ifSelected">
+                                        <a data-msk-href data-msk-href class="button button--rounded icon-delete text--muted" data-ng-click="removeSelectedItems()" uib-tooltip="Удалить выделенное"></a>
+                                    </li>
+                                    <li data-ng-if="!mediaModel.hideItemCommands && mediaModel.ifSelected">
+                                        <a data-msk-href data-msk-href class="button button--rounded icon-content_copy text--muted" data-ng-click="duplicate()" uib-tooltip="Копировать выделенное"></a>
+                                    </li>
+                                    <li data-ng-if="!mediaModel.hideItemCommands && mediaModel.ifSelected">
+                                        <a data-msk-href data-msk-href class="button button--rounded icon-redo text--muted" data-ng-click="move()" uib-tooltip="Перенести выделеное"></a>
+                                    </li>
+                                    <li data-ng-if="!mediaModel.hideItemCommands && mediaModel.ifSelected">
+                                        <a data-msk-href data-msk-href class="button button--rounded icon-title text--muted" data-ng-click="rename()" uib-tooltip="Переименовать выделенное"></a>
+                                    </li>
+                                    <li data-ng-if="!mediaModel.hideItemCommands && mediaModel.ifEditSelected">
+                                        <a data-msk-href data-ng-click="edit()" uib-tooltip="Изменить">
+                                            <span class="icon_edit"></span>Edit
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col--2-10 text--right">
+                                <ul class="list list--horizontal">
+                                    <li>
+                                        <a data-msk-href class="button button--rounded text--muted icon-view_list" data-ng-click="switchToList()"></a>
+                                    </li>
+                                    <li>
+                                        <a data-msk-href class="button button--rounded text--muted icon-view_module" data-ng-click="switchToGrid()"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Создание папки -->
+                    <!-- <div class="modal" data-ng-class="{'open' : isCreateNewFolder}">
+                        <div class="modal__dialog">
+                            <a data-msk-href class="modal__close icon-cross-circle" data-ng-click="showModal()"></a>
+                            <p class="text--h3 margin--reset">Создание папки</p>
+                            <hr>
+                            <label> Имя новой папки></label>
+                            <input ng-model="newFolderName"/>
+
+                            <section class="modal__footer text--center">
+                                <div class="grid grid--collapse">
+                                    <button class="button button--footer col--1-2" data-ng-click="cancelDialog()">Отменить</button>
+                                    <button class="button button--footer margin--reset button--success col--1-2" data-ng-click="saveNewFolder()">Принять</button>
+                                </div>
+                            </section>
+                        </div>
+                    </div> -->
+
+                    <div class="file-manager__content grid grid--small grid--divider">
+                        <aside class="file-manager__tree col--1-5">
+                            <ul class="list list--horizontal">
+                                <li>
+                                    <span class="text--h5 text--bold">Структура</span>
+                                </li>
+                                <li class="text--right">
+                                    <a class="button button--mini button--rounded text--muted icon-delete_sweep" data-msk-href data-ng-click="deselect()"></a>
+                                    <a class="button button--mini button--rounded text--muted icon-refresh" data-msk-href data-ng-click="refresh()"></a>
+                                </li>
+                            </ul>
+                            <hr class="margin--v-mini">
+                            <section>
+
+                                <ul class="file-manager__tree">
+                                    <li class="parent active" data-ng-click="state.currentFolderID=null" data-ng-class="{'open' : tree_open}">
+                                        <a>
+                                            <i class="icon-folder text--yellow"></i>
+                                            <span>{{routeShortcut}}<small class="text--small">&nbsp;({{folders.length}})</small></span>
+                                        </a>
+                                        <ul>
+                                            <folder-entry ng-repeat="item in folders" folder="item" route="routeShortcut" selected="state" />
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </section>
+                        </aside>
+                        <section class="col--3-5">
+                            <div class="grid">
+                                <div class="col--1-1 text--center" data-ng-if="uploadZone">
+                                    <div class="drop-box placeholder text--center"
+                                         data-ngf-drag-over-class="'placeholder--success'"
+                                         data-ngf-drop
+                                         data-ngf-select
+                                         data-ng-model="files"
+                                         data-ngf-drag-over-class="'dragover'"
+                                         data-ngf-multiple="true"
+                                         data-ngf-allow-dir="true"
+                                         accept="image/*,application/pdf"
+                                         data-ngf-pattern="'image/*,application/pdf'">
+                                        <p class="text--h2 text--bold margin--bottom">Загрузите сюда фотографии</p>
+                                        <span class="text--muted">или</span>&nbsp;
+                                        <div class="button button--success" data-ngf-select="photosUpload($files)" data-ngf-max-size="3MB" data-ngf-min-height="300" data-ngf-multiple="true">выберите файл</div>
+                                        <div class="placeholder__description">
+                                            <p>
+                                                Студии публикуются только с фотографиями.
+                                            </p>
+                                            <p class="margin--top-small">
+                                                Изображения намного важнее текста. Чем больше будет фотографий, тем выше шанс сдать в аренду студию.
+                                            </p>
+                                        </div>
+                                        <div data-ngf-no-file-drop>Перетягивание файлов не поддерживается в этой версии браузера :(</div>
+                                    </div>
+                                </div>
+                                <div class="col--1-1 margin--top">
+                                    <ul class="grid grid--small grid-col--large-1-6 grid-col--medium-1-4">
+                                        <li data-ng-repeat="item in files.elements" class="margin--bottom-small">
+
+                                            <a class="text--center" data-msk-href data-ng-class="{'active' : item.selected}" data-ng-click="toggleSelected(item)" data-ng-if="item.type == 0">
+                                                <img src="/Content/images/svg/folder.svg" alt="" width="150">
+                                                <p class="text--small margin--reset">{{item.name}}</p>
+                                            </a>
+
+                                            <a class="uk-thumbnail button--radio" data-msk-href data-ng-class="{'active' : item.selected}" data-ng-click="toggleSelected(item)" data-ng-if="item.type == 1">
+                                                <img data-ng-src="{{item.attachment.url}}" alt="" width="150">
+                                                <div class="uk-thumbnail-caption">...</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="file-manager__ col--1-5">
+
+                            <!-- Удаление папки или файла -->
+                            <div>
+                                <div class="file-manager__delete text--center">
+                                    <img src="/Content/images/svg/folder.svg" alt="" width="100">
+                                    <i class="file-manager__delete-icon icon-cross-circle text--red"></i>
+                                </div>
+
+                                <p class="text--h3 text--center">Название папки</p>
+
+                                <div class="text--center">
+                                    <a data-msk-href class="button button--small">Отменить</a>
+                                    <a data-msk-href class="button button--small button--delete" ng-click="removeItem(currentSelection.id)">Удалить</a>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <!-- Переименование папки или файла -->
+                            <div class="text--center">
+                                <img src="/Content/images/svg/folder.svg" alt="" width="100">
+                            </div>
+
+                            <div>
+                                <p class="text--h3 action__hover" data-ng-if="renameFolder">
+                                    Название папки&nbsp;
+                                    <i class="button button--mini button--rounded icon-mode_edit action__hover-element"
+                                       data-ng-click="renameFolder = !renameFolder" uib-tooltip="Переименовать">
+                                    </i>
+                                </p>
+
+                                <div class="input__group margin--bottom-small" data-ng-if="!renameFolder">
+                                    <input class="input input--small input--edit text--h4 col--1-1" type="text" ng-model="updateCurrent.name">
+                                    <i class="input__group__desc button button--mini button--rounded icon-checkmark"
+                                       ng-click="updateCurrent()" uib-tooltip="Применить"></i>
+                                </div>
+
+                                <p class="text--small text--muted">Изменена: 06.02.2015 11:15</p>
+                            </div>
+                            <div>
+                                <a data-msk-href class="button button--small">Открыть папку</a>
+                                <a data-msk-href class="button button--small button--rounded icon-cloud_download" uib-tooltip="Скачать"></a>
+                                <a data-msk-href class="button button--small button--rounded icon-delete_forever" uib-tooltip="Удалить" ng-click="removeItem(currentSelection.id)"></a>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="file-manager__bottom-bar panel__footer">
+                        <div class="grid grid--small">
+                            <div class="col--1-3">
+                                <p>
+                                    <span>41 %</span>
+                                    использовано (41 Гб / 100 Гб)
+                                </p>
+                            </div>
+                            <div class="col--2-3">
+                                <span>
+                                    Количество на странице:
+                                </span>
+                                <input type="radio" value="10" data-ng-cheked="pageSize" id="p10" data-ng-click="onChange()">
+                                <label for="p10">10 элементов</label>
+                                <input type="radio" value="25" data-ng-cheked="pageSize" id="p25" data-ng-click="onChange()">
+                                <label for="p25">25 элементов</label>
+                                <input type="radio" value="50" data-ng-cheked="pageSize" id="p50" data-ng-click="onChange()">
+                                <label for="p50">50 элементов</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col--1-1 text--center margin--top">
+                    <ul>
+                        <li>
+                            <span>{{files.page+1}}</span>
+                            из
+                            {{files.pagesCount}}
+                        </li>
+
+                        <li paging page="currentPage" page-size="files.pageSize" total="files.itemsCount">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

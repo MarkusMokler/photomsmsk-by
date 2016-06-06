@@ -1,0 +1,314 @@
+﻿@using Fotobel.App_Start.Minification
+@using Fotobel.Minification.UIKIT
+<!DOCTYPE html>
+<html data-ng-app="photo.bel">
+
+<head>
+    <meta name="google-site-verification" content="bGJbzBsq0N98AblQEaMQhJ1EnpPuyaDb9O-FMxvsVL4" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фото.бел</title>
+    <base href="/">
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Plugins/fullcalendar/dist/fullcalendar.css")
+    @Styles.Render(UiKit217.StyleBundle)
+    @Scripts.Render("~/bundles/modernizr")
+    @* ================= *@
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,500,400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link href="~/Plugins/angular-ui-tree/dist/angular-ui-tree.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Reset.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Icons.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Grid.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Flex.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Utilits.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Text.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Dropdown.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Paginator.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Popover.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Button.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Sort.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Tags.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Catalog.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Breadcrumb.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Badge.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Placeholder.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/HallProfile.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Filter.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Avatar.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Tooltip.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Activity.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Step.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/EditToolBar.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Panel.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Zone.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Balance.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Wallet.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/City.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Photographer.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Upload.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Action.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Phone.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/ColorPicker.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Player.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Table.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/FileManager.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Booking.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Browser.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Technics.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Palete.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Poster.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/TreeNode.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Sortable.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Vote.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/WidgetBar.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Widgets.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Block.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Comment.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Statistic.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Accordion.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Tab.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Penalty.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/TopMenu.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/List.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Repair.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/TechList.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Reset--uikit.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Input.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Modal.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Hall.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Dashboard.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Slider.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Photostudio.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/callHandler.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Metrika.css ")" />
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/xLarge.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Large.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Medium.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Small.css ")" />
+
+
+    <link rel="stylesheet" href="@Url.Content("~/Plugins/intl-tel-input/build/css/intlTelInput.css ")">
+    <link rel="stylesheet" href="@Url.Content("~/Plugins/jquery-timepicker-jt/jquery.timepicker.css ")">
+    <link rel="stylesheet" href="@Url.Content("~/Plugins/angularjs-slider/dist/rzslider.min.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Plugins/nprogress/nprogress.css ")">
+    <link rel="stylesheet" href="@Url.Content("~/Plugins/angucomplete-alt/angucomplete-alt.css ")">
+
+    <link rel="stylesheet" href="@Url.Content("~/Plugins/codemirror/lib/codemirror.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Plugins/codemirror/theme/eclipse.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Reset--plugins.css ")" />
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Default/Default.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Admin/Admin.css ")" />
+    <link href="~/Plugins/ng-img-crope/ng-img-crop.css" rel="stylesheet" />
+    <link href="~/Plugins/sweetalert2/dist/sweetalert2.css" rel="stylesheet" />
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="beta"></div>
+        <section class="container container--center" data-ng-if="!showTopMenu">
+            <div class="grid grid--small" data-ng-controller="userMenuCtrl">
+                <a href="/" class="nav__logo col--large-1-10 col--medium-1-10">
+                    <img src="@Url.Content(" Content/images/logo/logo-white-yellow.svg ")" width="90" alt="Сайт для фотографов" />
+                </a>
+                <ul class="nav__list nav__list__menu col--large-5-10 col--medium-6-10">
+                    <li><a href="/photostudio">Cтудии</a></li>
+                    <li><a href="/photographer">Фотографы</a></li>
+                    <li class="repair repair--text"><a href="/phototechnics">Техника</a></li>
+                    <li class="repair repair--text"><a href="/">События</a></li>
+                    <li class="repair repair--text"><a href="/photomonth">Фотографии</a></li>
+                </ul>
+
+                <ul class="nav__list col--large-4-10 col--medium-3-10 text--right" data-ng-cloak>
+                    <li data-ng-if="!authService.authentication.isAuth">
+                        <a href="/login">
+                            <span>Вход</span>
+                            <span data-ng-model="userInformation.isAuthenticated"></span>
+                        </a>
+                    </li>
+
+                    <li data-ng-if="authService.authentication.isAuth && userEventsData.length > 0">
+                        <a data-msk-href popover-placement="bottom" uib-popover-template="'Scripts/admin/components/shared/Notification/notification-booking.html'">
+                            <span class="icon-ticket nav__account--notifacation">
+                                <i>{{userEventsData.length}}</i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="nav__list__city">
+                        <a data-msk-href data-msk-href popover-placement="bottom" uib-popover-template="'Scripts/admin/components/shared/Notification/search-location.html'">
+                            <span>Минск</span>
+                        </a>
+                    </li>
+
+                    <li class="nav__account" data-ng-if="authService.authentication.isAuth" uib-dropdown dropdown-append-to-body>
+                        <a data-msk-href uib-dropdown-toggle>
+                            <img data-ng-src="{{userInformation.userPhoto}}" alt="{{userInformation.lastName}}" data-ng-if="userInformation.userPhoto != null" data-ng-cloak />
+                            <div class="avatar avatar--empty float--left margin--full-mini" data-ng-if="userInformation.userPhoto == null"></div>
+                            <span class="hidden--medium" data-ng-bind-template="{{userInformation.firstName}} {{userInformation.lastName}}" data-ng-cloak></span>
+                        </a>
+                        <ul uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
+                            <li role="menuitem"><a href="/admin/">Мой кабинет</a></li>
+                            <li class="divider"></li>
+                            <li role="menuitem"><a data-msk-href data-ng-click="authService.logOut()">Выйти</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </section>
+    </nav>
+
+    <main class="page--wrap">
+        @RenderBody()
+        @Scripts.Render(BaseBundle.ScriptBundle)
+    </main>
+
+    <footer class="footer">
+        <div class="container container--center">
+            <div class="grid grid-col--1-5">
+                <ul class="list list--vertical">
+                    <li class="footer__item"><span>ФОТО.бел</span></li>
+                    <li class="footer__item"><a data-msk-href>Правила</a></li>
+                    <li class="footer__item"><a data-msk-href>Условия аренды</a></li>
+                    <li class="footer__item"><a data-msk-href>Публичная оферта</a></li>
+                </ul>
+
+                <div class="position--relative">
+                    <div class="ym-metrika" data-ng-click="isMetrikaShow = !isMetrikaShow">
+                        <img src="/Content/images/metrika/ya-metric.jpg" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)">
+                        <ul class="ym-metrika__list">
+                            <li>8145</li>
+                            <li>2105</li>
+                            <li>1538</li>
+                        </ul>
+                    </div>
+                    <div id="ym-informer" data-ng-if="isMetrikaShow" data-ng-cloak>
+                        <div id="ym-metrika_all">
+                            <div id="ym-informer_head">
+                                <a target="_blank" href="https://metrika.yandex.ru/stat/">Яндекс.Метрика</a>
+                                : статистика за неделю
+                            </div>
+                            <div id="ym-informer_chart">
+                                <span class="ym-informer_chart-container ym-informer_chart-animation" style="width:360px;height:165px;">
+                                    <span data-list="10.05.2016;2;224;76;65" style="position:absolute; left:10px; bottom:1px; width:30px; height:92px;" class="pageviews"></span>
+                                    <span data-list="11.05.2016;3;318;116;99" style="position:absolute; left:60px; bottom:1px; width:30px; height:131px;" class="pageviews"></span>
+                                    <span data-list="12.05.2016;4;393;129;98" style="position:absolute; left:110px; bottom:1px; width:30px; height:162px;" class="pageviews"></span>
+                                    <span data-list="13.05.2016;5;313;104;94" style="position:absolute; left:160px; bottom:1px; width:30px; height:129px;" class="pageviews"></span>
+                                    <span data-list="14.05.2016;6;222;86;68" style="position:absolute; left:210px; bottom:1px; width:30px; height:91px;" class="pageviews pageviews_holiday"></span>
+                                    <span data-list="15.05.2016;0;286;88;69" style="position:absolute; left:260px; bottom:1px; width:30px; height:117px;" class="pageviews pageviews_holiday"></span>
+                                    <span data-list="16.05.2016;1;168;65;59" style="position:absolute; left:310px; bottom:1px; width:30px; height:69px;" class="pageviews"></span>
+                                    <span data-list="10.05.2016;2;224;76;65" style="position:absolute; left:10px; bottom:1px; width:30px; height:31px;" class="visits"></span>
+                                    <span data-list="11.05.2016;3;318;116;99" style="position:absolute; left:60px; bottom:1px; width:30px; height:47px;" class="visits"></span>
+                                    <span data-list="12.05.2016;4;393;129;98" style="position:absolute; left:110px; bottom:1px; width:30px; height:53px;" class="visits"></span>
+                                    <span data-list="13.05.2016;5;313;104;94" style="position:absolute; left:160px; bottom:1px; width:30px; height:42px;" class="visits"></span>
+                                    <span data-list="14.05.2016;6;222;86;68" style="position:absolute; left:210px; bottom:1px; width:30px; height:35px;" class="visits visits_holiday"></span>
+                                    <span data-list="15.05.2016;0;286;88;69" style="position:absolute; left:260px; bottom:1px; width:30px; height:36px;" class="visits visits_holiday"></span>
+                                    <span data-list="16.05.2016;1;168;65;59" style="position:absolute; left:310px; bottom:1px; width:30px; height:26px;" class="visits"></span>
+                                    <span data-list="10.05.2016;2;224;76;65" style="position:absolute; left:10px; bottom:1px; width:30px; height:26px;" class="uniques"></span>
+                                    <span data-list="11.05.2016;3;318;116;99" style="position:absolute; left:60px; bottom:1px; width:30px; height:40px;" class="uniques"></span>
+                                    <span data-list="12.05.2016;4;393;129;98" style="position:absolute; left:110px; bottom:1px; width:30px; height:40px;" class="uniques"></span>
+                                    <span data-list="13.05.2016;5;313;104;94" style="position:absolute; left:160px; bottom:1px; width:30px; height:38px;" class="uniques"></span>
+                                    <span data-list="14.05.2016;6;222;86;68" style="position:absolute; left:210px; bottom:1px; width:30px; height:28px;" class="uniques uniques_holiday"></span>
+                                    <span data-list="15.05.2016;0;286;88;69" style="position:absolute; left:260px; bottom:1px; width:30px; height:28px;" class="uniques uniques_holiday"></span>
+                                    <span data-list="16.05.2016;1;168;65;59" style="position:absolute; left:310px; bottom:1px; width:30px; height:24px;" class="uniques"></span>
+                                    <i class="ym-informer_lines">
+                                        <i style="bottom: 0px" class="ym-informer_line ym-informer_line-bottom"></i>
+                                        <i style="bottom: 30px" class="ym-informer_line"></i>
+                                        <i style="bottom: 60px" class="ym-informer_line"></i>
+                                        <i style="bottom: 90px" class="ym-informer_line"></i>
+                                        <i style="bottom: 120px" class="ym-informer_line"></i>
+                                        <i style="bottom: 150px" class="ym-informer_line"></i>
+                                        <i style="bottom: 180px" class="ym-informer_line"></i>
+                                        <i style="bottom: 210px" class="ym-informer_line"></i>
+                                        <i style="bottom: 240px" class="ym-informer_line"></i>
+                                        <i style="bottom: 270px" class="ym-informer_line"></i>
+                                    </i>
+                                </span>
+                                <div class="ym-informer_days">
+                                    <b style="left:10px; bottom:0;">
+                                        <i></i>
+                                        <span>10.05</span>
+                                    </b>
+                                    <b style="left:60px; bottom:0;"><i></i><span>11.05</span></b><b style="left:110px; bottom:0;"><i></i><span>12.05</span></b><b style="left:160px; bottom:0;"><i></i><span>13.05</span></b><b style="left:210px; bottom:0;"><i></i><span>14.05</span></b><b style="left:260px; bottom:0;"><i></i><span>15.05</span></b><b style="left:310px; bottom:0;"><i></i><span>16.05</span></b></div></div>
+                            <div id="ym-informer_days"></div>
+                            <div id="ym-informer_control">
+                                <input id="ym-informer_pageviews" type="checkbox" checked="checked" data-ng-model="pageviews">
+                                <label for="ym-informer_pageviews">Просмотры</label>
+
+                                <input id="ym-informer_uniques" type="checkbox" checked="checked" data-ng-model="uniques">
+                                <label for="ym-informer_uniques">Посетители</label>
+
+                                <input id="ym-informer_visits" type="checkbox" checked="checked" data-ng-model="visits">
+                                <label for="ym-informer_visits">Визиты</label></div>
+                        </div>
+
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAKCAYAAABblxXYAAABMklEQVR42p2SwUqEUBSGvTrT4DjQUExQ0yqEhoGoXWtbCC3CN9B1u1ZtbN0L9Bj6Aq7clqsWPUALF6EQCG1E0s6B/14i1EUXPvSe+59Pr16t6zqNhg5mhJmm6QXV625ktG37FcfxhvPoM9gBnyYgnBJzYknsF0XxNCbN8/yRcitiF3078AgpNVC0iD1i7TjOedM0H33Cuq7fbdveUu4YeQv9hpLilaeEidARcZokyUOfNIqiO1rfEGvkTe6HR2jyhtDxtAW2dUJclmX59mfbL1zH+gHyauvsY6lCflsED4ltGIb3v37OdxAEt1zH+gJ5XXkgHRJbaDzLsuyVpXQqnnmOutUjVNIh8QRHZen7/nVVVZ+u617xHPWJFA5Jx+QGMfc874avmCvZf6RCSiSYi7G+Hx0SZupc10+pAAAAAElFTkSuQmCC" style="left: 34px; top: 100%; margin: 0px; padding: 0px; border: 0px; outline: 0px; display: block; position: absolute; opacity: 1; width: 21px; height: 10px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <section class="callHandler">
+        <div class="callHandler__content">
+            <div class="callHandler__avatar">
+                <img src="http://xcook.info/sites/default/files/beauty/1/vybiraem-ukladku-po-forme-lica-1.jpg" alt="">
+            </div>
+            <div class="callHandler__info">
+                <p class="name">Мария Йолупокоси</p>
+                <p class="phone"><small class="text--small text--muted">+375-(29)</small>-000-00-00</p>
+                <!-- <small class="text--muted">фотограф</small> -->
+            </div>
+            <div class="callHandler__call">
+                <div class="callHandler__call-wave"></div>
+                <div class="callHandler__call-back">
+                    <i class="icon-phone_in_talk"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="callHandler__content">
+            <div class="callHandler__avatar">
+                <img src="http://s1.favim.com/orig/150812/cara-delevigne-eyebrows-eyes-face-Favim.com-3105721.jpg" alt="">
+            </div>
+            <div class="callHandler__info">
+                <p class="name">Ибрагим Сайкович</p>
+                <p class="phone"><small class="text--small text--muted">+375-(29)</small>-000-00-00</p>
+                <!-- <small class="text--muted">фотограф</small> -->
+            </div>
+            <div class="callHandler__call">
+                <div class="callHandler__call-wave"></div>
+                <div class="callHandler__call-back">
+                    <i class="icon-phone_in_talk"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Start of Zopim Live Chat Script-->
+    <script type="text/javascript">
+        window.$zopim || (function (d, s) {
+            var z = $zopim = function (c) { z._.push(c) }, $ = z.s =
+            d.createElement(s), e = d.getElementsByTagName(s)[0]; z.set = function (o) {
+                z.set.
+                _.push(o)
+            }; z._ = []; z.set._ = []; $.async = !0; $.setAttribute("charset", "utf-8");
+            $.src = "//v2.zopim.com/?3lBHZ3g1F9GozAsF57N79OJp2CGbFfLu"; z.t = +new Date; $.
+            type = "text/javascript"; e.parentNode.insertBefore($, e)
+        })(document, "script");
+    </script>
+    <!--End of Zopim Live Chat Script-->
+
+    <script src="~/Scripts/jquery.signalR-2.2.0.js"></script>
+    <!--Reference the autogenerated SignalR hub script. -->
+    <script src="~/signalr/hubs"></script>
+
+    @Scripts.RenderFormat("<script type=\"text/javascript\" src=\"{0}?v=" + typeof(Startup).Assembly.GetName().Version + "\"></script>", "~/App")
+
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

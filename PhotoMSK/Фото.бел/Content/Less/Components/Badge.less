@@ -1,0 +1,78 @@
+// out: ../../css/Components/Badge.css, compress: true
+// Name:            Badge
+// Description:     Defines styles for badges
+//
+// Component:       `badge`
+//
+// Modifiers:       `badge--notification`
+//                  `badge--success`
+//                  `badge--danger`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+
+@badge-background: #00a8e6;
+@badge-padding-horizontal: 5px;
+@badge-margin-left: 3px;
+@badge-font-size: 10px;
+@badge-font-weight: 100;
+@badge-line-height: 14px;
+@badge-color: #fff;
+@badge-text-transform: none;
+@badge-hover-color: #fff;
+@badge-border-radius: 3px;
+
+@badge-notification-font-size: 12px;
+@badge-notification-line-height: 18px;
+
+@badge-success-background: #8cc14c;
+@badge-warning-background: #faa732;
+@badge-danger-background: #da314b;
+
+
+/* ========================================================================
+   Component: Badge
+ ========================================================================== */
+
+.badge {
+    display: inline-block;
+    padding: 0 @badge-padding-horizontal;
+    background: @badge-background;
+    font-size: @badge-font-size;
+    font-weight: @badge-font-weight;
+    line-height: @badge-line-height;
+    color: @badge-color;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: @badge-text-transform;
+    border-radius: @badge-border-radius;
+    margin-top: -4px;
+
+    &--notification {
+        min-width: @badge-notification-line-height;
+        border-radius: 500px;
+        font-size: @badge-notification-font-size;
+        line-height: @badge-notification-line-height;
+    }
+
+    &--success {
+        background-color: @badge-success-background;
+    }
+
+    &--warning {
+        background-color: @badge-warning-background;
+    }
+
+    &--danger {
+        background-color: @badge-danger-background;
+    }
+}
+
+.badge + .badge{
+    margin-left: @badge-margin-left;
+}
+
+.badge:hover {
+    color: @badge-hover-color;
+}

@@ -1,0 +1,49 @@
+
+<div>
+    <data-bread-crumbs />
+</div>
+<div class="uk-main-page-body">
+    <div class="container container--center">
+        <div class="grid grid--medium">
+            <div class="col--1-3">
+                <p class="text--h2 margin--reset">Аренда залов онлайн</p>
+            </div>
+            <div class="col--2-3 text--right">
+                <span data-ng-cloak>{{page.itemsCount}} залов отсортированы</span>
+                <ul class="sort">
+                    <li class="sort__item active"><a data-msk-href>по рейтингу</a></li>
+                    <li class="sort__item"><a data-msk-href>по цене</a></li>
+                    <li class="sort__item"><a data-msk-href>по площади</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="grid grid--medium">
+            <div class="col--7-10">
+                <div class="grid">
+                    <div class="col--1-3 margin--bottom" data-ng-repeat="hall in page.elements">
+                        <article class="panel panel--box panel--white panel--shadow">
+                            <div class="panel__teaser">
+                                <a href="/photostudio/halls/{{hall.id}}" class="post-image">
+                                    <img src="{{hall.teaserImageUrl}}">
+                                </a>
+                            </div>
+                            <div class="details">
+                                <p class="text--h4 margin--botom-small">
+                                    <a href="/photostudio/halls/{{hall.id}}" class="link--muted">Зал: <b>{{hall.name}}</b></a>
+                                </p>
+
+                                <div class="text--right">
+                                    <a class="button button--small button--success border--rounded" href="/photostudio/halls/{{hall.id}}">Подробнее</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <div class="col--3-10">
+                <photostudio-filter></photostudio-filter>
+            </div>
+        </div>
+        <uib-pagination total-items="totalItems" data-ng-model="currentPage" boundary-links="true" items-per-page="itemsPerPage" max-size="maxSize" num-pages="numPages" class="pagination" ng-change="pageChanged()"></uib-pagination>
+    </div>
+</div>

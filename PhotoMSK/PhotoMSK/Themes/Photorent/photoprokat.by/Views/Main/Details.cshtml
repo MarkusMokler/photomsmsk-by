@@ -1,0 +1,167 @@
+﻿@using PhotoMSK.Extensiolns
+@model PhotoMSK.Areas.Default.ViewData.Catalog.ProductViewData
+
+<div class="uk-grid uk-grid-small">
+    <div class="uk-width-1-4">
+        <div class="uk-grid uk-grid-small" data-uk-grid-margin="">
+            <div class="uk-width-1-1">
+                <section class="uk-panel uk-panel-box">
+                    <strong class="uk-h4">Каталог</strong>
+
+                    <ul class="uk-nav uk-nav-side uk-nav-parent-icon" data-uk-nav="{multiple:true}">
+                        @foreach (var item in Model.Categorieses)
+                        {
+                            <li class="uk-parent">
+                                <a class="role-category" href="/catalog/@item.Slug" data-categoryid="@item.ID">@item.Name</a>
+                                @if (item.Brands.Count > 0)
+                                {
+                                    <ul class="uk-nav-sub">
+                                        @foreach (var ii in item.Brands)
+                                        {
+                                            <li><a data-role-brand-select data-brand-id="@ii.ID" href="#">@ii.Name</a></li>
+                                        }
+                                    </ul>
+                                }
+                            </li>
+                        }
+                    </ul>
+
+                </section>
+            </div>
+            <div class="uk-width-1-1 uk-grid-margin">
+                <div class="uk-panel uk-panel-box uk-panel-box-item">
+                    <ul class="uk-list uk-list-space">
+                        <li>
+                            <img src="http://www.rentaphoto.com/img/bg_link_matrix_clear.jpg" class="uk-float-left">
+                            <a href="#" class="uk-link-muted">
+                                <strong>Чистка матриц</strong>
+                            </a>
+                            <p class="uk-margin-remove uk-text-muted">И фотоаппарат как новый!</p>
+                        </li>
+                        <li>
+                            <img src="http://www.rentaphoto.com/img/bg_link_childschool.png" class="uk-float-left">
+                            <a href="#" class="uk-link-muted">
+                                <strong>Детские медиа мастерские</strong>
+                            </a>
+                            <p class="uk-margin-remove uk-text-muted">Приучаем к прекрасному с детства</p>
+                        </li>
+                        <li>
+                            <img src="http://www.rentaphoto.com/img/bg_link_matrix_clear.jpg" class="uk-float-left">
+                            <a href="#" class="uk-link-muted">
+                                <strong>Сдавайте вашу технику в аренду</strong>
+                            </a>
+                            <p class="uk-margin-remove uk-text-muted">Зарабатывайте на технике!</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="uk-width-1-1 uk-grid-margin">
+                <div class="uk-panel uk-panel-box uk-panel-box-item">
+                    <strong class="uk-h3">ТОП-10</strong>
+
+                    <ul class="uk-list uk-list-space uk-margin-left">
+                        @*@foreach (var item in Model.Key.Technics.Elements.Take(10))
+                        {
+                            <li>
+                                <a href="@item.Url" class="uk-link-muted">
+                                    @item.Name
+                                </a>
+                            </li>
+                        }*@
+                    </ul>
+                </div>
+            </div>
+            <div class="uk-width-1-1 uk-grid-margin">
+                <div class="uk-panel uk-panel-box uk-panel-box-item">
+                    <ul class="uk-grid uk-grid-width-1-3 uk-text-center">
+                        <li>
+                            <a href="#" target="_blank"><img src="http://www.rentaphoto.com/img/instagramm.jpg" alt="" title=""></a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank"><img src="http://www.rentaphoto.com/img/instagramm.jpg" alt="" title=""></a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank"><img src="http://www.rentaphoto.com/img/instagramm.jpg" alt="" title=""></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-width-3-4">
+        <section class="uk-panel uk-panel-box uk-panel-box-item">
+            <div class="uk-grid" data-uk-grid-margin>
+                <div class="uk-width-1-1">
+                    <div class="uk-panel">
+                        <p class="uk-text-bold">
+                            <a class="uk-link-muted" href="">@Model.PhototechnicsViewModel.Name</a>
+                        </p>
+
+                        <div class="uk-grid uk-grid-small uk-grid-width-1-3">
+                            <div>
+                                <a class="uk-link-reset" href="@Model.PhototechnicsViewModel.Url()">
+                                    <img src="@Model.PhototechnicsViewModel.Image" alt="">
+                                </a>
+                            </div>
+                            <div>
+                                <table class="uk-table">
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Рабочий день</strong></td>
+                                            <td><strong>50 000</strong> бел.руб</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Выходной день</td>
+                                            <td>200 бел.руб</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Неделя</td>
+                                            <td>850 бел.руб</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Месяц</td>
+                                            <td>2620 бел.руб</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div>
+                                <ul class="uk-list uk-list-space uk-margin-large-left">
+                                    <li>
+                                        <a href="#" class="uk-link-muted uk-link-line">Инструкции (1)</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="uk-link-muted uk-link-line">Драйверы (1)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="uk-margin-top">
+                            <strong class="uk-equipment-booking"><i class="uk-icon-check"></i> доступно для бронирования</strong>
+                            <a href="#" class="uk-button uk-button-cart uk-float-right"> Заказать</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="uk-grid-width-1-1">
+                    <ul class="uk-list">
+                        <li>
+                            <section class="uk-margin-bottom">
+                                <p class="uk-accordion-title">
+                                    <a href="#" class="uk-button-link uk-link-reset" data-uk-toggle="{target:'#toggle1'}">
+                                        <i class="uk-icon-caret-down"></i> Подробное описание
+                                    </a>
+                                </p>
+                                <div id="toggle1">
+                                    @Model.PhototechnicsViewModel.Description
+                                </div>
+                            </section>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,135 @@
+// out: ../../css/Components/Wallet.css, compress: true
+// Name:            Wallet
+// Description:     Defines styles for Wallet
+//
+// Component:       `wallet`
+//
+//
+// Element:         `wallet__sidebar`
+//                  `wallet__*`
+//                  `wallet__*`
+//
+// Modifiers:       `wallet--*`
+//                  `wallet--*`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+
+
+
+
+/* ========================================================================
+   Component: Wallet
+ ========================================================================== */
+.wallet {
+    width: 100%;
+    margin-left: -15px;
+    margin-top: -15px;
+    margin-right: -15px;
+    border-bottom: 1px solid #ddd;
+
+    // Element 'wallet__sidebar'
+    &__sidebar{
+        float: left;
+        width: 280px;
+        border-right: 1px solid #ddd;
+        padding: 30px;
+    }
+
+    // Element 'wallet__add'
+    &__add{
+        position: relative;
+        float: right;
+        color: #b2b2b2;
+        font-size: 28px;
+        line-height: 25px;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        border-radius: 30px;
+        border: 2px solid;
+    }
+
+    // Element 'wallet__title'
+    &__title{
+        color: #b2b2b2;
+        font-size: 24px;
+    }
+
+    // Element 'wallet__account'
+    &__account{
+        border: 2px solid #FF8D58;
+        border-radius: 4px;
+        margin-bottom: 30px;
+        height: 130px;
+        position: relative;
+        width: 220px;
+        z-index: 1;
+    }
+
+    // Element 'wallet__content'
+    &__content{
+        float: left;
+        padding: 20px;
+    }
+
+    &__container{
+        position: relative;
+    }
+}
+
+
+// **************************************
+//            PLASTIC CARD
+// **************************************
+.plastic-card{
+    position: relative;
+    width: 220px;
+    height: 130px;
+    background-color: #fff;
+    border: 2px solid #e1e1e1;
+    border-radius: 4px;
+    padding: 15px;
+    cursor: pointer;
+    box-shadow: 0px -10px 30px -5px rgba(0, 0, 0, 0.2);
+    transition: all 250ms;
+
+    &:hover:not(.active){
+        box-shadow: 0px -20px 30px -5px rgba(0, 0, 0, 0.2);
+        -webkit-transform: translateY(-30px);
+        -moz-transform: translateY(-30px);
+        -ms-transform: translateY(-30px);
+        -o-transform: translateY(-30px);
+        transform: translateY(-30px);
+        transition: all 250ms;
+    }
+
+    &.active{
+        position: absolute;
+        top: -100px;
+        // transition: all 250ms;
+    }
+
+    & + &{
+        margin-top: -60px;
+    }
+
+    //Element 'polastic-card__number'
+    &__number{
+        letter-spacing: 0.09em;
+        margin: 10px 0 0 0;
+        color: #707584;
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    //Element 'polastic-card__expiration'
+    &__expiration{
+        color: #b2b2b2;
+        margin: 0;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: center;
+    }
+}

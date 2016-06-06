@@ -1,0 +1,369 @@
+// out: ../../css/Components/Activity.css, compress: true
+// Name:            Activity
+// Description:     Defines styles for activity
+//
+// Component:       `activity`
+//
+//
+// Element:       `activity__header`
+//                `activity__sort`
+//
+// Modifiers:       `activity--*`
+//                  `activity--*`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+@activity-time-padding:                     10px;
+@activity-time-border-color:                #ddd;
+
+@activity-header-padding:                   15px;
+@activity-header-border-color:              #ddd;
+@activity-header-background:                #F4F4F4;
+// Sort
+@activity-sort-border-color:                #ddd;
+@activity-sort-padding:                     20px;
+// Status
+@activity-status-height:                    30px;
+@activity-status-font-size:                 16px;
+@activity-status-badge-height:              8px;
+@activity-status-badge-background:          #FF8100;
+//
+@activity-status-list-padding:              10px;
+@activity-status-day-padding:               10px;
+@activity-status-day-border-color:          #ddd;
+@activity-status-list-font-size:            12px;
+
+/* ========================================================================
+   Component: Booking
+ ========================================================================== */
+.activity {
+
+    // Element 'activity__time'
+    &__time{
+        position: relative;
+        border: 1px solid @activity-time-border-color;
+        padding: (@activity-time-padding / 2) @activity-time-padding;
+        border-radius: 20px;
+        background: #fff;
+        z-index: 1;
+
+        &--line{
+            position: relative;
+            border-bottom-color: transparent !important;
+            &:before{
+                content: '';
+                position: absolute;
+                width: 1px;
+                top: 0;
+                bottom: 0;
+                border-left: 1px dotted #ddd;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            &:after{
+                content: '\e914';
+                position: absolute;
+                font-family: 'icomoon';
+                font-size: 12px;
+                color: #DEDEDE;
+                bottom: 0;
+                left: 50%;
+                background: #fff;
+                border-radius: 50px;
+                transform: translate(-50%, 50%);
+                padding: 4px;
+                z-index: 10;
+            }
+        }
+    }
+
+    // Element 'activity__header'
+    &__header {
+        padding: (@activity-header-padding - 5) @activity-header-padding;
+        margin: 0 (@activity-header-padding * -1) 0 (@activity-header-padding * -1);
+        // Element 'activity__header__day'
+        &__day {
+            display: inline-block;
+            border-right: 1px solid @activity-status-day-border-color;
+            padding-right: @activity-status-day-padding;
+            margin-right: @activity-status-day-padding;
+        }
+        // Element 'activity__header__list'
+        &__list {
+            display: inline-block;
+            border-right: 1px solid #ddd;
+            padding-right: 10px;
+            margin-right: 10px;
+            & li {
+                display: inline-block;
+                font-size: @activity-status-list-font-size;
+                line-height: 26px;
+                & + li {
+                    padding-left: @activity-status-list-padding;
+                }
+            }
+        }
+        // Element 'activity__header__accordion'
+        &__accordion {
+            display: inline-block;
+            float: right;
+        }
+    }
+
+    // Element 'activity__sort'
+    &__sort {
+        border-bottom: 1px solid @activity-sort-border-color;
+        padding: (@activity-sort-padding / 2) 0;
+        margin-bottom: 10px;
+
+        // Element 'activity__sort__text'
+        &__text{
+            line-height: 26px;
+        }
+    }
+
+    // Element 'activity__status'
+    &__status {
+        position: relative;
+        display: inline-block;
+        width: @activity-status-height;
+        height: @activity-status-height;
+        line-height: @activity-status-height;
+        font-size: @activity-status-font-size;
+        border-radius: @activity-status-height;
+        text-align: center;
+
+        // Modificator 'activity__status--income'
+        &--income{
+            background: rgba(73, 174, 101, 0.2);
+            box-shadow: 0 0 0 5px rgba(73, 174, 101, 0.1), 0 0 0 10px rgba(73, 174, 101, 0.05);
+        }
+
+        // Modificator 'activity__status--missed'
+        &--missed{
+            background: rgba(238, 83, 101, 0.2);
+            box-shadow: 0 0 0 5px rgba(238,83,101,0.1), 0 0 0 10px rgba(238,83,101,0.05);
+        }
+
+        &__badge {
+            position: absolute;
+            display: block;
+            bottom: 5px;
+            right: 5px;
+            width: @activity-status-badge-height;
+            height: @activity-status-badge-height;
+            background: @activity-status-badge-background;
+            border-radius: @activity-status-badge-height;
+            box-shadow: 0 0 0 2px #fff;
+        }
+        &__event {
+            & img {
+                float: left;
+                margin-right: 20px;
+                width: 45px;
+                height: 45px;
+                border-radius: 50px;
+            }
+            & > p {
+                padding-top: 5px;
+            }
+        }
+        &__avatar {
+            position: relative;
+            float: left;
+            &--empty {
+                position: relative;
+                background: #ddd;
+                float: left;
+                width: 46px;
+                height: 46px;
+                margin-right: 20px;
+                border-radius: 50px;
+                font-family: 'icomoon';
+                border: 3px solid #fff;
+                &:after {
+                    content: "\e99c";
+                    position: absolute;
+                    font-size: 20px;
+                    line-height: 40px;
+                    color: #fff;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+            &__admin {
+                position: absolute;
+                border-radius: 50px;
+                bottom: -2px;
+                left: 25px;
+                width: 20px !important;
+                height: 20px !important;
+                box-shadow: 0 0 0 2px #fff;
+                z-index: 5;
+                font-family: 'icomoon';
+                &--empty {
+                    background: #C5C5C5;
+                    &:after {
+                        content: "\e7fd";
+                        position: absolute;
+                        font-size: 14px;
+                        line-height: 20px;
+                        color: #fff;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+                }
+            }
+        }
+        &__name {
+            text-transform: capitalize;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 170px;
+            display: inline-block;
+            white-space: nowrap;
+        }
+    }
+}
+
+
+// *************************
+//       Call section
+// *************************
+
+@activity-call-height:                 50px;
+@activity-call-img-margin:             3px;
+@activity-call-img-height:             @activity-call-height - (@activity-call-img-margin * 2 + 4);
+
+// ****************
+.activity__call{
+
+    // Element 'activity__call__avatar'
+    &__avatar{
+        display: inline-block;
+        width: @activity-call-height;
+        height: @activity-call-height;
+        border-radius: @activity-call-height;
+        border: 2px dotted #49ae65;
+        margin-right: -4px;
+        vertical-align: top;
+        box-shadow: inset 0px 0px 0px 4px rgb(255, 255, 255);
+
+        & > img{
+            border-radius: @activity-call-height;
+            margin: @activity-call-img-margin;
+            width: @activity-call-img-height;
+            height: @activity-call-img-height;
+        }
+    }
+
+    // Element 'activity__call__time'
+    &__time{
+        display: inline-block;
+        // height: (@activity-call-height / 2);
+        height: @activity-call-height;
+        min-width: 80px;
+        margin-right: -4px;
+        // line-height: @activity-call-height - 20;
+        line-height: @activity-call-height;
+        font-size: 12px;
+        color: #999;
+        text-align: center;
+        // border-bottom: 1px dashed rgba(73, 174, 101, 0.4);
+    }
+}
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+// ------------------------------------------------------------------------
+
+.active-day{
+    display: table;
+    height: 100%;
+    width: 100%;
+    table-layout: fixed;
+
+    & > li{
+        position: relative;
+    }
+
+    // Element 'active-day__title'
+    &__title{
+        padding: 5px 0;
+        border-bottom: 1px solid #ddd;
+        background: #E8E8E8;
+        margin: 0;
+        font-size: 14px;
+        font-weight: 500;
+        text-align: center;
+
+        &--pinalty{
+            background: rgba(255, 0, 0, 0.2);
+            color: #901010;
+            text-shadow: 0 1px rgba(255, 255, 255, 0.7);
+        }
+
+        &--cash{
+            background: rgba(26, 191, 26, 0.3);
+            color: #007900;
+            text-shadow: 0 1px rgba(255, 255, 255, 0.7);
+        }
+    }
+
+    // Element 'active-day__summ'
+    &__summ{
+        margin: 0;
+        background: #fff;
+        padding: 10px;
+        border-top: 1px dotted #ddd;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    // Element 'active-day__no-action'
+    &__no-action{
+        position: absolute;
+        top: 200px;
+        left: 50%;
+        width: 60%;
+        margin-left: -30%;
+        text-align: center;
+        color: #707070;
+    }
+
+    // Element 'active-day__list'
+    &__list{
+        min-height: 400px;
+        background: #fff;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        padding: 10px;
+
+        & > li{
+            background: #fff;
+            min-height: 60px;
+            border: 1px dashed #ddd;
+            padding: 10px;
+            margin-bottom: 2px;
+        }
+    }
+
+    // Element 'action-day__item'
+    &__item{
+
+        &-header{
+            width: 88%;
+            float: left;
+            border-right: 1px solid #ddd;
+            padding-right: 10px;
+        }
+
+        &-action{
+            width: 12%;
+            float: right;
+            text-align: right;
+        }
+    }
+}

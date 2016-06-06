@@ -1,0 +1,617 @@
+<div><data-bread-crumbs/></div>
+
+<div class="content--admin">
+    <div class="container container--center">
+        <p class="text--h2">Редактирование профиля</p>
+        <div class="panel panel--box panel--white panel--shadow margin--top-small">
+            <div class="panel__title">
+                <ul class="tab tab--full">
+                    <li>
+                        <a class="active" data-ng-class="{'active' : active == 'userInfo'}" data-msk-href data-ng-click="active='userInfo'">Информация</a>
+                    </li>
+                    <li>
+                        <a data-ng-class="{'active' : active == 'Security'}" data-msk-href data-ng-click="active='Security'">Защита</a>
+                    </li>
+                    <li>
+                        <a data-ng-class="{'active' : active == 'Payments'}" data-msk-href data-ng-click="active='Payments'">Платежи</a>
+                    </li>
+                    <li>
+                        <a data-ng-class="{'active' : active == 'Orders'}" data-msk-href data-ng-click="active='Orders'">Покупка</a>
+                    </li>
+                    <li>
+                        <a data-ng-class="{'active' : active == 'Cards'}" data-msk-href data-ng-click="active='Cards'">Карточки</a>
+                    </li>
+                    <li>
+                        <a data-ng-class="{'active' : active == 'HistoryRent'}" data-msk-href data-ng-click="active='HistoryRent'">История</a>
+                    </li>
+                    <li>
+                        <a data-ng-class="{'active' : active == 'Penalties'}" data-msk-href data-ng-click="active='Penalties'">Штрафы</a>
+                    </li>
+                    <li>
+                        <a data-ng-class="{'active' : active == 'Passport'}" data-msk-href data-ng-click="active='Passport'">Паспорт</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- == Tab Content == -->
+            <div class="grid">
+                <ul class="col--1-1">
+                    <li data-ng-if="active=='userInfo'">
+                        <div data-ng-if="userInfoState=='view'" class="grid grid--divider grid--collapse margin--reset">
+                            <div class="col--3-10 text--center">
+                                <p class="text--h3 text--muted text--truncate">
+                                    Ваш профиль
+                                    <a data-msk-href data-ng-click="$parent.$parent.userProfilesEdit = !$parent.$parent.userProfilesEdit" class="button button--small button--rounded icon-cog float--right"></a>
+                                </p>
+                                <hr class="col--1-1 grid--divider-full">
+
+                                <div data-ng-if="!$parent.$parent.userProfilesEdit">
+                                    <div class="margin--top">
+                                        <img class="border--rounded avatar--border-solid" alt="Аватарка пользователя" src="/Content/images/no-avatar.png" data-ng-src="{{croppedDataUrl||userInformation.userPhoto}}" height="200" width="200">
+                                    </div>
+                                    <p class="text--bold margin--top text--h4">{{userInformation.firstName}}
+                                        {{userInformation.lastName}}</p>
+                                    <p data-ng-if="userInformation.clientType=='Photographer'" class="text--muted text--small">Фотограф</p>
+                                    <p data-ng-if="userInformation.clientType=='Photomodel'" class="text--muted text--small">Модель</p>
+                                    <p data-ng-if="userInformation.clientType=='Visagiste'" class="text--muted text--small">Визажист</p>
+                                    <p data-ng-if="userInformation.clientType=='Organizer'" class="text--muted text--small">Организатор</p>
+                                    <p data-ng-if="userInformation.clientType=='Stylist'" class="text--muted text--small">Стилист</p>
+                                    <p data-ng-if="userInformation.clientType=='Leading'" class="text--muted text--small">Ведущий</p>
+                                    <p data-ng-if="userInformation.clientType=='Designer'" class="text--muted text--small">Дизайнер</p>
+                                    <p data-ng-if="userInformation.clientType=='Client'" class="text--muted text--small">Клиент</p>
+
+
+                                    <!-- <div class="margin--top">
+                                        <a data-msk-href class="button button--success border--rounded col--1-1">Изменить аватарку</a>
+                                        <a data-msk-href class="button button--small margin--top-small border--rounded">Удалить</a>
+                                    </div> -->
+                                </div>
+                                <div data-ng-if="userProfilesEdit">
+                                    <div class="grid">
+                                        <div class="col--1-1 text--center">
+                                            <img class="border--rounded avatar--border-solid" alt="Аватарка пользователя" src="/Content/images/no-avatar.png" data-ng-src="{{croppedDataUrl||userInformation.userPhoto}}">
+                                        </div>
+
+                                        <div class="col--1-1 text--center margin--top" data-ngf-select data-ng-model="picFile" accept="image/*">
+                                            <a class="button button--small border--rounded" data-msk-href>Выбрать файл</a>
+                                            <p class="margin text--muted">
+                                                Рекомендуемый размер изображения: 500×500
+                                            </p>
+                                        </div>
+
+                                        <div data-ngf-drop data-ng-model="picFile" data-ngf-pattern="image/*" class="col--1-1 cropArea upload__area">
+                                            <img-crop image="picFile  | ngfDataUrl" result-image="croppedDataUrl" data-ng-init="croppedDataUrl=''"></img-crop>
+                                        </div>
+
+                                        <p class="col--1-1 text--center margin--top">
+                                            <a data-msk-href class="button border--rounded button--success" data-ng-click="upload(croppedDataUrl)">
+                                                Применить
+                                            </a>
+                                        </p>
+
+                                        <hr class="col--1-1 margin--v">
+
+                                        <div class="col--1-1 text--left">
+                                            <label class="label label--rounded">Имя</label>
+                                            <input class="input input--rounded col--1-1" data-ng-model="userInformation.firstName"/>
+                                        </div>
+                                        <div class="col--1-1 text--left">
+                                            <label class="label label--rounded">Фамилия</label>
+                                            <input class="input input--rounded col--1-1" data-ng-model="userInformation.lastName"/>
+                                        </div>
+                                        <div class="col--1-1 text--left">
+                                            <label class="label label--rounded">Тип учетной записи</label>
+                                            <div class="input--select">
+                                                <select class="input input--rounded col--1-1 selectpicker" data-ng-model="userInformation.clientType">
+                                                    <option value="Photographer">Фотограф</option>
+                                                    <option value="Photomodel">Модель</option>
+                                                    <option value="Visagiste">Визажист</option>
+                                                    <option value="Organizer">Организатор</option>
+                                                    <option value="Stylist">Стилист</option>
+                                                    <option value="Leading">Ведущий</option>
+                                                    <option value="Designer">Дизайнер</option>
+                                                    <option value="Client">Клиент</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col--4-10">
+                                <p class="text--h3 text--muted text--truncate">
+                                    Персональные данные
+                                    <a data-msk-href data-ng-click="$parent.$parent.userPersonalInformationEdit = !$parent.$parent.userPersonalInformationEdit" class="button button--small button--rounded icon-cog float--right"></a>
+                                </p>
+                                <hr class="col--1-1 grid--divider-full">
+                                <div data-ng-if="userPersonalInformationEdit">
+                                    <!-- <div class="form__row">
+                                        <label class="label--form" for="form-h-it">Логин</label>
+                                        <div class="form__controls">
+                                            <input class="input input--rounded col--1-1" placeholder="Напишите ваш логин">
+                                        </div>
+                                    </div>
+                                        -->
+                                    <div class="form__row">
+                                        <label class="label--form" for="form-h-it">Email</label>
+                                        <div class="form__controls">
+                                            <input class="input input--rounded col--1-1" placeholder="Ваша почта" data-ng-model="userInformation.email">
+                                        </div>
+                                    </div>
+
+                                    <hr class="col--1-1 margin--v">
+                                    <p class="margin--bottom-small text--center">День рождения</p>
+
+                                    <div class="grid grid--small">
+                                        <div class="col--1-3">
+                                            <label class="label label--rounded">Дата</label>
+                                            <input class="input input--rounded col--1-1" placeholder="01" data-ng-model="dateOfBirth.day">
+                                        </div>
+                                        <div class="col--1-3">
+                                            <label class="label label--rounded">Месяц</label>
+                                            <input class="input input--rounded col--1-1" placeholder="12" data-ng-model="dateOfBirth.month">
+                                        </div>
+                                        <div class="col--1-3">
+                                            <label class="label label--rounded">Год</label>
+                                            <input class="input input--rounded col--1-1" placeholder="19**" data-ng-model="dateOfBirth.year">
+                                        </div>
+                                    </div>
+
+                                    <hr class="col--1-1 margin--v">
+                                    <p class="margin--bottom-small text--center">Проживание</p>
+
+                                    <div class="grid grid--small">
+                                        <div class="col--1-2">
+                                            <label class="label label--rounded">Страна</label>
+                                            <input class="input input--rounded col--1-1" placeholder="Беларусь" data-ng-model="userInformation.country">
+                                        </div>
+                                        <div class="col--1-2">
+                                            <label class="label label--rounded">Город</label>
+                                            <input class="input input--rounded col--1-1" placeholder="Минск" data-ng-model="userInformation.city">
+                                        </div>
+                                    </div>
+                                    <hr class="col--1-1 margin--v">
+                                    <p class="margin--bottom-small text--center">Ваши телефоны</p>
+
+                                    <div class="grid grid--small" data-ng-repeat="phone in userPhones">
+                                        <div class="col--1-1">
+                                            <label class="label label--rounded">Номер</label>
+                                            <div class="input__group">
+                                                <input class="input input--rounded col--1-1" readonly="readonly" value="{{phone.number}}">
+                                                <span class="input__group__desc">
+                                                    <a data-msk-href class="button button--small button--rounded button--delete icon-trash" data-ng-click="$parent.$parent.deletePhone(phone)" data-ng-if="userPhones.lenght == 1"></a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col--1-6 text--right">
+                                            <br><br>
+                                            <a data-msk-href class="button button--rounded button--delete icon-trash" data-ng-click="$parent.$parent.deletePhone(phone)"></a>
+                                        </div> -->
+
+                                        <!-- <div class="col--5-6">
+                                            <label class="label label--rounded">Номер</label>
+                                            <input class="input input--rounded col--1-1" readonly="readonly" value="{{phone.number}}">
+                                        </div>
+                                        <div class="col--1-6 text--right">
+                                            <br><br>
+                                            <a data-msk-href class="button button--rounded button--delete icon-trash" data-ng-click="$parent.$parent.deletePhone(phone)"></a>
+                                        </div> -->
+
+                                    </div>
+
+                                    <p class="margin--top text--center">
+                                        <a data-msk-href class="button button--small border--rounded" data-ng-click="addPhoneShow = !addPhoneShow">Добавить номер телефона</a>
+                                    </p>
+
+                                    <div data-ng-if="addPhoneShow">
+                                        <hr class="col--1-1 margin--v">
+                                        <p class="margin--bottom-small text--center">Добавление нового телефона</p>
+                                    </div>
+
+                                    <div data-ng-if="addPhoneShow">
+                                        <data-admin-user-phone/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col--3-10">
+                                <p class="text--h3 text--muted text--truncate">
+                                    Внешние ссылки
+                                    <a data-msk-href data-ng-click="$parent.$parent.userExternalLinkEdit = !$parent.$parent.userExternalLinkEdit" class="button button--small button--rounded icon-cog float--right"></a>
+                                </p>
+                                <hr class="col--1-1 grid--divider-full">
+                                <div data-ng-if="userExternalLinkEdit">
+                                    <div class="margin--top-small">
+                                        <label class="label label--rounded">Вконтакте</label>
+                                        <input type="text" class="input input--rounded col--1-1" placeholder="www." data-ng-model="userInformation.vkLink">
+                                    </div>
+
+                                    <div class="margin--top-small">
+                                        <label class="label label--rounded">Facebook</label>
+                                        <input type="text" class="input input--rounded col--1-1" placeholder="www." data-ng-model="userInformation.facebookLink">
+                                    </div>
+
+                                    <div class="margin--top-small">
+                                        <label class="label label--rounded">Instagram</label>
+                                        <input type="text" class="input input--rounded col--1-1" placeholder="www." data-ng-model="userInformation.instagram">
+                                    </div>
+
+                                    <div class="margin--top-small">
+                                        <label class="label label--rounded">Google+</label>
+                                        <input type="text" class="input input--rounded col--1-1" placeholder="www." data-ng-model="userInformation.googleplus">
+                                    </div>
+
+                                    <div class="margin--top-small">
+                                        <label class="label label--rounded">Веб сайт</label>
+                                        <input type="text" class="input input--rounded col--1-1" placeholder="www." data-ng-model="userInformation.site">
+                                    </div>
+                                </div>
+
+                                <div data-ng-if="!userExternalLinkEdit">
+                                    <div class="margin--top">
+                                        <span class="text--bold">Вконтакте:&nbsp;</span>
+                                        <a href="{{userInformation.vkLink}}" target="_blank">{{userInformation.vkLink}}</a>
+                                    </div>
+
+                                    <div class="margin--top">
+                                        <span class="text--bold">Facebook:&nbsp;</span>
+                                        <a href="{{userInformation.facebookLink}}" target="_blank">{{userInformation.facebookLink}}</a>
+                                    </div>
+
+                                    <div class="margin--top">
+                                        <span class="text--bold">Instagram:&nbsp;</span>
+                                        <a href="{{userInformation.instagram}}" target="_blank">{{userInformation.instagram}}</a>
+                                    </div>
+
+                                    <div class="margin--top">
+                                        <span class="text--bold">Google+:&nbsp;</span>
+                                        <a href="{{userInformation.googleplus}}" target="_blank">{{userInformation.googleplus}}</a>
+                                    </div>
+
+                                    <div class="margin--top">
+                                        <span class="text--bold">Сайт:&nbsp;</span>
+                                        <a href="{{userInformation.site}}" target="_blank">{{userInformation.site}}</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col--1-1 text--center">
+                                <hr class="col--1-1">
+                                <a data-msk-href class="button border--rounded button--success" data-ng-click="saveUserInfo()">Сохранить изменения</a>
+                            </div>
+                        </div>
+                    </li>
+                        <li data-ng-if="active=='Security'">Раздел в разработке</li>
+                        <li data-ng-if="active=='Payments'">Раздел в разработке</li>
+                        <li data-ng-if="active=='Orders'">
+                            <div class="col--1-1">
+                                <table class="table table--hover table--middle">
+                                    <thead>
+                                        <tr class="text--center">
+                                            <th class="text--left">День заказа</th>
+                                            <th>Всего</th>
+                                            <th>Цена</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr data-ng-repeat="items im $scope">
+                                            <td class="text--left">{{items.orderDate}}</td>
+                                            <td>{{items.total}}</td>
+                                            <td>{{items.shippingCost}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </li>
+                        <li data-ng-if="active=='Cards'">
+
+                                <div class="wallet">
+                                    <div class="wallet__sidebar">
+                                        <p class="margin--bottom">
+                                            <span class="wallet__title">Карточки</span>
+                                            <a data-msk-href class="wallet__add">+</a>
+                                        </p>
+
+                                        <div class="wallet__account"></div>
+
+                                        <div class="wallet__container">
+                                            <div class="plastic-card">
+                                				<div class="plastic-card__type">
+                                				    <img src="/Content/images/logo/logo-black-yellow.svg" width="90" alt="">
+                                				</div>
+                                				<p class="plastic-card__number">**** **** **** 6337</p>
+                                				<p class="plastic-card__expiration">Valid Thru: 01/19</p>
+                                			</div>
+
+                                            <div class="plastic-card">
+                                				<div class="plastic-card__type">
+                                				    <img src="/Content/images/plastic-card/smart-studio.png" width="90" alt="">
+                                				</div>
+                                				<p class="plastic-card__number">**** **** **** 6337</p>
+                                				<p class="plastic-card__expiration">Valid Thru: 01/19</p>
+                                			</div>
+
+                                            <div class="plastic-card" data-ng-class="{'active': isPlasticCardActive}" data-ng-click="isPlasticCardActive = !isPlasticCardActive">
+                                				<div class="plastic-card__type">
+                                				    <img src="/Content/images/logo/logo-black-yellow.svg" width="90" alt="">
+                                				</div>
+                                				<p class="plastic-card__number">**** **** **** 6337</p>
+                                				<p class="plastic-card__expiration">Valid Thru: 01/19</p>
+                                			</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="wallet__content">
+                                        123
+                                    </div>
+
+                                    <div class="clear--fix"></div>
+                                </div>
+
+                                <!-- <div class="col--3-4">
+                                    <div class="grid">
+                                        <div class="col--2-3">
+                                            <label class="label">Номер карты
+                                                <i class="icon-help2" data-uk-tooltip title="Введите номер карты в формате 000 0000"></i>
+                                            </label>
+                                            <input class="input col--1-1" data-ng-model="card.cardNumber" type="text">
+                                            <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                                        </div>
+                                        <div class="col--1-3">
+                                            <label class="label">Пин</label>
+                                            <input class="input col--1-1" data-ng-model="card.pin" type="text">
+                                            <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            <!-- </div> -->
+
+                            <div class="grid">
+                                <div class="col--1-1 margin--top text--center">
+                                    <a class="reset" data-msk-href>отмена</a>
+                                    <a data-msk-href class="button button--success border--rounded">Сохранить</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-ng-if="active=='HistoryRent'">
+                            <div class="col--1-1">
+
+                                <table class="table table--hover table--middle">
+                                    <thead>
+                                        <tr class="text--center">
+                                            <th style="width: 1px;">...</th>
+                                            <th class="text--left">Администратор</th>
+                                            <th class="text--center">Время</th>
+                                            <th>Цена</th>
+                                            <th>Описание</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="rents">
+                                        <tr data-ng-repeat="items in events">
+                                            <td>
+                                                <i class="text--h4 icon-event_available text--green" uib-tooltip="Создано" data-ng-if="items.eventState == 'Created'"></i>
+                                                <i class="text--h4 icon-event_busy text--red" uib-tooltip="Удалено" data-ng-if="items.eventState == 'Deleted'"></i>
+                                                <i class="text--h4 icon-date_range text--orange" uib-tooltip="Пропущено" data-ng-if="items.eventState == 'Missed'"></i>
+                                                <i class="text--h4 icon-more_horiz text--muted" uib-tooltip="Не установлено" data-ng-if="items.eventState == 'NotSet'"></i>
+
+                                                <i class="text--h4 icon-Wallet text--green" uib-tooltip="Оплата наличными" data-ng-if="items.eventState == 'PayByCash'"></i>
+                                                <i class="text--h4 icon-credit-card text--green" uib-tooltip="Оплата безнальными" data-ng-if="items.eventState == 'PayByCard'"></i>
+                                                <i class="text--h4 icon-redo text--blue" uib-tooltip="Создано" data-ng-if="items.eventState == 'PrePayed'"></i>
+
+
+                                            </td>
+                                            <td class="text--left">
+                                                <div class="activity__status__event">
+                                                    <div class="activity__status__avatar">
+                                                        <img src="{{items.createBy.userPhoto}}" alt="{{items.createBy.firstName}} {{items.createBy.lastName}}" data-ng-if="items.createBy != null">
+
+                                                        <div class="activity__status__avatar activity__status__avatar--empty" data-ng-if="items.createBy == null"></div>
+                                                    </div>
+                                                    <p data-ng-if="items.createBy != null">
+                                                        <span class="activity__status__name">
+                                                            {{items.createBy.firstName}}&nbsp;{{items.createBy.lastName}}
+                                                        </span><br>
+                                                        <a data-msk-href class="text--small text--muted">{{items.createBy.userPhone}}</a>
+                                                    </p>
+
+                                                    <p data-ng-if="items.createBy == null">
+                                                        Нету информации
+                                                    </p>
+                                                </div>
+                                            </td>
+                                            <td class="text--center">
+                                                <p class="text--muted">{{items.start | date:"dd.MM.yyyy"}}</p>
+                                                <i class="icon-clock text--small text--muted"></i>
+                                                c
+                                                {{items.start | date:"HH:mm"}}
+                                                до
+                                                {{items.end | date:"HH:mm"}}
+                                            </td>
+                                            <td>{{items.price | number}}
+                                                <small class="text--small text--muted">руб.</small>
+                                            </td>
+                                            <td>
+                                                <p class="margin--bottom-mini">{{items.description}}</p>
+                                                <i class="icon-tag text--muted"></i>&nbsp;<span>-теги-</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </li>
+                        <li data-ng-if="active=='Penalties'">
+                            <div class="col--1-1">
+
+                                <table class="table table--hover table--middle">
+                                    <thead>
+                                        <tr class="text--center">
+                                            <th class="text--left">№ правил</th>
+                                            <th>Цена</th>
+                                            <th>Описание</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr data-ng-repeat="items in penalties">
+                                            <td class="text--left">{{items.paragraph}}</td>
+                                            <td>{{items.price | number}}&nbsp;<span class="text--small text--muted">руб.</span></td>
+                                            <td>{{items.description}}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </li>
+                        <li data-ng-if="active=='Passport'">
+                            <h4 class="title-dotted">
+                                Паспортные данные
+                            </h4>
+                            <div class="grid">
+                                <div class="col--1-4">
+                                    <label class="label">Дата рождения</label>
+                                    <input class="input col--1-1" data-ng-model="card.dateOfBirth" name="name" type="text" data-uk-datepicker="{format:'DD.MM.YYYY'}">
+                                    <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                                </div>
+                                <div class="col--1-4">
+                                    <label class="label">Номер паспорта</label>
+                                    <input class="input col--1-1" data-ng-model="card.pasportNumber" name="LastName" type="text">
+                                    <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                                </div>
+                                <div class="col--2-4">
+                                    <label class="label">Идентификационный номер</label>
+                                    <input class="input col--1-1" data-ng-model="card.personalNumber" type="text">
+                                    <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                            <div class="grid">
+                                <div class="col--1-4">
+                                    <label class="label">Дата выдачи</label>
+                                    <input class="input col--1-1" data-ng-model="card.dateOfIssue" type="text" data-uk-datepicker="{format:'DD.MM.YYYY'}">
+                                    <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                                </div>
+                                <div class="col--1-4">
+                                    <label class="label">Дата окончания</label>
+                                    <input class="input col--1-1" data-ng-model="card.expiredDate" type="text" placeholder="ММ/ГГГГ">
+                                    <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                                </div>
+                                <div class="col--2-4">
+                                    <label class="label">Кем выдан</label>
+                                    <input class="input col--1-1" data-ng-model="card.departmentOfIssue" type="text">
+                                    <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+
+                            <h4 class="title-dotted">
+                                Адрес
+                            </h4>
+                            <div class="grid">
+                                <div class="col--1-4">
+                                    <label class="label">Страна</label>
+                                    <input class="input col--1-1" data-ng-model="card.country" type="text" placeholder="Беларусь">
+                                    <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                                </div>
+                                <div class="col--1-4">
+                                    <label class="label">Город</label>
+                                    <input class="input col--1-1" data-ng-model="card.city" type="text" placeholder="Минск">
+                                    <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                                </div>
+                                <div class="col--2-4">
+                                    <label class="label">Улица</label>
+                                    <input class="input col--1-1" data-ng-model="card.address" type="text" placeholder="Улица Дом Кв">
+                                    <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- <div class="grid">
+                <ul class="col--1-1">
+                    <li data-ng-if="active=='userInfo'">
+                        <div data-ng-if="userInfoState=='view'" class="grid">
+                            <div class="col--1-3 text--center">
+                                <img class="border--rounded" alt="Аватарка пользователя" src="/Content/images/no-avatar.png" data-ng-src="{{croppedDataUrl||userInformation.userPhoto}}" height="200" width="200">
+                                <p class="margin--top-small text--muted">
+                                    Аватар&nbsp;{{userInformation.firstName}}&nbsp;{{userInformation.lastName}}
+                                </p>
+                            </div>
+                            <div class="col--2-3 text--center" data-ng-model="picFile" accept="image/*">
+                                <a class="button--upload" data-msk-href ngf-select>Загрузить</a>
+                                <p class="margin--small text--muted">
+                                    Рекомендуемый размер изображения: 400×400
+                                </p>
+                            </div>
+
+                            <div data-ngf-drop data-ng-model="picFile" data-ngf-pattern="image/*" class="cropArea upload__area col--1-1">
+                                <img-crop image="picFile | ngfDataUrl" result-image="croppedDataUrl" data-ng-init="croppedDataUrl=''"></img-crop>
+                            </div>
+
+                            <div class="col--6-10">
+                                {{userInformation.firstName}}
+                                {{userInformation.lastName}}
+                            </div>
+                            <button class="button--upload" data-ng-click="upload(croppedDataUrl)">
+                                Upload
+                            </button>
+                            <a data-msk-href data-ng-click="edit()" class="button--primary">Редактировать</a>
+                        </div>
+
+                        <div data-ng-if="userInfoState=='edit'" class="grid">
+                            <div class="col--6-10">
+                                <div class="flex flex--center flex--middle">
+                                    <div class="col--1-2 text--center">
+                                        <img class="border--rounded" alt="Аватарка пользователя" src="/Content/images/no-avatar.png" data-ng-src="{{croppedDataUrl||userInformation.userPhoto}}" height="200" width="200">
+                                        <p class="margin--top-small">
+                                            <small class="text--muted">Аватар</small>
+                                        </p>
+                                    </div>
+                                    <div class="col--1-2 text--center" data-ngf-select data-ng-model="picFile" accept="image/*">
+                                        <a class="button--upload" data-msk-href>Загрузить</a>
+                                        <p class="margin text--muted">
+                                            Рекомендуемый размер изображения: 200×200
+                                        </p>
+                                    </div>
+
+                                    <div data-ngf-drop data-ng-model="picFile" data-ngf-pattern="image/*" class="cropArea upload__area">
+                                        <img-crop image="picFile  | ngfDataUrl" result-image="croppedDataUrl" data-ng-init="croppedDataUrl=''"></img-crop>
+                                    </div>
+                                </div>
+                                <button class="button--success" data-ng-click="upload(croppedDataUrl)">
+                                    Upload
+                                </button>
+                            </div>
+                            <div class="col--1-1">
+                                <label class="label">Имя</label>
+                                <input class="input col--1-1" data-ng-model="userInformation.firstName"/>
+                            </div>
+                            <div class="col--1-1">
+                                <label class="label">Фамилия</label>
+                                <input class="input col--1-1" data-ng-model="userInformation.lastName"/>
+                            </div>
+                            <div class="col--1-1">
+                                <label class="label">Ссылка Вконтакте</label>
+                                <input class="input col--1-1" data-ng-model="userInformation.VkLink"/>
+                            </div>
+
+                            <div data-ng-repeat>
+
+                                <div class="col--1-1">
+                                    <label class="label">PhoneNumber</label>
+                                    <input class="input col--1-1"/>
+                                </div>
+                            </div>
+                            <div class="col--1-1">
+                                <div class="col--1-1 text--right">
+                                    <a class="reset" data-msk-href data-ng-click="cancelUserInfo()">отмена</a>
+                                    <button class="button button--primary" data-ng-click="saveUserInfo()">Сохранить</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div> -->
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿<!-- Фамилия, имя, короткая ссылка и описание -->
+<div class="col--1-1">
+    <div class="uk-section">
+        <span class="uk-section__counter">2</span>
+        <span class="uk-section__title">Информация</span>
+    </div>
+
+    <div class="grid">
+        <div class="col--1-2">
+            <div class="grid">
+                <div class="col--1-2">
+                    <!-- <label class="label">Имя</label> -->
+                    @Html.LabelFor(model => model.FirstName, "Имя", new { @class = "label" })
+                    @Html.TextBoxFor(model => model.FirstName, new { @class = "input col--large-1-1 col--small-1-1" })
+                    @Html.ValidationMessageFor(model => model.FirstName)
+                </div>
+                <div class="col--1-2">
+                    <!-- <label class="label">Фамилия</label> -->
+                    @Html.LabelFor(model => model.LastName, "Фамилия", new { @class = "label" })
+                    @Html.TextBoxFor(model => model.LastName, new { @class = "input col--large-1-1 col--small-1-1" })
+                    @Html.ValidationMessageFor(model => model.LastName)
+                </div>
+                <div class="col--1-1">
+                    <!-- <label class="label">Короткая ссылка <i class="icon-help2" data-uk-tooltip title="Это ссылка позволит мгновенно перейти к вашей странице"></i></label> -->
+                    @Html.LabelFor(model => model.Shortcut, "Короткая ссылка", new { @class = "label" })
+                    <div class="input__group">
+                        <span class="input__group-addon">www.photomsk.by/</span>
+                        @Html.TextBoxFor(model => model.Shortcut, new { @class = "form-control input col--large-1-1 col--small-1-1" })
+                        @Html.ValidationMessageFor(model => model.Shortcut)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col--1-2">
+            <!-- <label class="label">Коротко о себе <i class="icon-help2" data-uk-tooltip title="Опишите кратко ваши преимущества"></i></label> -->
+            @Html.LabelFor(model => model.Description, "Коротко о себе", new { @class = "label" })
+            @Html.TextAreaFor(model => model.Description, new { @class = "input col--large-1-1 col--small-1-1", rows = 7 })
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+    </div>
+</div>

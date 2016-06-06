@@ -1,0 +1,158 @@
+﻿<div class="uk-main-page-body">
+    <div class="container container--center  ">
+        <div class="grid">
+            <div class="col--2-3">
+                <div class="">
+                    <div class="panel uk-wall-box uk-show-hide">
+                        <div class="col--1-1 wall-post-title">
+                            <div class="grid">
+                                <div class="col--1-2">
+                                    <a href="#">Статья <small class="award">(со стены)</small></a>
+                                </div>
+                                <div class="col--1-2">
+                                    <ul class="uk-subnav float--right">
+                                        <li class="uk-show-hide-element"><a class="text--muted uk-link-reset" data-uk-tooltip title="Удалить запись?"><i class="icon-trash role-delete-wall-post"></i></a></li>
+                                        <li><a href="" class="uk-link-reset" data-uk-tooltip title="Это самая просматриваемая запись на стене автора"><i class="icon-flame wall-post-hot"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <article class="uk-comment">
+                            <div class="uk-comment-body">
+
+                                    <div data-ng-if="!title">
+                                        <h1><a class="uk-link-muted" href="#">{{title}}</a></h1>
+                                    </div>
+
+                                <p class=" ">{{description}}</p>
+                            </div>
+                        </article>
+                        <div class="uk-wall-box-gallery  ">
+                            @if (Model.Item.Videos.Count()> 0)
+                            {
+                                <div class="video-placeholder grid">
+
+                                        <iframe ng-repeat="video in Item.Videos" src="{{video.url}}" class="col--1-1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+                                </div>
+                            }
+
+                                <img ng-repeat="photo in Item.Photos" src="{{photo.url}}" />
+
+                        </div>
+                        <ul class="uk-subnav uk-subnav-line">
+                            <li>
+                                <a href="" class="uk-link-999 uk-link-reset">
+                                    <i class="icon-eye text--muted"></i> <span>{{item.views}}</span>
+                                </a>
+                            </li>
+                            <li><a href="" class="role-like green-color uk-link-reset uk-link-like"><i class="icon-thumbs-o-up"></i><b> {{item.likes}}</b></a></li>
+                            <li><a href="" class="role-dislike pink-color uk-link-reset uk-link-dislike"><b>{{item.dislikes}} </b><i class="uk-icon-thumbs-o-down"></i></a></li>
+                            <li>
+                                <div class="button-dropdown" data-uk-dropdown="">
+                                    <a href="" class="uk-link-reset uk-link-999">
+                                        <i class="icon-share2"></i>
+                                    </a>
+                                    <div class="uk-dropdown uk-dropdown-up uk-dropdown-center">
+                                        <ul class="uk-nav uk-nav-dropdown">
+                                            <li>
+                                                <div class="addthis_sharing_toolbox" data-url="http://photomsk.by/Wall/<%- id %>"></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+
+                                <li ng-repeat="iter in Item.participants" class="uk-align-right">
+                                    <a href="http://photomsk.by/{{iter.shortcut}}" data-uk-tooltip title="{{iter.name}}">
+                                        <img src="{{iter.photo}}" width="25" height="25" class="uk-border-circle" alt="" title="">
+                                    </a>
+                                </li>
+
+                        </ul>
+                    </div>
+                    <div class="uk-wall-box-comment">
+                        <ul class="uk-comment-list">
+
+                                if (item.IsAnswer)
+                                {
+                                    <li ng-repeat="comments in item.comments.comments">
+                                        <ul>
+                                            <li>
+                                                <article class="uk-comment" data-uid="{comments.userInformationID}}">
+                                                    <header class="uk-comment-header">
+                                                        <img class="uk-comment-avatar uk-border-rounded" src="{{item.authorImage}}" width="50" height="50" alt="">
+                                                        <h5 class="uk-comment-title">
+                                                            <a href="#" class="bold uk-link-muted">{{item.name}}</a>
+                                                        </h5>
+                                                        <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                                                            <li><a href="#" class="uk-link-muted uk-link-999">jQuery.timeago('@comments.creationTime')</a></li>
+                                                        </ul>
+                                                    </header>
+                                                    <div class="uk-comment-body">
+                                                        <p> , {{comments.text}}</p>
+                                                    </div>
+                                                </article>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li ng-repeat="comments in item.comments.comments">
+                                        <ul>
+                                            <li>
+                                                <article class="uk-comment" data-uid="{{comments.userInformationID}}">
+                                                    <header class="uk-comment-header">
+                                                        <img class="uk-comment-avatar uk-border-rounded" src="{{item.authorImage}}" width="50" height="50" alt="">
+                                                        <h5 class="uk-comment-title">
+                                                            <a href="#" class="bold uk-link-muted">{{item.name}}</a>
+                                                        </h5>
+                                                        <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                                                            <li><a href="#" class="uk-link-muted uk-link-999">jQuery.timeago('@comments.CreationTime')</a></li>
+                                                        </ul>
+                                                    </header>
+                                                    <div class="uk-comment-body">
+                                                        <p>{{comments.text}}</p>
+                                                    </div>
+                                                </article>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                }
+
+                        </ul>
+
+                            <div ng-if="{{user.identity.isAuthenticated}}" class="uk-panel-box-comment-editor">
+                                <ul class="ChatLog">
+                                    <li class="ChatLog-entry">
+                                        <img class="ChatLog-avatar" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" />
+                                        <div class="ChatLog-message">
+                                            <textarea class="textarea-comment role-comment-area" rows="1" placeholder="Добавить комментарий..."></textarea>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="uk-subnav text--right role-comment-buttons">
+                                    <li><button class="button-link text--muted role-comment-cancel">отменить</button></li>
+                                    <li><button class="button button-success button-small role-comment-send">отправить</button></li>
+                                </ul>
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col--1-3">
+                <div class="booking-image text--center  ">
+                    <img class="uk-border-circle" src="{{item.authorImage}}">
+                    <h1>
+                        <a href="http://photomsk.by/{{item.authorShortcut}}" class="uk-link-muted uk-link-dotted">{{item.name}}</a>
+                    </h1>
+                    <div class="uk-comment-meta">
+                        <!-- <div class="uk-badge uk-badge-success">PRO</div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

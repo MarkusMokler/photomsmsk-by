@@ -1,0 +1,51 @@
+﻿@model PhotoMSK.Data.Models.RouteEntity
+<div class="uk-container uk-container-center" id="phone-request">
+    <div class="uk-grid">
+        <div class="uk-width-2-4 uk-push-1-4">
+            <section class="uk-panel uk-panel-box uk-panel--white uk-margin-large-top">
+                <header class="uk-text-center">
+                    <img src="@Model.ImageUrl" class="uk-border-circle" width="60" height="60" alt=""/>
+                    <h2 class="uk-text-bold">Причина удаления</h2>
+                    <p class="uk-text-muted uk-margin-top-remove">Укажите привязанный номер телефона профиля для подтверждения удаления данных.</p>
+                    @*<small class="uk-text-muted uk-text-small">нам это очень важно.</small>*@
+                </header>
+                <div class="uk-form-row uk-margin uk-text-center">
+                    <div class="uk-form-controls">
+                        @Html.TextBox("id", "", new {@class = "uk-text-bold input-ms", id = "mobile-number", type = "tel", data_role_phone_number = ""})
+                    </div>
+                </div>
+                <div class="uk-text-center">
+                    <a href="@this.Request.UrlReferrer" class="uk-text-muted uk-margin-right">« вернуться на сайт</a>
+                    <button class="uk-button uk-button-success" data-role-send-phone-to-validate>Отправить СМС</button>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<!-- This is the modal window -->
+<div id="modal-phone-request" class="uk-modal uk-open" style="display: none">
+    <div class="uk-modal-dialog">
+        <button type="button" class="uk-modal-close uk-close" data-role-close-modal-phone-request></button>
+        <div class="uk-modal-header">
+            <h2>Введите код из СМС</h2>
+        </div>
+        <div class="uk-text-center">
+            <input type="number" class="input-ms uk-text-bold uk-text-center" data-role-confirm-code placeholder="****" />
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+            <button type="button" class="uk-button uk-modal-close" data-role-close-modal-phone-request>Отмена</button>
+            <a href="#" class="uk-button uk-button-primary" data-role-send-phone-confirm>Подтвердить</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var phoneCheckView = new App.Views.PhoneCheckView({
+            shortcut: '@Model.Shortcut',
+            id: '@Model.ID'
+        });
+        phoneCheckView.render();
+    })
+</script>

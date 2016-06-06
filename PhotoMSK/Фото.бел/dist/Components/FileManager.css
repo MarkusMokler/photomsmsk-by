@@ -1,0 +1,52 @@
+/* ========================================================================
+   Component: File-manager
+ ========================================================================== */
+.file-manager__top-bar {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+.file-manager__bottom-bar {
+  padding: 15px;
+  border-top: 1px solid #ddd;
+}
+.file-manager__tree ul li a {
+  position: relative;
+  display: inline-block;
+  padding-left: 15px;
+  margin-bottom: 5px;
+  font-size: 12px;
+  line-height: 14px;
+  color: #999;
+  transition: all 200ms;
+}
+.file-manager__tree ul li a:hover {
+  color: #000;
+  transition: all 200ms;
+}
+.file-manager__tree ul li a:hover > span {
+  border-bottom: 1px solid #999;
+}
+.file-manager__tree ul li a > i {
+  font-size: 16px;
+  line-height: 16px;
+}
+.file-manager__tree ul li ul {
+  padding-left: 10px;
+}
+.file-manager__tree ul li.parent > a:after {
+  content: '\e91e';
+  font-family: 'icomoon';
+  position: absolute;
+  font-size: 8px;
+  left: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 200ms;
+}
+.file-manager__tree ul li.parent.open > a:after {
+  content: '\e914';
+  transition: all 200ms;
+}
+.file-manager__tree ul li.active > a > span {
+  color: #000;
+}

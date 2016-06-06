@@ -1,0 +1,241 @@
+﻿@model  PhotoMSK.ViewModels.CallHandlerViewModel
+@using PhotoMSK.Extensiolns
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="uk-container uk-container-center">
+    <div class="uk-grid">
+
+        <div class="uk-width-3-4">
+
+            <ul class="uk-tab uk-tab-events uk-text-center" data-uk-switcher="{connect:'#table-content'}">
+                @foreach (var item in Model.Photostudios)
+                {
+                    <li>
+                        <a href="#" class="uk-navbar-nav-subtitle">
+                            @item.Name
+                            <div>фотостудия</div>
+                        </a>
+                    </li>
+                }
+                @foreach (var item in Model.Photorents)
+                {
+                    <li>
+                        <a href="#" class="uk-navbar-nav-subtitle">
+                            @item.Name
+                            <div>прокат</div>
+                        </a>
+                    </li>
+                }
+
+                <li style="float: right;">
+                    <a href="" class="uk-navbar-nav-subtitle">
+                        СТАТИСТИКА
+                        <div>клиента</div>
+                    </a>
+                </li>
+            </ul>
+
+            <ul id="table-content" class="uk-switcher uk-margin-top">
+                @foreach (var item in Model.Photostudios)
+                {
+                    <li id="@item.Shortcut-calendar">
+
+                    </li>
+                }
+
+                @foreach (var rent in Model.Photorents)
+                {
+                    <li>
+                        <div class="uk-panel uk-panel-box uk-panel-module">
+                            <div class="uk-grid" data-uk-grid-margin>
+                                <ul class="uk-width-1-1 uk-subnav uk-subnav-line">
+                                    <li>
+                                        <div class="uk-button-group" data-uk-button-checkbox>
+                                            <button class="uk-button">Nikon</button>
+                                            <button class="uk-button">Canon</button>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="uk-button-group" data-uk-button-checkbox>
+                                            <button class="uk-button">35mm</button>
+                                            <button class="uk-button">50mm</button>
+                                            <button class="uk-button">85mm</button>
+                                            <button class="uk-button">70-200mm</button>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="uk-button-group" data-uk-button-checkbox>
+                                            <button class="uk-button">1</button>
+                                            <button class="uk-button">1.5</button>
+                                            <button class="uk-button">1.6</button>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <form class="uk-search" data-uk-search="">
+                                            <input class="uk-search-field uk-search-field-border uk-width-1-1" type="search" placeholder="Поиск техники..." autocomplete="off">
+                                            <div class="uk-dropdown uk-dropdown-search"></div>
+                                        </form>
+                                    </li>
+                                </ul>
+                                <div class="uk-width-1-1 uk-margin-remove">
+                                    <hr class="small-line " />
+                                </div>
+                            </div>
+
+                            <table class="uk-table uk-table-statistics uk-table-hover uk-table-condensed uk-table-middle">
+                                <thead>
+                                    <tr class="uk-text-center">
+                                        <th class="uk-text-left">Техника</th>
+                                        <th>Цена</th>
+                                        <th>Наличие</th>
+                                        <th>Скидка</th>
+                                        <th>Корзина</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="penalties">
+                                    @*@foreach (var item in rent.Technics.Elements)
+                                    {
+                                        <tr>
+                                            <td class="uk-text-left">
+                                                <div class="uk-vertical-align">
+                                                    <div class="uk-vertical-align-middle">
+                                                        <img src="@item.Image" width="30" height="30" class="uk-border-circle uk-margin-small-right">
+                                                        <a href="#" class="uk-link-muted uk-link-dotted">@item.Name</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td> <b>@String.Format("{0:### ### ### ###}", item.Price)</b> <small class="uk-text-muted">бел. руб.</small></td>
+                                            <td><small><a href="#" class="uk-icon-circle uk-text-danger"></a></small> !!!</td>
+                                            <td>!!!%</td>
+                                            <td><a class="green-color" href="#"><i class="uk-icon-plus-circle"></i></a></td>
+                                        </tr>
+                                    }*@
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                }
+                <li>
+                    <div class="uk-panel uk-panel-box uk-panel-module">
+                        <h4 class="uk-panel-title">Вся статистика покупок пользователя</h4>
+                        <table class="uk-table uk-table-statistics uk-table-hover uk-table-condensed uk-table-middle">
+                            <thead>
+                                <tr class="uk-text-center">
+                                    <th class="uk-text-left">Тип</th>
+                                    <th>Заголовок</th>
+                                    <th>Дата</th>
+                                    <th>Сумма</th>
+                                </tr>
+                            </thead>
+                            <tbody id="events"></tbody>
+                        </table>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="userinfo" class="uk-width-1-4 uk-margin-large-top">
+            @*<div class="uk-text-center">
+                <img src="@Url.Content("~/Content/images/qr-avatar.png")" class="uk-border-circle">
+                <p class="uk-text-muted">
+                    <span class="uk-h4">Отсканируйте QR код на обратной стороне карточки или введите номер карточки в поле поиска</span>
+                </p>
+                </div>*@
+
+            <div class="uk-wall-box-body">
+                <div class="uk-panel uk-panel-header uk-panel-box">
+                    @if (Model.UserInformation != null)
+                    {
+                        <div class="uk-text-center">
+                            <img class="uk-border-circle" src="@Model.UserInformation.UserPhoto" />
+                            <h1 class="uk-margin-bottom-remove">
+                                <strong>@Model.UserInformation.LastName</strong> @Model.UserInformation.FirstName
+                            </h1>
+                            <p class="uk-text-muted">
+                                @*<span>
+                                        <small>карточка до:</small> 01.01.2014
+                                    </span>*@
+                            </p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div id="client-placeholder">
+                            <div class="uk-width-large-1-1 uk-width-small-1-1">
+                                <label class="label-ms">Фамилия</label>
+                                <input class="input-msk uk-width-large-1-1 uk-width-small-1-1 role-lastName" data-val="true" data-val-length="The field UserName must be a string with a minimum length of 3 and a maximum length of 160." data-val-length-max="160" data-val-length-min="3" data-val-regex="Логин введен не верно" data-val-regex-pattern="^[A-Za-z0-9_-]{3,15}$" data-val-required="The UserName field is required." id="lastName" name="lastName" type="text" value="">
+                            </div>
+                            <div class="uk-width-large-1-1 uk-width-small-1-1">
+                                <label class="label-ms">Имя</label>
+                                <input class="input-msk uk-width-large-1-1 uk-width-small-1-1 role-firstName" data-val="true" data-val-length="The field UserName must be a string with a minimum length of 3 and a maximum length of 160." data-val-length-max="160" data-val-length-min="3" data-val-regex="Логин введен не верно" data-val-regex-pattern="^[A-Za-z0-9_-]{3,15}$" data-val-required="The UserName field is required." id="firstName" name="firstName" type="text" value="">
+                            </div>
+                        </div>
+                    }
+
+                    <div class="pad-top-10">
+                        <button class="uk-button uk-button-mini uk-button-primary uk-align-right role-aditional-show">+ Дополнительно</button>
+                        <div id="aditional-block" class="role-aditional-form" style="display: none">
+                            <div class="uk-grid pad-bottom-20">
+                                <div class="uk-width-1-1">
+                                    <label class="label-ms">
+                                        Описание
+                                    </label>
+                                    <input class="input-ms role-aditional-description" id="role-description" name="role-description" type="text" placeholder="Описание">
+                                </div>
+                                <div class="uk-width-1-1">
+                                    <label class="label-ms">
+                                        Сумма аренды
+                                    </label>
+                                    <div class="input-group">
+                                        <input class="input-ms role-aditional-price" id="role-price" name="role-price" type="text" placeholder="Сумма">
+                                        <span class="input-group-btn">
+                                            <span>руб.</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-1">
+                                    <label class="label-ms">
+                                        Тэги
+                                    </label>
+                                    <div class="input-group">
+                                        <input class="input-ms role-aditional-tags" id="role-price" name="role-price" type="text" placeholder="Сумма">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul id="booking" class="uk-list uk-list-line near-places"></ul>
+
+
+
+                    <hr class="small-line">
+                    <div class="">
+                        <span class="uk-h3 bold">Итого:</span>
+                        <span class="uk-h3 uk-float-right"><span class="role-booking-total-price">0</span> <small class="uk-text-muted">бел. руб.</small></span>
+                    </div>
+                    <div class="uk-margin">
+                        <input type="submit" class="bold uk-button uk-button-reviews uk-button-reviews-warning uk-button-reviews-warning-border booking-button border-500 uk-width-1-1" value="Забронировать">
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @Styles.Render("~/Content/tag-it")
+    @Scripts.Render("~/bundles/tag-it")
+    <script>
+        $(function() {
+
+            var booking = new App.Views.CallHandler({
+                model: @Model.ToJson(),
+                });
+            booking.render();
+        })
+    </script>
+}

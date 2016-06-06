@@ -1,0 +1,44 @@
+﻿@using PhotoMSK.Extensiolns
+@model PhotoMSK.Areas.Default.ViewData.Catalog.PageViewData
+@section TopA
+{
+    @Html.Partial("~/Themes/Photoshop/ftt.by/Views/Top-A/Maps.cshtml",Model)
+}
+
+@section MainTopMenu
+{
+    @Html.Partial("~/Themes/Photoshop/ftt.by/Views/MainTopMenu/MainTopMenu.cshtml", Model)
+}
+
+@section ToolbarR
+{
+    @Html.Partial("~/Themes/Photoshop/ftt.by/Views/Toolbar-R/Phones.cshtml", Model)
+}
+
+@section ToolbarL
+{
+    @Html.Partial("~/Themes/Photoshop/ftt.by/Views/Toolbar-L/Logo.cshtml", Model)
+}
+
+@section Main
+{
+    @Html.Partial("~/Themes/Photoshop/ftt.by/Views/Main/Page.cshtml")
+}
+
+@section Footer
+{
+    @Html.Partial("~/Themes/Photoshop/ftt.by/Views/Footer/Footer.cshtml", Model)
+}
+
+
+@section scripts
+{
+<script>
+    app.routeid = @Model.RouteID;
+    $(function() {
+        var val = new window.Photoshop({ model: @Model.Route.ToJson() });
+    });
+    
+</script>
+
+}

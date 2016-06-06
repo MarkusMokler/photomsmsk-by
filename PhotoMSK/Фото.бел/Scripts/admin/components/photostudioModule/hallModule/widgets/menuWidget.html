@@ -1,0 +1,30 @@
+﻿<div class="container container--center">
+    <div data-ng-if="!widget.isEdit">
+        <h3 data-ng-if="widget.isEdit">{{widget.menu.name}}</h3>
+        <ul>
+            <li ng-repeat="item in widget.menu.nodes" ng-include="'Scripts/admin/components/photostudioModule/hallModule/widgets/node_renderer.html'"></li>
+        </ul>
+        <h3 data-ng-if="!widget.menu.publish">Что бы увидеть меню, опубликуйте его</h3>
+    </div>
+    <div data-ng-if="widget.isEdit">
+        <h1>Создайте ваше меню</h1>
+    </div>
+    <div data-ng-if="widget.isEdit">
+
+        <div angucomplete-alt
+             remote-url={{menuByNameUrl}}
+             placeholder=""
+             pause="500"
+             selected-object="selected"
+             title-field="name"
+             description-field=""
+             model="results"
+             remote-url-request-formatter="remoteUrlRequestEn"
+             searching="name"
+             input-class="input col--large-1-1 col--small-1-1 ui-autocomplete-input"
+             no-results="noResults"></div>
+
+        <a data-msk-href data-ng-click="saveMenu(selected)" class="button">Сохранить настройки</a>
+    </div>
+
+</div>

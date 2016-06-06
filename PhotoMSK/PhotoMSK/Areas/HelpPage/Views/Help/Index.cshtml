@@ -1,0 +1,58 @@
+@using System.Web.Http
+@using System.Web.Http.Controllers
+@using System.Web.Http.Description
+@using System.Collections.ObjectModel
+@using PhotoMSK.Areas.HelpPage.Models
+@model Collection<ApiDescription>
+
+@{
+    ViewBag.Title = "ASP.NET Web API Help Page";
+
+    // Group APIs by controller
+    ILookup<HttpControllerDescriptor, ApiDescription> apiGroups = Model.ToLookup(api => api.ActionDescriptor.ControllerDescriptor);
+}
+
+<link type="text/css" href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet" />
+
+<div id="body" class="uk-container uk-container-center">
+    <header class="help-page">
+        <div class="content-wrapper">
+            <div class="float-left">
+                <h1>@ViewBag.Title</h1>
+            </div>
+        </div>
+    </header>
+    <section class="featured">
+        <div class="content-wrapper">
+            <h2>Introduction</h2>
+            <p>
+                Provide a general description of your APIs here.
+            </p>
+        </div>
+    </section>
+    <div>
+        <div class="uk-grid">
+            <div class="uk-width-medium-1-3">
+                <!-- This is the vertical tabbed navigation containing the toggling elements -->
+                <ul class="uk-tab uk-tab-left" data-uk-tab="{connect:'#my-id'}">
+                    @foreach (var group in apiGroups)
+                    {
+                        <li>
+                            <a>@group.Key.ControllerName</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="uk-width-medium-2-3">
+                <ul id="my-id" class="uk-switcher">
+                    @foreach (var group in apiGroups)
+                    {
+                        <li>
+                            @Html.DisplayFor(m => group, "ApiGroup")
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

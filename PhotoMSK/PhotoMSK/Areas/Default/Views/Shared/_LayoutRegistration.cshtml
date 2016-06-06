@@ -1,0 +1,101 @@
+﻿@using PhotoMSK.Areas.Default.Models
+@using PhotoMSK.Extensiolns
+@using PhotoMSK.Models
+@using StackExchange.Profiling
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title - все для фото</title>
+    <meta name="Description" content="@ViewBag.Description">
+    <meta name="og:image" property="og:image" content="@ViewBag.Image" />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Styles.Render("~/Content/fullcalendar")
+    @Styles.Render("~/Content/uikit/style")
+    @Styles.Render("~/Content/jquery-ui")
+    @Styles.Render("~/Content/owl.carousel.css")
+    @Styles.Render("~/Content/owl.theme.css")
+    @Styles.Render("~/Content/icomoon.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/site-style")
+    @Styles.Render("~/Content/icomoon")
+    @Styles.Render("~/Content/colorbox")
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,900|Roboto+Condensed:300,400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+    @RenderBody()
+
+
+    @Html.Partial("_Templates")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/uikit/script")
+    @Scripts.Render("~/Scripts/resize")
+    @Scripts.Render("~/Scripts/iconAnimate")
+    @Scripts.Render("~/Scripts/label-show")
+    @Scripts.Render("~/Scripts/ion.rangeSlider")
+    @Scripts.Render("~/Scripts/owl.carousel.min.js")
+    @Scripts.Render("~/bundles/fullcalendar")
+    @Scripts.Render("~/bundles/photoset-grid")
+    <script src="@Url.Content("~/Scripts/jquery.signalR-2.2.0.min.js")"></script>
+    <script src="@Url.Content("~/signalr/hubs")"></script>
+    @Scripts.Render("~/Backbone")
+    @Scripts.Render("~/App")
+    @Scripts.Render("~/Scripts/intlTelInput")
+    @MiniProfiler.RenderIncludes()
+
+
+
+    @RenderSection("scripts", required: false)
+    <!-- Yandex.Metrika informer -->
+    <!-- /Yandex.Metrika informer -->
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function () {
+                try {
+                    w.yaCounter25774385 = new Ya.Metrika({
+                        id: 25774385,
+                        webvisor: true,
+                        clickmap: true,
+                        trackLinks: true,
+                        accurateTrackBounce: true
+                    });
+                } catch (e) { }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <script>
+        var input = $("#mobile-number");
+
+        input.intlTelInput({
+            defaultCountry: "auto",
+            preferredCountries: ["by", "ru", "ua"],
+            utilsScript: "@Url.Content("~/Scripts/utils.js")"
+        });
+
+        input.on("invalidkey", function () {
+            input.addClass("flash");
+            setTimeout(function () {
+                input.removeClass("flash");
+            }, 100);
+        });
+    </script>
+    <noscript><div><img src="//mc.yandex.ru/watch/25774385" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+</body>
+</html>

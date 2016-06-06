@@ -1,0 +1,45 @@
+﻿<!-- Social Network -->
+
+<div class="col--1-1">
+    <div class="uk-section">
+        <span class="uk-section__counter">5</span>
+        <span class="uk-section__title">Социальные сети</span>
+    </div>
+</div>
+
+<div class="col--6-10 uk-push-2-10">
+    <div class="grid">
+        <div class="col--1-1">
+            <label class="label">ВКонтакте <i class="uk-icon-question"></i></label>
+            <div class="input__group">
+                <div class="input__group-addon">www.vk.com/</div>
+                @Html.TextBoxFor(model => model.Vk, new { @class = "form-control input col--1-1", data_role_input_optional = "", Placeholde = "id*******" })
+                @Html.ValidationMessageFor(model => model.Vk)
+            </div>
+        </div>
+        <div class="col--1-1">
+            <label class="label">Facebook <i class="uk-icon-question"></i></label>
+            <div class="input__group">
+                <div class="input__group-addon">www.facebook.com/</div>
+                @Html.TextBoxFor(model => model.Facebook, new { @class = "form-control input col--1-1", data_role_input_optional = "", Placeholde = "#" })
+                @Html.ValidationMessageFor(model => model.Facebook)
+            </div>
+        </div>
+        <div class="col--1-1">
+            <label class="label">Instagram <i class="uk-icon-question"></i></label>
+            <div class="input__group">
+                <div class="input__group-addon">www.instagram.com/</div>
+                @Html.TextBoxFor(model => model.Instagram, new { @class = "form-control input col--1-1", data_role_input_optional = "", Placeholde = "#" })
+                @Html.ValidationMessageFor(model => model.Instagram)
+            </div>
+        </div>
+        <div class="col--1-1">
+            <label class="label">Twitter <i class="uk-icon-question"></i></label>
+            <div class="input__group">
+                <div class="input__group-addon">www.twitter.com/</div>
+                @Html.TextBoxFor(model => model.Twitter, new { @class = "form-control input col--1-1", data_role_input_optional = "", Placeholde = "#" })
+                @Html.ValidationMessageFor(model => model.Twitter)
+            </div>
+        </div>
+    </div>
+</div>

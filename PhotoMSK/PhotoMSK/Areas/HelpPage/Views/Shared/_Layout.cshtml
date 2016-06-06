@@ -1,0 +1,17 @@
+﻿@using System.Web.Optimization
+@using PhotoMSK
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render(UiKit217.StyleBundle)
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+    @RenderBody()
+</body>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render(UiKit217.ScriptBundle)
+</html>

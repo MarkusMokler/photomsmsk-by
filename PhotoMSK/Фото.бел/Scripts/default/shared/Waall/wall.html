@@ -1,0 +1,14 @@
+﻿<div>
+    <h1>Стена</h1>
+    <hr />
+
+    <div ng-include="wallEdit.html">
+
+    </div>
+    <hr />
+    <div class="wall-post-latest">
+        <ul id="wall" class="uk-comment-list">
+            <li ng-repeat="item in this" ng-include="wallPost.html">
+        </ul>
+    </div>
+</div>

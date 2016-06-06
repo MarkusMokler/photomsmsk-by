@@ -1,0 +1,181 @@
+<div>
+    <div class="panel__booking__hall">
+        <div class="calendar__hall__button" data-ng-click="changeCalendar(null)" data-ng-show="!rentBooking">
+            <a data-msk-href>
+                <span class="calendar__hall__button__overlay--icon text--small text--muted icon-layers"></span>
+            </a>
+            <p class="text--small">Все залы</p>
+        </div>
+
+        <a class="button border--radius" data-ng-show="rentBooking" data-ng-bind="selectedItem.name" data-ng-cloak></a>
+
+        <div data-ng-repeat="hall in fetchedCalendars" class="calendar__hall__button" id="{{hall.calendarID}}" data-ng-click="changeCalendar(hall.calendarID)">
+            <a data-msk-href style="background-image: url({{hall.image}}); border: 3px solid {{hall.color}}; ">
+                <span class="calendar__hall__button__overlay" style="background: {{hall.color}}" data-ng-show="isSelectedButton(hall.calendarID)"></span>
+                <span class="calendar__hall__button__overlay--icon icon-checkmark" data-ng-show="isSelectedButton(hall.calendarID)"></span>
+            </a>
+            <p class="text--small" data-ng-class="{'text--bold' : isSelectedButton(hall.calendarID)}">{{hall.title}}</p>
+        </div>
+    </div>
+    <div id="calendar" data-ng-if="loadCalendarDone" ui-calendar="uiConfig.calendar" calendar="{{calendar}}" class="span8 calendar margin--top-small" data-ng-model="eventSources"></div>
+</div>
+
+
+<div class="popover popover--warning popover--booking" style="position: fixed; z-index: 100; top:{{eventPopupPositionY}}px; left:{{eventPopupPositionX}}px;" data-ng-if="eventClicked">
+    <header class="popover__header">
+        <span class="text--h4">
+            {{calendarName}}
+        </span>
+        <a data-msk-href class="icon-cross-circle float--right popover__close" data-ng-click="popupShowHide()"></a>
+    </header>
+    <div class="popover__content">
+        <div class="grid grid--small">
+            <div class="col--4-10">
+                <div data-ng-if="userInfo.userUserPhoto!=null">
+                    <a href="/admin/userinformation/{{userInfo.userID}}">
+                        <img class="border--rounded" src="{{userInfo.userUserPhoto}}">
+                    </a>
+                </div>
+                <div data-ng-if="userInfo.userUserPhoto==null" class="popover__avatar popover__avatar--empty icon-user"></div>
+            </div>
+            <div class="col--6-10">
+                <a href="/admin/userinformation/{{userInfo.userID}}">
+                    <p class="margin--top-small" data-ng-cloak>
+                        {{userInfo.userFirstName}}
+                        {{userInfo.userLastName}}
+                    </p>
+                </a>
+                <div class="text--small text--muted margin--top-mini">
+                    <i class="icon-phone"></i>&nbsp;<a class="link--reset" href="tel:{{userInfo.phone}}" data-ng-bind="userInfo.phone" data-ng-cloak></a>
+                </div>
+            </div>
+        </div>
+        <p class="text--h5">
+            <i class="icon-clock"></i>&nbsp;{{timeAgo}}
+        </p>
+        <p data-ng-if="eventTags != null" data-ng-cloak>
+            <i class="icon-tag"></i>&nbsp;<span data-ng-repeat="tag in eventTags" class="badge badge--warning" data-ng-bind="tag"></span>
+        </p>
+        <p class="text--h5 text--bold" data-ng-cloak>
+            <i class="icon-briefcase"></i>&nbsp;{{eventPrice | number}}
+            <small class="text--small text--muted text--light">руб.</small>
+        </p>
+        <p data-ng-bind="userInfo.description" data-ng-cloak></p>
+        <a data-msk-href data-ng-click="showClaim = !showClaim" class="button button--danger border--radius button--mini">
+            <span data-ng-if="!showClaim">Добавить</span>
+            <span data-ng-if="showClaim">Скрыть</span>
+            претензию
+        </a>
+        <a data-msk-href data-ng-click="showAdmin = !showAdmin" class="button button--primary border--radius button--mini float--right">Cоздатель</a>
+    </div>
+
+    <section class="popover__penalty" data-ng-show="showClaim">
+        <span class="popover__penalty--blocked icon-lock"></span>
+        <div class="popover__penalty--border">
+            <div class="popover__penalty--content">
+                <div>
+                    <span class="label">Текст претензии</span>
+                    <input class="input col--1-1" data-val="true" data-ng-model="penalty.description" data-val-required="The User name field is required." id="UserName" name="UserName" placeholder="Текст претензии">
+                </div>
+                <div>
+                    <span class="label">Сумма претензии</span>
+                    <input class="input col--1-1" data-val="true" data-ng-model="penalty.price" data-val-required="The User name field is required." id="UserName" name="UserName" placeholder="Сумма штрафа">
+                </div>
+                <a class="button button--success border--radius" data-msk-href data-ng-click="penaltySet()">Добавить претензию</a>
+            </div>
+        </div>
+    </section>
+    <section class="popover__content" data-ng-show="showAdmin">
+        <hr class="margin--bottom-small" />
+        <div class="grid grid--small">
+            <div class="col--3-10" data-ng-if="userInfo.createBy!=null">
+                <div data-ng-if="userInfo.createBy.userPhoto!=null">
+                    <a data-msk-href>
+                        <img class="border--rounded" src="{{userInfo.createBy.userPhoto}}">
+                    </a>
+                </div>
+                <div data-ng-if="userInfo.createBy.userPhoto==null" class="popover__avatar popover__avatar--empty-small icon-user"></div>
+            </div>
+            <div class="col--7-10" data-ng-if="userInfo.createBy!=null">
+                <p class="text--h5 margin--top-mini">
+                    {{userInfo.createBy.firstName}}
+                    {{userInfo.createBy.lastName}}
+                </p>
+                <div class="text--small text--muted">
+                    <i class="icon-phone"></i>&nbsp;<a class="link--reset" href="tel:{{userInfo.createBy.userPhone}}" data-ng-bind="userInfo.createBy.userPhone" data-ng-cloak></a>
+                </div>
+            </div>
+            <div class="col--1-1" data-ng-if="userInfo.createBy==null">
+                Нет информации о создателе события :(
+            </div>
+        </div>
+    </section>
+    <footer class="popover__footer">
+        <ul class="list list--horizontal list--line">
+            <li>
+                <a class="button button--mini button--rounded button--delete icon-trash" data-msk-href data-ng-click="deleteEvent()"></a>
+            </li>
+            <li>
+                <a data-msk-href class="button button--mini button--rounded icon-build text--muted" data-ng-click="editBookingEvent = !editBookingEvent"></a>
+            </li>
+            <li>
+                <a class="text--muted" data-ng-click="popupShowHide()">отмена</a>
+            </li>
+        </ul>
+    </footer>
+</div>
+
+<div class="popover popover--warning" style="position: fixed; z-index: 100; top: {{workShopPopupY}}px; left: {{workShopPopupX}} px; " data-ng-show="showWorkShopPopup">
+    <div class="popover__content">
+        Инфа о воркшопе
+    </div>
+</div>
+
+<div edit-event-details ng-if="state.editBookingEvent" event="userInfo" state="state" />
+<div calendars-booking ng-if="currentSpan" calendars="calendars" span="currentSpan" />
+<div master-booking ng-if="currentSpan" shortcut="shortcut" span="currentSpan" state="modalsState" />
+
+
+
+<div class="modal" data-ng-class="{'open' : showPenaltyModal}">
+    <div class="modal__dialog">
+        <a data-msk-href class="modal__close icon-cross-circle" data-ng-click="showPenaltyModal=false"></a>
+        <section class="modal__header text--center">
+            <p class="text--h2 margin--bottom-small">
+                Бронь попадает под претензию студии
+                {{penaltyData.title}}
+            </p>
+            <div class="activity__status__event">
+
+                <div class="activity__status__avatar activity__status__avatar--empty" data-ng-if="selectedUser.userPhoto == null"></div>
+                <br />
+
+            </div>
+        </section>
+        <span class="popover__penalty--blocked icon-lock"></span>
+        <div class="popover__penalty--border">
+            <div class="popover__penalty--content">
+                <div>
+                    <span class="label">Текст претензии</span>
+                    <input class="input col--1-1" data-val="true" data-ng-model="penalty.Description" data-val-required="The User name field is required." name="UserName" placeholder="Текст претензии">
+                    <span class="label">Варианты</span>
+                    <select class="input col--1-1" data-val="true" data-ng-model="penalty.Description">
+                        <option selected="selected">Вы не пришли вовремя</option>
+                        <option>Отмена брони на большое количество дней</option>
+                        <option>Не ответчали на звонки</option>
+                    </select>
+                </div>
+                <div>
+                    <span class="label">Сумма претензии</span>
+                    <input class="input col--1-1" data-val="true" data-ng-model="penalty.Price" data-val-required="The User name field is required." name="UserName" placeholder="Сумма штрафа">
+                </div>
+            </div>
+        </div>
+        <section class="modal__footer text--center">
+            <button class="button button--footer button--success col--1-1" data-ng-click="deleteEventWithoutPenalty()">Отменить бронь без претензий</button>
+        </section>
+        <section class="modal__footer text--center">
+            <button class="button button--footer button--success col--1-1" data-ng-click="deleteEventWithPenalty()">Отменить бронь и отправить претензию</button>
+        </section>
+    </div>
+</div>

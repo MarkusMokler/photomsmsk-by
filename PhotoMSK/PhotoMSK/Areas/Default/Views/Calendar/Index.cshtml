@@ -1,0 +1,30 @@
+﻿@using PhotoMSK.Areas.Default.ViewData.Calendar
+@model IndexViewData
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Default/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Page.Elements)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id = item.CalendarID}) |
+                @Html.ActionLink("Details", "Details", new { id = item.CalendarID }) |
+                @Html.ActionLink("Delete", "Delete", new {id = item.CalendarID})
+            </td>
+        </tr>
+    }
+
+</table>

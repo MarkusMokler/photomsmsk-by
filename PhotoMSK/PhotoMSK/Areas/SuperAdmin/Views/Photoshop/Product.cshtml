@@ -1,0 +1,247 @@
+﻿@{
+    ViewBag.Title = "Перечень товаров";
+}
+
+<div class="uk-container uk-container-center uk-margin-large-top">
+    <div class="uk-grid">
+        <div class="uk-width-1-1">
+            <a class="uk-button uk-button-primary" href="#">Добавить элемент</a>
+            <a class="uk-button uk-button-danger" href="#">Удалить</a>
+
+            <div class="uk-button-dropdown" data-uk-dropdown="{ mode: 'click' }">
+                <button class="uk-button" type="button">Еще <i class="uk-icon-caret-down"></i></button>
+                <div class="uk-dropdown uk-dropdown-small">
+                    <ul class="uk-nav uk-nav-dropdown">
+                        <li><a href="#">Активировать</a></li>
+                        <li><a href="#">Блокировать</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-grid uk-grid-divider">
+        <div class="uk-width-medium-1-4">
+
+            <div class="uk-panel uk-panel-divider">
+                <ul class="uk-nestable" data-uk-nestable="{group:'my-group'}">
+                    <li class="uk-nestable-list-item uk-parent">
+                        <div class="uk-nestable-item">
+                            <div class="uk-nestable-handle"></div>
+                            <div data-nestable-action="toggle"></div>
+                            Фотоаппараты
+                        </div>
+                        <ul class="uk-nestable-list">
+                            <li class="uk-nestable-list-item">
+                                <div class="uk-nestable-item">
+                                    <div class="uk-nestable-handle"></div>
+                                    <div data-nestable-action="toggle"></div>
+                                    Зеркальные
+                                </div>
+                            </li>
+                            <li class="uk-nestable-list-item">
+                                <div class="uk-nestable-item">
+                                    <div class="uk-nestable-handle"></div>
+                                    <div data-nestable-action="toggle"></div>
+                                    Беззеркальные
+                                </div>
+                            </li>
+                            <li class="uk-nestable-list-item">
+                                <div class="uk-nestable-item">
+                                    <div class="uk-nestable-handle"></div>
+                                    <div data-nestable-action="toggle"></div>
+                                    Компактные камеры
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="uk-nestable-list-item">
+                        <div class="uk-nestable-item">
+                            <div class="uk-nestable-handle"></div>
+                            <div data-nestable-action="toggle"></div>
+                            Объективы
+                        </div>
+                    </li>
+                    <li class="uk-nestable-list-item">
+                        <div class="uk-nestable-item">
+                            <div class="uk-nestable-handle"></div>
+                            <div data-nestable-action="toggle"></div>
+                            Студийное оборудорвание
+                        </div>
+                    </li>
+                </ul>
+
+                <p class="uk-h3">
+                    Фотоаксессуары
+                </p>
+                <ul class="uk-nestable" data-uk-nestable="{group:'my-group'}">
+                    <li class="uk-nestable-list-item">
+                        <div class="uk-nestable-item">
+                            <div class="uk-nestable-handle"></div>
+                            <div data-nestable-action="toggle"></div>
+                            Фотосумки
+                        </div>
+                    </li>
+                    <li class="uk-nestable-list-item">
+                        <div class="uk-nestable-item">
+                            <div class="uk-nestable-handle"></div>
+                            <div data-nestable-action="toggle"></div>
+                            Рюкзаки
+                        </div>
+                    </li>
+                    <li class="uk-nestable-list-item">
+                        <div class="uk-nestable-item">
+                            <div class="uk-nestable-handle"></div>
+                            <div data-nestable-action="toggle"></div>
+                            Светофильтры
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+
+            <div class="uk-panel uk-panel-divider">
+                <a class="uk-button" href="#modal-menu">Добавить категорию</a>
+                <a class="uk-button uk-button-success" href="#">Импорт</a>
+            </div>
+
+        </div>
+
+        <div class="uk-width-medium-3-4">
+
+            <div class="uk-grid" data-uk-grid-margin>
+                <ul class="uk-width-1-1 uk-subnav uk-text-right">
+                    <li>
+                        <form class="uk-search" data-uk-search="">
+                            <input class="uk-search-field uk-search-field-border uk-width-1-1" type="search" placeholder="Поиск техники..." autocomplete="off">
+                            <div class="uk-dropdown uk-dropdown-search"></div>
+                        </form>
+                    </li>
+                </ul>
+                <div class="uk-width-1-1 uk-margin-remove uk-grid-margin">
+                    <hr class="small-line">
+                </div>
+            </div>
+
+            <div class="uk-overflow-container">
+                <table class="uk-table uk-table-statistics uk-table-hover uk-table-condensed">
+                    <thead>
+                        <tr class="uk-text-center">
+                            <th></th>
+                            <th class="uk-text-left">Продукт</th>
+                            <th>Цена</th>
+                            <th class="uk-text-left">Наличие</th>
+                            <th>Доставка</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span><i class="uk-icon-circle uk-text-success"></i></span>
+                            </td>
+                            <td class="uk-text-left">
+                                <div class="uk-vertical-align">
+                                    <div class="uk-vertical-align-middle">
+                                        <img src="http://ph1.photomsk.by/PhototechnicsViewModel/nikon_d3100_kit_18_55mm_vr_1.jpg" width="30" height="30" class="uk-border-circle uk-margin-small-right">
+                                        <a href="#" class="uk-link-muted uk-link-dotted">Nikon D3100 Kit 18-55mm VR</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><b>450</b> <small class="uk-text-muted">USD</small></td>
+
+                            <td class="uk-text-left">
+                                <span>склад</span>
+                            </td>
+                            <td>бесплатная</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span><i class="uk-icon-circle uk-text-warning"></i></span>
+                            </td>
+                            <td class="uk-text-left">
+                                <div class="uk-vertical-align">
+                                    <div class="uk-vertical-align-middle">
+                                        <img src="http://ph1.photomsk.by/lenses/0a11d2552bbdac8d6fdc8a80d1103eb1.jpg" width="30" height="30" class="uk-border-circle uk-margin-small-right">
+                                        <a href="#" class="uk-link-muted uk-link-dotted">Samyang 8mm T3.1 V-DSLR UMC Fish-eye II для Sony</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><b>404</b> <small class="uk-text-muted">USD</small></td>
+
+                            <td class="uk-text-left">
+                                <span>заказ</span>
+                            </td>
+                            <td>бесплатная</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span><i class="uk-icon-circle uk-text-success"></i></span>
+                            </td>
+                            <td class="uk-text-left">
+                                <div class="uk-vertical-align">
+                                    <div class="uk-vertical-align-middle">
+                                        <img width="30" height="30" class="uk-border-circle uk-margin-small-right">
+                                        <a href="#" class="uk-link-muted uk-link-dotted">Marumi 52mm MC-PO1</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><b>8</b> <small class="uk-text-muted">USD</small></td>
+
+                            <td class="uk-text-left">
+                                <span>склад</span>
+                            </td>
+                            <td>бесплатная</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span><i class="uk-icon-circle uk-text-warning"></i></span>
+                            </td>
+                            <td class="uk-text-left">
+                                <div class="uk-vertical-align">
+                                    <div class="uk-vertical-align-middle">
+                                        <img width="30" height="30" class="uk-border-circle uk-margin-small-right">
+                                        <a href="#" class="uk-link-muted uk-link-dotted">Manfrotto MHXPRO-3W</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><b>0</b> <small class="uk-text-muted">USD</small></td>
+
+                            <td class="uk-text-left">
+                                <span>заказ</span>
+                            </td>
+                            <td>бесплатная</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span><i class="uk-icon-circle uk-text-warning"></i></span>
+                            </td>
+                            <td class="uk-text-left">
+                                <div class="uk-vertical-align">
+                                    <div class="uk-vertical-align-middle">
+                                        <img width="30" height="30" class="uk-border-circle uk-margin-small-right">
+                                        <a href="#" class="uk-link-muted uk-link-dotted">Case Logic SLRC-203</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><b>75</b> <small class="uk-text-muted">USD</small></td>
+
+                            <td class="uk-text-left">
+                                <span>заказ</span>
+                            </td>
+                            <td>нет</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <div class="uk-grid">
+        <div class="uk-width-1-1 uk-text-right">
+            <a class="reset" href="#">отмена</a>
+            <input type="submit" class="btn-ms role-save-button" value="Сохранить">
+        </div>
+    </div>
+</div>
+

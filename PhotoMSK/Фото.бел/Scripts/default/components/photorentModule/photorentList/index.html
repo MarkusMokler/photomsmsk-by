@@ -1,0 +1,38 @@
+﻿<div class="uk-main-page-body">
+    <div class="uk-page-bar-panel">
+        <div class="container container--center">
+            <ul class="uk-margin-remove uk-subnav uk-subnav-line uk-subnav-breadcrumb">
+                <li><a href="~/">Главная</a></li>
+                <li class="uk-active"><a href="#">Фотографы</a></li>
+                <li>
+                    <span>найдено <strong>@String.Format("{0:### ### ### ###}", Model.Page.Elements.Count())</strong> шт.</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container container--center">
+        <ul class="grid">
+            
+                <li ng-repeat="item in page.elements" class="col--1-5 phototechnics-teaser">
+                    <div class="short_product with_popover phototechnics-teaser-item">
+
+                        <a href="{{item.url}}">
+                            <img src="{{item.imageUrl}}">
+                        </a>
+                        <h3 class="text--center phototechnics-teaser-title">
+                            <a class="uk-link-muted" href="{{item.url}}">
+                                {{item.name}}
+                            </a>
+                        </h3>
+                    </div>
+                </li>
+                if (count % 5 == 0)
+                {
+                    Write(new HtmlString("</div><div class='grid'>"));
+                }
+                count++;
+            
+        </ul>
+    </div>
+</div>

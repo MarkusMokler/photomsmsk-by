@@ -1,0 +1,55 @@
+﻿<div class="content--admin">
+
+    <div><data-bread-crumbs /></div>
+
+    <div class="clear-fix"></div>
+
+    <!-- <div class="container--fluid-widget"> -->
+    <div class="container--fluid">
+        <div class="grid">
+            <div class="col--1-2">
+
+                <div class="panel panel--box panel--white panel--shadow">
+                    <div class="grid">
+                        <div class="col--1-1">
+                            <span class="text--h3">Название:</span>
+                            <input type="text" class="input input--edit" data-ng-model="layout.name" placeholder="Имя..." />
+                            <hr />
+                            <div>
+                                <ui-codemirror ui-codemirror-opts="editorOptions" data-ng-model="layout.content"></ui-codemirror>
+                            </div>
+
+                            <div class="text--center margin--top">
+                                <hr>
+                                <a data-msk-href ng-click="updateLayout()" class="button button--success border--rounded">Обновить</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col--1-2">
+
+                <div class="browser">
+                    <div class="browser__toolbar">
+                        <div class="browser__button">
+                            <a href></a>
+                            <a href></a>
+                            <a href></a>
+                        </div>
+                    </div>
+                    <div class="browser__control">
+                        <div class="browser__control-tab"></div>
+                        <div class="browser__control-url">
+                            {{layout.name}}
+                        </div>
+                    </div>
+                    <div class="browser__content">
+                        <div><data-html-viewer code="layout.content"></data-html-viewer></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

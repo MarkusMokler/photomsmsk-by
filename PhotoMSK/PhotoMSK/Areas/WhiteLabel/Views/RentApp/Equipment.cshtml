@@ -1,0 +1,103 @@
+﻿
+<div class="uk-container uk-container-center">
+    <div class="uk-grid">
+        <div class="uk-width-1-5">
+            <div class="uk-button-back uk-text-center">
+                <a href="@Url.Action("Create", "Users")" class="uk-button-add uk-button uk-width-1-1 uk-flex uk-flex-middle">
+                    <i class="uk-icon-plus button-add"></i>&nbsp;<span class="uk-text-bold">Техника</span>
+                </a>
+            </div>
+            <h5 class="uk-text-bold">Справочник</h5>
+            <ul class="uk-list uk-list-space uk-list-dotted">
+                <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">Типы меню</a></li>
+                <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">Отображение элементов меню</a></li>
+                <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">Создание выпадающего меню</a></li>
+                <li><a href="#" class="uk-text-small">ещё...</a></li>
+            </ul>
+        </div>
+        <div class="uk-width-4-5">
+            <div class="uk-panel uk-panel-content-box">
+                <div class="uk-grid">
+                    <div class="uk-width-1-1">
+                        <ul class="timeline">
+                            @for (int i = 0; i < 24; i++)
+                            {
+                                <li>
+                                    <small class="timeline-day">@i</small>
+                                    <div class="busy"></div>
+                                </li>
+                            }
+                        </ul>
+
+                    </div>
+                </div>
+
+
+                <table class="uk-table uk-table-middle">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%;"><span class="uk-text-muted">#</span></th>
+                            <th style="width: 38%;">Бренд</th>
+                            <th style="width: 30%;">Цена</th>
+                            <th style="width: 30%;">Комплект</th>
+                            <th style="width: 1%;"><i class="uk-control uk-icon-hover uk-icon-bars"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < 10; i++)
+                        {
+                            <tr data-uk-filter="filter-b">
+                                <td>
+                                    <small class="uk-text-muted">1234</small>
+                                </td>
+                                <td>
+                                    <div class="uk-display-inline uk-position-relative">
+                                        <img class="uk-comment-avatar" src="http://hkfilm.com.vn/wp-content/uploads/2013/05/5D1-940x705.png" width="45" height="45" alt="" />
+                                        <span class="uk-badge-notifications uk-badge-notifications--success">2</span>
+                                    </div>
+                                    <h4 class="uk-comment-title"><a href="#" class="uk-link-muted uk-link-dotted uk-link-reset uk-text-bold">Canon 5d Mark III</a></h4>
+                                    <div class="uk-comment-meta"><span class="uk-text-muted">(<a href="#" class="uk-text-muted">Canon 5d Mark III</a>&nbsp;<i class="uk-icon-external-link"></i>)</span></div>
+                                </td>
+                                <td>
+                                    <table class="uk-table--price">
+                                        <tbody>
+                                            <tr>
+                                                <td><small class="uk-text-muted">Час</small></td>
+                                                <td><small class="uk-text-muted">День</small></td>
+                                                <td><small class="uk-text-muted">Неделя</small></td>
+                                                <td><small class="uk-text-muted">Месяц</small></td>
+                                            </tr>
+                                            <tr>
+                                                <td><button class="uk-button"><strong>3</strong><sup class="uk-text-muted">$</sup></button></td>
+                                                <td><button class="uk-button"><strong>12</strong><sup class="uk-text-muted">$</sup></button></td>
+                                                <td><button class="uk-button"><strong>26</strong><sup class="uk-text-muted">$</sup></button></td>
+                                                <td><button class="uk-button"><strong>325</strong><sup class="uk-text-muted">$</sup></button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td>
+                                    <ul class="uk-list uk-list-dotted">
+                                        <li>
+                                            <small class="uk-text-muted">батарейки 3шт.</small>
+                                        </li>
+                                        <li>
+                                            <small class="uk-text-muted">шнурок для подзарядки</small>
+                                        </li>
+                                        <li>
+                                            <small class="uk-text-muted">дополнительная рука для</small>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <a href="#" class="uk-link-reset"><i class="uk-control uk-icon-hover uk-icon-bars"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

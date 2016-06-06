@@ -1,0 +1,94 @@
+﻿@model PhotoMSK.Models.EditViewModel.Routes.PhotomodelEditModel
+@{
+    ViewBag.Title = "Редактирование модели";
+}
+<div class="uk-container uk-container-center">
+    <div class="uk-grid">
+        <div class="uk-width-1-1">
+            <ul class="uk-tab uk-tab-events" data-uk-tab="{connect:'#tab-content'}">
+                <li><a href="#">Контактная информация</a></li>
+                <li><a href="#">Телефоны и адрес</a></li>
+                <li><a href="#">Параметры</a></li>
+                <li><a href="#">Участники</a></li>
+                <li><a href="#">Pro</a></li>
+                @*<li class="uk-tab-responsive uk-active uk-hidden"><a>Tab</a><div class="uk-dropdown uk-dropdown-small"><ul class="uk-nav uk-nav-dropdown"></ul><div></div></div></li>*@
+            </ul>
+        </div>
+
+        <div class="uk-width-1-1">
+            <div class="uk-panel uk-panel-space uk-panel--white uk-panel--shadow uk-panel--border-radius uk-margin-remove">
+                <ul id="tab-content" class="uk-switcher uk-margin-large">
+                    <li>
+                        <div class="uk-grid" data-uk-grid-margin>
+                            @Html.Partial("../Shared/RouteCreate/_Avatar", Model)
+                            @Html.Partial("../Shared/RouteCreate/_FIOShortcutDescription", Model)
+                            @Html.Partial("../Shared/RouteCreate/_ButtonSave", Model)
+                        </div>
+                    </li>
+                    <li>
+                        <div class="uk-grid" data-uk-grid-margin>
+                            @Html.Partial("../Shared/RouteCreate/_Phone", Model)
+                            @Html.Partial("../Shared/RouteCreate/_Location", Model)
+                            @Html.Partial("../Shared/RouteEdit/_SocialNetwork", Model)
+                            @Html.Partial("../Shared/RouteCreate/_ButtonSave", Model)
+                        </div>
+                    </li>
+                    <li>
+                        <div class="uk-grid" data-uk-grid-margin>
+                            @*@Html.Partial("../Shared/RouteCreate/_Equipment", Model)*@
+                            @Html.Partial("../Shared/RouteCreate/_ButtonSave", Model)
+                        </div>
+                    </li>
+                    <li>
+                        <div class="uk-grid" data-uk-grid-margin>
+                            @Html.Partial("../Shared/RouteEdit/_Participants", Model)
+                            @Html.Partial("../Shared/RouteCreate/_ButtonSave", Model)
+                        </div>
+                    </li>
+                    <li>
+                        <div class="uk-grid" data-uk-grid-margin>
+                            @Html.Partial("../Shared/RouteEdit/_Pro", Model)
+                            @Html.Partial("../Shared/RouteCreate/_ButtonSave", Model)
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="modal-phone-required" class="uk-modal uk-open" style="display: none">
+    <div class="uk-modal-dialog uk-modal-dialog-phones">
+        <button type="button" class="uk-modal-close uk-close" data-role-close-modal></button>
+        <div class="uk-modal-header">
+            <h4>Проверка номера телефона</h4>
+        </div>
+        <section class="uk-form uk-form-horizontal">
+            <div class="uk-form-row">
+                <label class="uk-form-label" for="form-h-it">Введите код из СМС</label>
+                <div class="uk-form-controls">
+                    <input id="form-h-it" type="number" class="input-ms" data-role-sms-verification placeholder="****">
+                </div>
+            </div>
+        </section>
+        <div class="uk-modal-footer uk-text-right">
+            <button type="button" class="uk-button uk-modal-close" data-role-close-modal>Отменить</button>
+            <button type="button" class="uk-button uk-button-success" data-role-save-phone>Подтвердить</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        App.owner = '@Model.ID';
+
+        $(function () {
+
+            var model = new App.Photomodel.EditView();
+            model.render();
+        });
+
+    </script>
+}

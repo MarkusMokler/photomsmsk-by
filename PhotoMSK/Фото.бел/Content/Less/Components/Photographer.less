@@ -1,0 +1,181 @@
+// out: ../../css/Components/Photographer.css, compress: true
+// Name:            Photographer
+// Description:     Defines styles for modal Photographer
+//
+// Component:       `photographer`
+//
+// Sub-objects:     `photographer__catalog`
+//                  `photographer__*`
+//                  `photographer__*`
+//
+//
+// Modifiers:       `photographer--*`
+//                  `photographer--*`
+//                  `photographer--*`
+//                  `photographer--*`
+
+//
+// ========================================================================
+// Variables
+// ========================================================================
+
+@photographer-population-new-height:                 70px;
+
+/* ========================================================================
+   Component: Photographer
+ ========================================================================== */
+.photographer {
+
+    // Element 'photographer__population'
+    &__population{
+
+        // Element 'photographer__population__new'
+        &__new{
+            position: relative;
+            display: inline-block;
+            width: @photographer-population-new-height;
+            height: @photographer-population-new-height;
+            border-radius: @photographer-population-new-height;
+            border: 3px solid #eee;
+            text-align: center;
+            overflow: hidden;
+
+            & > i{
+                font-size: 55px;
+                line-height: @photographer-population-new-height + 10;
+                color: #eee;
+            }
+
+            // &:before{
+            //     content: "\e99c";
+            //     position: absolute;
+            //     font-size: 20px;
+            //     line-height: 40px;
+            //     color: #eee;
+            //     left: 50%;
+            //     font-family: 'icomoon';
+            //     transform: translateX(-50%);
+            // }
+        }
+    }
+
+    // Element 'photographer__item'
+    &__item{
+        background: #fff;
+        border: 1px solid #ddd;
+        color: #222528;
+        padding: 20px 12px 20px 20px;
+
+
+        &-image{
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            &-main{
+                float: left;
+                width: 50%;
+                height: 194px;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                border-right: 8px solid #fff;
+                border-bottom: 8px solid #fff;
+
+                & > img{
+                    visibility: hidden;
+                    opacity: 0;
+                }
+            }
+
+            &-list{
+                margin: 0;
+                padding: 0;
+                width: 50%;
+                float: left;
+                overflow: hidden;
+
+                & > li{
+                    display: block;
+                    min-height: 97px;
+                    max-height: 97px;
+                    padding-bottom: 10px;
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    border-right: 8px solid #fff;
+                    border-bottom: 8px solid #fff;
+
+                    & img{
+                        opacity: 0;
+                        visibility: hidden;
+                    }
+                }
+            }
+        }
+
+        &-desc{
+            &-avatar{
+                width: 80px;
+                height: 80px;
+                float: left;
+                margin-right: 10px;
+                margin-top: -30px;
+                margin-left: 10px;
+                border-radius: 100px;
+                border: 8px solid #fff;
+                overflow: hidden;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+
+                & img{
+                    opacity: 0;
+                    visibility: hidden;
+                }
+            }
+
+            &-info{
+                width: 25%;
+                float: left;
+            }
+
+            &-like,
+            &-rating,
+            &-view{
+                position: relative;
+                width: 13%;
+                float: right;
+                text-align: center;
+                padding: 0 15px;
+            }
+
+            &-rating:after,
+            &-view:after{
+                content: '';
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                height: 30px;
+                border-right: 1px dotted #ddd;
+            }
+            //
+            // &-like{
+            //     width: 10%;
+            //     float: right;
+            // }
+            //
+            // &-view{
+            //     width: 10%;
+            //     float: right;
+            // }
+        }
+
+        &-image{}
+
+
+        & + &{
+            margin-top: 10px;
+        }
+    }
+}

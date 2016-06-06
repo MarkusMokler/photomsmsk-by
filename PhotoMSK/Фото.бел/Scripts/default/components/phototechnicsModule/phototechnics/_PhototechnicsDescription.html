@@ -1,0 +1,41 @@
+﻿<div class="grid">
+    <div class="col--1-1">
+        <table class="table table--hover uk-table-specification">
+            <thead>
+                <tr>
+                    <td colspan="2" class="uk-table-part">
+                        <div>Характеристики</div>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var param in Model.ParameterValues)
+                {
+                    if (param.Parameter.Name == "Раздел")
+                    {
+
+                    <thead ng-repeat="param in parameterValues">
+                        <tr>
+                            <td colspan="2" class="uk-table-part">
+                                <div>{{param.value}}</div>
+                            </td>
+                        </tr>
+                    </thead>
+                    <!-- <tr>
+                            <td colspan="2" class="uk-table-part">
+                                <div>{{param.value}}</div>
+                            </td>
+                        </tr> -->
+                    }
+                    else
+                    {
+                        <tr>
+                            <td><span>{{param.parameter.name}}</span></td>
+                            <td>{{param.value}}</td>
+                        </tr>
+                    }
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>

@@ -1,0 +1,27 @@
+﻿<!-- Ковер -->
+<div class="col--1-1">
+    <section class="uk-margin-remove">
+        <div class="uk-section">
+            <span class="uk-section__counter">1</span>
+            <span class="uk-section__title">Загрузка логотипа</span>
+        </div>
+        <div class="form-banner">
+            <div class="form-banner__cover">
+                <div id="role-cover">
+                    <img class="uk-border-rounded" src="@(Model != null && Model.CoverImage != null ? Model.CoverImage : @Url.Content("~/Content/images/no-cover-image.jpg"))" alt="Ковер публичной страницы">
+                </div>
+                <div class="form-banner__button-cover form-banner__button--border uk-link-reset">
+                    <a id="role-change-cover" href="#">Изменить обложку</a>
+                </div>
+            </div>
+            <div class="form-banner__avatar">
+                <div id="role-avatar" class="form-banner__relation">
+                    <img class="uk-border-circle uk-border-white" src="@(Model != null && Model.ImageUrl != null ? Model.ImageUrl : @Url.Content("~/Content/images/no-avatar.png"))" width="85" height="85" alt="Аватарка страницы">
+                    <div class="form-banner__button">
+                        <a id="role-change-avatar" class="form-banner__button-avatar form-banner__button--border uk-link-reset" href="#">Загрузить логотип</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

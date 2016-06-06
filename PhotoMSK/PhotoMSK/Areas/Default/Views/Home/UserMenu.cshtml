@@ -1,0 +1,23 @@
+﻿@using PhotoMSK.Areas.Default.ViewData.Home
+@model PhotoMSK.Data.Models.User
+
+@{
+    Layout = null;
+}
+
+<a href="@Url.Action("Index", new { Area = "Admin", controller = "Home" })" class="uk-navbar-nav-subtitle">
+    <img class="uk-comment-avatar uk-border-circle uk-hidden-small" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+    @Model.UserInformation.FirstName @Model.UserInformation.LastName
+    <i class="uk-icon-caret-down"></i>
+    <div class="uk-text-muted">Мой кабинет</div>
+</a>
+
+<div class="uk-dropdown uk-dropdown-center">
+
+    <ul class="uk-nav uk-nav-navbar">
+        <li>@Html.ActionLink("Мой кабинет", "Index", new { Area = "Admin", controller = "Home" })</li>
+        <li>@Html.ActionLink("Получить PRO", "Edit", "Model")</li>
+        <li class="uk-nav-divider"></li>
+        <li>@Html.ActionLink("Выйти", "LogOff", "Account")</li>
+    </ul>
+</div>

@@ -1,0 +1,97 @@
+<div class="content--admin">
+
+    <div><data-bread-crumbs/></div>
+
+
+    <div class="container--fluid">
+        <div class="grid">
+            <div class="col--1-1">
+                <div class="panel panel--box panel--white panel--shadow">
+
+                    <div class="grid">
+                        <div class="col--1-1">
+                            <div class="uk-section">
+                                <span class="uk-section__counter">1</span>
+                                <span class="uk-section__title">Данные юридического лица</span>
+                            </div>
+                        </div>
+
+                        <div class="col--large-1-3 col--medium-1-2 col--small-1-1 margin--top">
+                            <label class="label label--rounded">УНП предприятия</label>
+                            <input class="input input--small input--rounded col--1-1" type="text" data-ng-model="legal.accountNumber">
+                        </div>
+
+                        <div class="col--large-1-3 col--medium-1-2 col--small-1-1 margin--top">
+                            <label class="label label--rounded">Название юр. лица</label>
+                            <input class="input input--small input--rounded col--1-1" type="text" data-ng-model="legal.legalName">
+                        </div>
+
+                        <div class="col--large-1-3 col--medium-1-2 col--small-1-1 margin--top">
+                            <label class="label label--rounded">Адрес</label>
+                            <input class="input input--small input--rounded col--1-1" type="text" data-ng-model="legal.legaladdress">
+                        </div>
+
+                        <div class="col--large-1-3 col--medium-1-2 col--small-1-1 margin--top">
+                            <label class="label label--rounded">Регистрация в торговом реестре</label>
+                            <input class="input input--small input--rounded col--1-1" type="text" data-ng-model="legal.registerTrade">
+                        </div>
+
+                        <div class="col--large-1-3 col--medium-1-2 col--small-1-1 margin--top">
+                            <label class="label label--rounded">Номер свидетельства</label>
+                            <input class="input input--small input--rounded col--1-1" type="text" data-ng-model="legal.certificateNumber">
+                        </div>
+
+                        <div class="col--large-1-3 col--medium-1-2 col--small-1-1 margin--top">
+                            <label class="label label--rounded">Дата выдачи свидетельства</label>
+                            <input class="input input--small input--rounded col--1-1" type="text" uib-datepicker-popup="{{format}}" data-ng-model="legal.registerDate">
+                        </div>
+
+                        <div class="col--large-1-3 col--medium-1-2 col--small-1-1 margin--top">
+                            <label class="label label--rounded">Регистрирующий орган</label>
+                            <input class="input input--small input--rounded col--1-1" type="text" data-ng-model="legal.registeringAgency">
+                        </div>
+
+                        <div class="col--large-1-3 col--medium-1-2 col--small-1-1 margin--top">
+                            <label class="label label--rounded">Директор</label>
+                            <input class="input input--small input--rounded col--1-1" type="text" data-ng-model="legal.ceo">
+                        </div>
+
+                        <div class="col--large-1-3 col--medium-1-2 col--small-1-1 margin--top">
+                            <!-- <p class="margin--top">
+                                <label class="md-switch"><input type="checkbox" checked="checked"> <i class="green"></i> Онлайн бронирование</label>
+                            </p> -->
+                            <div class="margin--top">
+                                <label>
+                                    <input type="checkbox" class="switch bigswitch green" data-ng-model="legal.allowOnlineBooking" />
+                                    <div>
+                                        <div></div>
+                                    </div>
+                                    <span>Онлайн бронирование</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col--1-1 margin--top">
+                            <div class="uk-section">
+                                <span class="uk-section__counter">2</span>
+                                <span class="uk-section__title">Публичная оферта</span>
+                            </div>
+                        </div>
+
+                        <div class="col--1-1 margin--top">
+                            <div text-angular data-ng-model="legal.publicOffer"></div>
+                        </div>
+
+                        <div class="col--1-1 text--center">
+                            <hr>
+
+                            <a class="button border--rounded" data-msk-href>Отменить</a>
+                            <a class="button button--success border--rounded" data-ng-click="save()" data-msk-href>Сохранить</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

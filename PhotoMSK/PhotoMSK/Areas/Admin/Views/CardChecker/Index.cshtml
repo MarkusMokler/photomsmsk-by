@@ -1,0 +1,335 @@
+﻿@using PhotoMSK.Extensiolns
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_CardLayout.cshtml";
+}
+
+<div class="uk-container uk-container-center">
+    <div class="uk-grid">
+        <div id="userinfo" class="uk-width-1-5">
+            <div class="uk-text-center">
+                <img src="@Url.Content("~/Content/images/qr-avatar.png")" class="uk-border-circle">
+                <p class="uk-text-muted">
+                    <span class="uk-h4">Отсканируйте QR код на обратной стороне карточки или введите номер карточки в поле поиска</span>
+                </p>
+            </div>
+        </div>
+        
+        <div class="uk-width-4-5">
+            <ul class="uk-tab uk-tab-events" data-uk-switcher="{connect:'#table-content'}">
+                <li>
+                    <a href="#">Покупки</a>
+                </li>
+                <li>
+                    <a href="#">Заказ</a>
+                </li>
+                <li>
+                    <a href="#">Претензии</a>
+                </li>
+                <li style="float: right;">
+                    <a href="#">Магазин</a>
+                </li>
+                <li style="float: right;">
+                    <a href="#">Аренда</a>
+                </li>
+            </ul>
+
+            <ul id="table-content" class="uk-switcher uk-margin-top">
+                <li>
+                    <div class="uk-panel uk-panel-box uk-panel-module">
+                        <h4 class="uk-panel-title">Список совершенных покупок</h4>
+                        <table class="uk-table uk-table-statistics uk-table-hover uk-table-condensed">
+                            <thead>
+                                <tr class="uk-text-center">
+                                    <th class="uk-text-left">Тип</th>
+                                    <th>Заголовок</th>
+                                    <th>Дата</th>
+                                    <th>Сумма</th>
+                                </tr>
+                            </thead>
+                            <tbody id="events"></tbody>
+                        </table>
+                    </div>
+                </li>
+                <li>
+                    <div class="uk-panel uk-panel-box uk-panel-module">
+                        <h4 class="uk-panel-title">Заказ клиента</h4>
+                        <table class="uk-table uk-table-statistics uk-table-hover uk-table-condensed">
+                            <thead>
+                                <tr class="uk-text-center">
+                                    <th class="uk-text-left">Тип</th>
+                                    <th>Заголовок</th>
+                                    <th>Скидка</th>
+                                    <th>Сумма</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orders"></tbody>
+                        </table>
+                    </div>
+                </li>
+                <li>
+                    <div class="uk-panel uk-panel-box uk-panel-module">
+                        <h4 class="uk-panel-title">Претензии пользователя</h4>
+                        <table class="uk-table uk-table-statistics uk-table-hover uk-table-condensed">
+                            <thead>
+                                <tr class="uk-text-center">
+                                    <th class="uk-text-left">Тип</th>
+                                    <th>Заголовок</th>
+                                    <th>Дата</th>
+                                    <th>Сумма</th>
+                                </tr>
+                            </thead>
+                            <tbody id="penalties"></tbody>
+                        </table>
+                    </div>
+                </li>
+                <li class="uk-active">
+                    <div class="uk-grid uk-grid-divider" data-uk-grid-margin="" data-uk-grid-match="">
+                        <div class="uk-width-medium-1-4" style="min-height: 35504px;">
+                            <form class="uk-form" method="post">
+
+                                <div class="uk-panel uk-panel-divider">
+                                    <ul class="uk-nestable" data-uk-nestable="{group:'my-group'}">
+                                        <li class="uk-nestable-list-item uk-parent">
+                                            <div class="uk-nestable-item">
+                                                <div class="uk-nestable-handle"></div>
+                                                <div data-nestable-action="toggle"></div>
+                                                Фотоаппараты
+                                            </div>
+                                            <ul class="uk-nestable-list">
+                                                <li class="uk-nestable-list-item">
+                                                    <div class="uk-nestable-item">
+                                                        <div class="uk-nestable-handle"></div>
+                                                        <div data-nestable-action="toggle"></div>
+                                                        Зеркальные
+                                                    </div>
+                                                </li>
+                                                <li class="uk-nestable-list-item">
+                                                    <div class="uk-nestable-item">
+                                                        <div class="uk-nestable-handle"></div>
+                                                        <div data-nestable-action="toggle"></div>
+                                                        Беззеркальные
+                                                    </div>
+                                                </li>
+                                                <li class="uk-nestable-list-item">
+                                                    <div class="uk-nestable-item">
+                                                        <div class="uk-nestable-handle"></div>
+                                                        <div data-nestable-action="toggle"></div>
+                                                        Компактные камеры
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="uk-nestable-list-item">
+                                            <div class="uk-nestable-item">
+                                                <div class="uk-nestable-handle"></div>
+                                                <div data-nestable-action="toggle"></div>
+                                                Объективы
+                                            </div>
+                                        </li>
+                                        <li class="uk-nestable-list-item">
+                                            <div class="uk-nestable-item">
+                                                <div class="uk-nestable-handle"></div>
+                                                <div data-nestable-action="toggle"></div>
+                                                Студийное оборудорвание
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <p class="uk-h3">
+                                        Фотоаксессуары
+                                    </p>
+                                    <ul class="uk-nestable" data-uk-nestable="{group:'my-group'}">
+                                        <li class="uk-nestable-list-item">
+                                            <div class="uk-nestable-item">
+                                                <div class="uk-nestable-handle"></div>
+                                                <div data-nestable-action="toggle"></div>
+                                                Фотосумки
+                                            </div>
+                                        </li>
+                                        <li class="uk-nestable-list-item">
+                                            <div class="uk-nestable-item">
+                                                <div class="uk-nestable-handle"></div>
+                                                <div data-nestable-action="toggle"></div>
+                                                Рюкзаки
+                                            </div>
+                                        </li>
+                                        <li class="uk-nestable-list-item">
+                                            <div class="uk-nestable-item">
+                                                <div class="uk-nestable-handle"></div>
+                                                <div data-nestable-action="toggle"></div>
+                                                Светофильтры
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="uk-panel uk-panel-divider" data-uk-margin="">
+                                    <a class="uk-button" href="#">Добавить категорию</a>
+                                    <a class="uk-button uk-button-success" href="#">Импорт</a>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="uk-width-medium-3-4" style="min-height: 35504px;">
+
+                            <div class="uk-overflow-container">
+                                <table class="uk-table uk-table-statistics uk-table-hover uk-table-condensed">
+                                    <thead>
+                                        <tr class="uk-text-center">
+                                            <th class="uk-text-left">Продукт</th>
+                                            <th>Цена</th>
+                                            <th>Валюта</th>
+                                            <th>Наличие</th>
+                                            <th>Доставка</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="uk-text-left">
+                                                <div class="uk-vertical-align">
+                                                    <div class="uk-vertical-align-middle">
+                                                        <img src="http://ph1.photomsk.by/PhototechnicsViewModel/nikon_d3100_kit_18_55mm_vr_1.jpg" width="30" height="30" class="uk-border-circle uk-margin-small-right">
+                                                        <a href="#" class="uk-link-muted uk-link-dotted">Nikon D3100 Kit 18-55mm VR</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="green-color"> <b>450</b></td>
+                                            <td>USD</td>
+                                            <td><small><a href="#" class="uk-icon-circle uk-text-danger"></a></small>склад</td>
+                                            <td>бесплатная</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="uk-text-left">
+                                                <div class="uk-vertical-align">
+                                                    <div class="uk-vertical-align-middle">
+                                                        <img src="http://ph1.photomsk.by/lenses/0a11d2552bbdac8d6fdc8a80d1103eb1.jpg" width="30" height="30" class="uk-border-circle uk-margin-small-right">
+                                                        <a href="#" class="uk-link-muted uk-link-dotted">Samyang 8mm T3.1 V-DSLR UMC Fish-eye II для Sony</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="green-color"> <b>404</b></td>
+                                            <td>USD</td>
+                                            <td><small><a href="#" class="uk-icon-circle uk-text-danger"></a></small>заказ</td>
+                                            <td>бесплатная</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="uk-text-left">
+                                                <div class="uk-vertical-align">
+                                                    <div class="uk-vertical-align-middle">
+                                                        <img width="30" height="30" class="uk-border-circle uk-margin-small-right">
+                                                        <a href="#" class="uk-link-muted uk-link-dotted">Marumi 52mm MC-PO1</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="green-color"> <b>8</b></td>
+                                            <td>USD</td>
+                                            <td><small><a href="#" class="uk-icon-circle uk-text-danger"></a></small>склад</td>
+                                            <td>бесплатная</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+                                {
+    @using (Html.Template("event-row"))
+    {
+        <tr>
+            <td class="uk-text-left">
+                <div class="uk-vertical-align">
+                    <div class="uk-vertical-align-middle">
+                        @*<img src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="30" height="30" class="uk-border-circle uk-margin-small-right">*@
+                        <a href="#" class="uk-link-muted uk-link-dotted">Покупка</a>
+                    </div>
+                </div>
+            </td>
+            <td><%- title %></td>
+            <td><%= jQuery.timeago(creaTime) %></td>
+            <td><strong><%- price %></strong></td>
+        </tr>
+    }
+
+    @using (Html.Template("userinfo"))
+    {
+        <div class="uk-text-center">
+            <img class="uk-border-circle" src="<%- userPhoto %>" />
+            <h1 class="uk-margin-bottom-remove">
+                <strong><%- lastName %></strong> <%- firstName %>
+            </h1>
+            <p class="uk-text-muted">
+                <span>
+                    <small>карточка до:</small> 01.01.2014
+                </span>
+            </p>
+        </div>
+    }
+
+    <script type="text/javascript">
+
+        App.Collections.UserEventCollection = Backbone.Collection.extend({
+            url: "/api/UserEvents"
+        });
+
+        App.Model.UserInformationModel = Backbone.Model.extend({
+            urlRoot: "/api/UserInformation"
+        });
+
+        Application.BaseViews.CardView = Backbone.View.extend({
+            row: _.template($("#event-row-view-template").html()),
+            userinfo: _.template($("#userinfo-view-template").html()),
+
+            initialize: function () {
+                var self = this;
+                this.userEventCollection = new UserEventCollection();
+                this.listenTo(this.userEventCollection, "reset", this.userEventCollectionReset);
+                this.model = new window.UserInformationModel();
+                this.listenTo(this.model, "sync", this.syncModel);
+
+                var chat = $.connection.cardHub;
+                chat.client.showInfo = function (id) {
+                    self.fetchData(id);
+                };
+
+                $.connection.hub.start().done();
+
+            },
+            render: function () { },
+            fetchData: function (id) {
+                this.model.fetch({ data: { id: id } });
+
+                this.userEventCollection.fetch({ data: { id: id }, reset: true });
+            },
+
+            userEventCollectionReset: function () {
+                var self = this;
+                $("#events").html('');
+                this.userEventCollection.each(function (model) {
+                    return self.userEventCollectionAdd(model);
+                });
+                return this;
+            },
+            userEventCollectionAdd: function (item) {
+                $("#events").append(this.row(item.toJSON()));
+            },
+
+            syncModel: function (model, resp, options) {
+                $('#userinfo').html(this.userinfo(model.toJSON()));
+            }
+        });
+
+        $(function () {
+            var cardView = new Application.BaseViews.CardView();
+            cardView.render();
+
+        });
+    </script>
+}

@@ -1,0 +1,52 @@
+<div class="content--admin">
+    <div><data-bread-crumbs/></div>
+
+    <div class="container container--center">
+        <div class="grid">
+            <!-- <div class="col--1-1 margin--bottom">
+                <div class="input__group">
+                    <input type="search" class="input input--search input--large border--rounded margin--reset col--1-2">
+                    <i class="icon-magnifier text--muted"></i>
+                </div>
+            </div> -->
+
+            <div class="col--1-1">
+                <div class="activity__header grid grid--small">
+                    <ul class="activity__header__list col--3-4 margin--reset">
+                        <li data-ng-if="getCount(activies,0) != 0" class="ng-binding ng-scope">
+                            <i class="icon-alarm_on text--green"></i>&nbsp;15 забронировано
+                        </li>
+                        <li data-ng-if="getCount(activies,1) != 0" class="ng-binding ng-scope">
+                            <i class="icon-subdirectory_arrow_right text--blue"></i>&nbsp;
+                            3 переноса
+                        </li>
+                    </ul>
+                    <div class="col--1-4">
+                        <div class="input__group">
+                            <input type="search" class="input input--search input--small border--rounded margin--reset">
+                            <i class="icon-magnifier text--muted"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel--box panel--white panel--shadow">
+                    <div class="panel__title">
+                        <ul class="tab tab--small tab--full text--center ">
+                            <li>
+                                <a class="active" data-ng-class="{'active' : active == 'help'}" data-msk-href data-ng-click="active='userInfo'">Помощь</a>
+                            </li>
+                            <li>
+                                <a data-ng-class="{'active' : active == 'listQuestion'}" data-msk-href data-ng-click="active='Security'">Список вопросов</a>
+                            </li>
+                            <li>
+                                <a data-ng-class="{'active' : active == 'mYQuestion'}" data-msk-href data-ng-click="active='Payments'">Мои вопросы <small class="text--small text--muted">(2)</small></a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    проверка
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

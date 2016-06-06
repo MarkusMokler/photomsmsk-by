@@ -1,0 +1,45 @@
+<h4 class="title-dotted">
+    Фотографии
+</h4>
+<div id="upload-drop" class="placeholder text--center" data-ngf-drop data-ngf-drag-over-class="'placeholder--success'">
+    <div data-ngf-drop data-ngf-select data-ng-model="files" class="drop-box"
+         data-ngf-drag-over-class="'dragover'" data-ngf-multiple="true"
+         data-ngf-allow-dir="true" accept="image/*,application/pdf" data-ngf-pattern="'image/*,application/pdf'">
+        <p class="text--h2 text--bold margin--bottom">Загрузите сюда фотографии</p>
+        <span class="text--muted">или</span>&nbsp;
+        <div class="button button--success" data-ngf-select="photosUpload($files)" data-ngf-max-size="3MB" data-ngf-min-height="300" data-ngf-multiple="true">выберите файл</div>
+        <div class="placeholder__description">
+            <p>
+                Студии публикуются только с фотографиями.
+            </p>
+            <p class="margin--top-small">
+                Изображения намного важнее текста. Чем больше будет фотографий, тем выше шанс сдать в аренду студию.
+            </p>
+        </div>
+        <div data-ngf-no-file-drop>Перетягивание файлов не поддерживается в этой версии браузера :(</div>
+        <ul>
+            <li data-ng-repeat="f in files">{{f.name}} {{f.$error}} {{f.$errorParam}}</li>
+        </ul>
+    </div>
+
+    Не сохраненные фотографии
+
+    <ul class="grid grid--small placeholder__uploaded margin--top" data-ng-cloak>
+        <li class="col--1-5 margin--bottom-small" data-ng-repeat="image in uploadedImages">
+            <div class="placeholder__uploaded__item">
+                <img src="{{image[0].url}}" alt="">
+                <a data-msk-href class="button button--mini button--danger margin--top-small placeholder__uploaded__item--delete">Удалить</a>
+            </div>
+        </li>
+    </ul>
+
+    Сохраненные фотографии
+    <ul class="grid grid--small placeholder__uploaded margin--top" data-ng-cloak>
+        <li class="col--1-5 margin--bottom-small" data-ng-repeat="photo in savedPhotos">
+            <div class="placeholder__uploaded__item">
+                <img src="{{photo.url}}" alt="">
+                <a data-msk-href class="button button--mini button--danger margin--top-small placeholder__uploaded__item--delete">Удалить</a>
+            </div>
+        </li>
+    </ul>
+</div>

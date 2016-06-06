@@ -1,0 +1,27 @@
+﻿@model ICollection<PhotoMSK.ViewModels.ShoppingCart.OrderViewModel.Summary>
+
+    <div class="uk-width-8-10 uk-offset-1-10">
+        <div class="uk-panel uk-panel-box uk-panel-module">
+            <table class="uk-table uk-table-statistics uk-table-hover uk-table-condensed uk-table-middle">
+                <thead>
+                    <tr class="uk-text-center">
+                        <th class="uk-text-left">OrderDate</th>
+                        <th>Total</th>
+                        <th>ShippingCost</th>
+                        @*<th>Status</th>*@
+                    </tr>
+                </thead>
+                <tbody id="orders">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="uk-text-left">@item.OrderDate</td>
+                            <td>@item.Total</td>
+                            <td>@item.ShippingCost</td>
+                            @*<td>@item.Status.Title</td>*@
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>

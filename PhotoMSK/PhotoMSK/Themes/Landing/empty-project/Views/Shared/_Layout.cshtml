@@ -1,0 +1,44 @@
+﻿@using System.Web.Optimization
+@using PhotoMSK.Areas.Default.Models
+@using PhotoMSK.Extensiolns
+@using StackExchange.Profiling
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photocollege - курсы фотографии в Минске</title>
+    <meta name="Description" content="@ViewBag.Description">
+    <meta name="og:image" property="og:image" content="@ViewBag.Image" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Styles.Render(UiKit217.StyleBundle)
+    @Styles.Render("~/Content/jquery-ui")
+    @*@Styles.Render("~/Content/site-style")*@
+    <link rel="stylesheet" href="@Url.Content("~/Themes/Page/photocollege.by/Content/Siteless.css")" />
+</head>
+<body>
+    
+
+    @if (IsSectionDefined("Main"))
+    {
+        @RenderSection("Main", false)
+    }
+
+    @if (IsSectionDefined("Footer"))
+    {
+        <footer class="uk-section-footer">
+            @RenderSection("Footer", false)
+        </footer>
+    }
+
+    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render(UiKit217.ScriptBundle)
+    <script src="@Url.Content("~/Scripts/jquery.signalR-2.2.0.min.js")"></script>
+    <script src="@Url.Content("~/signalr/hubs")"></script>
+    @Scripts.Render("~/Backbone")
+    @Scripts.Render("~/App")
+    @MiniProfiler.RenderIncludes()
+    @RenderSection("scripts", required: false)
+    
+</body>
+</html>

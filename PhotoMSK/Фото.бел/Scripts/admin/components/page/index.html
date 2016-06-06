@@ -1,0 +1,254 @@
+﻿<div class="container container--center  ">
+    <div class="grid">
+        <div class="col--8-10">
+            <!-- TOP Models -->
+            <h1><strong class="orange">Популярные</strong> модели Фотографы</h1>
+            <hr class="orange" />
+
+            <div class="grid">
+                
+                    <div ng-repeat="items in $scope" class="photo col--2-10">
+                        <div class="buttons">
+                            <div class="states">
+                                <a class="action">
+                                    <span class="icon"></span>
+                                    <span class="count">70.2</span>
+                                </a>
+                            </div>
+                        </div>
+                        <a href="{{items.shortcut}}">
+                            <img src="{{items.imageUrl}}" />
+                        </a>
+                        <div class="details">
+                            <div class="inside">
+                                <div class="info"><a href="{{items.shortcut}}">{{items.firstName}} {{items.lastName}}</a></div>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+
+        <div class="col--2-10">
+            <h1>Рейтинг</h1>
+            <hr />
+
+            <ul class="rating-list">
+                <li>
+                    <article class="uk-comment">
+                        <header class="uk-comment-header">
+                            <img class="uk-comment-avatar" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                            <h4 class="uk-comment-title">Роман Лунцевич</h4>
+                            <div class="uk-comment-meta"> Фотограф</div>
+                        </header>
+                    </article>
+                </li>
+                <li>
+                    <article class="uk-comment">
+                        <header class="uk-comment-header">
+                            <img class="uk-comment-avatar" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                            <h4 class="uk-comment-title">Роман Лунцевич</h4>
+                            <div class="uk-comment-meta"><div class="uk-badge uk-badge-success">PRO</div> Фотограф</div>
+                        </header>
+                    </article>
+                </li>
+            </ul>
+        </div>
+
+        <!-- All models  -->
+        <div class="col--8-10">
+            <div class="col--1-1">
+                <h1>Все модели</h1>
+                <hr />
+            </div>
+            <div class="col--1-1">
+                <nav class="uk-navbar text--center">
+                    <ul class="uk-navbar-nav">
+                        <li class="uk-active"><a href="" class="uk-navbar-nav-subtitle">ВСЕ<div>модели</div></a></li>
+                        <li><a href="" class="uk-navbar-nav-subtitle">PRO<div>модели</div></a></li>
+                        <li><a href="" class="uk-navbar-nav-subtitle">TFP<div>модели</div></a></li>
+                        <li><a href="" class="uk-navbar-nav-subtitle">Создать<div>новую</div></a></li>
+                        <!-- @<li>@Html.ActionLink("Создать новую", "Create")</li> -->
+                    </ul>
+                </nav>
+            </div>
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="grid">
+
+                    <div ng-repeat="items in $scope" class="photo col--2-10">
+                        <div class="buttons">
+                            <div class="states">
+                                <a class="action">
+                                    <span class="icon"></span>
+                                    <span class="count">70.2</span>
+                                </a>
+                            </div>
+                        </div>
+                        <a href="{{items.shortcut}}">
+                            <a href="{{items.shortcut}}">
+                                <img src="{{items.imageUrl}}" />
+                            </a>
+                        </a>
+                        <div class="details">
+                            <div class="inside">
+                                <div class="info"><a href="{{items.shortcut}}">"Паблик"</a></div>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+
+        </div>
+
+        <div class="col--2-10">
+            <!-- Filter -->
+            <h1>Фильтр</h1>
+            <hr />
+
+            <ul class="uk-nav uk-nav-side uk-nav-parent-icon" data-uk-nav="{multiple:true}">
+                <li class=" ">
+                    <form class="uk-search" data-uk-search="">
+                        <input class="uk-search-field" type="search" placeholder="поиск..." autocomplete="off">
+                        <button class="uk-search-close" type="reset"></button>
+                        <div class="uk-dropdown uk-dropdown-search"></div>
+                    </form>
+                    <!--
+                        <input type="text" id="searchbox" placeholder="Поиск...">
+                        <span class="glyphicon glyphicon-search search-icon"></span>
+                    -->
+                </li>
+                <li class=" ">
+                    <h4 class="text--muted">Рейтинг</h4>
+                    <div id="slider-range"></div>
+                </li>
+
+                <li class="uk-parent">
+                    <a href="#">Параметры модели</a>
+                    <ul class="uk-nav-sub">
+                        <li> Проверка</li>
+                        <li> Проверка</li>
+                        <li> Проверка</li>
+                    </ul>
+                </li>
+
+                <li class="uk-parent">
+                    <a href="#">Категории съемки</a>
+                    <ul class="uk-nav-sub">
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="All" id="all_genre"> Все категории
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="Crime"> Реклама одежды
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="Drama"> Контракт с фирмой
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="Thriller"> НЮ
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="Adventure"> Арт-НЮ
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="Western"> Эротика
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="Action"> Fashon
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="Biography"> МетАрт
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="History"> Гламур
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="War"> Beauty
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="Fantasy"> Арт-бьюти
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+
+                </li>
+
+                <li>
+                    <select name="country_code" id="input_country_code" title="Город" class="col--1-1">
+                        <option value="" selected="selected">Город</option>
+                        <option value="MSK">Минск</option>
+                        <option value="MSK">Гродно</option>
+                        <option value="MSK">Гомель</option>
+                        <option value="MSK">Витебск</option>
+                        <option value="MSK">Могилев</option>
+                    </select>
+                </li>
+                <li class="uk-nav-divider"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Shortcut)
+        </th>
+        <th></th>
+    </tr>
+
+        <tr ng-repeat="item in $scope">
+            <td>
+                @Html.DisplayFor(modelItem => item.Shortcut)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id = item.ID}) |
+                @Html.ActionLink("Details", "Details", new {id = item.ID}) |
+                @Html.ActionLink("Delete", "Delete", new {id = item.ID})
+            </td>
+        </tr>
+    
+
+</table>

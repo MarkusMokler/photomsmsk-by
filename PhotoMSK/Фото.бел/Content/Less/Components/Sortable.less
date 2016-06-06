@@ -1,0 +1,71 @@
+// out: ../../css/Components/Sortable.css, compress: true
+// Name:            Sortable
+// Description:     Defines styles for Sortable
+//
+// Component:       `sortable`
+//
+//
+// Element:         `sortable__*`
+//                  `sortable__item`
+//                  `sortable__*`
+//                  `sortable__*`
+//
+// Modifiers:       `sortable--*`
+//                  `sortable--*`
+//                  `sortable--*`
+//                  `sortable--*`
+//                  `sortable--*`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+
+@sortable-item-padding:                     10px;
+
+
+/* ========================================================================
+   Component: Sortable
+ ========================================================================== */
+.sortable {
+
+    // Element 'sortable__item'
+    &__item{
+        padding: @sortable-item-padding;
+        background: #f7f7f7;
+        border-radius: 0;
+        margin: 2px 0;
+        font-weight: 500;
+        color: #545454;
+
+        // Element 'sortable__item-child'
+        &-child{
+            margin-left: 30px;
+
+            & > div{
+                position: relative;
+
+                &:before{
+                    content: '\e5da';
+                    font-family: 'icomoon' !important;
+                    position: absolute;
+                    left: -15px;
+                    top: 18px;
+                    color: #E4E4E4;
+                    transform: translate(-50%, -50%);
+                }
+            }
+        }
+    }
+
+    // Element 'sortable__handle'
+    &__handle{
+        display: inline-block;
+        margin-right: 5px;
+        color: #ddd;
+        height: 20px;
+        line-height: 20px;
+        padding-right: 5px;
+        cursor: move;
+        border-right: 1px solid #ddd;
+    }
+}

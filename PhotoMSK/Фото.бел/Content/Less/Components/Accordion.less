@@ -1,0 +1,66 @@
+// out: ../../css/Components/Accordion.css, compress: true
+// Name:            Accordion
+// Description:     Defines styles for Accordion
+//
+// Component:       `accordion`
+//
+//
+// Element:       `accordion__*`
+//                `accordion__*`
+//
+// Modifiers:       `accordion--*`
+//                  `accordion--*`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+
+@accordion-block-border-color:                     #e8e8e8;
+
+@accordion-title-padding:                          5%;
+@accordion-title-active-color:                     #ffc600;
+
+@accordion-content-padding:                        5%;
+
+/* ========================================================================
+   Component: Booking
+ ========================================================================== */
+.accordion {
+    // Element `accordion__block`
+    &__block {
+        position: relative;
+        border-bottom: 1px solid @accordion-block-border-color;
+    }
+
+    // Element `accordion__title`
+    &__title{
+        position: relative;
+        padding: @accordion-title-padding;
+        color: #000;
+        cursor: pointer;
+
+        &.active{
+            &:before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 0;
+                width: 5px;
+                height: 24px;
+                background-color: @accordion-title-active-color;
+                margin-left: -1px;
+                z-index: 100;
+                transform: translateY(-50%);
+            }
+        }
+
+        // & > i{
+        //     font-size: 10px;
+        // }
+    }
+
+    // Element `accordion__content`
+    &__content{
+        padding: 0 @accordion-content-padding @accordion-content-padding @accordion-content-padding;
+    }
+}

@@ -1,0 +1,274 @@
+﻿@using PhotoMSK.Extensiolns
+@using PhotoMSK.Areas.Default.ViewData.Home
+@model IList<IndexViewData>
+
+@{
+    ViewBag.Title = "PhotoMSK";
+}
+
+@*<section>
+    <div style="background-image: url(http://ppcdn.500px.org/83143639/61e96dc29754870fb54985dfeb108d2fe24d100b/2048.jpg); height: 45rem;">
+        <div class="uk-container uk-container-center pad-top">
+            <div class="uk-grid">
+                @*<div class="uk-width-large-1-1 uk-width-small-1-1">
+                    <header class="uk-text-center pad-top-60">
+                        <i class="icon-camera2 uk-link-fff" style="font-size: 7em"></i>
+                        <h1 class="bold white-color">Бронируйте студии тут</h1>
+                        <p class="uk-link-fff">
+                            <span class="bold">768</span>
+                            фотографов
+                        </p>
+                    </header>
+                </div>
+                <div class="uk-width-1-1 uk-width-large-1-1 uk-width-small-1-1 uk-margin-bottom">
+                    <ul class="uk-article-meta uk-text-right uk-subnav">
+                        <li class="uk-text-middle" data-uk-tooltip title="На главную попадают фотографии с наибольшим количеством лайков.">
+                            Автор фотографии: <a href="#" class="uk-link-999"><strong>Лунцевич</strong> Роман</a> <img src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="30" height="30" class="uk-border-circle uk-margin-small-right" alt="Автор фотографии">
+                        </li>
+                    </ul>
+                </div>*@
+@*<form action="/" class="promo_search js-form is_stuck" id="promo-search" style="position: fixed; top: 79px; width: 949px;">
+                                <input id="search_marker" name="search_marker" type="hidden" value="true">
+                                <div class="grid">
+                                    <div class="grid-i __type">
+                                        <ul class="promo_search_type">
+                                            <li class="promo_search_type_i">
+                                                <a class="__current promo_search_type_a" href="/">Фото</a>
+                                            </li>
+                                            <li class="promo_search_type_i">
+                                                <a class="promo_search_type_a" href="/video">Видео</a>
+                                            </li>
+                                        </ul>
+                                    </div><div class="grid-i __city">
+                                        <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><input class="form-el __block __tx __m ui-autocomplete-input" data-cities-autocomplete="true" id="city" name="city" placeholder="Город" type="text" value="Москва" autocomplete="off">
+                                    </div><div class="grid-i __event">
+                                        <div class="promo_search_event">
+                                            <div class="promo_search_event_select form-el __block __select __fake __flat" id="promo-search-event-select">
+                                                <p>Все темы</p>
+                                            </div>
+                                            <div class="promo_search_event_popup popup js-popup" id="promo-search-event-popup">
+                                                <div class="popup_inner __tip __tip-t">
+                                                    <ul>
+                                                        <input id="speciality_id" name="speciality_id" type="hidden">
+                                                        <li class="__current">
+                                                            <i class="ico __32 __specs __all"></i>
+                                                            <p>Все темы</p>
+                                                        </li>
+                                                        <li data-id="1">
+                                                            <i class="__32 __specs __wedding ico"></i>
+                                                            <p>Свадьба</p>
+                                                        </li>
+                                                        <li data-id="2">
+                                                            <i class="__32 __children __specs ico"></i>
+                                                            <p>Дети</p>
+                                                        </li>
+                                                        <li data-id="6">
+                                                            <i class="__32 __events __specs ico"></i>
+                                                            <p>События</p>
+                                                        </li>
+                                                        <li data-id="5">
+                                                            <i class="__32 __portrait __specs ico"></i>
+                                                            <p>Портрет</p>
+                                                        </li>
+                                                        <li data-id="3">
+                                                            <i class="__32 __specs __subject ico"></i>
+                                                            <p>Предметы</p>
+                                                        </li>
+                                                        <li data-id="7">
+                                                            <i class="__32 __interior __specs ico"></i>
+                                                            <p>Интерьер</p>
+                                                        </li>
+                                                        <li data-id="13">
+                                                            <i class="__32 __specs __theme ico"></i>
+                                                            <p>Ретушь</p>
+                                                        </li>
+                                                        <li data-id="16">
+                                                            <i class="__32 __nude __specs ico"></i>
+                                                            <p>Ню</p>
+                                                        </li>
+                                                        <li data-id="12">
+                                                            <i class="__32 __other __specs ico"></i>
+                                                            <p>Другое </p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><div class="grid-i __date">
+                                        <div class="form-el-wrap">
+                                            <input class="form-el __block __tx __m js-ui-datepicker-init hasDatepicker" id="date" name="date" placeholder="Дата" type="text">
+                                            <i class="fa fa-calendar-o ico __14"></i>
+                                        </div>
+                                    </div><div class="grid-i __budget">
+                                        <div class="form-el __block __select __fake __flat">
+                                            <p>Бюджет</p>
+                                            <select class="form-el __select __real" id="price_range_id" name="price_range_id">
+                                                <option value="">Бюджет</option>
+                                                <option value="587">от 0 до 1000</option>
+                                                <option value="588">от 1000 до 3000</option>
+                                                <option value="589">от 3000 до ...</option>
+                                            </select>
+                                        </div>
+                                    </div><div class="grid-i __submit">
+                                        <button class="form-el __block __btn __major __m" type="submit">
+                                            <i class="fa fa-search ico __16"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        <div style="position: static; width: 979px; height: 69px; display: block; vertical-align: baseline; float: none;"></div>
+                </div>
+            </div>
+        </div>
+    </section>*@
+
+<div class="main-top-image">
+    <img src="http://ppcdn.500px.org/83143639/61e96dc29754870fb54985dfeb108d2fe24d100b/2048.jpg" alt="" />
+
+    <div class="main-top-content">
+        <div class="uk-container uk-container-center">
+            <div class="uk-grid">
+                <div class="uk-width-1-1 uk-width-small-1-1 uk-text-center">
+                    <div>
+                        <img src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" class="uk-border-circle uk-border-solid">
+                        <h2 class="bold" style="margin: 5px 0;">Анатолий Майскович</h2>
+                        <span><i class="icon-map-pin"></i> Минск, фотограф</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="uk-grid">
+                <div class="uk-width-4-10 uk-width-small-1-2 uk-width-medium-1-3">
+                    <span><i class="icon-heart2 pink-color"></i> 12 548</span>
+                    <h1>Party in Thailand</h1>
+                    <small>26 июля 2014</small>
+                </div>
+
+                <div class="uk-width-2-10 uk-offset-4-10 uk-text-right uk-hidden-small">
+                    <h3 class="category">Я снимаю:</h3>
+                    <ul class="uk-list uk-list-category">
+                        <li><a href="#">Fashion</a></li>
+                        <li><a href="#">Beauty</a></li>
+                        <li><a href="#">Свадебные</a></li>
+                        <li><a href="#">Детские</a></li>
+                        <li><a href="#">Природа</a></li>
+                    </ul>
+                </div>
+
+                <div class="uk-width-1-2">
+                    <ul class="uk-subnav uk-margin-remove">
+                        <li>
+                            <a href="#">
+                                <img class="uk-border-circle" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="40" height="40" alt="" data-uk-tooltip="" title="" data-cached-title="Роман Лунцевич">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img class="uk-border-circle" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="40" height="40" alt="" data-uk-tooltip="" title="" data-cached-title="Сергей Щипанов">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img class="uk-border-circle" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="40" height="40" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="uk-container uk-container-center">
+    <div class="uk-grid">
+
+        @*Блок статьей*@
+        <div class="uk-width-1-1">
+            @* Wall *@
+            <div id="wall-placeholder">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="uk-container uk-container-center uk-margin-bottom">
+    <div class="uk-grid">
+        @* Новые модели *@
+        <div class="uk-width-1-1 models">
+            <h1 class="article-section">Новые модели <span class="title-slash-green">/</span></h1>
+            <a href="@Url.Action("Index", "Model")">все модели</a>
+        </div>
+
+        <div id="owl-demo" class="owl-carousel owl-theme models">
+            @for (int j = 0; j < 30; j++)
+            {
+                <div class="item">
+                    <img src="http://ppcdn.500px.org/68853083/7fdcde47d3940cb7f5d9d9f25bdbe61b8fc482ee/600.jpg?v=0" alt="Touch">
+                    <a href="#"><h4>Ильяновская Мария</h4></a>
+                    <small>модель</small>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@*<div class="uk-main-category-images">
+        <div class="uk-container uk-container-center">
+            <div class="uk-grid">
+                <div class="uk-width-1-1 uk-margin-large-top uk-margin-large-bottom">
+                    <h1 class="uk-main-category-images-title pad-bottom-60">
+                        Это лучшее место для фотографий
+                    </h1>
+                    <a class="uk-button-border pad-top-40" href="">Все альбомы</a>
+                </div>
+                <div class="uk-width-1-1">
+                    <div class="uk-margin-large-bottom">
+                        <h2 class="uk-main-category-images-album-title">
+                            Популярные альбомы
+                        </h2>
+                        <div>
+                            <ul class="uk-grid uk-list-album uk-margin-left">
+                                <li class="uk-width-1-5"><a href="">Природа</a></li>
+                                <li class="uk-width-1-5"><a href="">Собаки</a></li>
+                                <li class="uk-width-1-5"><a href="">Города</a></li>
+                                <li class="uk-width-1-5"><a href="">Дерево</a></li>
+                                <li class="uk-width-1-5"><a href="">Кошки</a></li>
+                                <li class="uk-width-1-5"><a href="">Селфи</a></li>
+                                <li class="uk-width-1-5"><a href="">Фрукты</a></li>
+                                <li class="uk-width-1-5"><a href="">Рыжеволосые</a></li>
+                                <li class="uk-width-1-5"><a href="">Любовь</a></li>
+                                <li class="uk-width-1-5"><a href="">Метро</a></li>
+                                <li class="uk-width-1-5"><a href="">Брюнетки</a></li>
+                                <li class="uk-width-1-5"><a href="">Архитектура</a></li>
+                                <li class="uk-width-1-5"><a href="">Озера</a></li>
+                                <li class="uk-width-1-5"><a href="">Животные</a></li>
+                                <li class="uk-width-1-5"><a href="">Змеи</a></li>
+                                <li class="uk-width-1-5"><a href="">Младенцы</a></li>
+                                <li class="uk-width-1-5"><a href="">Городская жизнь</a></li>
+                                <li class="uk-width-1-5"><a href="">Слоны</a></li>
+                                <li class="uk-width-1-5"><a href="">Беларусь</a></li>
+                                <li class="uk-width-1-5"><a href="">Гранж</a></li>
+                                <li class="uk-width-1-5"><a href="">Черный и белый</a></li>
+                                <li class="uk-width-1-5"><a href="">Скейт-борды</a></li>
+                                <li class="uk-width-1-5"><a href="">Пляж</a></li>
+                                <li class="uk-width-1-5"><a href="">Архитектура</a></li>
+                                <li class="uk-width-1-5"><a href="">Озера</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+@section scripts
+{
+    <script>
+        $(function () {
+            App.ModelDetails = new window.MainPage();
+            App.ModelDetails.render();
+            App.WallView.WallCollection.reset(@Model.ToJson());
+        })
+    </script>
+}

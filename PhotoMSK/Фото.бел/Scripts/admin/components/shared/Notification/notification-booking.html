@@ -1,0 +1,24 @@
+<ul class="penalty__list">
+    <li data-ng-repeat="event in userEventsData | limitTo:10" class="penalty__item grid grid--medium">
+        <div class="penalty__item__days col--2-10">
+            <small class="penalty__item__month" data-ng-bind="event.start | date:'MMM'"></small>
+            <span class="penalty__item__day" data-ng-bind="event.start | date:'dd'"></span>
+            <small class="penalty__item__month" data-ng-bind="event.start | date:'hh:mm'"></small>
+        </div>
+        <div class="penalty__item__times col--5-10">
+            <p class="penalty__item__route margin--reset">
+                <span>{{event.routeName}}</span>
+                <span>{{event.bookItem}}</span>
+            </p>
+            <p class="penalty__item__desc">
+                c <span data-ng-bind="event.start | date:'hh:mm'"></span>
+                &nbsp;до <span data-ng-bind="event.end | date:'hh:mm'"></span>
+            </p>
+        </div>
+
+        <div class="penalty__item__price col--3-10">
+            <p>{{event.price | number}}</p>
+            <small class="penalty__item__price__currency text--small text--muted">руб.</small>
+        </div>
+    </li>
+</ul>

@@ -1,0 +1,73 @@
+﻿
+<div>
+<div class="grid">
+    <div class="col--1-1">
+        <span class="uk-form-heading text--muted">Список созданных фотографов</span>
+        <hr class="small-line uk-margin-small-top" />
+    </div>
+</div>
+
+<div class="grid">
+        <div class="col--large-1-2 col--medium-1-2 col--small-1-1">
+            <article class="post" ng-repeat="item in items | filter:{ routeType: 'Photographer' }">
+                <a href="{{item.shortcut}}" class="post-image">
+                    <img class="uk-border-rounded" src="{{item.coverImageUrl}}" id="cover-image-url-{{item.shortcut}}">
+                </a>
+                <div class="details">
+                    <div class="actions">
+                        <a href="{{item.shortcut}}" class="btn-ph btn-secondary btn-round">
+                            <span class="user-status success"></span>
+                            <img class="uk-comment-avatar uk-border-circle" src="{{item.imageUrl}}" width="50" height="50" alt="" id="image-url-{{item.shortcut}}">
+                        </a>
+                    </div>
+
+                    <h3 class="uk-margin-top uk-margin-bottom-remove ">
+                        <a href="" class="uk-link-muted" id="link-route-{{item.shortcut}}"><strong>{{item.lastName}}</strong> {{item.firstName}}</a>
+                    </h3>
+                    <p>
+                        <ul class="uk-subnav uk-subnav-line uk-margin-remove uk-text-nowrap">
+                            <li class="uk-vertical-align-middle"><a href="" class="uk-link-999 uk-link-dotted">Просмотреть</a></li>
+                            <li><a href="" class="uk-navbar-nav-subtitle uk-link-999 text--center"><i class="icon-pencil"></i><div>изменить</div></a></li>
+                            <li><a href="#modal-delete" data-uk-modal class="go-to-modal" id="{{item.shortcut}}"><i class="icon-trash"></i><div>удалить</div></a></li>
+                        </ul>
+                    </p>
+                    <div class="intents">
+                        <small class="count text--muted"><i class="icon-heart"></i></small>
+                    </div>
+                </div>
+                <hr class="col--small-1-1 uk-visible-small uk-margin-bottom small-line" />
+            </article>
+        </div>
+</div>
+
+<div id="modal-delete" class="uk-modal">
+    <div class="uk-modal-dialog">
+        <button type="button" class="uk-modal-close uk-close"></button>
+        <div class="uk-modal-header">
+            <h2>Удаление</h2>
+        </div>
+        <p class="uk-h2">Вы действительно хотите удалить?</p>
+
+        <div class="panel panel--box uk-panel--white uk-panel-border-line uk-panel--border-radius">
+            <div class="uk-panel-teaser">
+                <img src="" alt="Фотостудия " id="cover-image-url-modal">
+            </div>
+            <div class="grid grid--small">
+                <div class="col--8-10">
+                    <h2 class="uk-panel-title uk-margin-small-bottom">
+                        <img src="" width="30" height="30" class="uk-border-circle" id="image-url-modal">
+                        <a href="#" class="uk-link-muted" id="link-route-modal">
+
+                        </a>
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="uk-modal-footer text--right">
+            <button type="button" class="button uk-modal-close">Отменить</button>
+            <a href="" class="button button-primary" id="go-to-phonerequest">Подтвердить</a>
+        </div>
+    </div>
+</div>
+</div>

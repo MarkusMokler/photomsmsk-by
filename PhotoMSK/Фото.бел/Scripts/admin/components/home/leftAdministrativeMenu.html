@@ -1,0 +1,272 @@
+﻿@Html.Action("Chat")
+<nav id="sidemenu" class="animated navigation-pinned">
+    <div id="menuwrapper">
+        <div id="menuSlider" style="left: -100%;">
+            <div id="subMenu">
+                <div id="Work-menu-container" class="menu-group" style="display: block;">
+
+                    <div id="Work-tree-container" class="tree-container jspScrollable" tabindex="0">
+                        <div class="jspContainer">
+                            <div class="jspPane k-widget k-treeview">
+
+                                @{
+                                    List<RouteEntity> routes = Model.UserInformation.Roles.Where(x => x.AccessStatus == AccessStatus.Owner || x.AccessStatus == AccessStatus.Administrator).Select(x => x.Route).ToList();
+                                    IEnumerable<IGrouping<Type, RouteEntity>> groups = routes.GroupBy(x => x.GetType());
+                                }
+
+                                @foreach (var group in groups)
+                                {
+                                    if (typeof(Photostudio).IsAssignableFrom(group.Key))
+                                    {
+                                        <div id="left-menu-category-1" class="left-menu-items-title blue-color">
+                                            Фотостудии
+                                            <a href="#" class="menu-toggle-text" data-uk-toggle="{target:'#category-1'}">свернуть</a>
+                                        </div>
+                                        <ul id="category-1" class="uk-nav uk-nav-side uk-nav-parent-icon k-group uk-animation-slide-left" data-uk-nav>
+
+                                            @foreach (Photostudio item in group.OfType<Photostudio>())
+                                            {
+                                                <li class="uk-parent k-item">
+                                                    <a href="#">{{item.name}}</a>
+                                                    <ul class="uk-nav-sub">
+                                                        <li>
+                                                            <span class="k-in">
+                                                                @Html.ActionLink("Редактировать", "Edit", "Photostudio", new { shortcut = item.shortcut }, null)
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="k-in">
+                                                                @Html.ActionLink("Залы", "PhotostudioHalls", "Hall", new { shortcut = item.shortcut }, null)
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="k-in">
+                                                                @Html.ActionLink("Бронирование", "Index", "Photostudio", new { shortcut = item.shortcut }, null)
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="k-in">
+                                                                @Html.ActionLink("Профит", "Profit", "Photostudio", new { shortcut = item.shortcut }, null)
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            }
+                                        </ul>
+                                        <div class="k-mid">
+                                            <span class="k-in">
+                                                <hr>
+                                            </span>
+                                        </div>
+                                    }
+
+                                    if (typeof(Photographer).IsAssignableFrom(group.Key))
+                                    {
+                                        <div id="left-menu-category-1" class="left-menu-items-title blue-color">
+                                            Фотографы
+                                            <a href="#" class="menu-toggle-text" data-uk-toggle="{target:'#category-2'}">свернуть</a>
+                                        </div>
+                                        <ul id="category-2" class="uk-nav uk-nav-side uk-nav-parent-icon k-group uk-animation-slide-left" data-uk-nav>
+
+                                            @foreach (Photographer item in group.OfType<Photographer>())
+                                            {
+                                                <li class="uk-parent k-item">
+                                                    <a href="#">{{item.firstName}} {{item.lastName}}</a>
+                                                    <ul class="uk-nav-sub">
+                                                        <li>
+                                                            <span class="k-in">
+                                                                @Html.ActionLink("Редактировать", "Edit", "Photographer", new { shortcut = item.shortcut }, null)
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="k-in">
+                                                                @Html.ActionLink("Бронирование", "Index", "Photographer", new { shortcut = item.shortcut }, null)
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            }
+                                        </ul>
+                                        <div class="k-mid">
+                                            <span class="k-in">
+                                                <hr />
+                                            </span>
+                                        </div>
+                                    }
+
+                                    if (typeof(Photorent).IsAssignableFrom(group.Key))
+                                    {
+                                        <div id="left-menu-category-1" class="left-menu-items-title blue-color">
+                                            Фотопрокат
+                                            <a href="#" class="menu-toggle-text" data-uk-toggle="{target:'#category-3'}">свернуть</a>
+                                        </div>
+                                        <ul id="category-3" class="uk-nav uk-nav-side uk-nav-parent-icon k-group uk-animation-slide-left" data-uk-nav>
+
+                                            @foreach (Photorent item in group.OfType<Photorent>())
+                                            {
+                                                <li class="uk-parent k-item">
+                                                    <a href="#">{{item.name}}</a>
+                                                    <ul class="uk-nav-sub">
+                                                        <li>
+                                                            <span class="k-in">
+                                                                @Html.ActionLink("Редактировать", "Edit", "Photorent", new { shortcut = item.shortcut }, null)
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="k-in">
+                                                                @Html.ActionLink("Бронирование", "Index", "Photorent", new { shortcut = item.shortcut }, null)
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            }
+                                        </ul>
+                                        <div class="k-mid">
+                                            <span class="k-in">
+                                                <hr>
+                                            </span>
+                                        </div>
+                                    }
+
+                                    if (typeof(Photoshop).IsAssignableFrom(group.Key))
+                                    {
+                                        <div id="left-menu-category-1" class="left-menu-items-title blue-color">
+                                            Фотомагазины
+                                            <a href="#" class="menu-toggle-text" data-uk-toggle="{target:'#category-4'}">свернуть</a>
+                                        </div>
+                                        <ul id="category-4" class="uk-nav uk-nav-side uk-nav-parent-icon k-group uk-animation-slide-left" data-uk-nav>
+
+                                            @foreach (Photoshop item in group.OfType<Photoshop>())
+                                            {
+                                                <li class="uk-parent k-item">
+                                                    <a href="#">{{item.name}}</a>
+                                                    <ul class="uk-nav-sub">
+                                                        <li>
+                                                            <span class="k-in">
+                                                                @Html.ActionLink("Редактировать", "Edit", "Photoshop", new { shortcut = item.shortcut }, null)
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            }
+                                        </ul>
+                                        <div class="k-mid">
+                                            <span class="k-in">
+                                                <hr>
+                                            </span>
+                                        </div>
+                                    }
+
+                                    if (typeof(Photomodel).IsAssignableFrom(group.Key))
+                                    {
+                                        <div id="left-menu-category-1" class="left-menu-items-title blue-color">
+                                            Фотомодели
+                                            <a href="#" class="menu-toggle-text" data-uk-toggle="{target:'#category-5'}">свернуть</a>
+                                        </div>
+                                        <ul id="category-5" class="uk-nav uk-nav-side uk-nav-parent-icon k-group uk-animation-slide-left" data-uk-nav>
+
+                                            @foreach (Photomodel item in group.OfType<Photomodel>())
+                                            {
+                                                <li class="uk-parent k-item">
+                                                    <a href="#">{{item.firstName}} {{item.lastName}}</a>
+                                                    <ul class="uk-nav-sub">
+                                                        <li>
+                                                            <span class="k-in">
+                                                                @Html.ActionLink("Редактировать", "Edit", "Model", new { shortcut = item.shortcut }, null)
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            }
+                                        </ul>
+                                        <div class="k-mid">
+                                            <span class="k-in">
+                                                <hr>
+                                            </span>
+                                        </div>
+                                    }
+                                    if (typeof(Masterclass).IsAssignableFrom(group.Key))
+                                    {
+                                        <div id="left-menu-category-1" class="left-menu-items-title blue-color">
+                                            Мастер-классы
+                                            <a href="#" class="menu-toggle-text" data-uk-toggle="{target:'#category-6'}">свернуть</a>
+                                        </div>
+                                        <ul id="category-6" class="uk-nav uk-nav-side uk-nav-parent-icon k-group uk-animation-slide-left" data-uk-nav>
+
+                                            @foreach (Masterclass item in group.OfType<Masterclass>())
+                                            {
+                                                <li class="uk-parent k-item">
+                                                    <a href="#">{{item.authorName}}</a>
+                                                    <ul class="uk-nav-sub">
+                                                        <li>
+                                                            <span class="k-in">
+                                                                @Html.ActionLink("Редактировать", "Edit", "Masterclass", new { shortcut = item.Shortcut }, null)
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            }
+                                        </ul>
+                                        <div class="k-mid">
+                                            <span class="k-in">
+                                                <hr>
+                                            </span>
+                                        </div>
+                                    }
+                                }
+
+
+
+                                <div id="left-menu-category-1" class="left-menu-items-title orange-color">
+                                    Информация
+                                    <a href="#" class="menu-toggle-text" data-uk-toggle="{target:'#category-2'}">свернуть</a>
+                                </div>
+                                <ul id="category-2" class="k-group k-treeview-lines uk-animation-slide-left" role="group">
+                                    <li role="treeitem" class="k-item k-first">
+                                        <div class="k-top">
+                                            <span class="k-in k-state-selected k-state-focused">
+                                                <a href="#MyPerspective" class="predefined">Информация</a>
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li role="treeitem" class="k-item">
+                                        <div class="k-mid">
+                                            <span class="k-in">
+
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li role="treeitem" class="k-item">
+                                        <div class="k-mid">
+                                            <span class="k-in">
+                                                @Html.ActionLink("Разработчику", "Index", "Developer")
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li role="treeitem" class="k-item">
+                                        <div class="k-mid">
+                                            <span class="k-in">
+                                                <hr>
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li role="treeitem" class="k-item k-last">
+                                        <div class="k-bot">
+                                            <span class="k-in">
+                                                <a href="/Work" view-id="Work" class="tp-navigation-createview">
+                                                    <span class="k-button default add context-menu-expander">
+                                                        <i class="icon-plus"></i>
+                                                    </span> Получить <div class="uk-badge uk-badge-success">PRO</div>
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

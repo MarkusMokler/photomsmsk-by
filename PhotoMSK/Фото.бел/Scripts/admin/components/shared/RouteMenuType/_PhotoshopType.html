@@ -1,0 +1,86 @@
+﻿<div class="aside-menu__title">
+    Магазин
+    <small data-ng-click="isCollapsed = !isCollapsed">спрятать</small>
+</div>
+<ul class="aside-menu__list" data-ng-show="!isCollapsed">
+    <li>
+        <a data-msk-href>
+            <i class="icon-slow_motion_video"></i>
+
+            <span data-ng-if="!iconsOnly">Дашборд</span>
+        </a>
+    </li>
+    <li>
+        <a data-msk-href>
+            <i class="icon-directions_run"></i>
+            <span data-ng-if="!iconsOnly">Сотрудники</span>
+        </a>
+    </li>
+    <li data-ng-class="{'open' : isClientOpen}">
+        <a data-msk-href data-ng-click="isClientOpen = !isClientOpen">
+            <i class="icon-accessibility"></i>
+            <span data-ng-if="!iconsOnly">Клиенты</span>
+        </a>
+        <ul class="aside-menu__sublist" data-ng-show="isClientOpen">
+            <li><a data-msk-href>Список</a></li>
+            <li><a data-msk-href>Категории</a></li>
+            <li><a data-msk-href>Лояльности</a></li>
+            <li><a data-msk-href>Пластиковые карты</a></li>
+        </ul>
+    </li>
+    <li>
+        <a data-msk-href>
+            <i class="icon-timelapse"></i>
+            <span data-ng-if="!iconsOnly">Статистика</span>
+        </a>
+    </li>
+    <li>
+        <a data-msk-href>
+            <i class="icon-call_split"></i>
+            <span data-ng-if="!iconsOnly">Активность</span>
+        </a>
+    </li>
+    <li>
+        <a data-msk-href>
+            <i class="icon-attach_money"></i>
+            <span data-ng-if="!iconsOnly">Финансы</span>
+        </a>
+    </li>
+    <li>
+        <a href="/admin/photoshop/{{selectedRouteLeftMenu.shortcut}}/prices">
+            <i class="icon-armchair"></i>
+            <span data-ng-if="!iconsOnly">Прайсы</span>
+        </a>
+    </li>
+    <li>
+        <a href="/admin/photoshop/{{selectedRouteLeftMenu.shortcut}}/edit">
+            <i class="icon-tune"></i>
+            <span data-ng-if="!iconsOnly">Настройки</span>
+        </a>
+    </li>
+    <li>
+        <a data-msk-href>
+            <i class="icon-phone_in_talk"></i>
+            <span data-ng-if="!iconsOnly">Звонки</span>
+        </a>
+    </li>
+    <li>
+        <a data-msk-href>
+            <i class="icon-credit-card"></i>
+            <span data-ng-if="!iconsOnly">Оплаты</span>
+        </a>
+    </li>
+    <li>
+        <a data-msk-href>
+            <i class="icon-style"></i>
+            <span data-ng-if="!iconsOnly">Карточки</span>
+        </a>
+    </li>
+    <li class="aside-menu__divider"></li>
+    <li>
+        <a data-msk-href data-ng-click="authService.logOut()">
+            <i class="icon-power_settings_new"></i>
+            <span data-ng-if="!iconsOnly">Выход</span>
+        </a>
+    </li>
+</ul>

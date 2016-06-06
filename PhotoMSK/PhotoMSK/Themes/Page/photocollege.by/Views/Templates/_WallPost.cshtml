@@ -1,0 +1,23 @@
+﻿<div>
+    <% _.each(photos,function(iter){%>
+    <img src="<%- iter.url %>"
+         class="uk-align-medium-left" style="width: 180px;" />
+    <% }) %>
+    <small class="uk-text-muted">
+        <i class="uk-icon-clock-o"></i> <%- jQuery.timeago(date) %>
+    </small>
+
+    <p>
+        <% if(typeof(title)!='undefined'&& title!=null){ %>
+        <a href="#" class="uk-link-muted">
+            <strong><%- title %></strong>
+        </a>
+        <% } %>
+    </p>
+    <span><%= App.Tools.htmlSubstring(description,250) %></span>
+    <% if(description.length>200){ %>
+    <p>
+        <a href="#" class="uk-float-right uk-button">Подробнее</a>
+    </p>
+    <% } %>
+</div>

@@ -1,0 +1,35 @@
+// out: ../../css/Components/Upload.css, compress: true
+// Name:            Upload
+// Description:     Defines styles for Upload
+//
+// Component:       `upload`
+//
+// Element:         `upload__area`
+//
+// Modifiers:       `upload--*`
+//                  `upload--*`
+//                  `upload--*`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+
+@upload-area-heigth:                 250px;
+@upload-area-background:             #eee;
+
+/* ========================================================================
+   Component: Upload
+ ========================================================================== */
+
+.upload {
+
+    // Element 'upload__area'
+    &__area{
+        width: 300px;
+        padding: 0;
+        background: @upload-area-background;
+        height: @upload-area-heigth;
+        overflow: hidden;
+        border: 2px dashed #ddd;
+    }
+}

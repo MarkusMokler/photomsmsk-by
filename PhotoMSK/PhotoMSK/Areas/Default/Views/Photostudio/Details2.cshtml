@@ -1,0 +1,223 @@
+﻿@using AutoMapper
+@using Microsoft.AspNet.Identity
+@using PhotoMSK.Extensiolns
+@using PhotoMSK.ViewModels
+@model PhotoMSK.Areas.Default.ViewData.Photostudio.DetailsViewData
+@{
+    ViewBag.Title = "Фотостудия " + Model.Title;
+    ViewBag.Description = Model.Description;
+    ViewBag.Image = Model.Image;
+}
+@section scripts
+{
+    @Scripts.Render("~/Scripts/marked")
+    @Scripts.Render("~/bundles/jqueryval")
+    <style>
+        #hall-select li:hover {
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
+            border-radius: 3px;
+            color: #666;
+        }
+
+        .booking-calendar table td {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            window.routeImage='@Model.Item.ImageUrl';
+            App.owner = '@Model.Item.ID';
+            var view = App.Views.StudioDetails({ model: @Model.Item.Halls.Select(x => new {id = x.ID.ToString(), color = x.Color, name = x.Name, description = x.Description, calendarID = x.CalendarID}).ToJson() });
+
+            view.render();
+            view.WallView.WallCollection.reset(@Model.Item.Wall.ToJson());
+
+            $("#subscribe").click(function() {
+
+                $.post("/Api/Subscription", { RouteID: "@Model.Item.ID" }, function() {}
+                );
+            });
+        });
+    </script>
+}
+<div class="userprofile photographer" id="px">
+    <div id="cover">
+        <div class="inside">
+            <img style="width: 100%" src=@(Model.Item.CoverImage ?? "http://pacdn.500px.org/1623045/90732f6fd75497df147984baddc5146b0725e54b/cover_2048.jpg") />
+        </div>
+        <div class="bottom">
+            <div class="fade">
+                <div class="wrapper">
+                    <div class="uk-container uk-container-center">
+                        <div class="uk-grid uk-flex uk-photostudio-title">
+                            <div class="uk-width-1-1">
+                                <ul class="uk-subnav">
+                                    <li>
+                                        <a href="#" class="uk-top-position">
+                                            <span class="title" data-uk-tooltip="{pos:'top-right'}" title="" data-cached-title="Посмотреть ТОП 100">Топ 100</span>
+                                            <span class="num" data-uk-tooltip="{pos:'top-left'}" title="25 место в рейтинге фотостудий">25</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <img class="uk-border-circle uk-margin-right" src="@Model.Item.ImageUrl" width="60" height="60">
+                                    </li>
+                                    <li>
+                                        <h1 class="uk-margin-remove uk-photostudio-name">@Model.Item.Name</h1>
+                                        <ul class="uk-photostudio-adress uk-subnav uk-subnav-line uk-display-block">
+                                            <li>Просторная фотостудия в центре Минска</li>
+                                            <li>естественный свет</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <hr class="small-line-opacity">
+
+                        <div class="uk-grid uk-margin-top-small">
+                            <div class="uk-width-1-1">
+                                <ul class="uk-subnav uk-subnav-top-menu uk-hidden-small role-switch-tabs" data-uk-switcher="{connect:'#photographer-tab', animation: 'fade'}">
+                                    <li class="uk-active"><a href="#">Информация</a></li>
+                                    <li class=""><a href="#">Календарь</a></li>
+                                    <li class=""><a href="#">Залы</a></li>
+                                    <li class=""><a href="#">Отзывы</a></li>
+                                    <li class=""><a href="#">Новости</a></li>
+                                    <li class=""><a href="#">Правила</a></li>
+                                </ul>
+                                <div class="uk-navbar-brand uk-navbar-center uk-visible-small"><img src="images/logo_uikit.svg" width="90" height="30" title="UIkit" alt="UIkit"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="uk-main-page-body">
+    <div class="uk-page-bar-panel">
+        <div class="uk-container uk-container-center">
+            <ul class="uk-margin-remove uk-subnav uk-subnav-line">
+                <li><a href="/">Главная</a></li>
+                <li class="uk-active"><a href="#">Фотостудии</a></li>
+                <li><span>@Model.Item.Name</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="uk-container uk-container-center photographer">
+        <div class="uk-grid">
+            <div class="uk-width-medium-1-1">
+                <ul id="photographer-tab" class="uk-switcher uk-margin">
+                    <li>
+                        <div class="uk-grid uk-grid-divider">
+                            <div class="uk-width-3-10">
+                                <div class="uk-rating-big">
+                                    <span class="uk-rating-number">
+                                        <span class="uk-rating-number-value">
+                                            <i class="uk-icon-star"></i>
+                                            7.82
+                                        </span>
+                                        <a href="#" class="uk-rating-count" data-uk-switcher-item="3">
+                                            <span>123 000</span>
+                                            <br />
+                                            голосов
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="uk-width-3-10 uk-text-center">
+                                @if (Model.Item.Phones.Count > 0)
+                                {
+                                    <a href="#review-phone-modal" class="uk-h1 uk-link-reset uk-link-dotted" data-uk-modal>
+                                        @foreach (var item in Model.Item.Phones.Take(1))
+                                        {
+                                            <h3 class="uk-h1">@item.Number</h3>
+                                        }
+                                    </a>
+                                    <p class="uk-margin-small">
+                                        <a href="#" class="uk-link-dotted uk-link-reset">
+                                            заказать звонок
+                                        </a>
+                                    </p>
+                                }
+                            </div>
+                            <div class="uk-width-4-10">
+                                <a href="#">
+                                    <img class="uk-maps-small uk-align-medium-left" src="http://static-maps.yandex.ru/1.x/?ll=37.564094543457,55.733810424805&size=150,150&l=map&pt=37.564094543457,55.733810424805,pm2rdm&z=12&key=AK1qVkwBAAAA5gsVSgIAbvt9HsWBOblVR6sUnpLWbrsLMIYAAAAAAAAAAABwHSsVfy3Ruly1q2IEhjaKWd6xGw==" />
+                                </a>
+                                <div class="">
+                                    <ul class="uk-subnav uk-margin-small-bottom">
+                                        <li><span class="uk-text-muted"><i class="uk-icon-location-arrow"></i> Минск</span></li>
+                                        <li><a href="#" class="uk-link-reset uk-link-muted uk-link-dotted uk-text-bold">@Model.Item.Adress</a></li>
+                                    </ul>
+                                    <ul class="uk-subnav uk-margin-remove">
+                                        <li><div class="icons-all icon-metro uk-float-left"></div>&nbsp;<span class="uk-link-dotted">@Model.Item.MetroStation</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        @Html.Partial("Details/_PhotostudioInformation", Model)
+                    </li>
+                    <li>
+                        @Html.Partial("Details/_PhotostudioCalendar", Model)
+                    </li>
+                    <li>
+                        @Html.Partial("Details/_PhotostudioHalls", Model)
+                    </li>
+                    <li>
+                        @Html.Partial("Details/_PhotostudioReviews", Model)
+                    </li>
+                    <li>
+                        @Html.Partial("Details/_PhotostudioNews", Model)
+                    </li>
+                    <li>
+                        @Html.Partial("Details/_PhotostudioRules", Model)
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="review-phone-modal" class="uk-modal uk-text-center">
+    <div class="uk-modal-dialog uk-modal-dialog-phones uk-modal-dialog-phones-big">
+        <a href="" class="uk-modal-close uk-close"></a>
+        <span class="uk-text-muted">контактная информация @Model.Item.Name</span>
+        @foreach (var item in Model.Item.Phones)
+        {
+            @item.Number
+        }
+        <span class="uk-text-muted">
+            сообщайте @Model.Item.Name о том, что вы нашли её на <span class="uk-link-dotted">PhotoMSK.by</span>
+        </span>
+        <div class="uk-panel uk-panel-box uk-margin-top">
+            <h3 class="uk-panel-title">оцените работу @Model.Item.Name:</h3>
+            <div class="uk-flex uk-margin-bottom">
+                <div class="uk-width-1-4">
+                    <a href="#review-phone-modal-thanks" class="uk-button uk-button-reviews uk-button-reviews-success uk-width-1-1" data-uk-modal>Все прошло хорошо</a>
+                </div>
+                <div class="uk-width-1-4 uk-margin-left">
+                    <a href="#review-phone-modal-thanks" class="uk-button uk-button-reviews uk-button-reviews-warning uk-width-1-1" data-uk-modal>Даты оказались занятыми</a>
+                </div>
+                <div class="uk-width-1-4 uk-margin-left">
+                    <a href="#review-phone-modal-thanks" class="uk-button uk-button-reviews uk-button-reviews-danger uk-width-1-1" data-uk-modal>Не отвечает на звонки</a>
+                </div>
+                <div class="uk-width-1-4 uk-margin-left">
+                    <a href="#review-phone-modal-thanks" class="uk-button uk-button-reviews uk-button-reviews-danger uk-width-1-1" data-uk-modal>Цены не действительны</a>
+                </div>
+            </div>
+            <small class="uk-text-muted">
+                Спасибо за ваш отзыв! Нам он очень важен.
+            </small>
+        </div>
+    </div>
+</div>
+<div id="review-phone-modal-thanks" class="uk-modal">
+    <div class="uk-modal-dialog uk-modal-dialog-phones uk-text-center">
+        <a href="" class="uk-modal-close uk-close"></a>
+        <span class="uk-text-muted">контактная информация @Model.Item.Name</span>
+        <h1 class="uk-heading-large uk-margin-large">Спасибо :)</h1>
+        <p class="uk-text-muted">Нам очень важно что вы оставили ваше мнение на <span class="uk-link-dotted">PhotoMSK.by</span></p>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FB79C1FB-03D4-4009-B5DA-6E4598AF6B14}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileService", "FileService\FileService.csproj", "{0846967D-73BD-47D0-A951-15D5758C2707}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9A71321F-8F46-431B-81C6-1F63A8C0EB5B} = {9A71321F-8F46-431B-81C6-1F63A8C0EB5B}
+		{FB880622-3803-46A3-BBEA-8C18DB74D49D} = {FB880622-3803-46A3-BBEA-8C18DB74D49D}
+		{55380759-449E-4CBA-920C-7CBC90FF6772} = {55380759-449E-4CBA-920C-7CBC90FF6772}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{A7136692-A162-45AD-89DC-7B8E876FFD14}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Local", "Local", "{799A1130-4D92-4ED8-9ECA-238C4207D280}"
+	ProjectSection(SolutionItems) = preProject
+		Config\Local\AppSettings.config = Config\Local\AppSettings.config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extension", "Extension\Extension.csproj", "{099F531B-9832-4FC9-8C7D-9CC1F92AEC75}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{83C0921D-207B-4D14-9504-7062A9CD9947}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoMSK.Data", "Core\PhotoMSK.Data\PhotoMSK.Data.csproj", "{55380759-449E-4CBA-920C-7CBC90FF6772}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoMSK.ViewModels", "Core\PhotoMSK.ViewModels\PhotoMSK.ViewModels.csproj", "{9A71321F-8F46-431B-81C6-1F63A8C0EB5B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{16463E8F-1981-4A29-8B81-42766F448634}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".PS1-Scripts", ".PS1-Scripts", "{98405BF2-1D9B-47C2-9DB8-08E1D8C0D56C}"
+	ProjectSection(SolutionItems) = preProject
+		MSK-Add-migration.ps1 = MSK-Add-migration.ps1
+		MSK-Update-database.ps1 = MSK-Update-database.ps1
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Фото.бел", "Фото.бел\Фото.бел.csproj", "{FB880622-3803-46A3-BBEA-8C18DB74D49D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{099F531B-9832-4FC9-8C7D-9CC1F92AEC75} = {099F531B-9832-4FC9-8C7D-9CC1F92AEC75}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EC5B25C3-B9EF-46CF-9CB5-25DCD5DF66A6}"
+	ProjectSection(SolutionItems) = preProject
+		WE-Markdown.css = WE-Markdown.css
+		WE-Palette.css = WE-Palette.css
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calendar importer", "Calendar importer\Calendar importer.csproj", "{E1F595F6-47E3-456A-A17D-AB7A9D1FA7FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0846967D-73BD-47D0-A951-15D5758C2707}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0846967D-73BD-47D0-A951-15D5758C2707}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0846967D-73BD-47D0-A951-15D5758C2707}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0846967D-73BD-47D0-A951-15D5758C2707}.Release|Any CPU.Build.0 = Release|Any CPU
+		{099F531B-9832-4FC9-8C7D-9CC1F92AEC75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{099F531B-9832-4FC9-8C7D-9CC1F92AEC75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{099F531B-9832-4FC9-8C7D-9CC1F92AEC75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{099F531B-9832-4FC9-8C7D-9CC1F92AEC75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55380759-449E-4CBA-920C-7CBC90FF6772}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55380759-449E-4CBA-920C-7CBC90FF6772}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55380759-449E-4CBA-920C-7CBC90FF6772}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55380759-449E-4CBA-920C-7CBC90FF6772}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A71321F-8F46-431B-81C6-1F63A8C0EB5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A71321F-8F46-431B-81C6-1F63A8C0EB5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A71321F-8F46-431B-81C6-1F63A8C0EB5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A71321F-8F46-431B-81C6-1F63A8C0EB5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB880622-3803-46A3-BBEA-8C18DB74D49D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB880622-3803-46A3-BBEA-8C18DB74D49D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB880622-3803-46A3-BBEA-8C18DB74D49D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB880622-3803-46A3-BBEA-8C18DB74D49D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1F595F6-47E3-456A-A17D-AB7A9D1FA7FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1F595F6-47E3-456A-A17D-AB7A9D1FA7FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1F595F6-47E3-456A-A17D-AB7A9D1FA7FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1F595F6-47E3-456A-A17D-AB7A9D1FA7FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{799A1130-4D92-4ED8-9ECA-238C4207D280} = {A7136692-A162-45AD-89DC-7B8E876FFD14}
+		{55380759-449E-4CBA-920C-7CBC90FF6772} = {83C0921D-207B-4D14-9504-7062A9CD9947}
+		{9A71321F-8F46-431B-81C6-1F63A8C0EB5B} = {83C0921D-207B-4D14-9504-7062A9CD9947}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,43 @@
+﻿@model PhotoMSK.Data.Models.Routes.Photostudio
+
+<div class="uk-grid">
+    <div class="uk-width-1-1">
+        <table class="uk-table uk-table-hover uk-table-specification">
+            <thead>
+                <tr>
+                    <td colspan="2" class="uk-table-part">
+                        <div>Характеристики</div>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ParameterValues)
+                {
+                    if (item.Parameter.Name == "Раздел")
+                    {
+
+                    <thead>
+                        <tr>
+                            <td colspan="2" class="uk-table-part">
+                                <div>@item.Value</div>
+                            </td>
+                        </tr>
+                    </thead>
+                    @*<tr>
+                            <td colspan="2" class="uk-table-part">
+                                <div>@item.Value</div>
+                            </td>
+                        </tr>*@
+                    }
+                    else
+                    {
+                        <tr>
+                            <td><span>@item.Parameter.Name</span></td>
+                            <td>@item.Value</td>
+                        </tr>
+                    }
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>

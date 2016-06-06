@@ -1,0 +1,197 @@
+﻿<div class="container container--center">
+    <div class="grid">
+        <div class="col--1-5">
+            <ul class="uk-nav uk-nav-menu uk-nav-side uk-nav-parent-icon">
+                <li class="uk-nav-header uk-margin-small-bottom">Статистика:</li>
+                <li class="uk-active"><a href="">Посещения</a></li>
+                <li><a href="">График занятости</a></li>
+                <li><a href="">Выручка</a></li>
+                <li><a href="">Бронирование</a></li>
+            </ul>
+
+            <ul class="uk-nav uk-nav-menu uk-nav-side uk-nav-parent-icon uk-margin-large-top">
+                <li class="uk-nav-header uk-margin-small-bottom">Пользователь:</li>
+                <li><a href="@Url.Action("UserRating", "Statistics")">Рейтинг</a></li>
+            </ul>
+
+            <ul class="uk-nav uk-nav-menu uk-nav-side uk-nav-parent-icon uk-margin-large-top">
+                <li class="uk-nav-header uk-margin-small-bottom">Планирование:</li>
+                <li><a href="">Занятость</a></li>
+                <li><a href="">Выручка</a></li>
+                <li><a href="">Бронирование</a></li>
+            </ul>
+
+            <ul class="uk-nav uk-nav-menu uk-nav-side uk-nav-parent-icon uk-margin-large-top">
+                <li class="uk-nav-header uk-margin-small-bottom">SMS сообщения:</li>
+                <li><a href="">Информация</a></li>
+                <li><a href="">Баланс</a></li>
+                <li><a href="">Авто-спамер</a></li>
+            </ul>
+        </div>
+
+        <div class="col--4-5">
+            <div class="grid">
+                <div class="col--1-1">
+                    <h1 class="blue-color uk-margin-remove uk-margin-bottom">Кабинет статистики</h1>
+                    <hr class="small-line" />
+                    <small class="text--muted">это ваш персональный кабинет статистики, тут вы сможете найти всю подробную информацию по вашему аккаунту. Со временем мы будем расширять функционал этого кабинета для того, чтобы вы могли больше зарабатывать на PhotoMSK</small>
+                </div>
+
+                <div class="col--1-1">
+                    <div class="uk-flex">
+                        <div class="col--1-2 panel panel--box uk-panel-module">
+                            <h4 class="uk-panel-title">Посещаемость</h4>
+                            Фига сеее...
+                        </div>
+                        <div class="col--1-2 panel panel--box uk-panel-module uk-margin-left uk-sortable" data-uk-sortable>
+                            <h4 class="uk-panel-title"><i class="uk-icon-refresh uk-margin-small-right"></i>Продажи</h4>
+                            Box
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col--1-1">
+                    <div class="panel panel--box uk-panel-module">
+                        <h4 class="uk-panel-title">Недельная занятость студии</h4>
+                        <table class="table uk-table-statistics table--hover uk-table-condensed">
+                            <thead>
+                                <tr class="text--center">
+                                    <th class="text--left">Зал</th>
+                                    <th>Брони</th>
+                                    <th>Отказов</th>
+                                    <th>Пн</th>
+                                    <th>Вт</th>
+                                    <th>Ср</th>
+                                    <th>Чт</th>
+                                    <th>Пн</th>
+                                    <th class="pink-color">СБ</th>
+                                    <th class="pink-color">Вс</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < 5; i++)
+                                {
+                                    <tr>
+                                        <td class="text--left">
+                                            <div class="uk-vertical-align">
+                                                <div class="uk-vertical-align-middle">
+                                                    <img src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="30" height="30" class="uk-border-circle uk-margin-small-right">
+                                                    <a href="#" class="uk-link-muted uk-link-dotted">Циклорама</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="green-color"><i class="icon-arrow-up"></i> <b>25%</b></td>
+                                        <td class="pink-color"><i class="icon-arrow-down"></i> <b>5%</b></td>
+                                        <td>
+                                            <div class="uk-pie">
+                                                <div class="uk-pie-background-1">
+                                                    <div class="uk-pie-background-right"></div>
+                                                </div>
+                                                <div class="uk-pie-background-2">
+                                                    <div class="uk-pie-background-left"></div>
+                                                </div>
+                                                <div class="uk-pie-background-3">
+                                                    <div class="uk-pie-busy"></div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="uk-pie">
+                                                <div class="uk-pie-background-1">
+                                                    <div class="uk-pie-background-right"></div>
+                                                </div>
+                                                <div class="uk-pie-background-2">
+                                                    <div class="uk-pie-background-left"></div>
+                                                </div>
+                                                <div class="uk-pie-background-3">
+                                                    <div class="uk-pie-busy"></div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="uk-pie">
+                                                <div class="uk-pie-background-1">
+                                                    <div class="uk-pie-background-right"></div>
+                                                </div>
+                                                <div class="uk-pie-background-2">
+                                                    <div class="uk-pie-background-left"></div>
+                                                </div>
+                                                <div class="uk-pie-background-3">
+                                                    <div class="uk-pie-busy"></div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="uk-pie">
+                                                <div class="uk-pie-background-1">
+                                                    <div class="uk-pie-background-right"></div>
+                                                </div>
+                                                <div class="uk-pie-background-2">
+                                                    <div class="uk-pie-background-left"></div>
+                                                </div>
+                                                <div class="uk-pie-background-3">
+                                                    <div class="uk-pie-busy"></div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="uk-pie">
+                                                <div class="uk-pie-background-1">
+                                                    <div class="uk-pie-background-right"></div>
+                                                </div>
+                                                <div class="uk-pie-background-2">
+                                                    <div class="uk-pie-background-left"></div>
+                                                </div>
+                                                <div class="uk-pie-background-3">
+                                                    <div class="uk-pie-busy"></div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="uk-pie">
+                                                <div class="uk-pie-background-1">
+                                                    <div class="uk-pie-background-right"></div>
+                                                </div>
+                                                <div class="uk-pie-background-2">
+                                                    <div class="uk-pie-background-left"></div>
+                                                </div>
+                                                <div class="uk-pie-background-3">
+                                                    <div class="uk-pie-busy"></div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="uk-pie">
+                                                <div class="uk-pie-background-1">
+                                                    <div class="uk-pie-background-right"></div>
+                                                </div>
+                                                <div class="uk-pie-background-2">
+                                                    <div class="uk-pie-background-left"></div>
+                                                </div>
+                                                <div class="uk-pie-background-3">
+                                                    <div class="uk-pie-busy"></div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col--1-1">
+                    <div class="panel panel--box uk-panel-module">
+                        <h4 class="uk-panel-title">График посещения на сайте</h4>
+
+                        <div class="uk-line-chart">
+                            <div class='wrapper'>
+                                <canvas height='300' width="850" id='canvas'></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

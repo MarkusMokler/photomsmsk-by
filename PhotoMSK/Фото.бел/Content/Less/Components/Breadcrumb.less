@@ -1,0 +1,53 @@
+// out: ../../css/Components/Breadcrumb.css, compress: true
+// Name:            Breadcrumb
+// Description:     Defines styles for breadcrumbs
+//
+// Component:       `breadcrumb`
+//
+// Modifiers:       `breadcrumb--`
+//                  `breadcrumb--`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+@breadcrumb-background: #fff;
+@breadcrumb-text-color: #6F6F6F;
+
+@breadcrumb-padding: 10px;
+/* ========================================================================
+   Component: Breadcrumb
+ ========================================================================== */
+.breadcrumb {
+    background: @breadcrumb-background;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px #ddd;
+    &__list {
+        display: inline-block;
+        float: left;
+        font-size: 0;
+        margin: 0;
+    }
+    &__item {
+        position: relative;
+        list-style: none;
+        display: inline-block;
+        font-size: 0.8rem;
+        padding: @breadcrumb-padding (@breadcrumb-padding * 2) @breadcrumb-padding @breadcrumb-padding;
+        color: @breadcrumb-text-color;
+
+        &:nth-child(n+2):before {
+            content: "\e91e";
+            position: absolute;
+            font-family: 'icomoon';
+            font-size: 10px;
+            top: 47%;
+            left: ((@breadcrumb-padding)*-1);
+            transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+        }
+
+        &:last-child{
+            font-weight: 500;
+        }
+    }
+}

@@ -1,0 +1,138 @@
+﻿
+<div class="uk-grid uk-grid-small">
+    <div class="uk-width-1-1">
+        <ul class="uk-breadcrumb">
+            <li><a href="#">Меню</a></li>
+            <li><a href="#">Страницы</a></li>
+            <li><span>Список</span></li>
+        </ul>
+    </div>
+</div>
+
+<div class="uk-grid uk-grid-small uk-grid-divider">
+    <div class="uk-width-1-5">
+        <div class="uk-margin-bottom uk-text-center">
+            <a class="uk-button uk-button-success uk-width-1-1" href="#" data-uk-modal="{target:'#create-page'}">Добавить страницу</a>
+        </div>
+
+        <div class="uk-panel uk-panel-box">
+            <small class="uk-text-muted">
+                Данный раздел предназначен для управления меню сайта, а также содержимым всех страниц вашего сайта. Для заполнения той или иной страницы, нажмите левой кнопкой мыши на ее название.
+            </small>
+        </div>
+    </div>
+    <div class="uk-width-4-5">
+        <div class="uk-table-fake uk-table-fake-header uk-table-fake-header-indent">
+            <div>Название</div>
+            <div class="uk-table-width-100">
+                <span>Редактирование</span>
+            </div>
+            <div class="uk-table-width-100">
+                <span>Отображение</span>
+            </div>
+            <div class="uk-table-width-100">
+                <span>Тип страницы</span>
+            </div>
+            <div class="uk-table-width-100">
+                <span>Удаление</span>
+            </div>
+        </div>
+        <ul class="uk-nestable uk-margin-remove" data-uk-nestable="">
+            @for (int i = 0; i < 5; i++)
+            {
+                <li class="uk-nestable-list-item uk-show-hide">
+                    <div class="uk-nestable-item uk-text-center uk-table-fake">
+                        <div class="uk-table-width-minimum">
+                            <div class="uk-nestable-handle">​</div>
+                        </div>
+                        <div class="uk-table-width-minimum-toggle">
+                            <div data-nestable-action="toggle"></div>
+                        </div>
+                        <div class="uk-text-left">
+                            <a href="#">Главная страница</a>
+                        </div>
+                        <div class="uk-table-width-100">
+                            <a href="#" class="uk-link-muted uk-link-dotted" data-uk-tooltip title="Редактировать страницу">
+                                <i class="icon-pencil"></i>
+                            </a>
+                        </div>
+                        <div class="uk-table-width-100">
+                            <label for="item1">
+                                <input type="checkbox" name="" id="item1" class="check">
+                            </label>
+                        </div>
+                        <div class="uk-table-width-100">
+                            <span>Тип страницы</span>
+                        </div>
+                        <div class="uk-table-width-100">
+                            <a href="" class="uk-link-reset" data-uk-tooltip title="Удалить страницу">
+                                <i class="uk-icon-close pink-color uk-show-hide-element"></i>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+
+    </div>
+</div>
+
+
+
+<div id="create-page" class="uk-modal">
+    <div class="uk-modal-dialog uk-modal-dialog-small">
+        <button type="button" class="uk-modal-close uk-close"></button>
+        <h1 class="uk-modal-header">Добавить страницу</h1>
+
+        <div class="uk-grid" data-uk-grid-margin="">
+            <div class="uk-width-1-1">
+                <label class="label-ms">Тип</label>
+                <div class="select-style">
+                    <select class="select-ms uk-width-1-1" name="gender" id="settings_gender" required="required">
+                        <option value="" selected="selected" disabled="disabled">Выберите тип страницы</option>
+                        <option value="path">Раздел</option>
+                        <option value="path">Фото-галерея</option>
+                        <option value="path">Видео-галерея</option>
+                        <option value="path">Текстовая страница</option>
+                        <option value="path">Календарь</option>
+                        <option value="path">Ссылка</option>
+                        <option value="path">Новости</option>
+                        <option value="path">Категория галерей</option>
+                        <option value="path">Отзывы</option>
+                    </select>
+                </div>
+                <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+            </div>
+            <div class="uk-width-1-1">
+                <label class="label-ms">Название</label>
+                <input class="input-ms uk-width-large-1-1 uk-width-small-1-1" id="Name" name="Name" type="text" value="">
+                <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+            </div>
+            <div class="uk-width-1-1">
+                <label class="label-ms">Адрес <i class="icon-help2" data-uk-tooltip="" title="Если это внешняя ссылка, то адрес должен быть в формате: http://aaa.bbb"></i></label>
+                <div class="input-group">
+                    <span class="input-group-addon">http://www.</span>
+                    <input class="form-control input-ms uk-width-large-1-1 uk-width-small-1-1" data-val="true" data-val-maxlength="Поле Shortcut должно иметь тип строки или массива с максимальной длиной &quot;35&quot;." data-val-maxlength-max="35" id="Shortcut" name="Shortcut" type="text" value="">
+                    <span class="field-validation-valid" data-valmsg-for="Shortcut" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="uk-width-1-1">
+                <label class="label-ms">Расположить в <i class="icon-help2" data-uk-tooltip="" title="Укажите в каком меню должна располагаться вкладка"></i></label>
+                <div class="select-style">
+                    <select class="select-ms uk-width-1-1" name="gender" id="settings_gender" required="required">
+                        <option value="" selected="selected" disabled="disabled">Выберите меню</option>
+                        <option value="path">Основное меню</option>
+                        <option value="path">Верхнее меню</option>
+                    </select>
+                </div>
+                <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+
+        <div class="uk-modal-footer">
+            <a href="" class="uk-button-link uk-link-999 uk-link-line uk-margin-right">отмена</a>
+            <input type="submit" class="bold uk-button uk-button-reviews uk-button-reviews-success uk-button-reviews-success-border" value="Сохранить">
+        </div>
+    </div>
+</div>

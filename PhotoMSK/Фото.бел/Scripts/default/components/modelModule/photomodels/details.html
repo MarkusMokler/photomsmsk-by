@@ -1,0 +1,377 @@
+﻿<div class="container container--center  ">
+    <div class="grid">
+        <div class="col--3-10 model-avatar">
+            <div class="grid">
+                <div class="col--1-1">
+                    <div class="hex-testimonial">
+                        <img src="{{item.imageUrl}}" />
+                    </div>
+
+                    <div class="text--center  ">
+                        <h4 style="margin-bottom: 0;">Пригласить модель на:</h4>
+                        <div class="btn-group" data-grouptype="или">
+                            <a href="#" class="btn-or btn-primary btn-large btn-caps">Кастинг</a>
+                            <a href="#" class="btn-or btn-secondary btn-large btn-caps">Съемку</a>
+                        </div>
+
+                        <p>
+                            <span class="b-iconed-text h-nowrap">
+                                <span class="b-iconed-text__icon-holder"><i class="h-vertical-middle icon-comment_color_grey h-mr-10"></i></span><span class="b-iconed-text__text-holder h-nowrap">
+                                    <a href="#" data-extend="OpinionPopup Popup" data-opinionpopup-company-id="108919" data-opinionpopup-url="/opinion/company_rating_ajax" data-opinionpopup-page-type="portal-product_view-right_panel" data-opinionpopup-track-category="" data-opinionpopup-lang="ru" onclick=" track_event('parameter_view', 'show_company-opinions', 'portal-product_view-right_panel') " class="b-company-info__opinions-link  " id="ZCDA6A94B-CB4D-4984-8644-BFB2E90A599C">1 отзыв</a>,
+                                    100% положительных
+                                </span>
+                            </span>
+                        </p>
+
+                    </div>
+                </div>
+                <div class="col--1-1">
+                    <ul class="uk-tab uk-tab-events" data-uk-tab="{connect:'#tab-content', animation: 'fade'}">
+                        <li class="uk-active"><a href="" class="uk-navbar-nav-subtitle">ПАРАМЕТРЫ<div>модели</div></a></li>
+                        <li><a href="" class="uk-navbar-nav-subtitle">Жанры<div>съемки</div></a></li>
+                    </ul>
+                    <ul id="tab-content" class="uk-switcher uk-margin">
+                        <li class="">
+                            <table class="table table--hover">
+                                <tbody>
+                                <thead>
+                                    <tr>
+                                        <th>Общее:</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tr>
+                                    <td>Опыт: <i class="icon-help"></i></td>
+                                    <td><strong>{{item.startYear.year}} года</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Возраст:</td>
+                                    <td><strong>{{item.age}} </strong>лет</td>
+                                </tr>
+                                <tr>
+                                    <td>Размер одежды:</td>
+                                    <td><strong>{{item.clothingSize}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Размер обуви:</td>
+                                    <td><strong>{{item.shoesSize}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Татуировки:</td>
+                                    <td><strong>есть</strong></td>
+                                </tr>
+                                </tbody>
+                                <tbody>
+                                <thead>
+                                    <tr>
+                                        <th>Тело:</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tr>
+                                    <td>Рост:</td>
+                                    <td><strong>{{item.height}}</strong> см.</td>
+                                </tr>
+                                <tr>
+                                    <td>Вес:</td>
+                                    <td><strong>{{item.weight}}</strong> кг.</td>
+                                </tr>
+                                <tr>
+                                    <td>Грудь:</td>
+                                    <td><strong>{{item.chest}}</strong> см.</td>
+                                </tr>
+                                <tr>
+                                    <td>Талия:</td>
+                                    <td><strong>{{item.waist}}</strong> см.</td>
+                                </tr>
+                                <tr>
+                                    <td>Бедра:</td>
+                                    <td><strong>{{item.hips}}</strong> см.</td>
+                                </tr>
+                                </tbody>
+
+                                <tbody>
+                                <thead>
+                                    <tr>
+                                        <th>Голова:</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tr>
+                                    <td>Цвет волос:</td>
+                                    <td><strong>{{item.hairColor}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Длина волос:</td>
+                                    <td><strong>{{item.hairLength}}</strong> см.</td>
+                                </tr>
+                                <tr>
+                                    <td>Цвет глаз:</td>
+                                    <td><strong>{{item.eyesColor}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Тип лица:</td>
+                                    <td><strong>{{item.faceType}}</strong></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </li>
+
+                        <li class="uk-active">
+                            <table class="table table--hover">
+                                <tbody>
+                                  
+                                        <tr ng-repeat="genre in item.genres">
+                                            <td>{{genre.name}}</td>
+                                            <td><div class="availability yes"></div></td>
+                                        </tr>
+                                    
+                                    <tr>
+                                        <td>Реклама одежды:</td>
+                                        <td><div class="availability yes"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Жанр НЮ:</td>
+                                        <td><div class="availability yes"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Арт-НЮ:</td>
+                                        <td><div class="availability no"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Эротика:</td>
+                                        <td><div class="availability yes"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fashon:</td>
+                                        <td><div class="availability yes"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Beauty:</td>
+                                        <td><div class="availability no"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Арт-бьюти:</td>
+                                        <td><div class="availability yes"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Гламур:</td>
+                                        <td><div class="availability yes"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>МетАрт:</td>
+                                        <td><div class="availability yes"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Креативные фотосессии:</td>
+                                        <td><div class="availability yes"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Съемки в кино:</td>
+                                        <td><div class="availability yes"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Реалити-шоу:</td>
+                                        <td><div class="availability yes"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Видеореклама:</td>
+                                        <td><div class="availability yes"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Фейс-арт:</td>
+                                        <td><div class="availability yes"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Боди-арт:</td>
+                                        <td><div class="availability yes"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Дефиле в нижнем белье:</td>
+                                        <td><div class="availability yes"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Хостес:</td>
+                                        <td><div class="availability yes"></div></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col--7-10">
+
+            <!-- Описание и snap-ы -->
+            <div class="grid">
+                <div class="col--6-10">
+                    <header class="uk-comment-header">
+                        <h1 class="">{{item.firstName}} <strong>{{item.lastName}}</strong> <i class="icon-circle-check" style="opacity: 0.2;"></i></h1>
+                        <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                            <li>Артикул: #<strong>{{item.article.ID}}</strong></li>
+                            <li>
+                            
+                                 <div ng-if="item.pro" class="uk-badge uk-badge-success">PRO</div>
+                                
+                                модель
+                            </li>
+                            <li>
+                                <i class="icon-location"></i> {{item.city}}
+                            </li>
+                            <li>
+                                
+                                    <i ng-repeat="phone in item.phones" class="icon-phone"></i>
+                                
+                            </li>
+                        </ul>
+                    </header>
+                </div>
+
+                <div class="col--4-10">
+                    <div class="data_wrap float--right">
+                        <div class="pulse_wrap">
+                            <div class="value" data-bind="rating">{{item.raiting.total}}</div>
+                            <div class="label">
+                                <span id="pulse"></span>
+                                <span class="text text--muted">Пульс</span>
+                            </div>
+                        </div>
+                        <div class="info float--left">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span class="label text--muted">Просмотров</span>
+                                        </td>
+                                        <td>
+                                            <span class="value" title="{{item.pageViews}}">{{item.pageViews}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="label text--muted">Нравится</span>
+                                        </td>
+                                        <td>
+                                            <span class="value">{{item.raiting.likes}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="label text--muted">Не нравится</span>
+                                        </td>
+                                        <td>
+                                            <span class="value">{{item.raiting.dislikes}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="label text--muted">Подписаны</span>
+                                        </td>
+                                        <td>
+                                            <span class="value">!!!</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col--7-10">
+                    <!-- About me -->
+                    <h1>Обо мне...</h1>
+                    <hr />
+
+                    <p>
+                        {{description}}
+                    </p>
+                </div>
+                <div class="col--3-10">
+                    <h1><strong>Snap</strong>shot</h1>
+                    <hr />
+                    <div id="owl-snapshot" class="owl-carousel owl-theme">
+                        
+                            <div ng-repeat="it in item.Snapshots" class="item"><img src="{{it.photo.url}}" alt=""></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- ------ Стена ----- -->
+            <div class="grid">
+                <div id="wall-placeholder" class="col--6-10">
+
+                </div>
+
+                <!-- Фильтр -->
+                <div class="col--4-10">
+                    <h1>Рейтинг</h1>
+                    <hr />
+
+                    <!-- <ul class="list-votes-users">
+                        @for (int i = 0; i < 3; i++)
+                        {
+                            <li>
+                                <div class="content">
+                                    <figure>
+                                        <img class="uk-border-circle" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="68" height="68">
+                                    </figure>
+                                    <div class="info">
+                                        <h3>Ибрагим Пушкин</h3>
+                                        <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                                            <li><div class="uk-badge uk-badge-success">PRO</div><span> фотограф</span></li>
+                                        </ul>
+                                        <div class="list-notes">
+                                            <strong>7.3 <small>балла</small></strong>
+                                            <ul>
+                                                <li class="design">7</li>
+                                                <li class="usability">7</li>
+                                                <li class="creativity">7</li>
+                                                <li class="content">8</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+
+                        <li>
+                            <div class="content">
+                                <figure>
+                                    <a href="#"><img class="uk-border-circle" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="68" height="68"></a>
+                                </figure>
+                                <div class="info">
+                                    <h3>Piotr Swierkowski</h3>
+                                    <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                                        <li><span>пользователь</span></li>
+                                    </ul>
+                                    <div class="list-notes border-line">
+                                        <strong>6 баллов</strong>
+                                        <ul>
+                                            <li class="design">6</li>
+                                            <li class="usability">6</li>
+                                            <li class="creativity">6</li>
+                                            <li class="content">6</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul> -->
+                    
+                    <div class="uk-alert uk-alert-info uk-margin-remove text--center" data-msg="no-updates">
+                        <h3 class="uk-margin-remove">Раздел находится в разработке</h3>
+                        <p class="uk-margin-remove">
+                            <small class="text--muted">совсем скоро вы увидите его в действии</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<!-- <div class="text--small zone__title"> -->
+<div class="text--small zone__preview" data-ng-if="page.mode != 'view'">
+
+    <span>{{name}}</span>
+    <!-- <span>название</span> -->
+</div>
+<ul ui-sortable="widgetsOptions" data-ng-if="page.mode != 'view'" data-ng-model="zone.widgets" data-ng-class="{'ng-widgets-container zone--placeholder':page.mode != 'view'}">
+    <li data-ng-repeat="widget in zone.widgets track by $index" data-ng-class="{'widgets':page.mode != 'view'}">
+        <div class="widgets__action" data-ng-if="page.mode != 'view'">
+            <a data-ng-click="setedit(widget)" class="button button--rounded icon-cog"></a>
+            <a data-ng-click="removeWidgets(widget)" class="button button--rounded button--delete icon-trash"></a>
+        </div>
+        <div data-ng-if="widget.type=='gallery'">
+            <gallery-edit widget="widget" sortableOptions="sortableOptions"></gallery-edit>
+        </div>
+        <div data-ng-if="widget.type=='description'">
+            <text-and-desc widget="widget"></text-and-desc>
+        </div>
+        <div data-ng-if="widget.type=='splitWidget'">
+            <split-widget widget="widget" sortableOptions="widgetsOptions"></split-widget>
+        </div>
+        <div data-ng-if="widget.type=='containerWidget'">
+            <container-widget widget="widget" sortableOptions="widgetsOptions"></container-widget>
+        </div>
+        <div data-ng-if="widget.type=='faqWidget'">
+            <faq-widget widget="widget" sortableOptions="widgetsOptions"></faq-widget>
+        </div>
+        <div data-ng-if="widget.type=='headerWidget'">
+            <header-widget widget="widget" sortableOptions="widgetsOptions"></header-widget>
+        </div>
+        <div data-ng-if="widget.type=='descriptionWidget'">
+            <description-widget widget="widget" sortableOptions="widgetsOptions"></description-widget>
+        </div>
+        <div data-ng-if="widget.type=='calendarWidget'">
+            <calendar-widget widget="widget" sortableOptions="widgetsOptions"></calendar-widget>
+        </div>
+        <div data-ng-if="widget.type=='hallWidget'">
+            <hall-widget widget="widget" sortableOptions="widgetsOptions"></hall-widget>
+        </div>
+        <div data-ng-if="widget.type=='menuWidget'">
+            <menu-widget widget="widget" sortableOptions="widgetsOptions" class="navbar"></menu-widget>
+        </div>
+    </li>
+</ul>
+<ul data-ng-if="page.mode == 'view'" data-ng-model="zone.widgets" data-ng-class="{'ng-widgets-container zone--placeholder':page.mode != 'view'}">
+    <li data-ng-repeat="widget in zone.widgets track by $index" data-ng-class="{'widgets':page.mode != 'view'}">
+        <div class="widgets__action" data-ng-if="page.mode != 'view'">
+            <a data-ng-click="setedit(widget)" class="button button--rounded icon-cog"></a>
+            <a data-ng-click="removeWidgets(widget)" class="button button--rounded button--delete icon-trash"></a>
+        </div>
+        <div data-ng-if="widget.type=='gallery'">
+            <gallery-edit widget="widget" sortableOptions="sortableOptions"></gallery-edit>
+        </div>
+        <div data-ng-if="widget.type=='description'">
+            <text-and-desc widget="widget"></text-and-desc>
+        </div>
+        <div data-ng-if="widget.type=='splitWidget'">
+            <split-widget widget="widget" sortableOptions="widgetsOptions"></split-widget>
+        </div>
+        <div data-ng-if="widget.type=='containerWidget'">
+            <container-widget widget="widget" sortableOptions="widgetsOptions"></container-widget>
+        </div>
+        <div data-ng-if="widget.type=='faqWidget'">
+            <faq-widget widget="widget" sortableOptions="widgetsOptions"></faq-widget>
+        </div>
+        <div data-ng-if="widget.type=='headerWidget'">
+            <header-widget widget="widget" sortableOptions="widgetsOptions"></header-widget>
+        </div>
+        <div data-ng-if="widget.type=='descriptionWidget'">
+            <description-widget widget="widget" sortableOptions="widgetsOptions"></description-widget>
+        </div>
+        <div data-ng-if="widget.type=='calendarWidget'">
+            <calendar-widget widget="widget" sortableOptions="widgetsOptions"></calendar-widget>
+        </div>
+        <div data-ng-if="widget.type=='hallWidget'">
+            <hall-widget widget="widget" sortableOptions="widgetsOptions"></hall-widget>
+        </div>
+        <div data-ng-if="widget.type=='menuWidget'">
+            <menu-widget widget="widget" sortableOptions="widgetsOptions" class="navbar"></menu-widget>
+        </div>
+    </li>
+</ul>

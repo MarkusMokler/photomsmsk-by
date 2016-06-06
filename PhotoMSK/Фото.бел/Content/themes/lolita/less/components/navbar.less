@@ -1,0 +1,94 @@
+// out: ../../css/components/navbar.css, compress: true
+// Name:            Navbar
+// Description:     Defines styles for list Navbar
+//
+// Component:       `navbar`
+//
+// Sub-objects:     `navbar__header`
+//                  `navbar__divider`
+//                  `navbar__sub`
+//
+// Modifiers:       `navbar--parent-icon`
+//                  `navbar--side`
+//                  `navbar--dropdown`
+//                  `navbar--navbar`
+//                  `navbar--offcanvas`
+//
+// States:          `active`
+//                  `parent`
+//                  `open`
+//                  `touch`
+//
+// Uses:            Icon: FontAwesome or icoMoon
+//
+// Used by:         Panel
+//                  Dropdown
+//
+// Markup:
+//
+// <!-- nav -->
+// <ul class="navbar">
+//     <li class="active"><a href=""></a></li>
+//     <li><a href=""></a></li>
+// </ul>
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@navbar-background:                             #f4f3f3;
+@navbar-height:                                 42px;
+
+/* ========================================================================
+   Component: Nav
+ ========================================================================== */
+
+.navbar{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: @navbar-height;
+    background: @navbar-background;
+    box-shadow: 0px -1px 0px 0px #e1e1e1 inset;
+
+    // Element 'navbar__menu'
+    & ul,
+    &__menu{
+        margin: 0;
+        padding: 0;
+
+        & > li{
+            display: inline-block;
+
+            & > a{
+                line-height: @navbar-height;
+                text-transform: uppercase;
+                font-size: 12px;
+                padding: 0 10px;
+                color: #7a7a7a;
+            }
+        }
+    }
+}
+
+
+// *********************************************************
+//                        SMALL
+// *********************************************************
+
+@media (max-width: 767px)  {
+
+}
+
+// *********************************************************
+//                MEDIUM  Portrait
+// *********************************************************
+@media only screen
+    and (min-device-width: 768px)
+    and (max-device-width: 1024px)
+    and (orientation: portrait) {
+
+}

@@ -1,0 +1,116 @@
+// out: ../../css/Components/Avatar.css, compress: true
+// Name:            Avatar
+// Description:     Defines styles for avatar
+//
+// Component:       `avatar`
+//
+//
+// Element:       `avatar__*`
+//                `avatar__*`
+//
+// Modifiers:     `avatar--border-solid`
+//                `avatar--*`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+
+@avatar-height:                          40px;
+
+@avatar-large-height:                    170px;
+@avatar-large-font-size:                 3rem;
+
+@avatar-medium-height:                   85px;
+@avatar-medium-font-size:                3rem;
+
+@avatar-small-height:                    20px;
+@avatar-font-size:                       1.5rem;
+@avatar-empty-background:                #ddd;
+
+@avatar-dashed-border-color:             #ddd;
+
+@avatar-border-solid-color:              #eee;
+
+/* ========================================================================
+   Component: Avatar
+ ========================================================================== */
+
+ .avatar{
+    display: block;
+    height: @avatar-height;
+    width: @avatar-height;
+    border-radius: @avatar-height;
+    color: #fff;
+    line-height: @avatar-height;
+    text-align: center;
+    border: none;
+    outline: none;
+    border-radius: @avatar-height;
+    margin: 0 auto;
+
+    // Modifivator 'avatar--large'
+    &--large{
+        width: @avatar-large-height;
+        height: @avatar-large-height;
+        line-height: @avatar-large-height;
+        border-radius: @avatar-large-height;
+        font-size: @avatar-large-font-size;
+        border: 10px solid @avatar-border-solid-color;
+    }
+
+    // Modifivator 'avatar--medium'
+    &--medium{
+        width: @avatar-medium-height;
+        height: @avatar-medium-height;
+        line-height: @avatar-medium-height;
+        border-radius: @avatar-medium-height;
+        font-size: @avatar-medium-font-size;
+        border: 5px solid @avatar-border-solid-color;
+    }
+
+    // Modifivator 'avatar--small'
+    &--small{
+        width: @avatar-small-height;
+        height: @avatar-small-height;
+        line-height: @avatar-small-height;
+        border-radius: @avatar-small-height;
+    }
+
+    // Modifivator 'avatar--empty'
+    &--empty{
+        background: @avatar-empty-background;
+        font-family: 'icomoon';
+        font-size: @avatar-font-size;
+        &:after{
+            content: "\e99c";
+        }
+    }
+
+    // Modificator 'avatar--dashed'
+    &--dashed{
+        background: #fff;
+        border: 2px dashed @avatar-dashed-border-color;
+        color: @avatar-dashed-border-color;
+    }
+
+    // Modificator `avatar--border-solid`
+    &--border-solid{
+        border: 10px solid @avatar-border-solid-color;
+    }
+
+    // Element 'avatar__desc'
+    &__desc{
+        min-width: 180px;
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        padding: 10px 20px;
+        background: #FFC716;
+        border-radius: 100px;
+        transform: translateX(-50%);
+
+        & .text--muted {
+            color: #B19002 !important;
+        }
+    }
+ }

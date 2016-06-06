@@ -1,0 +1,42 @@
+﻿
+<div class="uk-grid">
+    <div class="uk-width-1-1">
+        <div class="uk-section">
+            <span class="uk-section__counter">5&nbsp;</span>
+            <span class="uk-section__title">Загрузка изображений студии</span>
+        </div>
+
+        <div id="upload-drop" class="uk-placeholder uk-placeholder--strong uk-text-center">
+            <h2 class="uk-text-bold">
+                Перетащите сюда фотографии
+            </h2>
+            <span class="uk-text-muted">или</span>&nbsp;
+            <a class="uk-form-file uk-button uk-button-success uk-margin-left">
+                выберите файл
+                <input id="upload-select" type="file">
+            </a>
+            <div class="uk-placeholder--description uk-margin-top">
+                <p>
+                    Студии публикуются только с фотографиями.
+                </p>
+                <p>
+                    Изображения намного важнее текста. Чем больше будет фотографий, тем выше шанс сдать в аренду студию.
+                    Первой размещайте лучшую фотографию.
+                </p>
+            </div>
+            <ul class="uk-sortable uk-sortable-step uk-grid uk-grid-small uk-grid-width-1-5" data-uk-sortable data-role-picture-placeholder></ul>
+        </div>
+        <div id="progressbar" class="uk-progress uk-hidden">
+            <div class="uk-progress-bar" style="width: 0%;">...</div>
+        </div>
+
+    </div>
+</div>
+<div class="uk-grid">
+    <div class="uk-width-1-2 uk-text-center">
+        <button class="uk-button" data-role-prev-step>Назад</button>
+    </div>
+    <div class="uk-width-1-2 uk-text-center">
+        <a href="#" class="uk-button uk-button-next-step" data-role-next-step>Продолжить</a>
+    </div>
+</div>

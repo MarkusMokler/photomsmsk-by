@@ -1,0 +1,57 @@
+﻿<!--
+@{
+    var tdprofit = Model.Halls.SelectMany(x => x.Calendar.Events).Where(x => x.Start> DateTime.Now.AddDays(-30) && x.Start < DateTime.Now).OrderBy(x => x.Start).ToList();
+}
+-->
+<div class="container container--center  ">
+    <table class="uk-table">
+        <caption>Профит за последние 30 дней</caption>
+        <thead>
+            <tr>
+                <th>Зал</th>
+                <th>Начало</th>
+                <th>Конец</th>
+                <th>Кто</th>
+                <th>Сумма</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>&nbsp;</th>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>@tdprofit.Sum(x => x.Calendar.GetPrice(x.Start) * (x.End - x.Start).Hours)</td>
+            </tr>
+        </tfoot>
+        <tbody>
+
+                <tr ng-repeat="events in tdprofit">
+                    <td>@events.Calendar.GetName()</td>
+                    <td>{{events.start}}</td>
+                    <td>{{events.end}}</td>
+                    <td>{{events.user.firstName}} {{events.user.lastName}}</td>
+                    <td>{{(events.end - events.start).hours * events.calendar.getPrice(events.start)}}</td>
+                </tr>
+
+        </tbody>
+    </table>
+    <table class="uk-table">
+        <caption>Профит за последние 30 дней</caption>
+        <thead>
+            <tr>
+                <th>Месяц</th>
+                <td>Сумма</td>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 1; i <= 12; i++)
+            {
+                <tr>
+                    <td>@{ var dt = new DateTime(2010, i, 1); Write(dt.ToString("MMM", CultureInfo.InvariantCulture));}</td>
+                    <td>@(Model.Halls.SelectMany(x => x.Calendar.Events).Where(x => x.Start.Month == i).ToList().Sum(y=>((y.End-y.Start).Hours*y.Calendar.GetPrice(y.Start))))</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

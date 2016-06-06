@@ -1,0 +1,84 @@
+﻿<!-- Тарифы -->
+<div class="col--1-1">
+    <div class="uk-section">
+        <span class="uk-section__counter">12</span>
+        <span class="uk-section__title">Тарифы</span>
+    </div>
+    <div>
+        <label class="label">Описание работы <i class="icon-help2"></i></label>
+        <textarea class="input col--large-1-1 col--small-1-1" cols="20" id="Description" name="Description" rows="6"></textarea>
+        <span class="field-validation-valid" data-valmsg-for="Description" data-valmsg-replace="true"></span>
+    </div>
+</div>
+
+<div class="col--1-1">
+    <div class="uk-section">
+        <span class="uk-section__counter">14</span>
+        <span class="uk-section__title">Список тарифов</span>
+    </div>
+    <div class="grid grid-divider">
+        <div class="col--large-1-4 col--medium-1-4">
+            <div class="panel uk-panel-divider">
+                <ul class="uk-nav uk-nav-menu uk-nav-side uk-nav-parent-icon" data-uk-nav data-uk-switcher="{connect:'#tab-content-sunc', toggle:'> *:not(.uk-nav-divider)', animation: 'slide-right'}">
+                    <li class="uk-active"><a href="">Новогодний</a></li>
+                    <li><a href="">НЮ</a></li>
+                    <li><a href="">Fashion</a></li>
+                </ul>
+            </div>
+            <div class="panel uk-panel-divider" data-uk-margin="">
+                <a class="button" href="#">Добавить тариф</a>
+            </div>
+        </div>
+        <div class="col--large-3-4 col--medium-3-4 photographer">
+            <div class="grid">
+                <div class="col--1-1">
+                    <div class="form_user-banner">
+                        <form accept-charset="UTF-8" action="#" method="post">
+                            <div class="field user-banner_upload">
+                                <div class="user-banner" id="role-cover">
+                                    <img alt="" src="{{coverImage}}">
+                                </div>
+                                <div class="btn-group">
+                                    <div class="btn_bordered" id="role-change-cover">
+                                        <span>Изменить обложку</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col--1-2">
+                    <label class="label show">
+                        Название тарифа
+                        <i class="icon-help2"></i>
+                    </label>
+                    <input class="input col--large-1-1 col--small-1-1" id="FirstName" name="FirstName" type="text" value="Optimal">
+                    <span class="field-validation-valid" data-valmsg-for="FirstName" data-valmsg-replace="true"></span>
+                </div>
+                <div class="col--1-2">
+                    <label class="label show">
+                        Краткое описание
+                        <i class="icon-help2"></i>
+                    </label>
+                    <input class="input col--large-1-1 col--small-1-1" id="FirstName" name="FirstName" type="text" value="краткое описание тарифа">
+                    <span class="field-validation-valid" data-valmsg-for="FirstName" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="col--1-1">
+
+            </div>
+
+            <div class="col--1-1">
+                <h3>Входит в пакет:</h3>
+                <ul class="uk-list price-list">
+                    <li class="list-check-item">Скидка 50% на Love story</li>
+                    <li class="list-check-item">Фотокнига на 20 разворотов</li>
+                    <li class="list-check-item">Слайд-шоу</li>
+                    <li class="list-check-item">Авторская решушь 20 фотографй</li>
+                    <li class="list-check-item">Тех. ретушь 300 фотографий</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

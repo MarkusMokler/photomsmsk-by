@@ -1,0 +1,30 @@
+﻿@model ICollection<PhotoMSK.ViewModels.EventViewModel>
+
+    <div class="uk-width-8-10 uk-offset-1-10">
+        <div class="uk-panel uk-panel-box uk-panel-module">
+
+            <table class="uk-table uk-table-statistics uk-table-hover uk-table-condensed uk-table-middle">
+                <thead>
+                    <tr class="uk-text-center">
+                        <th class="uk-text-left">Title</th>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody id="rents">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="uk-text-left">@item.Title</td>
+                            <td>@item.Start</td>
+                            <td>@item.End</td>
+                            <td>@item.Price</td>
+                            <td>@item.Description</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>

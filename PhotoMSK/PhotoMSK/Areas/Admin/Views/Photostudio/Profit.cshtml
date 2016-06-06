@@ -1,0 +1,59 @@
+﻿@using System.Globalization
+@using System.Linq
+@model PhotoMSK.Data.Models.Routes.Photostudio
+@{
+    var tdprofit = Model.Halls.SelectMany(x => x.Calendar.Events).Where(x => x.Start > DateTime.Now.AddDays(-30) && x.Start < DateTime.Now).OrderBy(x => x.Start).ToList();
+}
+<div class="uk-container uk-container-center pad-top-20">
+    <table class="uk-table">
+        <caption>Профит за последние 30 дней</caption>
+        <thead>
+            <tr>
+                <th>Зал</th>
+                <td>Начало</td>
+                <td>Конец</td>
+                <td>Кто</td>
+                <td>Сумма</td>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>&nbsp;</th>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>@tdprofit.Sum(x => x.Calendar.GetPrice(x.Start) * (x.End - x.Start).Hours)</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            @foreach (var events in tdprofit)
+            {
+                <tr>
+                    <td>@events.Calendar.GetName()</td>
+                    <td>@events.Start</td>
+                    <td>@events.End</td>
+                    <td>@events.User.FirstName @events.User.LastName</td>
+                    <td>@((events.End - events.Start).Hours * events.Calendar.GetPrice(events.Start))</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <table class="uk-table">
+        <caption>Профит за последние 30 дней</caption>
+        <thead>
+            <tr>
+                <th>Месяц</th>
+                <td>Сумма</td>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 1; i <= 12; i++)
+            {
+                <tr>
+                    <td>@{ var dt = new DateTime(2010, i, 1); Write(dt.ToString("MMM", CultureInfo.InvariantCulture));}</td>
+                    <td>@(Model.Halls.SelectMany(x => x.Calendar.Events).Where(x => x.Start.Month == i).ToList().Sum(y=>((y.End-y.Start).Hours*y.Calendar.GetPrice(y.Start))))</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,106 @@
+// out: ../../css/components/button.css, compress: true
+// Name:            Button
+// Description:     Defines styles for buttons
+//
+// Component:       `button`
+//
+// Sub-objects:     `button__group`
+//                  `button__dropdown`
+//
+// Modifiers:       `button--primary`
+//                  `button--success`
+//                  `button--danger`
+//                  `button--warnind`
+//                  `button--rounded`
+//                  `button--delete`
+//                  `button--link`
+//                  `button--mini`
+//                  `button--small`
+//                  `button--large`
+//                  `button--upload`
+//
+// States:          `active`
+//
+// Markup:
+//
+// <!-- button__group -->
+// <div class="button__group">
+//     <button class="button"></button>
+//     <button class="button"></button>
+// </div>
+//
+// <!-- button__dropdown -->
+// <div class="button__dropdown" data-uk-dropdown>
+//     <button class="button"></button>
+//     <div class="dropdown dropdown--small">
+//         <ul class="nav nav__dropdown">
+//             <li><a href=""></a></li>
+//         </ul>
+//     </div>
+// </div>
+//
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@button-height:                          42px;
+@button-padding:                         20px;
+@button-border-radius:                   3px;
+
+/* ========================================================================
+   Component: Button
+ ========================================================================== */
+
+/*
+ * Removes inner padding and border in Firefox 4+.
+ */
+
+.button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/*
+ * 1. Correct inability to style clickable `input` types in iOS.
+ * 2. Remove margins in Chrome, Safari and Opera.
+ * 3. Remove borders for `button`.
+ * 4. Address `overflow` set to `hidden` in IE 8/9/10/11.
+ * 5. Correct `font` properties and `color` not being inherited for `button`.
+ * 6. Address inconsistent `text-transform` inheritance which is only inherit in Firefox and IE
+ * 7. Style
+ * 8. `line-height` is used to create a height
+ * 9. `min-height` is necessary for `input` elements in Firefox and Opera because `line-height` is not working.
+ * 10. Reset button group whitespace hack
+ * 11. Required for `a`.
+ */
+
+.button {
+    display: inline-block;
+    height: @button-height;
+    padding: 0 @button-padding;
+    margin: 0;
+    text-decoration: none;
+    vertical-align: top;
+    font-size: 22px;
+    border-radius: @button-border-radius;
+    line-height: @button-height;
+    color: #fff;
+
+    // Modificator 'button--green'
+    &--green{
+        background: #b1ce3b;
+        background: -webkit-gradient(linear, 0 0, 0 bottom, from(#b1ce3b), to(#7dae23));
+        background: -webkit-linear-gradient(#b1ce3b, #7dae23);
+        background: -moz-linear-gradient(#b1ce3b, #7dae23);
+        background: -ms-linear-gradient(#b1ce3b, #7dae23);
+        background: -o-linear-gradient(#b1ce3b, #7dae23);
+        background: linear-gradient(#b1ce3b, #7dae23);
+        -pie-background: linear-gradient(#b1ce3b, #7dae23);
+        border: 1px solid #728e21;
+        border-top: 1px solid #83a425;
+        border-bottom: 1px solid #5c731c;
+    }
+}

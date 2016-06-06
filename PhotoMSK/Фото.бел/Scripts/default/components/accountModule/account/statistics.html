@@ -1,0 +1,23 @@
+﻿<div class="container container--center">
+    <ul class="uk-sortable grid grid--small  -60" data-uk-sortable="{handleClass:'uk-nestable'}">
+        @for (int i = 1; i < 10; i++)
+        {
+            <li class="col--1-4 dashboard-item">
+                <div class="panel panel--box">
+                    <div class="text--center">
+                        <i class="icon-th-small uk-nestable float--left" style="cursor: pointer;"></i>
+                        <span class="dashboard-item-title">Уведомление @i</span>
+                        <i class="icon-refresh float--right" data-uk-tooltip title="Обновить"></i>
+                    </div>
+
+
+                    <div class="dashboard-item-content text--center">
+                        <h1><i class="icon-megaphone2"></i></h1>
+                        <h3 class="app-empty __empty __ready">Нет операций</h3>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+
+</div>

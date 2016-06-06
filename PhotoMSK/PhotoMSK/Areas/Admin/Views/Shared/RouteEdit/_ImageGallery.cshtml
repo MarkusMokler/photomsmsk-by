@@ -1,0 +1,20 @@
+﻿@model PhotoMSK.Models.EditViewModel.Routes.RouteEditModel
+@* Галерея изображений *@
+<div class="uk-width-1-1">
+    <ul class="uk-grid uk-grid-small uk-grid-width-1-5" data-uk-grid-margin data-uk-grid-match>
+        @foreach (var photo in Model.Photos)
+        {
+            <li>
+                <div class="uk-overlay">
+                    <img src="@photo.Url" class="uk-border-rounded" alt="">
+                    <div class="uk-overlay-area">
+                        <div class="uk-overlay-area-content">
+                            <a class="uk-button uk-button-small uk-button-danger role-delete-photo-button" data-id="@photo.ID">Удалить</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+
+</div>

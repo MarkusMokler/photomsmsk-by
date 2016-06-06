@@ -1,0 +1,128 @@
+<div>
+    <data-bread-crumbs />
+</div>
+
+<div class="container container--center">
+    <div class="grid grid--medium">
+        <div class="col--4-10">
+            <p class="text--h2 margin--reset">
+                Фотографы из
+                <a data-msk-href class="link link--dotted text--green" data-ng-click="isCityOpen = !isCityOpen">
+                    {{headCity}}
+                    <!-- <i class="text--small icon-chevron-down"></i> -->
+                </a>
+            </p>
+        </div>
+        <div class="col--6-10 text--right" data-ng-show="!isCityOpen">
+            <span>{{page.itemsCount | number}} фотографов отсортировано</span>
+            <ul class="sort">
+                <li class="sort__item active"><a data-msk-href>по рейтингу</a></li>
+                <li class="sort__item repair repair--text"><a data-msk-href>по цене</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="block block--city" data-ng-if="isCityOpen">
+    <div class="block--overlay block--overlay-black"></div>
+    <div class="container container--center">
+        <div class="city grid grid--small">
+            <ul class="city__countries col--1-4">
+                <li><a data-msk-href data-ng-click="setRussia()">Россия</a></li>
+                <!--<li><a data-msk-href class="active" data-ng-click="setBelarus()">Беларусь <span class="text--small text--muted">(12)</span></a></li>-->
+                <li><a data-msk-href data-ng-click="setBelarus()">Беларусь</a></li>
+                <li><a data-msk-href data-ng-click="setUkraine()">Украина</a></li>
+                <li><a data-msk-href data-ng-click="setOthers()">Другие</a></li>
+            </ul>
+            <div class="city__cities col--3-4">
+                <div ng-repeat="(alph, list) in cities track by alph">
+                    <ul class="city__list">
+                        <li>
+                            <span class="letter" ng-bind="alph"></span>
+                        </li>
+                        <li ng-repeat="item in list track by $index">
+                            <p>
+                                <a data-msk-href data-ng-click="changeCity(item.city)" ng-bind="item.city"></a>
+                                <span>({{item.count}})</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container container--center">
+    <div class="grid grid--small margin--top">
+        <div class="col--1-4">&nbsp;</div>
+        <div class="col--3-4">
+            <ul class="photographer grid grid--small">
+                <li class="photographer__item col--1-1" data-ng-repeat="item in page.elements">
+                    <div class="photographer__item-image">
+                        <div class="photographer__item-image-main" style="background-image: url({{item.coverImageUrl}});">
+                            <img src="{{item.coverImageUrl}}" alt="">
+                        </div>
+
+                        <ul class="grid grid--small grid-col--1-4 photographer__item-image-list">
+                            <li style="background-image: url({{item.coverImageUrl}});">
+                                <img src="{{item.coverImageUrl}}" alt="">
+                            </li>
+                            <li style="background-image: url({{item.coverImageUrl}});">
+                                <img src="{{item.coverImageUrl}}" alt="">
+                            </li>
+                            <li style="background-image: url({{item.coverImageUrl}});">
+                                <img src="{{item.coverImageUrl}}" alt="">
+                            </li>
+                            <li style="background-image: url({{item.coverImageUrl}});">
+                                <img src="{{item.coverImageUrl}}" alt="">
+                            </li>
+                            <li style="background-image: url({{item.coverImageUrl}});">
+                                <img src="{{item.coverImageUrl}}" alt="">
+                            </li>
+                            <li style="background-image: url({{item.coverImageUrl}});">
+                                <img src="{{item.coverImageUrl}}" alt="">
+                            </li>
+                            <li style="background-image: url({{item.coverImageUrl}});">
+                                <img src="{{item.coverImageUrl}}" alt="">
+                            </li>
+                            <li style="background-image: url({{item.coverImageUrl}});">
+                                <img src="{{item.coverImageUrl}}" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="photographer__item-desc">
+                        <a href="/photographerDetails/{{item.shortcut}}" class="photographer__item-desc-avatar" style="background-image: url({{item.imageUrl}});">
+                            <img src="{{item.imageUrl}}" alt="">
+                        </a>
+                        <div class="photographer__item-desc-info">
+                            <a href="/photographerDetails/{{item.shortcut}}">
+                                <p class="text--bold text--h4">{{item.firstName}} {{item.lastName}}</p>
+                            </a>
+                            <p class="text--muted text--small margin--reset">{{item.city}}</p>
+                        </div>
+
+                        <div class="photographer__item-desc-like">
+                            <small class="text--small text--muted">лайков</small>
+                            <p class="text--h2 margin--top-mini">-</p>
+                        </div>
+
+                        <div class="photographer__item-desc-view">
+                            <small class="text--small text--muted">просмотров</small>
+                            <p class="text--h2 margin--top-mini">{{item.pageViews | number:0}}</p>
+                        </div>
+
+                        <div class="photographer__item-desc-rating">
+                            <small class="text--small text--muted">рейтинг</small>
+                            <p class="text--h2 margin--top-mini">{{item.raitingTotal | number:0}}</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- Pagination -->
+        <div class="col--1-1 text--center" ng-show="showPagination">
+            <uib-pagination total-items="totalItems" data-ng-model="currentPage" boundary-links="true" items-per-page="itemsPerPage" max-size="maxSize" num-pages="numPages" class="pagination" ng-change="pageChanged()"></uib-pagination>
+        </div>
+    </div>
+</div>

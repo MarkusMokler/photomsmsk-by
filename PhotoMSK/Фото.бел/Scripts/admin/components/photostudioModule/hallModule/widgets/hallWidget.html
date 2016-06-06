@@ -1,0 +1,30 @@
+﻿<div class="container container--center">
+    <div data-ng-if="!widget.isEdit && widget.hall!=null">
+        <h3>Название {{widget.hall.name}}</h3>
+        <h3>Описание {{widget.hall.description}}</h3>
+        <h3>Цена часа аренды {{widget.hall.todayPrice}}</h3>
+        <h3>Площадь {{widget.hall.square}}</h3>
+    </div>
+    <div data-ng-if="!widget.isEdit && widget.hall==null">
+        <h1>Настройте отображение зала</h1>
+    </div>
+    <div data-ng-if="widget.isEdit">
+
+        <div angucomplete-alt
+             remote-url={{hallByNameUrl}}
+             placeholder=""
+             pause="500"
+             selected-object="selected"
+             title-field="name"
+             description-field="photostudioName"
+             image-field="teaserImageUrl"
+             model="results"
+             remote-url-request-formatter="remoteUrlRequestEn"
+             searching="name"
+             input-class="input col--large-1-1 col--small-1-1 ui-autocomplete-input"
+             no-results="noResults"></div>
+
+        <a data-msk-href data-ng-click="saveHall(selected)" class="button">Сохранить настройки</a>
+    </div>
+
+</div>

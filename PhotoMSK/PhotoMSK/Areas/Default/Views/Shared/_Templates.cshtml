@@ -1,0 +1,547 @@
+﻿@using PhotoMSK.Extensiolns
+@using StackExchange.Profiling
+<script>
+    function grid(arr) {
+        switch (arr.length) {
+            case 1:
+                return "1";
+            case 2:
+                return "2";
+            case 3:
+                return "12";
+            case 4:
+                return "22";
+            case 5:
+                return "23";
+            case 6:
+                return "33";
+            case 7:
+                return "34";
+            case 8:
+                return "224";
+            case 9:
+                return "234";
+            case 10:
+                return "334";
+            case 11:
+                return "344";
+            case 12:
+                return "444";
+
+            default:
+                return "44444";
+        }
+    }
+</script>
+@using (Html.Template("model", DisplayType.Summary))
+{
+    @Html.Partial("Model.Summary");
+}
+@using (Html.Template("photographer", DisplayType.Summary))
+{
+    @Html.Partial("Photographer.Summary");
+}
+
+@using (Html.Template("wall-post"))
+{
+    Html.RenderPartial("_WallPost");
+}
+@using (Html.Template("wall-popup"))
+{
+    Html.RenderPartial("_WallPopup");
+}
+@using (Html.Template("wall-edit"))
+{
+    @Html.Partial("_WallEdit20")
+}
+@using (Html.Template("calendar-modal"))
+{
+    @Html.Partial("CalendarModal")
+}
+@using (Html.Template("phototechnic-vertical", DisplayType.Summary))
+{
+    @Html.Partial("Phototechnic.Vertical.Summary")
+}
+@using (Html.Template("phototechnic-horizontal", DisplayType.Summary))
+{
+    @Html.Partial("Phototechnic.Horizontal.Summary")
+}
+@using (Html.Template("phototechnic-search", DisplayType.Summary))
+{
+    @Html.Partial("Phototechnic.Search.Summary")
+    
+}
+@using (Html.Template("calendar-chooser"))
+{
+    @Html.Partial("CalendarCooser");
+}
+
+@using (Html.Template("calendar-primary-row"))
+{
+    @Html.Partial("CalendarPrimaryRow");
+}
+
+@using (Html.Template("calendar-secondary-row"))
+{
+    <li>
+        <div data-calendarid="<%- calendarID %>" class="uk-button uk-button-radio-active uk-width-1-1">
+            <p class="uk-margin-remove uk-text-truncate">
+                <strong><%- title %></strong>
+            </p>
+            <img src="<%- image %>" style="height: 60px;" alt="">
+            <p class="uk-margin-remove">
+                <small><strong><%- hourlyPrice %></strong> за час</small>
+            </p>
+        </div>
+    </li>
+}
+
+@using (Html.Template("comentlist"))
+{
+    <li>
+        <article class="uk-comment">
+            <header class="uk-comment-header">
+                <img class="uk-comment-avatar" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                <h4 class="uk-comment-title">Author</h4>
+                <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                    <li><span>12 days ago</span></li>
+                    <li class="appbar-item">
+                        <a class="appbar-item-content has--label-inline js-feedback is--toggle toggle--theme-two button-like" href="#">
+                            <svg class="appbar-item-icon" x="0px" y="0px" width="22px" height="22px" viewBox="0 0 22 22">
+                                <path class="like-outline" fill="333" d="M20.309,11.563C20.729,11.157,21,10.599,21,10c0-1.1 0.896-1.919-1.992-1.819l-5.182,0.471 c0.235-0.621,0.376-1.331,0.353-1.947l-0.103-2.707c-0.042-1.099-0.881-2.401-1.865-2.893l-0.422-0.211 c-0.984-0.492-1.87,0.002-1.97,1.097L9.636,4.008c-0.1,1.095-0.693,2.732-1.318,3.637L8.235,7.765l-2.528,2.528 c0,0-0.001,0.001-0.001,0.001c-0.091-0.091-0.198-0.164-0.318-0.215S5.138,10,5,10H2c-0.55,0-1,0.45-1,1v9c0,0.55,0.45,1,1,1h3 c0.124,0,0.24-0.029,0.349-0.071c0.036-0.014,0.068-0.033,0.102-0.05C5.52,20.842,5.583,20.8,5.642,20.75 c0.034-0.029,0.066-0.056,0.096-0.09c0.052-0.059,0.093-0.124,0.131-0.194c0.018-0.034,0.042-0.062,0.057-0.097l0,0 c0.001,0,0.002,0.002,0.003,0.002l3.143,1.257c0.511,0.204,1.376,0.322,1.922,0.261l3.589-0.399l2.43-0.27 C18.106,21.099,19,20.1,19,19c0-0.384-0.114-0.728-0.303-1.013C19.454,17.635,20,16.856,20,16c0-0.382-0.114-0.726-0.301-1.014 C20.455,14.633,21,13.855,21,13C21,12.401,20.729,11.892,20.309,11.563z M2,11h3v8.988l-0.004,0.01L2,20V11z M19.691,12.35 C19.891,12.505,20,12.736,20,13c0,0.437-0.298,0.881-0.725,1.081l-1.043,0.488l0.63,0.965C18.953,15.673,19,15.831,19,16 c0,0.438-0.298,0.882-0.725,1.081l-1.053,0.49l0.641,0.968C17.954,18.676,18,18.831,18,19c0,0.589-0.514,1.162-1.099,1.227 l-6.018,0.669c-0.063,0.007-0.134,0.01-0.209,0.01c-0.41,0-0.939-0.088-1.231-0.206l-3.1-1.24L6,19.289v-7.871l3.007-3.01 l0.134-0.195c0.721-1.042,1.376-2.849,1.491-4.113l0.184-2.017c0.022-0.251,0.1-0.379,0.229-0.379c0.082,0,0.188,0.03,0.297,0.085 L11.764,2c0.659,0.33,1.285,1.3,1.313,2.037l0.103,2.707c0.017,0.45-0.091,1.031-0.289,1.555l-0.564,1.494 c0,0,6.778-0.616,6.782-0.616C19.662,9.177,20,9.523,20,10c0,0.299-0.141,0.607-0.386,0.845l-0.823,0.797L19.691,12.35z"></path>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="appbar-item">
+                        <a class="appbar-item-content has--label-inline js-feedback is--toggle toggle--theme-two button-dislike" href="#">
+                            <svg class="appbar-item-icon">
+                                <path class="dislike-outline" d="M1.691,10.437C1.271,10.843,1,11.401,1,12c0,1.1,0.896,1.919,1.992,1.819l5.182-0.471 c-0.235,0.621-0.376,1.331-0.353,1.947l0.103,2.707c0.042,1.099,0.881,2.401,1.865,2.893l0.422,0.211 c0.984,0.492,1.87-0.002,1.97-1.097l0.183-2.016c0.1-1.095,0.693-2.732,1.318-3.637l0.083-0.119l2.528-2.528l0.001-0.001 c0.091,0.091,0.198,0.164,0.318,0.215S16.862,12,17,12h3c0.55,0,1-0.45,1-1V2c0-0.55-0.45-1-1-1h-3c-0.124,0-0.24,0.029-0.349,0.071 c-0.036,0.014-0.068,0.033-0.102,0.05C16.48,1.158,16.417,1.2,16.358,1.25c-0.034,0.029-0.066,0.056-0.096,0.09 c-0.052,0.059-0.093,0.124-0.131,0.194c-0.018,0.034-0.042,0.062-0.057,0.097l0,0c-0.001,0-0.002-0.002-0.003-0.002l-3.143-1.257 c-0.511-0.204-1.376-0.322-1.922-0.261L7.417,0.509l-2.43,0.27C3.894,0.901,3,1.9,3,3c0,0.384,0.114,0.728,0.303,1.013 C2.546,4.365,2,5.144,2,6c0,0.382,0.114,0.726,0.301,1.014C1.545,7.367,1,8.145,1,9C1,9.599,1.271,10.108,1.691,10.437z M20,11h-3 V2.012l0.004-0.01L20,2V11z M2.309,9.65C2.109,9.495,2,9.264,2,9c0-0.437,0.298-0.881,0.725-1.081l1.043-0.488l-0.63-0.965 C3.047,6.327,3,6.169,3,6c0-0.438,0.298-0.882,0.725-1.081l1.053-0.49L4.137,3.46C4.046,3.324,4,3.169,4,3 c0-0.589,0.514-1.162,1.099-1.227l6.018-0.669c0.063-0.007,0.134-0.01,0.209-0.01c0.41,0,0.939,0.088,1.231,0.206l3.1,1.24L16,2.711 v7.871l-3.007,3.01l-0.134,0.195c-0.721,1.042-1.376,2.849-1.491,4.113l-0.184,2.017c-0.022,0.251-0.1,0.379-0.229,0.379 c-0.082,0-0.188-0.03-0.297-0.085L10.236,20c-0.659-0.33-1.285-1.3-1.313-2.037L8.82,15.256c-0.017-0.45,0.091-1.031,0.289-1.555 l0.564-1.494c0,0-6.778,0.616-6.782,0.616C2.338,12.823,2,12.477,2,12c0-0.299,0.141-0.607,0.386-0.845l0.823-0.797L2.309,9.65z"></path>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </header>
+            <div class="uk-comment-body">
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+            </div>
+        </article>
+    </li>
+}
+@*  <ul class="uk-nav uk-nav-autocomplete uk-autocomplete-results"></ul> *@
+@using (Html.Template("autocomplete-item"))
+{
+    <li data-value="<%- id %>">
+        <a>
+            <header class="uk-comment-header">
+                <img class="uk-comment-avatar height-50" src="<%- imageUrl %>" alt="">
+                <h4 class="uk-comment-title"><%- name %></h4>
+                <div class="uk-comment-meta"><%- etype %></div>
+            </header>
+        </a>
+    </li>
+}
+
+@using (Html.Template("wall-participant"))
+{
+    <li>
+        <a href="#">
+            <img class="uk-border-circle height-50" src="<%- imageUrl %>" alt="" data-uk-tooltip title='<%- name %> /n <%- etype %>'>
+        </a>
+    </li>
+}
+
+@using (Html.Template("video-upload"))
+{
+    <div id="video-upload-modal" class="uk-modal">
+        <div class="uk-modal-dialog">
+            <a class="uk-modal-close uk-close"></a>
+            <div class="modal-header">
+                <button type="button" class="uk-modal-close uk-close uk-float-right"></button>
+                <h1 class="uk-text-center">Выберите Зал или Залы</h1>
+            </div>
+            <div class="modal-body">
+
+                <div class="attachment">
+                    <div id="VideoUrl" class="row">
+                        <input class="VideoInput" type="url" placeholder="Specify video link from youtube or vimeo" />
+                        <div id="VideoError" class="errorMessage"></div>
+                    </div>
+                    <div class="youtube" style="display: none;">
+                        <iframe id="ytplayer" class="yuotube-video" type="text/html" width="420" height="236.25" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="vimeo" style="display: none;">
+                        <iframe class="vimeo-video" width="420" height="236.25" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
+                </div>
+                <button class="btn wall-post-save-video">Загрузить</button>
+            </div>
+        </div>
+    </div>
+}
+
+
+@using (Html.Template("wall"))
+{
+    @Html.Partial("Wall")
+   
+}
+
+
+
+@using (Html.Template("autocomplete-userinfo"))
+{
+    <li data-value="<%- id %>">
+        <a>
+            <%- firstName %>
+            <div><%- lastName %></div>
+        </a>
+    </li>
+}
+
+@using (Html.Template("autocomplete-new"))
+{
+    <li data-new="true">
+        <a>
+            Создать нового
+        </a>
+    </li>
+}
+
+@using (Html.Template("user-information"))
+{
+    <div>
+        <div class="booking-image uk-text-center pad-top-20">
+            <img class="uk-border-circle" src="<%- typeof userUserPhoto!='undefined'&&userUserPhoto!=null?userUserPhoto:'http://photomsk.by/Content/images/no-avatar.png' %>">
+            <h1><%- firstName %> <%- lastName%></h1>
+            <div class="uk-comment-meta"><div class="uk-badge uk-badge-success">PRO</div> фотограф</div>
+        </div>
+        <div id="penalty-list-placeholder">
+
+        </div>
+    </div>
+}
+
+@using (Html.Template("penalty", DisplayType.Summary))
+{
+    <article class="uk-article">
+        <div class="penalty-description uk-float-left">
+            <div class="uk-article-lead"><%- route %></div>
+            <div class="uk-article-meta"><%- description %></div>
+        </div>
+        <div class="penalty-time uk-float-right">
+            <div class="uk-article-lead"><small><%- date %></small></div>
+            <div class="uk-article-meta uk-float-right"><%- price %></div>
+        </div>
+    </article>
+}
+@using (Html.Template("penalties-list"))
+{
+    <div class="pad-top-20">
+        <ul class="uk-tab block-penalty-title">
+            <li class="uk-active penalty"><a href="#">Штрафы</a></li>
+        </ul>
+
+        <ul id="penalty" class="uk-switcher uk-margin block-penalty-descriptio">
+            <li id="penalties-placeholder" class="uk-active">
+
+            </li>
+        </ul>
+    </div>
+}
+
+@using (Html.Template("admin-event-modal"))
+{
+    <div id="signin-modal" class="uk-modal uk-open" style="display: block; padding-right: 0px;">
+        <div class="uk-modal-dialog uk-modal-dialog">
+            <div class="modal-header">
+                <button type="button" class="uk-modal-close uk-close uk-float-right"></button>
+                <h1 class="uk-text-center">Информация о брони</h1>
+            </div>
+            <div class="modal-body">
+                <div class="booking-image uk-text-center pad-top-20">
+                    <img class="uk-border-circle" src="<%- typeof userUserPhoto!='undefined'&&userUserPhoto!=null?userUserPhoto:'http://photomsk.by/Content/images/no-avatar.png' %>">
+                    <h1><%- userFirstName %> <%- userLastName%></h1>
+                    <div class="uk-comment-meta"><div class="uk-badge uk-badge-success">PRO</div> <%- phone %></div>
+                </div>
+                <div class="form-group ">
+                    <div class="uk-form-icon">
+                        <label for="UserName">Претензия</label>
+                        <input class="form-control role-description" data-val="true" data-val-required="The User name field is required." id="UserName" name="UserName" placeholder="Текст претензии" />
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="uk-form-icon">
+                        <label for="UserName">Штраф</label>
+                        <input class="form-control role-price" data-val="true" data-val-required="The User name field is required." id="UserName" name="UserName" placeholder="Сумма штрафа" />
+                    </div>
+                </div>
+                <input type="submit" class="btn role-penalty-save-button" value="Претензия">
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.Template("hall-chooser"))
+{
+    <div id="myModal" class="uk-modal uk-open" style="display: block; padding-right: 0px;">
+        <div class="uk-modal-dialog">
+            <div class="modal-header">
+                <button type="button" class="uk-modal-close uk-close uk-float-right"></button>
+                <h1 class="uk-text-center">Выберите Зал или Залы</h1>
+            </div>
+            <div class="modal-body">
+                <div class="uk-form-row">
+                    <ul id="hall-select" class="uk-nav uk-nav-autocomplete uk-autocomplete-results"></ul>
+                </div>
+                <div class="uk-form-row"></div>
+
+                <button id="save" class="btn role-save-halls">Выбрать</button>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.Template("hall", DisplayType.Summary))
+{
+    <li data-value="<%- calendarID %>">
+        <a>
+            <%- name %>
+            <div><%- description %></div>
+        </a>
+    </li>
+}
+
+@using (Html.Template("user-information", DisplayType.Edit))
+{
+    <div class="form-group ">
+        <div class="uk-form-icon">
+            <label for="firstName">Имя</label>
+            <input class="form-control role-firstName" data-val="true" data-val-required="The User name field is required." id="firstName" name="firstName" placeholder="Текст претензии" />
+        </div>
+    </div>
+    <div class="form-group ">
+        <div class="uk-form-icon">
+            <label for="lastName">Фамилия</label>
+            <input class="form-control role-lastName" data-val="true" data-val-required="The User name field is required." id="lastName" name="lastName" placeholder="Сумма штрафа" />
+        </div>
+    </div>
+}
+
+@using (Html.Template("calendar-header"))
+{
+    <div class="booking-hall" data-uk-button-checkbox="">
+        <h3><strong>Календарь</strong></h3>
+        <ul class="uk-subnav uk-subnav-pill uk-subnav-line role-hall-tabs">
+            <li><button class="uk-button uk-active" data-val="all">Все залы</button></li>
+            <% _.each(halls ,function(hall){ %>
+            <li><button class="uk-button" data-calendar="<%- hall.calendarID %>"><%- hall.name %></button></li>
+            <% }) %>
+        </ul>
+    </div>
+}
+
+@using (Html.Template("rentcalendar-header"))
+{
+    <div class="booking-hall" data-uk-button-checkbox="">
+        <ul class="uk-subnav uk-subnav-pill uk-subnav-line role-hall-tabs">
+            <li><button class="uk-button uk-active" data-val="all">Аренда</button></li>
+            <% _.each(rents ,function(rent){ %>
+            <li><button class="uk-button" data-calendar="<%- rent.calendarID %>"><%- rent.name %></button></li>
+            <% }) %>
+        </ul>
+    </div>
+}
+
+@using (Html.Template("booking"))
+{
+    <li class="uk-show-hide">
+        <div class="uk-grid uk-grid-small">
+            <div class="uk-width-5-6">
+                <div class="booking-description">
+                    <div class="uk-article-lead"><%- studioName %></div>
+                    <div class="uk-article-meta uk-text-truncate"><span><small><i class="icon-clock"></i></small> <%- new moment(start).format("HH:mm") %> - <%- new moment(end).format("HH:mm") %></span> - <strong><%- hallName %></strong></div>
+                </div>
+            </div>
+            <div class="uk-width-1-6">
+                <div class="booking-time">
+                    <div class="uk-article-lead uk-text-right">
+                        <a href="" class="uk-link-reset">
+                            <i class="uk-icon-close pink-color uk-show-hide-element"></i>
+                        </a>
+                    </div>
+                    @*<div class="uk-article-lead"><small><i class="icon-clock"></i> <%- new moment(start).format("HH:mm") %> - <%- new moment(end).format("HH:mm") %></small></div>*@
+                    <div class="uk-article-meta uk-float-right"><%- summ %></div>
+                </div>
+            </div>
+        </div>
+    </li>
+}
+
+@using (Html.Template("toturial"))
+{
+    <div id="myModal" class="uk-modal uk-open" style="display: block; padding-right: 0px;">
+        <div class="uk-modal-dialog">
+            <div class="modal-header">
+                <button type="button" class="uk-modal-close uk-close uk-float-right"></button>
+                <h1 class="uk-text-center">Видеоурок</h1>
+            </div>
+            <div class="modal-body">
+                <iframe width="540" height="300" src="<%- src %>" frameborder="0" allowfullscreen></iframe>
+                <div class="uk-form-row"></div>
+
+                <button id="save" class="btn role-close-dialog">Закрыть</button>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.Template("popover"))
+{
+    <div class="uk-dropdown uk-dropdown-up uk-dropdown-center uk-popover top">
+        <div class="arrow"></div>
+        <h3 class="uk-popover-title bold">Редактировать<small class="uk-float-right uk-text-muted role-close-popover" style="cursor: pointer">закрыть</small></h3>
+        <div class="uk-popover-content">
+            <table class="uk-width-1-1" style="display: none">
+                <tbody>
+                    <tr>
+                        <td class="uk-width-4-10">
+                            <form class="uk-form">
+                                <div class="uk-autocomplete"><input type="text" data-uk-timepicker="" placeholder="08:00" autocomplete="off"><div class="uk-dropdown uk-dropdown-scrollable"><ul class="uk-nav uk-nav-autocomplete uk-autocomplete-results"><li data-value="00:00"><a>00:00</a></li><li data-value="00:30"><a>00:30</a></li><li data-value="01:00"><a>01:00</a></li><li data-value="01:30"><a>01:30</a></li><li data-value="02:00"><a>02:00</a></li><li data-value="02:30"><a>02:30</a></li><li data-value="03:00"><a>03:00</a></li><li data-value="03:30"><a>03:30</a></li><li data-value="04:00"><a>04:00</a></li><li data-value="04:30"><a>04:30</a></li><li data-value="05:00"><a>05:00</a></li><li data-value="05:30"><a>05:30</a></li><li data-value="06:00"><a>06:00</a></li><li data-value="06:30"><a>06:30</a></li><li data-value="07:00"><a>07:00</a></li><li data-value="07:30"><a>07:30</a></li><li data-value="08:00"><a>08:00</a></li><li data-value="08:30"><a>08:30</a></li><li data-value="09:00"><a>09:00</a></li><li data-value="09:30"><a>09:30</a></li><li data-value="10:00"><a>10:00</a></li><li data-value="10:30"><a>10:30</a></li><li data-value="11:00"><a>11:00</a></li><li data-value="11:30"><a>11:30</a></li><li data-value="12:00"><a>12:00</a></li><li data-value="12:30"><a>12:30</a></li><li data-value="13:00"><a>13:00</a></li><li data-value="13:30" class="uk-active"><a>13:30</a></li><li data-value="14:00"><a>14:00</a></li><li data-value="14:30"><a>14:30</a></li><li data-value="15:00"><a>15:00</a></li><li data-value="15:30"><a>15:30</a></li><li data-value="16:00"><a>16:00</a></li><li data-value="16:30"><a>16:30</a></li><li data-value="17:00"><a>17:00</a></li><li data-value="17:30"><a>17:30</a></li><li data-value="18:00"><a>18:00</a></li><li data-value="18:30"><a>18:30</a></li><li data-value="19:00"><a>19:00</a></li><li data-value="19:30"><a>19:30</a></li><li data-value="20:00"><a>20:00</a></li><li data-value="20:30"><a>20:30</a></li><li data-value="21:00"><a>21:00</a></li><li data-value="21:30"><a>21:30</a></li><li data-value="22:00"><a>22:00</a></li><li data-value="22:30"><a>22:30</a></li><li data-value="23:00"><a>23:00</a></li><li data-value="23:30"><a>23:30</a></li></ul></div></div>
+                            </form>
+                        </td>
+                        <td class="uk-width-1-10 uk-text-center">
+                            —
+                        </td>
+                        <td class="uk-width-4-10">
+                            <form class="uk-form">
+                                <input type="text" data-uk-timepicker="" placeholder="22:00">
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="uk-width-1-1 pad-top-20">
+                <tbody>
+                    <tr>
+                        <td class="uk-width-3-10">
+                            <form class="uk-form">
+                                <img class="uk-border-circle" src="<%- typeof userUserPhoto!='undefined'&&userUserPhoto!=null?userUserPhoto:'http://photomsk.by/Content/images/no-avatar.png' %>">
+                            </form>
+                        </td>
+                        <td class="uk-width-1-10">
+                            &nbsp;
+                        </td>
+                        <td class="uk-width-6-10">
+                            <form class="uk-form">
+                                <h3><%- userFirstName %> <%- userLastName%></h3>
+                                <div class="uk-comment-meta"><div class="uk-badge uk-badge-success">PRO</div> <%- phone %></div>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <a href="#" class="role-penalty-show">Добавить претензию</a>
+            <div style="display: none" class="role-penalty-form">
+                <div class="form-group ">
+                    <div class="uk-form-icon">
+                        <input class="form-control role-description" data-val="true" data-val-required="The User name field is required." id="UserName" name="UserName" placeholder="Текст претензии" />
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="uk-form-icon">
+                        <input class="form-control role-price" data-val="true" data-val-required="The User name field is required." id="UserName" name="UserName" placeholder="Сумма штрафа" />
+                    </div>
+                </div>
+                <div class="">
+                    <ul class="uk-subnav uk-subnav-line">
+                        <li class="uk-float-right">
+                            <a class="btn-change role-penalty-add" href="#">Добавить</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pad-top-20">
+                <label>Залы:</label>
+            </div>
+
+            <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+
+            <div class="">
+                <ul class="uk-subnav uk-subnav-line">
+                    <li>
+                        <a href="#" class="btn-delete role-button-delete">
+                            <i class="icon-trash"></i>
+                        </a>
+                    </li>
+                    <li><a class="uk-text-muted role-close-popover" href="#">отмена</a></li>
+                    <li class="uk-float-right">
+                        <a class="btn-change" href="#">Принять</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.Template("message"))
+{
+    <div class="uk-modal uk-open" style="display: block; padding-right: 0px;">
+        <div class="uk-modal-dialog">
+            <a class="uk-modal-close uk-close"></a>
+            <div class="modal-header">
+                Сергей Щипанов
+            </div>
+            <div class="modal-body">
+
+                <div class="<%- userId %>-role-messages">
+
+                </div>
+                <input type="text" class="role-message-text">
+                <button class="btn role-send-message">Загрузить</button>
+            </div>
+        </div>
+    </div>
+}
+@using (Html.Template("main-wall"))
+{
+    <div class="role-main-wall">
+
+    </div>
+}
+
+@using (Html.Template("wall-row"))
+{
+    <ul class="uk-grid uk-grid-width-large-1-3 uk-grid-width-medium-1-2 uk-grid-width-small-1-1 role-wallrow" data-uk-grid-margin></ul>
+}
+
+
+@using (Html.Template("comment"))
+{
+    <li>
+        <article class="uk-comment" data-uid="<%- userInformationID %>">
+            <header class="uk-comment-header">
+                <img class="uk-comment-avatar uk-border-rounded" src="<%- photo %>" width="50" height="50" alt="">
+                <h5 class="uk-comment-title">
+                    <a href="#" class="bold uk-link-muted"><%- name %></a>
+                </h5>
+                <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                    <li><a href="#" class="uk-link-muted uk-link-999"><%- jQuery.timeago(creationTime) %></a></li>
+                </ul>
+            </header>
+            <div class="uk-comment-body">
+                <p><%- text %></p>
+            </div>
+        </article>
+    </li>
+}
+
+@using (Html.Template("calendar"))
+{
+    <div class="calendar-header-placeholder">
+    </div>
+    <div class="booking-calendar">
+        <div class="calendar-placeholder"></div>
+    </div>
+}
+

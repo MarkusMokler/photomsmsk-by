@@ -1,0 +1,124 @@
+/* ========================================================================
+   Component: Photostudio
+ ========================================================================== */
+/* Modifier: `photostudio--*`
+ ========================================================================== */
+/* ========================================================================
+   Component: Cover
+ ========================================================================== */
+.cover {
+  height: 350px;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: -50px;
+}
+.cover > .cover__overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+  background: -linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+}
+.ph-desc {
+  font-size: 16px;
+  line-height: 25px;
+}
+.ph-list__title {
+  margin: 15px 0;
+}
+.ph-list > li {
+  height: 25px;
+  line-height: 25px;
+  margin: 10px 0;
+}
+.ph-list > li > i {
+  font-size: 25px;
+  line-height: 25px;
+}
+.ph-list > li.disable {
+  text-decoration: line-through;
+  opacity: 0.3;
+}
+.ph-option {
+  list-style: none;
+  font-size: 0;
+  margin-top: -132px;
+}
+.ph-option > li {
+  display: inline-block;
+  width: 33.3333333%;
+  font-size: 1rem;
+  padding: 17px 5px;
+  text-align: center;
+  border-right: 1px solid #e8e8e8;
+}
+.ph-option > li:last-child {
+  border-right: none;
+}
+.ph-option__title {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 500;
+}
+.ph-option__desc {
+  font-size: 12px;
+  line-height: 14px;
+  color: #999;
+}
+.ph-option__informer {
+  font-size: 0;
+}
+.ph-option__informer > li {
+  display: inline-block;
+  width: 50%;
+  padding: 10px 0;
+  font-size: 1rem;
+  color: #959595;
+}
+.ph-option__informer > li > i {
+  font-size: 30px;
+  line-height: 30px;
+}
+.ph-option__list > li {
+  padding: 15px 0;
+  color: #959595;
+  border-top: 1px solid #dadada;
+  font-size: 0.9rem;
+}
+.ph-option__list > li > span:last-child {
+  float: right;
+}
+.ph-spec__title {
+  margin: 25px 0 15px;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+}
+.ph-spec__list > li {
+  position: relative;
+  margin: 0 0 20px;
+  padding-left: 60px;
+}
+.ph-spec__list > li.disable span {
+  opacity: 0.3;
+  text-decoration: line-through;
+}
+.ph-spec__list > li.disable i {
+  opacity: 0.3;
+}
+.ph-spec__list > li > i {
+  position: absolute;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  top: 50%;
+  left: 35px;
+  line-height: 30px;
+  font-size: 20px;
+  transform: translateY(-50%);
+  text-decoration: none;
+}

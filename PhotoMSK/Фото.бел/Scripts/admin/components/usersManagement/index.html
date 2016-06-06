@@ -1,0 +1,77 @@
+﻿<div class="container container--center  ">
+    <div class="float--left">
+
+        <a class="button button-primary" href="#">Добавить</a>
+        <a class="button button-danger uk-hidden" href="#">Удалить</a>
+
+        <div class="button-dropdown uk-hidden" data-uk-dropdown="{ mode: 'click' }">
+            <button class="button">Еще <i class="uk-icon-caret-down"></i></button>
+            <div class="uk-dropdown uk-dropdown-small">
+                <ul class="uk-nav uk-nav-dropdown">
+                    <li><a href="#" data-action="#">Активировать</a></li>
+                    <li><a href="#" data-action="#">Заблокировать</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="float--right uk-hidden-small uk-form">
+
+        <select name="filter[status]">
+
+            <option value="">- Статус -</option>
+            <option value="1">Активирован</option>
+            <option value="0">Заблокирован</option>
+        </select>
+
+        <select name="filter[role]">
+            <option value="">- Роль -</option>
+            <option value="2">Фотографы</option>
+            <option value="3">Модели</option>
+            <option value="4">Студии</option>
+            <option value="5">Мастер класс</option>
+            <option value="6">Магазин</option>
+        </select>
+
+        <input type="text" name="filter[search]" placeholder="Поиск..." value="">
+    </div>
+</div>
+
+
+
+<div class="container container--center  ">
+    <div class="js-table uk-overflow-container">
+        <table class="table table--hover table--middle js-table-users">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" class="js-select-all"></th>
+                    <th colspan="2">Пользователь</th>
+                    <th class="text--center">Статус</th>
+                    <th>Email</th>
+                    <th>Роль</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox" name="ids[]" value="1"></td>
+                    <td>
+                        <img class="uk-img-preserve uk-border-circle" width="40" height="40" alt="" data-avatar="shipik2008@gmail.com" src="//www.gravatar.com/avatar/4f3a416dcf2966880adf1b55d7bdbbc9?s=80&amp;d=mm&amp;r=g">
+                    </td>
+                    <td class="uk-text-nowrap">
+                        <a href="#">Роман Лунцевич</a>
+                        <div class="text--muted">ненавидит-фотографов</div>
+                    </td>
+                    <td class="text--center">
+                        <a href="#" class="uk-icon-circle uk-text-success" data-action="/index.php/admin/system/user/status?ids%5B%5D=1&amp;status=0" title="Active"></a>
+                    </td>
+                    <td>
+                        <a href="mailto:shipik2008@gmail.com">shipik2008@gmail.com</a>
+                    </td>
+                    <td>
+                        Администратор
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

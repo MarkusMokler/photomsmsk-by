@@ -1,0 +1,89 @@
+﻿<div class="content--admin">
+    <div><data-bread-crumbs /></div>
+
+    <div id="online-booking-calendar" class="container--fluid">
+        <div class="grid grid--small">
+            <div class="col--2-10">
+                <p class="text--h2">Фотограф</p>
+                <hr />                
+                <data-admin-rent-search />
+            </div>
+            <div class="col--8-10">
+                <p class="text--h2 text-bold">Цены на аренду фотографа</p>
+                <hr />
+                <div class="panel panel--box panel--white panel--shadow">
+                    <div class="grid">
+                        <p class="col--1-2 text--bold" data-ng-bind="view.name"></p>
+                        <p class="col--1-2 text--right"><small class="text--small text--muted">Стоимость:</small>&nbsp;{{view.price | number}}</p>
+                    </div>
+                    <table class="table table--hover text--center margin--top-small">
+                        <tbody>
+                            <tr>
+                                <th class="text--center">Стоимость за: </th>
+                                <th class="text--center">Цена:</th>
+                                <th class="text--center">
+                                    <a data-ng-if="!isEdit" data-ng-click="edit()" class="uk-icon-button icon--small uk-icon-edit "></a>
+                                    <a data-ng-if="isEdit" data-ng-click="approive()" class="uk-icon-button icon--small uk-icon-check"></a>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Час
+                                </td>
+                                <td>
+                                    <a data-ng-if="!isEdit">{{view.hourlyPrice}}</a>
+                                    <input data-ng-if="isEdit" data-ng-model="view.hourlyPrice" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Пол дня
+                                </td>
+                                <td>
+                                    <a data-ng-if="!isEdit">{{view.halfDayPrice}}</a>
+                                    <input data-ng-if="isEdit" data-ng-model="view.halfDayPrice" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    День
+                                </td>
+                                <td>
+                                    <a data-ng-if="!isEdit">{{view.daylyPrice}}</a>
+                                    <input data-ng-if="isEdit" data-ng-model="view.daylyPrice" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Выходной
+                                </td>
+                                <td>
+                                    <a data-ng-if="!isEdit">{{view.hollidayPrice}}</a>
+                                    <input data-ng-if="isEdit" data-ng-model="view.hollidayPrice" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Неделя
+                                </td>
+                                <td>
+                                    <a data-ng-if="!isEdit">{{view.weeklyPrice}}</a>
+                                    <input data-ng-if="isEdit" data-ng-model="view.weeklyPrice" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Месяц
+                                </td>
+                                <td>
+                                    <a data-ng-if="!isEdit">{{view.monthlyPrice}}</a>
+                                    <input data-ng-if="isEdit" data-ng-model="view.monthlyPrice" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

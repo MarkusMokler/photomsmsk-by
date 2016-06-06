@@ -1,0 +1,317 @@
+<div class="content--admin">
+    <div><data-bread-crumbs /></div>
+
+    <div class="container--fluid  ">
+        <div class="grid grid--small">
+            <div data-ng-class="currentClient ? 'col--3-4' : 'col--1-1'">
+                <div class="activity__sort">
+                    <div class="grid grid--small">
+                        <div class="col--large-3-10 col--medium-4-10 activity__sort__text">
+                            Клиенты за
+                            <span uib-dropdown on-toggle="toggled(open)">
+                                <a href id="activity-stat" class="link link--dotted text--green" uib-dropdown-toggle>
+                                    {{status}}
+                                    <i class="text--small icon-chevron-down"></i>
+                                </a>
+                                <ul uib-dropdown-menu aria-labelledby="activity-stat">
+                                    <li role="menuitem">
+                                        <a data-ng-click="load(3)">3 месяца</a>
+                                    </li>
+                                    <li role="menuitem">
+                                        <a data-ng-click="load(6)">Пол года</a>
+                                    </li>
+                                    <li role="menuitem">
+                                        <a data-ng-click="load(12)">Год</a>
+                                    </li>
+                                </ul>
+                            </span>
+                        </div>
+                        <div class="col--large-5-10 col--medium-4-10">
+                            <a data-msk-href class="button button--small button--muted border--rounded active">Все</a>
+                            <a data-msk-href class="button button--small button--muted border--rounded">
+                                <i class="icon-photo_camera"></i>&nbsp;Фотографы
+                            </a>
+                            <!-- <a data-msk-href class="button button--small button--muted border--rounded">
+                                <i class="icon-accessibility"></i>&nbsp;Модели
+                            </a>
+                            <a data-msk-href class="button button--small button--muted border--rounded">
+                                <i class="icon-brush"></i>&nbsp;Визажисты
+                            </a>
+                            <a data-msk-href class="button button--small button--muted border--rounded">
+                                <i class="icon-person_pin"></i>&nbsp;Организаторы
+                            </a> -->
+                        </div>
+                        <div class="col--large-2-10 col--medium-2-10">
+                            <div class="input__group">
+                                <input type="search" class="input input--search input--small border--rounded margin--reset col--1-1">
+                                <i class="icon-magnifier text--muted"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid--collapse margin--top-small">
+                    <div class="col--1-1">
+                        <div class="activity panel panel--box panel--white panel--shadow">
+                            <table class="table table--middle">
+                                <thead>
+                                    <tr>
+                                        <th width="40">
+                                            Статус
+                                        </th>
+                                        <th class="text--center" width="350">Клиент</th>
+                                        <!-- <th>Расположение</th> -->
+                                        <th>Теги</th>
+                                        <th class="text--center">Контакты</th>
+                                        <th class="text--center">Сумма</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="item in clients" class="cursor--pointer after-hover" data-ng-click="setCurrent(item)">
+                                        <td class="text--center" data-ng-cloak>
+                                            <p data-ng-if="item.clientType == 'Photographer'">
+                                                <i class="icon-photo_camera text--green"></i><br>
+                                                <small class="text--muted text--small">фотограф</small>
+                                            </p>
+                                            <p data-ng-if="item.clientType == 'Organizer'">
+                                                <i class="icon-person_pin text--green"></i><br>
+                                                <small class="text--muted text--small">организатор</small>
+                                            </p>
+                                            <p data-ng-if="item.clientType == 'Client'">
+                                                <i class="icon-person text--red"></i><br>
+                                                <small class="text--muted text--small">клиент</small>
+                                            </p>
+                                            <p data-ng-if="item.clientType == 'Photomodel'">
+                                                <i class="icon-accessibility text--red"></i><br>
+                                                <small class="text--muted text--small">модель</small>
+                                            </p>
+                                            <p data-ng-if="item.clientType == 'Visagiste'">
+                                                <i class="icon-brush text--red"></i><br>
+                                                <small class="text--muted text--small">визажист</small>
+                                            </p>
+
+                                            <p data-ng-if="item.clientType == null">
+                                                <i class="icon-block text--red"></i><br>
+                                                <small class="text--muted text--small">не указан</small>
+                                            </p>
+                                        </td>
+                                        <td data-ng-cloak>
+                                            <div class="activity__status__event">
+                                                <img src="{{item.userPhoto}}" alt="{{activity.lastName}}" data-ng-if="item.userPhoto != null">
+
+                                                <div class="activity__status__avatar activity__status__avatar--empty" data-ng-if="item.userPhoto == null"></div>
+
+                                                <p data-ng-cloak>
+                                                    <span class="activity__status__name" data-ng-bind-template="{{item.firstName}} {{item.lastName}}"></span>
+
+                                                    <a class="button button--mini button--muted border--rounded float--right margin--top-small after-hover__show" href="/admin/userinformation/{{item.id}}">
+                                                        <span>изменить</span>
+                                                    </a>
+
+                                                    <br />
+                                                    <a data-msk-href class="text--muted text--small" data-ng-bind="item.userPhone" data-ng-cloak></a>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <!-- <td data-ng-cloak>
+                                            <p class="text--muted">{{item.country}}</p>
+                                            <p class="text--muted">{{item.city}}</p>
+                                        </td> -->
+                                        <td>
+                                            <!-- <ul class="list list--vertical">
+                                                <li class="margin--reset" data-ng-repeat="tag in item.tags">
+                                                    <span class="text--small text--muted">{{tag.text}}</span>
+                                                </li>
+                                            </ul> -->
+                                            <ul class="tags__list">
+                                                <li data-ng-repeat="tag in item.tags">
+                                                    <a data-msk-href class="tag">{{tag.text}}</a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="text--center">
+                                            <ul class="list list--horizontal">
+                                                <li data-ng-if="item.email">
+                                                    <a href="{{mailto:item.email}}" target="_blank" class="button button--small button--rounded text--muted icon-email"></a>
+                                                </li>
+                                                <li data-ng-if="item.facebookLink">
+                                                    <a href="https://www.facebook.com/{{item.facebookLink}}" target="_blank" class="button button--small button--rounded text--muted icon-facebook"></a>
+                                                </li>
+                                                <li data-ng-if="item.googleplus">
+                                                    <a href="{{item.googleplus}}" target="_blank" class="button button--small button--rounded text--muted icon-google-plus"></a>
+                                                </li>
+                                                <li data-ng-if="item.instagram">
+                                                    <a href="https://www.instagram.com/{{item.instagram}}" target="_blank" class="button button--small button--rounded text--muted icon-instagram"></a>
+                                                </li>
+                                                <li data-ng-if="item.vkLink">
+                                                    <a href="{{item.vkLink}}" target="_blank" class="button button--small button--rounded text--muted icon-vk"></a>
+                                                </li>
+                                                <li data-ng-if="item.site">
+                                                    <a href="{{item.site}}" target="_blank" class="button button--small button--rounded text--muted icon-public"></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+
+                                        <td class="text--center">
+                                            <span>{{item.total | number}}</span><br><small class="text--small text--muted">руб.</small>
+                                        </td>
+                                        <td class="text--right">
+                                            <tags-input data-ng-if="item.isEdit" data-ng-model="item.tags"></tags-input>
+                                            <a class="button button--small button--rounded icon-mode_edit" data-ng-if="!item.isEdit" data-ng-click="edit(item)"></a>
+
+                                            <a class="button button--small button--rounded icon-close" data-ng-if="item.isEdit" data-ng-click="cancel(item)"></a>
+                                            <a class="button button--small button--rounded icon-check" data-ng-if="item.isEdit" data-ng-click="approive(item)"></a>
+
+                                            <!-- <a class="button button--small border--rounded" data-msk-href data-ng-click="showReviewAdd(item)">Добавить отзыв</a> -->
+                                            <a class="button button--small button--rounded icon-chat_bubble_outline" data-msk-href data-ng-click="showReviewAdd(item)"></a>
+
+                                            <!-- <a class="button button--small button--rounded icon-cog" data-msk-href data-ng-click="setCurrent(item)"></a> -->
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col--1-4" data-ng-if="currentClient">
+                <div class="activity__sort">
+                    <div class="grid grid--small">
+                        <div class="col--large-1-1 text--right">
+                            <a data-msk-href class="button button--small button--rounded border--rounded icon-cross" data-ng-click="setCurrent(null)"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel--box panel--white panel--shadow margin--top-small">
+                    <p class="text--h3 text--center">
+                        Редактирование клиента
+                        <!-- <i class="button button--small button--rounded icon-cog float--right"></i> -->
+                    </p>
+                    <hr>
+
+                    <div class="grid">
+                        <div class="col--1-1 text--center" data-ng-cloak>
+                            <div class="position--relative">
+                                <img src="{{currentClient.userPhoto}}" class="avatar--border-solid border--rounded" alt="">
+                                <div class="avatar__desc">
+                                    <span class="text--bold">{{currentClient.total | number}}</span>
+                                    <small class="text--small text--muted">руб.</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col--1-1">
+                            <p class="text--h3 text--center text--bold">{{currentClient.firstName}} {{currentClient.lastName}}</p>
+
+                            <div class="text--center">
+                                <p>{{currentClient.country}} - {{currentClient.city}}</p>
+                                <p><i class="text--small text--muted icon-phone"></i>&nbsp;<a data-msk-href><span class="text--small">{{currentClient.userPhone}}</span></a></p>
+                            </div>
+
+                            <hr class="margin--v-small">
+
+                            <ul class="tags__list">
+                                <li data-ng-repeat="tag in currentClient.tags"><a data-msk-href class="tag">{{tag.text}}</a></li>
+                                <li><a data-msk-href class="button button--mini button--rounded text--muted icon-add"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col--1-1 text--center margin--top">
+            <ul>
+                <li>
+                    <span>{{page.Page+1}}</span>
+                    из
+                    {{page.pagesCount + 1}}
+                </li>
+
+                <li paging page="currentPage" page-size="page.pageSize" total="page.itemsCount">
+            </ul>
+        </div>
+     </div>
+</div>
+
+
+<div class="modal" data-ng-class="{'open' : showReviewModal}">
+    <div class="modal__dialog">
+        <a data-msk-href class="modal__close icon-cross-circle" data-ng-click="showReviewModal=false"></a>
+        <section class="modal__header text--center">
+            <p class="text--h2 margin--bottom-small">Отзыв пользователя</p>
+            <!-- <div class="activity__status__event">
+                <img src="{{selectedUser.userPhoto}}" data-ng-if="selectedUser.userPhoto != null">
+
+                <div class="activity__status__avatar activity__status__avatar--empty" data-ng-if="selectedUser.userPhoto == null"></div>
+                <br />
+                <p data-ng-cloak>
+                    <a href="/admin/userinformation/{{selectedUser.id}}">
+                        <span class="activity__status__name" data-ng-bind-template="{{selectedUser.firstName}} {{selectedUser.lastName}}"></span>
+                    </a>
+                    <br />
+                    <a data-msk-href class="text--muted text--small" data-ng-bind="item.userPhone" data-ng-cloak></a>
+                </p>
+            </div> -->
+            <div>
+                <img src="{{selectedUser.userPhoto}}" class="border--rounded" data-ng-if="selectedUser.userPhoto != null" width="40">
+                <a href="/admin/userinformation/{{selectedUser.id}}">
+                    <span data-ng-bind-template="{{selectedUser.firstName}} {{selectedUser.lastName}}"></span>
+                </a>
+            </div>
+        </section>
+        <section class="margin--top">
+            <div class="grid">
+                <div class="col--1-1 margin--bottom-small">
+                    <label class="label label--rounded">Заголовок</label>
+                    <input class="input input--rounded col--1-1" data-ng-model="review.title">
+                </div>
+                <div class="col--1-1 margin--bottom-small">
+                    <label class="label">Ваш отзыв об этом клиенте:</label>
+                    <!-- <input class="input col--1-1" data-ng-model="review.description"> -->
+                    <textarea class="input col--1-1" rows="4" data-ng-model="review.description"></textarea>
+                </div>
+                <div class="col--1-2 margin--bottom-small">
+                    <label class="label text--green">Достоинства:</label>
+                    <!-- <input class="input col--1-1" data-ng-model="review.goodComment"> -->
+                    <div class="vote vote--positive">
+                        <div class="vote__info">
+                            <span class="text--small">Осталось 20 слов</span>
+                        </div>
+                        <textarea class="input col--1-1" rows="5" data-ng-model="review.goodComment"></textarea>
+                    </div>
+                </div>
+                <div class="col--1-2 margin--bottom-small">
+                    <label class="label text--red">Недостатки:</label>
+                    <!-- <input class="input col--1-1" data-ng-model="review.badComment"> -->
+                    <div class="vote vote--negative">
+                        <div class="vote__info">
+                            <span class="text--small">Осталось 20 слов</span>
+                        </div>
+                        <textarea class="input col--1-1" rows="5" data-ng-model="review.badComment"></textarea>
+                    </div>
+                </div>
+                <div class="col--1-1 text--center">
+                    <p class="text--muted">Ваша оценка клиенту:</p>
+                    <div data-ng-init="x = 4" class="vote__rating">
+                        <uib-rating data-ng-model="x" max="5" state-on="'icon-star'" state-off="'icon-star_border'" aria-labelledby="icon-star_border"></uib-rating>
+
+                        <div class="text--h3">
+                            <p data-ng-if="x == 1">жуть!</p>
+                            <p data-ng-if="x == 2">ниже среднего</p>
+                            <p data-ng-if="x == 3">нормально</p>
+                            <p data-ng-if="x == 4">хорошо</p>
+                            <p data-ng-if="x == 5">супер!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="modal__footer text--center">
+            <div class="grid grid--collapse">
+                <button class="button button--footer col--1-2">Отменить</button>
+                <button class="button button--footer button--success col--1-2 margin--reset" data-ng-click="addReview()">Добавить отзыв</button>
+            </div>
+        </section>
+    </div>
+</div>

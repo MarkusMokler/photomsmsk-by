@@ -1,0 +1,75 @@
+﻿@model PhotoMSK.Areas.Default.ViewData.Ads.DetailsViewData
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ad</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Item.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Item.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Item.Subtitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Item.Subtitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Item.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Item.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Item.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Item.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Item.Views)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Item.Views)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Item.Visits)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Item.Visits)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Item.Link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Item.Link)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Item.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

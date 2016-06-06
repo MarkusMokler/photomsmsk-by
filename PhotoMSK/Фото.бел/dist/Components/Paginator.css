@@ -1,0 +1,32 @@
+.pagination {
+  margin: 30px 0;
+  font-size: 0;
+}
+.pagination > li {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  font-size: 14px;
+  margin: 0 5px;
+  line-height: 35px;
+  border-radius: 100px;
+  text-align: center;
+  cursor: pointer;
+  color: #838280;
+}
+.pagination > li.active {
+  background: #FFFFFF;
+  box-shadow: 0 0 0 2px #ffbd1e;
+  font-size: 20px;
+  line-height: 35px;
+  vertical-align: top;
+}
+.pagination > li:hover {
+  box-shadow: 0 0 0 2px #e3e2e0;
+}
+.pagination > li > a {
+  text-decoration: none;
+}
+.pagination--center {
+  text-align: center;
+}

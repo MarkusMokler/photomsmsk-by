@@ -1,0 +1,259 @@
+// out: ../../css/Components/Technics.css, compress: true
+// Name:            Technics
+// Description:     Defines styles for Technics
+//
+// Component:       `technics`
+//
+// Modifiers:       `technics--`
+//                  `technics--`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+//////////////////////////////////////
+// @technics-header-border-color: #ddd;
+@color-orange: #ffe066;
+@color-lighten-gray: #EFEEED;
+@color-link: #669;
+@color-border-gray: #E5E5E5;
+@color-cart: #F7726D;
+@color-muted: #c0c0c0;
+@color-slideset-border: #DAD2D2;
+
+@technics-header-border-color:                 #fd5;
+//////////////////////////////////////
+/* ========================================================================
+   Component: Technics
+ ========================================================================== */
+.technics {
+    // Element `technics__header`
+    &__header {
+        border-bottom: 2px solid @technics-header-border-color;
+        margin-bottom: 20px;
+    }
+}
+.border-bottom {
+    padding: 10px 0;
+    &--orange {
+        border-bottom: 2px solid @color-orange;
+    }
+    &--gray {
+        border-bottom: 1px solid @color-lighten-gray;
+    }
+}
+//////////////////////////////
+// Start catalog-main
+.catalog-main {
+    &__title {
+        color: #333;
+        display: block;
+        border-bottom: 1px solid #f0f0f0;
+        padding: 20px 0 0;
+    }
+    &__list {
+        padding: 10px 0;
+        &>a {
+            position: relative;
+            color: #669;
+            padding: 0 16px 0 0;
+            line-height: 20px;
+            &:after {
+                position: absolute;
+                top: 7px;
+                right: 7px;
+                width: 3px;
+                height: 3px;
+                content: '';
+                background: #b2b2b2;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                border-radius: 50%;
+            }
+        }
+    }
+    &__footer {
+        border-top: 1px solid #f0f0f0;
+        padding-top: 10px;
+        &>a {
+            color: #999;
+        }
+    }
+}
+// end catalog-main
+//////////////////////////////
+// start catalog
+.catalog {
+    &__item {
+        transition: 0.2s;
+        margin-bottom: 10px;
+        &:hover > * {
+            box-shadow: 0 0 15px @color-orange;
+            border-color: darken(@color-orange, 10%);
+            transition: 0.2s;
+        }
+        &__img {
+            padding-right: 0;
+        }
+        &__description{
+            border: 0 !important;
+        }
+        &__spec {
+            list-style: none;
+            padding: 0;
+            margin: 5px 0;
+            &>li {
+                display: inline-block;;
+                border: 1px dashed #dfdfda;
+                padding: 5px 5px 6px;
+                font-size: 12px;
+                font-weight: 600;
+                &:nth-child(even) {
+                    border-left: 0;
+                    margin-right: 5px;
+                }
+                img {
+                    height: 16px;
+                }
+            }
+        }
+        &__rent{
+            border-left: 1px solid #ddd;
+            &__price{
+                font-size: 0;
+                & > li{
+                    display: inline-block;
+
+                    width: 50%;
+                    font-size: 13px;
+                    padding: 5px;
+                    border: 1px dashed #ddd;
+                }
+            }
+        }
+        &__status {
+            &>a {
+                padding-right: 10px;
+            }
+        }
+        &__desc {
+            list-style: none;
+            padding-left: 10px;
+            li {
+                position: relative;
+                font-size: 12px;
+                padding: 2px 0;
+                &:before {
+                    content: '•';
+                    position: absolute;
+                    font-size: 1.1em;
+                    left: -10px;
+                    // top: 1px;
+                    color: #b2b2b2;
+                }
+            }
+        }
+    }
+}
+
+.catalog__item__rent__price + .catalog__item__rent__price > li{
+    border-top: 0;
+    &:nth-child(1){
+        border-right: 0;
+    }
+}
+// end catalog
+//////////////////////////////
+// Start filter__sorted
+.sorted {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    &__title {
+        display: inline;
+    }
+    &__filter {
+        display: inline;
+        list-style: none;
+        padding-left: 10px;
+        &>li {
+            display: inline;
+            padding: 0 5px;
+            &>a {
+                text-decoration: none;
+                &:hover {
+                    border-bottom: 1px dotted;
+                }
+            }
+        }
+    }
+    &__view {
+        list-style: none;
+        text-align: right;
+        li {
+            opacity: 0.5;
+            display: inline;
+            & > a {
+                padding-left: 10px;
+                font-size: 1.4rem;
+            }
+            &.active {
+                opacity: 1;
+            }
+        }
+    }
+}
+// end filter__sorted
+///////////////////////////////////
+// Start form-text-inner
+.form-text-inner {
+    display: inline;
+    position: relative;
+    input {
+        padding: 2% 2% 2% 10%;
+        outline: none;
+        border: 1px solid #CBCBCB;
+        max-width: 100%;
+        &:focus {
+            box-shadow: 0 0 10px 1px @color-orange;
+            border-color: darken(@color-orange, 10%);
+        }
+    }
+    span {
+        position: absolute;
+        left: 6%;
+        top: -1px;
+        z-index: 1;
+    }
+}
+// end form-text-inner
+///////////////////////////////////
+// Start uk-slidenav
+.uk-slidenav {
+    a {
+        display: inline-block;
+        width: 32px;
+        cursor: pointer;
+        text-align: center;
+        line-height: 32px;
+        border: 1px solid @color-slideset-border;
+        border-radius: 2px;
+        font-family: FontAwesome;
+        text-decoration: none;
+        color: darken(@color-slideset-border, 30%);
+        font-size: 1.5rem;
+    }
+    &-previous {
+        &:before {
+            content: "\f104";
+        }
+    }
+    &-next {
+        &:before {
+            content: "\f105";
+        }
+    }
+    &&--right {
+        text-align: right;
+    }
+}
+// end uk-slidenav
+///////////////////////////////////

@@ -1,0 +1,354 @@
+﻿@model PhotoMSK.Data.Models.Hall
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="uk-container uk-container-center">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="uk-grid" data-uk-grid-margin>
+            <div class="uk-width-8-10 uk-offset-1-10">
+                <ul class="uk-tab uk-tab-events" data-uk-tab="{connect:'#tab-content'}">
+                    <li class="uk-active"><a href="#">Информация</a></li>
+                    <li><a href="#">Фото</a></li>
+                    <li><a href="#">Характеристики</a></li>
+                    <li class="uk-tab-responsive uk-active uk-hidden"><a>Tab</a><div class="uk-dropdown uk-dropdown-small"><ul class="uk-nav uk-nav-dropdown"></ul><div></div></div></li>
+                    <li class="uk-tab-responsive uk-active uk-hidden"><a>Информация</a><div class="uk-dropdown uk-dropdown-small"><ul class="uk-nav uk-nav-dropdown"></ul><div></div></div></li>
+                </ul>
+            </div>
+            <div class="uk-width-8-10 uk-offset-1-10">
+                <ul id="tab-content" class="uk-switcher">
+                    <li>
+                        <div class="uk-grid" data-uk-grid-margin>
+                            <div class="uk-width-8-10 uk-offset-1-10">
+                                <h4 class="title-dotted">
+                                    Основная информация
+                                </h4>
+                                <div class="uk-grid">
+                                    <div class="uk-width-1-2">
+                                        <label class="label-ms">Название зала <i class="icon-help2"></i></label>
+                                        @Html.TextBoxFor(model => model.Name, new { @class = "input-ms bold uk-width-large-1-1 uk-width-small-1-1" })
+                                        @Html.ValidationMessageFor(model => model.Name)
+                                    </div>
+                                    <div class="uk-width-1-2">
+                                        <label>Площадь зала:</label>
+                                        @Html.TextBoxFor(model => model.Square, new { @id = "hall-square", name = "example_name", value = "" })
+                                        @Html.ValidationMessageFor(model => model.Name)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-width-8-10 uk-offset-1-10">
+                                <h4 class="title-dotted">
+                                    График работы
+                                </h4>
+                                <div class="uk-grid">
+                                    <div class="uk-width-1-1">
+                                        <table class="uk-table uk-table-hover  uk-text-center">
+                                            <tbody>
+                                                <tr>
+                                                    <th class="uk-text-center">День:</th>
+                                                    <th class="uk-text-center">Режим:</th>
+                                                    <th class="uk-text-center">Цена:</th>
+                                                    <th class="uk-text-center">Изменить:</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Понедельник</strong></td>
+                                                    <td>08:00 - 20:00</td>
+                                                    <td><strong>125</strong> <small>000</small></td>
+                                                    <td><a href="#my-time" class="edit uk-text-muted" data-uk-modal>редактировать</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Вторник</strong></td>
+                                                    <td>08:00 - 20:00</td>
+                                                    <td><strong>125</strong> <small>000</small></td>
+                                                    <td><a href="#my-time" class="edit uk-text-muted" data-uk-modal>редактировать</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Среда</strong></td>
+                                                    <td>08:00 - 20:00</td>
+                                                    <td><strong>125</strong> <small>000</small></td>
+                                                    <td><a href="#my-time" class="edit uk-text-muted" data-uk-modal>редактировать</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Четверг</strong></td>
+                                                    <td>08:00 - 20:00</td>
+                                                    <td><strong>125</strong> <small>000</small></td>
+                                                    <td><a href="#my-time" class="edit uk-text-muted" data-uk-modal>редактировать</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Пятница</strong></td>
+                                                    <td>08:00 - 20:00</td>
+                                                    <td><strong>125</strong> <small>000</small></td>
+                                                    <td><a href="#my-time" class="edit uk-text-muted" data-uk-modal>редактировать</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Суббота</strong></td>
+                                                    <td>08:00 - 20:00</td>
+                                                    <td><strong>125</strong> <small>000</small></td>
+                                                    <td><a href="#my-time" class="edit uk-text-muted" data-uk-modal>редактировать</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Воскресенье</strong></td>
+                                                    <td>08:00 - 20:00</td>
+                                                    <td><strong>125</strong> <small>000</small></td>
+                                                    <td><a href="#my-time" class="edit uk-text-muted" data-uk-modal>редактировать</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="uk-width-8-10 uk-offset-1-10 pad-top-40">
+                            <div class="uk-grid">
+                                <div class="uk-width-1-1 uk-text-right">
+                                    <a class="reset" href="#">отмена</a>
+                                    <input type="submit" class="btn-ms role-save-button" value="Сохранить">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="uk-width-8-10 uk-offset-1-10">
+                            <h4 class="title-dotted">
+                                Фотографии студии
+                            </h4>
+
+                            <div class="uk-grid" data-uk-grid-margin>
+                                <div class="uk-width-1-1">
+                                    <div id="upload-drop" class="uk-placeholder-blue uk-text-center">
+                                        <div class="uk-margin-bottom">
+                                            <i class="icon-camera2 uk-text-muted" style="font-size: 5rem;"></i>
+                                        </div>
+                                        <div class="uk-h2 bold">Загрузите фотографию и даже не одну!</div>
+                                        <p class="uk-text-muted uk-margin-remove">Чем больше фоток — тем меньше вопросов у клиентов :)</p>
+                                        <p>
+                                            <a class="uk-form-file uk-button uk-button-success">Кликните или перетяните фотографии сюда<input id="upload-select" type="file"></a>
+                                        </p>
+                                    </div>
+                                    <div id="progressbar" class="uk-progress uk-hidden">
+                                        <div class="uk-progress-bar" style="width: 0%;">...</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ul class="uk-grid uk-grid-small uk-grid-width-1-5" data-uk-grid-margin data-uk-grid-match>
+                                @foreach (var photo in Model.Photos)
+                                {
+                                    <li>
+                                        <div class="uk-overlay">
+                                            <img src="@photo.Url" class="uk-border-rounded" alt="">
+                                            <div class="uk-overlay-area">
+                                                <div class="uk-overlay-area-content">
+                                                    <a class="uk-button uk-button-small uk-button-danger role-delete-photo-button" data-id="@photo.ID">Удалить</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="uk-width-8-10 uk-offset-1-10 pad-top-40">
+                            <div class="uk-width-1-1 uk-text-right">
+                                <a class="reset" href="#">отмена</a>
+                                <button type="submit" class="btn-ms primary role-save-button">Сохранить</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="uk-grid uk-grid-divider">
+                            <div class="uk-width-3-10 uk-offset-1-10">
+                                <h3 class="bold uk-text-muted">Оборудование</h3>
+                                <p class="uk-text-muted">
+                                    Перечень всего оборудования для съемок.
+                                </p>
+                            </div>
+                            <div class="uk-width-5-10">
+                                <label for="item4">
+                                    <input type="checkbox" name="" id="item4" class="check ">
+                                    <span class="line">Источники <u>импульсного</u> света</span>
+                                </label>
+
+                                <label for="item4">
+                                    <input type="checkbox" name="" id="item4" class="check ">
+                                    <span class="line">Источники <u>постоянного</u> света</span>
+                                </label>
+
+                                <label for="item5">
+                                    <input type="checkbox" name="" id="item5" class="check ">
+                                    <span class="line">Естественный свет</span>
+                                </label>
+
+                                <label for="item5">
+                                    <input type="checkbox" name="" id="item5" class="check ">
+                                    <span class="line">Фоны</span>
+                                </label>
+
+                                <label for="item4">
+                                    <input type="checkbox" name="" id="item4" class="check ">
+                                    <span class="line">Хромакей</span>
+                                </label>
+
+                                <label for="item4">
+                                    <input type="checkbox" name="" id="item4" class="check ">
+                                    <span class="line">Циклорама</span>
+                                </label>
+
+                                <label for="item4">
+                                    <input type="checkbox" name="" id="item4" class="check ">
+                                    <span class="line">Кровать</span>
+                                </label>
+
+                                <label for="item4">
+                                    <input type="checkbox" name="" id="item4" class="check ">
+                                    <span class="line">Ванна</span>
+                                </label>
+
+                                <label for="item4">
+                                    <input type="checkbox" name="" id="item4" class="check ">
+                                    <span class="line">Аквазона</span>
+                                </label>
+
+                                <label for="item4">
+                                    <input type="checkbox" name="" id="item4" class="check ">
+                                    <span class="line">Декорации</span>
+                                </label>
+
+                                <label for="item4">
+                                    <input type="checkbox" name="" id="item4" class="check ">
+                                    <span class="line">Диван</span>
+                                </label>
+
+                                <label for="item4">
+                                    <input type="checkbox" name="" id="item4" class="check ">
+                                    <span class="line">Камин</span>
+                                </label>
+
+                                <label for="item4">
+                                    <input type="checkbox" name="" id="item4" class="check ">
+                                    <span class="line">Пианино\рояль</span>
+                                </label>
+
+                                <label for="item4">
+                                    <input type="checkbox" name="" id="item4" class="check ">
+                                    <span class="line">Качели</span>
+                                </label>
+
+                                <label for="item4">
+                                    <input type="checkbox" name="" id="item4" class="check ">
+                                    <span class="line">Кирпичная стена</span>
+                                </label>
+
+                                <label for="item4">
+                                    <input type="checkbox" name="" id="item4" class="check ">
+                                    <span class="line">Фактурные стены</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="uk-width-8-10 uk-offset-1-10 pad-top-40">
+                            <div class="uk-width-1-1 uk-text-right">
+                                <a class="reset" href="#">отмена</a>
+                                <button class="btn-ms role-save-button">Сохранить</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    }
+</div>
+
+<div id="my-time" class="uk-modal">
+    <div class="uk-modal-dialog uk-modal-dialog uk-modal-dialog-small">
+        <div class="modal-header">
+            <button type="button" class="uk-modal-close uk-close uk-float-right"></button>
+            <h1 class="uk-text-center">График работы</h1>
+        </div>
+        <div class="modal-body">
+            <select class="uk-width-1-1">
+                <option value="1">Рабочий день</option>
+                <option value="2">Выходной день</option>
+            </select>
+
+            <table class="uk-width-1-1">
+                <tr>
+                    <td class="uk-width-4-10">
+                        <form class="uk-form">
+                            <input type="text" data-uk-timepicker placeholder="08:00">
+                        </form>
+                    </td>
+                    <td class="uk-width-1-10 uk-text-center">—</td>
+                    <td class="uk-width-4-10">
+                        <form class="uk-form">
+                            <input type="text" data-uk-timepicker placeholder="22:00">
+                        </form>
+                    </td>
+                </tr>
+            </table>
+
+            <hr class="small-line">
+
+            <div class="actions">
+                <a class="btn-edit" href="#">Принять</a>
+                <a class="btn-del uk-float-right" href="#">Отменить</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+
+        $(function () {
+
+            var progressbar = $("#progressbar"),
+                bar = progressbar.find('.uk-progress-bar'),
+                settings = {
+                    action: $('#config-settings').attr('data-upload-url') + "/Api/Files", // upload url
+
+                    allow: '*.(jpg|jpeg|gif|png)', // allow only images
+                    single: false,
+                    type: 'json',
+
+                    loadstart: function () {
+                        bar.css("width", "0%").text("0%");
+                        progressbar.removeClass("uk-hidden");
+                    },
+
+                    progress: function (percent) {
+                        percent = Math.ceil(percent);
+                        bar.css("width", percent + "%").text(percent + "%");
+                    },
+
+                    allcomplete: function (response) {
+
+                        bar.css("width", "100%").text("100%");
+
+                        setTimeout(function () {
+                            progressbar.addClass("uk-hidden");
+                        }, 250);
+
+                        $.ajax({
+                            url: "/Api/HallPhotos/",
+                            method: "POST",
+                            data: { id: "@Model.ID", photos: eval(response) }
+                        }).done(function () {
+                            $(this).addClass("done");
+                        });
+                    }
+                };
+
+            var select = new $.UIkit.uploadSelect($("#upload-select"), settings),
+                drop = new $.UIkit.uploadDrop($("#upload-drop"), settings);
+        });
+
+    </script>
+}

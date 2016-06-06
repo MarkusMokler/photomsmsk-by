@@ -1,0 +1,86 @@
+﻿<div class="content--admin">
+
+    <div><data-bread-crumbs /></div>
+
+    <div class="clear-fix"></div>
+
+    <div class="container--fluid-widget">
+        <div class="grid">
+            <div class="col--1-1">
+                <div class="panel panel--box panel--white panel--shadow">
+                    <div class="panel__top-bar">
+                        <p class="text--h3 margin--reset">Создание нового лэйаута</p>
+                    </div>
+                    <div class="grid">
+                        <div class="col--1-1">
+                            <!-- <ul id="tab-content"> -->
+                            <!--
+                            <ul ui-sortable="widgetsOptions" data-ng-model="widgets" class="widgets-container placeholder placeholder--widget">
+                                <li data-ng-repeat="widget in widgets track by $index" class="widgets">
+                                    <div class="widgets__action">
+                                        <a data-ng-click="setedit(widget)" class="button button--rounded icon-cog"></a>
+                                        <a data-ng-click="removeWidgets(widget)" class="button button--rounded button--delete icon-trash"></a>
+                                    </div>
+                                    <div data-ng-if="widget.type=='gallery'">
+                                        <gallery-edit widget="widget" sortableOptions="sortableOptions"></gallery-edit>
+                                    </div>
+                                    <div data-ng-if="widget.type=='description'">
+                                        <text-and-desc widget="widget"></text-and-desc>
+                                    </div>
+                                    <div data-ng-if="widget.type=='splitWidget'">
+                                        <split-widget widget="widget" sortableOptions="widgetsOptions"></split-widget>
+                                    </div>
+                                    <div data-ng-if="widget.type=='containerWidget'">
+                                        <container-widget widget="widget" sortableOptions="widgetsOptions"></container-widget>
+                                    </div>
+
+
+                                    <div data-ng-if="widget.type=='faqWidget'">
+                                        <faq-widget widget="widget" sortableOptions="widgetsOptions"></faq-widget>
+                                    </div>
+                                    <div data-ng-if="widget.type=='headerWidget'">
+                                        <header-widget widget="widget" sortableOptions="widgetsOptions"></header-widget>
+                                    </div>
+                                    <div data-ng-if="widget.type=='descriptionWidget'">
+                                        <description-widget widget="widget" sortableOptions="widgetsOptions"></description-widget>
+                                    </div>
+                                </li>
+                            </ul>-->
+
+                            <input type="text" class="input" data-ng-model="layout.Name" placeholder="Имя..." />
+                            <hr/>
+                            <div>
+                                <ui-codemirror ui-codemirror-opts="editorOptions" data-ng-model="layout.content"></ui-codemirror>
+                            </div>
+
+                            <hr>
+
+                            <div class="text--center margin--top">
+                                <a data-msk-href ng-click="saveLayout()" class="button button--success border--rounded">Сохранить</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div><br/><br/>
+    <div class="container--fluid-widget">
+        <div class="grid">
+            <div class="col--1-1">
+                <div class="panel panel--box panel--white panel--shadow">
+                    <div class="grid">
+                        <div class="col--1-1">
+
+                            <div><data-html-viewer code="layout.content"></data-html-viewer>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

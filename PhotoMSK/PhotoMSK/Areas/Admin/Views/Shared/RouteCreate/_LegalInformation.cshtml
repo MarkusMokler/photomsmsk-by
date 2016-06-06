@@ -1,0 +1,49 @@
+﻿@* Юр. данные *@
+<div class="uk-width-1-1">
+    <div class="uk-section">
+        <span class="uk-section__counter">3</span>
+        <span class="uk-section__title">Юридические данные</span>
+    </div>
+
+    <div class="uk-grid" data-uk-grid-margin>
+        <div class="uk-width-1-3">
+            <label class="label-ms">Юридический адрес <i class="uk-icon-question-circle" data-uk-tooltip title="Введите юр. адрес вашей компании"></i></label>
+            <input class="form-control input-ms uk-width-large-1-1 uk-width-small-1-1" id="Shortcut" name="Shortcut" type="text" value="">
+            @*@Html.TextBoxFor(model => model.StartDay, new { @class = "input-ms uk-width-large-1-1 uk-width-small-1-1", data_uk_datepicker = "{format:'YYYY-MM-DD'}" })
+                @Html.ValidationMessageFor(model => model.StartDay)*@
+        </div>
+        <div class="uk-width-1-3">
+            <label class="label-ms">УНП <i class="icon-help2" data-uk-tooltip title="***"></i></label>
+            <input class="form-control input-ms uk-width-large-1-1 uk-width-small-1-1" type="number" value="">
+            @*@Html.TextBoxFor(model => model.Days, new { @class = "input-ms uk-width-large-1-1 uk-width-small-1-1" })
+                @Html.ValidationMessageFor(model => model.Days)*@
+        </div>
+        <div class="uk-width-1-3">
+            <label class="label-ms">Зарегистрирован в торговом реестре <i class="icon-help2" data-uk-tooltip title="Введите максимальное количество человек мастер-класса"></i></label>
+            <input class="form-control input-ms uk-width-large-1-1 uk-width-small-1-1" type="text" value="">
+            @*@Html.TextBoxFor(model => model.Listeners, new { @class = "input-ms uk-width-large-1-1 uk-width-small-1-1" })
+                @Html.ValidationMessageFor(model => model.Listeners)*@
+        </div>
+        <div class="uk-width-1-3">
+            <label class="label-ms">Номер свидетельства о регистрации <i class="icon-help2" data-uk-tooltip title="***"></i></label>
+            <input class="form-control input-ms uk-width-large-1-1 uk-width-small-1-1" type="number" value="">
+            @*@Html.TextBoxFor(model => model.Days, new { @class = "input-ms uk-width-large-1-1 uk-width-small-1-1" })
+                @Html.ValidationMessageFor(model => model.Days)*@
+        </div>
+        <div class="uk-width-1-3">
+            <label class="label-ms">Выдано Свидетельство о регистрации <i class="icon-help2" data-uk-tooltip title="Это ссылка позволит мгновенно перейти к вашей странице"></i></label>
+            <div class="input-group">
+                <span class="input-group-addon">от</span>
+                <input class="form-control input-ms uk-width-1-1" type="date" value="">
+                @*@Html.TextBoxFor(model => model.Shortcut, new { @class = "form-control input-ms uk-width-large-1-1 uk-width-small-1-1" })
+                    @Html.ValidationMessageFor(model => model.Shortcut)*@
+            </div>
+        </div>
+        <div class="uk-width-1-3">
+            <label class="label-ms">Регистрирующий орган <i class="icon-help2" data-uk-tooltip title="Введите время окончания мастер-класса"></i></label>
+            <input class="form-control input-ms uk-width-large-1-1 uk-width-small-1-1" type="text" value="" placeholder="Минский городской исполнительный комитет">
+            @*@Html.TextBoxFor(model => model.End, new { @class = "input-ms uk-width-large-1-1 uk-width-small-1-1", data_uk_timepicker = "{format:'24h'}" })
+                @Html.ValidationMessageFor(model => model.End)*@
+        </div>
+    </div>
+</div>

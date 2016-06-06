@@ -1,0 +1,76 @@
+﻿@using Fotobel.App_Start.Minification @using Fotobel.Minification.UIKIT
+<!DOCTYPE html>
+<html ng-app="whitelabl.bel">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Model.Shortcut</title>
+    <base href="/"> @Scripts.Render("~/bundles/jquery") @Styles.Render("~/Plugins/fullcalendar/dist/fullcalendar.css") @Styles.Render(UiKit217.StyleBundle) @Scripts.Render("~/bundles/modernizr") @* ================= *@
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Reset.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Icons.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Grid.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Flex.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Utilits.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Text.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Dropdown.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Paginator.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Popover.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Button.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Panel.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Photostudio.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Catalog.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Breadcrumb.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Badge.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/HallProfile.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Filter.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Repair.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Tab.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/TopMenu.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/TechList.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Reset--uikit.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Reset--plugins.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Input.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/Components/Modal.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Plugins/intl-tel-input/build/css/intlTelInput.css ")">
+    <link rel="stylesheet" href="@Url.Content("~/Plugins/jquery-timepicker-jt/jquery.timepicker.css ")">
+    <link rel="stylesheet" href="@Url.Content("~/Plugins/nprogress/nprogress.css ")">
+    <link rel="stylesheet" href="@Url.Content("~/Plugins/angucomplete-alt/angucomplete-alt.css ")">
+    <link rel="stylesheet" href="@Url.Content("~/Plugins/ng-tags-input/ng-tags-input.min.css ")"> @* *************** *@
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/WhiteLabel/WhiteLabel.css ")" />
+    <link rel="stylesheet" href="@Url.Content("~/Plugins/angular-treeview/css/angular.treeview.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Plugins/codemirror/lib/codemirror.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Plugins/angular-ui-tree/dist/angular-ui-tree.min.css")" />
+
+    <link ng-init="WhiteLabel='@Model.Shortcut'" />
+</head>
+
+<body>
+    <data-html-viewer code="rpLayout.layout.content" page="rpLayout"></data-html-viewer>
+
+    @RenderBody() @Scripts.Render(BaseBundle.ScriptBundle)
+    <script src="~/Plugins/moment/moment.js"></script>
+    <script src="~/Plugins/intl-tel-input/build/js/intlTelInput.min.js"></script>
+    <script src="~/Plugins/intl-tel-input/lib/libphonenumber/build/utils.js"></script>
+    <script src="~/Plugins/angular-moment/angular-moment.min.js"></script>
+    <script src="~/Plugins/angular-cookie/angular-cookie.js"></script>
+    <script src="~/Plugins/international-phone-number/releases/international-phone-number.min.js"></script>
+    <script src="~/Plugins/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script src="~/Plugins/nprogress/nprogress.js"></script>
+    <script src="~/Plugins/angucomplete-alt/angucomplete-alt.js"></script>
+    <script src="~/Plugins/ng-tags-input/ng-tags-input.min.js"></script>
+    <script src="~/Plugins/angular-crumble/crumble.js"></script>
+    <link href="~/Plugins/sweetalert2/dist/sweetalert2.css" rel="stylesheet" />
+    <script src="~/Plugins/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="~/Plugins/angular-treeview/angular.treeview.js"></script>
+    <script src="~/Plugins/codemirror/lib/codemirror.js"></script>
+    <script src="~/Plugins/angular-ui-codemirror/ui-codemirror.js"></script>
+    <script src="~/Plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/Plugins/angular-ui-sortable/sortable.js"></script>
+    <script src="@Url.Content("~/Plugins/angular-ui-tree/dist/angular-ui-tree.min.js")"></script>
+    @Scripts.RenderFormat("<script type=\"text/javascript\" src=\"{0}?v=" + typeof(Startup).Assembly.GetName().Version + "\"></script>", "~/App")
+    <script src="/Scripts/Script.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

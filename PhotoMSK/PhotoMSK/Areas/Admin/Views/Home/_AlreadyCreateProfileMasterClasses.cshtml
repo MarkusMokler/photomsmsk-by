@@ -1,0 +1,77 @@
+﻿@using PhotoMSK.Data.Enums
+@using PhotoMSK.Data.Models
+@using PhotoMSK.Data.Models.Routes
+@using PhotoMSK.Models
+@model User
+
+@{
+    List<RouteEntity> routes = Model.UserInformation.Roles.Where(x => x.AccessStatus == AccessStatus.Owner || x.AccessStatus == AccessStatus.Administrator).Select(x => x.Route).ToList();
+    IEnumerable<IGrouping<Type, RouteEntity>> groups = routes.GroupBy(x => x.GetType());
+}
+<div class="uk-grid">
+    <div class="uk-width-1-1">
+        <span class="uk-form-heading uk-text-muted">Список созданных мастер-классов</span>
+        <hr class="small-line uk-margin-small-top" />
+    </div>
+</div>
+
+<div class="uk-grid" data-uk-grid-margin>
+    @foreach (var item in routes.OfType<Photoshop>())
+    {
+
+        <div class="uk-width-1-1">
+            <section class="uk-grid uk-master-class">
+                <div class="uk-width-1-4">
+                    <img class="uk-border-rounded" src="@item.ImageUrl" alt="Мастер-класс" />
+                </div>
+                <header class="uk-width-3-4">
+                    <h1 class="bold uk-margin-remove"><a href="http://photomsk.by/@item.Shortcut" class="uk-link-muted">@item.Name</a> </h1>
+                    <small class="uk-text-muted"><b>Тема:</b> ретушь фотографий</small>
+                    <ul class="uk-subnav uk-subnav-line uk-width-1-1 teaser-master-class">
+                        <li class="teaser-master-class-meta">
+                            <i class="uk-master-class-meta-icon icon-clock2"></i>
+                            <strong class="uk-margin-small-left bold">@String.Format("{0:HH:mm}", item.Name)</strong>
+                            <span class="master-class-time-desc">
+                                начало
+                            </span>
+                        </li>
+                        <li class="teaser-master-class-meta">
+                            <i class="uk-master-class-meta-icon icon-clock2"></i>
+                            <strong class="uk-margin-small-left bold">@String.Format("{0:HH:mm}", item.Name)</strong>
+                            <span class="master-class-group-desc">
+                                окончание
+                            </span>
+                        </li>
+                        <li class="teaser-master-class-meta">
+                            <i class="uk-master-class-meta-icon icon-users"></i>
+                            <strong class="uk-margin-small-left bold">@item.Name</strong>
+                            <span class="master-class-people-desc">
+                                слушателей
+                            </span>
+                        </li>
+                        <li class="teaser-master-class-meta">
+                            <i class="uk-master-class-meta-icon icon-calendar"></i>
+                            <strong class="uk-margin-small-left bold">@item.Name</strong>
+                            <span class="master-class-people-desc">
+                                дня
+                            </span>
+                        </li>
+                    </ul>
+
+                    <div class="uk-comment-header uk-master-class-owner">
+                        <img class="uk-comment-avatar uk-border-circle uk-border-solid" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                        <h5 class="uk-comment-title">
+                            <a href="#" class="uk-link-muted bold">@item.Name</a>
+                        </h5>
+                        <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                            <li><span class="uk-link-muted">автор МК</span></li>
+                        </ul>
+                    </div>
+                </header>
+                <div>
+
+                </div>
+            </section>
+        </div>
+    }
+</div>

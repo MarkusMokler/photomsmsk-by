@@ -1,0 +1,144 @@
+﻿@model PhotoMSK.Models.EditViewModel.Routes.RouteEditModel
+@* Участники *@
+
+<div class="uk-width-1-1">
+    <div class="uk-section">
+        <span class="uk-section__counter">8</span>
+        <span class="uk-section__title">Участники</span>
+    </div>
+</div>
+<div class="uk-width-3-10">
+    <a class="uk-button uk-button-success" href="#create-participants" data-uk-modal>Добавить</a>
+    <div class="uk-panel uk-panel-divider uk-margin-top">
+        <ul class="uk-nav uk-nav-menu uk-nav-side uk-nav-parent-icon pad-top-20" data-uk-switcher="{connect:'#tab-participants', toggle:' > *:not(.uk-nav-divider)'}">
+            <li class="uk-active"><a href="#">Все участники</a></li>
+            <li class="uk-nav-divider"></li>
+            <li><a href="#">Приглашения</a></li>
+            <li><a href="#">Руководители</a></li>
+        </ul>
+    </div>
+</div>
+<div class="uk-width-7-10">
+    <ul id="tab-participants" class="uk-switcher">
+        <li>
+            <div class="uk-float-right uk-hidden-small uk-form">
+                <select name="filter[role]">
+                    <option value="">- Роль -</option>
+                    <option value="0">Фотограф</option>
+                    <option value="1">Модель</option>
+                    <option value="1">Руководитель</option>
+                </select>
+                <input type="text" name="filter[search]" placeholder="Поиск..." value="">
+            </div>
+            <table class="uk-table uk-table-hover uk-table-middle">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th colspan="2">Пользователь</th>
+                        <th>Роль</th>
+                        <th class="uk-text-center">Действие</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Participants)
+                    {
+                        <tr class="uk-show-hide">
+                            <td class="uk-text-center">
+                                <i class="uk-icon-circle uk-text-success"></i>
+                            </td>
+                            <td>
+                                <img class="uk-img-preserve uk-border-circle" src="@item.UserPhoto" width="40" height="40" alt="">
+                            </td>
+                            <td class="uk-text-nowrap">
+                                <a href="#" class="uk-link-reset uk-link-line">@item.LastName @item.FirstName</a>
+                                <div>
+                                    <small class="uk-text-muted">Минск</small>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="uk-text-muted">@item.AccessStatus</span>
+                            </td>
+                            <td class="uk-text-center">
+                                <div class="uk-show-hide-element">
+                                    <a class="uk-button uk-button-small" href="#">Изменить</a>
+                                    <a class="uk-button uk-button-small uk-button-danger-hover" href="#">Выгнать</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </li>
+        <li>
+            <table class="uk-table uk-table-hover uk-table-middle">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th colspan="2">Пользователь</th>
+                        <th>Роль</th>
+                        <th class="uk-text-center">Действие</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="uk-show-hide">
+                        <td class="uk-text-center">
+                            <i class="uk-icon-circle uk-text-success"></i>
+                        </td>
+                        <td>
+                            <img class="uk-img-preserve uk-border-circle" src="http://ph1.photomsk.by/6a/b8/7f//6ab87f6838c8389e05f304b656be6987f5ef6fcd66c6d04e36fde9baae742e69.jpg" width="40" height="40" alt="">
+                        </td>
+                        <td class="uk-text-nowrap">
+                            <a href="#" class="uk-link-reset uk-link-line">Алина Молофей</a>
+                            <div>
+                                <small class="uk-text-muted">Минск</small>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="uk-text-muted">Фотограф</span>
+                        </td>
+                        <td class="uk-text-center">
+                            <div class="uk-show-hide-element">
+                                <a class="uk-button uk-button-small" href="#">Изменить</a>
+                                <a class="uk-button uk-button-small uk-button-danger-hover" href="#">Выгнать</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+    </ul>
+</div>
+
+<div id="create-participants" class="uk-modal">
+    <div class="uk-modal-dialog uk-modal-dialog-phones uk-modal-dialog-phones-small">
+        <form action="/Account/Login" method="post" role="form">
+            <a href="" class="uk-modal-close uk-close"></a>
+            <section class="uk-text-center">
+                <h2 class="uk-margin-bottom-remove bold">Сервис «PhotoMSK™»</h2>
+                <small class="uk-text-muted">Добавьте нового администратора...</small>
+            </section>
+
+            <section class="uk-panel uk-panel-box uk-margin-top">
+                <input name="__RequestVerificationToken" type="hidden" value="K8A5a6eeIhPxMiCEGXhXjnkuUkez3nQYiWnxiXf_D_V-Ry4PDrRpdPuUUrt_hscSE7jz3svAA6aaPf1JhqvImWery641">
+                <div class="validation-summary-valid" data-valmsg-summary="true">
+                    <ul>
+                        <li style="display:none"></li>
+                    </ul>
+                </div>
+                <div class="uk-width-large-1-1 uk-width-small-1-1">
+                    <label class="label-ms">Номер телефона</label>
+                    <input class="input-msk uk-width-large-1-1 uk-width-small-1-1" data-val="true" data-val-length="The field UserName must be a string with a minimum length of 3 and a maximum length of 160." data-val-length-max="160" data-val-length-min="3" data-val-regex="Логин введен не верно" data-val-regex-pattern="^[A-Za-z0-9_-]{3,15}$" data-val-required="The UserName field is required." id="UserName" name="UserName" type="text" value="">
+                    <span class="field-validation-valid" data-valmsg-for="UserName" data-valmsg-replace="true"></span>
+                </div>
+            </section>
+            <div class="uk-margin">
+                <input type="submit" class="bold uk-button uk-button-reviews uk-button-reviews-success uk-button-reviews-success-border uk-width-1-1" value="Добавить администратора">
+            </div>
+            <div class="uk-text-center">
+                <small class="uk-text-muted">
+                    Ознакомьтесь с <a href="/terms" class="uk-link-line green-color">правилами</a> сервиса «PhotoMSK™» 2014
+                </small>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,108 @@
+﻿<div><data-bread-crumbs /></div>
+<div class="container container--center">
+    <div class="grid">
+        <div class="col--1-1 col--small-1-1 col--large-1-1 margin--top text--center">
+            <span class="text--h2">
+                Создание фотостудии
+                <span id="yourId" style="width: 200px; height: 150px; position: relative;"></span>
+            </span>
+            <p class="margin--reset">
+                <small class="text--muted">После создания фотостудии она будет промодерирована нашими специалистами и в ближайшее время появится в публичном каталоге всех фотостудий</small>
+            </p>
+            <hr class="small-line">
+        </div>
+    </div>
+    <div class="panel panel--space panel--white margin--top">
+
+        <ul class="step grid grid--small grid-col--1-4">
+            <li class="step__item step--success" data-ng-click="setTab('tab1')">
+                <a data-msk-href class="link--reset">
+                    <i class="icon-license"></i>
+                    <span>Контактная информация</span>
+                </a>
+            </li>
+            <li class="step__item" data-ng-click="setTab('tab2')">
+                <a href="" class="link--reset">
+                    <i class="icon-picture"></i>
+                    <span>Загрузка фотографий</span>
+                </a>
+            </li>
+            <li class="step__item step--warning" data-ng-click="setTab('tab3')">
+                <a data-msk-href class="link--reset">
+                    <i class="icon-phone-handset"></i>
+                    <span>Телефоны и адрес</span>
+                </a>
+            </li>
+            <li class="step__item" data-ng-click="setTab('tab4')">
+                <a data-msk-href class="link--reset">
+                    <i class="icon-cart"></i>
+                    <span>Условия и стоимость</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="grid">
+            <div class="col--1-1">
+                <ul>
+                    <li data-ng-show="tab=='tab1'">
+                        <div class="grid">
+
+                            <div class="col--1-1"> <data-admin-logo-page /></div>
+                            <div class="col--1-1"> <data-admin-studio-name-page /></div>
+
+                            <div class="col--1-1 margin--top">
+                                <div class="grid">
+                                    <div class="col--1-1 text--center">
+                                        <button class="button button--success" data-ng-click="addPhotostudio()">Продолжить</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+                    <li data-ng-show="tab=='tab2'">
+                        <div class="grid">
+
+
+                            <div class="col--1-1">
+                                <div><data-admin-photo-load-page /></div>
+
+                            </div>
+                            <div class="col--1-1 margin--top grid--margin">
+                                <div class="grid">
+                                    <div class="col--1-1 text--center">
+                                        <button class="button button--success"   data-ng-click="loadPhoto()">Продолжить</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li data-ng-show="tab=='tab3'">
+                        <div class="grid">
+                            <div class="col--1-1">
+                                <data-admin-phone-page />
+                            </div>
+                            <div class="col--1-1">
+                                <data-admin-location-map-page />
+                            </div>
+
+                            <div class="col--1-1 margin--top">
+                                <div class="grid">
+                                    <div class="col--1-1 text--center">
+                                        <button class="button button--success"   data-ng-click="updateData()">Продолжить</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li data-ng-show="tab=='tab4'">
+                        <div class="grid" data-ng-click="add()">
+                            <div><data-admin-create-page /></div>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

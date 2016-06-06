@@ -1,0 +1,112 @@
+// out: ../../css/components/input.css, compress: true
+// Name:            Input
+// Description:     Defines styles for input
+//
+// Component:       `input`
+//
+// Modifiers:       `input--tags*`
+//                  `input--search`
+//                  `input--select`
+//                  `input--*`
+//
+//
+// **************** Variables ****************
+// padding
+@input-padding--small:                     5px;
+@input-padding:                            10px;
+@input-padding--big:                       15px;
+
+// Margin
+@input-margin:                             10px;
+
+// color
+@input-text-color:                         #333;
+@input-background:                         #fff;
+@input-border-color:                       #b2b2b2;
+@input-border-bottom-color:                #ddd;
+@input-border-bottom-color-active:         #FFC716;
+
+@input-search-border-color:                #dadada;
+
+// border-radius
+@input-border-radius:                      3px;
+
+// ********* Label variables *******       ******
+@label-font-size:                          10px;
+
+// Margin
+@label-margin:                             5px;
+
+
+
+// ******************* Base ******************
+
+.input {
+    position: relative;
+    padding: @input-padding;
+    color: @input-text-color;
+    background: @input-background;
+    border-radius: @input-border-radius;
+    border: 1px solid @input-border-color;
+    margin-bottom: @input-margin;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: all 200ms;
+    min-width: 330px;
+
+    // Modificator 'small'
+    &--small{
+        padding: @input-padding--small;
+
+        &.input--search{
+            padding-left: (@input-padding--big * 2 - 5) !important;
+        }
+    }
+
+    // Midificator 'input--select'
+    &--select{
+        padding: @input-padding (@input-padding * 2);
+        height: 42px;
+        font-size: 18px;
+    }
+
+}
+
+// *********** All inputs ***************
+// Label
+
+.label{
+    display: block;
+    width: 100%;
+    margin: @label-margin 0 0 0;
+    font-size: @label-font-size;
+    line-height: 18px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #9b9b9b;
+
+    // Modificator `label--rounded`
+    &--rounded{
+        margin-left: 10px;
+    }
+}
+
+
+// *********************************************************
+//                         SELECT
+// *********************************************************
+
+.select{
+    position: relative;
+    padding: @input-padding;
+    color: @input-text-color;
+    background: @input-background;
+    border-radius: @input-border-radius;
+    border: 1px solid @input-border-color;
+    margin-bottom: @input-margin;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: all 200ms;
+}

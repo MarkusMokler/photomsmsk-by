@@ -1,0 +1,85 @@
+﻿@model ICollection<PhotoMSK.ViewModels.SaleCardViewModel.Summary>
+
+<div class="uk-grid">
+    <div class="uk-width-3-4">
+        <div class="uk-panel uk-panel-box uk-panel-module">
+            <div class="uk-grid" data-uk-grid-margin>
+                <ul class="uk-width-1-1 uk-subnav uk-subnav-line">
+                    @*<li>
+                            <div class="uk-button-group" data-uk-button-checkbox="">
+                                <button class="uk-button">Nikon</button>
+                                <button class="uk-button">Canon</button>
+                            </div>
+                        </li>*@
+                    <li class="uk-float-right">
+                        <form class="uk-search" data-uk-search="">
+                            <input class="uk-search-field uk-search-field-border uk-width-1-1" type="search" placeholder="Поиск места...">
+                            <div class="uk-dropdown uk-dropdown-search"></div>
+                        </form>
+                    </li>
+                </ul>
+                <div class="uk-width-1-1 uk-margin-remove uk-grid-margin">
+                    <hr class="small-line ">
+                </div>
+            </div>
+
+            @*<table class="uk-table uk-table-statistics uk-table-hover uk-table-condensed uk-table-middle">
+                <thead>
+                    <tr class="uk-text-center">
+                        <th class="uk-text-left">Место</th>
+                        <th>Тип</th>
+                        <th>Дата</th>
+                        <th>Цена</th>
+                    </tr>
+                </thead>
+                <tbody id="penalties">
+                    <tr>
+                        <td class="uk-text-left">
+                            <div class="uk-vertical-align">
+                                <div class="uk-vertical-align-middle">
+                                    <img src="http://ph1.photomsk.by/lenses/fdab34dd11050ae163d566e0e75acc09.jpg" width="30" height="30" class="uk-border-circle uk-margin-small-right">
+                                    <a href="#" class="uk-link-muted uk-link-dotted">PhotoBUBA</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>Аренда</td>
+                        <td>26.11.2014</td>
+                        <td><b>50 000</b> <small class="uk-text-muted">бел. руб.</small></td>
+                    </tr>
+                </tbody>
+            </table>*@
+            <table class="uk-table uk-table-statistics uk-table-hover uk-table-condensed uk-table-middle">
+                <thead>
+                    <tr class="uk-text-center">
+                        <th class="uk-text-left">Номер карточки</th>
+                        <th>Срок годности</th>
+                    </tr>
+                </thead>
+                <tbody id="salecards">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="uk-text-left">@item.CardNumber</td>
+                        <td>@item.ExpiredDate</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="uk-width-1-4">
+        <div id="uk-plastic-card">
+            <div class="uk-plastic-card-number">
+                <strong>001-00001</strong>
+            </div>
+            <div class="uk-plastic-card-qr-code">
+                <img src="http://qrcoder.ru/code/?http%3A%2F%2Fphotomsk.by&2&0" />
+                <p class="uk-margin-remove">
+                    <strong>9999</strong>
+                </p>
+            </div>
+            @*<div class="uk-plastic-card-bar-code"></div>*@
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+﻿@using System.Web.Optimization
+@using PhotoMSK.Areas.Default.Models
+@using PhotoMSK.Extensiolns
+@using StackExchange.Profiling
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Фототехника - лучший магазин фото-аппаратуры в Минске</title>
+    <meta name="Description" content="@ViewBag.Description">
+    <meta name="og:image" property="og:image" content="@ViewBag.Image" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @*@Styles.Render("~/Content/uikit/style")*@
+    @Styles.Render(UiKit217.StyleBundle)
+    @Styles.Render("~/Content/jquery-ui")
+    <link rel="stylesheet" href="@Url.Content("~/Themes/ph-white.by/Content/Siteless.css")" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300&subset=cyrillic' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div class="uk-container uk-container-center">
+        @if (IsSectionDefined("Main"))
+        {
+            @RenderSection("Main", false)
+        }
+
+        @if (IsSectionDefined("Footer"))
+        {
+            <footer class="uk-section-footer">
+                @RenderSection("Footer", false)
+            </footer>
+        }
+    </div>
+
+    @Html.Partial("~/Areas/Default/Views/Shared/_Templates.cshtml")
+    @Scripts.Render("~/bundles/jquery")
+
+    @Scripts.Render("~/bundles/uikit/script")
+    @Scripts.Render("~/bundles/uikit/components/script")
+    @Scripts.Render("~/bundles/uikit/core/script")
+
+    <script src="@Url.Content("~/Scripts/jquery.signalR-2.2.0.min.js")"></script>
+    <script src="@Url.Content("~/signalr/hubs")"></script>
+    @Scripts.Render("~/Backbone")
+    @Scripts.Render("~/App")
+    @MiniProfiler.RenderIncludes()
+    @RenderSection("scripts", required: false)
+
+    <div id="config-settings" data-upload-url="@Html.GetUploadUrl()"></div>
+</body>
+</html>

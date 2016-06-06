@@ -1,0 +1,49 @@
+﻿@model PhotoMSK.Models.EditViewModel.Routes.PhotostudioEditModel
+
+@* Halls *@
+
+<div class="uk-width-1-1">
+    <div class="uk-section">
+        <span class="uk-section__counter">8</span>
+        <span class="uk-section__title">Залы</span>
+    </div>
+</div>
+
+<div class="uk-width-2-10 uk-offset-1-10">
+    @Html.ActionLink("Добавить", "Create", new { Controller = "Hall", Area = "Admin", shortcut = Model.Shortcut }, new { @class = "uk-button uk-button-success" })
+    <div class="uk-panel uk-panel-divider uk-margin-top">
+        <ul class="uk-nav uk-nav-menu uk-nav-side uk-nav-parent-icon pad-top-20" data-uk-switcher="{connect:'#tab-halls', toggle:' > *:not(.uk-nav-header)'}">
+            <li><a href="#">Все</a></li>
+            <li class="uk-nav-divider"></li>
+            <li class="uk-active"><a href="#">Активны</a></li>
+            <li><a href="#">На ремонте</a></li>
+            <li><a href="#">Закрыты</a></li>
+        </ul>
+    </div>
+</div>
+<div class="uk-width-8-10">
+
+    <ul class="uk-grid uk-grid-width-1-2 uk-grid-width-large-1-3 uk-grid-width-medium-1-3 uk-grid-small" data-uk-grid-margin>
+        @foreach (var item in Model.Halls)
+        {
+            <li>
+                <div class="uk-panel uk-panel-box">
+                    <div class="uk-panel-teaser">
+                        <img src="@item.TeaserImageUrl" alt="@item.Description">
+                    </div>
+                    <h2 class="uk-panel-title uk-margin-bottom-remove">
+                        <a href="@Url.Action("Show", "", new { id = item.ID })" class="uk-link-muted">@item.Name</a>
+                    </h2>
+
+                    <ul class="uk-subnav uk-subnav-line uk-margin-remove">
+                        <li><a href="@Url.Action("Show", "", new { id = item.ID })" class="uk-navbar-nav-subtitle uk-text-center"><i class="uk-icon-eye"></i><div>просмотреть</div></a></li>
+                        <li><a href="@Url.Action("Edit", "Hall", new { id = item.ID })" class="uk-navbar-nav-subtitle uk-text-center"><i class="uk-icon-pencil"></i><div>изменить</div></a></li>
+                        <li><a href="@Url.Action("Delete", "Hall", new { id = item.ID })" class="uk-navbar-nav-subtitle uk-text-center"><i class="uk-icon-trash-o"></i><div>удалить</div></a></li>
+                    </ul>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+
+

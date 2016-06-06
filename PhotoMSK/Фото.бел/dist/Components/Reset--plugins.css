@@ -1,0 +1,94 @@
+.angucomplete-dropdown {
+  width: 100%;
+  position: absolute;
+  padding-top: 5px;
+  border: 1px solid #ddd;
+  border-top: 1px dotted #ddd;
+  cursor: pointer;
+  background-color: #fff;
+  top: 34px;
+  z-index: 100;
+}
+.angucomplete-image {
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+  border-color: #ececec;
+  border-style: solid;
+  border-width: 1px;
+}
+.angucomplete-image-default {
+  position: relative;
+  background-position: center;
+  background-size: contain;
+  height: 34px;
+  width: 34px;
+  border-radius: 34px;
+  background: #ccc;
+  text-align: center;
+}
+.angucomplete-image-default:after {
+  content: "\e99c";
+  font-family: "icomoon";
+  height: 34px;
+  width: 34px;
+  font-size: 20px;
+  line-height: 34px;
+  color: #fff;
+}
+.sweet-alert .icon.success .placeholder {
+  width: 80px;
+  height: 80px;
+  border: 4px solid rgba(165, 220, 134, 0.2);
+  border-radius: 50%;
+  box-sizing: content-box;
+  position: absolute;
+  left: -4px;
+  top: -4px;
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+  background: transparent;
+}
+.beta {
+  position: absolute;
+  left: 0;
+  border: 0;
+  top: 50%;
+  cursor: pointer;
+  background: url(/Content/images/svg/svg-beta.svg) no-repeat 0 0;
+  width: 40px;
+  height: 21px;
+  vertical-align: middle;
+  z-index: 103;
+  transform: translateY(-50%);
+}
+#nprogress .bar {
+  padding: 0;
+  height: 3px;
+  background: #f9a124;
+}
+#nprogress .peg {
+  box-shadow: 0 0 10px #f9a124, 0 0 5px #f9a124;
+}
+#nprogress .spinner-icon {
+  width: 20px;
+  height: 20px;
+  border: solid 4px transparent;
+  border-top-color: #f9a124;
+  border-left-color: #f9a124;
+}
+.fc-time-grid .fc-now-indicator-line {
+  height: 40px;
+  border-top: 0;
+  border-bottom: 1px solid red;
+  transform: translateY(-100%);
+  background: -moz-linear-gradient(top, rgba(30, 87, 153, 0) 0%, rgba(248, 102, 103, 0.6) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(30, 87, 153, 0) 0%, rgba(248, 102, 103, 0.6) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(30, 87, 153, 0) 0%, rgba(248, 102, 103, 0.6) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#001e5799', endColorstr='#99f86667', GradientType=0);
+  /* IE6-9 */
+}

@@ -1,0 +1,106 @@
+<div class="content--admin">
+    <div><data-bread-crumbs/></div>
+
+    <div class="container--fluid">
+
+        <div class="grid grid--small">
+            <div class="col--1-5 margin--top">
+                <h5 class="text--bold">Справочник</h5>
+                <ul class="list list--vertical list--dotted">
+                    <li><a data-msk-href target="_blank" class="text--muted">Типы меню</a></li>
+                    <li><a data-msk-href target="_blank" class="text--muted">Отображение элементов меню</a></li>
+                    <li><a data-msk-href target="_blank" class="text--muted">Создание выпадающего меню</a></li>
+                    <li><a data-msk-href class="text--small">ещё...</a></li>
+                </ul>
+            </div>
+
+            <div class="col--4-5">
+                <div class="margin--bottom-small">
+                    <span class="text--h3 text--bold margin--reset">Создание меню</span>
+                </div>
+                <div class="panel panel--box panel--white panel--shadow">
+                    <div class="grid grid--divider">
+                        <div class="col--1-2">
+                            <div class="uk-section">
+                                <span class="uk-section__counter">1</span>
+                                <span class="uk-section__title">Основные данные</span>
+                            </div>
+
+                            <div>
+                                <label class="label label--rounded">Название</label>
+                                <input type="text" id="name" class="input input--rounded col--1-1" name="name" data-ng-model="itemMenu.name" placeholder="Название меню">
+                            </div>
+
+                            <hr>
+
+                            <div class="uk-section">
+                                <span class="uk-section__counter">2</span>
+                                <span class="uk-section__title">Тип меню</span>
+                            </div>
+
+                            <div>
+                                <label class="label label--rounded">Тип меню</label>
+                                <select class="input input--select input--rounded col--1-1" data-role-changepagetype ng-model="itemMenu.type">
+                                    <option value="PageMenuItem">Страница</option>
+                                    <option value="LinkMenuItem">Ссылка</option>
+                                    <option value="RouteMenu">Группа</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col--1-2">
+                            <div data-ng-if="itemMenu.type=='LinkMenuItem'">
+                                <div class="uk-section">
+                                    <span class="uk-section__counter">3</span>
+                                    <span class="uk-section__title">Основные данные</span>
+                                </div>
+                                <div>
+                                    <label class="label label--rounded">Введите ссылку</label>
+                                    <input type="text" id="LinkMenuItem" class="input input--rounded col--1-1" placeholder="ссылка" data-ng-model="itemMenu.LinkMenuItem" name="LinkMenuItem">
+                                </div>
+                            </div>
+                            <div data-ng-if="itemMenu.type=='RouteMenu'">
+                                <label class="label label--rounded">Опубликовать <input type="checkbox" data-ng-model="itemMenu.publish" /></label>
+
+                            </div>
+                            <div data-ng-show="itemMenu.type=='PageMenuItem'">
+                                <div class="uk-section">
+                                    <span class="uk-section__counter">3</span>
+                                    <span class="uk-section__title">Страница</span>
+                                </div>
+                                <div>
+                                    <label class="label label--rounded">Название</label>
+                                    <div angucomplete-alt
+                                         remote-url={{pagesByNameUrl}}
+                                         id="PageName"
+                                         placeholder="Название страницы..."
+                                         pause="500"
+                                         selected-object="selectedMenuPage"
+                                         title-field="name,title"
+                                         description-field="userPhone"
+                                         image-field="teaserImage"
+                                         model="results"
+                                         remote-url-request-formatter="remoteUrlRequestEn"
+                                         searching="pageName"
+                                         input-class="input input--rounded col--1-1 ui-autocomplete-input"
+                                         no-results="noResults">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <hr />
+
+                    <div class="text--center">
+                        <a data-msk-href class="button button--success border--rounded col--1-5" data-ng-click="saveItemMenu()">Сохранить</a>
+                        <a data-msk-href class="button border--rounded" data-ng-click="clean()">очистить</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

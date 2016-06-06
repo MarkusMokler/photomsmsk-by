@@ -1,0 +1,51 @@
+// out: ../../css/Components/Slider.css, compress: true
+// Name:            Slider
+//
+//
+//  ******* Reset all styles SLIDER
+
+@slider-bar-height:             3px;
+@slider-bar-background:         #DCDCDC;
+
+@slider-pointer-height:         20px;
+@slider-label-color:            #9b9b9b;
+@slider-color-active:           #18a24b;
+
+//  Base
+rzslider.slider{
+    height: @slider-bar-height;
+    & .rz-bar{
+        background: @slider-bar-background;
+        height: @slider-bar-height;
+        &.rz-selection{
+            background: @slider-color-active;
+        }
+    }
+
+    & .rz-bubble.rz-limit{
+        color: @slider-label-color;
+    }
+
+    // pointer
+    & .rz-pointer{
+        top: -11px;
+        background-color: #18a24b;
+        height: @slider-pointer-height + 4;
+        width: @slider-pointer-height + 4;
+        &:after{
+            top: 2px;
+            left: 2px;
+            width: @slider-pointer-height;
+            height: @slider-pointer-height;
+            border-radius: @slider-pointer-height;
+        }
+        &.rz-active:after{
+            background-color: #fff;
+        }
+    }
+
+    //
+    & .rz-bubble{
+        color: @slider-label-color;
+    }
+}

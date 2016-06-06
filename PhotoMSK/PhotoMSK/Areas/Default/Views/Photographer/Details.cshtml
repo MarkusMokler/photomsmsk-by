@@ -1,0 +1,390 @@
+﻿@using PhotoMSK.Extensiolns
+@model PhotoMSK.Areas.Default.ViewData.Photographer.DetailsViewData
+
+@functions {
+
+    public static string GetGrid(int count)
+    {
+        return count < 6 ? "5" : "65";
+    }
+
+}
+@{
+    ViewBag.Title = "Фотограф " + Model.Item.FirstName + " " + Model.Item.LastName;
+    ViewBag.Description = Model.Item.Description;
+    ViewBag.Image = Model.Item.ImageUrl;
+    ViewBag.WhiteLabel = Model.Item.WhiteLabel;
+}
+
+<div class="userprofile photographer" id="px">
+
+    <div id="cover">
+        <div class="inside">
+            <img style="width: 100%" src=@(Model.Item.CoverImage ?? "http://pacdn.500px.org/1623045/90732f6fd75497df147984baddc5146b0725e54b/cover_2048.jpg") />
+        </div>
+
+        <div class="bottom">
+            <div class="fade">
+                <div class="wrapper">
+
+                    <div class="uk-container uk-container-center pad-bottom-20">
+                        <div class="uk-grid uk-flex">
+                            <div class="uk-width-2-10">
+                                <img class="img-poster uk-margin-bottom" src="@Model.Item.ImageUrl" alt="">
+                                <div class="uk-text-center">
+                                    @if (Model.Item.Phones.Count > 0)
+                                    {
+                                        <a href="#review-phone-modal" class="uk-h2 uk-link-fff uk-link-dotted" data-uk-modal>
+                                            @foreach (var number in Model.Item.Phones)
+                                            {
+                                                @number.Number
+                                            }
+                                        </a>
+
+                                        <div id="review-phone-modal" class="uk-modal">
+                                            <div class="uk-modal-dialog uk-modal-dialog-phones uk-modal-dialog-phones-big">
+                                                <a href="" class="uk-modal-close uk-close"></a>
+                                                <span class="uk-text-muted">контактная информация @Model.Item.LastName @Model.Item.FirstName</span>
+                                                @foreach (var number in Model.Item.Phones.Take(1))
+                                                {
+                                                    <h1 class="uk-heading-large">@number</h1>
+                                                }
+                                                <span class="uk-text-muted">
+                                                    сообщайте @Model.Item.FirstName о том, что вы нашли его на <span class="uk-link-dotted">PhotoMSK.by</span>
+                                                </span>
+                                                <div class="uk-panel uk-panel-box uk-margin-top">
+                                                    <h3 class="uk-panel-title">оцените работу @Model.Item.FirstName:</h3>
+                                                    <div class="uk-flex uk-margin-bottom">
+                                                        <div class="uk-width-1-4">
+                                                            <a href="#review-phone-modal-thanks" class="uk-button uk-button-reviews uk-button-reviews-success uk-width-1-1" data-uk-modal>Все прошло хорошо</a>
+                                                        </div>
+                                                        <div class="uk-width-1-4 uk-margin-left">
+                                                            <a href="#review-phone-modal-thanks" class="uk-button uk-button-reviews uk-button-reviews-warning uk-width-1-1" data-uk-modal>Даты оказались занятыми</a>
+                                                        </div>
+                                                        <div class="uk-width-1-4 uk-margin-left">
+                                                            <a href="#review-phone-modal-thanks" class="uk-button uk-button-reviews uk-button-reviews-danger uk-width-1-1" data-uk-modal>Не отвечает на звонки</a>
+                                                        </div>
+                                                        <div class="uk-width-1-4 uk-margin-left">
+                                                            <a href="#review-phone-modal-thanks" class="uk-button uk-button-reviews uk-button-reviews-danger uk-width-1-1" data-uk-modal>Цены не действительны</a>
+                                                        </div>
+                                                    </div>
+
+                                                    <small class="uk-text-muted">
+                                                        Спасибо за ваш отзыв! Нам он очень важен.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="review-phone-modal-thanks" class="uk-modal">
+                                            <div class="uk-modal-dialog uk-modal-dialog-phones">
+                                                <a href="" class="uk-modal-close uk-close"></a>
+                                                <span class="uk-text-muted">контактная информация @Model.Item.LastName @Model.Item.FirstName</span>
+                                                <h1 class="uk-heading-large uk-margin-large">Спасибо :)</h1>
+                                                <p class="uk-text-muted">Нам очень важно что вы оставили ваше мнение на <span class="uk-link-dotted">PhotoMSK.by</span></p>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="uk-width-8-10 uk-flex uk-flex-middle">
+                                <div class="legend-hero">
+                                    <h1>
+                                        @Model.Item.LastName <span class="lighter">@Model.Item.FirstName</span>
+                                    </h1>
+                                    <ul class="uk-subnav uk-subnav-line">
+                                        <li><div class="legend-movie up rate nota bold" data-uk-tooltip title="Общий рейтинг фотографа">@String.Format("{0:00.0}", Model.Item.Raiting.Total)</div></li>
+                                        <li><strong>@Model.Item.Subscribers</strong> подписчиков</li>
+                                        <li><strong>@Model.Item.PageViews</strong> просмотров</li>
+                                    </ul>
+
+                                    <ul class="uk-subnav">
+                                        @if (!string.IsNullOrEmpty(Model.Item.Vk))
+                                        {
+                                            <li>
+                                                <a href="@Model.Item.Vk">
+                                                    <i class="uk-social-button uk-icon-vk anim-vk"></i>
+                                                </a>
+                                            </li>
+                                        }
+
+                                        @if (!string.IsNullOrEmpty(Model.Item.Twitter))
+                                        {
+                                            <li>
+                                                <a href="@Model.Item.Twitter">
+                                                    <i class="uk-social-button uk-icon-twitter anim-twitter"></i>
+                                                </a>
+                                            </li>
+                                        }
+
+                                        @if (!string.IsNullOrEmpty(Model.Item.Facebook))
+                                        {
+                                            <li>
+                                                <a href="@Model.Item.Facebook">
+                                                    <i class="uk-social-button uk-icon-facebook anim-facebook"></i>
+                                                </a>
+                                            </li>
+                                        }
+
+                                        @*@if (!string.IsNullOrEmpty(Model.YouTube))
+                                            {
+                                                <li>
+                                                    <i class="uk-social-button uk-icon-youtube anim-youtube"></i>
+                                                </li>
+                                            }*@
+
+                                        @if (!string.IsNullOrEmpty(Model.Item.Instagram))
+                                        {
+                                            <li>
+                                                <a href="@Model.Item.Instagram">
+                                                    <i class="uk-social-button uk-icon-instagram anim-instagram"></i>
+                                                </a>
+                                            </li>
+                                        }
+                                    </ul>
+
+                                    <ul class="uk-subnav">
+                                        <li>
+                                            <div class="intl-tel-input">
+                                                <div class="flag by"></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            Республика Беларусь,
+                                        </li>
+                                        @if (!string.IsNullOrEmpty(Model.Item.City))
+                                        {
+                                            <li>
+                                                @Model.Item.City,
+                                                @*(выезд: <span class="uk-link-fff uk-link-dotted">Питер</span>)*@
+                                            </li>
+                                        }
+                                        <li>
+                                            @if (Model.Item.Pro)
+                                            {
+                                                <div class="uk-badge uk-badge-success">PRO</div>
+                                            }
+                                            фотограф,
+                                        </li>
+                                    </ul>
+
+                                    @*<div class="legend-movie up rate nota">@String.Format("{0:00.0}", Model.Raiting)</div>
+                                        <div class="legend-movie up rate">PRO</div>
+                                        <div class="legend-movie up">Фотограф,&nbsp;</div>
+                                        <div class="legend-movie up">@Model.City &nbsp;</div>*@
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-grid">
+                            <div class="uk-width-1-1">
+                                <hr class="small-line-opacity uk-margin-remove" />
+                            </div>
+                        </div>
+                        <div class="uk-grid">
+                            <div class="uk-width-1-1">
+                                <ul class="uk-subnav uk-subnav-top-menu role-switch-tabs" data-uk-switcher="{connect:'#photographer-tab', animation: 'fade'}">
+                                    <li class="uk-active"><a href="#">Информация</a></li>
+                                    <li class=""><a href="#">Съемки</a></li>
+                                    <li class=""><a href="#">Тарифы</a></li>
+                                    <li class=""><a href="#">Календарь</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="uk-container uk-container-center photographer">
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-1">
+
+            <ul id="photographer-tab" class="uk-switcher uk-margin">
+                <li class="uk-active uk-grid">
+
+                    <div class="uk-width-2-10">
+                        <h1>Жанры</h1>
+                        <hr />
+                        <ul class="uk-nav uk-nav-menu uk-nav-side uk-nav-parent-icon">
+                            @foreach (var item in Model.Item.Geners)
+                            {
+                                <li class="uk-active uk-shooting">
+                                    <a href="#">@item</a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+
+                    <div id="wall-placeholder" class="uk-width-5-10">
+                    </div>
+
+                    <div class="uk-width-3-10">
+                        <h1>Съемки</h1>
+                        <hr />
+                        <ul class="photo-projects">
+                            @if (Model.Item.Shootings.Count > 0)
+                            {
+                                foreach (var shoot in Model.Item.Shootings.Take(3).ToList())
+                                {
+                                    if (shoot.Photos.Count() != 0)
+                                    {
+                                        <li>
+                                            <article class="uk-comment">
+                                                <header class="uk-comment-header">
+                                                    <img class="img-photo-projects uk-float-left uk-border-rounded" src="@shoot.Photos.First().Url" width="50" height="50" alt="">
+                                                    <h4 class="uk-comment-title">@shoot.Title</h4>
+                                                    <div class="uk-comment-meta uk-text-truncate">@shoot.Description</div>
+                                                </header>
+                                            </article>
+                                        </li>
+                                    }
+                                }
+                            }
+                        </ul>
+                        <a class="uk-float-right" href="#" data-uk-switcher-item="1">показать все...</a>
+                    </div>
+                    <div class="uk-width-3-10 pad-top-20">
+                        <h1>Фотопроекты</h1>
+                        <hr />
+                        <ul class="photo-projects">
+                            <li>
+                                <article class="uk-comment">
+                                    <header class="uk-comment-header">
+                                        <img class="img-photo-projects uk-float-left uk-border-rounded" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                                        <h4 class="uk-comment-title">«Весна в разгаре 2014»</h4>
+                                        <div class="uk-comment-meta"> 100$ за час.</div>
+                                    </header>
+                                </article>
+                            </li>
+                            <li>
+                                <article class="uk-comment">
+                                    <header class="uk-comment-header">
+                                        <img class="img-photo-projects uk-float-left uk-border-rounded" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                                        <h4 class="uk-comment-title">«Summer Party 2020»</h4>
+                                        <div class="uk-comment-meta">Бесплатный</div>
+                                    </header>
+                                </article>
+                            </li>
+                        </ul>
+                        <a class="uk-float-right" href="#">показать все...</a>
+                    </div>
+
+                </li>
+                <li class="uk-grid uk-grid-small" data-uk-grid-margin>
+
+
+                    @foreach (var shoot in Model.Item.Shootings)
+                    {
+                        <div class="uk-width-1-1">
+                            <div class="uk-comment-meta">@shoot.Date</div>
+                            <h1 class="title"><a class="uk-link-muted" href="#">@shoot.Title</a></h1>
+                            <div class="uk-comment-meta">@shoot.Description</div>
+                        </div>
+
+
+                        <div class="uk-width-1-1">
+
+                            <div class="justified-gallery">
+                                @foreach (var attachment in shoot.Photos.Take(11))
+                                {
+                                    <a href="@attachment.Url">
+                                        <img alt="Описание" src="@attachment.Url" />
+                                    </a>
+                                }
+                            </div>
+
+                        </div>
+                    }
+
+                </li>
+                <li class="uk-grid uk-grid-small">
+
+                    <div class="uk-width-1-1">
+                        <div class="uk-alert uk-alert-info uk-margin-remove uk-text-center" data-msg="no-updates">
+                            <h3 class="uk-margin-remove">Раздел находится в разработке</h3>
+                            <p class="uk-margin-remove">
+                                <small class="uk-text-muted">совсем скоро вы увидите его в действии.</small>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="uk-width-1-1">
+                        <h1>Описание работы</h1>
+                        <p>В каждый из пакетов услуг входит предсвадебная встреча, организация фотосессии, важные советы и детали. А так же резервное хранение готовых фотографий на жёстком диске в течении 2-х лет. Ну и конечно же – приятное и лёгкое общение, безусловное качество и надёжность предоставляемых услуг.</p>
+                    </div>
+
+                    <div class="uk-grid pad-top-20">
+                        @for (int i = 0; i < 3; i++)
+                        {
+                            <div class="uk-width-medium-1-3">
+                                <div class="uk-panel uk-panel-box">
+                                    <div class="uk-panel-teaser uk-text-center">
+                                        <h2>
+                                            Optimal
+                                            <p><small>тариф</small></p>
+                                        </h2>
+                                        <img class="price-image" src="http://i.imgur.com/pwPaORM.jpg" alt="">
+                                    </div>
+                                    <section class="price">
+                                        <h2>
+                                            <span class="dollar">$</span>199<span class="hours">/4 часа</span>
+                                        </h2>
+                                    </section>
+
+                                    <h3>Входит в пакет:</h3>
+                                    <ul class="uk-list price-list">
+                                        <li class="list-check-item">Предсвадебная встреча</li>
+                                        <li class="list-check-item">Скидка 50% на Love story</li>
+                                        <li class="list-check-item">Фотокнига на 20 разворотов</li>
+                                        <li class="list-check-item">Слайд-шоу</li>
+                                        <li class="list-check-item">Авторская решушь 20 фотографй</li>
+                                        <li class="list-check-item">Тех. ретушь 300 фотографий</li>
+                                    </ul>
+
+                                    <input type="submit" class="btn border-500 booking-button" value="Заказать">
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </li>
+                <li>
+                    <div class="uk-alert uk-alert-info uk-margin-remove uk-text-center" data-msg="no-updates">
+                        <h3 class="uk-margin-remove">Раздел находится в разработке</h3>
+                        <p class="uk-margin-remove">
+                            <small class="uk-text-muted">совсем скоро вы увидите его в действии.</small>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    <script>
+
+        $(function () {
+            App.isPhotographer = true;
+            App.routeImage = '@Model.Item.ImageUrl';
+            App.owner = '@Model.Item.ID';
+            App.PhotographerDetails = new App.Photographer.PhotographerDetails();
+            App.PhotographerDetails.render();
+
+            App.WallView.wallCollection.reset(@Model.Item.Wall.ToJson());// ?
+
+            $('.justified-gallery').justifiedGallery({
+                lastRow: 'justify',
+                rowHeight: 200,
+                fixedHeight: false,
+                caption: false,
+                randomize: true,
+                margins: 5
+            });
+        })
+
+    </script>
+}

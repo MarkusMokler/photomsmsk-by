@@ -1,0 +1,137 @@
+// out: ../../css/Components/Hall.css, compress: true
+// Name:            Hall
+// Description:     Defines styles for Hall
+
+.hall {
+    position: relative;
+    margin: 0 0 20px;
+    border-radius: 5px;
+    clear: both;
+    // Elements 'hall__photo'
+    &__photo{
+        position: relative;
+        display: inline-block;
+        float: left;
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+        border-radius: 5px;
+        box-shadow: 10px 10px 30px -5px rgba(0,0,0,0.3);
+        z-index: 2;
+    }
+    // Element 'hall__price'
+    &__price{
+        & > *:first-child {
+            border-right: 1px dashed #ccc;
+            padding-right: 15px;
+        }
+    }
+
+    // Element `hall__img`
+    &__img {
+        border-radius: 5px;
+        & > img {
+            -webkit-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            transition: all 0.5s;
+            transition: all 1s;
+        }
+        &:hover > img {
+            transform: scale(1.2);
+        }
+    }
+    // Elements 'hall__name'
+    &__name {
+        position: absolute;
+        bottom: 0;
+        color: #fff;
+        padding: 20px 10px;
+        background: -moz-linear-gradient(top, rgba(0,0,0,0) 0, rgba(0,0,0,0.65) 68%, rgba(0,0,0,0.65) 100%, rgba(0,0,0,0.65) 101%);
+        background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0, rgba(0,0,0,0.65) 68%, rgba(0,0,0,0.65) 100%, rgba(0,0,0,0.65) 101%);
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0.65) 68%, rgba(0,0,0,0.65) 100%, rgba(0,0,0,0.65) 101%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#a6000000', GradientType=0);
+        width: 100%;
+        -webkit-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+        transition-delay: 1.2s;
+        -webkit-transition-delay: 0.7s;
+        -o-transition-delay: 0.7s;
+        transition-delay: 0.7s;
+        border-radius: 5px;
+        &__type {
+            color: rgba(255, 255, 255, 0.7);
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            display: block;
+            margin-bottom: 3px;
+            padding-bottom: 3px;
+            font-size: 10px;
+            line-height: 12px;
+        }
+        &__text {
+            color: #fff;
+            display: block;
+            font-size: 20px;
+            line-height: 22px;
+        }
+    }
+    &__bookmark {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #fff;
+        cursor: pointer;
+        font-size: 24px;
+        line-height: 24px;
+        text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+    }
+    // Elements 'hall__desc'
+    &__desc {
+        display: inline-block;
+        top: 0;
+        width: ~"calc(100% - 200px)";
+        background: #fff;
+        border-radius: 0 5px 5px 0;
+        margin-top: 10px;
+        height: 180px;
+        box-shadow: 1px 1px 20px -5px rgba(0,0,0,0.2);
+        -webkit-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+        -webkit-transition-delay: 0.7s;
+        -o-transition-delay: 0.7s;
+        transition-delay: 0.7s;
+        box-shadow: 5px 10px 40px -5px rgba(0,0,0,0.2);
+        z-index: 1;
+        // &__tabs {
+        //     position: relative;
+        //     width: 100%;
+        //     height: 40px;
+        //     border-bottom: 3px solid #EDEDEC;
+        //     & > li {
+        //         position: relative;
+        //         display: inline-block;
+        //         list-style: none;
+        //         & > a {
+        //             border-top: 4px solid #fbd73e;
+        //             position: relative;
+        //             display: block;
+        //             text-align: center;
+        //             padding-top: 6px;
+        //             text-decoration: none;
+        //             margin-left: 25px;
+        //             font-size: 14px;
+        //         }
+        //     }
+        // }
+        &__text {
+            margin: 5px 0 5px 10px;
+            // border-left: 2px solid #E3E3E3;
+            font-size: 12px;
+            padding: 10px 0 10px 10px;
+            text-align: left;
+            padding-right: 15px;
+            color: #565656;
+        }
+    }
+}

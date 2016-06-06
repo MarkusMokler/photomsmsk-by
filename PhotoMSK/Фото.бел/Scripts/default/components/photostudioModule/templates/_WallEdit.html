@@ -1,0 +1,102 @@
+﻿<div class="post-editor">
+    <ul class="uk-tab uk-tab-grid role-show-when-post-edit" data-uk-tab="{connect:'#post-editor-tab'}" style="display: none;">
+        <li class="col--1-3"><a href="#"><i class="icon-chat"></i> Статус</a></li>
+        <li class="col--1-3"><a href="#"><i class="icon-film2"></i> Фото</a></li>
+        <li class="col--1-3"><a href="#"><i class="icon-film"></i> Видео</a></li>
+    </ul>
+
+    <ul id="post-editor-tab" class="uk-switcher uk-margin">
+        <li class="uk-panel-space-15" style="min-height: 83px;">
+            <textarea id="post-editor-input" class="wall-post-textarea" rows="2" placeholder="Что у Вас нового?"></textarea>
+        </li>
+        <li class="uk-panel-space-15" style="min-height: 83px;">
+            <div id="upload-drop" class="uk-placeholder text--center">
+                <i class="icon-"></i>
+                Загрузить фотографии можно тут... <a class="uk-form-file">выбрать файл...<input id="upload-select" type="file"></a>.
+            </div>
+
+            <div id="progressbar" class="uk-progress uk-hidden">
+                <div class="uk-progress-bar" style="width: 0%;">...</div>
+            </div>
+        </li>
+        <li class="uk-panel-space-15" style="min-height: 83px;">
+            <p class="uk-article-meta text--center">Укажите пожалуйста ссылку на видео</p>
+            <input class="border-radius col--8-10 VideoInput" type="url" placeholder="http://www.y....">
+            <button id="add-video-button" class="col--1-10 btn-sent button button-primary  text--center" type="button">О</button>
+        </li>
+    </ul>
+    <div class="wall-post-participants"></div>
+    <div id="post-editor-action" class="grid uk-panel-space-15 uk-animation-slide-top role-show-when-post-edit">
+       <!-- Участники -->
+        <div class="col--5-10 field-container uk-form-icon role-wall-participant-autocomplete">
+            <div class="post-editor">
+                <ul class="uk-tab uk-tab-grid role-show-when-post-edit" data-uk-tab="{connect:'#post-editor-tab'}" style="display: none;">
+                    <li class="col--1-3"><a href="#"><i class="icon-chat"></i> Статус</a></li>
+                    <li class="col--1-3"><a href="#"><i class="icon-film2"></i> Фото</a></li>
+                    <li class="col--1-3"><a href="#"><i class="icon-film"></i> Видео</a></li>
+                </ul>
+
+                <ul id="post-editor-tab" class="uk-switcher uk-margin">
+                    <li class="uk-panel-space-15" style="min-height: 83px;">
+                        <textarea id="post-editor-input" class="wall-post-textarea" rows="2" placeholder="Что у Вас нового?"></textarea>
+                    </li>
+                    <li class="uk-panel-space-15" style="min-height: 83px;">
+                        <div id="upload-drop" class="uk-placeholder text--center">
+                            <i class="icon-"></i>
+                            Загрузить фотографии можно тут... <a class="uk-form-file">выбрать файл...<input id="upload-select" type="file"></a>.
+                        </div>
+
+                        <div id="progressbar" class="uk-progress uk-hidden">
+                            <div class="uk-progress-bar" style="width: 0%;">...</div>
+                        </div>
+                    </li>
+                    <li class="uk-panel-space-15" style="min-height: 83px;">
+                        <p class="uk-article-meta text--center">Укажите пожалуйста ссылку на видео</p>
+                        <input class="border-radius col--8-10 VideoInput" type="url" placeholder="http://www.y....">
+                        <button id="add-video-button" class="col--1-10 btn-sent button button-primary  text--center" type="button">О</button>
+                    </li>
+                </ul>
+                <div class="wall-post-participants"></div>
+                <div id="post-editor-action" class="grid uk-panel-space-15 uk-animation-slide-top role-show-when-post-edit">
+                    <!-- Участники -->
+                    <div class="col--5-10 field-container uk-form-icon role-wall-participant-autocomplete">
+                        <i class="icon-profile-male"></i>
+                        <input id="routes-autocomplete" type="text" placeholder="участники">
+                    </div>
+
+                    <!-- Отправить -->
+                    <div class="col--3-10  text--right">
+                        <button id="save-wall-button" class="btn-sent button button-primary  text--center" type="button">Отправить</button>
+                    </div>
+
+                </div>
+                <div class="attachment">
+                    <div class="youtube" style="display: none;">
+                        <iframe id="ytplayer" class="yuotube-video" type="text/html" width="420" height="236.25" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="vimeo" style="display: none;">
+                        <iframe class="vimeo-video" width="420" height="236.25" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
+                    <div id="photo-placeholder"></div>
+                </div>
+            </div>
+            <i class="icon-profile-male"></i>
+            <input id="routes-autocomplete" type="text" placeholder="участники">
+        </div>
+
+        <!-- Отправить -->
+        <div class="col--3-10  text--right">
+            <button id="save-wall-button" class="btn-sent button button-primary  text--center" type="button">Отправить</button>
+        </div>
+
+    </div>
+    <div class="attachment">
+        <div class="youtube" style="display: none;">
+            <iframe id="ytplayer" class="yuotube-video" type="text/html" width="420" height="236.25" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="vimeo" style="display: none;">
+            <iframe class="vimeo-video" width="420" height="236.25" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+        <div id="photo-placeholder"></div>
+    </div>
+</div>

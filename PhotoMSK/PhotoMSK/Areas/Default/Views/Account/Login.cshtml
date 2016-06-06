@@ -1,0 +1,126 @@
+﻿@model PhotoMSK.Areas.Default.ViewData.Account.LoginViewData
+
+@{
+    ViewBag.Title = "PhotoMSK";
+    Layout = "~/Areas/Default/Views/Shared/_LayoutRegistration.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="l-side">
+        <div class="uk-container uk-container-center pad-top-60">
+            <div class="uk-grid">
+                <div class="uk-width-large-3-10 uk-width-medium-5-10 uk-push-2-10 uk-width-small-1-1">
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                            <a href="~/">
+                                <img src="@Url.Content("~/Content/images/logo-black-big.png")" alt="PhotoMSK.by" />
+                            </a>
+                        </div>
+
+                        <div class="uk-width-1-1 pad-top-10">
+                            <h1 class="pad-top-20 uk-margin-bottom-remove">Печалька :(</h1>
+                            <small class="uk-text-muted">Вы, наверное, неправильно ввели ваши данные для входа. Давайте попробуем еще раз...</small>
+                        </div>
+                        
+                        <p class="uk-margin">
+                            <span class="uk-text-muted">Либо <a class="green-color uk-link-line" href="@Url.Action("Index", "Register")">зарегистрируйтесь</a> на «PhotoMSK™»</span>
+                        </p>
+
+                        <div class="uk-width-1-1">
+                            <div class="uk-grid pad-top-20">
+
+                                <div class="uk-width-1-1">
+                                    <div class="orbullet">ЕЩЕ РАЗ</div>
+                                    <div class="orbullet-divider"></div>
+                                </div>
+
+                                <div class="uk-width-large-1-1 uk-width-small-1-1">
+                                    <label class="label-ms">Логин</label>
+                                    @Html.TextBoxFor(model => model.Item.UserName, new { @class = "input-msk uk-width-large-1-1 uk-width-small-1-1" })
+                                    @Html.ValidationMessageFor(model => model.Item.UserName)
+                                </div>
+
+                                <div class="uk-width-large-1-1 uk-width-small-1-1">
+                                    <label class="label-ms">Пароль</label>
+                                    @Html.PasswordFor(model => model.Item.Password, new { @class = "input-msk uk-width-large-1-1 uk-width-small-1-1" })
+                                    @Html.ValidationMessageFor(model => model.Item.Password)
+                                </div>
+
+                            </div>
+
+                            <div class="uk-grid pad-bottom-20">
+                                <div class="uk-width-1-1 uk-text-right">
+                                    <a class="reset" href="@Url.Action("Index", "Register")" style="border-right: 1px solid;">восстановить</a>
+                                    <a class="reset" href="@Url.Action("Index", "Home")">отмена</a>
+                                    <input type="submit" class="uk-form-button-small uk-button uk-button-success" value="Отправить">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+<div class="r-side uk-visible-large">
+    <div class="promo">
+        <h1 class="promo-main-head"><span class="promo-head-part">Глобальный </span> <br>сайт для фото</h1>
+        <div class="promo-content">
+            <div class="promo-message">
+                <div class="promo-message-decore">
+                    <span class="date">@DateTime.Now.Day <sup>@DateTime.Now.ToString("MMMM")</sup></span>
+                    <p class="city">
+                        PhotoMSK — это место, где фотографы могут обмениваться опытом одновременно приобретая новый!
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+@*<div class="uk-container uk-container-center pad-top pad-bottom-60">
+        <div class="uk-grid">
+            <div class="uk-width-large-4-10 uk-push-3-10 uk-width-small-1-1">
+
+                @using (@Html.BeginForm())
+                {
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-1-1 uk-text-center">
+                            <h1>Вход на сервис «PhotoMSK»</h1>
+                            <h4>введите ваш логин и пароль...</h4>
+                            <hr class="small-line" />
+                        </div>
+
+                        <div class="uk-width-large-6-10 uk-push-2-10 uk-width-small-1-1">
+                            <div class="field-container">
+                                <label>Логин</label>
+                                <input type="text" id="UserName" name="UserName" />
+                            </div>
+                            <div class="field-container">
+                                <label>Пароль</label>
+                                <input type="password" id="Password" name="Password" placeholder="****" />
+                            </div>
+
+                            <input type="submit" class="btn border-500" value="Войти">
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>*@

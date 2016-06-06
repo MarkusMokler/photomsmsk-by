@@ -1,0 +1,110 @@
+/* ========================================================================
+   Component: Booking
+ ========================================================================== */
+.activity__header {
+  padding: 10px 15px;
+  margin: 15px -15px 0 -15px;
+}
+.activity__header__day {
+  display: inline-block;
+  border-right: 1px solid #ddd;
+  padding-right: 10px;
+  margin-right: 10px;
+}
+.activity__header__list {
+  display: inline-block;
+}
+.activity__header__list li {
+  display: inline-block;
+  font-size: 12px;
+}
+.activity__header__list li + li {
+  padding-left: 10px;
+}
+.activity__header__accordion {
+  display: inline-block;
+  float: right;
+}
+.activity__sort {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+  margin-bottom: 10px;
+}
+.activity__status {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 20px;
+}
+.activity__status__badge {
+  position: absolute;
+  display: block;
+  bottom: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  background: #FF8100;
+  border-radius: 8px;
+  box-shadow: 0 0 0 2px #fff;
+}
+.activity__status__event img {
+  float: left;
+  margin-right: 20px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50px;
+}
+.activity__status__event > p {
+  padding-top: 5px;
+}
+.activity__status__avatar {
+  position: relative;
+  float: left;
+}
+.activity__status__avatar--empty {
+  position: relative;
+  background: #ddd;
+  float: left;
+  width: 35px;
+  height: 35px;
+  margin-right: 20px;
+  border-radius: 50px;
+  font-family: 'icomoon';
+}
+.activity__status__avatar--empty:after {
+  content: "\e99c";
+  position: absolute;
+  font-size: 20px;
+  line-height: 35px;
+  color: #fff;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.activity__status__avatar__admin {
+  position: absolute;
+  border-radius: 50px;
+  bottom: -2px;
+  left: 25px;
+  width: 20px !important;
+  height: 20px !important;
+  box-shadow: 0 0 0 2px #fff;
+  z-index: 5;
+  font-family: 'icomoon';
+}
+.activity__status__avatar__admin--empty {
+  background: #C5C5C5;
+}
+.activity__status__avatar__admin--empty:after {
+  content: "\e7fd";
+  position: absolute;
+  font-size: 14px;
+  line-height: 20px;
+  color: #fff;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.activity__status__name {
+  text-transform: capitalize;
+}

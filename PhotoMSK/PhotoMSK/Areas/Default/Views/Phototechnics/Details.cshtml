@@ -1,0 +1,230 @@
+﻿@model PhotoMSK.Data.Models.Routes.Phototechnics
+@{
+    ViewBag.Title = "Фотоаппарат " + Model.Name;
+    ViewBag.Description = Model.Description;
+    ViewBag.Image = Model.ImageUrl;
+
+    var photo = Model.Photos.OrderByDescending(x => x.UploadDate).FirstOrDefault();
+
+
+    string imageLink = Url.Content("~/Content/images/no-avatar.png");
+
+    if (photo != null) { imageLink = photo.Url; }
+
+}
+
+@section scripts
+{
+    @Scripts.Render("~/Scripts/marked")
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+<div class="uk-main-page-body">
+    <div class="uk-page-bar-panel uk-hidden-small">
+        <div class="uk-container uk-container-center">
+            <ul class="uk-margin-remove uk-subnav uk-subnav-line uk-subnav-breadcrumb">
+                <li><a href="/">Главная</a></li>
+                <li><a href="@Url.Action(" index", "PhototechnicsViewModel" )">Фототехника / прокат</a></li>
+                <li class="uk-active">
+                    <a href="#">@Model.Name</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="uk-container uk-container-center">
+        <div class="uk-grid uk-grid-small uk-grid-divider">
+            <div class="uk-width-2-10 uk-hidden-small">
+                <div class="uk-text-center">
+                    <p class="uk-h2 uk-margin-remove">
+                        <span class="uk-rating-total">@string.Format("{0:##.#}", Model.Raiting.Total)</span>
+                    </p>
+                    <a href="#" class="uk-link-reset uk-link-dotted">
+                        <small class="uk-text-muted"><strong>12</strong> отзывов</small>
+                    </a>
+                </div>
+            </div>
+            <div class="uk-width-8-10 uk-width-large-8-10 uk-width-small-1-1">
+                <ul class="uk-subnav uk-subnav-line phototechnics-firms uk-margin-remove uk-hidden-small">
+                    <li>
+                        <a href="#">
+                            Canon
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Nikon
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Sony
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Fujifilm
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Samsung
+                        </a>
+                    </li>
+                </ul>
+                <div>
+                    <h1 class="uk-phototechnics-title">Цифровой фотоаппарат <strong>@Model.Name</strong></h1>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-container uk-container-center pad-top-20">
+        <div class="uk-grid" data-uk-grid-margin>
+            <div class="uk-width-large-7-10 uk-width-small-1-1">
+                <div class="uk-panel uk-panel-space uk-wall-box-body">
+                    <div class="uk-grid">
+                        <div class="uk-width-large-2-10 uk-width-small-1-1 uk-width-1-1">
+                            <img src="@Model.ImageUrl" />
+                        </div>
+                        <div class="uk-width-8-10">
+                            <span class="uk-text-muted">@Model.Description</span>
+                            <ul class="uk-subnav">
+                                <li>
+                                    <a href="#" class="uk-h3 bold">
+                                        @foreach (var price in Model.Prices)
+                                        {
+                                            <span>@price.Price</span><small>&nbsp;бел. руб.</small>
+                                        }
+                                    </a>
+                                </li>
+                                <li>
+                                    <button class="bold uk-button uk-button-reviews uk-button-reviews-warning uk-button-reviews-warning-border uk-width-1-1">Сравнить цены</button>
+                                </li>
+                                <li>
+                                    <span>@Model.Prices.Count предложений</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                            <ul class="uk-subnav uk-subnav-menu" data-uk-switcher="{connect:'#subnav-pill-content-1'}">
+                                <li class="uk-active"><a href="#">Описание</a></li>
+                                @*
+                                    <li><a href="#">Фото</a></li>
+                                    <li><a href="#">Отзывы</a></li>*@
+                                <li><a href="#">На технику снимают</a></li>
+                                <li><a href="#">Обзоры техники</a></li>
+                            </ul>
+                            <ul id="subnav-pill-content-1" class="uk-switcher">
+                                <li class="uk-active">
+                                    @Html.Partial("~/Areas/Default/Views/PhototechnicsViewModel/_PhototechnicsViewModelDescription.cshtml", Model)
+                                </li>
+                                <li>
+                                    @Html.Partial("~/Areas/Default/Views/PhototechnicsViewModel/_PhototechnicsViewModelPhotos.cshtml", Model)
+                                </li>
+                                <li>
+                                    @Html.Partial("~/Areas/Default/Views/PhototechnicsViewModel/_PhototechnicsViewModelReviews.cshtml", Model)
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-large-3-10 uk-width-small-1-1">
+                <div>
+                    <h2>Магазины</h2>
+                    <hr class="small-line">
+                    <ul class="uk-list">
+                        @foreach (var item in Model.Prices.Take(1))
+                        {
+                            <li class="uk-shop-first">
+                                <div class="uk-grid uk-grid-small uk-grid-width-1-2">
+                                    <div>
+                                        <a href="#" class="uk-link-reset">
+                                            <span class="uk-h2 bold" style="color: #F59500;">
+                                                @(item.Price * item.Photoshop.CurencyValue)&nbsp;<small>руб.</small>
+                                            </span>
+                                            @*<p class="uk-margin-remove">
+                                                    <s class="uk-text-muted">
+                                                        @String.Format("{0:### ### ### ###}", (item.Price * item.Photoshop.CurencyValue)) руб.
+                                                    </s>
+                                                </p>*@
+                                        </a>
+                                        <ul class="uk-list uk-margin-top">
+                                            <li>
+                                                <a href="tel:+375296723333" class="uk-link-reset">+375 <b>29</b> 634-90-52</a><br>
+                                            </li>
+                                            <li>
+                                                <a href="tel:+375296723333" class="uk-link-reset">+375 <b>29</b> 634-90-52</a><br>
+                                            </li>
+                                            <li>
+                                                <a href="tel:+375296723333" class="uk-link-reset">+375 <b>29</b> 634-90-52</a><br>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="uk-text-center">
+                                        <a href="#">
+                                            <img src="@item.Photoshop.TeaserImage" class="uk-border-rounded" alt="@item.Photoshop.Name">
+                                        </a>
+                                        <a class="uk-link-reset" href="#">
+                                            <div class="uk-margin-top" style="color: #FFAF00;">
+                                                <i class="uk-icon-star"></i>
+                                                <i class="uk-icon-star"></i>
+                                                <i class="uk-icon-star"></i>
+                                                <i class="uk-icon-star"></i>
+                                                <i class="uk-icon-star"></i>
+                                            </div>
+                                        </a>
+                                        <p class="uk-margin-remove">
+                                            <a href="#" class="uk-text-muted uk-link-line">
+                                                240 отзывов
+                                            </a>
+                                        </p>
+                                        <ul class="quick-day-name uk-margin-top">
+                                            <li><a class="work" href="#"><small>Пн</small></a></li>
+                                            <li><a class="work" href="#"><small>Вт</small></a></li>
+                                            <li><a class="work" href="#"><small>Ср</small></a></li>
+                                            <li><a class="work" href="#"><small>Чт</small></a></li>
+                                            <li><a class="work" href="#"><small>Пн</small></a></li>
+                                            <li><a class="work" href="#"><small>Сб</small></a></li>
+                                            <li><a class="output" href="#"><small>Вс</small></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+                <div>
+                    <h2>Аксессуары</h2>
+                    <hr class="small-line">
+                    <ul class="uk-list uk-list-line">
+                        @for (int i = 0; i < 4; i++)
+                        {
+                            <li>
+                                <div class="uk-grid uk-grid-small">
+                                    <div class="uk-width-1-4">
+                                        <a href="#">
+                                            <img src="http://mdata.yandex.net/i?path=b0925112332_img_id6958890614442047716.jpeg&amp;size=1" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="uk-width-3-4">
+                                        <a class="uk-link-muted uk-text-truncate" href="#">Nikon 24-70mm f/2.8G ED AF-S Nikkor</a>
+                                        <p class="uk-text-small uk-margin-remove uk-text-muted">от <span>17 523 600 бел. руб.</span></p>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

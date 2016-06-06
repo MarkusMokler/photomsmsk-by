@@ -1,0 +1,152 @@
+<div class="content--admin">
+    <div>
+        <data-bread-crumbs />
+    </div>
+
+    <div class="container--fluid  ">
+        <div class="activity__sort">
+            <div class="grid grid--small">
+                <div class="col--large-3-10 col--medium-4-10">
+                    Баланс за
+                    <span uib-dropdown on-toggle="toggled(open)">
+                        <a href id="activity-stat" class="link link--dashed text--green" uib-dropdown-toggle>
+                            месяц
+                            <i class="text--small icon-chevron-down"></i>
+                        </a>
+                        <ul uib-dropdown-menu aria-labelledby="activity-stat">
+                            <li role="menuitem">
+                                <a data-msk-href>месяц</a>
+                            </li>
+                            <li role="menuitem">
+                                <a data-msk-href>2 месяца</a>
+                            </li>
+                            <li role="menuitem">
+                                <a data-msk-href>3 месяца</a>
+                            </li>
+                        </ul>
+                    </span>
+                </div>
+                <div class="col--large-5-10 col--medium-4-10">
+                    <!-- <a data-msk-href class="button button--small button--muted border--rounded active">Все</a>
+                    <a data-msk-href class="button button--small button--muted border--rounded">
+                        <i class="icon-phone text--green"></i>&nbsp;Входящие
+                    </a>
+                    <a data-msk-href class="button button--small button--muted border--rounded">
+                        <i class="icon-call_end text--red"></i>&nbsp;Неотвеченные
+                    </a> -->
+                </div>
+                <div class="col--large-2-10 col--medium-2-10">
+                    <div class="input__group">
+                        <input type="search" class="input input--search input--small border--rounded margin--reset col--1-1">
+                        <i class="icon-magnifier text--muted"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid--small margin--bottom-large">
+            <div class="col--2-3">
+                <div class="balance panel panel--box panel--white panel--shadow">
+                    <div class="balance__filter panel__teaser">
+                        Фильтр...
+                    </div>
+
+
+                    <div data-ng-repeat="week in balance">
+                        <div class="balance__now">
+                            <div class="balance__now--splite"></div>
+
+                            <div class="balance__now__sum">
+                                <span class="text--bold">{{week.startBalance | currency:"":0}}</span>&nbsp;<small class="text--small">руб.</small>
+                            </div>
+
+                            <div class="balance__week"><b>{{week.weekOfMonth}}</b><span class="text--muted">-яя неделя</span></div>
+                        </div>
+                        <div class="balance__day" data-ng-repeat="(key, activies) in week.groups" data-ng-init="dayTotal = week.startBalance">
+                            <!-- <div class="balance__day--splite"></div> -->
+                            <div class="balance__day--title">{{key}}</div>
+                            <div ng-repeat="activity in activies">
+                                <div class="balance__income" ng-if="activity.balanceLineType <= 2">
+                                    <p>
+                                        <span>{{activity.title}}</span>
+                                        <!-- <br> -->
+                                        <span class="text--small text--bold text--muted text--green">+{{activity.total | currency:"":0}}</span>
+                                    </p>
+                                </div>
+
+                                <div class="balance__outcome" ng-if="activity.balanceLineType>2">
+                                    <p>
+                                        <span>{{activity.title}}</span>
+                                        <!-- <br> -->
+                                        <span class="text--small text--bold text--muted text--red">{{activity.total | currency:"":0}}</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div popover data-ng-if="visibles[key]"></div>
+                            <button class="balance__new icon-add" data-ng-click="addNew(key)"></button>
+
+                            <div class="balance__day-end" data-ng-init="dayTotal = dayTotal + activity.total">
+                                {{getDayTotal(activies) | number}}
+                            </div>
+
+                            <!-- <div class="balance__total">
+                                <p class="balance__total__plus text--green">+6 623 000</p>
+                                <p class="balance__total__minus text--red">-38 600 000</p>
+                            </div> -->
+                            <div class="clear--fix"></div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="balance__day">
+                        <div class="balance__day--splite"></div>
+                        <div class="balance__day--title">28 мар</div>
+
+                        <div class="balance__income">
+                            <p>Аренда платьев</p>
+                            <p>Прокат декора</p>
+                        </div>
+
+                        <div class="balance__outcome">
+                            <p>Магазин</p>
+                        </div>
+                    </div> -->
+
+                </div>
+            </div>
+
+            <div class="col--1-3">
+                <div class="panel panel--box panel--white panel--shadow">
+                    <div>
+                        <p class="float--left margin--top-small">Частые операции</p>
+                        <p class="float--right">
+                            <a data-msk-href class="button button--mini border--rounded button--success">Доход</a>
+                            <a data-msk-href class="button button--mini border--rounded button--danger">Расход</a>
+                        </p>
+                        <div class="clear--fix"></div>
+                    </div>
+                    <hr>
+                    <ul ui-sortable="paymentOptions" class="apps-container screen floatleft" data-ng-model="list2">
+                        <li class="sortable__item">
+                            <i class="sortable__handle icon-menu"></i>
+                            <span>Комуналка</span>
+                            <div class="float--right">
+                                <span class="text--small text--red">-12 000 000</span>
+                                <!-- <i class="icon-trash button button--delete button--mini button--rounded"></i> -->
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script id="addNew.html" type="text/ng-template">
+        <div>
+            <h1>Работает</h1>
+            <hr />
+        </div>
+    </script>
+
+</div>

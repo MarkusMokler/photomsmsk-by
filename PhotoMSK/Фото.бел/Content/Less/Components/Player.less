@@ -1,0 +1,130 @@
+// out: ../../css/Components/Player.css, compress: true
+// Name:            Player
+// Description:     Defines styles for Player
+//
+// Component:       `player`
+//
+//
+// Element:         `player__*`
+//                  `player__*`
+//
+// Modifiers:       `player--*`
+//                  `player--*`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+
+@player-background:                         #fafbfc;
+@player-play-background:                    #577ca1;
+@player-status-background:                  #e1e8ee;
+@player-action-icon-color:                  #98AEC5;
+@player-action-icon-color-hover:            #577ca1;
+@player-status-slider-active-background:    #577ca1;
+@player-status-pointer-shadow:              rgba(87, 124, 161, 0.25);
+/* ========================================================================
+   Component: Player
+ ========================================================================== */
+.player {
+    float: left;
+    height: 28px;
+
+    // Element 'player__button'
+    &__button {
+        float: left;
+        padding-right: 10px;
+        cursor: pointer;
+    }
+
+    // Element 'player__play'
+    &__play {
+        width: 28px;
+        height: 28px;
+        color: #fff;
+        background: @player-play-background;
+        font-size: 20px;
+        line-height: 28px;
+        text-align: center;
+        border-radius: 100px;
+    }
+
+    // Element 'player__progress'
+    &__progress{
+        float: left;
+        min-width: 200px;
+        margin-right: 10px;
+    }
+
+    // Element 'player__title'
+    &__title{
+        height: 18px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    // Element 'player__status'
+    &__status{
+        position: relative;
+        width: 100%;
+        height: 2px;
+        padding: 5px 0;
+        border-radius: 10px;
+
+        // Element 'player__status-pointer'
+        &-pointer{
+            position: absolute;
+            left: 0;
+            background: @player-play-background;
+            height: 8px;
+            width: 8px;
+            top: 2px;
+            border-radius: 10px;
+            cursor: pointer;
+            opacity: 0;
+            box-shadow: 0 0 0 3px @player-status-pointer-shadow;
+            -o-transition: top 80ms linear, width 80ms linear, height 80ms linear, margin-left 80ms linear, opacity 160ms linear;
+            transition: top 80ms linear, width 80ms linear, height 80ms linear, margin-left 80ms linear, opacity 160ms linear;
+        }
+
+        // Element 'player__status-slider'
+        &-slider{
+            background: @player-status-background;
+            height: 2px;
+
+            &-active{
+                width: 0%;
+                height: 2px;
+                background: @player-status-slider-active-background;
+            }
+        }
+
+        &:hover{
+
+            & .player__status-pointer{
+                opacity: 1;
+                // -o-transition: top 80ms linear, width 80ms linear, height 80ms linear, margin-left 80ms linear, opacity 160ms linear;
+                // transition: top 80ms linear, width 80ms linear, height 80ms linear, margin-left 80ms linear, opacity 160ms linear;
+            }
+        }
+    }
+
+    // Element 'player__action'
+    &__action{
+        float: left;
+        min-width: 60px;
+
+        // Element 'player__action-title'
+        &-title{
+            height: 18px;
+
+            & > i{
+                color: @player-action-icon-color;
+                cursor: pointer;
+
+                &:hover{
+                    color: @player-action-icon-color-hover;
+                }
+            }
+        }
+    }
+}

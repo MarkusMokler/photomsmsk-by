@@ -1,0 +1,22 @@
+<div class="popover">
+    <a data-msk-href class="icon-cross "></a>
+    <div class="tab__header text--center">
+        <a data-msk-href class="tab__item" data-ng-class="{'active':line.type==2}" data-ng-click="line.type=2">Расход</a>
+        <a data-msk-href class="tab__item" data-ng-class="{'active':line.type==3}" data-ng-click="line.type=3">Доход</a>
+    </div>
+
+    <div class="margin--top">
+        <label class="label label--rounded">Название</label>
+        <input type="text" class="input input--small input--rounded col--1-1" placegolder="Название" data-ng-model="line.title" />
+    </div>
+
+    <div>
+        <label class="label label--rounded">Сумма</label>
+        <input type="text" class="input input--small input--rounded col--1-1" placegolder="Сумма" data-ng-model="line.total" />
+    </div>
+
+    <div class="text--center">
+        <hr>
+        <a data-msk-href class="button button--small button--success border--rounded col--1-1" data-ng-click="save()">Добавить</a>
+    </div>
+</div>

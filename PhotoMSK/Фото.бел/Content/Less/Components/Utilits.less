@@ -1,0 +1,327 @@
+// out: ../../css/Components/Utilits.css, compress: true
+// Name:            Utilits
+// Description:     All utilits styles for all elements on site
+//
+// ******************************************************************
+// Component:       `float`
+//
+// Modifiers:       `float--left`
+//                  `float--right`
+//
+// *************** Variables ********************
+// ~~ margin ~~
+@margin-padding--small: @margin-padding / 2;
+@margin-padding: 20px;
+@margin-pading--big: (@margin-padding / 2) + @margin-padding;
+
+/// Icon size
+@icon-small-font-size:                          150%;
+@icon-medium-font-size:                         200%;
+@icon-large-font-size:                          250%;
+
+@icon-small-vertical-align:                     -10%;
+@icon-medium-vertical-align:                    -16%;
+@icon-large-vertical-align:                     -22%;
+// ****************** Base ***********************
+
+// Elements 'clear'
+.clear--fix{
+    clear: both;
+}
+
+// Elements 'display'
+.display{
+
+    // Modificator 'display--block'
+    &--block{
+        display: block;
+    }
+
+    // Modificator 'display--inline-block'
+    &--inline-block{
+        display: inline-block;
+    }
+}
+
+// Elements 'float'
+.float {
+    &--left {
+        float: left;
+    }
+    &--right {
+        float: right;
+    }
+}
+
+.border--none{
+    border: none !important;
+}
+
+// Elements 'position'
+.position{
+    // Modificator 'position--relative'
+    &--relative{
+        position: relative;
+    }
+    // Modificator 'position--absolute'
+    &--absolute{
+        position: absolute;
+    }
+}
+// ******************************************************************
+// Component:       `text`
+//
+// Modifiers:       `text--left`
+//                  `text--right`
+//                  `text--center`
+//
+.text {
+    &--center {
+        text-align: center !important;
+    }
+    &--right {
+        text-align: right !important;
+    }
+    &--left {
+        text-align: left !important;
+    }
+}
+// ******************************************************************
+// Component:       `border`
+//
+// Modifiers:       `border--radius`
+//                  `border--rounded`
+//
+.border {
+    &--radius {
+        border-radius: 4px;
+    }
+    &--rounded {
+        border-radius: 500px !important;
+    }
+}
+// HR line
+.hr {
+    border-top: 2px solid #ddd;
+    &--small {
+        border-top: 1px solid #ddd;
+    }
+}
+
+// Element 'after-hover'
+
+.after-hover{
+
+    // Element 'after-hover__show'
+    &__show{
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s, opacity 0.2s linear;
+    }
+
+    // Action ':hover'
+    &:hover &__show{
+        visibility: visible;
+        opacity: 1;
+        transition: visibility 0s, opacity 0.2s linear;
+    }
+}
+
+// ******************************************************************
+// Component:       `margin`
+//
+// Modifiers:       `margin--top`
+//                  `margin--top-small`
+//                  `margin--top-mini`
+//
+//                  `margin--right-small`
+//                  `margin--right-mini`
+//
+//                  `margin--bottom`
+//
+//                  `margin--auto`
+//
+//                  `margin--v-5`
+//
+//                  `margin--reset`
+//
+.margin {
+    margin: @margin-padding 0 !important;
+
+    // Small
+    &--small{
+        margin: (@margin-padding / 2) 0 !important;
+    }
+    // Mini
+    &--mini{
+        margin: (@margin-padding / 4) 0 !important;
+    }
+
+    // Full-small
+    &--full-small{
+        margin: (@margin-padding / 2) !important;
+    }
+    // Full-mini
+    &--full-mini{
+        margin: (@margin-padding / 4) !important;
+    }
+
+    // Bottom
+    &--bottom {
+        margin: 0 0 @margin-padding !important;
+        &-large {
+            margin: 0 0 (@margin-padding * 2) !important;
+        }
+        &-small {
+            margin: 0 0 (@margin-padding / 2) !important;
+        }
+        &-mini {
+            margin: 0 0 (@margin-padding / 4) !important;
+        }
+    }
+    // Top
+    &--top {
+        margin: @margin-padding 0 0 0 !important;
+        &-large {
+            margin: (@margin-padding * 2) 0 0 0 !important;
+        }
+        &-medium {
+            margin: (@margin-padding * 1.5) 0 0 0 !important;
+        }
+        &-small {
+            margin: (@margin-padding / 2) 0 0 0 !important;
+        }
+        &-mini {
+            margin: (@margin-padding / 4) 0 0 0 !important;
+        }
+        &-reset {
+            margin-top: 0 !important;
+        }
+    }
+    // Right
+    &--right {
+        margin: 0 @margin-padding 0 0 !important;
+        &-small {
+            margin: 0 (@margin-padding / 2) 0 0;
+        }
+        &-mini {
+            margin: 0 (@margin-padding / 4) 0 0;
+        }
+    }
+    // Auto
+    &--auto{
+        margin: 0 auto !important;
+    }
+    // Vertical
+    &--v-5 {
+        margin: 5px 0;
+    }
+
+    // Vertical large
+    &--v-xlarge{
+        margin: (@margin-padding * 4) 0 !important;
+    }
+    &--v-large{
+        margin: (@margin-padding * 2) 0 !important;
+    }
+    &--v{
+        margin: @margin-padding 0 !important;
+    }
+    &--v-small{
+        margin: (@margin-padding / 2) 0 !important;
+    }
+    &--v-mini{
+        margin: (@margin-padding / 4) 0 !important;
+    }
+    // Reset
+    &--reset {
+        margin: 0 !important;
+    }
+}
+
+// Padding
+.padding{
+    // Modificator `padding--reset`
+    &--reset{
+        padding: 0 !important;
+    }
+}
+
+// Component:       `icon`
+//
+// Modifiers:       `icon--big`
+//                  `icon--small`
+//                  `icon--medium`
+//                  `icon--mini`
+//
+// ************** Variables **************
+
+@icon-height:                 15px;
+
+// ***************************************
+
+.icon{
+    position: relative;
+    display: inline-block;
+    height: @icon-height;
+    width: @icon-height;
+    line-height: @icon-height;
+    font-size: @icon-height;
+
+    // Modificators `icon--medium`
+    &--medium{
+        height: @icon-height+5;
+        width: @icon-height+5;
+        line-height: @icon-height+5;
+        font-size: @icon-height+5;
+    }
+
+    // Modificators `icon--big`
+    &--big{
+        height: @icon-height*2;
+        width: @icon-height*2;
+        line-height: @icon-height*2;
+        font-size: @icon-height*2;
+    }
+}
+
+/* Size modifiers  */
+
+.icon--small {
+    font-size: @icon-small-font-size;
+    vertical-align: @icon-small-vertical-align;
+}
+
+.icon--medium {
+    font-size: @icon-medium-font-size;
+    vertical-align: @icon-medium-vertical-align;
+}
+
+.icon--large {
+    font-size: @icon-large-font-size;
+    vertical-align: @icon-large-vertical-align;
+}
+
+// Element `cursor`
+
+.cursor{
+    // Modificator `cursor--pointer`
+    &--pointer{
+        cursor: pointer;
+    }
+}
+
+
+// Divider variation
+
+.divider{
+
+    // Modificator 'divider--wave'
+    &--wave{
+        width: 100%;
+        height: 9px;
+        background: url(/Content/images/svg/wave.svg);
+        border: none;
+        opacity: 0.2;
+    }
+}

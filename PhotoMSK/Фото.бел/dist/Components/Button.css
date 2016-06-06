@@ -1,0 +1,508 @@
+/* ========================================================================
+   Component: Button
+ ========================================================================== */
+/*
+ * Removes inner padding and border in Firefox 4+.
+ */
+.button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+/*
+ * 1. Correct inability to style clickable `input` types in iOS.
+ * 2. Remove margins in Chrome, Safari and Opera.
+ * 3. Remove borders for `button`.
+ * 4. Address `overflow` set to `hidden` in IE 8/9/10/11.
+ * 5. Correct `font` properties and `color` not being inherited for `button`.
+ * 6. Address inconsistent `text-transform` inheritance which is only inherit in Firefox and IE
+ * 7. Style
+ * 8. `line-height` is used to create a height
+ * 9. `min-height` is necessary for `input` elements in Firefox and Opera because `line-height` is not working.
+ * 10. Reset button group whitespace hack
+ * 11. Required for `a`.
+ */
+.button {
+  /* 1 */
+  -webkit-appearance: none;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+  border: none;
+  /* 4 */
+  overflow: visible;
+  /* 5 */
+  font: inherit;
+  color: #444;
+  /* 6 */
+  text-transform: none;
+  /* 7 */
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0 12px;
+  background: #fff;
+  vertical-align: inherit;
+  /* 8 */
+  line-height: 30px;
+  /* 9 */
+  min-height: 30px;
+  /* 10 */
+  font-size: 1rem;
+  /* 11 */
+  text-decoration: none;
+  text-align: center;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+}
+.button + .button {
+  margin-left: 5px;
+}
+.button:not(:disabled) {
+  cursor: pointer;
+}
+/*
+ * Hover
+ * 1. Apply hover style also to focus state
+ * 2. Remove default focus style
+ * 3. Required for `a` elements
+ */
+.button:hover,
+.button:focus {
+  color: #444;
+  /* 2 */
+  outline: none;
+  /* 3 */
+  text-decoration: none;
+}
+/* Active */
+.button:active,
+.button.active {
+  background-color: #ddd;
+  color: #444;
+}
+/* Color modifiers
+ ========================================================================== */
+/*
+ * Modifier: `button--radio`
+ */
+.button--radio {
+  box-shadow: 0 0 0 2px #dcdcdc;
+  border: none;
+  transition: all 200ms;
+}
+.button--radio:hover {
+  box-shadow: 0 0 0 2px rgba(24, 162, 75, 0.4);
+}
+.button--radio-unselect:hover {
+  box-shadow: 0 0 0 2px rgba(248, 102, 103, 0.7);
+}
+.button--radio.active {
+  box-shadow: 0 0 0 2px #18a24b;
+  background: #fff;
+}
+.button__radio__img {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+}
+.button__radio__img > img {
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+}
+.button__radio__img--selected:after {
+  content: '\e9af';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-family: 'icomoon';
+  font-size: 30px;
+  line-height: 60px;
+  color: #fff;
+  border-radius: 60px;
+  background: rgba(24, 162, 75, 0.7);
+}
+.button__radio__img--unselected:before {
+  content: 'занят';
+  position: absolute;
+  color: #fff;
+  bottom: 0;
+  text-align: center;
+  width: 60px;
+  font-size: 10px;
+  z-index: 10;
+}
+.button__radio__img--unselected:after {
+  content: '\e959';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-family: 'icomoon';
+  font-size: 30px;
+  line-height: 50px;
+  color: #fff;
+  border-radius: 60px;
+  background: rgba(248, 102, 103, 0.7);
+}
+.button__radio--success.active:after {
+  content: '';
+  position: absolute;
+}
+/*
+ * Modifier: `button--rounded`
+ */
+.button--rounded {
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  line-height: 32px;
+}
+.button--small.button--rounded {
+  padding: 0;
+  height: 27px;
+  width: 27px;
+  line-height: 27px;
+}
+.button--mini.button--rounded {
+  padding: 0;
+  height: 22px;
+  width: 22px;
+  line-height: 22px;
+}
+/*
+ * Modifier: `button--delete`
+ */
+.button--delete {
+  background: transparent;
+  border-color: rgba(248, 102, 103, 0.6) !important;
+  color: rgba(248, 102, 103, 0.6) !important;
+  transition: all 200ms;
+}
+.button--delete:hover {
+  background: #f86667;
+  color: #fff !important;
+  border-color: #f86667;
+}
+/*
+ * Modifier: `button--primary`
+ */
+.button--primary {
+  background-color: #00a8e6;
+  color: #fff;
+  border-color: #00a8e6;
+}
+/* Hover */
+.button--primary:hover,
+.button--primary:focus {
+  background-color: #35b3ee;
+  color: #fff;
+}
+/* Active */
+.button--primary:active,
+.button--primary.active {
+  background-color: #0091ca;
+  color: #fff;
+}
+/*
+ * Modifier: `button--black`
+ */
+.button--black {
+  background-color: #000;
+  color: #fff;
+  border-color: #000;
+}
+/* Hover */
+.button--black:hover,
+.button--black:focus {
+  background-color: #000;
+  color: #fff;
+}
+/* Active */
+.button--black:active,
+.button--black.active {
+  background-color: #000;
+  color: #fff;
+}
+/*
+ * Modifier: `button--success`
+ */
+.button--success {
+  background-color: #18a24b !important;
+  color: #fff !important;
+  border-color: #18a24b !important;
+}
+.button--yellow {
+  background-color: #fbd73e !important;
+  color: #424242 !important;
+  font-weight: 500;
+}
+/* Hover */
+.button--success:hover,
+.button--success:focus {
+  background-color: #18a24b !important;
+  color: #fff !important;
+}
+/* Active */
+.button--success:active,
+.button--success.active {
+  background-color: rgba(24, 162, 75, 0.8) !important;
+  color: #fff !important;
+}
+/*  Footer */
+.button--footer {
+  min-height: 60px;
+  background: #eee;
+  font-size: 20px;
+  line-height: 24px;
+  border: 0;
+  border-radius: 0;
+}
+/*
+ * Modifier: `button--danger`
+ */
+.button--danger {
+  background-color: #ed5642;
+  border-color: #ed5642;
+  color: #fff;
+}
+/* Hover */
+.button--danger:hover,
+.button--danger:focus {
+  background-color: #EC452F;
+  color: #fff;
+}
+/* Active */
+.button--danger:active,
+.button--danger.active {
+  background-color: #F16A58;
+  color: #fff;
+}
+/*
+ * Modifier: `button--danger`
+ */
+.button--warning {
+  background-color: #ff4729;
+  border-color: #ff4729;
+  color: #fff;
+}
+/* Hover */
+.button--warning:hover,
+.button--warning:focus {
+  background-color: #ff5d43;
+  color: #fff;
+}
+/* Disabled state
+ * Overrides also the color modifiers
+ ========================================================================== */
+/* Equal for all button types */
+.button:disabled {
+  background-color: #f5f5f5;
+  color: #999;
+}
+/* Modifier: `button--muted`
+ ========================================================================== */
+/* Reset */
+.button--muted,
+.button--muted:hover,
+.button--muted:focus,
+.button--muted:active,
+.button--muted.active,
+.button--muted:disabled {
+  border-color: transparent;
+  background: rgba(228, 228, 228, 0.4);
+}
+.button--muted:hover,
+.button--muted:hover:hover,
+.button--muted:focus:hover,
+.button--muted:active:hover,
+.button--muted.active:hover,
+.button--muted:disabled:hover {
+  background: rgba(228, 228, 228, 0.7);
+}
+.button--muted.active,
+.button--muted:hover.active,
+.button--muted:focus.active,
+.button--muted:active.active,
+.button--muted.active.active,
+.button--muted:disabled.active {
+  background: #e4e4e4;
+}
+/* Modifier: `button--link`
+ ========================================================================== */
+/* Reset */
+.button--link,
+.button--link:hover,
+.button--link:focus,
+.button--link:active,
+.button--link.active,
+.button--link:disabled {
+  border-color: transparent;
+  background: none;
+}
+/* Color */
+.button--link {
+  color: #07D;
+}
+.button--link:hover,
+.button--link:focus,
+.button--link:active,
+.button--link.active {
+  color: #059;
+  text-decoration: underline;
+}
+.button--link:disabled {
+  color: #999;
+}
+/* Focus */
+.button--link:focus {
+  outline: 1px dotted;
+}
+/* Size modifiers
+ ========================================================================== */
+.button--mini {
+  min-height: 20px;
+  padding: 0 6px;
+  line-height: 20px;
+  font-size: 11px;
+}
+.button--small {
+  min-height: 25px;
+  padding: 0 10px;
+  line-height: 25px;
+  font-size: 12px;
+}
+.button--large {
+  min-height: 40px;
+  padding: 0 15px;
+  line-height: 40px;
+  font-size: 1rem;
+}
+.button--upload {
+  padding: 10px 25px;
+  height: 4rem;
+  line-height: 26px;
+  font-weight: 500;
+  color: #a7a69f;
+  border-radius: 2rem;
+  border: 1px solid #ddddd8;
+}
+/* Sub-object `button__group`
+ ========================================================================== */
+/*
+ * 1. Behave like buttons
+ * 2. Create position context for dropdowns
+ * 3. Remove whitespace between child elements when using `inline-block`
+ * 4. Prevent buttons from wrapping
+ * 5. Remove whitespace between child elements when using `inline-block`
+ */
+.button__group {
+  width: 100%;
+  margin: 0;
+  /* 1 */
+  display: inline-block;
+  vertical-align: middle;
+  /* 2 */
+  position: relative;
+  /* 3 */
+  font-size: 0.001px;
+  /* 4 */
+  white-space: nowrap;
+}
+.button__group > * {
+  display: inline-block;
+}
+/* 5 */
+.button__group .button {
+  vertical-align: top;
+}
+.button__group > .button:first-child,
+.button__group > div:first-child .button {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.button__group > .button:last-child,
+.button__group > div:last-child .button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.button__group > .button:nth-child(n+2),
+.button__group > div:nth-child(n+2) .button {
+  margin-left: -1px;
+}
+/* Sub-object: `button__dropdown`
+ ========================================================================== */
+/*
+ * 1. Behave like buttons
+ * 2. Create position context for dropdowns
+ */
+.button__dropdown {
+  /* 1 */
+  display: inline-block;
+  vertical-align: middle;
+  /* 2 */
+  position: relative;
+}
+/* ========================================================================
+   Component: Link
+ ========================================================================== */
+/*
+ * Removes inner padding and border in Firefox 4+.
+ */
+.link {
+  outline: none;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px dashed;
+}
+.link:hover {
+  text-decoration: none;
+}
+.link + .link {
+  margin-left: 20px;
+}
+.link--blank {
+  border: 1px solid;
+}
+.calendar__hall__button {
+  position: relative;
+  width: 70px;
+  display: inline-block;
+  margin: 0 10px 10px 0;
+  text-align: center;
+  cursor: pointer;
+}
+.calendar__hall__button > a {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 100px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: inset 0 0 0px 3px #fbd73e;
+  overflow: hidden;
+}
+.calendar__hall__button__overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.6;
+}
+.calendar__hall__button__overlay--icon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  font-size: 30px;
+  line-height: 50px;
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}

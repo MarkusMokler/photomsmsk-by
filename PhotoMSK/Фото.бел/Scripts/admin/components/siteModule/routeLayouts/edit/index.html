@@ -1,0 +1,32 @@
+﻿<div class="content--admin">
+
+    <div><data-bread-crumbs /></div>
+
+    <div class="clear-fix"></div>
+    <div class="container--fluid-widget">
+        <div class="grid">
+            <div class="col--1-1">
+                <div class="panel panel--box panel--white panel--shadow">
+                    <div class="panel__top-bar">
+                        <div class="panel__top-bar__title">
+                            Название: {{rpLayout.name}}
+                        </div>
+                        <div class="panel__top-bar__action">
+                            <a data-msk-href data-ng-click="updateRoutePageLayout()" class="button button--mini button--success icon-check"> Обновить</a>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="col--1-1">
+                            <div>
+                                <data-html-viewer code="rpLayout.layout.content" page="rpLayout"></data-html-viewer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <widget-bar></widget-bar>
+</div>

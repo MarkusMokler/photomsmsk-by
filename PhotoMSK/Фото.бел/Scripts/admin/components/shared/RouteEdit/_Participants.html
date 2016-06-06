@@ -1,0 +1,93 @@
+<div class="content--admin">
+
+    <div><data-bread-crumbs/></div>
+
+    <div class="container--fluid">
+
+        <div class="activity__sort margin--bottom-small">
+            <div class="grid grid--small">
+                <div class="col--large-7-10 col--medium-7-10">
+                    <p class="activity__sort__text">
+                        Персонал
+                        <a data-msk-href class="link link--dotted text--green">активный
+                            <i class="text--small icon-chevron-down"></i>
+                        </a>
+                    </p>
+                </div>
+                <div class="col--large-1-10 col--medium-1-10">
+                    <a data-msk-href class="button button--small button--success border--rounded" data-ng-click="showModal()">Добавить</a>
+                </div>
+                <div class="col--large-2-10 col--medium-2-10">
+                    <div class="input__group">
+                        <input type="search" class="input input--search input--small border--rounded margin--reset col--1-1">
+                        <i class="icon-magnifier text--muted"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel--space panel--white panel--shadow">
+            <div class="grid">
+                <div class="col--1-1">
+
+                    <div><data-admin-participants-page/></div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal" data-ng-class="{'open' : isModalShow}">
+    <div class="modal__dialog">
+        <a data-msk-href class="modal__close icon-cross-circle" data-ng-click="showModal()"></a>
+        <section class="modal__header text--center">
+            <p class="text--h2 margin--bottom-small">Соберите вашу команду</p>
+            <p class="text--small text--muted margin--bottom">найдите того, кто будет в вашей команде</p>
+            <i class="modal__header__icon icon-magnifier"></i>
+        </section>
+        <section class="margin--top">
+            <!-- <div class="validation-summary-valid" data-valmsg-summary="true">
+                <ul>
+                    <li style="display:none"></li>
+                </ul>
+            </div> -->
+            <div class="col--large-1-2 margin--auto">
+                <label class="label">Номер телефона</label>
+                <input class="input col--1-1" data-ng-keyup="findByphone()" data-ng-model="newAdminPhone" placeholder="+375">
+                <span class="field-validation-valid" data-valmsg-for="UserName" data-valmsg-replace="true"></span>
+            </div>
+        </section>
+
+        <ul class="participants__list participants__list--horizontal margin--top-small">
+            <li><img src="https://yt3.ggpht.com/-_BbWqmoBET8/AAAAAAAAAAI/AAAAAAAAAAA/SkZ3LWtBrno/s100-c-k-no/photo.jpg" class="border--rounded avatar avatar--large"><span class="badge icon-check"></span></li>
+            <li><img src="http://lamcdn.net/lookatme.ru/post-image/ys2j7Vy6-FELXNY5ObPWpw-thumbnail.jpg" class="border--rounded avatar avatar--large"><span class="badge icon-check"></span></li>
+            <li><img src="http://lamcdn.net/lookatme.ru/post-image/brScdUTAdML6y4QiHu7OoQ-thumbnail.jpg" class="border--rounded avatar avatar--large"><span class="badge icon-check"></span></li>
+            <li><img src="http://avatar2.ru/data/thumbnails/3/girl10.jpg" class="border--rounded avatar avatar--large"><span class="badge icon-check"></span></li>
+            <li><span class="avatar avatar--large avatar--dashed">5</span></li>
+            <li><span class="avatar avatar--large avatar--dashed">6</span></li>
+        </ul>
+
+        <section class="panel panel--box panel--white panel--dashed margin--top">
+            <ul class="list list--line list--vertical">
+                <li class="list__item cursor--pointer" data-ng-repeat="participant in newParticipants" data-ng-click="selectNewAdmin(participant)">
+                    <div data-ng-class="{'list__item--selected-full' : participant.isActive}"></div>
+                    <img class="border--rounded avatar float--left margin--right-small" data-ng-src="{{participant.userPhoto}}" data-ng-if="participant.userPhoto != null" data-ng-cloak>
+                    <span class="avatar avatar--empty float--left margin--right-small" data-ng-if="participant.userPhoto == null"></span>
+
+                    <div class="text--truncate">
+                        <p class="link--reset" data-ng-bind-template="{{participant.lastName}} {{participant.firstName}}" data-ng-cloak></p>
+                        <p class="margin--reset">
+                            <small class="text--small text--muted">{{participant.userPhone}}</small>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section class="modal__footer text--center">
+            <button class="button button--footer button--success col--1-1" data-ng-click="saveNewAdmin()">Добавить администратора</button>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,113 @@
+<div class="content--admin">
+
+    <div><data-bread-crumbs /></div>
+
+    <div id="online-booking-calendar" class="container--fluid">
+        <div class="grid grid--small">
+            <div class="col--2-10">
+                <p class="text--h2">Техника</p>
+                <hr />
+                <a href="admin/photorent/{{routeShortcut}}/prices" class="button">Назад</a>
+                <data-admin-rent-search shortcut="routeShortcut"/>
+            </div>
+            <div class="col--6-10">
+                <p class="text--h2">Добавить оборудование в аренду</p>
+                <hr />
+                <div class="panel panel--box panel--white panel--shadow">
+                    <table class="table table--middle table--hover text--center">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Имя
+                                </td>
+                                <td>
+                                    <div angucomplete-alt remote-url={{url}}
+                                         placeholder="Полное наименование..."
+                                         pause="500"
+                                         selected-object="selected"
+                                         remote-url-data-field="elements"
+                                         title-field="name"
+                                         image-field="image"
+                                         model="results"
+                                         remote-url-request-formatter="remoteUrlRequestEn"
+                                         input-class="input col--large-1-1 col--small-1-1 ui-autocomplete-input"
+                                         no-results="noResults"
+                                         searching="searching"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Описание
+                                </td>
+                                <td>
+                                    <input class="input col--1-1" data-ng-model="view.shortDescription" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Стоимость
+                                </td>
+                                <td>
+                                    <input class="input col--1-1" data-ng-model="view.price" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Стоимость на час
+                                </td>
+                                <td>
+                                    <input class="input col--1-1" data-ng-model="view.hourlyPrice" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Стоимость на пол дня
+                                </td>
+                                <td>
+                                    <input class="input col--1-1" data-ng-model="view.halfDayPrice" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Стоимость на день
+                                </td>
+                                <td>
+                                    <input class="input col--1-1" data-ng-model="view.daylyPrice" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Стоимость на выходной
+                                </td>
+                                <td>
+                                    <input class="input col--1-1" data-ng-model="view.hollidayPrice" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Стоимость на неделю
+                                </td>
+                                <td>
+                                    <input class="input col--1-1" data-ng-model="view.weeklyPrice" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Стоимость на месяц
+                                </td>
+                                <td>
+                                    <input class="input col--1-1" data-ng-model="view.monthlyPrice" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="text--center">
+                                    <a msk-href data-ng-click="addRent()" class="button button--success border--rounded col--1-2">Добавить</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

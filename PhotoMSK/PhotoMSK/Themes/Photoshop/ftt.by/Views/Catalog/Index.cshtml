@@ -1,0 +1,47 @@
+﻿@using Newtonsoft.Json.Linq
+@using PhotoMSK.Extensiolns
+@model PhotoMSK.Areas.Default.ViewData.Catalog.VitrineViewData
+
+@section MainTopMenu
+{
+    @Html.Partial("~/Themes/Photoshop/ftt.by/Views/MainTopMenu/MainTopMenu.cshtml")
+}
+
+@section TopA
+{
+    @Html.Partial("~/Themes/Photoshop/ftt.by/Views/Top-A/Maps.cshtml")
+}
+
+@section ToolbarR
+{
+    @Html.Partial("~/Themes/Photoshop/ftt.by/Views/Toolbar-R/Phones.cshtml")
+}
+
+@section ToolbarL
+{
+    @Html.Partial("~/Themes/Photoshop/ftt.by/Views/Toolbar-L/Logo.cshtml")
+}
+
+@section Footer
+{
+    @Html.Partial("~/Themes/Photoshop/ftt.by/Views/Footer/Footer.cshtml")
+}
+
+@section Main
+{
+    @Html.Partial("~/Themes/Photoshop/ftt.by/Views/Main/Catalog.cshtml")
+}
+
+@section scripts
+{
+    <script>
+    $(function() {
+        App.owner = '@Model.RouteID';
+        var item = @Model.ToJson();
+        item.technics =  @Model.Technics.ToJson();
+
+        var val = new App.Photoshop.Photoshop({model:item});
+        val.fetchSuccess(@Model.Technics.ToJson());
+    })
+    </script>
+}

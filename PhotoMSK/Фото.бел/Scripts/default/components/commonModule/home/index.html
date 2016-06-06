@@ -1,0 +1,33 @@
+﻿<div class="uk-main-page-body">
+    <div class="uk-page-bar-panel">
+        <div class="container container--center">
+            <ul class="margin--reset uk-subnav uk-subnav-line">
+                <li class="active"><a href="#">Популярные</a></li>
+                <li><a href="#">Фото дня</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container container--center">
+        <div class="grid">
+            <div class="col--1-1">
+                <a data-msk-href class="text--h2 text--bold link--reset link--line">Афиша событий</a>
+            </div>
+        </div>
+        @Html.Partial("_PartialMasterclasses", Model.Masterclasses)
+    </div>
+    <div class="container container--center">
+        <div class="grid margin--large">
+            <div class="col--1-1">
+                <a href="#" class="text--h2 text--bold link--reset link--line">Публикации</a>
+            </div>
+        </div>
+        <ul id="main-page-content" class="uk-switcher">
+            <li class="active">
+                <div id="wall-placeholder"></div>
+            </li>
+            <li>
+                @Html.Partial("_PartialPhotoDay")
+            </li>
+        </ul>
+    </div>
+</div>

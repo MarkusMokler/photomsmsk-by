@@ -1,0 +1,124 @@
+<div data-ng-if="shoppingCartList.length!=0" class="panel panel--box panel--white">
+    <p class="text--h3 text--center margin--reset">
+        <i class="icon-cart text--muted"></i>
+        Ваш заказ
+    </p>
+    <hr class="margin--mini">
+    <ul id="booking" class="uk-list uk-list-line near-places">
+        <li data-ng-repeat="sc in shoppingCartList">
+            <div class="grid grid--small">
+                <div class="col--1-1">
+                    <div class="penalty__item border--none grid grid--collapse">
+                        <div class="penalty__item__days col--2-10">
+                            <span class="penalty__item__day margin--top-mini">{{sc.start | date:'dd':'UTC'}}</span>
+                            <small class="penalty__item__month">{{sc.start | date:'MMM':'UTC'}}</small>
+                        </div>
+                        <div class="penalty__item__times col--3-10">
+                            <p class="penalty__item__times__start margin--top-mini">
+                                <span>{{sc.start | date:'HH:mm':'UTC'}}</span>
+                            </p>
+                            <p class="penalty__item__times__end">
+                                <span>{{sc.end | date:'HH:mm':'UTC'}}</span>
+                            </p>
+                        </div>
+                        <div class="penalty__item__price col--4-10">
+                            <p class="margin--reset">{{sc.title}}</p>
+                            <p class="text--truncate">{{sc.summ | number}}</p>
+                            <small class="penalty__item__price__currency text--small text--muted">руб.</small>
+                        </div>
+                        <div class="penalty__item__action col--1-10 text--center">
+                            <p class="margin--top-small">
+                                <a class="text--h3 link--reset icon-cross-circle pink-color" data-ng-click="removeEventFromCart(item)"></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <p data-ng-if="item.allowOnlineBooking">
+        <hr class="small-line" />
+        <span class="text--h3 text--bold">Итого:</span>
+        <div class="text--h3 float--right">
+            <span>{{$cart.getTotal() | number}}</span>
+            <small class="text--muted text--small">руб.</small>
+        </div>
+    </p>
+
+    <div class="panel__footer text--center margin--top-large">
+        <pre data-ng-bind="message"></pre>
+        <button data-ng-click="tryBookHalls()" class="button button--yellow button--radius button--shadow button--footer border--rounded col--2-3">Забронировать</button>
+    </div>
+</div>
+
+<!-- <div data-ng-if="shoppingCartList.length == 0" class="panel panel--box panel--white text--center">
+    <p class="text--title margin--top-large">
+        Выберите время на календаре <br>
+        <i class="icon-cart text--muted"></i>
+    </p>
+</div> -->
+
+<div class="modal" data-ng-class="{'open' : showPhotographerModal}">
+    <div class="modal__dialog">
+        <a data-msk-href class="modal__close icon-cross-circle" data-ng-click="cancelBooking()"></a>
+        <section class="modal__header text--center">
+            <p class="text--h2 margin--bottom-small">
+                Выбранный профиль не является профилем фотографа. Укажите фотографа для съемки.<br /> Напоминаем, что вся ответсвенность лежит на человеке, арендовавшем зал.
+            </p>
+            <div class="activity__status__event">
+
+                <div class="activity__status__avatar activity__status__avatar--empty" data-ng-if="selectedUser.userPhoto == null"></div>
+                <br />
+
+            </div>
+        </section>
+        <span class="popover__penalty--blocked icon-lock"></span>
+        <div class="popover__penalty--border">
+            <div class="popover__penalty--content">
+                <div>
+                    <span class="label">Номер телефона фотографа</span>
+                    <div>
+                        <div angucomplete-alt
+                             remote-url={{usersByPhoneUrl}}
+                             id="PhotographerPhone"
+                             placeholder="+375"
+                             pause="500"
+                             selected-object="bookingPhotographer"
+                             title-field="firstName,lastName"
+                             description-field="userPhone"
+                             image-field="userPhoto"
+                             model="resultsPhotographer"
+                             remote-url-request-formatter="remoteUrlRequestEn"
+                             searching="photographerPhone"
+                             input-class="input col--large-1-1 col--small-1-1 ui-autocomplete-input"
+                             no-results="noResults"></div>
+                    </div>
+                </div>
+                <div id="client-placeholder" data-ng-if="bookingPhotographer">
+                    <div>
+                        <div class="booking-image text--center">
+                            <img class="border--rounded" data-ng-src="{{bookingPhotographer.originalObject.image}}">
+
+                            <p class="text--h2">{{bookingPhotographer.title}}</p>
+                            <p class="text--h4">{{bookingPhotographer.description}}</p>
+
+                            <p data-ng-if="bookingPhotographer.originalObject.clientType=='Photographer'" class="text--muted text--small">Фотограф</p>
+                            <p data-ng-if="bookingPhotographer.originalObject.clientType=='Photomodel'" class="text--muted text--small">Модель</p>
+                            <p data-ng-if="bookingPhotographer.originalObject.clientType=='Visagiste'" class="text--muted text--small">Визажист</p>
+                            <p data-ng-if="bookingPhotographer.originalObject.clientType=='Organizer'" class="text--muted text--small">Организатор</p>
+                            <p data-ng-if="bookingPhotographer.originalObject.clientType=='Stylist'" class="text--muted text--small">Стилист</p>
+                            <p data-ng-if="bookingPhotographer.originalObject.clientType=='Leading'" class="text--muted text--small">Ведущий</p>
+                            <p data-ng-if="bookingPhotographer.originalObject.clientType=='Designer'" class="text--muted text--small">Дизайнер</p>
+                            <p data-ng-if="bookingPhotographer.originalObject.clientType=='Client'" class="text--muted text--small">Клиент</p>
+                            <p class="text--small text--muted" data-ng-if="bookingPhotographer.originalObject.clientType == null"><i class="icon-block text--red"></i>&nbsp;Тип не определен</p>
+                        </div>
+                        <div id="penalty-list-placeholder"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="modal__footer text--center">
+            <button class="button button--footer button--success col--1-1" data-ng-click="tryBookHalls()">Забронировать</button>
+        </section>
+    </div>
+</div>

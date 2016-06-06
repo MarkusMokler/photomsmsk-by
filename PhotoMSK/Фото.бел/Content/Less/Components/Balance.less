@@ -1,0 +1,309 @@
+// out: ../../css/Components/Balance.css, compress: true
+// Name:            Balance
+// Description:     Defines styles for Balance
+//
+// Component:       `balance`
+//
+//
+// Elements:        `balance__filter`
+//                  `balance__income`
+//                  `balance__outcome`
+//                  `balance__new`
+//                  `balance__*`
+//
+// Modifiers:       `balance--*`
+//                  `balance--*`
+//                  `balance--*`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+@balance-filter-padding:                 15px;
+@balance-income-padding:                 30px;
+@balance-day-padding:                    30px;
+
+@balance-income-padding:                 30px;
+
+@balance-income-status-height:           8px;
+@balance-income-status-color:            #49ae65;
+
+@balance-outcome-status-color:           #EC452F;
+
+@balance-new-height:                     20px;
+
+/* ========================================================================
+   Component: Balance
+ ========================================================================== */
+.balance {
+
+    // Element 'balance__filter'
+    &__filter {
+        position: relative;
+        padding: @balance-filter-padding;
+        border-bottom: 1px solid #DEDEDE;
+        box-shadow: 0 8px 22px -10px rgba(0, 0, 0, 0.5);
+        z-index: 3;
+    }
+
+    // Element 'balance__income'
+    &__income {
+        position: relative;
+        width: 50%;
+        text-align: right;
+
+        & > p{
+            position: relative;
+            padding-right: @balance-income-padding;
+            margin: 10px 0;
+
+            &:before{
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 50%;
+                display: block;
+                width: 30px;
+                height: 1px;
+                border-top: 1px dashed @balance-income-status-color;
+            }
+
+            &:after{
+                content: '';
+                position: absolute;
+                right: -6px;
+                top: 50%;
+                display: inline-block;
+                background: #fff;
+                width: @balance-income-status-height;
+                height: @balance-income-status-height;
+                border-radius: @balance-income-status-height;
+                border: 2px solid @balance-income-status-color;
+                box-shadow: 0 0 0 3px #fff;
+                transform: translateY(-50%);
+            }
+
+            & span{
+                display: block;
+                border-right: 1px solid @balance-income-status-color;
+                padding-right: 10px;
+                padding-bottom: 3px;
+            }
+        }
+    }
+
+    // Element 'balance__outcome'
+    &__outcome {
+        position: relative;
+        width: 50%;
+        margin-left: 50%;
+        text-align: left;
+
+        & > p{
+            position: relative;
+            padding-left: @balance-income-padding;
+            margin: 10px 0;
+
+            &:before{
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                display: block;
+                width: 30px;
+                height: 1px;
+                border-top: 1px dashed @balance-outcome-status-color;
+            }
+
+            &:after{
+                content: '';
+                position: absolute;
+                left: -6px;
+                top: 50%;
+                display: inline-block;
+                background: #fff;
+                width: @balance-income-status-height;
+                height: @balance-income-status-height;
+                border-radius: @balance-income-status-height;
+                border: 2px solid @balance-outcome-status-color;
+                box-shadow: 0 0 0 3px #fff;
+                transform: translateY(-50%);
+            }
+
+            & span{
+                display: block;
+                border-left: 1px solid @balance-outcome-status-color;
+                padding-left: 10px;
+                padding-bottom: 3px;
+            }
+        }
+    }
+
+    // Element 'balance__now'
+    &__now{
+        position: relative;
+        text-align: center;
+        margin: 10px 0;
+
+        &--splite{
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            border-top: 1px solid #fbd73e;
+        }
+
+        &__sum{
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            text-align: center;
+            background: #fbd73e;
+            border-radius: 100px;
+
+            & > small{
+                color: #C5A003;
+            }
+        }
+    }
+
+    // Elemen 'balance__week'
+    &__week{
+        position: absolute;
+        background: #fff;
+        padding: 6px 15px;
+        border-radius: 20px;
+        border-right: 1px solid #FBD73E;
+        left: 0;
+        top: 50%;
+        font-size: 12px;
+        transform: translateY(-50%);
+    }
+
+    // Element 'balance__new'
+    &__new{
+        position: relative;
+        display: block;
+        padding: 0;
+        width: @balance-new-height;
+        height: @balance-new-height;
+        margin: 0 auto;
+        border-radius: @balance-new-height;
+        line-height: @balance-new-height - 3;
+        text-align: center;
+        background: #fff;
+        border: 2px solid #DDDDDD;
+        color: #8C8C8C;
+        outline: none;
+        cursor: pointer;
+    }
+
+    // Element 'balance__day'
+    &__day {
+        position: relative;
+        padding: @balance-day-padding 0 (@balance-day-padding / 2) 0;
+
+        &-end{
+            display: block;
+            margin: 20px auto 0 auto;
+            width: 100px;
+            text-align: center;
+            position: relative;
+            font-size: 12px;
+            font-weight: 500;
+            background: #fff;
+            border-radius: 100px;
+            padding: 5px;
+            border: 2px solid @balance-income-status-color;
+            color: @balance-income-status-color;
+        }
+
+        &:before{
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            border-right: 2px dotted #ddd;
+            transform: translateX(-50%);
+        }
+
+        &--title{
+            position: absolute;
+            top: 0;
+            right: 50%;
+            text-align: center;
+            display: inline-block;
+            padding: 3px 20px;
+            background: #fff;
+            border-radius: 100px;
+            border: 2px solid #ddd;
+            font-size: 12px;
+            box-shadow: 0 0 0 5px #fff;
+            transform: translateX(50%);
+            z-index: 2;
+        }
+
+        // &--splite{
+        //     position: absolute;
+        //     top: 10px;
+        //     left: 0;
+        //     right: 0;
+        //     border-top: 1px solid #ddd;
+        // }
+    }
+
+    // Element 'balance__total'
+    &__total{
+        position: relative;
+        margin-bottom: 10px;
+
+        & > p{
+            position: relative;
+            display: inline-block;
+            width: 50%;
+            margin: 0;
+            float: left;
+            font-weight: 700;
+            font-size: 75%;
+            padding-top: 10px;
+        }
+
+        // Element 'balance__total__plus'
+        &__plus{
+            text-align: right;
+            border-top: 1px solid @balance-income-status-color;
+            padding-right: (@balance-income-padding / 2);
+
+            &:before{
+                content: '';
+                position: absolute;
+                right: 0;
+                width: 6px;
+                height: 10px;
+                border-radius: 10px 0 0 10px;
+                background: @balance-income-status-color;
+            }
+        }
+
+        // Element 'balance__total__plus'
+        &__minus{
+            border-top: 1px solid @balance-outcome-status-color;
+            padding-left: (@balance-income-padding / 2);
+
+            &:before{
+                content: '';
+                position: absolute;
+                left: 0;
+                width: 4px;
+                height: 8px;
+                border-radius: 0 10px 10px 0;
+                background: #fff;
+                border-right-width: 2px;
+                border-top-width: 2px;
+                border-bottom-width: 2px;
+                border-left-width: 0;
+                border-color: @balance-outcome-status-color;
+            }
+        }
+    }
+}

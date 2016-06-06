@@ -1,0 +1,42 @@
+﻿@if (Model is PhotoMSK.Areas.Default.ViewData.Photostudio.DetailsViewData)
+{
+    var mm = (PhotoMSK.Areas.Default.ViewData.Photostudio.DetailsViewData)Model;
+
+    <div class="uk-page-bar-panel">
+        <div class="container container--center">
+            <ul class="uk-margin-remove uk-subnav uk-subnav-line uk-subnav-breadcrumb">
+                <li><a href="~/">Главная</a></li>
+                <li><a href="@Url.Action("Index","Photostudio")">Студии</a></li>
+                <li><a href="@Url.Action("Index", "Photostudio", new {id = @mm.Item.City})">{{mm.item.city}}</a></li>
+                <li class="uk-active">
+                    <span>{{mm.item.name}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+}
+
+@if (Model is PhotoMSK.Areas.Default.ViewData.Photostudio.IndexViewData)
+{
+    var mm = (PhotoMSK.Areas.Default.ViewData.Photostudio.IndexViewData)Model;
+
+    <div class="uk-page-bar-panel">
+        <div class="container container--center">
+            <ul class="uk-margin-remove uk-subnav uk-subnav-line uk-subnav-breadcrumb">
+                <li><a href="~/">Главная</a></li>
+                @if (!mm.IsCity)
+                {
+                    <li class="uk-active"><a href="@Url.Action("Index", "Photostudio")">Студии</a></li>
+                }
+                @if (@mm.IsCity)
+                {
+                    <li class="uk-active"><a href="@Url.Action("Index", "Photostudio")">Студии</a></li>
+                    <li class="uk-active"><a href="@Url.Action("Index", "Photostudio", new {id = @mm.City})">{{mm.city}}</a></li>
+                }
+                <li>
+                    <span>найдено <strong>@mm.Page.Elements.Count()</strong> шт.</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+}

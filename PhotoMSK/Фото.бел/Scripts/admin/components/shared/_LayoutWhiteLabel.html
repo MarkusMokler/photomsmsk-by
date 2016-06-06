@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    @Styles.Render("~/Content/uikit/style")
+    @Styles.Render("~/Content/fullcalendar")
+    @Styles.Render("~/Content/jquery-ui")
+    @Styles.Render("~/Content/owl.carousel.css")
+    @Styles.Render("~/Content/owl.theme.css")
+    @Styles.Render("~/Content/icomoon.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/site-style")
+    @Styles.Render("~/Content/icomoon")
+    @Styles.Render("~/Content/plastic-card")
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,700,900|Roboto+Condensed:300,400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+</head>
+<body class="admin-dashboard">
+  <!--  @Html.Partial("_LeftWhiteLabelMenu") -->
+
+    <nav class="uk-navbar admin-top-menu">
+        <div class="container container--center">
+            <ul class="uk-navbar-nav">
+                <li class="text--center">
+                    <a href="@this.Request.UrlReferrer" class="uk-navbar-nav-subtitle">
+                        <i class="icon-arrow-left"></i><div>назад</div>
+                    </a>
+                </li>
+                <li>
+                    <div>
+                        @Html.ActionLink("Вернуться на сайт", "Index", new { area = "Default", controller = "Home" }, new { @class = "button button-success" })
+                    </div>
+                </li>
+            </ul>
+
+            <div class="uk-navbar-flip">
+                <ul class="uk-navbar-nav">
+                    <li class="text--center">
+                        <a href="@Url.Action("Index",new {Controller="PlasticCard",Area="Admin"} )" class="uk-navbar-nav-subtitle"><i class="uk-icon-credit-card"></i><div>карточки</div></a>
+                    </li>
+                    <li class="text--center">
+                        <a href="@Url.Action("Index",new {Controller="Statistics",Area="Admin"} )" class="uk-navbar-nav-subtitle"><i class="icon-chart"></i><div>статистика</div></a>
+                    </li>
+                    <li class="text--center">
+                        <a href="#offcanvas-chat" data-uk-offcanvas="" class="uk-navbar-nav-subtitle"><i class="icon-chat"></i><div>сообщения</div></a>
+                    </li>
+                    <li class="uk-parent" data-uk-dropdown="">
+                        @Html.Action("UserInformation", new { Controller = "Home", Area = "Admin" })
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+
+    @RenderBody()
+
+    <div class="uk-mobile" style="display: none">
+        <div class="phone">
+            <div class="circle"></div>
+            <div class="circle-fill"></div>
+            <div class="img-circle"></div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/uikit/script")
+    @Scripts.Render("~/bundles/fullcalendar")
+    @Scripts.Render("~/Scripts/resize")
+    @Scripts.Render("~/Scripts/iconAnimate")
+    @Scripts.Render("~/Scripts/label-show")
+    @Scripts.Render("~/Scripts/ionrangeSlider")
+    @Scripts.Render("~/Scripts/owl.carousel.min.js")
+    <script src="@Url.Content("~/Scripts/jquery.signalR-2.1.2.min.js")"></script>
+    <script src="@Url.Content("~/signalr/hubs")"></script>
+    @Scripts.Render("~/Backbone")
+    @Html.Partial("~/Areas/Admin/Views/Shared/_Templates.cshtml")
+    @Scripts.Render("~/Admin")
+    @Scripts.Render("~/Scripts/Chart")
+    @RenderSection("Scripts", false)
+    <div id="config-settings" data-upload-url="@Html.GetUploadUrl()"></div>
+
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function () {
+                try {
+                    w.yaCounter25774385 = new Ya.Metrika({
+                        id: 25774385,
+                        webvisor: true,
+                        clickmap: true,
+                        trackLinks: true,
+                        accurateTrackBounce: true
+                    });
+                } catch (e) { }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+
+    <script>
+        $("#mobile-number").intlTelInput();
+    </script>
+    <script>
+        var myData = {
+            labels: ["Пн", "Вт", "Ср", "Чт", "Пн", "Сб", "Вс"],
+            datasets: [
+              {
+                  fillColor: "rgba(210,230,241,.7)",
+                  strokeColor: "rgba(220,220,220,1)",
+                  pointColor: "rgba(220,220,220,1)",
+                  pointStrokeColor: "#fff",
+                  data: [65, 59, 90, 81, 56, 55, 40]
+              },
+              {
+                  fillColor: "rgba(150,200,220,.5)",
+                  strokeColor: "rgba(90,180,215,1)",
+                  pointColor: "rgba(90,180,215,1)",
+                  pointStrokeColor: "#fff",
+                  data: [40, 48, 40, 40, 90, 27, 90]
+              }
+            ]
+        }
+
+        new Chart(document.getElementById("canvas").getContext("2d")).Line(myData);
+    </script>
+
+    <div style="margin-top: 80px;">
+    </div>
+</body>
+</html>

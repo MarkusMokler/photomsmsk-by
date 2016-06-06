@@ -1,0 +1,44 @@
+﻿@model PhotoMSK.Areas.Default.ViewData.Hall.HallPhotostudio
+
+<div class="uk-container uk-container-center">
+    <div class="uk-grid">
+        <h1 class="uk-width-1-1 pad-top-40">
+            Перечень залов фотостудии <strong>«PhotoLab STUDIO»</strong>
+        </h1>
+        <h3 class="uk-width-1-1 subtitle uk-text-muted">тут вы можете редактировать или добавлять новые залы...</h3>
+    </div>
+
+    <div class="uk-grid">
+        <div class="uk-width-1-1">
+            <ul class="uk-subnav">
+                <li class="uk-text-center">
+                    <a href="@Url.Action("Create", "Hall", new {shortcut = ViewBag.Shortcut}, null)">
+                        <i class="icon-circle-plus" style="font-size: 2em;"></i>
+                        <h4 class="uk-comment-meta">добавить</h4>
+                    </a>
+                </li>
+            </ul>
+            <hr />
+        </div>
+    </div>
+
+
+    <ul class="uk-grid pad-top-20" data-uk-grid-margin>
+        @foreach (var hall in Model.Page.Elements)
+        {
+            <li class="uk-width-medium-1-3">
+                <a href="#">
+
+                    <img src="@hall.TeaserImageUrl" alt="@hall.Description" />
+
+                </a>
+                <h2>@hall.Name</h2>
+                <p class="uk-article-meta">@hall.Description</p>
+                <div class="actions">
+                    @Html.ActionLink("Изменить", "Edit", "Hall", new { id = hall.ID }, new { @class = "btn-edit" })
+                    @Html.ActionLink("Удалить", "Edit", "Hall", new { id = hall.ID }, new { @class = "btn-del uk-float-right" })
+                </div>
+            </li>
+        }
+    </ul>
+</div>

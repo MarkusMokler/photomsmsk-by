@@ -1,0 +1,27 @@
+﻿@model PhotoMSK.Models.EditViewModel.Routes.RouteEditModel
+
+@* Social Network *@
+
+<div class="uk-width-1-1">
+    <div class="uk-section">
+        <span class="uk-section__counter">9</span>
+        <span class="uk-section__title">Дополнительно</span>
+    </div>
+</div>
+
+<div class="uk-width-6-10 uk-push-2-10">
+    <div class="uk-grid">
+        <div class="uk-width-1-2">
+            <label class="label-ms">Сайт <i class="icon-help2"></i></label>
+            @Html.TextBoxFor(model => model.Site, new { @class = "input-ms uk-width-large-1-1 uk-width-small-1-1", data_role_input_optional = "", PlaceHolder = "http://www" })
+            @Html.ValidationMessageFor(model => model.Site)
+        </div>
+        <div class="uk-width-1-2">
+            <label class="label-ms">Skype <i class="icon-help2"></i></label>
+            @Html.TextBoxFor(model => model.Skype, new { @class = "input-ms uk-width-large-1-1 uk-width-small-1-1", data_role_input_optional = "", PlaceHolder = "login_skype" })
+            @Html.ValidationMessageFor(model => model.Skype)
+        </div>
+    </div>
+</div>
+
+

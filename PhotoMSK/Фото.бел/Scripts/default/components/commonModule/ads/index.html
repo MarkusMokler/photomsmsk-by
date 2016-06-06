@@ -1,0 +1,63 @@
+﻿<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Page.Elements.First().Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Page.Elements.First().Subtitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Page.Elements.First().Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Page.Elements.First().Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Page.Elements.First().Views)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Page.Elements.First().Visits)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Page.Elements.First().Link)
+        </th>
+        <th></th>
+    </tr>
+
+    
+        <tr ng-repeat="item in page.elements">
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subtitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Views)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Visits)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Link)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id = item.ID}) |
+                @Html.ActionLink("Details", "Details", new {id = item.ID}) |
+                @Html.ActionLink("Delete", "Delete", new {id = item.ID})
+            </td>
+        </tr>
+    
+
+</table>

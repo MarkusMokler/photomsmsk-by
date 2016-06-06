@@ -1,0 +1,21 @@
+﻿<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+    </tr>
+
+   
+        <tr ng-repeat="item in page.elements">
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id = item.CalendarID}) |
+                @Html.ActionLink("Details", "Details", new { id = item.CalendarID }) |
+                @Html.ActionLink("Delete", "Delete", new {id = item.CalendarID})
+            </td>
+        </tr>
+    
+
+</table>

@@ -1,0 +1,9 @@
+diff a/PhotoMSK/Фото.бел/Scripts/default/components/photographerModule/Details/details.html b/PhotoMSK/Фото.бел/Scripts/default/components/photographerModule/Details/details.html	(rejected hunks)
+@@ -2,7 +2,6 @@
+     <div id="cover">
+         <div class="inside">
+            <img style="width: 100%" src="https://static.pexels.com/assets/headers/landscape-eada7b93fc720151157cd430cdd067427e9c909cf29e023dc071775f763995c5.jpg"/>
+-        </div>
+         </div><!--
+         <div class="bottom">
+             <div class="fade">

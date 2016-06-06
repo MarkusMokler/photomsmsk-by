@@ -1,0 +1,280 @@
+<div class="content--admin">
+    <div><data-bread-crumbs/></div>
+
+    <div class="container--fluid">
+        <div class="activity__sort">
+            <div class="grid grid--small">
+                <div class="col--large-3-10 col--medium-4-10 activity__sort__text">
+                    Aктивность за
+                    <span uib-dropdown on-toggle="toggled(open)">
+                        <a href id="activity-stat" class="link link--dotted text--green" uib-dropdown-toggle>
+                            текущую неделю
+                            <i class="text--small icon-chevron-down"></i>
+                        </a>
+                        <ul uib-dropdown-menu aria-labelledby="activity-stat">
+                            <li role="menuitem">
+                                <a data-msk-href>3 дня</a>
+                            </li>
+                            <li role="menuitem">
+                                <a data-msk-href>Неделя</a>
+                            </li>
+                            <li role="menuitem">
+                                <a data-msk-href>Месяц</a>
+                            </li>
+                        </ul>
+                    </span>
+                </div>
+                <div class="col--large-5-10 col--medium-4-10">
+                    <a data-msk-href class="button button--small button--muted border--rounded active">Все</a>
+                    <a data-msk-href class="button button--small button--muted border--rounded">
+                        <i class="icon-phone text--green"></i>&nbsp;Входящие</a>
+                    <a data-msk-href class="button button--small button--muted border--rounded">
+                        <i class="icon-call_end text--red"></i>&nbsp;Неотвеченные</a>
+                </div>
+                <div class="col--large-2-10 col--medium-2-10">
+                    <div class="input__group">
+                        <input type="search" class="input input--search input--small border--rounded margin--reset col--1-1">
+                        <i class="icon-magnifier text--muted"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid--small">
+            <div class="col--1-1">
+                <div ng-repeat="(key, activies) in groups">
+                    <div class="activity__header">
+                        <span class="activity__header__day text--green" data-ng-cloak>{{key}}</span>
+                        <ul class="activity__header__list">
+                            <li data-ng-if="getCount(activies,2) != 0">
+                                <i class="icon-alarm_off text--red"></i>&nbsp;{{getCount(activies,2)}}
+                                отмен</li>
+                            <li data-ng-if="getCount(activies,0) != 0">
+                                <i class="icon-alarm_on text--green"></i>&nbsp;{{getCount(activies,0)}}
+                                забронировано</li>
+                            <li data-ng-if="getCount(activies,1) != 0">
+                                <i class="icon-subdirectory_arrow_right text--blue"></i>&nbsp;{{getCount(activies,1)}}
+                                переноса</li>
+                            <li data-ng-if="getCount(activies,5) != 0">
+                                <i class="icon-warning text--red"></i>&nbsp;{{getCount(activies,5)}}
+                                претензий</li>
+                        </ul>
+                        <ul class="activity__header__list">
+                            <li data-ng-if="getCount(callType,2) > 0">
+                                <i class="icon-call_end text--red"></i>&nbsp;{{getCount(callType,2)}} пропущено
+                            </li>
+                            <li data-ng-if="getCount(callType,0) > 0">
+                                <i class="icon-phone_in_talk text--green"></i>&nbsp;{{getCount(callType,0)}} принято
+                            </li>
+                            <li data-ng-if="getCount(callType,1) > 0">
+                                <i class="icon-phone_forwarded text--blue"></i>&nbsp;{{getCount(callType,1)}} перезвон
+                            </li>
+                        </ul>
+                        <span class="activity__header__accordion text--small">
+                            <a data-msk-href class="link link--dotted">свернуть</a>&nbsp;<i class="icon-arrow_drop_down"></i>
+                        </span>
+                    </div>
+
+                    <div class="activity panel panel--box panel--white panel--shadow">
+
+                        <table class="table table--hover table--middle">
+                            <thead>
+                                <tr>
+                                    <th width="40">
+                                        <i class="icon-more_horiz" uib-tooltip="Произошедшие действия"></i>
+                                    </th>
+                                    <th class="text--center" width="50">
+                                        <i class="icon-alarm2" uib-tooltip="Время"></i>
+                                    </th>
+                                    <th class="text--center" width="350">Клиент</th>
+                                    <th>Описание</th>
+                                    <th class="text--center">
+                                        <!-- <i class="button button--mini button--rounded icon-more_horiz"></i> -->
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr data-ng-repeat="activity in activies">
+                                    <td class="border--transparent" data-ng-cloak>
+                                        <span class="activity__status icon icon-alarm_on text--green" data-ng-if="activity.state == 0" uib-tooltip="{{activity.title}}">
+                                            <i class="activity__status__badge" data-ng-if="activity.event.tags != null && activity.event.tags.indexOf('online') != -1"></i>
+                                        </span>
+                                        <i class="activity__status icon-subdirectory_arrow_right text--blue" data-ng-if="activity.state == 1" uib-tooltip="{{activity.title}}"></i>
+                                        <i class="activity__status icon-alarm_off text--red" data-ng-if="activity.state == 2" uib-tooltip="{{activity.title}}"></i>
+                                        <i class="activity__status icon-event_busy text--red" data-ng-if="activity.state == 3" uib-tooltip="{{activity.title}}"></i>
+                                        <!-- <i class="activity__status icon-more_horiz" data-ng-if="activity.state == 4" uib-tooltip="{{activity.title}}"></i> -->
+                                        <i class="activity__status icon-warning text--red" data-ng-if="activity.state == 5" uib-tooltip="{{activity.title}}"></i>
+                                        <!-- <i class="activity__status icon-more_horiz" data-ng-if="activity.state == 6" uib-tooltip="{{activity.title}}"></i> -->
+
+                                        <span data-ng-if="activity.state == 3 || activity.state == 4">
+                                            <i class="activity__status icon-Wallet text--green" data-ng-if="activity.event.eventState == 'PayByCash'" uib-tooltip="{{activity.title}}"></i>
+                                            <i class="activity__status icon-credit-card text--green" data-ng-if="activity.event.eventState == 'PayByCard'" uib-tooltip="{{activity.title}}"></i>
+                                            <i class="activity__status icon-event_busy text--red" data-ng-if="activity.event.eventState == 'Deleted'" uib-tooltip="{{activity.title}}"></i>
+                                            <i class="activity__status icon-event_available text--green" data-ng-if="activity.event.eventState == 'Created'" uib-tooltip="{{activity.title}}"></i>
+                                            <i class="activity__status icon-redo text--red" data-ng-if="activity.event.eventState == 'Missed'" uib-tooltip="{{activity.title}}"></i>
+
+                                            <i class="activity__status icon-redo text--red" data-ng-if="activity.event.eventState == 'Missed'" uib-tooltip="{{activity.title}}"></i>
+                                        </span>
+
+
+                                        <i class="activity__status activity__status--income icon-phone text--green" data-ng-if="activity.callType == 0" uib-tooltip="{{activity.title}}"></i>
+                                        <!--Принятый -->
+                                        <i class="activity__status activity__status--missed icon-call_end text--red" data-ng-if="activity.callType == 2" uib-tooltip="{{activity.title}}"></i>
+                                        <!--Пропущенный -->
+                                    </td>
+                                    <td class="activity__time--line" data-ng-cloak>
+                                        <span class="activity__time">{{activity.activityTime | date:'HH:mm'}}</span>
+                                    </td>
+
+                                    <!-- Активности -->
+                                    <td data-ng-if="activity.callType == undefined" data-ng-cloak>
+                                        <div class="activity__status__event">
+                                            <div class="activity__status__avatar" data-ng-class="{'activity__status__avatar--empty' : activity.event.userUserPhoto == null}">
+                                                <img src="{{activity.event.userUserPhoto}}" alt="{{activity.event.userLastName}}" data-ng-if="activity.event.userUserPhoto != null">
+
+                                                <!-- Show only bookin with administrator -->
+                                                <div data-ng-if="activity.event.tags != null && activity.event.tags.indexOf('online') == -1">
+                                                    <img
+                                                        src="{{activity.user.userPhoto}}"
+                                                        class="activity__status__avatar__admin"
+                                                        alt="запись от {{activity.event.userLastName}}"
+                                                        data-ng-if="activity.event.tags != null && activity.event.tags.indexOf('online') == -1 && activity.user.userPhoto != null"
+                                                        uib-tooltip="Администратор {{activity.user.lastName}} {{activity.user.firstName}}">
+                                                </div>
+                                                <!-- Show only bookin with out any tags -->
+                                                <div data-ng-if="activity.event.tags == null">
+                                                    <img
+                                                        src="{{activity.user.userPhoto}}"
+                                                        class="activity__status__avatar__admin"
+                                                        alt="запись от {{activity.userPhoto.userLastName}}"
+                                                        data-ng-if="activity.user.userPhoto != null"
+                                                        uib-tooltip="Администратор {{activity.user.lastName}} {{activity.user.firstName}}">
+                                                    <div
+                                                        class="activity__status__avatar__admin"
+                                                        data-ng-class="{'activity__status__avatar__admin--empty' : activity.user.userPhoto == null}"
+                                                        data-ng-if="activity.user.userPhoto == null"
+                                                        uib-tooltip="Администратор {{activity.user.lastName}} {{activity.user.firstName}}"></div>
+                                                </div>
+                                            </div>
+                                            <p data-ng-cloak>
+                                                <a href="/admin/userinformation/{{activity.event.userID}}">
+                                                    <span class="activity__status__name" data-ng-bind-template="{{activity.event.userFirstName}} {{activity.event.userLastName}}"></span>
+                                                </a>
+                                                <br/>
+                                                <a data-msk-href class="text--muted text--small" data-ng-bind="activity.event.phone" data-ng-cloak></a>
+                                                <br/>
+                                                <small data-ng-if="activity.event.userClientType=='Photographer'" class="text--muted text--small">Фотограф</small>
+                                                <small data-ng-if="activity.event.userClientType=='Photomodel'" class="text--muted text--small">Модель</small>
+                                                <small data-ng-if="activity.event.userClientType=='Visagiste'" class="text--muted text--small">Визажист</small>
+                                                <small data-ng-if="activity.event.userClientType=='Organizer'" class="text--muted text--small">Организатор</small>
+                                                <small data-ng-if="activity.event.userClientType=='Stylist'" class="text--muted text--small">Стилист</small>
+                                                <small data-ng-if="activity.event.userClientType=='Leading'" class="text--muted text--small">Ведущий</small>
+                                                <small data-ng-if="activity.event.userClientType=='Designer'" class="text--muted text--small">Дизайнер</small>
+                                                <small data-ng-if="activity.event.userClientType=='Client'" class="text--muted text--small">Клиент</small>
+                                            </p>
+                                        </div>
+                                    </td>
+
+                                    <!-- Звонок -->
+                                    <td data-ng-if="activity.callType != undefined" data-ng-cloak>
+                                        <!-- <div class="activity__call__admin">
+                                            <img
+                                                src="{{activity.user.userPhoto}}"
+                                                class="activity__status__avatar"
+                                                alt="запись от {{activity.userPhoto.userLastName}}"
+                                                data-ng-if="activity.user.userPhoto != null"
+                                                uib-tooltip="Администратор {{activity.user.lastName}} {{activity.user.firstName}}">
+                                            <div
+                                                class="activity__status__avatar"
+                                                data-ng-class="{'activity__status__avatar--empty' : activity.user.userPhoto == null}"
+                                                data-ng-if="activity.user.userPhoto == null"
+                                                uib-tooltip="Администратор {{activity.user.lastName}} {{activity.user.firstName}}"></div>
+                                        </div> -->
+                                        <div class="activity__call__avatar">
+                                            <img
+                                                src="{{activity.user.userPhoto}}"
+                                                class="activity__status__avatar"
+                                                alt="запись от {{activity.userPhoto.userLastName}}"
+                                                data-ng-if="activity.user.userPhoto != null"
+                                                uib-tooltip="Администратор {{activity.user.lastName}} {{activity.user.firstName}}">
+                                            <!-- <div
+                                                class="activity__status__avatar"
+                                                data-ng-class="{'activity__status__avatar--empty' : activity.user.userPhoto == null}"
+                                                data-ng-if="activity.user.userPhoto == null"
+                                                uib-tooltip="Администратор {{activity.user.lastName}} {{activity.user.firstName}}"></div> -->
+                                        </div>
+
+                                        <div class="activity__call__time">
+                                            <i class="icon-av_timer"></i>&nbsp;{{activity.end | date: "HH:mm"}}
+                                            <!-- <br>
+                                            <small class="margin--reset text--small">продолжительность</small> -->
+                                        </div>
+
+                                        <div class="activity__call__avatar">
+                                            <img src="{{activity.event.userUserPhoto}}" alt="{{activity.event.userLastName}}" data-ng-if="activity.event.userUserPhoto != null">
+                                            <div class="activity__status__avatar activity__status__avatar--empty" data-ng-if="activity.event.userUserPhoto == null"></div>
+                                        </div>
+                                    </td>
+
+                                    <!-- Активность -->
+                                    <td data-ng-if="activity.callType == undefined" data-ng-cloak>
+                                        {{activity.description}}
+                                    </td>
+
+                                    <!-- Звонок -->
+                                    <td data-ng-if="activity.callType != undefined" data-ng-cloak>
+                                        <div data-ng-if="activity.voiceRecord">
+
+                                            <div class="col--1-2">
+                                                <audio data-ng-src="{{activity.voiceRecord}}" controls></audio>
+                                                <span class="text--muted"><i class="icon-phone_in_talk"></i>&nbsp;{{activity.description}}</span>
+                                            </div>
+
+                                            <!-- <div class="player">
+                                                <div class="player__button">
+                                                    <div class="player__play icon-play_arrow"></div>
+                                                </div>
+
+                                                <div class="player__progress">
+                                                    <div class="player__title">
+                                                        <span><b data-ng-if="activity.event != null">{{activity.event.userFirstName}}&nbsp;{{activity.event.userLastName}} -</b> {{activity.description}}</span>
+                                                    </div>
+                                                    <div class="player__status">
+                                                        <div class="player__status-slider"></div>
+                                                        <div class="player__status-pointer"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="player__action">
+                                                    <div class="player__action-title">
+                                                        <i class="icon-volume_up"></i>
+                                                        <i class="icon-replay float--right"></i>
+                                                    </div>
+                                                    <div class="player__status">
+                                                        <div class="player__status-slider">
+                                                            <div class="player__status-slider-active" style="width: 67%;"></div>
+                                                        </div>
+                                                        <div class="player__status-pointer" style="left: 60%;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear--fix"></div> -->
+
+                                        </div>
+                                    </td>
+
+                                    <td class="text--center">
+                                        <a data-msk-href class="button button--mini button--rounded icon-more_horiz"></a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

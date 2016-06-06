@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9A71321F-8F46-431B-81C6-1F63A8C0EB5B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PhotoMSK.ViewModels</RootNamespace>
+    <AssemblyName>PhotoMSK.ViewModels</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Jint, Version=2.7.1.0, Culture=neutral, PublicKeyToken=2e92ba9c8d81157f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Jint.2.8\lib\portable-net40+sl50+win+WindowsPhoneApp81+wp80\Jint.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="MiniProfiler, Version=3.2.0.157, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MiniProfiler.3.2.0.157\lib\net40\MiniProfiler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MiniProfiler.EntityFramework6, Version=3.0.11.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MiniProfiler.EF6.3.0.11\lib\net40\MiniProfiler.EntityFramework6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Activity\ActivityViewModel.cs" />
+    <Compile Include="Advertising\AdCompanyViewModel.cs" />
+    <Compile Include="Attachments\AttachmentsProfile.cs" />
+    <Compile Include="Attachments\FileEntryViewModel.cs" />
+    <Compile Include="Attachments\NominantPhoto.cs" />
+    <Compile Include="Automapper\ShortcutResolver.cs" />
+    <Compile Include="Automapper\WallResolver.cs" />
+    <Compile Include="Interfaces\IMasterclassService.cs" />
+    <Compile Include="Interfaces\IMenuService.cs" />
+    <Compile Include="Interfaces\IPageService.cs" />
+    <Compile Include="Interfaces\IPhotomodelService.cs" />
+    <Compile Include="Interfaces\IPhotorentService.cs" />
+    <Compile Include="Interfaces\IPhotoshopService.cs" />
+    <Compile Include="Interfaces\IPhotographerService.cs" />
+    <Compile Include="Interfaces\IPhotostudioService.cs" />
+    <Compile Include="Interfaces\IPhototechnicsService.cs" />
+    <Compile Include="Interfaces\IPlaceService.cs" />
+    <Compile Include="Interfaces\ISmsAssistent.cs" />
+    <Compile Include="Interfaces\IUrlBuilder.cs" />
+    <Compile Include="Interfaces\IUserInformationService.cs" />
+    <Compile Include="Interfaces\IUserInformationProvider.cs" />
+    <Compile Include="Interfaces\IWidgetService.cs" />
+    <Compile Include="Interfaces\RouteObject.cs" />
+    <Compile Include="Interfaces\WidgetService.cs" />
+    <Compile Include="LegalInformationViewModel.cs" />
+    <Compile Include="Menu\RouteMenuViewModel.cs" />
+    <Compile Include="Nodes\JintNode.cs" />
+    <Compile Include="Realisation\AbstractService.cs" />
+    <Compile Include="Realisation\CheckoutService.cs" />
+    <Compile Include="Realisation\EventLocker.cs" />
+    <Compile Include="Realisation\IEventLocker.cs" />
+    <Compile Include="Realisation\LinqExtension.cs" />
+    <Compile Include="Realisation\MasterclassService.cs" />
+    <Compile Include="Realisation\MenuService.cs" />
+    <Compile Include="Realisation\PageRequest.cs" />
+    <Compile Include="Realisation\PageService.cs" />
+    <Compile Include="Realisation\PhotographerService.cs" />
+    <Compile Include="Realisation\PhotomodelService.cs" />
+    <Compile Include="Realisation\PhotorentService.cs" />
+    <Compile Include="Realisation\PhotoshopService.cs" />
+    <Compile Include="Realisation\PhotostudioService.cs" />
+    <Compile Include="Realisation\PhototechnicsService.cs" />
+    <Compile Include="Realisation\PlaceService.cs" />
+    <Compile Include="Realisation\Sms.cs" />
+    <Compile Include="Realisation\SmsAssistent.cs" />
+    <Compile Include="Realisation\UserInformationService.cs" />
+    <Compile Include="RoutePageLayouts\LayoutViewModel.cs" />
+    <Compile Include="RoutePageLayouts\RoutePageLayoutsViewModel.cs" />
+    <Compile Include="RoutePageLayouts\ThemeStyleViewModel.cs" />
+    <Compile Include="RoutePageLayouts\ZoneViewModel.cs" />
+    <Compile Include="Routes\FriendshipViewModel.cs" />
+    <Compile Include="Routes\Photographer\ProjectViewModel.cs" />
+    <Compile Include="Routes\RouteReviewViewModel.cs" />
+    <Compile Include="Routes\RoutesMapping.cs" />
+    <Compile Include="Routes\SmsModuleViewModel.cs" />
+    <Compile Include="Social\AdresseViewModel.Summary.cs" />
+    <Compile Include="Social\AdresseViewModel.Details.cs" />
+    <Compile Include="Advertising\AdViewModel.cs" />
+    <Compile Include="Attachments\AttachmentViewModel.cs" />
+    <Compile Include="Attachments\AudioViewModel.cs" />
+    <Compile Include="Attachments\CreativeViewModel.cs" />
+    <Compile Include="Attachments\PhotoViewModel.cs" />
+    <Compile Include="Attachments\VideoViewModel.cs" />
+    <Compile Include="Autofac\AutofacRegistrator.cs" />
+    <Compile Include="CalendarReferenceViewModel.Details.cs" />
+    <Compile Include="CalendarReferenceViewModel.Summary.cs" />
+    <Compile Include="CategoryBrandViewModel.Details.cs" />
+    <Compile Include="CategoryBrandViewModel.Summary.cs" />
+    <Compile Include="Comments\CommentListViewModel.cs" />
+    <Compile Include="Comments\CommentViewModel.cs" />
+    <Compile Include="CopyReferenceViewModel.Details.cs" />
+    <Compile Include="CopyReferenceViewModel.Summary.cs" />
+    <Compile Include="GenreViewModel.cs" />
+    <Compile Include="Routes\Photostudio\HallCalendarViewModel.cs" />
+    <Compile Include="Routes\Photostudio\HallPropertyViewModel.Details.cs" />
+    <Compile Include="Routes\Photostudio\HallPropertyViewModel.Summary.cs" />
+    <Compile Include="Interfaces\IWallService.cs" />
+    <Compile Include="Social\LikeStatusViewModel.Details.cs" />
+    <Compile Include="Social\LikeStatusViewModel.Summary.cs" />
+    <Compile Include="Menu\AbstractMenuItemViewModel.cs" />
+    <Compile Include="Menu\LinkMenuItemViewModel.cs" />
+    <Compile Include="Menu\PageMenuItemViewModel.cs" />
+    <Compile Include="Social\MessageViewModel.Details.cs" />
+    <Compile Include="Social\MessageViewModel.Summary.cs" />
+    <Compile Include="PageCategoryViewModel.Summary.cs" />
+    <Compile Include="ParameterViewModel.cs" />
+    <Compile Include="ParameterValueViewModel.cs" />
+    <Compile Include="PhoneViewModel.cs" />
+    <Compile Include="PhotoGenreViewModel.cs" />
+    <Compile Include="PhotographerCalendarViewModel.cs" />
+    <Compile Include="Attachments\PollViewModel.cs" />
+    <Compile Include="PromocodeViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CallendarViewModel.cs" />
+    <Compile Include="CallHandlerViewModel.cs" />
+    <Compile Include="CommentViewModel.cs" />
+    <Compile Include="Routes\Photostudio\ErrorViewModel.cs" />
+    <Compile Include="Routes\Photostudio\EventViewModel.cs" />
+    <Compile Include="Event\AdminEventViewModel.cs" />
+    <Compile Include="Event\IEventViewModel.cs" />
+    <Compile Include="Event\SaveEventViewModel.cs" />
+    <Compile Include="Event\UserEventViewModel.cs" />
+    <Compile Include="Routes\Photostudio\HallViewModel.cs" />
+    <Compile Include="Social\MainWallViewModel.cs" />
+    <Compile Include="PageView.cs" />
+    <Compile Include="PenaltyViewModel.cs" />
+    <Compile Include="Routes\PhotographerViewModel.cs" />
+    <Compile Include="Routes\PhotomodelViewModel.cs" />
+    <Compile Include="PricePositionViewModel.cs" />
+    <Compile Include="Social\RaitingViewModel.cs" />
+    <Compile Include="Realisation\WallService.cs" />
+    <Compile Include="RentCalendarViewModel.cs" />
+    <Compile Include="ReviewViewModel.cs" />
+    <Compile Include="RoleViewModel.cs" />
+    <Compile Include="Routes\RouteEntityViewModel.cs" />
+    <Compile Include="Social\RoutePreviewViewModel.cs" />
+    <Compile Include="Routes\Base\RoutesPhoneViewModel.cs" />
+    <Compile Include="Routes\Phototechnics\BrandViewModel.cs" />
+    <Compile Include="Routes\Phototechnics\CategoryViewModel.cs" />
+    <Compile Include="Routes\Masterclass\MasterclassEventsViewModel.cs" />
+    <Compile Include="Routes\Masterclass\MasterclassViewModel.cs" />
+    <Compile Include="Menu\MenuItemViewModel.cs" />
+    <Compile Include="Routes\PageViewModel.cs" />
+    <Compile Include="Routes\Phototechnics\ParameterViewModel.cs" />
+    <Compile Include="Routes\PhotorentViewModel.cs" />
+    <Compile Include="Routes\PhotoshopViewModel .cs" />
+    <Compile Include="Routes\PhotostudioViewModel.cs" />
+    <Compile Include="Routes\PhototechnicsViewModel.cs" />
+    <Compile Include="Routes\PlaceViewModel.cs" />
+    <Compile Include="Routes\PublicViewModel.cs" />
+    <Compile Include="SaleCardViewModel.cs" />
+    <Compile Include="ScheduleDayViewModel.cs" />
+    <Compile Include="Routes\Photographer\ShootingGenreViewModel.cs" />
+    <Compile Include="Routes\Photographer\ShootingViewModel.cs" />
+    <Compile Include="ShopCategoryViewModel.cs" />
+    <Compile Include="ShoppingCart\OrderLineViewModel.cs" />
+    <Compile Include="ShoppingCart\OrderViewModel.cs" />
+    <Compile Include="ShoppingCart\ShippingAddressViewModel.cs" />
+    <Compile Include="ShoppingCart\StatusViewModel.cs" />
+    <Compile Include="SmsMessageViewModel.cs" />
+    <Compile Include="Routes\Photomodel\SnapshotViewModel.cs" />
+    <Compile Include="Statistic\BalanceLine.cs" />
+    <Compile Include="Statistic\WeekBalance.cs" />
+    <Compile Include="WhiteLabel\TextPageViewModel.Details.cs" />
+    <Compile Include="WhiteLabel\TextPageViewModel.Summary.cs" />
+    <Compile Include="UserInformationViewModel.cs" />
+    <Compile Include="WhiteLabel\UserMenuItemViewModel.cs" />
+    <Compile Include="WhiteLabel\UserMenuItemViewModel.Summary.cs" />
+    <Compile Include="UserPhoneViewModel.cs" />
+    <Compile Include="UserViewModel.cs" />
+    <Compile Include="Social\ViewsViewModel.cs" />
+    <Compile Include="Social\WallPostViewModel.cs" />
+    <Compile Include="Social\WallViewModel.cs" />
+    <Compile Include="Widgets\BaseWidget.cs" />
+    <Compile Include="Widgets\CalendarsWidget.cs" />
+    <Compile Include="Widgets\ContainerWidget.cs" />
+    <Compile Include="Widgets\DescriptionWidget.cs" />
+    <Compile Include="Widgets\FaqWidget.cs" />
+    <Compile Include="Widgets\FileGallery.cs" />
+    <Compile Include="Widgets\GaleryWidget.cs" />
+    <Compile Include="Widgets\HallWidgetViewModel.cs" />
+    <Compile Include="Widgets\HeaderWidget.cs" />
+    <Compile Include="Widgets\Landing.cs" />
+    <Compile Include="Widgets\QuestionAnswer.cs" />
+    <Compile Include="Widgets\Quote.cs" />
+    <Compile Include="Widgets\RouteMenuWidget.cs" />
+    <Compile Include="Widgets\SplitWidget.cs" />
+    <Compile Include="Widgets\TextAdnDescription.cs" />
+    <Compile Include="Widgets\Video.cs" />
+    <Compile Include="Widgets\WidgetMapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PhotoMSK.Data\PhotoMSK.Data.csproj">
+      <Project>{55380759-449e-4cba-920c-7cbc90ff6772}</Project>
+      <Name>PhotoMSK.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resolvers\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

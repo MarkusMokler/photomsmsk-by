@@ -1,0 +1,62 @@
+﻿@model PhotoMSK.Areas.Default.ViewData.Home.IndexViewData
+
+@{
+    ViewBag.Title = "PhotoMSK";
+}
+<div class="uk-main-page-header position-relative" style="background:-webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 59%,rgba(0,0,0,0.65) 100%), url(@Url.Content("/Content/images/back_main.jpg")) no-repeat center center;">
+    <div class="uk-container uk-container-center">
+        <div class="uk-grid pad-top" data-uk-grid-margin>
+            <div class="uk-width-1-1 uk-text-center">
+                <span class="uk-h1 uk-heading-large uk-text-shadow">Не знаете где снимать?</span>
+                <p class="uk-margin-remove">
+                    <small class="uk-text-shadow">подберите себе место для съемок...</small>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="uk-main-page-body">
+    <div class="uk-page-bar-panel">
+        <div class="uk-container uk-container-center">
+            <ul class="uk-margin-remove uk-subnav uk-subnav-line" data-uk-switcher="{connect:'#main-page-content', toggle:' > *:not(.disabled)'}">
+                <li class="uk-active"><a href="#">Популярные</a></li>
+                <li><a href="#">Фото дня</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="uk-container uk-container-center">
+        <div class="uk-grid">
+            <div class="uk-width-1-1">
+                <a href="#" class="uk-h2 uk-text-bold uk-link-reset uk-link-line">Афиша событий</a>
+            </div>
+        </div>
+       @Html.Partial("_PartialMasterclasses", Model.Masterclasses)
+    </div>
+    <div class="uk-container uk-container-center">
+        <div class="uk-grid uk-margin-large-top uk-margin-bottom">
+            <div class="uk-width-1-1">
+                <a href="#" class="uk-h2 uk-text-bold uk-link-reset uk-link-line">Публикации</a>
+            </div>
+        </div>
+        <ul id="main-page-content" class="uk-switcher">
+            <li class="uk-active">
+                <div id="wall-placeholder"></div>
+            </li>
+            <li>
+                @Html.Partial("_PartialPhotoDay")
+            </li>
+        </ul>
+    </div>
+</div>
+@section scripts
+{
+    <script>
+    $(function () {
+        new App.Routers.PhotomskRouter();
+        Backbone.history.start({ pushState: true });
+
+        App.currentView.reset(@Model.MainWall.ToJson());
+
+        })
+    </script>
+}

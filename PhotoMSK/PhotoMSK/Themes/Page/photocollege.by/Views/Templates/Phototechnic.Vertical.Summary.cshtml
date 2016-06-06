@@ -1,0 +1,45 @@
+﻿<div class="uk-panel uk-panel-box uk-panel-box-item">
+    <p class="uk-text-bold">
+        <a class="uk-link-muted" href="@Html.Raw(PhototechnicsDefinition.Url)">@Html.Raw(@PhototechnicsDefinition.Name)</a>
+    </p>
+
+    <div class="uk-grid uk-grid-small">
+        <div class="uk-width-1-3">
+            <a class="uk-link-reset" href="@Html.Raw(PhototechnicsDefinition.Url)">
+                <img src="@Html.Raw(PhototechnicsDefinition.Image)" alt="" />
+            </a>
+        </div>
+        <div class="uk-margin-top uk-width-2-3">
+            <table class="uk-table">
+                <tbody>
+                    <tr>
+                        <td><strong>Рабочий день</strong></td>
+                        <td><strong>@Html.Raw(PhototechnicsDefinition.DaylyPrice)</strong> <small>бел. руб</small></td>
+                    </tr>
+                    <tr>
+                        <td>Выходной день</td>
+                        <td>@Html.Raw(PhototechnicsDefinition.HollidayPrice) <small>бел. руб</small></td>
+                    </tr>
+                    <tr>
+                        <td>Неделя</td>
+                        <td>@Html.Raw(PhototechnicsDefinition.WeeklyPrice) <small>бел. руб</small></td>
+                    </tr>
+                    <tr>
+                        <td>Месяц</td>
+                        <td>@Html.Raw(PhototechnicsDefinition.MonthlyPrice) <small>бел. руб</small></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="uk-clearfix uk-margin-top">
+        <a href="#" class="uk-button uk-button-cart uk-float-right"> Заказать</a>
+    </div>
+
+    <div class="uk-margin-top">
+        <p class="uk-text-small">
+            @Html.Raw(PhototechnicsDefinition.ShortDescription)
+        </p>
+    </div>
+</div>

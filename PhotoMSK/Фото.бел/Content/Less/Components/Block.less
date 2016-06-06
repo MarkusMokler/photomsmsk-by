@@ -1,0 +1,154 @@
+// out: ../../css/Components/Block.css, compress: true
+// Name:            Block
+// Description:     Defines styles to create horizontal layout blocks
+//
+// Component:       `block`
+//
+// Modifiers:       `list-line`
+//                  `list-striped`
+//                  `list-space`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@block-padding-vertical:                        20px;
+@block-padding-vertical-large:                  50px;
+
+@block-large-padding-vertical:                  @block-padding-vertical;
+@block-large-padding-vertical-medium:           @block-padding-vertical-large;
+@block-large-padding-vertical-large:            100px;
+
+@block-default-background:                      #fff;
+@block-muted-background:                        #f9f9f9;
+@block-primary-background:                      #00a8e6;
+@block-secondary-background:                    #222;
+
+//
+// Breakpoints
+//
+@breakpoint-fluid:                              100%;
+
+@breakpoint-small:                              480px;
+@breakpoint-medium:                             768px;
+@breakpoint-large:                              960px;
+@breakpoint-xlarge:                             1220px;
+@breakpoint-xxlarge:                            1600px;
+
+@breakpoint-mini-max:                           (@breakpoint-small - 1);
+@breakpoint-small-max:                          (@breakpoint-medium - 1);
+@breakpoint-medium-max:                         (@breakpoint-large - 1);
+@breakpoint-large-max:                          (@breakpoint-xlarge - 1);
+@breakpoint-xlarge-max:                         (@breakpoint-xlarge - 1);
+
+
+
+/* ========================================================================
+   Component: Block
+ ========================================================================== */
+
+.block {
+    position: relative;
+    box-sizing: border-box;
+    padding-top: @block-padding-vertical;
+    padding-bottom: @block-padding-vertical;
+}
+
+/* Phone landscape and bigger */
+@media (min-width: @breakpoint-medium) {
+
+    .block {
+        padding-top: @block-padding-vertical-large;
+        padding-bottom: @block-padding-vertical-large;
+    }
+
+}
+
+/*
+ * Micro clearfix to make blocks more robust
+ */
+
+.block:before,
+.block:after {
+    content: "";
+    display: table;
+}
+
+.block:after { clear: both; }
+
+/*
+ * Remove margin from the last-child
+ */
+
+.block > :last-child { margin-bottom: 0; }
+
+
+/* Padding Modifier
+ ========================================================================== */
+
+/*
+ * Large padding
+ */
+
+.block--large {
+    padding-top: @block-large-padding-vertical;
+    padding-bottom: @block-large-padding-vertical;
+}
+
+/* Tablets and bigger */
+@media (min-width: @breakpoint-medium) {
+
+    .block--large {
+        padding-top: @block-large-padding-vertical-medium;
+        padding-bottom: @block-large-padding-vertical-medium;
+    }
+
+}
+
+/* Desktop and bigger */
+@media (min-width: @breakpoint-large) {
+
+    .block--large {
+        padding-top: @block-large-padding-vertical-large;
+        padding-bottom: @block-large-padding-vertical-large;
+    }
+
+}
+
+
+/* Color Modifier
+ ========================================================================== */
+
+/*
+ * Default
+ */
+
+.block--default {
+    background: @block-default-background;
+}
+
+/*
+ * Muted
+ */
+
+.block--muted {
+    background: @block-muted-background;
+}
+
+/*
+ * Primary
+ */
+
+.block--primary {
+    background: @block-primary-background;
+}
+
+/*
+ * Secondary
+ */
+
+.block--secondary {
+    background: @block-secondary-background;
+}

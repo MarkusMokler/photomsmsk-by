@@ -1,0 +1,39 @@
+﻿
+<div class="content--admin">
+    <div><data-bread-crumbs/></div>
+
+    <div class="container--fluid">
+        <div class="grid">
+            <div class="col--1-1">
+
+                <div class="panel panel--box panel--white panel--shadow">
+                    <div class="grid grid--small grid--divider">
+                        <div class="col--2-10">
+                            <p class="text--h2">Стили: <button type="button" data-ng-click="saveStyle()">Создать новый</button>
+                            </p>
+                            <hr/>
+                             <input type="text" data-ng-model="selectedStyle.name" placeholder="имя..."/>
+                            <select data-ng-model="selectedStyle" ng-options="style.name for style in styles"></select>
+                            <button type="button" data-ng-if="selectedStyle!=null && styles.length!=0" data-ng-click="updateStyle()">Обновить</button>
+                        </div>
+                        <div class="col--2-10">
+                            <p class="text--h2">Слои:</p>
+                            <hr/>
+                            <select data-ng-model="selectedRoutePage" ng-options="page.name for page in routePages"></select>
+
+                        </div>
+                        <div class="col--6-10">
+                            <p class="text--h2">Code:</p>
+                            <hr/>
+                             <ui-codemirror ui-codemirror-opts="editorOptions" data-ng-model="selectedStyle.style" ui-refresh="refreshCodemirror"></ui-codemirror>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <data-style-renderer code="selectedStyle.style"></data-style-renderer>
+                    <data-html-viewer code="selectedRoutePage.layout.content" page="selectedRoutePage"></data-html-viewer>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

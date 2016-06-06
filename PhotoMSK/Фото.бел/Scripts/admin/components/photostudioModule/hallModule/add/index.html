@@ -1,0 +1,42 @@
+<div><data-bread-crumbs /></div>
+
+﻿<div class="content--admin">
+    <div class="container--fluid">
+        <div class="grid">
+            <div class="col--1-1">
+                <p class="text--h3 title-dotted">
+                    Создание нового зала в фотостудии
+                </p>
+                <div class="panel panel--box panel--white panel--shadow margin--top">
+                    <span data-ng-bind="message" data-ng-cloak></span>
+                    <div class="grid grid--collapse grid--divider margin--reset">
+                        <div class="col--1-2">
+                            <div>
+                                <label class="label label--rounded">Название зала</label>
+                                <input class="input input--rounded col--1-1" name="Name" type="text" data-ng-model="item.Name">
+                                <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                            </div>
+                            <div>
+                                <label class="label label--rounded">Площадь зала</label>
+                                <input class="input input--rounded col--1-1" data-val="true" data-ng-model="item.Square" data-val-number="The field Square must be a number." data-val-required="The Square field is required." id="Square" name="Square" type="text" value="0">
+                                <span class="field-validation-valid" data-valmsg-for="Square" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="col--1-2">
+                            <div class="col--1-1">
+                                <label class="label">Описание</label>
+                                <textarea class="input col--1-1" data-ng-model="item.Description" id="Description" name="Description" rows="4"></textarea>
+                                <span class="field-validation-valid" data-valmsg-for="Description" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="col--1-1 text--center margin--top">
+                            <hr>
+                            <a class="button border--rounded" href="/admin/photostudio/{{studioShortcut}}/edit">отмена</a>
+                            <a data-msk-href class="button button--success border--rounded" data-ng-click="createHall()">Создать новый зал</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+﻿</div>

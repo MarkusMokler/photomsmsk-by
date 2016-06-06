@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Админ панель сайта";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutWhiteLabel.cshtml";
+}
+
+<div class="uk-container uk-container-center">
+    <div class="uk-grid">
+        <div class="uk-width-1-1">
+            <h1 class="uk-margin-bottom-remove">Система управления сайтом</h1>
+            <span class="uk-text-muted uk-text-small">название сайта</span>
+        </div>
+    </div>
+
+    <ul class="uk-tab uk-tab-events" data-uk-tab="{connect:'#site-content'}">
+        <li class="uk-active"><a href="#">Меню</a></li>
+        <li><a href="#">Дизайн</a></li>
+        <li><a href="#">Настройки</a></li>
+        <li><a href="#">Статистика</a></li>
+        <li><a href="#">Магазин</a></li>
+    </ul>
+
+    <ul id="site-content" class="uk-switcher uk-margin-large">
+        <li>@Html.Partial("_Menu")</li>
+        <li>@Html.Partial("_Design")</li>
+        <li>@Html.Partial("_Settings")</li>
+        <li>@Html.Partial("_Statistics")</li>
+        <li>@Html.Partial("_Shop")</li>
+    </ul>
+</div>

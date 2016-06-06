@@ -1,0 +1,108 @@
+﻿@using System.Web.Optimization
+@using PhotoMSK.Areas.Default.Models
+@using PhotoMSK.Extensiolns
+@using StackExchange.Profiling
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photocollege - курсы фотографии в Минске</title>
+    <meta name="Description" content="@ViewBag.Description">
+    <meta name="og:image" property="og:image" content="@ViewBag.Image" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Styles.Render(UiKit217.StyleBundle)
+    @Styles.Render("~/Content/jquery-ui")
+    @*@Styles.Render("~/Content/site-style")*@
+    <link rel="stylesheet" href="@Url.Content("~/Themes/Page/photocollege.by/Content/Siteless.css")" />
+</head>
+<body>
+    <nav class="uk-navbar uk-navbar-attached">
+        <div class="uk-container uk-container-center">
+            <a class="uk-navbar-brand uk-hidden-small" href="">
+                <img class="uk-margin uk-margin-remove" src="@Url.Content("~/Themes/Page/photocollege.by/Content/images/logo.png")" height="35" width="205" title="UIkit" alt="UIkit">
+            </a>
+            <div class="uk-navbar-brand uk-navbar-center uk-visible-small">
+                <img src="@Url.Content("~/Themes/Page/photocollege.by/Content/images/logo.png")" width="90" title="Фотошкола" alt="Фотошкола">
+                >
+            </div>
+            <div class="uk-navbar-flip">
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <a href="#" id="uk-menu-phone" class="uk-block-content uk-text-bold uk-h3" data-uk-modal>
+                            +375-29-55-55-485
+                        </a>
+                    </li>
+                    <li>
+                        <span>
+                            <button class="uk-button uk-button-transparent" data-uk-modal="{target:'#modal-call-back'}">обратный звонок</button>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    @if (IsSectionDefined("Main"))
+    {
+        @RenderSection("Main", false)
+    }
+    @if (IsSectionDefined("Footer"))
+    {
+        <footer class="uk-section-footer">
+            @RenderSection("Footer", false)
+        </footer>
+    }
+
+
+    <div id="modal-call-back" class="uk-modal uk-open" data-role-dialog>
+        <div class="uk-modal-dialog uk-modal-dialog-mini uk-open">
+            <a href="" class="uk-modal-close uk-close"></a>
+            <div class="uk-text-center">
+                <h1>Перезвонилка</h1>
+                <img src="@Url.Content("~/Themes/Page/photocollege.by/Content/images/call-back.jpg")">
+                <p class="uk-h4 uk-text-muted">Введите ваш номер телефона и мы вам перезвоним в течении пары минут</p>
+            </div>
+            <input type="text" placeholder="+375-**-***-**-**" class="uk-margin-small-top uk-width-1-1 uk-form-large" data-role-pohone-number>
+            <button class="uk-button uk-button-success uk-button-large uk-margin-small-top uk-width-1-1" data-role-send-request>Перезвоните мне</button>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render(UiKit217.ScriptBundle)
+    <script src="@Url.Content("~/Scripts/jquery.signalR-2.2.0.min.js")"></script>
+    <script src="@Url.Content("~/signalr/hubs")"></script>
+    @Scripts.Render("~/Backbone")
+    @Scripts.Render("~/App")
+    @MiniProfiler.RenderIncludes()
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript"> (window.Image ? (new Image()) : document.createElement('img')).src = location.protocol + '//vk.com/rtrg?r=enbVoRFc/J9KraDs4WpYitRhbagSURic0286JQIemADFlbSX6TdiQVzfZ6iSQ4O89YQ3gBnfvR6HNktAjy05kcVsMM59FJSyqZ08GLuwQa2*r3oMBadifE3bZWvv78rc6d4m3FE*073lgHD2j1mL6QFljdUwGa4kAMdX*Lg2*cw-'; </script>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function () {
+                try {
+                    w.yaCounter29029505 = new Ya.Metrika({
+                        id: 29029505,
+                        webvisor: true,
+                        clickmap: true,
+                        trackLinks: true,
+                        accurateTrackBounce: true
+                    });
+                } catch (e) { }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript><div><img src="//mc.yandex.ru/watch/29029505" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+</body>
+</html>

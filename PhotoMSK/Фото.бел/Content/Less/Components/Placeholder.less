@@ -1,0 +1,132 @@
+// out: ../../css/Components/Placeholder.css, compress: true
+// Name:            Placeholder
+// Description:     Defines styles for placeholder boxes
+//
+// Component:       `placeholder`
+//
+// Elements:       `placeholder__uploaded`
+//                 `placeholder__description`
+//                 `placeholder__description__item`
+//
+// Modifiers:       `placeholder--large`
+//                  `placeholder--success`
+//                  `placeholder--menu`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+@placeholder-margin-vertical:                     15px;
+@placeholder-padding:                             20px;
+@placeholder-border:                              #ddd;
+@placeholder-border-width:                        2px;
+@placeholder-background:                          #fafafa;
+@placeholder-color:                               #444;
+@placeholder-large-padding-vertical:              80px;
+@placeholder-background-success:                  rgba(104, 179, 0, 0.25);
+@placeholder-border-success-color:                rgba(104, 179, 0, 1);
+@placeholder-border-success-width:                2px;
+/* ========================================================================
+   Component: Placeholder
+ ========================================================================== */
+.placeholder {
+    margin-bottom: @placeholder-margin-vertical;
+    padding: (@placeholder-padding * 4) @placeholder-padding;
+    border: @placeholder-border-width dashed @placeholder-border;
+    background: @placeholder-background;
+    color: @placeholder-color;
+
+    // Modificator 'placeholder--widget'
+    &&--widget{
+        background: #fff;
+        padding: 20px 0 0 0;
+        margin: 0;
+    }
+
+    // Modificator 'placeholder--menu'
+    &--menu{
+        min-height: 36px;
+        border: 1px dashed @placeholder-border;
+        margin: 2px 0;
+
+        & .placeholder--menu{
+            border-right: 0;
+            min-height: 20px;
+        }
+
+        &-parent{
+            min-height: 36px;
+            border: 1px dashed @placeholder-border;
+            border-top: 0;
+
+            & .placeholder--menu{
+                min-height: 20px;
+            }
+        }
+    }
+}
+/*
+ * Add margin if adjacent element
+ */
+* + .placeholder {
+    margin-top: @placeholder-margin-vertical;
+}
+/*
+ * Remove margin from the last-child
+ */
+.placeholder > :last-child {
+    margin-bottom: 0;
+}
+/* Modifier: `placeholder--large`
+ ========================================================================== */
+.placeholder--large {
+    padding-top: @placeholder-large-padding-vertical;
+    padding-bottom: @placeholder-large-padding-vertical;
+}
+/* Modifier: `placeholder--success`
+ ========================================================================== */
+.placeholder--success {
+    padding-top: @placeholder-large-padding-vertical;
+    padding-bottom: @placeholder-large-padding-vertical;
+    background: @placeholder-background-success;
+    border-color: @placeholder-border-success-color;
+    border-width: @placeholder-border-success-width;
+}
+/* Elements: `placeholder__description`
+ ========================================================================== */
+.placeholder__description {
+    max-width: 545px;
+    margin: 20px auto 20px auto;
+}
+/* Elements: `placeholder__uploaded`
+ ========================================================================== */
+.placeholder__uploaded {
+    & > *:first-child > * {
+        position: relative;
+        background: #555;
+        color: #ccc;
+        &:before{
+            content: 'Главное фото';
+            position: absolute;
+            font-size: 12px;
+            line-height: 12px;
+            top: 10px;
+            left: 0;
+            right: 0;
+        }
+    }
+
+    &__item {
+        min-height: 110px;
+        background: #fff;
+        border-radius: 4px;
+        padding: 30px 10px 10px;
+        border: 1px solid #ddd;
+        text-align: center;
+        cursor: move;
+        cursor: -webkit-grab;
+
+        &--delete{
+
+        }
+    }
+}

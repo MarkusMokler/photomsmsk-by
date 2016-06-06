@@ -1,0 +1,310 @@
+﻿<div class="userprofile photographer" id="px">
+
+    <div id="cover">
+        <div class="inside">
+           <img style="width: 100%" src="https://static.pexels.com/assets/headers/landscape-eada7b93fc720151157cd430cdd067427e9c909cf29e023dc071775f763995c5.jpg"/>
+        </div>
+
+        <div class="bottom">
+            <div class="fade">
+                <div class="wrapper">
+
+                    <div class="container container--center  ">
+                        <div class="grid uk-flex">
+                            <div class="col--2-10">
+                                <img class="img-poster uk-margin-bottom" src="{{item.imageUrl}}" alt="">
+                                <div class="text--center">
+
+                                    <div ng-if="item.phones.count> 0">
+
+                                        <a href="#review-phone-modal" class="uk-h2 uk-link-fff uk-link-dotted" data-uk-modal>
+                                            <span ng-repeat="number in item.phones">{{number.number}}</span>
+                                        </a>
+
+                                        <div id="review-phone-modal" class="uk-modal">
+                                            <div class="uk-modal-dialog uk-modal-dialog-phones uk-modal-dialog-phones-big">
+                                                <a href="" class="uk-modal-close uk-close"></a>
+                                                <span class="text--muted">контактная информация {{item.lastName}} {{item.firstName}}</span>
+                                                <h1 class="uk-heading-large">{{number}}</h1>
+                                                <span ng-repeat="number in item.phones">{{number.number}}</span>
+                                                <span class="text--muted">
+                                                    сообщайте {{item.firstName}} о том, что вы нашли его на <span class="uk-link-dotted">PhotoMSK.by</span>
+                                                </span>
+                                                <div class="panel panel--box uk-margin-top">
+                                                    <h3 class="uk-panel-title">оцените работу {{item.firstName}}:</h3>
+                                                    <div class="uk-flex uk-margin-bottom">
+                                                        <div class="col--1-4">
+                                                            <a href="#review-phone-modal-thanks" class="button button-reviews button-reviews-success col--1-1" data-uk-modal>Все прошло хорошо</a>
+                                                        </div>
+                                                        <div class="col--1-4 uk-margin-left">
+                                                            <a href="#review-phone-modal-thanks" class="button button-reviews button-reviews-warning col--1-1" data-uk-modal>Даты оказались занятыми</a>
+                                                        </div>
+                                                        <div class="col--1-4 uk-margin-left">
+                                                            <a href="#review-phone-modal-thanks" class="button button-reviews button-reviews-danger col--1-1" data-uk-modal>Не отвечает на звонки</a>
+                                                        </div>
+                                                        <div class="col--1-4 uk-margin-left">
+                                                            <a href="#review-phone-modal-thanks" class="button button-reviews button-reviews-danger col--1-1" data-uk-modal>Цены не действительны</a>
+                                                        </div>
+                                                    </div>
+
+                                                    <small class="text--muted">
+                                                        Спасибо за ваш отзыв! Нам он очень важен.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="review-phone-modal-thanks" class="uk-modal">
+                                            <div class="uk-modal-dialog uk-modal-dialog-phones">
+                                                <a href="" class="uk-modal-close uk-close"></a>
+                                                <span class="text--muted">контактная информация {{item.lastName}} {{item.firstName}}</span>
+                                                <h1 class="uk-heading-large uk-margin-large">Спасибо :)</h1>
+                                                <p class="text--muted">Нам очень важно что вы оставили ваше мнение на <span class="uk-link-dotted">PhotoMSK.by</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col--8-10 uk-flex uk-flex-middle">
+                                <div class="legend-hero">
+                                    <h1>
+                                        {{item.lastName}} <span class="lighter">{{item.firstName}}</span>
+                                    </h1>
+                                    <ul class="uk-subnav uk-subnav-line">
+                                        <li>
+                                            <div class="legend-movie up rate nota bold" data-uk-tooltip title="Общий рейтинг фотографа">{{item.raiting.total}}</div></li>
+                                        <li><strong>{{item.subscribers}}</strong> подписчиков</li>
+                                        <li><strong>{{item.pageViews}}</strong> просмотров</li>
+                                    </ul>
+
+                                    <ul class="uk-subnav">
+
+                                        <li ng-if="item.vk">
+                                            <a href="{{item.vk}}">
+                                                <i class="uk-social-button uk-icon-vk anim-vk"></i>
+                                            </a>
+                                        </li>
+
+
+                                        <li ng-if="item.twitter">
+                                            <a href="{{item.twitter}}">
+                                                <i class="uk-social-button uk-icon-twitter anim-twitter"></i>
+                                            </a>
+                                        </li>
+
+
+
+                                        <li ng-if="item.facebook">
+                                            <a href="{{item.facebook}}">
+                                                <i class="uk-social-button uk-icon-facebook anim-facebook"></i>
+                                            </a>
+                                        </li>
+
+
+                                        <!--
+
+                                        <li ng-if="item.youTube">
+                                            <i class="uk-social-button uk-icon-youtube anim-youtube"></i>
+                                        </li>
+                                        -->
+
+
+                                        <li ng-if="item.instagram">
+                                            <a href="{{item.instagram}}">
+                                                <i class="uk-social-button uk-icon-instagram anim-instagram"></i>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+
+                                    <ul class="uk-subnav">
+                                        <li>
+                                            <div class="intl-tel-input">
+                                                <div class="flag by"></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            {{item.country}},
+                                        </li>
+
+                                        <li ng-if="item.city">
+                                            {{item.city}},
+                                            <!-- (выезд: <span class="uk-link-fff uk-link-dotted">Питер</span>) -->
+                                        </li>
+
+                                        <li>
+                                            <div ng-if="Item.Pro" class="uk-badge uk-badge-success">PRO</div>
+                                            фотограф,
+                                        </li>
+                                    </ul>
+
+                                    <!-- <div class="legend-movie up rate nota">@String.Format("{0:00.0}", Model.Raiting)</div>
+                                    <div class="legend-movie up rate">PRO</div>
+                                    <div class="legend-movie up">Фотограф,&nbsp;</div>
+                                    <div class="legend-movie up">{{city}} &nbsp;</div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="col--1-1">
+                                <hr class="small-line-opacity uk-margin-remove"/>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="col--1-1">
+                                <uib-tabset>
+                                    <uib-tab heading="Информация">
+                                    </uib-tab>
+                                    <uib-tab heading="Съемки">
+                                    </uib-tab>
+                                    <uib-tab heading="Тарифы">
+                                    </uib-tab>
+                                    <uib-tab heading="Календарь">
+                                    </uib-tab>
+                                </uib-tabset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="container container--center photographer">
+    <div class="grid">
+        <div class="col--medium-1-1">
+
+            <ul id="photographer-tab" class="uk-switcher uk-margin">
+                <li class="uk-active grid">
+
+                    <div class="col--2-10">
+                        <h1>Жанры</h1>
+                        <hr />
+                        <ul class="uk-nav uk-nav-menu uk-nav-side uk-nav-parent-icon">
+
+                                <li ng-repeat="genre in item.genres" class="uk-active uk-shooting">
+                                    <a href="#">{{genre}}</a>
+                                </li>
+                            
+                        </ul>
+                    </div>
+
+                    <div id="wall-placeholder" class="col--5-10">
+                    </div>
+
+                    
+                    <div class="col--3-10  ">
+                        <h1>Фотопроекты</h1>
+                        <hr />
+                        <ul class="photo-projects">
+                            <li>
+                                <article class="uk-comment">
+                                    <header class="uk-comment-header">
+                                        <img class="img-photo-projects float--left uk-border-rounded" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                                        <h4 class="uk-comment-title">«Весна в разгаре 2014»</h4>
+                                        <div class="uk-comment-meta"> 100$ за час.</div>
+                                    </header>
+                                </article>
+                            </li>
+                            <li>
+                                <article class="uk-comment">
+                                    <header class="uk-comment-header">
+                                        <img class="img-photo-projects float--left uk-border-rounded" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                                        <h4 class="uk-comment-title">«Summer Party 2020»</h4>
+                                        <div class="uk-comment-meta">Бесплатный</div>
+                                    </header>
+                                </article>
+                            </li>
+                        </ul>
+                        <a class="float--right" href="#">показать все...</a>
+                    </div>
+
+                </li>
+                <li class="grid grid--small">
+
+
+                    
+                    
+                        <div ng-repeat="shoot in item.shootings" class="col--1-1">
+                            <div class="uk-comment-meta">{{shoot.date}}</div>
+                            <h1 class="title"><a class="uk-link-muted" href="#">{{shoot.title}}</a></h1>
+                            <div class="uk-comment-meta">{{shoot.description}}</div>
+                        </div>
+
+
+                        <div ng-repeat="shoot in item.shootings" class="col--1-1">
+
+                            <div class="justified-gallery">
+                                    <a href="{{attachment.url}}">
+                                        <img alt="Описание" src="{{attachment.url}}" />
+                                    </a>
+                            </div>
+
+                        </div>
+                    
+
+                </li>
+                <li class="grid grid--small">
+
+                    <div class="col--1-1">
+                        <div class="uk-alert uk-alert-info uk-margin-remove text--center" data-msg="no-updates">
+                            <h3 class="uk-margin-remove">Раздел находится в разработке</h3>
+                            <p class="uk-margin-remove">
+                                <small class="text--muted">совсем скоро вы увидите его в действии.</small>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col--1-1">
+                        <h1>Описание работы</h1>
+                        <p>В каждый из пакетов услуг входит предсвадебная встреча, организация фотосессии, важные советы и детали. А так же резервное хранение готовых фотографий на жёстком диске в течении 2-х лет. Ну и конечно же – приятное и лёгкое общение, безусловное качество и надёжность предоставляемых услуг.</p>
+                    </div>
+
+                    <div class="grid  ">
+                            <div class="col--medium-1-3">
+                                <div class="panel panel--box">
+                                    <div class="uk-panel-teaser text--center">
+                                        <h2>
+                                            Optimal
+                                            <p><small>тариф</small></p>
+                                        </h2>
+                                        <img class="price-image" src="http://i.imgur.com/pwPaORM.jpg" alt="">
+                                    </div>
+                                    <section class="price">
+                                        <h2>
+                                            <span class="dollar">$</span>199<span class="hours">/4 часа</span>
+                                        </h2>
+                                    </section>
+
+                                    <h3>Входит в пакет:</h3>
+                                    <ul class="uk-list price-list">
+                                        <li class="list-check-item">Предсвадебная встреча</li>
+                                        <li class="list-check-item">Скидка 50% на Love story</li>
+                                        <li class="list-check-item">Фотокнига на 20 разворотов</li>
+                                        <li class="list-check-item">Слайд-шоу</li>
+                                        <li class="list-check-item">Авторская решушь 20 фотографй</li>
+                                        <li class="list-check-item">Тех. ретушь 300 фотографий</li>
+                                    </ul>
+
+                                    <input type="submit" class="btn border-500 booking-button" value="Заказать">
+                                </div>
+                            </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="uk-alert uk-alert-info uk-margin-remove text--center" data-msg="no-updates">
+                        <h3 class="uk-margin-remove">Раздел находится в разработке</h3>
+                        <p class="uk-margin-remove">
+                            <small class="text--muted">совсем скоро вы увидите его в действии.</small>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>

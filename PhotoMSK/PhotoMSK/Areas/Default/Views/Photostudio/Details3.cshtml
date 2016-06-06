@@ -1,0 +1,167 @@
+﻿@using AutoMapper
+@using Microsoft.AspNet.Identity
+@using PhotoMSK.Extensiolns
+@using PhotoMSK.ViewModels
+@model PhotoMSK.Areas.Default.ViewData.Photostudio.DetailsViewData
+@{
+    ViewBag.Title = "Фотостудия " + Model.Item.Name;
+    ViewBag.Description = Model.Item.Description;
+    ViewBag.Image = Model.Item.ImageUrl;
+}
+@section scripts
+{
+    @Scripts.Render("~/Scripts/marked")
+    @Scripts.Render("~/bundles/jqueryval")
+    <style>
+        #hall-select li:hover {
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
+            border-radius: 3px;
+            color: #666;
+        }
+
+        .booking-calendar table td {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            App.GlobalObj.routeImage='@Model.Item.ImageUrl';
+            App.GlobalObj.owner = '@Model.Item.ID';
+            App.GlobalObj.StudioDetails = new Application.BaseViews.StudioDetails(
+                { model: @Model.Item.Halls.Select(x => new { id = x.Calendar.ID.ToString(), color = x.Calendar.Color, name = x.Name, description = x.Description, calendarID = x.Calendar.ID }).ToJson() }
+            );
+            App.GlobalObj.StudioDetails.render();
+            App.GlobalObj.WallView.WallCollection.reset(@(Mapper.Map<IList<WallViewModel>>(Model.Item.Wall.OrderByDescending(x => x.Date).Take(10).Select(x => { x.WallPost.SetUserID(this.User.Identity.GetUserId()); return x.WallPost; })).ToJson()));
+
+            $("#subscribe").click(function() {
+
+                $.post("/Api/Subscription", { RouteID: "@Model.Item.ID" }, function() {}
+                );
+            });
+        });
+    </script>
+}
+<div class="userprofile photographer" id="px">
+
+    <div id="cover">
+        <div class="inside">
+            <img style="width: 100%" src=@(Model.Item.CoverImage ?? "http://pacdn.500px.org/1623045/90732f6fd75497df147984baddc5146b0725e54b/cover_2048.jpg") />
+        </div>
+
+        <div class="bottom">
+            <div class="fade">
+                <div class="wrapper">
+
+                    <div class="uk-container uk-container-center pad-bottom-20">
+                        <div class="uk-grid">
+                            <div class="uk-width-2-4 uk-photostudio-title">
+                                <ul class="uk-subnav">
+                                    <li>
+                                        <a href="#" class="uk-top-position">
+                                            <span class="title" data-uk-tooltip="{pos:'top-right'}" title="Посмотреть ТОП 100">Топ 100</span>
+                                            <span class="num" data-uk-tooltip="{pos:'top-left'}" title="25 место в рейтинге фотостудий">25</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <img class="uk-border-circle" src="@Model.Item.ImageUrl" width="60" />
+                                    </li>
+                                    <li>
+                                        <h1 class="uk-margin-remove uk-photostudio-name">@Model.Item.Name</h1>
+                                        <span class="uk-link-dotted uk-photostudio-adress">@Model.Item.Adress</span>
+                                    </li>
+                                </ul>
+                                <div>
+                                    @foreach (PhoneViewModel.Summary item in Model.Item.GetPhones())
+                                    {
+                                        <a href="#review-phone-modal" class="uk-h2 uk-link-fff uk-link-dotted" data-uk-modal>
+                                            @item.Number
+                                        </a>
+                                    }
+                                    <div id="review-phone-modal" class="uk-modal uk-text-center">
+                                        <div class="uk-modal-dialog uk-modal-dialog-phones uk-modal-dialog-phones-big">
+                                            <a href="" class="uk-modal-close uk-close"></a>
+                                            <span class="uk-text-muted">контактная информация Нежуга Андрей</span>
+                                            <h1 class="uk-heading-large">+375336660323</h1>
+                                            <span class="uk-text-muted">
+                                                сообщайте Андрей о том, что вы нашли его на <span class="uk-link-dotted">PhotoMSK.by</span>
+                                            </span>
+                                            <div class="uk-panel uk-panel-box uk-margin-top">
+                                                <h3 class="uk-panel-title">оцените работу Андрей:</h3>
+                                                <div class="uk-flex uk-margin-bottom">
+                                                    <div class="uk-width-1-4">
+                                                        <a href="#review-phone-modal-thanks" class="uk-button uk-button-reviews uk-button-reviews-success uk-width-1-1" data-uk-modal="">Все прошло хорошо</a>
+                                                    </div>
+                                                    <div class="uk-width-1-4 uk-margin-left">
+                                                        <a href="#review-phone-modal-thanks" class="uk-button uk-button-reviews uk-button-reviews-warning uk-width-1-1" data-uk-modal="">Даты оказались занятыми</a>
+                                                    </div>
+                                                    <div class="uk-width-1-4 uk-margin-left">
+                                                        <a href="#review-phone-modal-thanks" class="uk-button uk-button-reviews uk-button-reviews-danger uk-width-1-1" data-uk-modal="">Не отвечает на звонки</a>
+                                                    </div>
+                                                    <div class="uk-width-1-4 uk-margin-left">
+                                                        <a href="#review-phone-modal-thanks" class="uk-button uk-button-reviews uk-button-reviews-danger uk-width-1-1" data-uk-modal="">Цены не действительны</a>
+                                                    </div>
+                                                </div>
+
+                                                <small class="uk-text-muted">
+                                                    Спасибо за ваш отзыв! Нам он очень важен.
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="review-phone-modal-thanks" class="uk-modal">
+                                        <div class="uk-modal-dialog uk-modal-dialog-phones">
+                                            <a href="" class="uk-modal-close uk-close"></a>
+                                            <span class="uk-text-muted">контактная информация Нежуга Андрей</span>
+                                            <h1 class="uk-heading-large uk-margin-large">Спасибо :)</h1>
+                                            <p class="uk-text-muted">Нам очень важно что вы оставили ваше мнение на <span class="uk-link-dotted">PhotoMSK.by</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-grid">
+                            <div class="uk-width-1-1">
+                                <hr class="small-line-opacity uk-margin-remove" />
+                            </div>
+                        </div>
+                        <div class="uk-grid">
+                            <div class="uk-width-1-1">
+                                <ul class="uk-subnav uk-subnav-top-menu role-switch-tabs" data-uk-switcher="{connect:'#photosudio-content', animation: 'fade'}">
+                                    <li class="uk-active"><a href="#">Информация</a></li>
+                                    <li><a href="#">Календарь</a></li>
+                                    <li><a href="#">Залы</a></li>
+                                    <li><a href="#">Отзывы</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uk-main-page-body">
+                        <div class="uk-container uk-container-center pad-top-40">
+                            <ul id="photosudio-content" class="uk-switcher">
+                                <li>
+                                    @Html.Partial("Details/_PhotostudioInformation", Model)
+                                </li>
+                                <li>
+                                    @Html.Partial("Details/_PhotostudioInformation", Model)
+                                </li>
+                                <li>
+                                    @Html.Partial("Details/_PhotostudioHalls", Model)
+                                </li>
+                                <li>
+                                    @Html.Partial("Details/_PhotostudioReviews", Model)
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

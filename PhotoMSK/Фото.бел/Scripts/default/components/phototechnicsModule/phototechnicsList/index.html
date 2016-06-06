@@ -1,0 +1,272 @@
+<div><data-bread-crumbs/></div>
+
+<div class="block block--default">
+    <div class="container container--center">
+        <div class="grid grid--small technics__header">
+            <div class="col--1-1">
+                <h1 class="text--h1 text--bold margin--bottom-small">Цифровые фотокамеры</h1>
+            </div>
+        </div>
+
+        <div class="grid grid--small">
+            <div class="col--3-4">
+                <ul class="sort sort--small">
+                    <li class="sort__title"><span>Сортировать:&nbsp;</span></li>
+                    <li class="sort__item active"><a data-msk-href>популярности</a></li>
+                    <li class="sort__item"><a data-msk-href>цене</a></li>
+                    <li class="sort__item"><a data-msk-href>новизне</a></li>
+                </ul>
+            </div>
+            <!-- <ul class="col--1-4 sorted__view">
+                <li class="active">
+                    <a data-msk-href class="link--reset">
+                        <i class="icon-view_list"></i>
+                    </a>
+                </li>
+                <li>
+                    <a data-msk-href class="link--reset">
+                        <i class="icon-view_module"></i>
+                    </a>
+                </li>
+            </ul> -->
+        </div>
+
+        <div class="grid grid--small margin--top">
+            <div class="col--3-4">
+
+                <ul class="grid grid--small">
+                    <li class="col--1-1 catalog__item padding--reset" data-ng-repeat="item in itemsPage.elements">
+                        <article class="panel--border panel panel--box panel--white">
+                            <div class="grid grid--divider">
+                                <div class="col--7-10">
+                                    <a data-msk-href>
+                                        <p class="text--h2 text--bold margin--reset">
+                                            <a href="/{{item.shortcut}}" class="link--reset">{{item.name}}</a>
+                                        </p>
+                                    </a>
+                                    <a data-msk-href class="text--muted">
+                                        <small class="text--small">{{item.categorySlug}}</small>
+                                    </a>
+                                </div>
+                                <div class="col--3-10 text--center">
+                                    <p class="text--h5 margin--top-reset">Покупка</p>
+                                    <p data-ng-if="item.calculatedPrice != 0" data-ng-cloak>
+                                        <small class="text--small">от&nbsp;</small><span class="text--h3 text--bold">{{item.calculatedPrice | number}}</span><small class="text--small text--muted">&nbsp;бел. pуб.</small>
+                                    </p>
+                                    <p data-ng-if="item.calculatedPrice == 0" data-ng-cloak>
+                                        под заказ
+                                    </p>
+                                </div>
+                            </div>
+                            <hr class="grid--divider-small">
+                            <div class="grid grid--divider margin--top-reset">
+                                <!-- <div class="col--1-1 panel--divider">
+                                    <hr class="small-line margin--small">
+                                </div> -->
+                                <div class="col--2-10 catalog__item__img">
+                                    <!-- <div class="uk-panel-badge-circle uk-panel-badge-circle--success float--right">4.3</div> -->
+                                    <div class="text--center margin--bottom">
+                                        <a data-msk-href>
+                                            <img class="catalog__item__img" src="{{item.imageUrl}}" alt="{{item.name}}">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col--5-10 catalog__item__description">
+                                    <div>
+                                        <ul class="catalog__item__spec">
+                                            <li>
+                                                <i class="icon-cart"></i>
+                                            </li>
+                                            <li>
+                                                18.7 МП
+                                            </li>
+                                            <li>
+                                                <i class="icon-cart"></i>
+                                            </li>
+                                            <li>
+                                                18.7 МП
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <ul class="catalog__item__desc">
+                                        <li data-ng-cloak>{{item.description}}</li>
+                                    </ul>
+                                </div>
+                                <div class="col--3-10 text--center catalog__item__rent">
+                                    <p class="text--h5" data-ng-if="item.calculatedHourlyPrice != 0 && item.calculatedHourlyPrice != 0 && item.calculatedWeeklyPrice != 0">Аренда</p>
+                                    <p class="margin--top text--muted" data-ng-if="item.calculatedHourlyPrice == 0 && item.calculatedHourlyPrice == 0 && item.calculatedWeeklyPrice == 0">
+                                        Техника в аренду не сдается
+                                    </p>
+                                    <ul class="catalog__item__rent__price" data-ng-if="item.calculatedHourlyPrice != 0" data-ng-cloak>
+                                        <li>Час</li>
+                                        <li class="text--bold">{{item.calculatedHourlyPrice | number}}</li>
+                                    </ul>
+                                    <ul class="catalog__item__rent__price" data-ng-if="item.calculatedHourlyPrice != 0" data-ng-cloak>
+                                        <li>День</li>
+                                        <li class="text--bold">{{item.calculatedDaylyPrice | number}}</li>
+                                    </ul>
+                                    <ul class="catalog__item__rent__price" data-ng-if="item.calculatedWeeklyPrice != 0" data-ng-cloak>
+                                        <li>Неделя</li>
+                                        <li class="text--bold">{{item.calculatedWeeklyPrice | number}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col--1-4">
+                <aside class="accordion panel panel--border panel--white">
+                    <div class="accordion__block">
+                        <div class="accordion__title" data-ng-click="accPrice = !accPrice">
+                            <i class="text--small text--muted" data-ng-class="accPrice ? 'icon-chevron-down' : 'icon-chevron-right'"></i>
+                            <span>Цена, руб.</span>
+                        </div>
+                        <div class="accordion__content filter__content" data-ng-show="accPrice">
+                            <div class="filter__content__price">
+                                <div class="form-text-inner">
+                                    <span>от</span>
+                                    <input type="number" placeholder="123" tabindex="2">
+                                </div>
+                                <div class="form-text-inner">
+                                    <span>до</span>
+                                    <input type="number" placeholder="123" tabindex="2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion__block">
+                        <div class="accordion__title" data-ng-click="accManufacturer = !accManufacturer">
+                            <i class="text--small text--muted" data-ng-class="accManufacturer ? 'icon-chevron-down' : 'icon-chevron-right'"></i>
+                            <span>Производитель</span>
+                            <i class="icon-question text--small text--muted float--right"></i>
+                        </div>
+                        <div class="accordion__content filter__content" data-ng-show="accManufacturer">
+                            <ul class="grid grid--small grid-col--1-2 filter__content__list">
+                                <li class="unsorted">
+                                    <input id="canon" type="checkbox">
+                                    <label for="canon">
+                                        <span></span>
+                                        Canon
+                                    </label>
+                                </li>
+                                <li>
+                                    <input id="nikon" type="checkbox">
+                                    <label for="nikon">
+                                        <span></span>
+                                        Nikon
+                                    </label>
+                                </li>
+                                <li class="unsorted uk-grid-margin">
+                                    <input id="leica" type="checkbox">
+                                    <label for="leica">
+                                        <span></span>
+                                        Leica
+                                    </label>
+                                </li>
+                                <li class="uk-grid-margin">
+                                    <input id="sony" type="checkbox">
+                                    <label for="sony">
+                                        <span></span>
+                                        Sony
+                                    </label>
+                                </li>
+                            </ul>
+                            <a data-msk-href class="button button--mini margin--top">Показать ещё</a>
+                        </div>
+                    </div>
+
+                    <div class="accordion__block">
+                        <div class="accordion__title">
+                            <input id="onplace" type="checkbox">
+                            <label for="onplace">
+                                <span></span>
+                                В наличии
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="accordion__block">
+                        <div class="accordion__title" data-ng-click="accChangeLens = !accChangeLens">
+                            <i class="text--small text--muted" data-ng-class="accChangeLens ? 'icon-chevron-down' : 'icon-chevron-right'"></i>
+                            <span>Смена объектива</span>
+                        </div>
+                        <div class="accordion__content" data-ng-show="accChangeLens">
+                            <input id="changeYes" value="changeYes" name="changeLense" type="radio">
+                            <label for="changeYes">
+                                <span></span>
+                                Да
+                            </label>
+
+                            <input id="changeNo" value="changeNo" name="changeLense" type="radio">
+                            <label for="changeNo">
+                                <span></span>
+                                Нет
+                            </label>
+
+                            <input id="changeNoMatter" value="changeNoMatter" name="changeLense" type="radio">
+                            <label for="changeNoMatter">
+                                <span></span>
+                                Неважно
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="accordion__block">
+                        <div class="accordion__title">
+                            <i class="icon-chevron-down"></i>
+                            <span>Проверка</span>
+                            <i class="icon-question text--small text--muted float--right"></i>
+                        </div>
+                        <div data-wrapper="true">
+                            <div class="accordion__content filter__content">
+                                <ul class="grid grid-col--1-2 grid--small filter__content__list">
+                                    <li>
+                                        <input id="three" type="checkbox">
+                                        <label for="three">
+                                            <span></span>
+                                            Heads will roll
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input id="four" type="checkbox">
+                                        <label for="four">
+                                            <span></span>
+                                            On the floor
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion__footer">
+                        <a data-msk-href class="button">Применить</a>
+                        <a data-msk-href class="filter__footer__all-filters">Перейти ко всем фильтрам</a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <div class="grid margin--top-small">
+            <div class="col--1-1 padding--reset">
+                <section class="catalog__item">
+                    <div class="panel panel--border panel--box panel--white text--center">
+                        <p class="text--h3 text--bold margin--top-large">
+                            Нет подходящих товаров
+                        </p>
+                        <p class="text--h6 margin--bottom-small">
+                            попробуйте смягчить условия поиска
+                        </p>
+                        <a data-msk-href class="button margin--bottom-large">Сбросить фильтры</a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

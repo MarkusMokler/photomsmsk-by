@@ -1,0 +1,18 @@
+﻿@using PhotoMSK.Data.Models.Routes
+@{
+    var theme = Model.Domain;
+    if (Model is Photostudio)
+    {
+        Layout = "../Shared/PhotostudioWhiteLabel.cshtml";
+    }
+    if (Model is Photorent)
+    {
+        Layout = "../Shared/PhotorentWhiteLabel.cshtml";
+        Layout = "~/Themes/Photorent/" + theme + "/Views/Shared/_LayoutTest.cshtml";
+    }
+    if (Model is Photoshop)
+    {
+        Layout = "~/Themes/Photoshop/"+theme+"/Views/Shared/_LayoutTest.cshtml";
+    }
+}
+<div data-ng-view></div>

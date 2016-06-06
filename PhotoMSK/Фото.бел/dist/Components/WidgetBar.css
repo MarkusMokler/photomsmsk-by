@@ -1,0 +1,88 @@
+/* ========================================================================
+   Component: widget-bar
+ ========================================================================== */
+.widget-bar {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  min-height: 85vh;
+  background: #fff;
+  float: right;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.widget-bar__tab {
+  background: #eee;
+  font-size: 0;
+  box-shadow: inset 0 -4px 10px -6px rgba(0, 0, 0, 0.3);
+}
+.widget-bar__tab > li {
+  display: inline-block;
+  font-size: 16px;
+}
+.widget-bar__tab > li > a {
+  display: inline-block;
+  padding: 10px;
+  transition: all 200ms;
+}
+.widget-bar__tab > li > a:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+.widget-bar__tab > li.active > a {
+  background: #fff;
+}
+.widget-bar__content {
+  padding: 10px 0;
+}
+.widget-bar__content__title {
+  padding: 5px 10px;
+  font-size: 12px;
+  background: #eee;
+  border-bottom: 1px solid #ddd;
+}
+.widget-bar__footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+.widget-bar__elements {
+  position: relative;
+  width: 100%;
+  font-size: 0;
+}
+.widget-bar__elements > li {
+  display: block;
+  background-color: #fff;
+  float: left;
+  width: 100px;
+  height: 100px;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+.widget-bar__elements > li > a {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  padding-top: 26px;
+}
+.widget-bar__elements > li > a > i {
+  font-size: 30px;
+}
+.widget-bar__elements > li > a > * {
+  display: block;
+  margin-top: 4px;
+}
+.widget-bar__elements__img {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+.widget-bar__elements__img > img {
+  visibility: hidden;
+  opacity: 0;
+}
+.widget-bar__filemanager {
+  padding: 10px;
+}

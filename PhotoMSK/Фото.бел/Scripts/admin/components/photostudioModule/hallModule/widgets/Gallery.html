@@ -1,0 +1,15 @@
+<div class="container container--center">
+    <ul class="widgets__gallery grid grid--small grid-col--1-5 apps-container" ui-sortable="sortableOptions" data-ng-model="widget.files">
+        <li data-ng-repeat="item in widget.files">
+            <img class="col--1-1" src="{{item.attachment.url}}" alt="">
+            <p class="text--h4">Текс</p>
+
+            <div class="text--center">
+                <a data-ng-click="remove(item)" class="button button--small button--delete border--rounded">Удалить</a>
+            </div>
+        </li>
+        <li>
+            <div class="widgets__empty-img icon-empty-image"></div>
+        </li>
+    </ul>
+</div>

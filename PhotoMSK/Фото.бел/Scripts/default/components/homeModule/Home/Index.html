@@ -1,0 +1,384 @@
+﻿<header class="header" style="background-image: url({{winner.photo.url}})">
+    <div class="header--overlay"></div>
+    <!-- <h1 class="header__title" title="Крупнейший портал для фотографов"> -->
+        <span class="seo-only">Крупнейший бесплатный портал для фотографов · ФОТО.бел</span>
+    <!-- </h1> -->
+    <h2 class="header__subtitle">
+        Найди себе фотографа на свадьбу.
+    </h2>
+
+    <section class="header__search">
+        <div class="header__search__block">
+
+            <div angucomplete-alt
+                 type="search"
+                 remote-url={{search}}
+                 placeholder="Поиск фотостудий и бронирование..."
+                 pause="500"
+                 selected-object="selected"
+                 title-field="name"
+                 description-field="shortcut"
+                 image-field="imageUrl"
+                 model="results"
+                 remote-url-request-formatter="remoteUrlRequestEn"
+                 searching="userPhone"
+                 input-class="input border--rounded col--1-1 ui-autocomplete-input"
+                 no-results="noResults"></div>
+
+            <a class="header__search__icon icon-magnifier" title="Search"></a>
+        </div>
+
+        <h3 class="header__search__title">Популярные категории:</h3>
+
+        <ul class="header__search__tags">
+            <li><a data-msk-href>студийные</a></li>
+            <li><a data-msk-href>свадебные</a></li>
+            <li><a data-msk-href>fashion</a></li>
+            <li><a data-msk-href>ню</a></li>
+            <li><a data-msk-href>арт</a></li>
+            <li><a data-msk-href>черно белые</a></li>
+            <li><a data-msk-href>авто</a></li>
+            <li><a data-msk-href>предметная</a></li>
+            <li><a data-msk-href>люди</a></li>
+            <li><a data-msk-href>детские</a></li>
+            <li><a data-msk-href>природа</a></li>
+            <li><a data-msk-href>репортажная</a></li>
+            <li><a data-msk-href>уличная</a></li>
+            <li><a data-msk-href>городские</a></li>
+            <li><a data-msk-href>натуральные</a></li>
+        </ul>
+    </section>
+
+    <div class="header__author">
+        <a href="/photographerDetails/{{winner.photographer.shortcut}}">
+            <img class="border--rounded" src="{{winner.photographer.imageUrl}}" width="30" alt="Автор фотографии {{winner.photographer.firstName}} {{winner.photographer.lastName}}" />
+            {{winner.photographer.firstName}} {{winner.photographer.lastName}} {{winner.place}} ({{lastMonth}})
+        </a>
+    </div>
+</header>
+
+<!-- <div class="uk-main-page-body"> -->
+<div class="breadcrumb">
+    <div class="container container--center">
+        <ul class="breadcrumb__list">
+            <li class="breadcrumb__item"><a data-msk-href>Главная</a></li>
+            <!-- <li class="breadcrumb__item"><a data-msk-href>Популярные</a></li> -->
+        </ul>
+    </div>
+</div>
+<div class="container container--center">
+    <div class="grid grid--small">
+        <div class="col--1-1 margin--bottom-small">
+            <a data-msk-href class="text--h3 text--bold link--line">Лучшие фотографии</a>
+        </div>
+
+        <!-- <div class="col--1-1">
+            <div class="feed-item" ng-repeat = "groupImages in squareGridGroup">
+                <div data-ng-photo-grid = ""
+                     images             =   "groupImages"
+                     grid-options       =   "gridOptionsSquare"
+                     data-ng-class      =   "{'loading': isBuildingGrid}"
+                     class              =   "feed-photos">
+                </div>
+            </div>
+        </div> -->
+
+
+        <div class="col--1-2">
+            <ul class="grid grid--small">
+                <li class="col--1-1"><img src="http://images-p47-0.cdn.mywed.ru/users_new/4926/4926/photo/0047/47/5711910.jpg" alt=""></li>
+                <li class="col--2-3 margin--top-small"><img src="http://images-p46-4.cdn.mywed.ru/users_new/2604/42604/photo/0046/46/5726404.jpg" alt=""></li>
+                <li class="col--1-3 margin--top-small"><img src="http://images-p44-2.cdn.mywed.ru/users_new/5504/75504/photo/0044/44/5723042.jpg" alt=""></li>
+            </ul>
+        </div>
+        <div class="col--1-2">
+            <ul class="grid grid--small">
+                <li class="col--1-1"><img src="http://images-p42-8.cdn.mywed.ru/users_new/4880/14880/photo/0042/42/5717958.jpg" alt=""></li>
+            </ul>
+        </div>
+
+        <div class="col--2-6 margin--top-small">
+            <img src="http://images-p51-2.cdn.mywed.ru/users_new/7511/127511/photo/0051/51/5731162.jpg" alt="">
+        </div>
+        <div class="col--2-6 margin--top-small">
+            <ul class="grid grid--small">
+                <li class="col--1-1"><img src="http://images-p45-4.cdn.mywed.ru/users_new/1561/151561/photo/0045/45/5724854.jpg" alt=""></li>
+                <li class="col--1-1 margin--top-small"><img src="http://images-p46-4.cdn.mywed.ru/users_new/8519/78519/photo/0046/46/5725104.jpg" alt=""></li>
+            </ul>
+        </div>
+        <div class="col--1-6 margin--top-small">
+            <ul class="grid grid--small">
+                <li class="col--1-1"><img src="http://images-p43-0.cdn.mywed.ru/users_new/2714/112714/photo/0043/43/5731450.jpg" alt=""></li>
+                <li class="col--1-1 margin--top-small"><img src="http://images-p44-8.cdn.mywed.ru/users_new/7612/37612/photo/0044/44/5731348.jpg" alt=""></li>
+            </ul>
+        </div>
+        <div class="col--1-6 margin--top-small">
+            <ul class="grid grid--small">
+                <li class="col--1-1"><img src="http://images-p44-4.cdn.mywed.ru/users_new/8705/58705/photo/0044/44/5713874.jpg" alt=""></li>
+                <li class="col--1-1 margin--top-small"><img src="http://images-p43-8.cdn.mywed.ru/users_new/3869/163869/photo/0043/43/5719008.jpg" alt=""></li>
+            </ul>
+        </div>
+
+        <div class="col--1-1 margin--top">
+            <p class="text--center">
+                <a class="text--small text--muted" data-msk-href>ещё 15 000 лучших фотографий на портале...</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<div class="block block--default margin--top-large">
+    <div class="container container--center">
+        <div class="grid">
+            <div class="col--1-1 text--center margin--bottom">
+                <a class="link--line text--bold text--h3" href="/photographer">Популярные фотографы</a>
+            </div>
+
+            <div class="col--1-1">
+                <ul class="grid grid-col--1-10 text--center">
+
+                    <li class="photographer__population margin--bottom-small">
+                        <div class="photographer__population__new">
+                            <i class="icon-user"></i>
+                        </div>
+                        <p class="text--orange margin--top">
+                            <a class="link--line" href="/">Хочу сюда!</a>
+                        </p>
+                    </li>
+
+                    <li class="margin--bottom-small" data-ng-repeat="item in photographer.elements | limitTo : 19">
+                        <a href="/photographerDetails/{{item.shortcut}}">
+                            <img class="border--rounded" src="{{item.imageUrl}}" alt="">
+                        </a>
+                        <a class="link--line" href="/photographerDetails/{{item.shortcut}}">
+                            <p class="margin--top-small">
+                                {{item.firstName}}
+                                <br>
+                                {{item.lastName}}
+                            </p>
+                        </a>
+                        <a href="/photographerDetails/{{item.shortcut}}">
+                            <small class="text--small margin--top-mini text--muted link--dotted">
+                                {{item.city}}
+                            </small>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="col--1-1 margin--top">
+                <p class="text--center">
+                    <a class="text--small text--muted" href="/photographer">ещё 15 000 лучших фотографов в каталоге на портале...</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="block block--default photobook--back">
+    <div class="container container--center">
+        <div class="grid">
+            <div class="col--1-1 text--center">
+                <a href="фотокниги.бел" target="_blank">
+                    <img src="/Content/images/photobook-bel.svg" width="150" alt="Сайт по печати фотокниг онлайн">
+                </a>
+                <p class="text--light text--h1">
+                    Качественные фотокниги по человеческим ценам, <br><span class="text--h2 text--muted">созданные с любовью</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="container container--center">
+    <div class="grid margin--top-large">
+        <div class="col--1-1">
+            <a data-msk-href class="text--h3 text--bold link--line">Афиша событий</a>
+        </div>
+    </div>
+    <ul class="grid grid-col--large-1-4 grid-col--medium-1-4 grid-col--small-1-2">
+        <li>
+            <div>
+                <a data-msk-href class="link--reset">
+                    <img width="65" height="65" class="uk-border-circle" alt="" src="/Content/images/no-avatar.png">
+                </a>
+            </div>
+            <small class="text--muted">
+                13.4.2015 19:00 (Monday) - 0:00
+            </small>
+            <a href="ststsyuq11" class="link--reset">
+                <p class="margin--small text--bold">
+                    TestMaster
+                </p>
+            </a>
+            <p class="text--small text--muted">
+                <i>ведет: Andrey</i>
+            </p>
+        </li>
+        <li>
+            <div class="uk-align-medium-left">
+                <a data-msk-href class="link--reset">
+                    <img width="65" height="65" class="uk-border-circle" alt="" src="/Content/images/no-avatar.png">
+                </a>
+            </div>
+            <small class="text--muted">
+                10.4.2015 12:00 (Friday) - 13:00
+            </small>
+            <a data-msk-href class="link--reset">
+                <p class="margin--small text--bold">
+                    TestMaster
+                </p>
+            </a>
+            <p class="text--small text--muted margin-reset">
+                <i>ведет: Андрей</i>
+            </p>
+        </li>
+        <li>
+            <div class="uk-align-medium-left">
+                <a data-msk-href class="link--reset">
+                    <img width="65" height="65" class="uk-border-circle" alt="" src="https://pp.vk.me/c7002/c617826/v617826956/1afa2/ajC8yF4wzJM.jpg">
+                </a>
+            </div>
+            <small class="text--muted">
+                30.11.2014 10:00 (Sunday) - 18:00
+            </small>
+            <a data-msk-href class="link--reset">
+                <p class="margin--small text--bold">
+                    МК Светланы Голубевой, Минск.
+                </p>
+            </a>
+            <p class="text--small text--muted margin--reset">
+                <i>ведет: Светлана Голубева</i>
+            </p>
+        </li>
+        <li>
+            <div class="uk-align-medium-left">
+                <a data-msk-href class="link--reset">
+                    <img width="65" height="65" class="uk-border-circle" alt="" src="https://pp.vk.me/c7002/c617826/v617826956/1af87/CD7gueqAKr0.jpg">
+                </a>
+            </div>
+            <small class="text--muted">
+                1.11.2014 10:00 (Saturday) - 20:00
+            </small>
+            <a data-msk-href class="link--reset">
+                <p class="margin--small text--bold">
+                    Мастеркласс Насти Околот в Минске
+                </p>
+            </a>
+            <p class="text--small text--muted margin--reset">
+                <i>ведет: Настя Околот </i>
+            </p>
+        </li>
+    </ul>
+</div> -->
+
+
+<!--Top Projects-->
+<div class="block block--default">
+    <div class="container container--center">
+        <div class="grid">
+            <div class="col--1-1 text--center margin--bottom">
+                <p class="text--h6 text--muted text--uppercase">Вы также можете принять участие в различных мероприятиях</p>
+                <p class="text--h2">Самая большая база фото-видео мероприятий на сайте</p>
+            </div>
+
+            <div class="col--1-1">
+                <div class="tab tab--large">
+                    <div class="tab__header">
+                        <a class="tab__item active" data-msk-href>Проекты</a>
+                        <a class="tab__item" data-msk-href>События</a>
+                        <a class="tab__item" data-msk-href>Барахолка</a>
+                        <a class="tab__item" data-msk-href>Заказы</a>
+                        <a class="tab__item tab__item--filter" data-ng-click="isFindProjectOpen = !isFindProjectOpen" data-msk-href>
+                            <i class="icon-cog"></i>
+                            <small>фильтр</small>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col--1-1 margin--top" data-ng-if="isFindProjectOpen">
+                <ul class="list list--horizontal">
+                    <li>
+                        <label class="label label--rounded">Название</label>
+                        <input class="input input--small input--rounded" data-ng-model="projectName" />
+                    </li>
+                    <li>
+                        <label class="label label--rounded">Цена от</label>
+                        <input class="input input--small input--rounded" data-ng-model="priceFrom" />
+                    </li>
+                    <li>
+                        <label class="label label--rounded">до</label>
+                        <input class="input input--small input--rounded" data-ng-model="priceTo" />
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <ul class="grid">
+            <li class="col--1-4 margin--bottom" data-ng-repeat="item in projects | filter: projectFilter | limitTo: 4">
+                <div class="poster">
+                    <div class="ribbon-sale">
+                        <span>Скидка 10%</span>
+                    </div>
+
+                    <div class="poster__teaser" style="background-image: url(http://images-p1-0.cdn.mywed.ru/users_new/1225/1225/photo/0001/1/5727980.jpg);">
+                        <div class="poster__teaser--overlay"></div>
+
+                        <a data-msk-href class="poster__organizer">
+                            <img src="http://ph1.photomsk.by/5f/e7/42//5fe742e1f20eabd24676f15339ba6e181cc6fa5396f712090ee39b8dcc3bd4e8.jpg" alt="">
+                        </a>
+
+                        <p class="poster__title">
+                            {{item.name}}
+                        </p>
+
+                        <div class="poster__seats">
+                            <span>12 мест</span>
+
+                            <ul Class="poster__participants">
+                                <li><a data-msk-href><img src="http://ph1.photomsk.by/5f/e7/42//5fe742e1f20eabd24676f15339ba6e181cc6fa5396f712090ee39b8dcc3bd4e8.jpg" uib-tooltip="Мария Бунковна" alt=""></a></li>
+                                <li><a data-msk-href><img src="http://ph1.photomsk.by/5f/e7/42//5fe742e1f20eabd24676f15339ba6e181cc6fa5396f712090ee39b8dcc3bd4e8.jpg" uib-tooltip="Мария Бунковна" alt=""></a></li>
+                                <li><a data-msk-href><img src="http://ph1.photomsk.by/5f/e7/42//5fe742e1f20eabd24676f15339ba6e181cc6fa5396f712090ee39b8dcc3bd4e8.jpg" uib-tooltip="Мария Бунковна" alt=""></a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <p class="poster__price">
+                        <i class="icon-Wallet text--muted"></i> <b>{{item.price | number}}</b> <small class="text--small text--muted">руб.</small>
+                    </p>
+                    <div class="poster__content">
+
+                        <div class="poster__date">
+                            <span>26</span>
+                            <small class="text--small">мая</small>
+                        </div>
+                        <div class="poster__place">
+                            <p class="text--small text--muted">
+                                студия «Фотостейдж»
+                            </p>
+                            <p class="text--small">
+                                <a data-msk-href class="link link--dotted">ул. Волгоградская д.8,</a>
+                            </p>
+                        </div>
+
+                        <p class="poster__desc">
+                            {{item.description | limitTo : 140}}
+                        </p>
+
+                        <p class="text--right margin--reset">
+                            <a class="text--muted" href="/photographer/{{item.photographerID}}/project/{{item.id}}">
+                                подробнее...
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

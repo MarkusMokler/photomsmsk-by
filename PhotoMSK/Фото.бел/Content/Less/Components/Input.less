@@ -1,0 +1,417 @@
+// out: ../../css/Components/Input.css, compress: true
+// Name:            Input
+// Description:     Defines styles for input
+//
+// Component:       `input`
+//
+// Modifiers:       `input--tags*`
+//                  `input--search`
+//                  `input--select`
+//                  `input--edit`
+//                  `input--*`
+//
+//
+// **************** Variables ****************
+// padding
+@input-padding--small:                     5px;
+@input-padding:                            10px;
+@input-padding--big:                       15px;
+
+// Margin
+@input-margin:                             10px;
+
+// color
+@input-text-color:                         #333;
+@input-background:                         #fff;
+@input-border-color:                       #ddd;
+@input-border-bottom-color:                #ddd;
+@input-border-bottom-color-active:         #FFC716;
+
+@input-search-border-color:                #dadada;
+
+// border-radius
+@input-border-radius:                      0;
+@input-border-radius--big:                 100px;
+
+// Modificator 'tags'
+@input-tags-border-color:                  #bdbdbd;
+
+// ********* Label variables *******       ******
+@label-font-size:                          10px;
+@label-line-height:                        @label-font-size + 4px;
+@label-color:                              #525252;
+
+// Margin
+@label-margin:                             5px;
+
+
+
+// ******************* Base ******************
+
+.input {
+    position: relative;
+    padding: @input-padding;
+    color: @input-text-color;
+    background: @input-background;
+    border-radius: @input-border-radius;
+    border: 1px solid @input-border-color;
+    margin-bottom: @input-margin;
+    outline: none;
+    border-radius: 4px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 4px;
+    transition: all 200ms;
+
+    &:hover{
+        border: 1px solid #ddd;
+        box-shadow: 0 0 0 3px rgba(221, 221, 221, 0.2);
+    }
+
+    &:focus{
+        border: 1px solid #BDBDBD;
+        box-shadow: 0 0 0 3px rgba(221, 221, 221, 0.4);
+
+        &:hover{
+            box-shadow: 0 0 0 3px rgba(221, 221, 221, 0.4);
+        }
+    }
+
+    &:hover{
+        border: 1px solid #BDBDBD;
+        box-shadow: 0 0 0 3px rgba(221, 221, 221, 0.2);
+    }
+
+    // Element 'input__group'
+    &__group{
+        position: relative;
+
+        // Element 'input__group__desc'
+        &__desc{
+            position: absolute;
+            top: 50%;
+            right: 6px;
+            transform: translateY(-50%);
+        }
+
+        & .input{
+            margin: 0;
+            padding-right: 30px;
+        }
+
+        & > [class^='icon-']{
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    // Modificator `input--rounded`
+    &--rounded{
+        border-radius: 100px;
+        border-bottom: 1px solid @input-border-bottom-color;
+    }
+
+    // Modificator 'input--edit'
+    &--edit{
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        padding-right: 30px;
+    }
+
+    // Modificator 'search'
+    &--search {
+        position: relative;
+        padding: @input-padding--small @input-padding--big;
+        padding-left: (@input-padding--big*2) !important;
+        border: 1px solid @input-search-border-color;
+        border-radius: @input-border-radius--big;
+    }
+
+    // Element 'input--select'
+    &--select{
+
+    }
+
+    // Modificator 'tags'
+    &--tags{
+        border-color: @input-tags-border-color;
+    }
+
+    // Modificator 'small'
+    &--small{
+        padding: @input-padding--small (@input-padding--small*2);
+
+        &.input--search{
+            padding-left: (@input-padding--big * 2 - 5) !important;
+        }
+    }
+
+    // Modificator 'input--sms'
+    &--sms{
+        padding: 6px;
+        & .CodeMirror{
+            height: auto;
+        }
+    }
+
+    // Modificator 'tags'
+    &--select{
+        position: relative;
+        margin-bottom: @input-margin;
+
+        & > select{
+            cursor: pointer;
+            margin-bottom: 0;
+            padding-right: (@input-padding * 3);
+        }
+
+        &:after{
+            content: '\e5c5';
+            font-family: 'icomoon';
+            position: absolute;
+            right: @input-padding;
+            top: 50%;
+            font-size: 18px;
+            color: #5F5F5F;
+            transform: translateY(-50%);
+        }
+    }
+}
+
+// *********** All inputs ***************
+
+// Label
+
+.label{
+    display: block;
+    width: 100%;
+    margin: @label-margin 0 1px 0;
+    font-size: @label-font-size;
+    line-height: 18px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: @label-color;
+    font-family: Arial,Helvetica,sans-serif;
+
+    // Modificator `label--rounded`
+    &--rounded{
+        margin-left: 10px;
+    }
+}
+
+
+/// Form__row
+// Element `form__row`
+.form__row{
+    & + .form__row{
+        margin-top: 15px;
+    }
+}
+
+.form__controls{
+    margin-left: 30%;
+    & .input{
+        margin: 0;
+    }
+}
+
+.label{
+
+    // Modificator `label--form`
+    &--form{
+        width: 30%;
+        margin-top: 15px;
+        float: left;
+    }
+}
+
+// *************************************************
+//                    CHECKBOX
+// *************************************************
+input[type="checkbox"] {
+	position: absolute;
+	opacity: 0;
+}
+
+/* Normal Track */
+input[type="checkbox"].switch + div {
+    display: inline-block;
+    vertical-align: middle;
+	width: 40px;
+    height: 20px;
+	border-radius: 999px;
+	background-color: rgba(0, 0, 0, 0.1);
+	-webkit-transition-duration: .4s;
+	-webkit-transition-property: background-color, box-shadow;
+	box-shadow: inset 0 0 0 0px rgba(0,0,0,0.4);
+}
+
+input[type="checkbox"].switch ~ span{
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+
+/* Tiny Track */
+input[type="checkbox"].tinyswitch.switch + div {
+	width: 34px;
+    height: 18px;
+}
+
+/* Big Track */
+input[type="checkbox"].bigswitch.switch + div {
+	width: 50px;
+    height: 27px;
+    margin-top: 2px;
+}
+
+/* Green Track */
+input[type="checkbox"].green.switch:checked + div {
+	background-color: #53D769;
+	box-shadow: inset 0 0 0 10px #53D769;
+    cursor: pointer;
+}
+
+/* Normal Knob */
+input[type="checkbox"].switch + div > div {
+	// float: left;
+	width: 18px; height: 18px;
+	border-radius: inherit;
+	background: #ffffff;
+	-webkit-transition-timing-function: cubic-bezier(.54,1.85,.5,1);
+	-webkit-transition-duration: 0.4s;
+	-webkit-transition-property: transform, background-color, box-shadow;
+	-moz-transition-timing-function: cubic-bezier(.54,1.85,.5,1);
+	-moz-transition-duration: 0.4s;
+	-moz-transition-property: transform, background-color;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgba(0, 0, 0, 0.1);
+	pointer-events: none;
+	margin-top: 1px;
+	margin-left: 1px;
+    cursor: pointer;
+}
+
+
+/* Tiny Knob */
+input[type="checkbox"].tinyswitch.switch + div > div {
+	width: 16px;
+    height: 16px;
+	margin-top: 1px;
+}
+
+/* Big Knob */
+input[type="checkbox"].bigswitch.switch + div > div {
+	width: 25px;
+    height: 25px;
+	margin-top: 1px;
+}
+
+/* Green Knob */
+input[type="checkbox"].green.switch:checked + div > div {
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 162, 63, 0.2);
+    -webkit-transform: translate3d(23px, 0, 0);
+    -moz-transform: translate3d(23px, 0, 0);
+}
+
+
+// *******************************************************
+//                        FORM
+// *******************************************************
+
+.form{
+
+    // Modificator 'forn--horizontal'
+    &--horizontal{
+
+        & > .label{
+            display: inline-block;
+            width: 35%;
+            vertical-align: top;
+            box-sizing: border-box;
+            padding-right: 15px;
+            padding-top: 8px;
+            margin: 0;
+            margin-right: -4px;
+            font-size: .9rem;
+            color: @label-color;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-transform: inherit;
+            font-family: Arial,Helvetica,sans-serif;
+        }
+
+        & > .input{
+            display: inline-block;
+            width: 65%;
+            word-wrap: break-word;
+            display: inline-block;
+            vertical-align: top;
+        }
+    }
+
+    // Modificator 'form--line'
+    &--line,
+    &--dashed{
+        border-bottom: 1px solid #e6e6e6;
+        margin-bottom: 15px;
+        padding-bottom: 5px;
+    }
+
+    // Modificator 'form--dashed'
+    &--dashed{
+        border-style: dashed;
+    }
+}
+
+// *******************************************************
+//                      SELECT
+// *******************************************************
+
+.select{
+    position: relative;
+    margin-bottom: @input-margin;
+
+    &:after{
+        content: "\e914";
+        position: absolute;
+        width: 12px;
+        right: 10px;
+        height: 12px;
+        top: 50%;
+        font-family: 'icomoon';
+        font-size: 12px;
+        line-height: 14px;
+        color: #9c9c9c;
+        margin-top: -6px;
+    }
+
+    & > select{
+        width: 100%;
+        position: relative;
+        padding: @input-padding;
+        color: @input-text-color;
+        background: @input-background;
+        border-radius: @input-border-radius;
+        border: 1px solid @input-border-color;
+        outline: none;
+        border-radius: 4px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        border-radius: 4px;
+        transition: all 200ms;
+        cursor: pointer;
+
+        & > option{
+
+        }
+
+        &:focus{
+            outline: none;
+        }
+    }
+}

@@ -1,0 +1,85 @@
+
+<div class="content--admin">
+
+    <div>
+        <data-bread-crumbs />
+    </div>
+
+    <div class="container--fluid">
+
+        <div class="activity__sort margin--bottom-small">
+            <div class="grid grid--small">
+                <div class="col--large-6-10 col--medium-6-10">
+                    <p class="margin--top-small">
+                        Всего созданно <b>2</b> лэйаута
+                    </p>
+                </div>
+                <div class="col--large-2-10 col--medium-2-10">
+                    <a href="/admin/photostudio/{{shortcut}}/layouts/add" class="button button--small button--success border--rounded col--1-1">Добавить</a>
+                </div>
+                <div class="col--large-2-10 col--medium-2-10">
+                    <div class="input__group">
+                        <input type="search" class="input input--search input--small border--rounded margin--reset col--1-1">
+                        <i class="icon-magnifier text--muted"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="col--1-2 margin--bottom" data-ng-repeat="layout in layouts">
+
+            <div class="browser">
+                <div class="browser__toolbar">
+                    <div class="browser__button">
+                        <a href></a>
+                        <a href></a>
+                        <a href></a>
+                    </div>
+                </div>
+                <div class="browser__control">
+                    <div class="browser__control-tab"></div>
+                    <div class="browser__control-url">
+                        {{layout.name}}
+                    </div>
+                    <a class="browser__control-delete icon-trash" href="/admin/photostudio/{{shortcut}}/layouts/{{layout.id}}/edit"></a>
+                    <a class="browser__control-edit" href="/admin/photostudio/{{shortcut}}/layouts/{{layout.id}}/edit">редактировать</a>
+                </div>
+                <div class="browser__content">
+                    <!-- <textarea ui-codemirror="editorOptions" data-ng-model="layout.content" data-ng-if="layout.content != ''"></textarea> -->
+                    <div><data-html-viewer code="layout.content" data-ng-if="layout.content != ''"></data-html-viewer></div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+
+        <!-- <div class="grid" data-ng-repeat="layout in layouts">
+            <div class="col--1-1">
+                <div class="panel panel--box panel--white panel--shadow">
+                    <div class="panel__top-bar">
+                        <div class="grid grid--small grid--divider">
+                            <div class="col--8-10">
+                                <p>
+                                    <span class="text--muted text--small">Название:</span>
+                                    <span class="text--bold">{{layout.name}}</span>
+                                </p>
+                            </div>
+                            <div class="panel__top-bar__action">
+                                <a href="/admin/photostudio/{{shortcut}}/layouts/{{layout.id}}/edit" class="button button--small button--rounded icon-mode_edit"></a>
+                                <a data-msk-href data-ng-click="removeLayout(layout.id)" class="button button--small button--delete button--rounded icon-trash"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid--small">
+                        <div class="col--1-1">
+                            <textarea ui-codemirror="editorOptions" data-ng-model="layout.content" data-ng-if="layout.content != ''"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+    </div>
+</div>

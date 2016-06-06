@@ -1,0 +1,71 @@
+﻿
+<div class="container container--center">
+    <!-- <div class="grid uk-flex uk-flex-middle">
+            <div class="col--1-5">
+                <a href="#">
+                    <img src="@Url.Content("/Content/images/logo-shape-black.svg")" alt="" />
+                </a>
+            </div>
+            <div class="col--4-5 uk-margin-small-top">
+                <ul class="uk-breadcrumb">
+                    <li><a href="#" class="uk-text-bold uk-link-muted">Клиенты</a></li>
+                </ul>
+            </div>
+        </div> -->
+    <div class="grid">
+        <div class="col--1-5">
+            <div class="button-back text--center">
+                <a href="@Url.Action("Create", "Users")" class="button-add button col--1-1 uk-flex uk-flex-middle">
+                    <i class="uk-icon-plus button-add"></i>&nbsp;<span class="uk-text-bold">Клиент</span>
+                </a>
+            </div>
+            <h5 class="uk-text-bold">Справочник</h5>
+            <ul class="uk-list uk-list-space uk-list-dotted">
+                <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">Типы меню</a></li>
+                <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">Отображение элементов меню</a></li>
+                <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">Создание выпадающего меню</a></li>
+                <li><a href="#" class="uk-text-small">ещё...</a></li>
+            </ul>
+        </div>
+        <div class="col--4-5">
+            <div class="panel uk-panel-content-box">
+
+                <table class="table table--hover table--middle">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Имя</th>
+                            <th>Тип</th>
+                            <th>Соц. сеть</th>
+                            <th><i class="uk-control uk-icon-hover uk-icon-bars"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                            <tr ng-repeat="i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" data-uk-filter="filter-b">
+                                <td style="width: 1px;">
+                                    <!-- <i class="uk-status uk-status--success uk-icon-check"></i> -->
+                                    <i class="uk-status uk-status--danger uk-icon-exclamation"></i>
+                                </td>
+                                <td>
+                                    <img class="uk-comment-avatar uk-border-circle" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="45" height="45" alt="" />
+                                    <h4 class="uk-comment-title"><a href="#" class="uk-link-muted uk-link-reset uk-link-dotted">Лунцевич Иван</a></h4>
+                                    <div class="uk-comment-meta"><a href="#" class="text--muted">+375-(29)-600-**-**</a></div>
+                                </td>
+                                <td>50%</td>
+                                <td>
+                                    <a href="#" target="_blank"><i class="uk-icon-vk uk-icon-hover"></i></a>
+                                    <a href="#" target="_blank"><i class="uk-icon-facebook uk-icon-hover"></i></a>
+                                </td>
+                                <td>
+                                    <a href="#" class="uk-link-reset"><i class="uk-control uk-icon-hover uk-icon-bars"></i></a>
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

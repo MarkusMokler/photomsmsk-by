@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<div class="uk-container uk-container-center pad-top-20">
+    <div class="uk-grid">
+        <div id="ads_page" class="">
+            <div id="ads_adblock_notice" class="error ads_adblock_notice" style="display: none;">
+                Возможно, Вы используете расширение, блокирующее рекламу, например, AdBlock или подобное. Это может вызвать некорректную работу рекламного кабинета. Рекомендуем отключить расширение или добавить сайт vk.com в исключения.
+                <a onclick="cur.hideAdBlockNotice();">Скрыть это уведомление</a>
+            </div>
+            <div id="ads_unions_content">
+                <div id="ads_union_general_info" class="clear_fix">
+                    <h2>Личный кабинет</h2>
+                    <div>
+                        <table class="ads_general_info ads_unions_content_label" style="float: left;">
+                            <tbody>
+                                <tr class="" id="general_info_row_budget" style="">
+                                    <td class="table_label " style="">Оставшийся бюджет:</td>
+                                    <td class="table_value "><span id="general_info_budget"><span style="white-space:nowrap;">1.90&nbsp;рубля</span></span> (<a href="/ads?act=payments" wotsearchprocessed="true">пополнить</a>)</td>
+                                </tr>
+                                <tr class="" id="general_info_row_money_amount_day_now" style="">
+                                    <td class="table_label " style="">Потрачено сегодня:</td>
+                                    <td class="table_value "><span style="white-space:nowrap;">0&nbsp;рублей</span></td>
+                                </tr>
+                                <tr class="" id="general_info_row_money_amount_day_prev" style="">
+                                    <td class="table_label " style="">Потрачено вчера:</td>
+                                    <td class="table_value "><span style="white-space:nowrap;">0&nbsp;рублей</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="ads_create_button_office"><div class="edit_button_wrap"><a href="/adscreate?parent_id=1600171155" class="button_link" wotsearchprocessed="true"><div class="button_blue "><button>Создать объявление</button></div></a></div></div>
+                    </div>
+                </div>
+                <div id="ads_union_children">
+                    <h2><a href="/ads?act=office&amp;union_id=1600171155&amp;view=periods" class="fl_r ads_h2_add" wotsearchprocessed="true">К статистике по дням</a>Рекламные кампании</h2>
+                    <div>
+                        <div class="row_div control_label" style="width: 143px;">Период статистики:</div>
+                        <div class="row_div" style="margin-left: -3px;"><a id="table_selector" class="dd_link dd_menu_target">За&nbsp;всё&nbsp;время</a><img id="union_children_table_progress" src="/images/upload.gif" style="display: none;"></div>
+                    </div>
+
+                    <div id="union_children_table">
+                        <div id="paginated_table" class="ads_unions_list_p">
+                            <div id="paginated_table_control8" class="paginated_table_control top_control">
+                                <div id="show_size_chooser4" class="show_size_chooser" style="display: none;">
+                                    <div class="row_div control_label" style="width: 143px;">Показывать на странице:</div><div class="row_div"><a id="show_size_dd4" class="size_chooser_link dd_link dd_menu_target">20&nbsp;записей</a></div>
+                                </div>
+                                <div>
+                                    <div class="row_div control_label" style="width: 143px;">Показаны:</div><div class="row_div"><nobr><a id="table_filter_dd8" class="table_filter_dd dd_link dd_menu_target">Все&nbsp;активные&nbsp;кампании</a></nobr></div>
+                                </div>
+                                <div style="height: 20px;"></div>
+                                <h4 style="font-size: 11px; margin: 0px 0px 6px; "><span id="label_no_entries8" class="label_no_entries" style="display: none;"></span><span id="label_total8" class="label_total">У Вас 4 активные кампании</span></h4>
+                                <table class="paginate_layout_table">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="ads_selecting_subclasses">
+                                                    <span class="control_label">Выделить:&nbsp;<a id="select_all_link">все</a>, <a id="select_running_link">запущенные</a>, <a id="select_stopped_link">остановленные</a></span>
+                                                </div>
+                                            </td>
+                                            <td><div id="pt_4_mass_act_default_container" class="ads_mass_act_container"><div class="button_blue" style="display: none;"><button>Запустить</button></div><div class="button_blue" style="display: none;"><button>Остановить</button></div><div class="button_blue" style="display: none;"><button>Архивировать</button></div></div></td>
+                                            <td class="ads_search_cell"><div class="fl_r"><div id="pt_4_search_default_container" style="display: block;" class="pt_search_container"><div class="input_back_wrap no_select"><div class="input_back" style="margin: 1px; padding: 3px 3px 3px 19px;"><div class="input_back_content" style="width: 127px;">Поиск кампаний</div></div></div><input type="text" class="text" autocomplete="off"></div></div></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div><div class="paginated_table">
+                                <table class="ads_unions_table">
+                                    <tbody>
+                                        <tr class="paginated_table_header">
+                                            <th class="paginated_table_cell first_column cb_cell">
+                                                <a id="total_cb_4" class="ads_lite_cb" onmouseover="addClass(this, 'checkbox_over');" onmouseout="removeClass(this, 'checkbox_over'); removeClass(this, 'checkbox_pressed')" onmousedown="addClass(this, 'checkbox_pressed');" onmouseup="addClass(this, 'checkbox_pressed');">‎</a>
+                                            </th>
+                                            <th class="paginated_table_cell column_name_view" style="white-space: nowrap;"><div><span class="table_header_upper_span">Название</span></div></th>
+                                            <th class="paginated_table_cell column_status_view pt_align_center" style="white-space: nowrap;"><div><span class="table_header_upper_span">Статус</span></div></th>
+                                            <th class="paginated_table_cell column_day_limit_view" style="white-space: nowrap;"><div><span class="table_header_upper_span">Дн. лимит&nbsp;<span onclick="Ads.openHelpBox('limits', 1600171155); return cancelEvent(event);" onmouseout="this.style.textDecoration='none'" onmouseover="this.style.textDecoration='underline'" style="text-decoration: none; white-space: nowrap; cursor: pointer;">(?)</span></span></div></th>
+                                            <th class="paginated_table_cell column_all_limit_view" style="white-space: nowrap;"><div><span class="table_header_upper_span">Общ. лимит</span></div></th>
+                                            <th class="paginated_table_cell column_money_amount_view" style="white-space: nowrap;"><div><span class="table_header_upper_span">Потрачено</span></div></th>
+                                            <th class="paginated_table_cell column_ctr_view" style="white-space: nowrap;"><div><span class="table_header_upper_span">CTR&nbsp;<span onclick="Ads.openHelpBox('cpc', 1600171155); return cancelEvent(event);" onmouseout="this.style.textDecoration='none'" onmouseover="this.style.textDecoration='underline'" style="text-decoration: none; white-space: nowrap; cursor: pointer;">(?)</span></span></div></th>
+                                            <th class="paginated_table_cell column_clicks_count_view" style="white-space: nowrap;"><div><span class="table_header_upper_span">Переходы</span></div></th>
+                                            <th class="paginated_table_cell last_column column_views_count_view" style="white-space: nowrap;"><div><span class="table_header_upper_span">Показы</span></div></th>
+                                        </tr>
+                                        <tr class="paginated_table_row even_row"><td class="paginated_table_cell first_column cb_cell"><a id="cb_row_1_4" class="ads_lite_cb" onclick="var v = this; while (v.tableObj === undefined) v = v.parentNode; return v.tableObj.toggleCheckbox(this, 1);" onmouseover="addClass(this, 'checkbox_over');" onmouseout="removeClass(this, 'checkbox_over'); removeClass(this, 'checkbox_pressed')" onmousedown="addClass(this, 'checkbox_pressed');" onmouseup="addClass(this, 'checkbox_pressed');">‎</a></td><td id="cell_1_0" class="paginated_table_cell column_name_view" style="white-space: nowrap;"><div class="ads_paginated_table_name"><a href="@Url.Action("Detalis", new { Area = "Advertising",Controller="Company" })" wotsearchprocessed="true">Студия фотографии</a></div></td><td id="cell_1_1" class="paginated_table_cell column_status_view pt_align_center" style="white-space: nowrap;"><img id="union_1002893756_status_progress" src="/images/upload.gif" style="display: none;"><span id="union_1002893756_status_selector_box" class="ads_status_selector_box  pnt" style="white-space: nowrap;" onclick="invokeGlobalPTFunction(this,4,1,1,0);"><span class="ads_status_image_span status_off"></span></span></td><td id="cell_1_2" class="paginated_table_cell column_day_limit_view" style="white-space: nowrap;"><img id="inline_edit_progress443337288" src="/images/upload.gif" style="display: none;"><a id="inline_edit_value443337288" onclick="invokeGlobalPTFunction(this,4,1,2,0);">100 руб.</a></td><td id="cell_1_3" class="paginated_table_cell column_all_limit_view" style="white-space: nowrap;"><img id="inline_edit_progress378174968" src="/images/upload.gif" style="display: none;"><a id="inline_edit_value378174968" onclick="invokeGlobalPTFunction(this,4,1,3,0);">Не задан</a></td><td id="cell_1_4" class="paginated_table_cell column_money_amount_view" style="white-space: nowrap;">292.00 руб.</td><td id="cell_1_5" class="paginated_table_cell column_ctr_view" style="white-space: nowrap;">0.022&nbsp;%</td><td id="cell_1_6" class="paginated_table_cell column_clicks_count_view" style="white-space: nowrap;">53</td><td id="cell_1_7" class="paginated_table_cell last_column column_views_count_view" style="white-space: nowrap;">245 446</td></tr>
+                                        <tr class="paginated_table_row"><td class="paginated_table_cell first_column cb_cell"><a id="cb_row_2_4" class="ads_lite_cb" onclick="var v = this; while (v.tableObj === undefined) v = v.parentNode; return v.tableObj.toggleCheckbox(this, 2);" onmouseover="addClass(this, 'checkbox_over');" onmouseout="removeClass(this, 'checkbox_over'); removeClass(this, 'checkbox_pressed')" onmousedown="addClass(this, 'checkbox_pressed');" onmouseup="addClass(this, 'checkbox_pressed');">‎</a></td><td id="cell_2_0" class="paginated_table_cell column_name_view" style="white-space: nowrap;"><div class="ads_paginated_table_name"><a href="@Url.Action("Detalis", new { Area = "Advertising",Controller="Company" })" wotsearchprocessed="true">Фотостудия</a></div></td><td id="cell_2_1" class="paginated_table_cell column_status_view pt_align_center" style="white-space: nowrap;"><img id="union_1002298831_status_progress" src="/images/upload.gif" style="display: none;"><span id="union_1002298831_status_selector_box" class="ads_status_selector_box  pnt" style="white-space: nowrap;" onclick="invokeGlobalPTFunction(this,4,2,1,0);"><span class="ads_status_image_span status_off"></span></span></td><td id="cell_2_2" class="paginated_table_cell column_day_limit_view" style="white-space: nowrap;"><img id="inline_edit_progress1800338075" src="/images/upload.gif" style="display: none;"><a id="inline_edit_value1800338075" onclick="invokeGlobalPTFunction(this,4,2,2,0);">Не задан</a></td><td id="cell_2_3" class="paginated_table_cell column_all_limit_view" style="white-space: nowrap;"><img id="inline_edit_progress886246782" src="/images/upload.gif" style="display: none;"><a id="inline_edit_value886246782" onclick="invokeGlobalPTFunction(this,4,2,3,0);">Не задан</a></td><td id="cell_2_4" class="paginated_table_cell column_money_amount_view" style="white-space: nowrap;">297.00 руб.</td><td id="cell_2_5" class="paginated_table_cell column_ctr_view" style="white-space: nowrap;">0.040&nbsp;%</td><td id="cell_2_6" class="paginated_table_cell column_clicks_count_view" style="white-space: nowrap;">60</td><td id="cell_2_7" class="paginated_table_cell last_column column_views_count_view" style="white-space: nowrap;">151 738</td></tr>
+                                        <tr class="paginated_table_row even_row"><td class="paginated_table_cell first_column cb_cell"><a id="cb_row_3_4" class="ads_lite_cb" onclick="var v = this; while (v.tableObj === undefined) v = v.parentNode; return v.tableObj.toggleCheckbox(this, 3);" onmouseover="addClass(this, 'checkbox_over');" onmouseout="removeClass(this, 'checkbox_over'); removeClass(this, 'checkbox_pressed')" onmousedown="addClass(this, 'checkbox_pressed');" onmouseup="addClass(this, 'checkbox_pressed');">‎</a></td><td id="cell_3_0" class="paginated_table_cell column_name_view" style="white-space: nowrap;"><div class="ads_paginated_table_name"><a href="@Url.Action("Detalis", new { Area = "Advertising",Controller="Company" })" wotsearchprocessed="true">Фотограф "Соловьёва К.А."</a></div></td><td id="cell_3_1" class="paginated_table_cell column_status_view pt_align_center" style="white-space: nowrap;"><img id="union_1001222167_status_progress" src="/images/upload.gif" style="display: none;"><span id="union_1001222167_status_selector_box" class="ads_status_selector_box  pnt" style="white-space: nowrap;" onclick="invokeGlobalPTFunction(this,4,3,1,0);"><span class="ads_status_image_span status_off"></span></span></td><td id="cell_3_2" class="paginated_table_cell column_day_limit_view" style="white-space: nowrap;"><img id="inline_edit_progress214513686" src="/images/upload.gif" style="display: none;"><a id="inline_edit_value214513686" onclick="invokeGlobalPTFunction(this,4,3,2,0);">Не задан</a></td><td id="cell_3_3" class="paginated_table_cell column_all_limit_view" style="white-space: nowrap;"><img id="inline_edit_progress1728550613" src="/images/upload.gif" style="display: none;"><a id="inline_edit_value1728550613" onclick="invokeGlobalPTFunction(this,4,3,3,0);">Не задан</a></td><td id="cell_3_4" class="paginated_table_cell column_money_amount_view" style="white-space: nowrap;">4 164.15 руб.</td><td id="cell_3_5" class="paginated_table_cell column_ctr_view" style="white-space: nowrap;">0.032&nbsp;%</td><td id="cell_3_6" class="paginated_table_cell column_clicks_count_view" style="white-space: nowrap;">2 110</td><td id="cell_3_7" class="paginated_table_cell last_column column_views_count_view" style="white-space: nowrap;">6 659 656</td></tr>
+                                        <tr class="paginated_table_footer"><td class="paginated_table_cell column_name_view" colspan="2" style="white-space: nowrap;">Всего</td><td class="paginated_table_cell column_status_view pt_align_center" style="white-space: nowrap;"></td><td class="paginated_table_cell column_day_limit_view" style="white-space: nowrap;"></td><td class="paginated_table_cell column_all_limit_view" style="white-space: nowrap;"></td><td class="paginated_table_cell column_money_amount_view" style="white-space: nowrap;">5 160.15 руб.</td><td class="paginated_table_cell column_ctr_view" style="white-space: nowrap;">0.025&nbsp;%</td><td class="paginated_table_cell column_clicks_count_view" style="white-space: nowrap;">2 269</td><td class="paginated_table_cell last_column column_views_count_view" style="white-space: nowrap;">7 609 848</td></tr>
+                                    </tbody>
+                                </table>
+                            </div><div id="paginated_table_control9" class="paginated_table_control bottom_control"><table id="paginate_layout_table9" class="paginate_layout_table"><tbody><tr><td><table id="page_list_table9" class="page_list_table"><tbody></tbody></table></td></tr></tbody></table></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

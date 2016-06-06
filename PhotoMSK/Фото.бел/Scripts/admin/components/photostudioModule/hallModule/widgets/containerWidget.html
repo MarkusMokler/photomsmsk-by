@@ -1,0 +1,17 @@
+<div class="container container--center">
+    <ul class="grid grid--small grid-col--1-1 widgets-container placeholder placeholder--widget" ui-sortable="sortableOptions" data-ng-model="widget.widgets">
+        <li data-ng-repeat="item in widget.widgets track by $index">
+            <div data-ng-if="item.type=='gallery'">
+
+                <gallery-edit widget="item" sortableOptions="sortableOptions"></gallery-edit>
+
+            </div>
+
+            <div data-ng-if="widget.type=='description'">
+
+                <text-and-desc widget="item"></text-and-desc>
+
+            </div>
+        </li>
+    </ul>
+</div>

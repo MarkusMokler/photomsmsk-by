@@ -1,0 +1,16 @@
+<div class="container container--center">
+    <div class="grid apps-container">
+        <div class="col--1-3 text--center">
+            <div class="widgets__empty-img icon-empty-image" data-ng-if="widget.photo.url == null"></div>
+            <img class="col--1-1" src="{{widget.photo.url}}" alt="" data-ng-if="widget.photo.url != null">
+        </div>
+
+        <div class="col--2-3">
+            <h1>{{widget.name}}</h1>
+            <div ng-bind-html="widget.description">
+
+            </div>
+            <a class="button button--small" data-msk-href>Подробнее</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,229 @@
+﻿<div class="modal" data-ng-class="{'uk-open' : state.open}" style="">
+    <div class="modal__dialog modal__dialog--large">
+
+        <section class="modal__header">
+            <a data-msk-href class="modal__close close icon-cross-circle" data-ng-click="state.open = !state.open"></a>
+            <span class="text--bold">Мастер бронирования</span>
+
+            <!-- <ul class="modal__header__step">
+                <li class="active">1</li>
+                <li class="success">2</li>
+                <li class="error">3</li>
+            </ul> -->
+            закончите бронирование в течени: {{$cart.endTime | datetimeToNow}}
+        </section>
+
+        <div class="grid grid--collapse">
+            <ul class="modal__master__step">
+                <li data-ng-if="!authService.isAuth()">
+                    <button class="active">Авторизация</button>
+                </li>
+                <li data-ng-repeat="item in routes" data-ng-cloak>
+                    <button data-ng-click="setRoute(item)" data-ng-class="{'active':isRouteActive(item)&&!offer&&!lastStep}" data-ng-disabled="!authService.isAuth()">{{item.name}}</button>
+                </li>
+                <li ng-if="permission.isAdmin()==false">
+                    <button data-ng-disabled="!authService.isAuth()" data-ng-class="{'active':offer}">Итого</button>
+                </li>
+                <li ng-if="permission.isAdmin()==false">
+                    <button data-ng-disabled="!authService.isAuth()" data-ng-class="{'active':lastStep}">Оферта</button>
+                </li>
+            </ul>
+
+            <div class="modal__master__content">
+
+                <!-- Authorization first -->
+                <div data-ng-if="!authService.isAuth()" class="margin--bottom-small">
+
+                    <div class="col--1-2 margin--auto">
+                        <div class="text--center margin--top-large">
+                            <label class="label">Введите ваш номер телефона</label>
+                            <input type="tel" class="input col--1-1" international-phone-number default-country="by" auto-hide-dial-code="false" data-ng-model="item.phone" required>
+                        </div>
+                    </div>
+
+
+                    <div ng-if="displayPassword" class="col--1-2 margin--auto">
+                        <label class="label">Пароль</label>
+                        <input class="input col--large-1-1 col--small-1-1" data-val="true" data-val-length="The Password must be at least 6 characters long." data-val-length-max="100" data-val-length-min="6" data-val-required="The Password field is required." id="Item_Password" data-ng-model="item.password" type="password" value="">
+                        <span class="field-validation-valid" data-valmsg-for="Item.Password" data-valmsg-replace="true"></span>
+                    </div>
+
+
+                    <div class="col--1-1" data-ng-if="formState=='edit'">
+                        <div class="col--1-1">
+                            <h3 class="text--h1 margin--bottom-reset">Вы почти у цели!</h3>
+                            <small class="text--muted">Внесити ваши данные для <span class="uk-link-dotted" data-uk-tooltip="" title="Приватный профиль не отображается на сайте">приватного</span> профиля на сайте.</small>
+                        </div>
+
+                        <div class="col--1-1">
+                            <div class="grid">
+                                <div class="col--large-1-1 col--small-1-1">
+                                    <label class="label">Введите проверочный код из СМС <i class="icon-help green-color" data-uk-tooltip="" title="Введите код, полученный в СМС."></i></label>
+                                    <input value="" class="text--center input cal--large-1-1 col--small-1-1" data-val="true" data-val-required="The ConfirmCode field is required." id="Item_ConfirmCode" data-ng-model="item.ConfirmCode" type="text">
+                                    <span class="field-validation-valid" data-valmsg-for="Item.ConfirmCode" data-valmsg-replace="true"></span>
+                                </div>
+
+                                <div class="col--large-1-1 col--small-1-1">
+                                    <label class="label">Имя</label>
+                                    <input class="input col--large-1-1 col--small-1-1" data-val="true" data-val-length="The field FirstName must be a string with a minimum length of 3 and a maximum length of 160." data-val-length-max="160" data-val-length-min="3" data-val-required="The FirstName field is required." id="Item_FirstName" data-ng-model="item.firstName" type="text" value="">
+                                    <span class="field-validation-valid" data-valmsg-for="Item.FirstName" data-valmsg-replace="true"></span>
+                                </div>
+
+                                <div class="col--large-1-1 col--small-1-1">
+                                    <label class="label">Фамилия</label>
+                                    <input class="input col--large-1-1 col--small-1-1" data-val="true" data-val-length="The field LastName must be a string with a minimum length of 3 and a maximum length of 160." data-val-length-max="160" data-val-length-min="3" data-val-required="The LastName field is required." id="Item_LastName" data-ng-model="item.lastName" type="text" value="">
+                                    <span class="field-validation-valid" data-valmsg-for="Item.LastName" data-valmsg-replace="true"></span>
+                                </div>
+
+                                <div class="col--large-1-1 col--small-1-1">
+                                    <label class="label">Логин</label>
+                                    <input class="input col--large-1-1 col--small-1-1" data-val="true" data-val-length="The field UserName must be a string with a minimum length of 3 and a maximum length of 160." data-val-length-max="160" data-val-length-min="3" data-val-regex="Логин введен не верно" data-val-regex-pattern="^[A-Za-z0-9_-]{3,15}$" data-val-required="The UserName field is required." id="Item_UserName" data-ng-model="item.userName" type="text" value="">
+                                    <span class="field-validation-valid" data-valmsg-for="Item.UserName" data-valmsg-replace="true"></span>
+                                </div>
+
+                                <div class="col--large-1-1 col--small-1-1">
+                                    <label class="label">Пароль</label>
+                                    <input class="input col--large-1-1 col--small-1-1" data-val="true" data-val-length="The Password must be at least 6 characters long." data-val-length-max="100" data-val-length-min="6" data-val-required="The Password field is required." id="Item_Password" data-ng-model="item.password" type="password" value="">
+                                    <span class="field-validation-valid" data-valmsg-for="Item.Password" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-ng-if="formState=='reset'">
+                        <div class="col--1-1 text--center">
+                            <img src="/Content/images/registration-pin-code.png" alt="">
+                            <p class="text--h1 margin--reset">Вы уже зарегистрированы!</p>
+                            <p class="text--muted margin--top-small">Введите код активации, который пришел к вам в СМС в поле ниже...</p>
+                            <hr class="col--1-1 margin">
+                        </div>
+
+                        <div class="col--1-1">
+                            <label class="label">Введите проверочный код из СМС <i class="icon-help green-color" data-uk-tooltip title="Введите код, полученный в СМС."></i></label>
+                            <input type="text" class="text--center col--1-1 bold input" data-ng-model="item.confirmCode" />
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Routes -->
+                <ul class="grid grid--small grid-col--large-1-5 grid-col--medium-1-4 grid-col--small-1-2" data-ng-if="!offer && authService.isAuth() &&!lastStep">
+
+                    <li data-ng-repeat="hall in currentRote.calendars" class="margin--bottom-small">
+                        <div data-calendarid="{{hall.calendarID}}" data-ng-click="addHall(hall.calendarID)" data-ng-if="hall.canBook" data-ng-class="{'active' : isSelected(hall.calendarID)}" class="button button--white button--radio border--radius col--1-1">
+                            <p class="margin--v-small text--bold text--truncate" data-ng-bind="hall.title" data-ng-cloak></p>
+
+                            <div class="button__radio__img" data-ng-class="{'button__radio__img--selected' : isSelected(hall.calendarID)}">
+                                <img src="{{hall.image}}" alt="фотография {{hall.name}}">
+                            </div>
+
+                            <p class="margin--v-small">
+                                <span class="text--small text--muted">Всего:&nbsp;</span>
+                                <br>
+                                <span class="text--bold">{{hall.price | number}}</span>
+                            </p>
+                        </div>
+                        <div data-calendarid="{{hall.calendarID}}" data-ng-if="!hall.canBook" class="button button--muted button--radio button--radio-unselect border--radius col--1-1">
+                            <p class="margin--v-small text--truncate">
+                                <span class="text--bold text--muted" data-ng-bind="hall.title" data-ng-cloak></span>
+                            </p>
+
+                            <div class="button__radio__img button__radio__img--unselected">
+                                <img src="{{hall.image}}" alt="фотография зала {{hall.name}}">
+                            </div>
+
+                            <p class="margin--v-small">
+                                <span class="text--small text--muted margin--reset">Всего:&nbsp;</span>
+                                <br>
+                                <span class="text--bold text--muted">{{hall.price | number}}</span>
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Offer -->
+
+                <div ng-if="lastStep && authService.isAuth() && permission.isAdmin()==false">
+                    <p class="text--h1">Публичная Оферта</p>
+                    <div class="modal__overflow">
+                        <div data-ng-bind-html="legal.publicOffer"></div>
+                    </div>
+                </div>
+
+                <!-- Try to book -->
+
+                <div ng-if="offer && permission.isAdmin()==false">
+                    <ul id="booking" class="list list--line near-places">
+                        <li data-ng-repeat="sc in shoppingCartList">
+                            <div class="grid grid--small">
+                                <div class="col--1-1">
+                                    <div class="penalty__item border--none grid grid--collapse">
+                                        <div class="penalty__item__days col--2-10">
+                                            <span class="penalty__item__day margin--top-mini">{{sc.start | date:'dd':'UTC'}}</span>
+                                            <small class="penalty__item__month">{{sc.start | date:'MMM':'UTC'}}</small>
+                                        </div>
+                                        <div class="penalty__item__times col--3-10">
+                                            <p class="penalty__item__times__start margin--top-mini">
+                                                <span>{{sc.start | date:'HH:mm':'UTC'}}</span>
+                                            </p>
+                                            <p class="penalty__item__times__end">
+                                                <span>{{sc.end | date:'HH:mm':'UTC'}}</span>
+                                            </p>
+                                        </div>
+                                        <div class="penalty__item__price col--4-10">
+                                            <p class="margin--reset">{{sc.title}}</p>
+                                            <p class="text--truncate">{{sc.summ | number}}</p>
+                                            <small class="penalty__item__price__currency text--small text--muted">руб.</small>
+                                        </div>
+                                        <div class="penalty__item__action col--1-10 text--center">
+                                            <p class="margin--top-small">
+                                                <a class="text--h3 link--reset icon-cross-circle pink-color" data-ng-click="removeEventFromCart(item)"></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <p data-ng-if="item.allowOnlineBooking">
+                        <hr class="small-line" />
+                        <span class="text--h3 text--bold">Итого:</span>
+                        <div class="text--h3 float--right">
+                            <span>{{$cart.getTotal() | number}}</span>
+                            <small class="text--muted text--small">руб.</small>
+                        </div>
+                    </p>
+                </div>
+            </div>
+
+            <div class="clear--fix"></div>
+        </div>
+        <div class="modal__footer grid">
+            <!-- Авторизация-->
+            <button class="button button--footer col--1-2" data-ng-if="!choosed && !authService.isAuth()" data-ng-click="byPass()">По паролю</button>
+            <button class="button button--footer col--1-2" data-ng-if="!choosed && !authService.isAuth()" data-ng-click="bySMS()">По СМС</button>
+
+            <!-- Вход по паролю -->
+            <button class="button button--footer button--success col--1-1" data-ng-if="choosed && !authService.isAuth() && displayPassword" data-ng-click="login()">Войти</button>
+
+            <!-- Регистрация -->
+            <button class="button button--footer button--success col--1-1" data-ng-if="choosed && !authService.isAuth() && formState=='reset'" data-ng-click="restoreUser()">Зарегистрироваться и войти</button>
+            <button class="button button--footer button--success col--1-1" data-ng-if="choosed && !authService.isAuth() && formState=='edit'" data-ng-click="registerUser()">Зарегистрироваться и войти</button>
+
+            <!-- Кнопка для админов-->
+            <button class="button button--footer button--success col--1-1" data-ng-if="!isHasNext() && authService.isAuth() && permission.isAdmin()" ng-click="shoppingCart()">Закрыть</button>
+
+
+            <button class="button button--footer button--success col--1-1" data-ng-if="!offer && authService.isAuth()&& !lastStep && (isHasNext() || !permission.isAdmin())" ng-click="masterNextPage()">Далее...</button>
+            <button class="button button--footer button--success col--1-1" data-ng-if="!offer && authService.isAuth() && accepted && !permission.isAdmin()" ng-click="tryBookHalls()">Принять и забронировать</button>
+
+            <button class="button button--footer button--success col--1-2" ng-if="offer && !accepted && authService.isAuth()" data-ng-click="prefinish()">Далее</button>
+            <button class="button button--footer button--success col--1-2" ng-if="offer && !accepted && authService.isAuth()" data-ng-click="addmore()">Добавить еще</button>
+
+        </div>
+    </div>
+    <div class="text--center">
+        <small class="text--white text--small">
+            www.fotobrief.ru — мы стараемся сделать лучший фотопортал.
+        </small>
+    </div>
+</div>

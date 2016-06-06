@@ -1,0 +1,424 @@
+// out: ../../css/Components/Panel.css, compress: true
+@import "Variables.less";
+// Name:            Panel
+// Description:     Defines styles for reusable content areas
+//
+// Component:       `panel`
+//
+// Sub-objects:     `panel__title`
+//                  `panel__badge`
+//                  `panel__teaser`
+//                  `panel__top-bar`
+//                  `panel__footer`
+//
+// Modifiers:       `panel--box`
+//                  `panel--box-hover`
+//                  `panel--white`
+//                  `panel--box-primary`
+//                  `panel--box-primary-hover`
+//                  `panel--box-secondary`
+//                  `panel--box-secondary-hover`
+//                  `panel--hover`
+//                  `panel--border`
+//                  `panel--header`
+//                  `panel--dashed`
+//                  `panel--divider`
+//                  `panel--border`
+//                  `panel--shadow`
+//
+//                  `panel__booking--calendar`
+//                  `panel__booking--cart`
+//                  `panel__booking--hall`
+//
+//                  `panel__teaser--left`
+//
+//
+//                  `panel--border-right`
+//                  `panel--border-bottom`
+//
+//                  `panel--border--yellow`
+//
+//                  `panel__title--box`
+////
+// Markup:
+//
+// <!-- panel -->
+// <div class="panel">
+//     <div class="panel__badge badge"></div>
+//     <h3 class="panel__title"></h3>
+//     <p></p>
+// </div>
+//
+// ========================================================================
+// Variables
+// ========================================================================
+@panel-title-margin-bottom: 15px;
+@panel-title-font-size: 18px;
+@panel-title-line-height: 24px;
+@panel-title-font-weight: normal;
+@panel-title-color: #444;
+@panel-title-text-transform: none;
+@panel-teaser-margin-bottom: @panel-title-margin-bottom;
+@panel-white-background: #fff;
+@panel-box-padding: 15px;
+@panel-box-background: #f5f5f5;
+@panel-box-color: #444;
+@panel-box-hover-color: @panel-box-color;
+@panel-box-title-color: #444;
+@panel-box-badge-top: 10px;
+@panel-box-badge-right: @panel-box-badge-top;
+@panel-box-teaser-margin: -@panel-box-padding;
+@panel-box-primary-background: #ebf7fd;
+@panel-box-primary-color: #2d7091;
+@panel-box-primary-hover-color: @panel-box-primary-color;
+@panel-box-primary-title-color: #2d7091;
+@panel-info-background: #d9edf7;
+@panel-info-border-color: #bce8f1;
+@panel-info-color: #31708f;
+@pabel-dashed-border-color: #ddd;
+@panel-box-secondary-background: #eee;
+@panel-box-secondary-color: #444;
+@panel-box-secondary-hover-color: @panel-box-secondary-color;
+@panel-box-secondary-title-color: #444;
+@panel-hover-padding: 15px;
+@panel-hover-color: #444;
+@panel-hover-hover-background: #f5f5f5;
+@panel-hover-hover-color: #444;
+@panel-hover-badge-top: 10px;
+@panel-hover-badge-right: @panel-hover-badge-top;
+@panel-hover-teaser-margin: -@panel-hover-padding;
+@panel-header-title-padding: 10px;
+@panel-header-title-border: #ddd;
+@panel-header-title-border-width: 1px;
+@panel-header-title-color: #444;
+@panel-space-padding: 30px;
+@panel-divider-gutter: 25px;
+@panel-divider-gutter-large: 35px;
+@panel-divider-border: #ddd;
+@panel-divider-border-width: 1px;
+@panel-border-color: #e8e8e8;
+@panel-border-bottom-color: #eee;
+@panel-border-yelow-color: #fbd73e;
+/* ========================================================================
+   Component: Panel
+ ========================================================================== */
+/*
+ * 1. Needed for `a` elements
+ * 2. Create position context for badges
+ */
+.panel {
+    /* 1 */
+    display: block;
+    /* 2 */
+    position: relative;
+}
+.panel {
+    // Modificator `panel--border-bottom`
+    &--border-bottom {
+        border-bottom: 1px solid @panel-border-bottom-color;
+    }
+    // Modificator `panel--border-right`
+    &--border-right {
+        border-right: 1px solid @panel-border-bottom-color;
+    }
+}
+/*
+ * Allow panels to be anchors
+ */
+.panel,
+.panel:hover {
+    text-decoration: none;
+}
+/*
+ * Micro clearfix to make panels more robust
+ */
+.panel:before,
+.panel:after {
+    content: "";
+    display: table;
+}
+.panel:after {
+    clear: both;
+}
+/*
+ * Remove margin from the last-child if not `uk-widget-title`
+ */
+.panel >:not(.panel__title):last-child {
+    margin-bottom: 0;
+}
+/* Sub-object: `panel__title`
+ ========================================================================== */
+.panel__title {
+    margin-top: 0;
+    margin-bottom: @panel-title-margin-bottom;
+    font-size: @panel-title-font-size;
+    line-height: @panel-title-line-height;
+    font-weight: @panel-title-font-weight;
+    text-transform: @panel-title-text-transform;
+    color: @panel-title-color;
+    // Modificator `panel__title--box`
+    &--box {
+        padding: @panel-box-padding;
+    }
+}
+/* Sub-object: `panel__title`
+ ========================================================================== */
+.panel--box .panel__footer {
+    margin-left: (@panel-box-padding * -1) !important;
+    margin-right: (@panel-box-padding * -1);
+    margin-bottom: (@panel-box-padding * -1) !important;
+}
+.panel__footer .button--footer {
+    min-height: 40px;
+    font-size: 14px;
+    line-height: 16px;
+}
+/* Sub-object: `panel-badge`
+ ========================================================================== */
+.panel__badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+/* Sub-object: `panel__teaser`
+ ========================================================================== */
+.panel__teaser {
+    margin-bottom: @panel-teaser-margin-bottom;
+}
+/* Modifier: `panel--box`
+ ========================================================================== */
+.panel--box {
+    padding: @panel-box-padding;
+    background: @panel-box-background;
+    color: @panel-box-color;
+}
+.panel--box-hover:hover {
+    color: @panel-box-hover-color;
+}
+//Element 'panel__title'
+.panel--box .panel__title {
+    color: @panel-box-title-color;
+    margin: (@panel-box-padding * -1) (@panel-box-padding * -1) @panel-box-padding (@panel-box-padding * -1);
+}
+.panel--box .panel__badge {
+    top: @panel-box-badge-top;
+    right: @panel-box-badge-right;
+}
+.panel--box .panel__teaser {
+    margin-top: @panel-box-teaser-margin;
+    margin-left: @panel-box-teaser-margin;
+    margin-right: @panel-box-teaser-margin;
+}
+
+.panel--info{
+    background: @panel-info-background;
+    border: 1px solid @panel-info-border-color;
+    color: @panel-info-color;
+    border-radius: 4px;
+    padding: 15px;
+}
+
+.panel__top-bar {
+    height: 40px;
+    margin-top: @panel-box-teaser-margin;
+    margin-left: @panel-box-teaser-margin;
+    margin-right: @panel-box-teaser-margin;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+
+    // Element 'panel__top-bar__action'
+    &__action{
+        // float: right;
+        display: inline-block;
+        margin-top: -4px;
+        border-left: 1px solid #ddd;
+        padding-left: 10px;
+    }
+
+    // Element 'panel__top-bar__title'
+    &__title{
+        display: inline-block;
+        margin-top: @panel-box-teaser-margin + 5;
+        margin-left: @panel-box-teaser-margin + 5;
+        margin-right: @panel-box-teaser-margin + 5;
+        padding: 10px;
+        font-weight: 500;
+        background: #f5f5f5;
+
+    }
+}
+
+.panel--box .panel__teaser--left {
+    position: relative;
+    margin: @panel-box-teaser-margin 0 @panel-box-teaser-margin @panel-box-teaser-margin;
+}
+//Element 'panel__overlay'
+.panel__overlay {
+    // Modificator 'panel__overlay--right'
+    &--right {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 30%;
+        background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+        /* FF3.6-15 */
+        background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+        /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+        /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );
+        /* IE6-9 */
+    }
+}
+//Element 'panel__booking'
+.panel__booking {
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    // Modificator `panel__booking--calendar`
+    &--calendar {
+        padding: @panel-box-padding;
+    }
+
+    // Modificator `panel__booking--hall`
+    &__hall {
+        border-bottom: 1px solid #E2E2E2;
+    }
+}
+/* Modifier: `panel--border`
+ ========================================================================== */
+.panel--border {
+    border: 1px solid @panel-border-color;
+}
+/* Modifier: `panel--dashed`
+ ========================================================================== */
+.panel--dashed {
+    border: 2px dashed @pabel-dashed-border-color;
+}
+/*
+ * Sub-modifier: `panel--white`
+ */
+.panel--white {
+    background: @panel-white-background;
+}
+/*
+ * Sub-modifier: `panel--box-primary`
+ */
+.panel--box-primary {
+    background-color: @panel-box-primary-background;
+    color: @panel-box-primary-color;
+}
+.panel--box-primary-hover:hover {
+    color: @panel-box-primary-hover-color;
+}
+.panel--box-primary .panel__title {
+    color: @panel-box-primary-title-color;
+}
+/*
+ * Sub-modifier: `panel--box-secondary`
+ */
+.panel--box-secondary {
+    background-color: @panel-box-secondary-background;
+    color: @panel-box-secondary-color;
+}
+.panel--box-secondary-hover:hover {
+    color: @panel-box-secondary-hover-color;
+}
+.panel--box-secondary .panel__title {
+    color: @panel-box-secondary-title-color;
+}
+/* Modifier: `panel-hover`
+ ========================================================================== */
+.panel--hover {
+    padding: @panel-hover-padding;
+    color: @panel-hover-color;
+}
+.panel--hover:hover {
+    background: @panel-hover-hover-background;
+    color: @panel-hover-hover-color;
+}
+.panel--hover .panel__badge {
+    top: @panel-hover-badge-top;
+    right: @panel-hover-badge-right;
+}
+.panel--hover .panel__teaser {
+    margin-top: @panel-hover-teaser-margin;
+    margin-left: @panel-hover-teaser-margin;
+    margin-right: @panel-hover-teaser-margin;
+}
+/* Modifier: `panel--header`
+ ========================================================================== */
+.panel--header .panel__title {
+    padding-bottom: @panel-header-title-padding;
+    border-bottom: @panel-header-title-border-width solid @panel-header-title-border;
+    color: @panel-header-title-color;
+}
+/* Modifier: `panel--space`
+ ========================================================================== */
+.panel--space {
+    padding: @panel-space-padding;
+}
+.panel--space .panel__badge {
+    top: @panel-space-padding;
+    right: @panel-space-padding;
+}
+/* Modifier: `panel--divider`
+ ========================================================================== */
+.panel + .panel--divider {
+    margin-top: (@panel-divider-gutter * 2) !important;
+}
+.panel + .panel--divider:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -(@panel-divider-gutter);
+    left: 0;
+    right: 0;
+    border-top: @panel-divider-border-width solid @panel-divider-border;
+}
+/* Large screen and bigger */
+@media (min-width: @breakpoint-xlarge) {
+    .panel + .panel--divider {
+        margin-top: (@panel-divider-gutter-large * 2) !important;
+    }
+    .panel + .panel--divider:before {
+        top: -(@panel-divider-gutter-large);
+    }
+}
+/* Modifier: `panel--border`
+ ========================================================================== */
+.panel--border {
+    border: 1px solid @panel-border-color;
+}
+.panel--border + .panel--border {
+    border-top: none;
+}
+/* Modifier: `panel--border-yellow`
+ ========================================================================== */
+.panel--border-yellow {
+    border: 4px solid @panel-border-yelow-color;
+}
+/* Modifier: `panel--shadow`
+ ========================================================================== */
+.panel--shadow {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+// Element 'panel__auth'
+.panel__auth{
+    text-align: center;
+    padding: 180px 0;
+
+    // Element 'panel__auth-lock'
+    &-lock{
+        display: block;
+        margin-bottom: 20px;
+        color: #eee;
+        font-size: 140px;
+        line-height: 140px;
+    }
+}

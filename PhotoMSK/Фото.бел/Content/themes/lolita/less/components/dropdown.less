@@ -1,0 +1,60 @@
+// out: ../../css/components/dropdown.css, compress: true
+// Name:            dropDown
+// Description:     Defines styles to create horizontal layout blocks
+//
+// Component:       `block`
+//
+// Modifiers:       `list-line`
+//                  `list-striped`
+//                  `list-space`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+
+/* ========================================================================
+   Component: dropDown
+ ========================================================================== */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+
+    // Element 'dropdown__content'
+    &__content {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        min-width: 160px;
+        border-top: 1px solid #ddd;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+
+        // Modificator 'dropdown__content--large'
+        &--large{
+            min-width: 280px;
+        }
+
+        & a {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            text-align: left;
+            border-top: 1px solid transparent;
+            border-bottom: 1px solid transparent;
+
+            &:hover{
+                background: #f9f9f9;
+                border-top: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+            }
+        }
+    }
+
+    &:hover .dropdown__content{
+        display: block;
+    }
+}

@@ -1,0 +1,82 @@
+﻿
+<div class="container container--center">
+    <div class="grid">
+        <div class="col--1-5">
+
+            <div class="button-back text--center">
+                <a href="@Url.Action("Create", "Page")" class="button-add button col--1-1">
+                    <i class="uk-icon-plus"></i>&nbsp;<span class="uk-text-bold">Страницу</span>
+                </a>
+            </div>
+
+            <div class="panel panel--box uk-panel-box-item">
+                <span class="uk-text-bold"><span>Нужна помощь?</span></span>
+
+                <p class="text--muted">Проконсультируем по вопросам работы с сайтом.</p>
+                <p>
+                    <a href="#" class="button col--1-1">Заказать звонок</a>
+                </p>
+            </div>
+
+            <h5 class="uk-text-bold">Справочник</h5>
+            <ul class="uk-list uk-list-space uk-list-dotted">
+                <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">Типы меню</a></li>
+                <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">Отображение элементов меню</a></li>
+                <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">Создание выпадающего меню</a></li>
+                <li><a href="#" class="uk-text-small">ещё...</a></li>
+            </ul>
+        </div>
+
+        <div class="col--4-5">
+            <div class="panel uk-panel-content-box">
+
+                <ul id="status-users" class="uk-subnav">
+                    <li><a href="" data-uk-filter="filter-a" class="button">Опубликованые</a></li>
+                    <li><a href="" data-uk-filter="filter-b" class="button">Не опубликованые</a></li>
+                    <li><a href="" data-uk-filter="" class="button">Все</a></li>
+                </ul>
+
+                <table class="table table--hover table--middle" data-grid="{controls: '#status-users'}">
+                    <thead>
+                        <tr>
+                            <th>Название</th>
+                            <th class="text--center">Статус</th>
+                            <th>Цена</th>
+                            <th class="text--center">Скидка</th>
+                            <th>Управление</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                            <tr ng-repeat="i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" data-uk-filter="filter-a">
+                                <td>
+                                    <a href="#" class="uk-link-muted uk-link-dotted uk-link-reset uk-text-bold">Canon 5d Mark III</a>
+                                    <p class="uk-text-small uk-margin-remove">
+                                        <span class="text--muted">(<a href="#" class="uk-link-muted">Canon 5d Mark III</a>&nbsp;<i class="uk-icon-external-link"></i>)</span>
+                                    </p>
+                                </td>
+                                <td class="text--center">
+                                    <i class="icon-action icon-show uk-icon-check"></i>
+                                </td>
+                                <td>
+                                    <strong>3 500 у.е.</strong>
+                                    <p class="uk-text-small uk-margin-remove text--muted">
+                                        55 300 000 <small>бел.руб.</small>
+                                    </p>
+                                </td>
+                                <td class="text--center">
+                                    <span>-</span>
+                                </td>
+                                <td>
+                                    <a href="#" class="text--muted uk-link-line">
+                                        123
+                                    </a>
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

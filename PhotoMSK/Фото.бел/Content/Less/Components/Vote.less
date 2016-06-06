@@ -1,0 +1,131 @@
+// out: ../../css/Components/Vote.css, compress: true
+// Name:            Vote
+// Description:     Defines styles for Vote
+//
+// Component:       `vote`
+//
+//
+// Element:         `vote__*`
+//                  `vote__*`
+//
+// Modifiers:       `vote--*`
+//                  `vote--*`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+
+@vote-positive-color:                 #49ae65;
+@vote-negative-color:                 #EE3442;
+
+@vote-rating-color:                   #F8B307;
+@vote-rating-font-size:               30px;
+
+/* ========================================================================
+   Component: Vote
+ ========================================================================== */
+ .vote{
+
+     // Modificator 'vote--positive'
+     &--positive{
+
+         & .vote__info{
+             border-color: @vote-positive-color;
+         }
+
+         & .input{
+             border-top: 0;
+             border-color: @vote-positive-color;
+         }
+     }
+
+     // Modificator 'vote--negative'
+     &--negative{
+
+         & .vote__info{
+             border-color: @vote-negative-color;
+         }
+
+         & .input{
+             border-top: 0;
+             border-color: @vote-negative-color;
+         }
+     }
+
+     // Element 'vote__info'
+     &__info{
+         border: 1px solid #ddd;
+         background-color: #f2f2f2;
+         border-bottom: 0;
+         font-weight: 500;
+         padding: 5px 10px;
+     }
+
+     // Element 'vote__rating'
+     &__rating{
+         & i{
+             font-size: @vote-rating-font-size;
+             line-height: @vote-rating-font-size;
+             color: @vote-rating-color;
+             cursor: pointer;
+         }
+
+         & span{
+             line-height: @vote-rating-font-size;
+         }
+     }
+ }
+
+ //////////////////////////////////////////////////////////////////////////////
+
+ .photo-vote{
+    position: relative;
+
+    // Element 'photo-vote__day'
+    &__day{
+        background: #fff;
+        padding: 10px 0;
+        min-height: 30px;
+        font-size: 14px;
+        line-height: 30px;
+        margin-bottom: 30px;
+        color: #999;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        text-align: center;
+    }
+
+    // Element 'photo-vote__image'
+    &__image{
+        cursor: pointer;
+    }
+
+    // Element 'photo-vote__vs'
+    &__vs{
+        position: absolute;
+        right: 50%;
+        top: 50%;
+        width: 120px;
+        height: 120px;
+        background: #fff;
+        margin-top: -60px;
+        margin-right: -80px;
+        padding: 0;
+        text-align: center;
+        border-radius: 60px;
+        box-shadow: 0 0px 20px 0 rgba(0, 0, 0, 0.4);
+        z-index: 9;
+
+        &-title{
+            font-size: 64px;
+            line-height: 54px;
+            font-weight: 900;
+            margin-top: 30px;
+        }
+
+        &-type{
+            font-size: 10px;
+            line-height: 12px;
+        }
+    }
+ }

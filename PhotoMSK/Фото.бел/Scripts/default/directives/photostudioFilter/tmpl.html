@@ -1,0 +1,74 @@
+<div class="filter" data-ng-class="{'filter__map--fixed' : modeViewMap}">
+
+    <div class="repair__mode">
+        <div class="tsc_ribbon_wrap edge" style="top: 130px;">
+          <div class="ribbon-wrap right-edge fork lblue">
+            <span>В разработке</span>
+          </div>
+        </div>
+    </div>
+
+    <a href="/map" class="filter__map lint--reset" data-ng-class="{'filter__map--list' : modeViewMap}" data-ng-click="showListStudios= !showListStudios">
+        <span data-ng-if="!modeViewMap">Показать на карте</span>
+        <span data-ng-if="modeViewMap"><i class="icon-layar"></i>Показать списком</span>
+    </a>
+
+    <div class="filter__content">
+        <div data-ng-if="showListStudios">
+            <dl class="uk-description-list-horizontal" data-ng-repeat="item in page.elements">
+                <a data-msk-href data-ng-click="setOnMap(item)" data-ng-mouseover="hoverOnMap(item)" data-ng-mouseleave="leaveOnMap()">{{item.name}}</a>
+               <!-- <dd data-ng-bind="item.adress"></dd> -->
+            </dl>
+        </div>
+        <div class="button__group grid grid-col--1-2">
+            <a href="/photostudio" class="button button--large" data-ng-class="{'button--success' : modeViewPhotostudios}">Фотостудии</a>
+            <a href="/photostudio/halls" class="button button--large" data-ng-class="{'button--success' : modeViewHalls}">Залы</a>
+        </div>
+
+        <div class="margin--top repair">
+            <span class="label">Станция метро</span>
+            <input type="text" class="input col--1-1">
+        </div>
+
+        <div class="filter__price repair">
+            <span class="label">
+                Цена в рублях
+            </span>
+            <div>
+                <rzslider class="slider" rz-slider-model="vm.slider_toggle.value" rz-slider-options="vm.slider_toggle.options"></rzslider>
+            </div>
+        </div>
+
+        <div>
+            <span class="label">
+                Выберите цвет зала
+            </span>
+            <ul class="filter__color">
+                <li style="background-color: #35284A;" data-ng-click="isColorActive = !isColorActive" data-ng-class="{isColorActive : 'active'}"></li>
+                <li style="background-color: #816F90;" data-ng-click="isColorActive = !isColorActive" data-ng-class="{isColorActive : 'active'}"></li>
+                <li style="background-color: #FB7D79;" data-ng-click="isColorActive = !isColorActive" data-ng-class="{isColorActive : 'active'}" class="active"></li>
+                <li style="background-color: #FB9D7E;" data-ng-click="isColorActive = !isColorActive" data-ng-class="{isColorActive : 'active'}"></li>
+                <li style="background-color: #F8CD9E;" data-ng-click="isColorActive = !isColorActive" data-ng-class="{isColorActive : 'active'}"></li>
+                <li style="background-color: #35284A;" data-ng-click="isColorActive = !isColorActive" data-ng-class="{isColorActive : 'active'}"></li>
+                <li style="background-color: #816F90;" data-ng-click="isColorActive = !isColorActive" data-ng-class="{isColorActive : 'active'}"></li>
+                <li style="background-color: #FB7D79;" data-ng-click="isColorActive = !isColorActive" data-ng-class="{isColorActive : 'active'}"></li>
+            </ul>
+        </div>
+
+        <div class="margin--v">
+            <label>
+                <span class="el-checkbox">
+                    <input type="checkbox" name="is_discount" class="el-checkbox--checkbox is-text">
+                    <span class="el-checkbox--icon el-checkbox--icon__checkbox"></span>
+                    <span class="el-checkbox--text">Действуют скидки портала</span>
+                </span>
+            </label>
+        </div>
+
+        <div class="filter__toggle repair">
+            <div class="filter__toggle__content">
+                <span>Дополнительно</span>
+            </div>
+        </div>
+    </div>
+</div>

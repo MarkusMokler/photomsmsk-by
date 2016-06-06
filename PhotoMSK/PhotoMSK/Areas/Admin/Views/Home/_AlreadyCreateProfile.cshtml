@@ -1,0 +1,157 @@
+﻿@using PhotoMSK.Data.Enums
+@using PhotoMSK.Data.Models
+@using PhotoMSK.Models
+@model User
+
+@{
+    List<RouteEntity> routes = Model.UserInformation.Roles.Where(x => x.AccessStatus == AccessStatus.Owner || x.AccessStatus == AccessStatus.Administrator).Select(x => x.Route).ToList();
+    IEnumerable<IGrouping<Type, RouteEntity>> groups = routes.GroupBy(x => x.GetType());
+}
+
+<ul id="tab-content" class="uk-switcher uk-margin">
+    <li>
+        <div></div>
+    </li>
+    <li>
+        <div>Активация РАЗДЕЛИТЕЛЯ</div>
+    </li>
+    <li class="uk-active">
+        <div class="uk-grid" data-uk-grid-margin>
+
+            <div class="uk-width-1-1">
+                <ul class="uk-subnav">
+                    <li><span class="uk-form-heading">Список всех созданых профилей</span></li>
+                    <li class="uk-float-right">
+                        <form class="uk-form">
+                            <input type="text" name="q" placeholder="Поиск...">
+                            <input type="hidden" name="type" value="theme">
+                        </form>
+                    </li>
+                </ul>
+
+                <hr class="small-line uk-margin-small-top" />
+            </div>
+            <div class="uk-width-1-2">
+                <div class="uk-panel uk-panel-box">
+                    <div class="uk-panel-teaser">
+                        <img src="" width="800" height="600" alt="Alpha">
+                    </div>
+                    <div>
+                        <h2 class="uk-panel-title uk-margin-small-bottom">
+                            PhotoLab STUDIO
+                            <span class="uk-badge uk-badge-success">Активная</span>
+                        </h2>
+                        @*<ul class="uk-subnav uk-subnav-line uk-margin-remove uk-text-nowrap">
+                                <li><span>PRO</span></li>
+                                <li><a href="">Просмотреть</a></li>
+                            </ul>*@
+                        <footer>
+                            <ul class="uk-subnav uk-subnav-line uk-vertical-align uk-text-right uk-margin-bottom-remove">
+                                <li class="uk-vertical-align-middle"><a href="#" class="uk-navbar-nav-subtitle"><i class="icon-trash"></i><div>удалить</div></a></li>
+                                <li class="uk-vertical-align-middle"><a href="/Admin/Photostudio/Profit?shortcut=divafotostudio" class="uk-navbar-nav-subtitle"><i class="icon-wallet"></i><div>выручка</div></a></li>
+                                <li class="uk-vertical-align-middle"><a class="uk-button uk-link-999" href="#">Настройки</a></li>
+                            </ul>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="uk-alert uk-alert-info uk-margin-remove uk-text-center" data-msg="no-updates">
+            <h3 class="uk-margin-remove">Раздел находится в разработке</h3>
+            <p class="uk-margin-remove">
+                <small class="uk-text-muted">совсем скоро вы увидите его в действии.</small>
+            </p>
+        </div>
+    </li>
+    <li>
+        <form class="uk-form">
+            <input type="text" name="q" placeholder="Поиск...">
+            <input type="hidden" name="type" value="theme">
+        </form>
+
+        <hr class="small-line" />
+
+        <p class="uk-alert uk-alert-info uk-hidden" data-msg="no-packages">No themes found.</p>
+        <p class="uk-alert uk-alert-warning uk-hidden" data-msg="no-connection">Cannot connect to the marketplace. Please try again later.</p>
+
+        <div class="js-marketplace-content">
+            <ul class="uk-grid uk-grid-width-small-1-2 uk-grid-width-xlarge-1-3" data-uk-grid-margin="" data-uk-grid-match="{target:'.uk-panel'}">
+
+                <li>
+                    <a class="uk-panel uk-panel-box pk-marketplace-panel uk-overlay-toggle" href="#" data-package="compinche">
+
+                        <div class="uk-panel-teaser"></div>
+
+                        <h2 class="uk-panel-title uk-margin-remove">Мария Логушкина</h2>
+
+                        <p class="uk-margin-remove uk-text-small uk-text-muted"><span class="uk-badge uk-badge-success">PRO</span> модель</p>
+
+                        <div class="uk-overlay-area">
+                            <div class="uk-overlay-area-content">
+                                <button class="uk-button uk-button-primary uk-button-large">Подробнее</button>
+                            </div>
+                        </div>
+
+                    </a>
+                </li>
+
+                <li>
+                    <a class="uk-panel uk-panel-box pk-marketplace-panel uk-overlay-toggle" href="#" data-package="onover">
+
+                        <div class="uk-panel-teaser"></div>
+
+                        <h2 class="uk-panel-title uk-margin-remove">Мария Логушкина</h2>
+
+                        <p class="uk-margin-remove uk-text-small uk-text-muted"><span class="uk-badge uk-badge-success">PRO</span> модель</p>
+
+                        <div class="uk-overlay-area">
+                            <div class="uk-overlay-area-content">
+                                <button class="uk-button uk-button-primary uk-button-large">Подробнее</button>
+                            </div>
+                        </div>
+
+                    </a>
+                </li>
+
+                <li>
+                    <a class="uk-panel uk-panel-box pk-marketplace-panel uk-overlay-toggle" href="#" data-package="shelly">
+
+                        <div class="uk-panel-teaser"></div>
+
+                        <h2 class="uk-panel-title uk-margin-remove">Мария Логушкина</h2>
+
+                        <p class="uk-margin-remove uk-text-small uk-text-muted">модель</p>
+
+                        <div class="uk-overlay-area">
+                            <div class="uk-overlay-area-content">
+                                <button class="uk-button uk-button-primary uk-button-large">Подробнее</button>
+                            </div>
+                        </div>
+
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </li>
+    <li>
+        <div class="uk-alert uk-alert-info uk-margin-remove uk-text-center" data-msg="no-updates">
+            <h3 class="uk-margin-remove">Раздел находится в разработке</h3>
+            <p class="uk-margin-remove">
+                <small class="uk-text-muted">совсем скоро вы увидите его в действии.</small>
+            </p>
+        </div>
+    </li>
+
+    <li>
+        <div class="uk-alert uk-alert-info uk-margin-remove uk-text-center" data-msg="no-updates">
+            <h3 class="uk-margin-remove">Раздел находится в разработке</h3>
+            <p class="uk-margin-remove">
+                <small class="uk-text-muted">совсем скоро вы увидите его в действии.</small>
+            </p>
+        </div>
+    </li>
+
+</ul>

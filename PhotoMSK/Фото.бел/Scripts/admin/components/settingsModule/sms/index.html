@@ -1,0 +1,70 @@
+<div class="content--admin">
+
+    <div><data-bread-crumbs /></div>
+
+
+    <div class="container--fluid">
+        <div class="grid">
+            <div class="col--1-1">
+                <div class="panel panel--box panel--white panel--shadow">
+                    <div class="grid">
+                        <div class="col--3-4">
+                            <div class="form form--dashed form--horizontal">
+                                <label class="label">Заголовок СМС</label>
+                                <div class="input input--sms">
+                                    <textarea ui-codemirror="editorOptions" data-ng-model="smsData.bookingHelloText"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form form--dashed form--horizontal">
+                                <label class="label">список броней</label>
+                                <div class="input input--sms">
+                                    <textarea ui-codemirror="editorOptions" data-ng-model="smsData.bookingLineText"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form form--dashed form--horizontal">
+                                <label class="label">Концовка СМС</label>
+                                <div class="input input--sms">
+                                    <textarea ui-codemirror="editorOptions" data-ng-model="smsData.bookingEndText"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col--1-4">
+                            <div class="iphone">
+                                <div class="screen">
+                                    <div class="receive message">
+                                        <div>
+                                            <html-viewer code="smsText" object="testObject" />
+                                        </div>
+
+                                        <p class="count">символов: 69</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col--1-1 text--center margin--top">
+                            <a data-msk-href data-ng-click="save()" class="button button--yellow button--radius button--shadow border--rounded col--1-4">Сохранить</a>
+                        </div>
+
+                        <div class="col--1-1 margin--top-large">
+                            <div class="panel panel--info">
+                                <p Class="text--bold margin--bottom">Внимание!</p>
+                                <p>Стоимость SMS, настроенных через опцию «Свой шаблон», будет тарифицироваться по цене <b>1.9 ₽</b> за сообщение длиной до 69-ти символов.</p>
+
+                                <p>Стоимость SMS, настроенных по одному из предложенных шаблонов, будет тарифицироваться по цене <b>1.5 ₽</b> за сообщение длиной до 69-ти символов.</p>
+
+                                <p>Данные правила введены сотовыми операторами для регулирования рекламного трафика. Таким образом, все SMS, которые не соответствуют заранее согласованным шаблонам, будут приравниваться к рекламным и тарифицироваться по специальному тарифу.</p>
+
+                                <p>Действительно только на территории РФ.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

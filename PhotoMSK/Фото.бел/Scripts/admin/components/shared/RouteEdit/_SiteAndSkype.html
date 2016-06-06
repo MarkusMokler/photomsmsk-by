@@ -1,0 +1,25 @@
+﻿<!-- Social Network -->
+
+<div class="col--1-1">
+    <div class="uk-section">
+        <span class="uk-section__counter">9</span>
+        <span class="uk-section__title">Дополнительно</span>
+    </div>
+</div>
+
+<div class="col--6-10 uk-push-2-10">
+    <div class="grid">
+        <div class="col--1-2">
+            <label class="label">Сайт <i class="icon-help2"></i></label>
+            @Html.TextBoxFor(model => model.Site, new { @class = "input col--large-1-1 col--small-1-1", data_role_input_optional = "", PlaceHolder = "http://www" })
+            @Html.ValidationMessageFor(model => model.Site)
+        </div>
+        <div class="col--1-2">
+            <label class="label">Skype <i class="icon-help2"></i></label>
+            @Html.TextBoxFor(model => model.Skype, new { @class = "input col--large-1-1 col--small-1-1", data_role_input_optional = "", PlaceHolder = "login_skype" })
+            @Html.ValidationMessageFor(model => model.Skype)
+        </div>
+    </div>
+</div>
+
+

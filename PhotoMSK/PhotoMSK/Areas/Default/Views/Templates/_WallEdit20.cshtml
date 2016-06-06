@@ -1,0 +1,94 @@
+﻿<div class="uk-wall-post-editor">
+    <div class="ChatLog">
+        <ul class="uk-width-1-1 uk-tab uk-tab-flip role-show-when-post-edit" data-uk-switcher="{connect:'#Wall-content'}">
+            <% if(typeof(window.isPhotographer)!='undefined'){ %>
+            <li>
+                <a class="uk-navbar-nav-subtitle uk-text-center role-shooting-edit">
+                    <i class="icon-camera2"></i>
+                    <div>съемка</div>
+                </a>
+                <div class="arrow">
+                    <div class="mB arrow-body"></div>
+                    <div class="mB arrow-border"></div>
+                </div>
+            </li>
+            <% } %>
+            <li class="uk-active">
+                <a class="uk-navbar-nav-subtitle uk-text-center role-post-edit"><i class="icon-news"></i><div>статус</div></a>
+                <div class="arrow">
+                    <div class="mB arrow-body"></div>
+                    <div class="mB arrow-border"></div>
+                </div>
+            </li>
+        </ul>
+        <div class="ChatLog-entry">
+            <img class="ChatLog-avatar" src="<%- window.routeImage %>" />
+            <div class="ChatLog-message">
+
+                <div class="role-show-when-post-edit pad-bottom-10" style="display: none;">
+                    <label class="label-ms show">
+                        Заголовок
+                    </label>
+                    <input class="input-comment input-msk uk-width-1-1 role-wall-title" type="text" name="photo-title" id="photo-title" maxlength="80" placeholder="Введите заголовок для съемки">
+                </div>
+
+                <div>
+                    <label class="label-ms show">
+                        Описание съемки
+                    </label>
+                    <textarea class="textarea-comment input-msk uk-width-1-1 role-wall-description" rows="2" placeholder="Добавить описание..."></textarea>
+                </div>
+
+                <div class="pad-top-10 role-show-when-post-edit" style="display: none;">
+                    <label class="label-ms show">
+                        Загрузите снимки <a class="uk-text-muted add-phone uk-align-right role-toggle-video"><i class="icon-circle-plus"></i> Добавить видео</a>
+                    </label>
+
+                    <div id="upload-drop" class="uk-placeholder uk-text-center">
+                        <i class="icon-camera"></i> Перетяните файлы или <a class="uk-form-file">выберите файлы.<input id="upload-select" type="file"></a>.
+                    </div>
+                    <div id="progressbar" class="uk-progress uk-hidden">
+                        <div class="uk-progress-bar" style="width: 0%;">...</div>
+                    </div>
+                </div>
+
+                <div class="role-video-input-box pad-bottom-10" style="display: none;">
+                    <label class="label-ms show">
+                        Ссылка на видео
+                    </label>
+                    <input class="input-comment input-msk uk-width-1-1 role-wall-video" type="text" name="video-url" id="video-url" placeholder="Введите URL на видео">
+                </div>
+
+                <ul class="wall-post-participants uk-subnav uk-subnav-line"></ul>
+
+                <div id="post-editor-action" class="uk-grid uk-grid-small role-show-when-post-edit" style="display: none;">
+                    <div class="uk-width-1-2 uk-form-icon role-wall-participant-autocomplete">
+                        <i class="icon-profile-male"></i>
+                        <input class="input-comment input-msk uk-width-1-1" id="routes-autocomplete" type="text" placeholder="участники">
+                    </div>
+
+                    <div class="uk-width-1-2 uk-form-icon role-wall-participant-autocomplete" style="display: none">
+                        <i class="icon-browser"></i>
+                        <input class="input-comment input-msk uk-width-1-1 role-shooting-autocomplete" type="text" placeholder="жанры съемки">
+                    </div>
+                </div>
+                <div class="role-shooting-genres pad-bottom-10 "></div>
+
+                <div class="attachment">
+                    <div class="youtube" style="display: none;">
+                        <iframe id="ytplayer" class="yuotube-video" type="text/html" width="420" height="236.25" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="vimeo" style="display: none;">
+                        <iframe class="vimeo-video" width="420" height="236.25" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
+                    <div id="photo-placeholder" class="role-photo-placeholder"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <ul class="uk-subnav uk-text-right role-show-when-post-edit" style="display: none;">
+        <li><button class="uk-button-link uk-text-muted role-cancel-wall-edit">отменить</button></li>
+        <li><button class="uk-button uk-button-success uk-button-small role-save-wall-edit">отправить</button></li>
+    </ul>
+</div>

@@ -1,0 +1,140 @@
+﻿<div class="uk-slidenav-position" data-uk-slideshow>
+    <ul class="uk-slideshow">
+        <li class="uk-active">
+            <img src="{{routeDetails.coverImage}}" />
+        </li>
+        <li></li>
+    </ul>
+</div>
+
+
+<div class="uk-main-page-body">
+    <div class="uk-page-bar-panel">
+        <div class="container container--center">
+            <ul class="uk-margin-remove uk-subnav uk-subnav-line uk-subnav-breadcrumb">
+                <li><a href="~/">Главная</a></li>
+                <li><a href="@Url.Action("Index", "Photostudio")">Студии</a></li>
+                <li class="uk-active">
+                    <a href="#">{{routeDetails.name}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="container container--center">
+        <div class="grid grid--small grid-divider">
+            <div class="col--2-10">
+                <div class="text--center">
+                    <p class="uk-h2 uk-margin-remove">
+                        <span class="uk-rating-total">@string.Format("{0:##.#}", 123123123)</span>
+                    </p>
+                    <a href="#" class="uk-link-reset uk-link-dotted">
+                        <small class="text--muted"><strong>12</strong> отзывов</small>
+                    </a>
+                </div>
+            </div>
+            <div class="col--5-10">
+                <ul class="uk-subnav">
+                    <li>
+                        <a href="">
+                            <img class="uk-border-circle" src="{{routeDetails.imageUrl}}" style="height: 80px;" />
+                        </a>
+                    </li>
+                    <li>
+                        <div>
+                            <h1 class="uk-margin-remove bold">{{routeDetails.name}}</h1>
+
+                                <div ng-if="{{pro}}" class="uk-badge uk-badge-success">PRO</div>
+
+                            <ul class="uk-subnav uk-margin-remove">
+                                <li>
+                                    <div class="intl-tel-input">
+                                        <div class="flag by"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#" class="uk-link-dotteds uk-link-999">{{routeDetails.city}}</a>
+                                </li>
+                            </ul>
+                            <!-- <a href="#" class="uk-link-reset">
+                                    <span class="uk-type-tag">фотостудия</span>
+                                </a> -->
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col--2-10">
+                <ul class="uk-list">
+                    <li>
+                        <a ng-repeat="item in routeDetails.phones" href="#review-phone-modal" class="uk-h1 uk-link-reset uk-link-dotted" data-uk-modal>
+                            {{item}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container container--center uk-margin-top">
+        <div class="grid">
+            <div class="col--1-1">
+                <div class="panel uk-panel-space ">
+                    Проверка
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<div id="review-phone-modal" class="uk-modal">
+    <div class="uk-modal-dialog uk-modal-dialog-phones">
+        <a href="" class="uk-modal-close uk-close"></a>
+        <section class="text--center">
+            <span class="text--muted">контактная информация @Model.RouteDetails.Name</span>
+            <h1 class="uk-heading-large">
+                @foreach (var item in Model.RouteDetails.Phones)
+                {
+                    @item
+                }
+            </h1>
+            <span class="text--muted">
+                сообщайте @Model.RouteDetails.Name о том, что вы нашли его на <span class="uk-link-dotted">PhotoMSK.by</span>
+            </span>
+        </section>
+        <div class="panel panel--box uk-margin-top">
+            <h3 class="uk-panel-title">Оцените работу @Model.RouteDetails.Name:</h3>
+            <div class="uk-flex uk-margin-bottom">
+                <div class="col--1-4">
+                    <a href="#review-phone-modal-thanks" class="button button-reviews button-reviews-success col--1-1" data-uk-modal="">Все прошло хорошо</a>
+                </div>
+                <div class="col--1-4 uk-margin-left">
+                    <a href="#review-phone-modal-thanks" class="button button-reviews button-reviews-warning col--1-1" data-uk-modal="">Даты оказались занятыми</a>
+                </div>
+                <div class="col--1-4 uk-margin-left">
+                    <a href="#review-phone-modal-thanks" class="button button-reviews button-reviews-danger col--1-1" data-uk-modal="">Не отвечают на звонки</a>
+                </div>
+                <div class="col--1-4 uk-margin-left">
+                    <a href="#review-phone-modal-thanks" class="button button-reviews button-reviews-danger col--1-1" data-uk-modal="">Цены не действительны</a>
+                </div>
+            </div>
+        </div>
+        <small class="text--muted">
+            Спасибо за ваш отзыв! Нам он очень важен.
+        </small>
+    </div>
+</div>
+
+<div id="review-phone-modal-thanks" class="uk-modal">
+    <div class="uk-modal-dialog uk-modal-dialog-phones text--center">
+        <a href="" class="uk-modal-close uk-close"></a>
+        <span class="text--muted">контактная информация @Model.RouteDetails.Name</span>
+        <h1 class="uk-heading-large uk-margin-large">Спасибо :)</h1>
+        <p class="text--muted">Нам очень важно что вы оставили ваше мнение на <span class="uk-link-dotted">PhotoMSK.by</span></p>
+    </div>
+</div>

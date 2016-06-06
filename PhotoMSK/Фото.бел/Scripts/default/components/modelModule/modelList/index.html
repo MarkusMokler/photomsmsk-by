@@ -1,0 +1,70 @@
+﻿<div><data-bread-crumbs /></div>
+<div class="uk-main-page-body">
+    <div class="container container--center">
+        <div class="grid">
+            <div class="col--8-10">
+                <!-- TOP Models -->
+                <h1><strong class="yellow-color">Популярные</strong> модели недели
+                </h1>
+                <hr class="yellow-color"/>
+
+                <div id="top-models" class="grid">
+                    <!-- Тут добавляются модели -->
+                    <div class="photo col--2-10" ng-repeat="item in page.elements">
+                        <div class="buttons">
+                            <div class="states">
+                                <a class="action">
+                                    <span class="icon"></span>
+                                    <span class="count">70.2</span>
+                                </a>
+                            </div>
+                        </div>
+                        <a href="/model/{{item.shortcut}}">
+                            <img data-ng-if="!item.teaserImage" class="grayscale" src="/Content/images/no-avatar.png">
+                            <img data-ng-if="item.teaserImage" class="grayscale" src="{{item.teaserImage}}">
+
+                        </a>
+                        <div class="details">
+                            <div class="inside">
+                                <div class="info"><a href="/model/{{item.shortcut}}">{{item.firstName}} {{item.lastName}} </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col--2-10">
+                <h1>Рейтинг</h1>
+                <hr/>
+
+                <ul class="rating-list">
+                    <li>
+                        <article class="uk-comment">
+                            <header class="uk-comment-header">
+                                <img class="uk-comment-avatar uk-border-rounded" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                                <h4 class="uk-comment-title">Роман Лунцевич</h4>
+                                <div class="uk-comment-meta"> Фотограф</div>
+                            </header>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="uk-comment">
+                            <header class="uk-comment-header">
+                                <img class="uk-comment-avatar uk-border-rounded" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                                <h4 class="uk-comment-title">Роман Лунцевич</h4>
+                                <div class="uk-comment-meta">
+                                    <div class="uk-badge uk-badge-success">PRO</div> Фотограф
+                                </div>
+                            </header>
+                        </article>
+                    </li>
+                </ul>
+            </div>
+            <div id="models" class="grid">
+                <!-- Тут подгружаются модели -->
+            </div>
+        </div>
+        <uib-pagination total-items="totalItems" ng-model="currentPage" boundary-links="true" items-per-page="itemsPerPage" max-size="maxSize" num-pages="numPages" class="pagination" ng-change="pageChanged()"></uib-pagination>
+    </div>
+</div>

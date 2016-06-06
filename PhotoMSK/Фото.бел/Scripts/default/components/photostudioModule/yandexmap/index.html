@@ -1,0 +1,52 @@
+<div>
+    <data-bread-crumbs />
+</div>
+
+<photostudio-filter></photostudio-filter>
+
+<!-- <div class="filter">
+
+    <div class="repair__mode">
+        <div class="tsc_ribbon_wrap edge" style="top: 130px;">
+            <div class="ribbon-wrap right-edge fork lblue">
+                <span>В разработке</span>
+            </div>
+        </div>
+    </div>
+
+    <a href="/photostudio" class="filter__map filter__map--list lint--reset"><i class="icon-layers"></i>&nbsp;Показать списком</a>
+
+    <div class="filter__content">
+        <div class="button__group grid grid-col--1-2">
+            <a href="/photostudio" class="button button--large" data-ng-click="modeAction = 'photostudio'" data-ng-class="{'button--success' : modeAction == 'photostudio'}">Фотостудия</a>
+            <a href="/photostudio/halls" class="button button--large" data-ng-click="modeAction = 'photohall'" data-ng-class="{'button--success' : modeAction == 'photohall'}">Залы</a>
+        </div>
+
+        <div class="margin--top repair">
+            <span class="label">Станция метро</span>
+            <input type="text" class="input col--1-1">
+        </div>
+
+        <div class="filter__price repair">
+            <span class="label">
+                Цена в рублях
+            </span>
+            <div>
+                <rzslider class="slider" rz-slider-model="vm.slider_toggle.value" rz-slider-options="vm.slider_toggle.options"></rzslider>
+            </div>
+        </div>
+
+        <div class="filter__toggle repair">
+            <div class="filter__toggle__content">
+                <span>Дополнительно</span>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- {{mapHeight-240}} <<-- 240 что бы выровнять по высоте под мой экран, смотри ром как тебе нужно -->
+<div class="map map--fluid" style="width: {{mapWidth}}px; height: {{mapHeight-240}}px; display: block">
+    <ya-map ya-zoom="12" ya-center="[27.5,53.9]" ya-after-init="afterMapInit($target)">
+        <ya-geo-object ya-source="obj" ng-repeat="obj in geoObjects" ya-options="{preset:'islands#blackStretchyIcon'}"></ya-geo-object>
+    </ya-map>
+</div>

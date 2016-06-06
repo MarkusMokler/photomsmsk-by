@@ -1,0 +1,75 @@
+﻿@model PhotoMSK.Models.EditViewModel.Routes.PhotomodelEditModel
+@{
+    ViewBag.Title = "Создание новой фотомодели";
+}
+<div class="uk-container uk-container-center">
+    <div class="uk-grid">
+        <div class="uk-width-1-1 uk-width-small-1-1 uk-width-large-1-1 uk-margin-top uk-text-center uk-grid-margin">
+            <span class="uk-h2">
+                Создание новой модели
+            </span>
+            <p class="uk-margin-remove">
+                <small class="uk-text-muted">
+                    Зарабатывайте моделью на проекте PhotoMSK
+                </small>
+            </p>
+            <hr class="small-line" />
+        </div>
+    </div>
+    <div class="uk-panel uk-panel-space uk-panel--white uk-panel--shadow uk-panel--border-radius uk-margin-top">
+        <ul class="uk-grid uk-grid-small uk-grid-width-1-4 uk-switcher-step" data-uk-switcher="{connect:'#switch-from-content'}">
+            <li class="uk-active uk-success">
+                <a href="" class="uk-link-reset uk-flex uk-flex-middle">
+                    <i class="icon-profile-male"></i>
+                    <span>Контактная информация</span>
+                </a>
+            </li>
+            <li class="uk-success">
+                <a href="" class="uk-link-reset uk-flex uk-flex-middle">
+                    <i class="uk-icon-phone"></i>
+                    <span>Телефоны и адрес</span>
+                </a>
+            </li>
+            <li>
+                <a href="" class="uk-link-reset uk-flex uk-flex-middle">
+                    <i class="uk-icon-gears"></i>
+                    <span>Параметры</span>
+                </a>
+            </li>
+            <li>
+                <a href="" class="uk-link-reset uk-flex uk-flex-middle">
+                    <i class="icon-banknote"></i>
+                    <span>Условия и стоимость</span>
+                </a>
+            </li>
+        </ul>
+        <div class="uk-grid">
+            <div class="uk-width-1-1">
+                <ul id="switch-from-content" class="uk-switcher">
+                    <li>
+                        @Html.Partial("Create/_CreateInformation", Model)
+                    </li>
+                    <li>
+                        @Html.Partial("Create/_CreatePhone", Model)
+                    </li>
+                    <li>
+                        @Html.Partial("Create/_CreateEquipment", Model)
+                    </li>
+                    <li>
+                        @Html.Partial("Create/_CreatePay", Model)
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            var create = new window.PhotostudioCreate();
+            create.render();
+        })
+    </script>
+}

@@ -1,0 +1,127 @@
+// out: ../../css/Components/Photostudio.css, compress: true
+// Name:            Photostudio
+// Description:     Defines styles for photostudio
+//
+// Component:       `photostudio`
+//                  `cover`
+//
+// Modifiers:       `photostudio--*`
+//                  `photostudio--*`
+//
+// ************************************************************************
+// Variables
+
+@top-menu-height:                     50px;
+
+// ************************************************************************
+//
+// Component: Photostudio
+//
+// ************************************************************************
+
+.studio{
+
+    // Element 'studio__teaser'
+    &__teaser{
+        position: relative;
+        width: 100%;
+        min-height: 450px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-top: -@top-menu-height;
+        padding-top: @top-menu-height;
+    }
+
+    // Element 'studio__overlay'
+    &__overlay{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,d6d6d6+0,000000+100&0+0,0.7+100 */
+        background: -moz-linear-gradient(top,  rgba(214,214,214,0) 0%, rgba(0,0,0,0.7) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top,  rgba(214,214,214,0) 0%,rgba(0,0,0,0.7) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom,  rgba(214,214,214,0) 0%,rgba(0,0,0,0.7) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00d6d6d6', endColorstr='#b3000000',GradientType=0 ); /* IE6-9 */
+
+    }
+
+    // Element 'studio__title'
+    &__title{
+        position: relative;
+        top: 250px;
+        color: #fff;
+    }
+
+    // Element 'studio__name'
+    &__name{
+        font-size: 2.6rem;
+        line-height: 3.6rem;
+        color: #fff;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    // Element 'studio__adress'
+    &__adress{
+        color: #dedede;
+        font-weight: 400;
+
+        &-city,
+        &-str{
+            text-transform: capitalize;
+        }
+    }
+
+    // Element 'studio__slider'
+    &__slider{
+        & > .button{
+            border: none;
+            color: #909090;
+        }
+    }
+
+    // Element 'studio__avatar'
+    &__avatar{
+        position: relative;
+        border: 2px solid #fff;
+    }
+
+    // Element 'studio__verification'
+    &__verification{
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        width: 25px;
+        height: 25px;
+        border-radius: 25px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 27px;
+        background: #fff;
+    }
+
+    // Element 'studio__menu'
+    &__menu{
+        background: #edeef0;
+        padding: 20px 0;
+
+        & ul{
+            margin: 0;
+            padding: 0;
+
+            & > li{
+                display: inline-block;
+                color: #171717;
+
+                & + li{
+                    border-left: 1px solid;
+                }
+            }
+        }
+    }
+}

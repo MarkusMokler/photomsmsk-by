@@ -1,0 +1,41 @@
+﻿<section class="uk-product-item">
+    <div class="uk-product-item-cart">
+        <div class="uk-product-item-image uk-text-center">
+            <a href="@Html.Raw(PhototechnicsDefinition.Url)" class="uk-link-reset">
+                <img class="uk-image-100" src="@Html.Raw(PhototechnicsDefinition.Image)" alt="@Html.Raw(PhototechnicsDefinition.Name)">
+            </a>
+        </div>
+        <p>
+            <a href="@Html.Raw(PhototechnicsDefinition.Url)" class="uk-link-reset">@Html.Raw(PhototechnicsDefinition.Name)</a>
+        </p>
+        <p class="uk-margin-bottom-remove uk-text-brand-color">
+            <b>@Html.Raw(PhototechnicsDefinition.Price)  бел. руб.</b>
+        </p>
+                @*<p class="uk-text-small uk-text-muted uk-margin-top-remove">
+           654 250 руб.
+        </p>*@
+    </div>
+    <div class="uk-product-item-description">
+        <div class="uk-product-item-image uk-text-center">
+            <a href="@Html.Raw(PhototechnicsDefinition.Url)" class="uk-link-reset">
+                <img class="uk-image-100" src="@Html.Raw(PhototechnicsDefinition.Image)" alt="@Html.Raw(PhototechnicsDefinition.Name)">
+            </a>
+        </div>
+        <p>
+            <a href="@Html.Raw(PhototechnicsDefinition.Url)" class="uk-link-reset">@Html.Raw(PhototechnicsDefinition.Name)</a>
+        </p>
+        <p class="uk-text-small uk-text-muted">
+            @Html.Raw(PhototechnicsDefinition.ShortDescription)
+        </p>
+        <p class="uk-margin-bottom-remove uk-text-brand-color">
+            <b>@Html.Raw(PhototechnicsDefinition.Price) бел. руб.</b>
+        </p>
+                @*<p class="uk-text-small uk-text-muted uk-margin-top-remove">
+            654 250 руб..
+        </p>*@
+        <a class="uk-button uk-button-cart uk-show-hide-element" data-role-add-to-cart>
+            <span>В корзину</span>
+            <i class="uk-icon-shopping-cart"></i>
+        </a>
+    </div>
+</section>

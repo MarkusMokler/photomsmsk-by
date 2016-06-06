@@ -1,0 +1,150 @@
+﻿@model PhotoMSK.Areas.Default.ViewData.Catalog.CartViewData
+<div class="uk-grid uk-grid-small" data-uk-grid-margin>
+    <div class="uk-width-1-1">
+        <ul class="uk-breadcrumb">
+            <li><a href="#">Главная</a></li>
+            <li><a href="#">Карзина</a></li>
+            <li><span><i class="uk-icon-long-arrow-right"></i></span></li>
+        </ul>
+    </div>
+    <div class="uk-width-1-1">
+        <span class="uk-text-muted uk-h3 uk-margin-remove">Товары в корзине:</span>
+    </div>
+</div>
+
+<div class="uk-grid" data-uk-grid-margin>
+    <div class="uk-width-1-1">
+        <div class="uk-panel uk-panel-box">
+            <table class="uk-table uk-table-middle">
+                <thead>
+                    <tr>
+                        <th>Товар</th>
+                        <th>Количество</th>
+                        <th>Цена</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td colspan="2" class="uk-text-right">Итого:</td>
+                        <td colspan="2">
+                            @if (Model.Technics != null)
+                            {
+                                <strong class="uk-h4">@Model.Technics.Elements.Sum(x => x.Price)</strong>
+                            }
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                @if (Model.Technics != null)
+                {
+                    foreach (var item in Model.Technics.Elements)
+                    {
+                        <tr>
+                            <td>
+                                <img src="@item.Image" />
+                                <a href="/@item.Shortcut" class="uk-link-muted uk-link-like uk-margin-left"><strong>@item.Name</strong></a>
+                            </td>
+                            <td>
+                                <input type="number" id="form-s-mix" min="0" max="10" value="1" class="uk-form-small uk-text-center">
+                            </td>
+                            <td>
+                                <p class="uk-margin-remove uk-text-brand-color">
+                                    <b class="uk-h3">@item.Price</b>
+                                </p>
+                                <p class="uk-margin-remove">
+                                    <span class="uk-text-muted">@item.Price</span>
+                                </p>
+                            </td>
+                            <td style="width: 15px;">
+                                <a href="#" class="uk-link-reset">
+                                    <i class="uk-icon-close uk-icon-small pink-color"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="uk-width-1-2">
+        <h2 class="uk-form-heading">Информация о покупателе</h2>
+        <table class="uk-table uk-table-middle">
+            <tbody>
+                <tr>
+                    <td><label for="form-title" class="uk-form-label">Имя</label> <span class="pink-color">*</span></td>
+                    <td><input id="form-title" class="uk-width-1-1" type="text" name="Name" placeholder="Иван"></td>
+                </tr>
+                <tr>
+                    <td><label for="form-title" class="uk-form-label">Телефон</label> <span class="pink-color">*</span></td>
+                    <td><input id="form-title" class="uk-width-1-1" type="text" name="Name" placeholder="+375-**-***-**-**"></td>
+                </tr>
+                <tr>
+                    <td><label for="form-title" class="uk-form-label">E-mail</label></td>
+                    <td><input id="form-title" class="uk-width-1-1" type="text" name="Name" placeholder="****емэйл.бай"></td>
+                </tr>
+                <tr>
+                    <td><label for="form-title" class="uk-form-label">Местоположение</label> <span class="pink-color">*</span></td>
+                    <td><input id="form-title" class="uk-width-1-1" type="text" name="Name" placeholder="Иван"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="uk-width-1-2">
+        <h2 class="uk-form-heading">Метод доставки</h2>
+        <table class="uk-table uk-table-middle">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="uk-form-controls">
+                            <input type="radio" id="form-s-r" name="radio" checked=""> <label for="form-s-r">Заберу самостоятельно (самовывоз)</label>
+                            <p class="uk-margin-remove uk-text-small uk-text-muted">
+                                Вы можете самостоятельно забрать заказ из нашего магазина: г. Минск ул. Немига 8
+                            </p>
+                        </div>
+                    </td>
+                    <td>
+                        <strong>
+                            0 <br>
+                        </strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="uk-form-controls">
+                            <input type="radio" id="form-s-r" name="radio"> <label for="form-s-r">Доставка по Минску</label>
+                            <p class="uk-margin-remove uk-text-small uk-text-muted">
+                                Доставка осуществляется в течение дня в удобное для вас время.
+                            </p>
+                        </div>
+                    </td>
+                    <td>
+                        <strong>
+                            + 70 000<br>
+                        </strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="uk-width-1-1">
+        <div class="uk-text-right">
+            <strong>
+                Итоговая стоимость:
+            </strong>
+            <span class="uk-text-brand-color">
+                &nbsp;
+            @if (Model.Technics != null)
+            {
+
+                <b class="uk-h3 ">@Model.Technics.Elements.Sum(x => x.Price)</b>
+            }    
+            </span>
+        </div>
+        <hr />
+        <a href="#" class="uk-button uk-button-success uk-float-right">
+            Оформить заказ
+        </a>
+    </div>
+</div>

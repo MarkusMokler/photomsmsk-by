@@ -1,0 +1,184 @@
+﻿@model PhotoMSK.Areas.Default.ViewData.Catalog.ProductViewData
+
+    <div class="uk-grid" data-uk-grid-margin>
+        <div class="uk-width-1-1">
+            <ul class="uk-breadcrumb">
+                <li><a href="/">Главная</a></li>
+                <li><a href="/catalog/">Каталог продукции</a></li>
+                <li><a href="/catalog/@Model.PhototechnicsViewModel.CategorySlug">Зеркальные фотоаппараты</a></li>
+                <li><span><i class="uk-icon-long-arrow-right"></i></span></li>
+            </ul>
+        </div>
+
+        <div class="uk-width-3-4">
+            <h2>
+                <strong>
+                    @Model.PhototechnicsViewModel.Name
+            </strong>
+        </h2>
+    </div>
+</div>
+
+<div class="uk-grid">
+    <div class="uk-width-1-2">
+        <a title="Зеркальный фотоаппарат Nikon D3100 BODY. Цвет: Черный" href="http://fotomix.by/upload/resize_cache/iblock/691/535_345_18b8b44207f1b13dce34622f723bb71f9/1_.jpg">
+            <img src="@Model.Image" height="345">
+        </a>
+    </div>
+
+
+
+    <div class="uk-width-medium-1-2">
+
+        <ul class="uk-tab" data-uk-tab="{connect:'#product-content'}">
+            <li class="uk-active"><a href="#">Описание</a></li>
+            <li class=""><a href="#">Характеристики</a></li>
+            <li class="uk-tab-responsive uk-active uk-hidden"><a>Tab</a><div class="uk-dropdown uk-dropdown-small"><ul class="uk-nav uk-nav-dropdown"></ul><div></div></div></li>
+        </ul>
+
+        <ul id="product-content" class="uk-switcher uk-margin">
+            <li class="uk-active">
+                <section>
+                    <p class="uk-text-muted">
+                        @Model.Description
+                    </p>
+                    <p>
+                        <img src="http://fotomix.by/upload/medialibrary/4de/ico_rst.jpg" title="РСТ" alt="РСТ" width="31" height="23">&nbsp;Официальная гарантия в Минске:
+                        <strong>@Model.PhototechnicsViewModel.Warranty мес.</strong>
+                    </p>
+                    <p>
+                        <a class="uk-link-reset uk-link-hover uk-link-dotted" href="#" data-uk-switcher-item="1">Подробные характеристики</a>
+                    </p>
+
+                    <div>
+                        <img src="@Model.Image" class="uk-float-left" />
+                        <a href="#" class="uk-link-reset uk-link-dotted uk-link-hover">
+                            Скачать инструкцию для @Model.PhototechnicsViewModel.Name
+                        </a>
+                        <p class="uk-text-muted uk-text-small uk-margin-small-top">Скачать .pdf 18.08 Мб</p>
+                    </div>
+
+                    <ul class="uk-subnav">
+                        <li>
+                            <p class="uk-h1 uk-margin-remove uk-text-brand-color">
+                                <b> </b>
+                            </p>
+                            <p class="uk-margin-remove">
+                                <span class="uk-h4"></span>
+                            </p>
+                        </li>
+                        <li class="uk-float-right">
+                            <a class="uk-button uk-button-cart uk-show-hide-element uk-margin-top" href="#">
+                                <span>В корзину</span>
+                                <i class="uk-icon-shopping-cart"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <p>
+                        <strong>Этот товар можно посмотреть и  купить в нашем салон-магазине:</strong><br />
+                        <a href="#" class="uk-link-reset uk-link-dotted uk-link-hover">г. Минск, ул. Немига, 8 (ст. метро Немига)</a>
+
+                    </p>
+
+                    <p class="uk-margin-remove">
+                        <strong>Работаем без выходных!</strong><br />
+                        <strong>Доставка по Минску и по всей Беларуси!</strong>
+                    </p>
+                </section>
+            </li>
+            <li>
+                <table class="uk-table uk-table-hover uk-table-striped uk-table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Параметр</th>
+                            <th>Значение</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var p in Model.PhototechnicsViewModel.Parameters)
+                        {
+                            <tr>
+                                <td>@p.Name</td>
+                                <td>@p.Value</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="uk-grid">
+    <div class="uk-width-1-1">
+        <ul class="uk-subnav">
+            <li class="item  ">
+                <a href="#" class="uk-link-dotted">Объективы</a>
+            </li>
+            <li class="item  ">
+                <a href="#" class="uk-link-dotted">Вспышки</a>
+            </li>
+            <li class="item  ">
+                <a href="#" class="uk-link-dotted">Штативы</a>
+            </li>
+            <li class="item  ">
+                <a href="#" class="uk-link-dotted">Аксессуары</a>
+            </li>
+            <li class="item  ">
+                <a href="#" class="uk-link-dotted">Карты памяти</a>
+            </li>
+            <li class="item  ">
+                <a href="#" class="uk-link-dotted">Зарядные устройства</a>
+            </li>
+            <li class="item  ">
+                <a href="#" class="uk-link-dotted"> Уход за оптикой</a>
+            </li>
+            <li class="item  ">
+                <a href="#" class="uk-link-dotted"> Переходные кольца M42</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="uk-grid">
+    <div class="uk-width-1-1 uk-population-products-title">
+        <div class="uk-h4 uk-slash">
+            <strong>Аксессуары</strong>
+        </div>
+    </div>
+</div>
+<div class="uk-grid">
+
+    @*@for (int i = 0; i < 5; i++)
+        {
+            <div class="uk-width-1-5">
+                <section class="uk-panel uk-population-products-item uk-panel-box-white uk-show-hide">
+                    <div>
+                        <div class="uk-text-center">
+                            <a href="#" class="uk-link-reset">
+                                <img src="http://fotomix.by/upload/iblock/c7e/mg_9467-ready-copy.jpg" alt="Вспышка для фотоаппарата Nikon SB-700">
+                            </a>
+                        </div>
+                        <p>
+                            <a href="#" class="uk-link-reset">Вспышка для фотоаппарата Nikon SB-700</a>
+                        </p>
+                        <p class="uk-text-small uk-text-muted">
+                            99.5x133.1x79.6 мм, 570 г, матрица 18 Мп (1.6 crop), видео 1920x1080 30fps, экран 3", SD, SDHC, SDXC
+                        </p>
+                    </div>
+                    <p class="uk-margin-bottom-remove uk-text-brand-color">
+                        <b>654 250 руб. </b>
+                    </p>
+                    <p class="uk-text-small uk-text-muted uk-margin-top-remove">
+                        552 000 000
+                    </p>
+
+                    <a class="uk-button uk-button-cart uk-show-hide-element" href="#">
+                        <span>В корзину</span>
+                        <i class="uk-icon-shopping-cart"></i>
+                    </a>
+
+                </section>
+            </div>
+        }*@
+</div>

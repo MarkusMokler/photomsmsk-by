@@ -1,0 +1,97 @@
+﻿@using PhotoMSK.Extensiolns
+@model IList<PhotoMSK.Data.Models.SaleCard>
+
+
+<div class="uk-container uk-container-center">
+    <div class="uk-float-left">
+
+        <a class="uk-button uk-button-primary" href="@Url.Action("Create", "PlasticCard")">Добавить карточку</a>
+        @*<a class="uk-button uk-button-danger" href="#">Удалить</a>
+
+        <div class="uk-button-dropdown" data-uk-dropdown="{ mode: 'click' }">
+            <button class="uk-button">Еще <i class="uk-icon-caret-down"></i></button>
+            <div class="uk-dropdown uk-dropdown-small">
+                <ul class="uk-nav uk-nav-dropdown">
+                    <li><a href="#" data-action="#">Активировать</a></li>
+                    <li><a href="#" data-action="#">Заблокировать</a></li>
+                </ul>
+            </div>
+        </div>*@
+
+    </div>
+    <div class="uk-float-right uk-hidden-small uk-form">
+
+        <select name="filter[status]">
+            <option value="">- Статус -</option>
+            <option value="0">Заблокирована</option>
+            <option value="1">Активирована</option>
+            <option value="1">В ожидании</option>
+        </select>
+
+        <input type="text" name="filter[search]" placeholder="Поиск..." value="">
+    </div>
+</div>
+
+<div class="uk-container uk-container-center pad-top-20">
+    <div class="uk-grid uk-grid-small uk-grid-divider">
+        <div class="uk-width-2-10">
+            <ul class="uk-nav uk-nav-menu uk-nav-side uk-nav-parent-icon" data-uk-switcher="{connect:'#tab-content', toggle:' > *:not(.uk-nav-header)'}">
+                <li class="uk-nav-header uk-margin-small-bottom">Карточки:</li>
+                <li class="uk-active"><a href="">Все</a></li>
+                <li class="uk-nav-divider"></li>
+                <li><a href="">Заняты</a></li>
+                <li><a href="">Пустые</a></li>
+            </ul>
+        </div>
+        <div class="uk-width-8-10">
+            <div class="uk-overflow-container">
+                <table class="uk-table uk-table-hover uk-table-middle">
+                    <thead>
+                        <tr>
+                            <th colspan="2">№ карточки</th>
+                            <th colspan="2">Пользователь</th>
+                            <th>Email</th>
+                            <th>Роль</th>
+                            <th class="uk-text-center">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="uk-show-hide">
+                                <td class="uk-text-center">
+                                    <i class="uk-icon-circle uk-text-success"></i>
+                                </td>
+                                <td>
+                                    <strong>@item.CardNumber</strong>
+                                </td>
+                                <td>
+                                    <img class="uk-img-preserve uk-border-circle" width="40" height="40" alt="" src="@item.UserInformation.UserPhoto">
+                                </td>
+                                <td class="uk-text-nowrap">
+                                    <a href="#" class="uk-link-reset uk-link-line">@item.UserInformation.LastName @item.UserInformation.FirstName</a>
+                                    <div>
+                                        <small class="uk-text-muted">Минск</small>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <a href="mailto:shipik2008@gmail.com" class="uk-link-reset">shipik2008@gmail.com</a>
+                                </td>
+                                <td>
+                                    <span class="uk-text-muted">Фотограф</span>
+                                </td>
+                                <td class="uk-text-center">
+                                    <div class="uk-show-hide-element">
+                                        <a class="uk-button uk-button-small" href="@Url.Action("Edit", "PlasticCard")">Изменить</a>
+                                        <a class="uk-button uk-button-small uk-button-danger-hover" href="#">Удалить</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

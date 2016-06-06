@@ -1,0 +1,163 @@
+﻿@model PhotoMSK.Areas.Default.ViewData.Photoshop.DetailsViewData
+@{
+    ViewBag.Title = "Photostudio";
+    ViewBag.Description = Model.Description;
+    ViewBag.Image = Model.Image;
+    string imageLink = Model.RouteDetails.ImageUrl;
+}
+    
+@section scripts
+{
+    @Scripts.Render("~/Scripts/marked")
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<div class="uk-slidenav-position" data-uk-slideshow>
+    <ul class="uk-slideshow">
+        <li class="uk-active">
+            <img src="@Model.RouteDetails.CoverImage" />
+        </li>
+        <li></li>
+    </ul>
+</div>
+
+
+<div class="uk-main-page-body">
+    <div class="uk-page-bar-panel">
+        <div class="uk-container uk-container-center">
+            <ul class="uk-margin-remove uk-subnav uk-subnav-line uk-subnav-breadcrumb">
+                <li><a href="~/">Главная</a></li>
+                <li><a href="@Url.Action("Index", "Photostudio")">Студии</a></li>
+                <li class="uk-active">
+                    <a href="#">@Model.RouteDetails.Name</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="uk-container uk-container-center">
+        <div class="uk-grid uk-grid-small uk-grid-divider">
+            <div class="uk-width-2-10">
+                <div class="uk-text-center">
+                    <p class="uk-h2 uk-margin-remove">
+                        <span class="uk-rating-total">@string.Format("{0:##.#}", 123123123)</span>
+                    </p>
+                    <a href="#" class="uk-link-reset uk-link-dotted">
+                        <small class="uk-text-muted"><strong>12</strong> отзывов</small>
+                    </a>
+                </div>
+            </div>
+            <div class="uk-width-5-10">
+                <ul class="uk-subnav">
+                    <li>
+                        <a href="">
+                            <img class="uk-border-circle" src="@Model.RouteDetails.ImageUrl" style="height: 80px;" />
+                        </a>
+                    </li>
+                    <li>
+                        <div>
+                            <h1 class="uk-margin-remove bold">@Model.RouteDetails.Name</h1>
+                            @*@if (Model.Pro)
+                            {
+                                <div class="uk-badge uk-badge-success">PRO</div>
+                            }*@
+                            <ul class="uk-subnav uk-margin-remove">
+                                <li>
+                                    <div class="intl-tel-input">
+                                        <div class="flag by"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#" class="uk-link-dotteds uk-link-999">@Model.RouteDetails.City</a>
+                                </li>
+                            </ul>
+                            @*<a href="#" class="uk-link-reset">
+                                    <span class="uk-type-tag">фотостудия</span>
+                                </a>*@
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="uk-width-2-10">
+                <ul class="uk-list">
+                    <li>
+                        @foreach (var item in Model.RouteDetails.Phones)
+                        {
+                            <a href="#review-phone-modal" class="uk-h1 uk-link-reset uk-link-dotted" data-uk-modal>
+                                @item
+                            </a>
+                        }
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-container uk-container-center uk-margin-top">
+        <div class="uk-grid">
+            <div class="uk-width-1-1">
+                <div class="uk-panel uk-panel-space uk-wall-box-body">
+                    Проверка
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div id="review-phone-modal" class="uk-modal">
+    <div class="uk-modal-dialog uk-modal-dialog-phones">
+        <a href="" class="uk-modal-close uk-close"></a>
+        <section class="uk-text-center">
+            <span class="uk-text-muted">контактная информация @Model.RouteDetails.Name</span>
+            <h1 class="uk-heading-large">
+                @foreach (var item in Model.RouteDetails.Phones)
+                {
+                    @item
+                }
+            </h1>
+            <span class="uk-text-muted">
+                сообщайте @Model.RouteDetails.Name о том, что вы нашли его на <span class="uk-link-dotted">PhotoMSK.by</span>
+            </span>
+        </section>
+        <div class="uk-panel uk-panel-box uk-margin-top">
+            <h3 class="uk-panel-title">Оцените работу @Model.RouteDetails.Name:</h3>
+            <div class="uk-flex uk-margin-bottom">
+                <div class="uk-width-1-4">
+                    <a href="#review-phone-modal-thanks" class="uk-button uk-button-reviews uk-button-reviews-success uk-width-1-1" data-uk-modal="">Все прошло хорошо</a>
+                </div>
+                <div class="uk-width-1-4 uk-margin-left">
+                    <a href="#review-phone-modal-thanks" class="uk-button uk-button-reviews uk-button-reviews-warning uk-width-1-1" data-uk-modal="">Даты оказались занятыми</a>
+                </div>
+                <div class="uk-width-1-4 uk-margin-left">
+                    <a href="#review-phone-modal-thanks" class="uk-button uk-button-reviews uk-button-reviews-danger uk-width-1-1" data-uk-modal="">Не отвечают на звонки</a>
+                </div>
+                <div class="uk-width-1-4 uk-margin-left">
+                    <a href="#review-phone-modal-thanks" class="uk-button uk-button-reviews uk-button-reviews-danger uk-width-1-1" data-uk-modal="">Цены не действительны</a>
+                </div>
+            </div>
+        </div>
+        <small class="uk-text-muted">
+            Спасибо за ваш отзыв! Нам он очень важен.
+        </small>
+    </div>
+</div>
+
+<div id="review-phone-modal-thanks" class="uk-modal">
+    <div class="uk-modal-dialog uk-modal-dialog-phones uk-text-center">
+        <a href="" class="uk-modal-close uk-close"></a>
+        <span class="uk-text-muted">контактная информация @Model.RouteDetails.Name</span>
+        <h1 class="uk-heading-large uk-margin-large">Спасибо :)</h1>
+        <p class="uk-text-muted">Нам очень важно что вы оставили ваше мнение на <span class="uk-link-dotted">PhotoMSK.by</span></p>
+    </div>
+</div>

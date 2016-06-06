@@ -1,0 +1,65 @@
+// out: ../../css/Components/ColorPicker.css, compress: true
+// Name:            ColorPicker
+// Description:     Defines styles for ColorPicker
+//
+// Component:       `color-picker`
+//
+//
+// Element:         `color-picker__*`
+//                  `color-picker__*`
+//
+// Modifiers:       `color-picker--*`
+//                  `color-picker--*`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+
+@cp-padding:                                 15px;
+
+/* ========================================================================
+   Component: color-picker
+ ========================================================================== */
+.color-picker {
+
+    // Element 'color-picker__palete'
+    &__palete{
+        min-height: 90px;
+        background: #5cc9f5;
+    }
+
+    // Element 'color-picker__name and color-picker__control'
+    &__name,
+    &__control{
+        width: 50%;
+        display: inline-block;
+        margin-right: -4px;
+        color: #171717;
+        padding: @cp-padding 0;
+        border-bottom: 1px solid #ededed;
+        vertical-align: top;
+        height: 70px;
+    }
+
+    // Element 'color-picker__name'
+    &__name{
+        padding-left: @cp-padding;
+    }
+
+    // Element 'color-picker__control'
+    &__control{
+        text-align: right;
+        padding-right: @cp-padding;
+    }
+
+    // Element 'color-picker__mode'
+    &__mode{
+        background: #fafafa;
+        text-align: center;
+        padding: (@cp-padding / 2) 0;
+
+        & a{
+            padding: 0 @cp-padding;
+        }
+    }
+}

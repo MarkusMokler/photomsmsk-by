@@ -1,0 +1,44 @@
+﻿<div class="container container--center">
+    <div class="grid">
+        <div class="col--1-1">
+            <h1 class="uk-margin-bottom-remove">Система управления сайтом</h1>
+            <span class="text--muted uk-text-small">название сайта</span>
+        </div>
+    </div>
+
+    <ul class="uk-tab uk-tab-events" data-uk-tab="{connect:'#site-content'}">
+        <li class="uk-active"><a href="#">Меню</a></li>
+        <li><a href="#">Дизайн</a></li>
+        <li><a href="#">Настройки</a></li>
+        <li><a href="#">Статистика</a></li>
+        <li><a href="#">Магазин</a></li>
+    </ul>
+
+    <ul id="site-content" class="uk-switcher uk-margin-large">
+        <li>
+            <div class="grid grid-divider">
+                <div class="col--1-5">
+                    <ul class="uk-list uk-list-space">
+                        <li class="active">
+                            <a href="#" class="button col--1-1">Текст</a>
+                        </li>
+                        <li>
+                            <a href="#" class="button col--1-1">Настройки слайдера</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col--4-5">
+                    <p>Введите ваш текст</p>
+                    <textarea class="col--1-1" data-uk-htmleditor="{markdown:true, mode:'tab'}">...</textarea>
+
+                    <div class="float--right">
+                        <a href="" class="button-link uk-link-999 uk-link-line uk-margin-right">отмена</a>
+                        <input type="submit" class="bold button button-reviews button-reviews-success button-reviews-success-border" value="Сохранить">
+                    </div>
+                </div>
+
+            </div>
+        </li>
+    </ul>
+</div>

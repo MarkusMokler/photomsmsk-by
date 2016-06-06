@@ -1,0 +1,66 @@
+// out: ../../css/Components/Zone.css, compress: true
+// Name:            Zone
+// Description:     Defines styles for Zone
+//
+// Component:       `zone`
+//
+//
+// Element:         `zone__*`
+//                  `zone__*`
+//
+// Modifiers:       `zone--*`
+//                  `zone--*`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+
+@zone-placeholder-border-color:                             #ddd;
+
+@zone-title-font-size:                                      10px;
+
+/* ========================================================================
+   Component: Zone
+ ========================================================================== */
+.zone {
+
+    // Element 'zone__preview'
+    &__preview{
+        padding: 6px 0;
+        font-size: 12px;
+        line-height: 12px;
+        background: #fbfeff;
+        border: 1px dashed #92D7F2;
+        margin-bottom: 6px;
+        text-align: center;
+        color: #137397;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    // Element 'zone__title'
+    &__title{
+        padding: 5px 10px;
+        font-size: @zone-title-font-size;
+        line-height: @zone-title-font-size;
+        background: #F1F1F1;
+        border: 1px dashed @zone-placeholder-border-color;
+        border-bottom: 0;
+        text-align: left;
+    }
+
+    // Element 'zone__toggle'
+    // &__toggle{
+    //     font-size: @zone-title-font-size;
+    //     line-height: @zone-title-font-size;
+    //
+    // }
+
+    // Modificator 'zone--placeholder'
+    &--placeholder{
+        min-height: 40px;
+        border: 1px dashed @zone-placeholder-border-color;
+        margin-bottom: 10px;
+        border-top: 0;
+    }
+}

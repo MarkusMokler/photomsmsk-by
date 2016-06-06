@@ -1,0 +1,70 @@
+﻿<div><data-bread-crumbs /></div>
+<div class="uk-main-page-body">
+    <div class="uk-page-bar-panel">
+        <div class="container container--center">
+            <ul class="uk-margin-remove uk-subnav uk-subnav-line uk-subnav-breadcrumb">
+                <li><a href="/">Главная</a></li>
+                <li class="uk-active"><a href="#">Мастер-классы</a></li>
+                <li>
+                    <span>найдено <strong>{{page.itemsCount}}</strong> шт.</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container container--center">
+        <div class="grid">
+            <div class="col--1-2">
+                <h1>Найдите себе событие</h1>
+            </div>
+            <div class="col--1-2">
+
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="col--1-1">
+                <ul class="uk-tab uk-tab-events" data-uk-tab="{connect:'#tab-content'}">
+                    <li class="active"><a data-msk-href>Мастер классы</a></li>
+                    <li class="disabled"><a data-msk-href>Встречи</a></li>
+                    <li class="uk-tab-responsive active hidden"><a>Tab</a>
+                        <div class="dropdown dropdown--small"><ul class="uk-nav uk-nav-dropdown"></ul>
+                            <div></div>
+                        </div></li>
+                    <li class="uk-tab-responsive active hidden"><a>Мастер классы</a>
+                        <div class="dropdown dropdown--small"><ul class="uk-nav uk-nav-dropdown"></ul>
+                            <div></div>
+                        </div></li>
+                </ul>
+
+                <ul id="tab-content" class="uk-switcher margin--large">
+                    <li class="active">
+                        <div class="grid">
+                            <div class="col--1-4">
+                                <ul class="uk-nav uk-nav-menu uk-nav-side uk-nav-parent-icon">
+                                    <li class="uk-nav-header uk-margin-small-bottom">Категории:</li>
+                                    <li><a href="" class="uk-active">Ретушь фотографий</a></li>
+                                    <li><a href="">Work shop</a></li>
+                                    <li><a href="">Фотосъемки</a></li>
+                                    <li><a href="">Брендинг</a></li>
+                                    <li class="uk-nav-divider"></li>
+
+                                </ul>
+                            </div>
+
+                            <div class="col--3-4">
+
+                                <div class="col--large-1-3 col--medium-1-3 col--small-1-1" data-ng-repeat="item in page.elements">
+                                    <a href="/masterclassDetails/{{item.id}}" data-ng-bind="item.authorName"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>Раздел находится в разработке</li>
+                </ul>
+
+            </div>
+        </div>
+        <uib-pagination total-items="totalItems" ng-model="currentPage" boundary-links="true" items-per-page="itemsPerPage" max-size="maxSize" num-pages="numPages" class="pagination" ng-change="pageChanged()"></uib-pagination>
+    </div>
+</div>

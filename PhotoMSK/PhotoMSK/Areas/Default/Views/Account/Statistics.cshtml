@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Статистика";
+    Layout = "~/Areas/Default/Views/Shared/_Layout.cshtml";
+}
+
+<div class="uk-container uk-container-center">
+    <ul class="uk-sortable uk-grid uk-grid-small pad-top-60" data-uk-sortable="{handleClass:'uk-nestable'}" data-uk-grid-margin>
+        @for (int i = 1; i < 10; i++)
+        {
+            <li class="uk-width-1-4 dashboard-item">
+                <div class="uk-panel uk-panel-box">
+                    <div class="uk-text-center">
+                        <i class="icon-th-small uk-nestable uk-float-left" style="cursor: pointer;"></i>
+                        <span class="dashboard-item-title">Уведомление @i</span>
+                        <i class="icon-refresh uk-float-right" data-uk-tooltip title="Обновить"></i>
+                    </div>
+
+
+                    <div class="dashboard-item-content uk-text-center">
+                        <h1><i class="icon-megaphone2"></i></h1>
+                        <h3 class="app-empty __empty __ready">Нет операций</h3>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+
+</div>

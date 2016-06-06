@@ -1,0 +1,146 @@
+// out: ../../css/components/text.css, compress: true
+// **************** Variables ****************
+@text-color-muted:          #999;
+
+// **** Color variables
+@text-color-green:          #49ae65;
+@text-color-red:            #EE3442;
+@text-color-blue:            #0091ca;
+@text-color-orange:         #ff9000;
+
+// ******************* Base ******************
+.text {
+    &--muted {
+        color: @text-color-muted;
+    }
+    // ***** Position
+    &--right {
+        text-align: right;
+    }
+    &--left {
+        text-align: left;
+    }
+    &--center {
+        text-align: center !important;
+    }
+    &--small {
+        font-size: 75%;
+        line-height: 14px;
+    }
+    &--success {
+        color: #8cc14c !important;
+    }
+    &--danger {
+        color: #da314b;
+    }
+    &--bold {
+        font-weight: 700;
+    }
+    &--title {
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 3rem;
+        line-height: 3rem;
+        color: #171717;
+    }
+    &--light {
+        font-weight: 100;
+    }
+    &--truncate {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    // Modifiers:       `text--h*`
+    // ***** h1-h6
+    &--h1 {
+        font-size: 2.2rem;
+        line-height: 3rem;
+        font-weight: 100;
+    }
+    &--h2 {
+        font-size: 2rem;
+        line-height: 2.6rem;
+        font-weight: 100;
+    }
+    &--h3 {
+        font-size: 1.6rem;
+        line-height: 2rem;
+        font-weight: 100;
+    }
+    &--h4 {
+        font-size: 1.2rem;
+        line-height: 2rem;
+        font-weight: 100;
+    }
+    &--h5 {
+        font-size: 1rem;
+        line-height: 1.8rem;
+        font-weight: 100;
+    }
+    &--h6 {
+        font-size: 0.9rem;
+        line-height: 1.2rem;
+        font-weight: 100;
+    }
+
+    // ****** Text color variation;
+    &--green{
+        color: @text-color-green !important;
+    }
+    &--red{
+        color: @text-color-red !important;
+    }
+    &--blue{
+        color: @text-color-blue !important;
+    }
+
+    &--orange{
+        color: @text-color-orange !important;
+    }
+
+    // ***********************
+
+    &--subscribe{
+        color: @text-color-orange;
+        font-style: italic;
+        border-bottom: 1px dotted;
+        font-weight: 100;
+
+        &:hover{
+            color: darken(@text-color-orange, 5%);
+        }
+    }
+}
+
+///// Link
+
+.link{
+
+    // Modificator `link--reset`
+    &--reset{
+        text-decoration: none;
+        color: inherit;
+    }
+
+    // Modificator `link--dashed`
+    &--dashed{
+        border-bottom: 1px dashed;
+    }
+
+    // Modificator `link--dotted`
+    &--dotted{
+        border-bottom: 1px dotted;
+    }
+
+    // Modificator 'link--line'
+    &--line{
+        border-bottom: 1px solid;
+    }
+}
+
+p{
+    font-size: 1rem;
+    line-height: 1.4rem;
+    font-weight: 300;
+}

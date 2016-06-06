@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNet.Identity
+@using PhotoMSK.Data.Models
+@using PhotoMSK.Models
+@model IList<Message>
+
+@functions {
+    private string GetDialogID(Adresse first)
+    {
+        return first.FromID == this.User.Identity.GetUserId() ? first.ToID : first.FromID;
+    }
+
+}
+<div class="uk-container uk-container-center pad-top-20">
+    <div class="js-table uk-overflow-container">
+        <table class="uk-table uk-table-hover uk-table-middle js-table-users">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" class="js-select-all"></th>
+                    <th colspan="2">Пользователь</th>
+                    <th class="uk-text-center">Статус</th>
+                    <th>Email</th>
+                    <th>Роль</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var items in Model)
+                {
+                    <tr>
+                        <td><input type="checkbox" name="ids[]" value="1"></td>
+                        <td>
+                            <img class="uk-img-preserve uk-border-circle" width="40" height="40" alt="" data-avatar="shipik2008@gmail.com" src="@items.Adresses.First().From.UserInformation.UserPhoto">
+                        </td>
+                        <td class="uk-text-nowrap">
+                            <a href="@Url.Action("Detalis",new {Area="Admin",Controller="Dialog",id=GetDialogID(items.Adresses.First())})">@items.Adresses.First().From.UserInformation.FirstName @items.Adresses.First().From.UserInformation.LastName</a>
+                            <div class="uk-text-muted">@items.Text</div>
+                        </td>
+                        <td class="uk-text-center">
+                            <a href="#" class="uk-icon-circle uk-text-success" data-action="/index.php/admin/system/user/status?ids%5B%5D=1&amp;status=0" title="Active"></a>
+                        </td>
+                        <td>
+                            <a href="mailto:shipik2008@gmail.com">shipik2008@gmail.com</a>
+                        </td>
+                        <td>
+                            Администратор
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

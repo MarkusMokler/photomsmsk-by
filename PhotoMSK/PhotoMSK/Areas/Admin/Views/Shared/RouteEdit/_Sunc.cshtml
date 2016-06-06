@@ -1,0 +1,100 @@
+﻿@model PhotoMSK.Models.EditViewModel.Routes.RouteEditModel
+
+@* Синхронизация *@
+<div class="uk-width-1-1">
+    <div class="uk-section">
+        <span class="uk-section__counter">9</span>
+        <span class="uk-section__title">Синхронизация</span>
+    </div>
+    <div class="uk-grid uk-grid-divider" data-uk-grid-margin>
+        <div class="uk-width-large-1-5 uk-width-medium-1-5">
+            <div class="uk-panel uk-panel-divider pad-bottom-60">
+                <ul class="uk-nav uk-nav-menu uk-nav-side uk-nav-parent-icon" data-uk-nav data-uk-switcher="{connect:'#tab-content-sunc', toggle:' > *:not(.uk-nav-divider)', animation: 'slide-right'}">
+                    <li class="uk-active"><a href="">Вконтакте</a></li>
+                    <li><a href="">Сайт</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li><a href="">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="uk-width-large-4-5 uk-width-medium-4-5">
+            <ul id="tab-content-sunc" class="uk-switcher">
+                <li class="uk-active">
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-1-1 uk-width-small-1-1 uk-width-large-1-1 uk-text-center">
+                            <span class="uk-h2">
+                                Календарь
+                            </span>
+                            <p class="uk-margin-remove">
+                                <span class="uk-text-muted">Создайте IFrame-приложение Вконтакте и вставьте туда ссылку, которая находится чуть ниже:</span>
+                            </p>
+                        </div>
+                        <div class="uk-width-1-1">
+                            <label class="label-ms show">Ссылка на календарь</label>
+                            <input class="input-ms uk-width-large-1-1 uk-width-small-1-1" id="Calendar" name="Calendar" type="text" value="<frame><frame>">
+                            <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="uk-width-1-1 uk-width-small-1-1 uk-width-large-1-1 uk-margin-large-top uk-text-center">
+                            <span class="uk-h2">
+                                Инструкция
+                            </span>
+                            <p class="uk-margin-remove">
+                                <small class="uk-text-muted">Краткая инструкция что надо сделать для того, чтобы получить качественный импорт вашего календаря</small>
+                            </p>
+                        </div>
+                        <div class="uk-width-1-1">
+                            <div class="uk-cover">
+                                <video class="uk-cover-object" autoplay="" loop="" muted="" controls="">
+                                    <source src="http://www.quirksmode.org/html5/videos/big_buck_bunny.mp4?test1" type="video/mp4">
+                                    <source src="http://www.quirksmode.org/html5/videos/big_buck_bunny.ogv?test1" type="video/ogg">
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-1-1 uk-width-small-1-1 uk-width-large-1-1 uk-text-center">
+                            <span class="uk-h2">
+                                Календарь
+                            </span>
+                            <p class="uk-margin-remove">
+                                <span class="uk-text-muted">Создайте IFrame-приложение Вконтакте и вставьте туда ссылку, которая находится чуть ниже:</span>
+                            </p>
+                        </div>
+                        <div class="uk-width-1-1">
+                            <label class="label-ms show">Ссылка на календарь</label>
+                            <textarea class="input-ms uk-width-large-1-1 uk-width-small-1-1" cols="20" id="Description" name="Description" rows="7">Тут будет iFrame</textarea>
+                            <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="uk-width-1-1 uk-width-small-1-1 uk-width-large-1-1 uk-margin-large-top uk-text-center">
+                            <span class="uk-h2">
+                                Инструкция
+                            </span>
+                            <p class="uk-margin-remove">
+                                <small class="uk-text-muted">Краткая инструкция что надо сделать для того, чтобы получить качественный импорт вашего календаря</small>
+                            </p>
+                        </div>
+                        <div class="uk-width-1-1">
+                            <div class="uk-cover">
+                                <video class="uk-cover-object" autoplay="" loop="" muted="" controls="">
+                                    <source src="http://www.quirksmode.org/html5/videos/big_buck_bunny.mp4?test1" type="video/mp4">
+                                    <source src="http://www.quirksmode.org/html5/videos/big_buck_bunny.ogv?test1" type="video/ogg">
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="uk-alert uk-alert-info uk-margin-remove uk-text-center" data-msg="no-updates">
+                        <h3 class="uk-margin-remove">Раздел находится в разработке</h3>
+                        <p class="uk-margin-remove">
+                            <small class="uk-text-muted">совсем скоро вы увидите его в действии</small>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>

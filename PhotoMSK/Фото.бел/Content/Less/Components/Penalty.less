@@ -1,0 +1,115 @@
+// out: ../../css/Components/Penalty.css, compress: true
+// Name:            Penalty
+// Description:     Defines styles for penalty
+//
+// Component:       `penalty`
+//
+// Modifiers:       `penalty--*`
+//                  `penalty--*`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+@penalty-days-padding: 8px;
+/* ========================================================================
+   Component: Penalty
+ ========================================================================== */
+.penalty {
+    &__item {
+        width: 100%;
+        padding: 5px 0;
+        border-bottom: 1px dotted #ddd;
+        font-weight: 300;
+        font-family: Roboto;
+        margin: 0;
+        &:hover {
+            background: #FFEFBE;
+        }
+        // Route
+        &__route {
+            padding: 0 5px 2px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-bottom: 1px dashed #ddd;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        &__desc {
+            padding: 0 5px;
+            font-size: 0.8rem;
+        }
+        // Time
+        &__days {
+            text-align: center;
+            border-right: 1px solid #ddd;
+            padding-left: 0;
+        }
+        // Day
+        &__day {
+            display: block;
+            font-size: 24px;
+            font-weight: 500;
+        }
+        // Month
+        &__month {
+            display: block;
+            font-size: 12px;
+            font-weight: 300;
+        }
+        // Times
+        &__times {
+            padding: 0;
+            &__start {
+                margin-top: 0;
+                text-align: center;
+                & > span {
+                    position: relative;
+                    &:before {
+                        content: 'с';
+                        position: absolute;
+                        left: -18px;
+                        top: 4px;
+                        font-size: 80%;
+                    }
+                }
+            }
+            &__end {
+                margin-bottom: 0;
+                text-align: center;
+                & > span {
+                    position: relative;
+                    &:before {
+                        content: 'до';
+                        position: absolute;
+                        left: -18px;
+                        top: 4px;
+                        font-size: 80%;
+                    }
+                }
+            }
+        }
+        // Price
+        &__price {
+            border-left: 1px solid #ddd;
+            padding-left: 10px;
+            text-align: center;
+            & > p {
+                margin-bottom: 0;
+            }
+            &__currency {
+                font-size: 60%;
+            }
+        }
+
+        // Action
+        &__action{
+            border-left: 1px solid #ddd;
+        }
+    }
+    &__list {}
+}
+// reset margin style
+.penalty__item + .penalty__item {
+    margin-top: 0;
+}

@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    @Styles.Render("~/Content/uikit/style")
+    @Styles.Render("~/Content/fullcalendar")
+    @Styles.Render("~/Content/jquery-ui")
+    @Styles.Render("~/Content/owl.carousel.css")
+    @Styles.Render("~/Content/owl.theme.css")
+    @Styles.Render("~/Content/icomoon.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/site-style")
+    @Styles.Render("~/Content/icomoon")
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,700,900|Roboto+Condensed:300,400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+</head>
+<body class="admin-dashboard">
+    <nav class="uk-navbar admin-top-menu">
+        <div class="container container--center">
+            <ul class="uk-navbar-nav">
+                <li>
+                    <a href="#admin-left-menu" class="uk-navbar-toggle" data-uk-offcanvas></a>
+                </li>
+                <li class="text--center">
+                    <a href="@this.Request.UrlReferrer" class="uk-navbar-nav-subtitle">
+                        <i class="icon-arrow-left"></i><div>назад</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/uikit/script")
+    @Scripts.Render("~/bundles/fullcalendar")
+    @Scripts.Render("~/Scripts/resize")
+    @Scripts.Render("~/Scripts/iconAnimate")
+    @Scripts.Render("~/Scripts/label-show")
+    @Scripts.Render("~/Scripts/ionrangeSlider")
+    @Scripts.Render("~/Scripts/owl.carousel.min.js")
+    <script src="@Url.Content("~/Scripts/jquery.signalR-2.2.0.min.js")"></script>
+    <script src="@Url.Content("~/signalr/hubs")"></script>
+    @Scripts.Render("~/Backbone")
+
+    @RenderSection("Scripts", false)
+
+    <div style="margin-top: 80px;">
+    </div>
+</body>
+</html>

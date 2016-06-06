@@ -1,0 +1,50 @@
+﻿@model PhotoMSK.Areas.Default.ViewData.Register.DetailsViewData
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Details</title>
+    </head>
+    <body>
+        <div>
+            <h4>UserInformation</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Item.FirstName)
+                </dt>
+    
+                <dd>
+                    @Html.DisplayFor(model => model.Item.FirstName)
+                </dd>
+    
+                <dt>
+                    @Html.DisplayNameFor(model => model.Item.LastName)
+                </dt>
+    
+                <dd>
+                    @Html.DisplayFor(model => model.Item.LastName)
+                </dd>
+    
+                <dt>
+                    @Html.DisplayNameFor(model => model.Item.UserPhoto)
+                </dt>
+    
+                <dd>
+                    @Html.DisplayFor(model => model.Item.UserPhoto)
+                </dd>
+    
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Item.ID }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+/* ========================================================================
+   Component: Badge
+ ========================================================================== */
+.step {
+  margin: 0;
+}
+.step__item {
+  position: relative;
+  padding: 20px 20px 20px 60px;
+  border-bottom: 2px solid #ddd;
+  transition: all 300ms;
+}
+.step__item i {
+  position: absolute;
+  top: 50%;
+  color: #ccc;
+  font-size: 2.5rem;
+  transform: translateY(-50%);
+  left: 15px;
+}
+.step__item:hover {
+  border-color: #A2A2A2;
+  background: rgba(0, 0, 0, 0.05);
+}
+.step__item:hover i {
+  color: #A2A2A2;
+}
+.step--success {
+  border-color: #18a24b;
+}
+.step--warning {
+  border-color: #ff8b00;
+}

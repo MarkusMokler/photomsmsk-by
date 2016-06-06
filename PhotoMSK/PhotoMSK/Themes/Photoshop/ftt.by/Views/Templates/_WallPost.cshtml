@@ -1,0 +1,50 @@
+﻿<div class="uk-grid uk-grid-small uk-margin-top">
+
+    <div class="uk-width-1-4">
+        <% if(typeof(videos)!='undefined' && videos!=null && videos.length>0) { %>
+        <div class="video-placeholder uk-grid">
+            <% _.each(videos,function(iter){%>
+            <iframe src="<%- iter.url %>" class="uk-width-1-1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            <% }) %>
+        </div>
+        <% } %>
+        <div class="photo-list-placeholder photoset-grid-basic" data-layout="<%- grid(photos) %>">
+            <% _.each(photos,function(iter){%>
+            <img src="<%- iter.url %>" />
+            <% }) %>
+        </div>
+    </div>
+    <div class="uk-width-3-4">
+        <article class="uk-comment">
+            <header>
+                <img class="uk-comment-avatar uk-border-circle" src="<%- authorImage %>" width="30" height="30" alt="">
+                <span class="uk-text-truncate">
+                    <a href="http://photomsk.by/<%- authorShortcut %>" class="bold uk-link-muted"><%- name %></a>
+                </span>
+                <div class="uk-comment-meta">
+                    <small class="uk-text-muted uk-text-small">
+                        <i class="uk-icon-clock-o"></i> <%- jQuery.timeago(date) %>
+                    </small>
+                </div>
+            </header>
+            <div class="uk-comment-body uk-margin-top">
+                <% if(typeof(title)!='undefined'&& title!=null){ %>
+                <h1 class="uk-margin-remove uk-text-truncate">
+                    <a class="uk-link-muted" href="#"><%- title %></a>
+                </h1>
+                <% } %>
+                <p class="uk-margin-top-remove"><%= App.Tools.htmlSubstring(description,250) %></p>
+                <% if(description.length>200){ %>
+                <p class="uk-text-right">
+                    <a href="#" class="uk-button uk-button-mini">
+                        Далее...
+                    </a>
+                </p>
+                <% } %>
+            </div>
+        </article>
+    </div>
+
+</div>
+
+

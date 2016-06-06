@@ -1,0 +1,86 @@
+﻿@model PhotoMSK.Data.Models.Routes.Photomodel
+
+<div class="uk-grid" data-uk-grid-margin>
+    <div class="uk-width-1-1">
+        <fieldset class="uk-margin-remove">
+            <div class="uk-section">
+                <span class="uk-section__counter">1</span>
+                <span class="uk-section__title">Загрузка фотографии</span>
+            </div>
+            <div class="form_user-banner">
+                <div class="uk-text-center">
+                    <div id="role-avatar" class="uk-margin-bottom">
+                        <img class="uk-border-circle uk-text-center" src="@Url.Content("~/Content/images/no-avatar.png")" width="150" height="150" alt="Аватарка страницы">
+                    </div>
+                    <a href="#" id="role-change-avatar" class="uk-link-muted uk-border-arround">
+                        Выбрать файл
+                    </a>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="uk-width-1-1">
+        <fieldset>
+            <div class="uk-section">
+                <span class="uk-section__counter">2</span>
+                <span class="uk-section__title">Информация о модели</span>
+            </div>
+            <div class="uk-grid">
+                <div class="uk-width-1-2">
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-1-2">
+                            <label class="label-ms">Имя</label>
+                            @Html.TextBoxFor(model => model.FirstName, new { @class = "input-ms uk-width-large-1-1 uk-width-small-1-1",data_role_input_required="" })
+                            @Html.ValidationMessageFor(model => model.FirstName)
+                        </div>
+                        <div class="uk-width-1-2">
+                            <label class="label-ms">Фамилия</label>
+                            @Html.TextBoxFor(model => model.LastName, new { @class = "input-ms uk-width-large-1-1 uk-width-small-1-1", data_role_input_required = "" })
+                            @Html.ValidationMessageFor(model => model.LastName)
+                        </div>
+                        <div class="uk-width-1-1">
+                            <label class="label-ms">Короткая ссылка <i class="icon-help2" data-uk-tooltip title="Это ссылка позволит мгновенно перейти к вашей странице"></i></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">www.photomsk.by/</div>
+                                @Html.TextBoxFor(model => model.Shortcut, new { @class = "form-control input-ms uk-width-large-1-1 uk-width-small-1-1", data_role_input_required = "" })
+                                @Html.ValidationMessageFor(model => model.Shortcut)
+                            </div>
+                        </div>
+                        <div class="uk-width-1-2">
+                            <label class="label-ms">Дата рождения</label>
+                            <input class="form-control input-ms uk-width-large-1-1 uk-width-small-1-1" id="DateofBirth" name="DateofBirth" disabled type="text" value="">
+                            @*@Html.TextBoxFor(model => model.DateofBirth, new { @class = "form-control input-ms uk-width-large-1-1 uk-width-small-1-1", data_role_input_optional = "", data_uk_datepicker = "{format:'DD.MM.YYYY'}", placeholder = "день.месяц.год" })
+                            @Html.ValidationMessageFor(model => model.DateofBirth)*@
+                        </div>
+                        <div class="uk-width-1-2">
+                            <label class="label-ms">Пол</label>
+                            <div class="select-style">
+                                <select class="input-ms uk-width-1-1" name="gender" id="gender"  data-role-input-optional>
+                                    <option value="" selected="selected" disabled="disabled">Пол:</option>
+                                    <option value="Female">Мужской</option>
+                                    <option value="Male">Женский</option>
+                                </select>
+                            </div>
+                           @* @Html.ValidationMessageFor(model => model.Shortcut)*@
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-2">
+                    <label class="label-ms">Коротко о себе <i class="icon-help2" data-uk-tooltip title="Опишите кратко ваши преимущества"></i></label>
+                    @Html.TextAreaFor(model => model.Description, new { @class = "input-ms uk-width-large-1-1 uk-width-small-1-1", rows = 10, data_role_input_optional = "" })
+                    @Html.ValidationMessageFor(model => model.Description)
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="uk-width-1-1 pad-top-40">
+        <div class="uk-grid">
+            <div class="uk-width-1-2 uk-text-center">
+                <button class="uk-button" data-role-to-adminpanel>Назад</button>
+            </div>
+            <div class="uk-width-1-2 uk-text-center">
+                <button class="uk-button uk-button-next-step" disabled data-role-next-step>Продолжить</button>
+            </div>
+        </div>
+    </div>
+</div>

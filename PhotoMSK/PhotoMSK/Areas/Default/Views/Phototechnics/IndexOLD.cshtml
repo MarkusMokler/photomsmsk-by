@@ -1,0 +1,168 @@
+﻿@model PhotoMSK.ViewModels.PhototechnicsPageView<PhotoMSK.Data.Models.Routes.Phototechnics>
+
+@{
+    ViewBag.Title = "Index";
+    int count = 1;
+}
+
+<div class="uk-main-page-body">
+    <div class="uk-page-bar-panel">
+        <div class="uk-container uk-container-center">
+            <ul class="uk-margin-remove uk-subnav uk-subnav-line uk-subnav-breadcrumb">
+                <li><a href="~/">Главная</a></li>
+                <li class="uk-active"><a href="#">Фототехника</a></li>
+                <li>
+                    <span>найдено <strong>@String.Format("{0:### ### ### ###}", Model.ItemsCount)</strong> шт.</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="uk-container uk-container-center">
+        <div class="uk-grid">
+
+            <div class="uk-width-1-1 pad-bottom-20">
+                <div class="uk-grid">
+                    <ul>
+                        @{ var cci = 0; }
+                        @foreach (var str in Model.Categories)
+                        {
+                            cci++;
+                            if (cci == 5)
+                            {
+                                Write(new HtmlString("</ul><ul>"));
+                                cci = 0;
+
+                            }
+                            <li><img src="@Url.Content("~/Content/images/category/ico-mcat2.png")"> <a href="#" class="uk-link-muted">@str.Name</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+
+            <div class="uk-width-1-1">
+                <div class="uk-grid" data-uk-grid-match>
+                    <div class="uk-width-3-10">
+                        <h2><strong class="yellow-color">Вся</strong> фототехника</h2>
+                    </div>
+                    <div class="uk-width-2-10 uk-text-center">
+                        <div class="phototechnics-teaser-search">
+                            <div class="search-background">
+                                <div class="search-url">
+                                    <form class="uk-search" data-uk-search>
+                                        <input class="uk-search-field" type="search" placeholder="поиск...">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-width-5-10">
+                        <ul class="uk-subnav phototechnics-teaser-top-filter uk-text-right">
+                            <li><span class="uk-text-muted">Сортировать по:</span></li>
+                            <li><a href="#">цене</a></li>
+                            <li><a class="active" href="#">рейтингу</a></li>
+
+                            <li><span class="uk-text-muted">Выводить по:</span></li>
+                            <li><a @if (Model.PageSize == 20) { Write("class=active"); } href="@Url.Action("Index", "PhototechnicsViewModel", new { from = 0, PageSize = 20 })">20</a></li>
+                            <li><a @if (Model.PageSize == 50) { Write("class=active"); } href="@Url.Action("Index", "PhototechnicsViewModel", new { from = 0, PageSize = 50 })">50</a></li>
+
+                        </ul>
+                        <button class="uk-button uk-button-mini uk-button-link uk-link-muted uk-align-right" data-uk-toggle="{target:'#top-filter'}">расширенные настройки ↓</button>
+
+                    </div>
+                </div>
+
+                <hr class="small-line yellow-color" />
+                <div id="top-filter" class="uk-width-1-1 uk-hidden">
+                    @* Тут будет фильтр *@
+                </div>
+
+
+                <div class="uk-flex uk-flex-wrap" data-uk-grid-match="{target:'.uk-PhototechnicsViewModel-teaser-title'}">
+                    @foreach (var item in Model.Elements)
+                    {
+                        <div class="uk-width-1-5 uk-panel uk-panel-header uk-panel-space-15">
+                            <h4 class="uk-phototechnics-teaser-title bold">
+                                <a class="uk-link-muted" href="@item.Shortcut">
+                                    @item.Name
+                                </a>
+                            </h4>
+                            <div class="phototechnics-teaser-image uk-text-center">
+                                <a href="@item.Shortcut">
+                                    <img src="@item.ImageUrl" style="max-height: 100px;">
+                                </a>
+                            </div>
+                            <div class="phototechnics-teaser-price uk-text-center uk-margin-top">
+                                <small>от&nbsp;</small>
+                                <a class="uk-link-muted" href="#">
+                                    <span>
+                                        @item.Prices.Min(x=>x.Price*x.Photoshop.CurencyValue) - @item.Prices.Max(x => x.Price * x.Photoshop.CurencyValue)
+                                    </span>
+                                </a>
+                                <small>руб.</small>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                @*<ul class="uk-grid">
+                        @foreach (var item in Model.Elements)
+                        {
+                            <li class="uk-width-1-5 PhototechnicsViewModel-teaser">
+                                <div class="short_product with_popover PhototechnicsViewModel-teaser-item">
+                                    <h3 class="uk-text-center PhototechnicsViewModel-teaser-title">
+                                        <a class="uk-link-muted" href="@item.Shortcut">
+                                            @item.Name
+                                        </a>
+                                    </h3>
+                                    <a href="@item.Shortcut">
+                                        <img src="@item.ImageUrl">
+                                    </a>
+                                    <div class="uk-text-center pad-top-10 pad-bottom-10">
+                                        <input type="checkbox" class="checkbox-ms" id="@item.Shortcut" name="@item.Shortcut">
+                                        <label class="checkbox-label-ms PhototechnicsViewModel-teaser-compare" for="@item.Shortcut">Сравнить</label>
+                                    </div>
+                                    <div class="PhototechnicsViewModel-teaser-price uk-text-center">
+                                        <small>от&nbsp;</small>
+                                        <a class="uk-link-muted" href="#">
+                                            <span>15 500 000</span>
+                                        </a>
+                                        <small>руб.</small>
+                                    </div>
+                                    <div class="specification uk-text-muted pad-top-10">
+                                        <ul class="uk-list spec">
+                                            <li>Размер матрицы: <strong>123</strong></li>
+                                            <li>Мегапиксели: <strong>123</strong></li>
+                                            <li>Точек автофокуса: <strong>99</strong></li>
+                                            <li>Скорость съемки: <strong>123</strong> к/c</li>
+                                        </ul>
+
+                                        <div class="uk-text-right">
+                                            <small>
+                                                <i class="icon-heart"></i>
+                                            </small> <a href="#">
+                                                <small>Мне нравится</small>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            if (count % 5 == 0)
+                            {
+                                Write(new HtmlString("</div><div class='uk-grid'>"));
+                            }
+                            count++;
+                        }
+                    </ul>*@
+            </div>
+        </div>
+
+        <hr class="small-line" />
+        <ul class="uk-pagination">
+            @for (int i = 0; i <= Model.PagesCount; i++)
+            {
+                <li><a href="@Url.Action("Index", "PhototechnicsViewModel", new { from = Model.PageSize * i, PageSize = Model.PageSize })">@i</a></li>
+            }
+        </ul>
+    </div>
+</div>

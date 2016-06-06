@@ -1,0 +1,57 @@
+﻿    <div class="grid">
+        <div class="col--1-1">
+            <span class="uk-form-heading text--muted">Список созданных студий</span>
+            <hr class="small-line uk-margin-small-top" />
+        </div>
+    </div>
+    <div class="grid">
+        <article class="col--1-2 hall" ng-repeat="item in items | filter:{ routeType: 'Photostudio' }">
+            <header class="hall__header" style="background-image: url('{{item.coverImage}}')">
+                <img src="{{item.coverImage}}" alt="Фотостудия {{item.coverImage}}">
+            </header>
+            <footer class="hall__footer">
+                <a data-msk-href class="link--muted">
+                    <img src="{{item.imageUrl}}" width="30" height="30" class="uk-border-circle" />
+                    {{item.name}}
+                </a>
+                <ul class="uk-subnav uk-subnav-line uk-margin-remove uk-text-nowrap">
+                    <li>
+                        <a href="/admin/photostudio/{{item.shortcut}}/edit" class="uk-navbar-nav-subtitle uk-link-999 text--center">
+                            <i class="icon-cog"></i>
+                            <div>изменить</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/photostudio/{{item.shortcut}}/booking" class="uk-navbar-nav-subtitle uk-link-999 text--center">
+                            <i class="icon-calendar-full"></i>
+                            <div>бронировать</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-msk-href class="uk-navbar-nav-subtitle text--muted text--center">
+                            <i class="icon-briefcase"></i>
+                            <div>выручка</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/photostudio/{{item.shortcut}}" class="uk-navbar-nav-subtitle text--muted text--center">
+                            <i class="icon-call_split"></i>
+                            <div>активность</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/photostudio/{{item.shortcut}}/month" class="uk-navbar-nav-subtitle text--muted text--center">
+                            <i class="icon-trending_up"></i>
+                            <div>отчет</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-ng-click="delete(item.id);" data-msk-href class="uk-navbar-nav-subtitle text--muted text--center">
+                            <i class="icon-trash"></i>
+                            <div>удалить</div>
+                        </a>
+                    </li>
+                </ul>
+            </footer>
+        </article>
+    </div>

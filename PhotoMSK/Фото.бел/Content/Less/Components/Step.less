@@ -1,0 +1,70 @@
+// out: ../../css/Components/Step.css, compress: true
+// Name:            Step
+// Description:     Defines styles for steps
+//
+// Component:       `step`
+//
+// Elements:        `step__*`
+//
+//
+// Modifiers:       `step--notification`
+//                  `step--success`
+//                  `step--danger`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+
+@step-item-padding:                 20px;
+@step-icon-padding:                 60px;
+
+@step-icon-color:                   #ccc;
+
+@step-success:                      #18a24b;
+@step-warning:                      #ff8b00;
+@step-error:                        red;
+@step--active:                      #A2A2A2;
+
+/* ========================================================================
+   Component: Badge
+ ========================================================================== */
+
+.step {
+    margin: 0;
+
+    // Element: 'step__item'
+    &__item{
+        position: relative;
+        padding: @step-item-padding @step-item-padding @step-item-padding @step-icon-padding;
+        border-bottom: 2px solid #ddd;
+        transition: all 300ms;
+
+        & i{
+            position: absolute;
+            top: 50%;
+            color: @step-icon-color;
+            font-size: 2.5rem;
+            transform: translateY(-50%);
+            left: 15px;
+        }
+
+        &:hover{
+            border-color: @step--active;
+            background: rgba(0, 0, 0, 0.05);
+
+            & i{
+                color: @step--active;
+            }
+        }
+    }
+
+    // Modificator '--success'
+    &--success{
+        border-color: @step-success;
+    }
+
+    // Modificator '--warning'
+    &--warning{
+        border-color: @step-warning;
+    }
+}

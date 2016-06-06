@@ -1,0 +1,137 @@
+// out: ../../css/Components/Comment.css, compress: true
+@import 'Variables.less';
+// Name:            Comment
+// Description:     Defines styles for comment threads
+//
+// Component:       `comment`
+//
+// Sub-objects:     `comment__header`
+//                  `comment__avatar`
+//                  `comment__title`
+//                  `comment__meta`
+//                  `comment__body`
+//                  `comment__list`
+//                  `comment__primary`
+//
+// Markup:
+//
+// <!-- comment -->
+// <article class="comment">
+//     <header class="comment__header">
+//         <img class="comment__avatar" src="avatar.svg" width="50" height="50" alt="">
+//         <h4 class="comment__title"></h4>
+//         <div class="comment__meta"></div>
+//     </header>
+//     <div class="comment__body">
+//         <p></p>
+//     </div>
+// </article>
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@comment-header-margin-bottom:                  15px;
+
+@comment-avatar-margin-right:                   10px;
+
+@comment-title-margin-top:                      5px;
+@comment-title-font-size:                       14px;
+@comment-title-line-height:                     18px;
+
+@comment-meta-margin-top:                       2px;
+@comment-meta-color:                            #999;
+@comment-meta-font-size:                        11px;
+@comment-meta-line-height:                      16px;
+
+@comment-list-margin-top:                       15px;
+@comment-list-padding-left:                     100px;
+
+
+/* ========================================================================
+   Component: Comment
+ ========================================================================== */
+
+/* Sub-object `comment__header`
+ ========================================================================== */
+
+.comment__header {
+    margin-bottom: @comment-header-margin-bottom;
+}
+
+/*
+ * Micro clearfix
+ */
+
+.comment__header:before,
+.comment__header:after {
+    content: "";
+    display: table;
+}
+
+.comment__header:after { clear: both; }
+
+
+/* Sub-object `comment__avatar`
+ ========================================================================== */
+
+.comment__avatar {
+    margin-right: @comment-avatar-margin-right;
+    float: left;
+}
+
+
+/* Sub-object `comment__title`
+ ========================================================================== */
+
+.comment__title {
+    margin: @comment-title-margin-top 0 0 0;
+    font-size: @comment-title-font-size;
+    line-height: @comment-title-line-height;
+}
+
+
+/* Sub-object `comment__meta`
+ ========================================================================== */
+
+.comment__meta {
+    margin: @comment-meta-margin-top 0 0 0;
+    font-size: @comment-meta-font-size;
+    line-height: @comment-meta-line-height;
+    color: @comment-meta-color;
+}
+
+
+/* Sub-object `comment__body`
+ ========================================================================== */
+/*
+ * Remove margin from the last-child
+ */
+
+ .comment__body > :last-child { margin-bottom: 0; }
+
+
+/* Sub-object `comment__list`
+ ========================================================================== */
+
+.comment__list {
+    padding: 0;
+    list-style: none;
+}
+
+.comment__list .comment + ul {
+    margin: @comment-list-margin-top 0 0 0;
+    list-style: none;
+}
+
+.comment__list > li:nth-child(n+2),
+.comment__list .comment + ul > li:nth-child(n+2) { margin-top: @comment-list-margin-top; }
+
+/* Tablet and bigger */
+@media (min-width: @breakpoint-medium) {
+
+    .comment__list .comment + ul { padding-left: @comment-list-padding-left; }
+
+}

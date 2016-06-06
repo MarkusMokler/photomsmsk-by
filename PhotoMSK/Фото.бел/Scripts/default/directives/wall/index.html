@@ -1,0 +1,332 @@
+<div id="wall-edit-placeholder">
+    <div class="uk-wall-post-editor repair">
+
+        <div class="repair__mode">
+            <div class="tsc_ribbon_wrap edge" style="top: 130px;">
+                <div class="ribbon-wrap right-edge fork lblue">
+                    <span>В разработке</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="ChatLog">
+            <ul class="col--1-1 uk-tab uk-tab-flip role-show-when-post-edit">
+
+                <li class="active">
+                    <a class="uk-navbar-nav-subtitle text--center role-post-edit">
+                        <i class="icon-news"></i>
+                        <div>статус</div>
+                    </a>
+                    <div class="arrow">
+                        <div class="mB arrow-body"></div>
+                        <div class="mB arrow-border"></div>
+                    </div>
+                </li>
+            </ul>
+            <div class="ChatLog-entry">
+                <img class="ChatLog-avatar" src="{{item.teaserImage}}">
+                <div class="ChatLog-message">
+
+                    <div class="role-show-when-post-edit  ">
+                        <label class="label">
+                            Заголовок
+                        </label>
+                        <input data-ng-model="wallItem.title" class="input col--1-1" id="photo-title" maxlength="80" name="photo-title" placeholder="Введите заголовок для съемки" type="text">
+                    </div>
+
+                    <div>
+                        <label class="label">
+                            Описание съемки
+                        </label>
+                        <textarea data-ng-model="wallItem.description" class="input col--1-1" placeholder="Добавить описание..." rows="2"></textarea>
+                    </div>
+
+                    <div class="role-show-when-post-edit">
+                        <label class="label">
+                            <a class="text--muted add-phone float--right">
+                                <i class="icon-circle-plus"></i> Добавить видео
+                            </a>
+                        </label>
+
+                        <div class="placeholder text--center" id="upload-drop">
+                            <i class="icon-camera">Перетяните сюда фотографии</i>
+                            <div data-ngf-drop data-ngf-select data-ng-model="files" class="drop-box" data-ngf-drag-over-class="'dragover'" data-ngf-multiple="true" data-ngf-allow-dir="true" accept="image/*,application/pdf" data-ngf-pattern="'image/*,application/pdf'">
+
+                                <span class="text--muted">или</span>&nbsp;
+                                <div class="button button--success" data-ngf-select="upload($files)" data-ngf-max-size="3MB" data-ngf-min-height="300" data-ngf-multiple="true">выберите файл</div>
+
+                                <div data-ngf-no-file-drop>Перетягивание файлов не поддерживается в этой версии браузера :(</div>
+                                <ul>
+                                    <li data-ng-repeat="f in files">{{f.name}} {{f.$error}} {{f.$errorParam}}</li>
+                                </ul>
+                            </div>
+                            <ul class="grid grid--small placeholder--success margin--top" data-ng-cloak>
+                                <li class="col--1-5" data-ng-repeat="image in uploadedImages">
+                                    <div class="placeholder__uploaded__item">
+                                        <img src="{{image[0].url}}" alt="">
+                                        <a data-msk-href class="button button--mini button--danger margin--top-small placeholder__uploaded__item--delete">Удалить</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="role-video-input-box  " style="display: none;">
+                        <label class="label">
+                            Ссылка на видео
+                        </label>
+                        <input class="input col--1-1" id="video-url" name="video-url" placeholder="Введите URL на видео" type="text">
+                    </div>
+
+                    <ul class="wall-post-participants uk-subnav uk-subnav-line"></ul>
+
+                    <div class="grid grid--small" id="post-editor-action">
+                        <div class="col--1-2">
+                            <i class="icon-profile-male"></i>
+                            <input autocomplete="off" class="input col--1-1 ui-autocomplete-input" id="routes-autocomplete" placeholder="участники" type="text">
+                            <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-1" style="display: none;" tabindex="0"></ul>
+                        </div>
+
+                        <div class="col--1-2" style="display: none">
+                            <i class="icon-browser"></i>
+                            <input autocomplete="off" class="input col--1-1 ui-autocomplete-input" placeholder="жанры съемки" type="text">
+                            <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-2" style="display: none;" tabindex="0"></ul>
+                        </div>
+                    </div>
+
+                    <div class="attachment">
+                        <div class="youtube" style="display: none;">
+                            <iframe allowfullscreen="" class="yuotube-video" frameborder="0" height="236.25" id="ytplayer" type="text/html" width="420"></iframe>
+                        </div>
+                        <div class="vimeo" style="display: none;">
+                            <iframe allowfullscreen="" class="vimeo-video" frameborder="0" height="236.25" mozallowfullscreen="" webkitallowfullscreen="" width="420"></iframe>
+                        </div>
+                        <div class="role-photo-placeholder" id="photo-placeholder"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <ul class="uk-subnav text--right">
+            <li>
+                <button class="button--link text--muted" data-ng-click="clearPost()">отменить</button>
+            </li>
+            <li>
+                <button class="button button--success button--small" data-ng-click="addPost()">отправить</button>
+            </li>
+        </ul>
+    </div>
+</div>
+<hr/>
+<div class="wall-post-latest" data-ng-repeat="i in item.wall">
+    <ul class="uk-comment-list" id="wall">
+        <li>
+            <div class=" repair">
+
+                <div class="repair__mode">
+                    <div class="tsc_ribbon_wrap edge" style="top: 130px;">
+                        <div class="ribbon-wrap right-edge fork lblue">
+                            <span>В разработке</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel uk-wall-box">
+                    <div class="col--1-1 wall-post-title">
+                        <div class="grid">
+                            <div class="col--2-3">
+                                <a data-msk-href>
+                                    Статья
+                                    <small class="award">(со стены)</small>
+                                </a>
+                            </div>
+                            <div class="col--1-3">
+                                <ul class="uk-subnav float--right">
+                                    <li>
+                                        <a class="text--muted" data-uk-tooltip="" title="Удалить запись?">
+                                            <i class="icon-trash role-delete-wall-post"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-msk-href>
+                                            <i class="icon-flame wall-post-hot"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <article class="uk-comment">
+                        <header class="uk-comment-header">
+                            <img alt="" class="uk-comment-avatar uk-border-circle" height="50" src="{{i.authorImage}}" width="50">
+                            <h5 class="uk-comment-title text--truncate">
+                                <a class="text--bold link--muted" href="{{i.authorShortcut}}">{{i.shortcut}}</a>
+                            </h5>
+                            <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                                <li>
+                                    <a class="link--muted" href="{{i.url}}">
+                                        <i class="icon-clock"></i> {{i.date}}
+                                    </a>
+                                </li>
+                            </ul>
+                        </header>
+                        <div class="uk-comment-body">
+
+                            <h1 class="margin--reset text--truncate">
+                                <a class="link--muted" href="#">{{i.tittle}}</a>
+                            </h1>
+
+                            <p class="margin--top-reset">{{i.description}}</p>
+
+                        </div>
+                    </article>
+                    <div class="uk-wall-box-gallery">
+
+                        <div class="photo-list-placeholder photoset-grid-basic" data-layout="22" data-width="423" style="width: 100%;">
+
+                            <div class="photoset-row cols-2" style="margin-bottom: 5px; clear: left; display: block; overflow: hidden; height: 135.533px;">
+                                <a class="photoset-cell highres-link cboxElement" href="{{photo.url}}" ng-repeat="photo in i.photos" rel="89268c87-71bd-b3df-631c-6f841dfce8f6" style="float: left; display: block; line-height: 0; box-sizing: border-box; width: 50%; padding-right: 2.5px;">
+                                    <img height="775" src="{{photo.url}}" style="width: 100%; height: auto; margin-top: -87.0801px;" width="518">
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <ul class="uk-subnav uk-subnav-line">
+                        <li>
+                            <a class="link--muted link--reset" data-msk-href>
+                                <i class="icon-eye text--muted"></i>
+                                <span data-ng-bind="i.views" data-ng-cloak></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="link--reset">
+                                <i class="icon-thumbs-o-up"></i>
+                                <b data-ng-bind="i.likeStatus.likes" data-ng-cloak></b>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="link--reset">
+                                <b data-ng-bind="i.likeStatus.dislikes" data-ng-cloak></b>
+                                <i class="uk-icon-thumbs-o-down"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="button-dropdown" data-uk-dropdown="">
+                                <a class="link--reset link--muted" href="">
+                                    <i class="icon-share2"></i>
+                                </a>
+                                <div class="dropdown dropdown--center">
+                                    <ul class="uk-nav uk-nav-dropdown">
+                                        <li>
+                                            <div class="addthis_sharing_toolbox" data-title="Фотостудия Фотостейдж - все для фото" data-url="http://photomsk.by/Wall/18af76e1-7a47-4600-bf5b-62735f05bf5f">
+
+                                                <div class="at-share-tbx-element addthis_32x32_style addthis-smartlayers addthis-animated at4-show" id="atstbx">
+                                                    <a class="at-share-btn at-svc-vk">
+                                                        <span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px; background-color: rgb(99, 131, 168);">
+                                                            <svg alt="VKontakte" class="at-icon at-icon-vk" style="width: 32px; height: 32px;" title="VKontakte" viewBox="0 0 32 32" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+                                                                <g>
+                                                                    <path d="M26.712 10.96s-.167-.48-1.21-.348l-3.447.024a.785.785 0 0 0-.455.072s-.204.108-.3.37a22.1 22.1 0 0 1-1.28 2.695c-1.533 2.61-2.156 2.754-2.407 2.587-.587-.372-.43-1.51-.43-2.323 0-2.54.382-3.592-.756-3.868-.37-.084-.646-.144-1.616-.156-1.232-.012-2.274 0-2.86.287-.396.193-.695.624-.515.648.227.036.742.143 1.017.515 0 0 .3.49.347 1.568.13 2.982-.48 3.353-.48 3.353-.466.252-1.28-.167-2.478-2.634 0 0-.694-1.222-1.233-2.563-.097-.25-.288-.383-.288-.383s-.216-.168-.527-.216l-3.28.024c-.504 0-.683.228-.683.228s-.18.19-.012.587c2.562 6.022 5.483 9.04 5.483 9.04s2.67 2.79 5.7 2.597h1.376c.418-.035.634-.263.634-.263s.192-.214.18-.61c-.024-1.843.838-2.12.838-2.12.838-.262 1.915 1.785 3.065 2.575 0 0 .874.6 1.532.467l3.064-.048c1.617-.01.85-1.352.85-1.352-.06-.108-.442-.934-2.286-2.647-1.916-1.784-1.665-1.496.658-4.585 1.413-1.88 1.976-3.03 1.796-3.52z"
+                                                                        fill-rule="evenodd"></path>
+                                                                </g>
+                                                            </svg>
+                                                        </span>
+                                                    </a>
+                                                    <a class="at-share-btn at-svc-odnoklassniki_ru">
+                                                        <span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px; background-color: rgb(213, 120, 25);">
+                                                            <svg alt="Odnoklassniki" class="at-icon at-icon-odnoklassniki_ru" style="width: 32px; height: 32px;" title="Odnoklassniki" viewBox="0 0 32 32" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+                                                                <g>
+                                                                    <path d="M16.5 16.15A6.15 6.15 0 0 0 22.65 10c0-3.39-2.75-6.14-6.15-6.14-3.4 0-6.15 2.75-6.15 6.14.01 3.4 2.76 6.15 6.15 6.15zm0-9.17c1.67 0 3.02 1.35 3.02 3.02s-1.35 3.02-3.02 3.02-3.02-1.35-3.02-3.02 1.35-3.02 3.02-3.02zm7.08 9.92c-.35-.7-1.31-1.28-2.58-.27-1.73 1.36-4.5 1.36-4.5 1.36s-2.77 0-4.5-1.36c-1.28-1.01-2.24-.43-2.59.27-.6 1.22.08 1.8 1.62 2.79 1.32.85 3.13 1.16 4.3 1.28l-.98.98c-1.38 1.37-2.7 2.7-3.62 3.62-.55.55-.55 1.438 0 1.99l.17.17c.55.55 1.44.55 1.99 0l3.62-3.622 3.62 3.62c.55.55 1.44.55 1.99 0l.17-.17c.55-.55.55-1.44 0-1.99l-3.62-3.62-.98-.98c1.17-.12 2.96-.438 4.27-1.28 1.55-.988 2.23-1.58 1.62-2.788z"></path>
+                                                                </g>
+                                                            </svg>
+                                                        </span>
+                                                    </a>
+                                                    <a class="at-share-btn at-svc-facebook">
+                                                        <span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px; background-color: rgb(59, 89, 152);">
+                                                            <svg alt="Facebook" class="at-icon at-icon-facebook" style="width: 32px; height: 32px;" title="Facebook" viewBox="0 0 32 32" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+                                                                <g>
+                                                                    <path d="M21 6.144C20.656 6.096 19.472 6 18.097 6c-2.877 0-4.85 1.66-4.85 4.7v2.62H10v3.557h3.247V26h3.895v-9.123h3.234l.497-3.557h-3.73v-2.272c0-1.022.292-1.73 1.858-1.73h2V6.143z" fill-rule="evenodd"></path>
+                                                                </g>
+                                                            </svg>
+                                                        </span>
+                                                    </a>
+                                                    <a class="at-share-btn at-svc-twitter">
+                                                        <span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px; background-color: rgb(85, 172, 238);">
+                                                            <svg alt="Twitter" class="at-icon at-icon-twitter" style="width: 32px; height: 32px;" title="Twitter" viewBox="0 0 32 32" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+                                                                <g>
+                                                                    <path d="M26.67 9.38c-.78.35-1.63.58-2.51.69.9-.54 1.6-1.4 1.92-2.42-.85.5-1.78.87-2.78 1.06a4.38 4.38 0 0 0-7.57 3c0 .34.04.68.11 1-3.64-.18-6.86-1.93-9.02-4.57-.38.65-.59 1.4-.59 2.2 0 1.52.77 2.86 1.95 3.64-.72-.02-1.39-.22-1.98-.55v.06c0 2.12 1.51 3.89 3.51 4.29a4.37 4.37 0 0 1-1.97.07c.56 1.74 2.17 3 4.09 3.04a8.82 8.82 0 0 1-5.44 1.87c-.35 0-.7-.02-1.04-.06a12.43 12.43 0 0 0 6.71 1.97c8.05 0 12.45-6.67 12.45-12.45 0-.19-.01-.38-.01-.57.84-.62 1.58-1.39 2.17-2.27z"></path>
+                                                                </g>
+                                                            </svg>
+                                                        </span>
+                                                    </a>
+                                                    <a class="at-share-btn at-svc-google_plusone_share">
+                                                        <span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px; background-color: rgb(220, 78, 65);">
+                                                            <svg alt="Google+" class="at-icon at-icon-google_plusone_share" style="width: 32px; height: 32px;" title="Google+" viewBox="0 0 32 32" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+                                                                <g>
+                                                                    <path d="M12 15v2.4h3.97c-.16 1.03-1.2 3.02-3.97 3.02-2.39 0-4.34-1.98-4.34-4.42s1.95-4.42 4.34-4.42c1.36 0 2.27.58 2.79 1.08l1.9-1.83C15.47 9.69 13.89 9 12 9c-3.87 0-7 3.13-7 7s3.13 7 7 7c4.04 0 6.72-2.84 6.72-6.84 0-.46-.05-.81-.11-1.16H12zm15 0h-2v-2h-2v2h-2v2h2v2h2v-2h2v-2z"
+                                                                        fill-rule="evenodd"></path>
+                                                                </g>
+                                                            </svg>
+                                                        </span>
+                                                    </a>
+                                                    <a class="at-share-btn at-svc-linkedin">
+                                                        <span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px; background-color: rgb(0, 119, 181);">
+                                                            <svg alt="LinkedIn" class="at-icon at-icon-linkedin" style="width: 32px; height: 32px;" title="LinkedIn" viewBox="0 0 32 32" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+                                                                <g>
+                                                                    <path d="M25 24.967h-3.77v-5.902c0-1.407-.025-3.217-1.96-3.217-1.963 0-2.263 1.534-2.263 3.117v6.002H13.24V12.832h3.615v1.66h.053c.502-.955 1.733-1.96 3.567-1.96 3.82 0 4.525 2.512 4.525 5.78v6.655zM8.988 11.174a2.186 2.186 0 0 1 0-4.374 2.187 2.187 0 0 1 0 4.374zm-1.89 1.658h3.777v12.135H7.1V12.832z"
+                                                                        fill-rule="evenodd"></path>
+                                                                </g>
+                                                            </svg>
+                                                        </span>
+                                                    </a>
+                                                    <a class="at-share-btn at-svc-compact">
+                                                        <span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px; background-color: rgb(252, 109, 76);">
+                                                            <svg alt="Еще..." class="at-icon at-icon-addthis" style="width: 32px; height: 32px;" title="Еще..." viewBox="0 0 32 32" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+                                                                <g>
+                                                                    <path d="M25.07 13.74h-6.71V7.03h-4.47v6.71H7.18v4.47h6.71v6.71h4.47v-6.71h6.71z"></path>
+                                                                </g>
+                                                            </svg>
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="uk-wall-box-comment">
+                    <ul class="uk-comment-list"></ul>
+                    <div class="uk-panel-box-comment-editor">
+                        <ul class="uk-list ChatLog">
+                            <li class="ChatLog-entry">
+                                <img class="ChatLog-avatar" src="{{user.shortcut}}">
+                                <div class="ChatLog-message">
+                                    <textarea class="textarea-comment" placeholder="Добавить комментарий..." rows="1"></textarea>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="uk-subnav text--right" style="display: none;">
+                            <li>
+                                <small>
+                                    <a class="button--link text--muted" data-msk-href>отменить</a>
+                                </small>
+                            </li>
+                            <li>
+                                <button class="button button--success button--small">отправить</button>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        </li>
+    </ul>
+</div>

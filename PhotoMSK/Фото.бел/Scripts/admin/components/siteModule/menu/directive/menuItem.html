@@ -1,0 +1,10 @@
+<div>
+    <div class="sortable__item">
+        <i class="sortable__handle icon-menu"></i>
+        <span>{{item.name}}</span>
+    </div>
+
+    <div ui-sortable="sortableOptions" data-ng-model="item.nodes" class="sortable__item-child placeholder--menu ng-menus">
+        <menu-item data-ng-repeat="item in item.nodes" item="item"></menu-item>
+    </div>
+</div>

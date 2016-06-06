@@ -1,0 +1,952 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{55380759-449E-4CBA-920C-7CBC90FF6772}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PhotoMSK.Data</RootNamespace>
+    <AssemblyName>PhotoMSK.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.7.4137.9688, Culture=neutral, PublicKeyToken=a4292a325f69b123, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\BouncyCastle.1.7.0\lib\Net40-Client\BouncyCastle.Crypto.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.14.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\log4net.2.0.4\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppContext.cs" />
+    <Compile Include="Migrations\201508271909023_viewsInDB.cs" />
+    <Compile Include="Migrations\201508271909023_viewsInDB.Designer.cs">
+      <DependentUpon>201508271909023_viewsInDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602191632029_TrackUser.cs" />
+    <Compile Include="Migrations\201602191632029_TrackUser.Designer.cs">
+      <DependentUpon>201602191632029_TrackUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602192117162_Activity.cs" />
+    <Compile Include="Migrations\201602192117162_Activity.Designer.cs">
+      <DependentUpon>201602192117162_Activity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602201847012_Activity1.cs" />
+    <Compile Include="Migrations\201602201847012_Activity1.Designer.cs">
+      <DependentUpon>201602201847012_Activity1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602221037534_UserInformationCupAndLink.cs" />
+    <Compile Include="Migrations\201602221037534_UserInformationCupAndLink.Designer.cs">
+      <DependentUpon>201602221037534_UserInformationCupAndLink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603011301488_phone.cs" />
+    <Compile Include="Migrations\201603011301488_phone.Designer.cs">
+      <DependentUpon>201603011301488_phone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603011905563_CardsUpdate.cs" />
+    <Compile Include="Migrations\201603011905563_CardsUpdate.Designer.cs">
+      <DependentUpon>201603011905563_CardsUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603082002554_UniqueNumber.cs" />
+    <Compile Include="Migrations\201603082002554_UniqueNumber.Designer.cs">
+      <DependentUpon>201603082002554_UniqueNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603082022083_UniqueNumber1.cs" />
+    <Compile Include="Migrations\201603082022083_UniqueNumber1.Designer.cs">
+      <DependentUpon>201603082022083_UniqueNumber1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603141553093_ExtendUserInformation.cs" />
+    <Compile Include="Migrations\201603141553093_ExtendUserInformation.Designer.cs">
+      <DependentUpon>201603141553093_ExtendUserInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603171508547_UpdPhotostudio.cs" />
+    <Compile Include="Migrations\201603171508547_UpdPhotostudio.Designer.cs">
+      <DependentUpon>201603171508547_UpdPhotostudio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603180938344_RouteReviewAdd.cs" />
+    <Compile Include="Migrations\201603180938344_RouteReviewAdd.Designer.cs">
+      <DependentUpon>201603180938344_RouteReviewAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603181020523_RouteReviewUpdates.cs" />
+    <Compile Include="Migrations\201603181020523_RouteReviewUpdates.Designer.cs">
+      <DependentUpon>201603181020523_RouteReviewUpdates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603181400012_PhotostudioDaysOfClaim.cs" />
+    <Compile Include="Migrations\201603181400012_PhotostudioDaysOfClaim.Designer.cs">
+      <DependentUpon>201603181400012_PhotostudioDaysOfClaim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603182036068_ClientTags.cs" />
+    <Compile Include="Migrations\201603182036068_ClientTags.Designer.cs">
+      <DependentUpon>201603182036068_ClientTags.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603202013406_WidgetsAndFiles.cs" />
+    <Compile Include="Migrations\201603202013406_WidgetsAndFiles.Designer.cs">
+      <DependentUpon>201603202013406_WidgetsAndFiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603211630287_DressAndFriends.cs" />
+    <Compile Include="Migrations\201603211630287_DressAndFriends.Designer.cs">
+      <DependentUpon>201603211630287_DressAndFriends.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603212109161_FileEntryName.cs" />
+    <Compile Include="Migrations\201603212109161_FileEntryName.Designer.cs">
+      <DependentUpon>201603212109161_FileEntryName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603262045169_MonthAndbalance.cs" />
+    <Compile Include="Migrations\201603262045169_MonthAndbalance.Designer.cs">
+      <DependentUpon>201603262045169_MonthAndbalance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603271430293_Templates.cs" />
+    <Compile Include="Migrations\201603271430293_Templates.Designer.cs">
+      <DependentUpon>201603271430293_Templates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603301904375_Widgets.cs" />
+    <Compile Include="Migrations\201603301904375_Widgets.Designer.cs">
+      <DependentUpon>201603301904375_Widgets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603312020016_CallActivity.cs" />
+    <Compile Include="Migrations\201603312020016_CallActivity.Designer.cs">
+      <DependentUpon>201603312020016_CallActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604031408371_StudioSetting.cs" />
+    <Compile Include="Migrations\201604031408371_StudioSetting.Designer.cs">
+      <DependentUpon>201604031408371_StudioSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604071617449_Zones.cs" />
+    <Compile Include="Migrations\201604071617449_Zones.Designer.cs">
+      <DependentUpon>201604071617449_Zones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604071632069_BasePage.cs" />
+    <Compile Include="Migrations\201604071632069_BasePage.Designer.cs">
+      <DependentUpon>201604071632069_BasePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604071707093_Layout.cs" />
+    <Compile Include="Migrations\201604071707093_Layout.Designer.cs">
+      <DependentUpon>201604071707093_Layout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604081029521_2 Widgets.cs" />
+    <Compile Include="Migrations\201604081029521_2 Widgets.Designer.cs">
+      <DependentUpon>201604081029521_2 Widgets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604081401529_BasePage1.cs" />
+    <Compile Include="Migrations\201604081401529_BasePage1.Designer.cs">
+      <DependentUpon>201604081401529_BasePage1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604131719085_Project.cs" />
+    <Compile Include="Migrations\201604131719085_Project.Designer.cs">
+      <DependentUpon>201604131719085_Project.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604131936413_Pages.cs" />
+    <Compile Include="Migrations\201604131936413_Pages.Designer.cs">
+      <DependentUpon>201604131936413_Pages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604132217132_EventState.cs" />
+    <Compile Include="Migrations\201604132217132_EventState.Designer.cs">
+      <DependentUpon>201604132217132_EventState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604181131440_PageType.cs" />
+    <Compile Include="Migrations\201604181131440_PageType.Designer.cs">
+      <DependentUpon>201604181131440_PageType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604211254482_EventPrePayed.cs" />
+    <Compile Include="Migrations\201604211254482_EventPrePayed.Designer.cs">
+      <DependentUpon>201604211254482_EventPrePayed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604261415324_MainPage.cs" />
+    <Compile Include="Migrations\201604261415324_MainPage.Designer.cs">
+      <DependentUpon>201604261415324_MainPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604271641189_BalansYear.cs" />
+    <Compile Include="Migrations\201604271641189_BalansYear.Designer.cs">
+      <DependentUpon>201604271641189_BalansYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604290948592_HallTypes.cs" />
+    <Compile Include="Migrations\201604290948592_HallTypes.Designer.cs">
+      <DependentUpon>201604290948592_HallTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604292012096_Styles.cs" />
+    <Compile Include="Migrations\201604292012096_Styles.Designer.cs">
+      <DependentUpon>201604292012096_Styles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605011739340_LegalInformation.cs" />
+    <Compile Include="Migrations\201605011739340_LegalInformation.Designer.cs">
+      <DependentUpon>201605011739340_LegalInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605011742532_LegalInformation_1.cs" />
+    <Compile Include="Migrations\201605011742532_LegalInformation_1.Designer.cs">
+      <DependentUpon>201605011742532_LegalInformation_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605011807408_LegalInformation_2.cs" />
+    <Compile Include="Migrations\201605011807408_LegalInformation_2.Designer.cs">
+      <DependentUpon>201605011807408_LegalInformation_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605012127522_LegalInformation_3.cs" />
+    <Compile Include="Migrations\201605012127522_LegalInformation_3.Designer.cs">
+      <DependentUpon>201605012127522_LegalInformation_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605012208448_LegalInformation_4.cs" />
+    <Compile Include="Migrations\201605012208448_LegalInformation_4.Designer.cs">
+      <DependentUpon>201605012208448_LegalInformation_4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605081649576_ProjectSetting.cs" />
+    <Compile Include="Migrations\201605081649576_ProjectSetting.Designer.cs">
+      <DependentUpon>201605081649576_ProjectSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605082205439_ProjectSettings.cs" />
+    <Compile Include="Migrations\201605082205439_ProjectSettings.Designer.cs">
+      <DependentUpon>201605082205439_ProjectSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605100914222_GoogleID.cs" />
+    <Compile Include="Migrations\201605100914222_GoogleID.Designer.cs">
+      <DependentUpon>201605100914222_GoogleID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605190813255_SmsAndHalls.cs" />
+    <Compile Include="Migrations\201605190813255_SmsAndHalls.Designer.cs">
+      <DependentUpon>201605190813255_SmsAndHalls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605191747396_SmsAditional.cs" />
+    <Compile Include="Migrations\201605191747396_SmsAditional.Designer.cs">
+      <DependentUpon>201605191747396_SmsAditional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ActivityStream\Activity.cs" />
+    <Compile Include="Models\ActivityStream\CallActivity.cs" />
+    <Compile Include="Models\ActivityStream\CallType.cs" />
+    <Compile Include="Models\Attachments\FileEntry.cs" />
+    <Compile Include="Models\Clients\RouteClient.cs" />
+    <Compile Include="Models\Clients\Tag.cs" />
+    <Compile Include="Models\HallTypes.cs" />
+    <Compile Include="Models\LegalInformation.cs" />
+    <Compile Include="Models\Permission\AccountManage.cs" />
+    <Compile Include="Models\Permission\EventManage.cs" />
+    <Compile Include="Models\EventState.cs" />
+    <Compile Include="Models\HtmlTemplate.cs" />
+    <Compile Include="Enums\AccessStatus.cs" />
+    <Compile Include="Enums\Gender.cs" />
+    <Compile Include="Enums\HairColor.cs" />
+    <Compile Include="Enums\LikeDetails.cs" />
+    <Compile Include="Enums\LikeType.cs" />
+    <Compile Include="Enums\MasterEventType.cs" />
+    <Compile Include="Enums\ParticipationType.cs" />
+    <Compile Include="Enums\SkinColor.cs" />
+    <Compile Include="Migrations\201406192232315_Initial.cs" />
+    <Compile Include="Migrations\201406192232315_Initial.Designer.cs">
+      <DependentUpon>201406192232315_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406211228576_StudioAdress.cs" />
+    <Compile Include="Migrations\201406211228576_StudioAdress.Designer.cs">
+      <DependentUpon>201406211228576_StudioAdress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406252048148_studiofields.cs" />
+    <Compile Include="Migrations\201406252048148_studiofields.Designer.cs">
+      <DependentUpon>201406252048148_studiofields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407040949308_StudioBooking.cs" />
+    <Compile Include="Migrations\201407040949308_StudioBooking.Designer.cs">
+      <DependentUpon>201407040949308_StudioBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407041958215_Sms.cs" />
+    <Compile Include="Migrations\201407041958215_Sms.Designer.cs">
+      <DependentUpon>201407041958215_Sms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407152048320_eventsAndMessages.cs" />
+    <Compile Include="Migrations\201407152048320_eventsAndMessages.Designer.cs">
+      <DependentUpon>201407152048320_eventsAndMessages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407280907044_UpdateRoles.cs" />
+    <Compile Include="Migrations\201407280907044_UpdateRoles.Designer.cs">
+      <DependentUpon>201407280907044_UpdateRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407281017070_SwitchToUserInformations.cs" />
+    <Compile Include="Migrations\201407281017070_SwitchToUserInformations.Designer.cs">
+      <DependentUpon>201407281017070_SwitchToUserInformations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408011222431_Raiting.cs" />
+    <Compile Include="Migrations\201408011222431_Raiting.Designer.cs">
+      <DependentUpon>201408011222431_Raiting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408011241185_Raiting1.cs" />
+    <Compile Include="Migrations\201408011241185_Raiting1.Designer.cs">
+      <DependentUpon>201408011241185_Raiting1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408011252214_Raiting2.cs" />
+    <Compile Include="Migrations\201408011252214_Raiting2.Designer.cs">
+      <DependentUpon>201408011252214_Raiting2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408021419437_Values.cs" />
+    <Compile Include="Migrations\201408021419437_Values.Designer.cs">
+      <DependentUpon>201408021419437_Values.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408021514008_MaxLenth.cs" />
+    <Compile Include="Migrations\201408021514008_MaxLenth.Designer.cs">
+      <DependentUpon>201408021514008_MaxLenth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408041409596_Reviews.cs" />
+    <Compile Include="Migrations\201408041409596_Reviews.Designer.cs">
+      <DependentUpon>201408041409596_Reviews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408081700521_EventDescription.cs" />
+    <Compile Include="Migrations\201408081700521_EventDescription.Designer.cs">
+      <DependentUpon>201408081700521_EventDescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408101330094_Comments.cs" />
+    <Compile Include="Migrations\201408101330094_Comments.Designer.cs">
+      <DependentUpon>201408101330094_Comments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408131646503_DeletedWall.cs" />
+    <Compile Include="Migrations\201408131646503_DeletedWall.Designer.cs">
+      <DependentUpon>201408131646503_DeletedWall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408171430475_ShootingGenre.cs" />
+    <Compile Include="Migrations\201408171430475_ShootingGenre.Designer.cs">
+      <DependentUpon>201408171430475_ShootingGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408272008591_UserInformationCreationTime.cs" />
+    <Compile Include="Migrations\201408272008591_UserInformationCreationTime.Designer.cs">
+      <DependentUpon>201408272008591_UserInformationCreationTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409060907054_Rents.cs" />
+    <Compile Include="Migrations\201409060907054_Rents.Designer.cs">
+      <DependentUpon>201409060907054_Rents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409061124131_PostViews.cs" />
+    <Compile Include="Migrations\201409061124131_PostViews.Designer.cs">
+      <DependentUpon>201409061124131_PostViews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409101749416_RemoveRoleUserReference.cs" />
+    <Compile Include="Migrations\201409101749416_RemoveRoleUserReference.Designer.cs">
+      <DependentUpon>201409101749416_RemoveRoleUserReference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409181901262_CopyPublics.cs" />
+    <Compile Include="Migrations\201409181901262_CopyPublics.Designer.cs">
+      <DependentUpon>201409181901262_CopyPublics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409211736337_CalendarReference.cs" />
+    <Compile Include="Migrations\201409211736337_CalendarReference.Designer.cs">
+      <DependentUpon>201409211736337_CalendarReference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409292104399_MasterclassTitleAndDate.cs" />
+    <Compile Include="Migrations\201409292104399_MasterclassTitleAndDate.Designer.cs">
+      <DependentUpon>201409292104399_MasterclassTitleAndDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201410021620239_Advertising.cs" />
+    <Compile Include="Migrations\201410021620239_Advertising.Designer.cs">
+      <DependentUpon>201410021620239_Advertising.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201410021657485_Advertising1.cs" />
+    <Compile Include="Migrations\201410021657485_Advertising1.Designer.cs">
+      <DependentUpon>201410021657485_Advertising1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201410041727392_RouteSite.cs" />
+    <Compile Include="Migrations\201410041727392_RouteSite.Designer.cs">
+      <DependentUpon>201410041727392_RouteSite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411010729260_PriceInEvents.cs" />
+    <Compile Include="Migrations\201411010729260_PriceInEvents.Designer.cs">
+      <DependentUpon>201411010729260_PriceInEvents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411140721490_Update-Route.cs" />
+    <Compile Include="Migrations\201411140721490_Update-Route.Designer.cs">
+      <DependentUpon>201411140721490_Update-Route.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411180841174_updateRoutes.cs" />
+    <Compile Include="Migrations\201411180841174_updateRoutes.Designer.cs">
+      <DependentUpon>201411180841174_updateRoutes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411191230550_PricePositionUpdate.cs" />
+    <Compile Include="Migrations\201411191230550_PricePositionUpdate.Designer.cs">
+      <DependentUpon>201411191230550_PricePositionUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411191439376_UpdatePrices.cs" />
+    <Compile Include="Migrations\201411191439376_UpdatePrices.Designer.cs">
+      <DependentUpon>201411191439376_UpdatePrices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411210717092_Cards.cs" />
+    <Compile Include="Migrations\201411210717092_Cards.Designer.cs">
+      <DependentUpon>201411210717092_Cards.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412011350138_FriendRoute.cs" />
+    <Compile Include="Migrations\201412011350138_FriendRoute.Designer.cs">
+      <DependentUpon>201412011350138_FriendRoute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412011429170_UpAllowOnlineBookingToRoute.cs" />
+    <Compile Include="Migrations\201412011429170_UpAllowOnlineBookingToRoute.Designer.cs">
+      <DependentUpon>201412011429170_UpAllowOnlineBookingToRoute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412071221496_PhotoshopUpdate.cs" />
+    <Compile Include="Migrations\201412071221496_PhotoshopUpdate.Designer.cs">
+      <DependentUpon>201412071221496_PhotoshopUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412091111014_SmallFixes.cs" />
+    <Compile Include="Migrations\201412091111014_SmallFixes.Designer.cs">
+      <DependentUpon>201412091111014_SmallFixes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501041821571_RenamePrice.cs" />
+    <Compile Include="Migrations\201501041821571_RenamePrice.Designer.cs">
+      <DependentUpon>201501041821571_RenamePrice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501041827184_Prices.cs" />
+    <Compile Include="Migrations\201501041827184_Prices.Designer.cs">
+      <DependentUpon>201501041827184_Prices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501151816598_GoogleSync.cs" />
+    <Compile Include="Migrations\201501151816598_GoogleSync.Designer.cs">
+      <DependentUpon>201501151816598_GoogleSync.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501171159562_RefreshToken.cs" />
+    <Compile Include="Migrations\201501171159562_RefreshToken.Designer.cs">
+      <DependentUpon>201501171159562_RefreshToken.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502081249221_HallProperties.cs" />
+    <Compile Include="Migrations\201502081249221_HallProperties.Designer.cs">
+      <DependentUpon>201502081249221_HallProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502091640467_TextPages.cs" />
+    <Compile Include="Migrations\201502091640467_TextPages.Designer.cs">
+      <DependentUpon>201502091640467_TextPages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502091720027_TextPagePublished.cs" />
+    <Compile Include="Migrations\201502091720027_TextPagePublished.Designer.cs">
+      <DependentUpon>201502091720027_TextPagePublished.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502201121049_PageCategories.cs" />
+    <Compile Include="Migrations\201502201121049_PageCategories.Designer.cs">
+      <DependentUpon>201502201121049_PageCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502251745348_PageCategory_CategoryName.cs" />
+    <Compile Include="Migrations\201502251745348_PageCategory_CategoryName.Designer.cs">
+      <DependentUpon>201502251745348_PageCategory_CategoryName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502271914013_MenuItems.cs" />
+    <Compile Include="Migrations\201502271914013_MenuItems.Designer.cs">
+      <DependentUpon>201502271914013_MenuItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506060530306_UpdateRoutes.cs" />
+    <Compile Include="Migrations\201506060530306_UpdateRoutes.Designer.cs">
+      <DependentUpon>201506060530306_UpdateRoutes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506092218038_OrdersAndContracts.cs" />
+    <Compile Include="Migrations\201506092218038_OrdersAndContracts.Designer.cs">
+      <DependentUpon>201506092218038_OrdersAndContracts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506100458474_PhotomodelNullableFields.cs" />
+    <Compile Include="Migrations\201506100458474_PhotomodelNullableFields.Designer.cs">
+      <DependentUpon>201506100458474_PhotomodelNullableFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508111848356_DateFix.cs" />
+    <Compile Include="Migrations\201508111848356_DateFix.Designer.cs">
+      <DependentUpon>201508111848356_DateFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Adresse.cs" />
+    <Compile Include="Models\Advertising\Ad.cs" />
+    <Compile Include="Models\Advertising\AdCompany.cs" />
+    <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\Attachments\Attachment.cs" />
+    <Compile Include="Models\Attachments\Audio.cs" />
+    <Compile Include="Models\Attachments\Creative.cs" />
+    <Compile Include="Models\Attachments\Photo.cs" />
+    <Compile Include="Models\Attachments\Poll.cs" />
+    <Compile Include="Models\Attachments\Video.cs" />
+    <Compile Include="Models\Calendar.cs" />
+    <Compile Include="Models\CalendarReference.cs" />
+    <Compile Include="Models\CategoryBrand.cs" />
+    <Compile Include="Models\Comments\Comment.cs" />
+    <Compile Include="Models\Comments\Comments.cs" />
+    <Compile Include="Models\Contract.cs" />
+    <Compile Include="Models\CopyReference.cs" />
+    <Compile Include="Models\DeleteRouteRequest.cs" />
+    <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\ActivityStream\EventActivity.cs" />
+    <Compile Include="Models\ActivityStream\EventActivityState.cs" />
+    <Compile Include="Models\Genre.cs" />
+    <Compile Include="Models\GoogleSheetsSync.cs" />
+    <Compile Include="Models\Hall.cs" />
+    <Compile Include="Models\HallCalendar.cs" />
+    <Compile Include="Models\HallProperty.cs" />
+    <Compile Include="Models\Layout.cs" />
+    <Compile Include="Models\LikeStatus.cs" />
+    <Compile Include="Models\Menu\AbstractMenuItem.cs" />
+    <Compile Include="Models\Menu\CategoryProjectionMenuItem.cs" />
+    <Compile Include="Models\Menu\HallsMenu.cs" />
+    <Compile Include="Models\Menu\LinkMenuItem.cs" />
+    <Compile Include="Models\Menu\PageMenuItem.cs" />
+    <Compile Include="Models\Menu\RouteMenu.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Month.cs" />
+    <Compile Include="Models\NominationPhoto.cs" />
+    <Compile Include="Models\PageCategory.cs" />
+    <Compile Include="Models\Pages\ContentPage.cs" />
+    <Compile Include="Models\Pages\LandingPage.cs" />
+    <Compile Include="Models\Pages\ProjectionPage.cs" />
+    <Compile Include="Models\Parameter.cs" />
+    <Compile Include="Models\ParameterValue.cs" />
+    <Compile Include="Models\Penalty.cs" />
+    <Compile Include="Models\Phone.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\ProjectSettings.cs" />
+    <Compile Include="Models\RoutepageLayout.cs" />
+    <Compile Include="Models\RouteSetting.cs" />
+    <Compile Include="Models\Setting.cs" />
+    <Compile Include="Models\SmsModule.cs" />
+    <Compile Include="Models\Statistics\BalanceLine.cs" />
+    <Compile Include="Models\Statistics\BalanceLineType.cs" />
+    <Compile Include="Models\Statistics\WeekBalance.cs" />
+    <Compile Include="Models\PhotoGener.cs" />
+    <Compile Include="Models\PhotographerCalendar.cs" />
+    <Compile Include="Models\PricePosition.cs" />
+    <Compile Include="Models\Promocode.cs" />
+    <Compile Include="Models\Raiting.cs" />
+    <Compile Include="Models\RentCalendar.cs" />
+    <Compile Include="Models\Review.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\RouteEntity.cs" />
+    <Compile Include="Models\RoutesPhone.cs" />
+    <Compile Include="Models\Routes\Brand.cs" />
+    <Compile Include="Models\Routes\Category.cs" />
+    <Compile Include="Enums\Employment.cs" />
+    <Compile Include="Enums\EyesColor.cs" />
+    <Compile Include="Enums\FaceType.cs" />
+    <Compile Include="Enums\MartialStatus.cs" />
+    <Compile Include="Models\Compare.cs" />
+    <Compile Include="Models\Routes\Dress.cs" />
+    <Compile Include="Models\Routes\DressCalendar.cs" />
+    <Compile Include="Models\Routes\DressRent.cs" />
+    <Compile Include="Models\Routes\Friendship.cs" />
+    <Compile Include="Models\Routes\Masterclass.cs" />
+    <Compile Include="Models\Routes\MasterclassEvents.cs" />
+    <Compile Include="Models\Routes\RouteReview.cs" />
+    <Compile Include="Models\Routes\Page.cs" />
+    <Compile Include="Models\Routes\Photographer.cs" />
+    <Compile Include="Models\Routes\Photomodel.cs" />
+    <Compile Include="Models\Routes\Photorent.cs" />
+    <Compile Include="Models\Routes\Photoshop.cs" />
+    <Compile Include="Models\Routes\Photostudio.cs" />
+    <Compile Include="Models\Routes\Phototechnics.cs" />
+    <Compile Include="Models\Routes\Place.cs" />
+    <Compile Include="Models\SaleCard.cs" />
+    <Compile Include="Models\ScheduleDay.cs" />
+    <Compile Include="Models\Shooting.cs" />
+    <Compile Include="Models\ShootingGenre.cs" />
+    <Compile Include="Models\ShopCategory.cs" />
+    <Compile Include="Models\ShoppingCart\Order.cs" />
+    <Compile Include="Models\ShoppingCart\OrderLine.cs" />
+    <Compile Include="Models\ShoppingCart\ShippingAddress.cs" />
+    <Compile Include="Models\ShoppingCart\Status.cs" />
+    <Compile Include="Models\SmsMessage.cs" />
+    <Compile Include="Models\Snapshot.cs" />
+    <Compile Include="Models\Pages\BasePage.cs" />
+    <Compile Include="Models\Theme.cs" />
+    <Compile Include="Models\ThemeStyles.cs" />
+    <Compile Include="Models\ThemeView.cs" />
+    <Compile Include="Models\UniqueEntity.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserInformation.cs" />
+    <Compile Include="Models\UserMenuItem.cs" />
+    <Compile Include="Models\UserPhone.cs" />
+    <Compile Include="Models\Views.cs" />
+    <Compile Include="Models\WallPost.cs" />
+    <Compile Include="Models\Widgets\BaseWidget.cs" />
+    <Compile Include="Models\Widgets\CalendarsWidget.cs" />
+    <Compile Include="Models\Widgets\FaqWidget.cs" />
+    <Compile Include="Models\Widgets\FileGallery.cs" />
+    <Compile Include="Models\Widgets\HallWidget.cs" />
+    <Compile Include="Models\Widgets\Landing.cs" />
+    <Compile Include="Models\Widgets\MenuWidget.cs" />
+    <Compile Include="Models\Widgets\QuestionAnswer.cs" />
+    <Compile Include="Models\Widgets\QuestionAnswersFaq.cs" />
+    <Compile Include="Models\Widgets\SplitWidget.cs" />
+    <Compile Include="Models\Widgets\HeaderWidget.cs" />
+    <Compile Include="Models\Widgets\DescriptionWidget.cs" />
+    <Compile Include="Models\Widgets\GaleryWidget.cs" />
+    <Compile Include="Models\Widgets\ContainerWidget.cs" />
+    <Compile Include="Models\Widgets\Quote.cs" />
+    <Compile Include="Models\Widgets\TextAdnDescription.cs" />
+    <Compile Include="Models\Widgets\Video.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201406192232315_Initial.resx">
+      <DependentUpon>201406192232315_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406211228576_StudioAdress.resx">
+      <DependentUpon>201406211228576_StudioAdress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406252048148_studiofields.resx">
+      <DependentUpon>201406252048148_studiofields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407040949308_StudioBooking.resx">
+      <DependentUpon>201407040949308_StudioBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407041958215_Sms.resx">
+      <DependentUpon>201407041958215_Sms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407152048320_eventsAndMessages.resx">
+      <DependentUpon>201407152048320_eventsAndMessages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407280907044_UpdateRoles.resx">
+      <DependentUpon>201407280907044_UpdateRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407281017070_SwitchToUserInformations.resx">
+      <DependentUpon>201407281017070_SwitchToUserInformations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408011222431_Raiting.resx">
+      <DependentUpon>201408011222431_Raiting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408011241185_Raiting1.resx">
+      <DependentUpon>201408011241185_Raiting1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408011252214_Raiting2.resx">
+      <DependentUpon>201408011252214_Raiting2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408021419437_Values.resx">
+      <DependentUpon>201408021419437_Values.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408021514008_MaxLenth.resx">
+      <DependentUpon>201408021514008_MaxLenth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408041409596_Reviews.resx">
+      <DependentUpon>201408041409596_Reviews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408081700521_EventDescription.resx">
+      <DependentUpon>201408081700521_EventDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408101330094_Comments.resx">
+      <DependentUpon>201408101330094_Comments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408131646503_DeletedWall.resx">
+      <DependentUpon>201408131646503_DeletedWall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408171430475_ShootingGenre.resx">
+      <DependentUpon>201408171430475_ShootingGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408272008591_UserInformationCreationTime.resx">
+      <DependentUpon>201408272008591_UserInformationCreationTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409060907054_Rents.resx">
+      <DependentUpon>201409060907054_Rents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409061124131_PostViews.resx">
+      <DependentUpon>201409061124131_PostViews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409101749416_RemoveRoleUserReference.resx">
+      <DependentUpon>201409101749416_RemoveRoleUserReference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409181901262_CopyPublics.resx">
+      <DependentUpon>201409181901262_CopyPublics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409211736337_CalendarReference.resx">
+      <DependentUpon>201409211736337_CalendarReference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409292104399_MasterclassTitleAndDate.resx">
+      <DependentUpon>201409292104399_MasterclassTitleAndDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410021620239_Advertising.resx">
+      <DependentUpon>201410021620239_Advertising.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410021657485_Advertising1.resx">
+      <DependentUpon>201410021657485_Advertising1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410041727392_RouteSite.resx">
+      <DependentUpon>201410041727392_RouteSite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411010729260_PriceInEvents.resx">
+      <DependentUpon>201411010729260_PriceInEvents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411140721490_Update-Route.resx">
+      <DependentUpon>201411140721490_Update-Route.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411180841174_updateRoutes.resx">
+      <DependentUpon>201411180841174_updateRoutes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411191230550_PricePositionUpdate.resx">
+      <DependentUpon>201411191230550_PricePositionUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411191439376_UpdatePrices.resx">
+      <DependentUpon>201411191439376_UpdatePrices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411210717092_Cards.resx">
+      <DependentUpon>201411210717092_Cards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412011350138_FriendRoute.resx">
+      <DependentUpon>201412011350138_FriendRoute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412011429170_UpAllowOnlineBookingToRoute.resx">
+      <DependentUpon>201412011429170_UpAllowOnlineBookingToRoute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412071221496_PhotoshopUpdate.resx">
+      <DependentUpon>201412071221496_PhotoshopUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412091111014_SmallFixes.resx">
+      <DependentUpon>201412091111014_SmallFixes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501041821571_RenamePrice.resx">
+      <DependentUpon>201501041821571_RenamePrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501041827184_Prices.resx">
+      <DependentUpon>201501041827184_Prices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501151816598_GoogleSync.resx">
+      <DependentUpon>201501151816598_GoogleSync.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501171159562_RefreshToken.resx">
+      <DependentUpon>201501171159562_RefreshToken.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502081249221_HallProperties.resx">
+      <DependentUpon>201502081249221_HallProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502091640467_TextPages.resx">
+      <DependentUpon>201502091640467_TextPages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502091720027_TextPagePublished.resx">
+      <DependentUpon>201502091720027_TextPagePublished.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502201121049_PageCategories.resx">
+      <DependentUpon>201502201121049_PageCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502251745348_PageCategory_CategoryName.resx">
+      <DependentUpon>201502251745348_PageCategory_CategoryName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502271914013_MenuItems.resx">
+      <DependentUpon>201502271914013_MenuItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506060530306_UpdateRoutes.resx">
+      <DependentUpon>201506060530306_UpdateRoutes.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506092218038_OrdersAndContracts.resx">
+      <DependentUpon>201506092218038_OrdersAndContracts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506100458474_PhotomodelNullableFields.resx">
+      <DependentUpon>201506100458474_PhotomodelNullableFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508111848356_DateFix.resx">
+      <DependentUpon>201508111848356_DateFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508271909023_viewsInDB.resx">
+      <DependentUpon>201508271909023_viewsInDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602191632029_TrackUser.resx">
+      <DependentUpon>201602191632029_TrackUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602192117162_Activity.resx">
+      <DependentUpon>201602192117162_Activity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602201847012_Activity1.resx">
+      <DependentUpon>201602201847012_Activity1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602221037534_UserInformationCupAndLink.resx">
+      <DependentUpon>201602221037534_UserInformationCupAndLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603011301488_phone.resx">
+      <DependentUpon>201603011301488_phone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603011905563_CardsUpdate.resx">
+      <DependentUpon>201603011905563_CardsUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603082002554_UniqueNumber.resx">
+      <DependentUpon>201603082002554_UniqueNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603082022083_UniqueNumber1.resx">
+      <DependentUpon>201603082022083_UniqueNumber1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603141553093_ExtendUserInformation.resx">
+      <DependentUpon>201603141553093_ExtendUserInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603171508547_UpdPhotostudio.resx">
+      <DependentUpon>201603171508547_UpdPhotostudio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603180938344_RouteReviewAdd.resx">
+      <DependentUpon>201603180938344_RouteReviewAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603181020523_RouteReviewUpdates.resx">
+      <DependentUpon>201603181020523_RouteReviewUpdates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603181400012_PhotostudioDaysOfClaim.resx">
+      <DependentUpon>201603181400012_PhotostudioDaysOfClaim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603182036068_ClientTags.resx">
+      <DependentUpon>201603182036068_ClientTags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603202013406_WidgetsAndFiles.resx">
+      <DependentUpon>201603202013406_WidgetsAndFiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603211630287_DressAndFriends.resx">
+      <DependentUpon>201603211630287_DressAndFriends.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603212109161_FileEntryName.resx">
+      <DependentUpon>201603212109161_FileEntryName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603262045169_MonthAndbalance.resx">
+      <DependentUpon>201603262045169_MonthAndbalance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603271430293_Templates.resx">
+      <DependentUpon>201603271430293_Templates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603301904375_Widgets.resx">
+      <DependentUpon>201603301904375_Widgets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603312020016_CallActivity.resx">
+      <DependentUpon>201603312020016_CallActivity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604031408371_StudioSetting.resx">
+      <DependentUpon>201604031408371_StudioSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604071617449_Zones.resx">
+      <DependentUpon>201604071617449_Zones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604071632069_BasePage.resx">
+      <DependentUpon>201604071632069_BasePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604071707093_Layout.resx">
+      <DependentUpon>201604071707093_Layout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604081029521_2 Widgets.resx">
+      <DependentUpon>201604081029521_2 Widgets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604081401529_BasePage1.resx">
+      <DependentUpon>201604081401529_BasePage1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604131719085_Project.resx">
+      <DependentUpon>201604131719085_Project.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604131936413_Pages.resx">
+      <DependentUpon>201604131936413_Pages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604132217132_EventState.resx">
+      <DependentUpon>201604132217132_EventState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604181131440_PageType.resx">
+      <DependentUpon>201604181131440_PageType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604211254482_EventPrePayed.resx">
+      <DependentUpon>201604211254482_EventPrePayed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604261415324_MainPage.resx">
+      <DependentUpon>201604261415324_MainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604271641189_BalansYear.resx">
+      <DependentUpon>201604271641189_BalansYear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604290948592_HallTypes.resx">
+      <DependentUpon>201604290948592_HallTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604292012096_Styles.resx">
+      <DependentUpon>201604292012096_Styles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605011739340_LegalInformation.resx">
+      <DependentUpon>201605011739340_LegalInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605011742532_LegalInformation_1.resx">
+      <DependentUpon>201605011742532_LegalInformation_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605011807408_LegalInformation_2.resx">
+      <DependentUpon>201605011807408_LegalInformation_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605012127522_LegalInformation_3.resx">
+      <DependentUpon>201605012127522_LegalInformation_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605012208448_LegalInformation_4.resx">
+      <DependentUpon>201605012208448_LegalInformation_4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605081649576_ProjectSetting.resx">
+      <DependentUpon>201605081649576_ProjectSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605082205439_ProjectSettings.resx">
+      <DependentUpon>201605082205439_ProjectSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605100914222_GoogleID.resx">
+      <DependentUpon>201605100914222_GoogleID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605190813255_SmsAndHalls.resx">
+      <DependentUpon>201605190813255_SmsAndHalls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605191747396_SmsAditional.resx">
+      <DependentUpon>201605191747396_SmsAditional.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Diagrams\Order.cd" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

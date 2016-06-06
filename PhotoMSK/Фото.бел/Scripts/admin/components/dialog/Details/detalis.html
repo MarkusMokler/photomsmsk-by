@@ -1,0 +1,41 @@
+﻿<div class="container container--center  ">
+    <ul class="uk-comment-list">
+        @foreach (var item in Model)
+        {
+            if (item.Adresses.First().ToID == User.Identity.GetUserId())
+            {
+                <li>
+                    <article class="uk-comment">
+                        <header class="uk-comment-header">
+                            <img class="uk-comment-avatar" src="@item.Adresses.First().From.UserInformation.UserPhoto" width="50" height="50" alt="">
+                            <h4 class="uk-comment-title">@item.Adresses.First().From.UserInformation.FirstName @item.Adresses.First().From.UserInformation.LastName</h4>
+                            <div class="uk-comment-meta">12 days ago | Profile | #</div>
+                        </header>
+                        <div class="uk-comment-body">
+                            <p>{{item.text}}</p>
+                        </div>
+                    </article>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <ul>
+                        <li>
+                            <article class="uk-comment">
+                                <header class="uk-comment-header">
+                                    <img class="uk-comment-avatar" src="@item.Adresses.First().From.UserInformation.UserPhoto" width="50" height="50" alt="">
+                                    <h4 class="uk-comment-title">@item.Adresses.First().From.UserInformation.FirstName @item.Adresses.First().From.UserInformation.LastName</h4>
+                                    <div class="uk-comment-meta">12 days ago | Profile | #</div>
+                                </header>
+                                <div class="uk-comment-body">
+                                    <p>{{item.text}}</p>
+                                </div>
+                            </article>
+                        </li>
+                    </ul>
+                </li>
+            }
+        }
+    </ul>
+</div>

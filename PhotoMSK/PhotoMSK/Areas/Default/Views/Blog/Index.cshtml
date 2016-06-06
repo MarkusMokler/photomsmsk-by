@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Блог";
+}
+
+<div class="uk-container uk-container-center pad-top">
+    <div class="uk-grid">
+        
+        <div class="uk-width-2-10">
+            <header class="uk-text-left">
+                <a class="" href="/" title="PhotoMSK блог" rel="home">
+                    <img class="uk-border-circle" src="http://ph1.photomsk.by/fd/48/67//fd4867aaeeffb6e7f67f5f1059c8b0a96fc226c0ee531a3a76b6ff092c5f75de.jpg" height="100" width="100" alt="PhotoMSK Blog">
+                </a>
+                <h4 class="">
+                    <strong>PhotoMSK блог</strong>
+                </h4>
+                <p>
+                    <i class="uk-text-muted">Блог о самых последних мыслях команды PhotoMSK, а также последние новинки на нашем проекте.</i>
+                </p>
+            </header>
+            
+            <div id="secondary" class="widget-area" role="complementary">
+                <ul class="uk-nav uk-nav-menu uk-nav-side uk-nav-parent-icon">
+                    <li class="uk-nav-header uk-margin-small-bottom">Категории:</li>
+                    <li><a href="" class="uk-active">Новости компании</a></li>
+                    <li><a href="">Нововведения MSK</a></li>
+                    <li><a href="">Разработчикам</a></li>
+                    <li><a href="">Мысли в слух</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="uk-width-7-10 uk-offset-1-10">
+
+            <div class="uk-container-blog">
+                @for (int i = 0; i < 3; i++)
+                {
+                    <article class="uk-article">
+                        <h1 class="uk-article-title uk-text-center">
+                            <a href="#">Желаете узнать наши планы о проекте?</a>
+                        </h1>
+
+                        <ul class="uk-article-meta uk-text-center uk-subnav uk-subnav-line">
+                            <li class="uk-text-middle">
+                                <img src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="30" height="30" class="uk-border-circle uk-margin-small-right" alt="Автор статьи"> Роман Лунцевич
+                            </li>
+                            <li class="uk-text-middle"><time datetime="2014-09-03 10:20:00">06 сентября 2014</time></li>
+                            <li class="uk-text-middle">
+                                <a href="#" class="uk-link-999">3 комментария</a>
+                            </li>
+                        </ul>
+
+                        <p class="uk-text-center">
+                            <img class="uk-image-blog" src="http://www.pagekit.com/storage/blog/2014/pagekit-alpha-release.jpg" width="980" height="480" alt="Информация о проекте">
+                        </p>
+                        <p class="uk-article-lead">
+                            Мы поставили цель — создание лучшего и самого большого фото-ресурса для фотографов и людей, которые хотят получить качественные фотографии.
+                        </p>
+                        <p>Проект развивается мелкими шагами, но мы стараемся ускорить развитие данного ресурса. Мы прислушиваемся к мнению каждого человека, который хочет помочь в разработке данного ресурса. Если у вас есть какие-нибудь предложения, которые вам необходимы — мы с удовольствием будем ждать ваши идеи на info@photomsk.by</p>
+                        <p class="uk-text-center"><a class="uk-button" href="#">Прочитать еще...</a></p>
+
+                    </article>
+                }
+            </div>
+        </div>
+    </div>
+</div>

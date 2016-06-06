@@ -1,0 +1,82 @@
+/* ========================================================================
+   Component: Block
+ ========================================================================== */
+.block {
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+/* Phone landscape and bigger */
+@media (min-width: 768px) {
+  .block {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+/*
+ * Micro clearfix to make blocks more robust
+ */
+.block:before,
+.block:after {
+  content: "";
+  display: table;
+}
+.block:after {
+  clear: both;
+}
+/*
+ * Remove margin from the last-child
+ */
+.block > :last-child {
+  margin-bottom: 0;
+}
+/* Padding Modifier
+ ========================================================================== */
+/*
+ * Large padding
+ */
+.block--large {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+/* Tablets and bigger */
+@media (min-width: 768px) {
+  .block--large {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+/* Desktop and bigger */
+@media (min-width: 960px) {
+  .block--large {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+/* Color Modifier
+ ========================================================================== */
+/*
+ * Default
+ */
+.block--default {
+  background: #fff;
+}
+/*
+ * Muted
+ */
+.block--muted {
+  background: #f9f9f9;
+}
+/*
+ * Primary
+ */
+.block--primary {
+  background: #00a8e6;
+}
+/*
+ * Secondary
+ */
+.block--secondary {
+  background: #222;
+}

@@ -1,0 +1,84 @@
+﻿@{ Layout = "~/Areas/Default/Views/Shared/_LayoutRegistration.cshtml";}
+
+<div class="l-side">
+    <div class="uk-container uk-container-center pad-top-60">
+        <div class="uk-grid">
+            <div class="uk-width-large-3-10 uk-width-medium-5-10 uk-push-2-10 uk-width-small-1-1">
+                <div class="uk-grid">
+                    <div class="uk-width-1-1">
+                        <a href="~/">
+                            <img src="@Url.Content("~/Content/images/logo-black-big.png")" alt="PhotoMSK.by" />
+                        </a>
+                    </div>
+
+                    <div class="uk-width-1-1 pad-top-10">
+                        @{
+                            if (DateTime.Now.Hour >= 00 & DateTime.Now.Hour <= 06)
+                            {
+                                <h1 class="pad-top-20 uk-margin-bottom-remove">Доброй ночи!</h1>
+                                <small class="uk-text-muted">Эта ночь будет для вас отличным.</small>
+                            }
+                            if (DateTime.Now.Hour > 06 & DateTime.Now.Hour <= 12)
+                            {
+                                <h1 class="pad-top-20 uk-margin-bottom-remove">Доброе утро!</h1>
+                                <small class="uk-text-muted">Это утро будет для вас отличным.</small>
+                            }
+                            if (DateTime.Now.Hour > 12 & DateTime.Now.Hour <= 18)
+                            {
+                                <h1 class="pad-top-20 uk-margin-bottom-remove">Добрый день!</h1>
+                                <small class="uk-text-muted">Этот день будет для вас отличным.</small>
+                            }
+                            if (DateTime.Now.Hour > 18 & DateTime.Now.Hour <= 24)
+                            {
+                                <h1 class="pad-top-20 uk-margin-bottom-remove">Добрый вечер!</h1>
+                                <small class="uk-text-muted">Этот вечер будет для вас отличным.</small>
+                            }
+                        }
+                    </div>
+
+                    <div class="uk-width-1-1">
+                        <form action="@Url.Action("Create", "Register")">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            <div class="uk-grid pad-top-40 ">
+                                <div class="uk-width-1-1">
+                                    <label class="label-ms">Введите ваш номер телефона <i class="icon-help green-color" data-uk-tooltip title="На этот номер придет СМС с проверочным кодом."></i></label>
+                                    @Html.TextBox("id", "", new { @class = "uk-width-1-1 bold input-msk", id = "mobile-number", type = "tel" })
+                                </div>
+                            </div>
+
+                            <div class="uk-grid">
+                                <div class="uk-width-1-1 uk-text-right">
+                                    <a class="reset" href="@Url.Action("Index", "Home")">отмена</a>
+                                    <input type="submit" class="uk-form-button-small uk-button uk-button-success" value="Отправить">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="r-side uk-visible-large">
+
+    <div class="promo">
+        <h1 class="promo-main-head"><span class="promo-head-part">Глобальный </span> <br>сайт для фото</h1>
+
+        <div class="promo-content">
+            <div class="promo-message">
+                <div class="promo-message-decore">
+                    <span class="date">@DateTime.Now.Day <sup>@DateTime.Now.ToString("MMMM")</sup></span>
+                    <p class="city">
+                        PhotoMSK — это место, где фотографы могут обмениваться опытом одновременно приобретая новый!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

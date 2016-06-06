@@ -1,0 +1,55 @@
+﻿@using System.Web.Mvc.Html
+@using PhotoMSK.Extensiolns
+@model PhotoMSK.ViewModels.Route.PublicViewModel
+
+@section Footer
+{
+    @Html.Partial("~/Themes/Page/photocollege.by/Views/Footer/Footer.cshtml")
+}
+@section scripts
+{
+    <script>
+        App.owner = '@Model.ID';
+
+        $(function () {
+
+            var photocollege = window.PublicDetails.extend(
+                {
+                    yaParams: {
+                        order_id: guid(),
+                        order_price: 600000,
+                        currency: "BUR",
+                        exchange_rate: 1
+                    },
+                    initialize: function () {
+                        var self = this;
+                        $("[data-role-dialog]").on({
+                            'show.uk.modal': function () {
+                                yaCounter29029505.reachGoal("showdialog", self.yaParams);
+                            }
+                        });
+                        photocollege.__super__.initialize.call(this);
+                    },
+                    sendRequest: function () {
+                        yaCounter29029505.reachGoal('submitdialog', this.yaParams);
+                        photocollege.__super__.sendRequest.call(this);
+                    }
+                });
+            new photocollege().render();
+        });
+    </script>
+}
+
+@section Main
+{
+    @Html.Partial("~/Themes/Page/photocollege.by/Views/Main/_FirstBlock.cshtml")
+    @Html.Partial("~/Themes/Page/photocollege.by/Views/Main/_SecondBlock.cshtml")
+    @Html.Partial("~/Themes/Page/photocollege.by/Views/Main/_ThirdBlock.cshtml")
+    @Html.Partial("~/Themes/Page/photocollege.by/Views/Main/_FourthBlock.cshtml")
+    @Html.Partial("~/Themes/Page/photocollege.by/Views/Main/_FifthBlock.cshtml")
+    @Html.Partial("~/Themes/Page/photocollege.by/Views/Main/_SixthBlock.cshtml")
+    @Html.Partial("~/Themes/Page/photocollege.by/Views/Main/_SeventhBlock.cshtml")
+    @Html.Partial("~/Themes/Page/photocollege.by/Views/Main/_EighthBlock.cshtml")
+    @Html.Partial("~/Themes/Page/photocollege.by/Views/Main/_NinthBlock.cshtml")
+    @Html.Partial("~/Themes/Page/photocollege.by/Views/Main/_TenthBlock.cshtml")
+}

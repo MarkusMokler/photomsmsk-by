@@ -1,0 +1,43 @@
+﻿<div class="grid grid--small grid--divider">
+    <div class="col--2-10">
+        <ul class="uk-nav uk-nav-menu uk-nav-side uk-nav-parent-icon  " data-uk-switcher="{connect:'#tab-halls', toggle:'> *:not(.uk-nav-header)'}">
+            <li aria-expanded="false"><a data-msk-href>Все</a></li>
+            <li aria-expanded="false" class="uk-nav-divider"></li>
+            <li aria-expanded="true" class="active"><a data-msk-href>Активны</a></li>
+            <li aria-expanded="false"><a data-msk-href>На ремонте</a></li>
+            <li aria-expanded="false"><a data-msk-href>Закрыты</a></li>
+        </ul>
+    </div>
+    <div class="col--8-10">
+        <ul class="grid grid--small grid-col--1-2 grid-col--large-1-5 grid-col--medium-1-4">
+            <li class="margin--bottom-small" data-ng-repeat="hall in item.halls">
+                <div class="panel panel--box">
+                    <div class="uk-panel-teaser">
+                        <img src="{{hall.teaserImageUrl}}" alt="{{hall.name}}">
+                    </div>
+                    <p class="text--h4 text--truncate">
+                        <a data-msk-href>{{hall.name}}</a>
+                    </p>
+                    <hr class="margin--bottom-small">
+                    <ul class="list list--line list--horizontal margin--reset text--center">
+                        <li class="text--center">
+                            <a href="/admin/photostudio/{{item.shortcut}}/hall/{{hall.id}}/edit">
+                                <i class="icon-cog"></i>
+                                <br>
+                                <small class="text--small">изменить</small>
+                            </a>
+                        </li>
+                        <li class="text--center">
+                            <a data-msk-href data-ng-click="deleteHall(hall.id)">
+                                <i class="icon-trash"></i>
+                                <br>
+                                <small class="text--small">удалить</small>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</div>

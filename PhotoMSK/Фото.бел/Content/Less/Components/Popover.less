@@ -1,0 +1,282 @@
+// out: ../../css/Components/Popover.css, compress: true
+// **************** Variables ****************
+// ~~ padding
+@popover-padding: 20px;
+
+@popover--border-color-warning: #ffc716;
+
+// ******************* Base ******************
+
+.popover {
+    width: 250px;
+    border-radius: 0;
+    box-shadow: 0 8px 18px -3px rgba(0,0,0,.5);
+    background: #fff;
+    &--warning {
+        box-shadow: 0 0 0 4px @popover--border-color-warning;
+    }
+
+    &__close{
+        position: absolute;
+        right: 10px;;
+    }
+
+    &&--booking{
+        display: block;
+        border: 4px solid @popover--border-color-warning;
+    }
+
+    &__header {
+        padding: @popover-padding / 2;
+        border-bottom: 1px solid #ddd;
+    }
+
+    &__content{
+        padding: (@popover-padding/2) @popover-padding (@popover-padding/2) @popover-padding;
+    }
+
+    &__close{
+        font-size: 22px;
+        color: #999;
+        cursor: pointer;
+        text-decoration: none;
+        background: #fff;
+        &:hover{
+            color: #2B2B2B;
+        }
+    }
+
+    &__footer {
+        padding: (@popover-padding/2);
+        margin: 0;
+        border-top: 1px solid #ddd;
+    }
+
+    &__penalty{
+        position: relative;
+        margin: 15px 0 10px 0;
+        background: #da314b; /* Для старых браузров */
+    	background: -webkit-repeating-linear-gradient(135deg, #da314b 0px, #da314b 10px, white 10px, white 20px);
+    	background: -moz-repeating-linear-gradient(135deg, #da314b 0px, #da314b 10px, white 10px, white 20px);
+    	background: -o-repeating-linear-gradient(135deg, #da314b 0px, #da314b 10px, white 10px, white 20px);
+    	background: repeating-linear-gradient(135deg, #da314b 0px, #da314b 10px, white 10px, white 20px);
+
+        &--border{
+            padding: (@popover-padding / 2);
+        }
+
+        &--content{
+            padding: @popover-padding (@popover-padding / 2) (@popover-padding / 2) (@popover-padding / 2);
+            background: #fff;
+        }
+
+        &--blocked{
+            position: absolute;
+            display: block;
+            top: -20px;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            border-radius: 30px;
+            background: #da314b;
+            border: 10px solid #fff;
+            transform: translateX(-50%);
+
+            color: #fff;
+            font-size: 1.4rem;
+            text-align: center;
+            line-height: 30px;
+        }
+    }
+
+    &__avatar{
+        background: #ddd;
+        width: 70px;
+        height: 70px;
+        border-radius: 100px;
+        overflow: hidden;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        &--empty{
+            color: #fff;
+            font-size: 3rem;
+            text-align: center;
+            line-height: 70px;
+        }
+
+        &--empty-small{
+            color: #fff;
+            text-align: center;
+            width: 40px;
+            height: 40px;
+            font-size: 25px;
+            line-height: 40px;
+        }
+    }
+}
+
+
+
+// *********** OLD STYLE *************
+//
+// Popovers
+// --------------------------------------------------
+
+//== Popovers
+//
+//##
+@zindex-popover:           1060;
+@border-radius-large:       6px;
+//** Popover body background color
+@popover-bg:                          #fff;
+//** Popover maximum width
+@popover-max-width:                   276px;
+//** Popover border color
+@popover-border-color:                rgba(0,0,0,.2);
+//** Popover fallback border color
+@popover-fallback-border-color:       #ccc;
+
+//** Popover title background color
+@popover-title-bg:                    darken(@popover-bg, 3%);
+
+//** Popover arrow width
+@popover-arrow-width:                 10px;
+//** Popover arrow color
+@popover-arrow-color:                 @popover-bg;
+
+//** Popover outer arrow width
+@popover-arrow-outer-width:           (@popover-arrow-width + 1);
+//** Popover outer arrow color
+@popover-arrow-outer-color:           rgba(0, 0, 0, 0.2);
+//** Popover outer arrow fallback color
+@popover-arrow-outer-fallback-color:  darken(@popover-fallback-border-color, 10%);
+
+
+.popover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: @zindex-popover;
+    display: none;
+    max-width: @popover-max-width;
+    padding: 0;
+    border-radius: 0;
+    text-align: left;
+    border: 1px solid rgba(0, 0, 0, .1);
+
+    background-color: @popover-bg;
+    background-clip: padding-box;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+
+    &.top     { margin-top: -@popover-arrow-width; }
+    &.right   { margin-left: @popover-arrow-width; }
+    &.bottom  { margin-top: @popover-arrow-width; }
+    &.left    { margin-left: -@popover-arrow-width; }
+}
+
+.popover-title {
+    margin: 0; // reset heading margin
+    padding: 8px 14px;
+    background-color: @popover-title-bg;
+    border-bottom: 1px solid darken(@popover-title-bg, 5%);
+    border-radius: (@border-radius-large - 1) (@border-radius-large - 1) 0 0;
+}
+
+// .popover-content {
+    // padding: 10px;
+    //
+    // &--collapse{
+    //     margin: -10px;
+    // }
+// }
+
+// Arrows
+//
+// .arrow is outer, .arrow:after is inner
+
+.popover > .arrow {
+    &,
+    &:after {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    }
+}
+.popover > .arrow {
+    border-width: @popover-arrow-outer-width;
+}
+.popover > .arrow:after {
+    border-width: @popover-arrow-width;
+    content: "";
+}
+
+.popover {
+    &.top > .arrow {
+        left: 50%;
+        margin-left: -@popover-arrow-outer-width;
+        border-bottom-width: 0;
+        border-top-color: @popover-arrow-outer-fallback-color;
+        border-top-color: @popover-arrow-outer-color;
+        bottom: -@popover-arrow-outer-width;
+    &:after {
+        content: " ";
+        bottom: 1px;
+        margin-left: -@popover-arrow-width;
+        border-bottom-width: 0;
+        border-top-color: @popover-arrow-color;
+    }
+  }
+  &.right > .arrow {
+    top: 50%;
+    left: -@popover-arrow-outer-width;
+    margin-top: -@popover-arrow-outer-width;
+    border-left-width: 0;
+    border-right-color: @popover-arrow-outer-fallback-color;
+    border-right-color: @popover-arrow-outer-color;
+
+    &:after {
+        content: " ";
+        left: 1px;
+        bottom: -@popover-arrow-width;
+        border-left-width: 0;
+        border-right-color: @popover-arrow-color;
+    }
+  }
+  &.bottom > .arrow {
+    left: 50%;
+    margin-left: -@popover-arrow-outer-width;
+    border-top-width: 0;
+    border-bottom-color: @popover-arrow-outer-fallback-color;
+    border-bottom-color: @popover-arrow-outer-color;
+    top: -@popover-arrow-outer-width;
+
+    &:after {
+        content: " ";
+        top: 1px;
+        margin-left: -@popover-arrow-width;
+        border-top-width: 0;
+        border-bottom-color: @popover-arrow-color;
+    }
+  }
+
+  &.left > .arrow {
+    top: 50%;
+    right: -@popover-arrow-outer-width;
+    margin-top: -@popover-arrow-outer-width;
+    border-right-width: 0;
+    border-left-color: @popover-arrow-outer-fallback-color;
+    border-left-color: @popover-arrow-outer-color;
+
+    &:after {
+        content: " ";
+        right: 1px;
+        border-right-width: 0;
+        border-left-color: @popover-arrow-color;
+        bottom: -@popover-arrow-width;
+    }
+  }
+}

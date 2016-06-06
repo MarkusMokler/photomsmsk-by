@@ -1,0 +1,53 @@
+﻿@model PhotoMSK.Areas.Default.ViewData.Shared._PartialLoginViewData
+
+<div id="signin-modal" class="uk-modal">
+    <div class="uk-modal-dialog uk-modal-dialog-phones uk-modal-dialog-phones-small">
+        @using (Html.BeginForm("Login", "Account", new { ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+        {
+            <a href="" class="uk-modal-close uk-close"></a>
+            <section class="uk-text-center">
+                <h2 class="uk-margin-bottom-remove bold">Добро пожаловать на сервис «PhotoMSK™»</h2>
+                <small class="uk-text-muted">Мы стараемся сделать лучший портал для фото-бизнеса...</small>
+            </section>
+            <section class="uk-margin">
+                <p class="uk-text-center">
+                    <a class="btn uk-border-rounded" style="width: auto" href="@Url.Action("Index", "Register")">Зарегистрируйтесь</a>
+                </p>
+            </section>
+
+            <div>
+                <div class="orbullet">ИЛИ</div>
+                <div class="orbullet-divider"></div>
+            </div>
+
+            <section class="uk-panel uk-panel-box uk-margin-top">
+
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+
+                <div class="uk-width-large-1-1 uk-width-small-1-1">
+                    <label class="label-ms">Логин</label>
+                    @Html.TextBoxFor(m => m.Item.UserName, new { @class = "input-msk uk-width-large-1-1 uk-width-small-1-1" })
+                    @Html.ValidationMessageFor(m => m.Item.UserName)
+                </div>
+
+                <div class="uk-width-large-1-1 uk-width-small-1-1">
+                    <label class="label-ms">Пароль</label>
+                    @Html.PasswordFor(m => m.Item.Password, new { @class = "input-msk uk-width-large-1-1 uk-width-small-1-1" })
+                    @Html.ValidationMessageFor(m => m.Item.Password)
+                </div>
+
+            </section>
+
+            <div class="uk-margin">
+                <input type="submit" class="bold uk-button uk-button-reviews uk-button-reviews-success uk-button-reviews-success-border uk-width-1-1" value="Войти на сервис" />
+            </div>
+
+            <div class="uk-text-center">
+                <small class="uk-text-muted">
+                    Ознакомьтесь с <a href="/terms" class="uk-link-line green-color">правилами</a> сервиса «PhotoMSK™» @DateTime.Now.Year
+                </small>
+            </div>
+        }
+    </div>
+</div>

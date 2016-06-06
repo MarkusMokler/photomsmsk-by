@@ -1,0 +1,244 @@
+<div class="modal" data-ng-class="{'uk-open' : state.editBookingEvent}">
+    <!-- <div class="modal__dialog modal__dialog--fluid"> -->
+    <div class="modal__dialog modal__dialog--large">
+        <a data-msk-href class="modal__close icon-cross-circle" data-ng-click="state.editBookingEvent = !state.editBookingEvent"></a>
+        <section class="modal__header text--center">
+            <p class="text--h2 margin--bottom-small">Редактирование брони</p>
+            <i class="modal__header__icon icon-cog"></i>
+        </section>
+        <div class="grid grid--small grid--divider">
+            <div class="col--1-2">
+                <div class="grid grid--small">
+                    <div class="col--3-10">
+                        <div class="select margin--top-small">
+                            <select name="">
+                                <option value="">Не оплачен</option>
+                                <option value="">Оплачен</option>
+                                <option value="">Предоплата</option>
+                                <option value="">Залог</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col--5-10">
+                        <img class="border--rounded margin--right-small float--left" src="{{event.createBy.userPhoto}}" width="50" height="50" alt="{{event.createBy.firstName}} {{event.createBy.lastName}}">
+                        <p class="margin--top-small">
+                            <a data-msk-href>{{event.createBy.firstName}}&nbsp;{{event.createBy.lastName}}</a>
+                            <br>
+                            <small class="text--small text--muted">забронировал в : {{creationTime | date:"dd-MM-yyyy"}}</small>
+                        </p>
+                    </div>
+                </div>
+                <hr>
+
+                <div class="grid grid--small">
+                    <div class="col--1-1">
+                        <div class="comment">
+                            <div class="comment__header">
+                                <!--<img class="comment__avatar border--rounded" src="http://ph1.photomsk.by/ba/f4/00//baf400530a30e78362f13fbaeb1d32d1622329db9718a85659052f119df0e814.jpg" width="50" height="50" alt="">
+                                -->
+
+                                <p class="comment__title margin--top-small">{{event.hall.name}}</p>
+                                <div class="comment__meta">зал</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col--3-5">
+                        <div class="grid grid--small margin--reset">
+                            <div class="col--1-2">
+                                <label class="label label--rounded">Начало</label>
+                                <input type="time" class="input input--small input--rounded col--1-1" data-ng-model="start">
+                            </div>
+                            <div class="col--1-2">
+                                <label class="label label--rounded">Конец</label>
+                                <input type="time" class="input input--small input--rounded col--1-1" data-ng-model="end">
+                            </div>
+                        </div>
+                        <div class="margin--top">
+                            <label class="label">Тэги</label>
+                            <tags-input data-ng-model="tags"></tags-input>
+                        </div>
+                    </div>
+
+                    <div class="col--2-5">
+                        <label class="label">Описание</label>
+                        <textarea class="input col--1-1" name="name" rows="10" cols="40" data-ng-model="event.description"></textarea>
+                    </div>
+
+                    <div class="col--1-2">
+                        <label class="label">Предоплата</label>
+                        <input type="text" class="input col--1-1" data-ng-model="event.prePayed" placeholder="***"/>
+
+                        <label class="label">Всего</label>
+                        <input type="text" class="input col--1-1" data-ng-model="event.price" placeholder="***"/>
+
+                        <label class="label">Осталось</label>
+                        <input type="text" class="input col--1-1" data-ng-model="dp" readonly="readonly" placeholder="***" />
+                    </div><br/>
+                </div>
+                <button class="button button--footer margin--reset button--success col--1-2" data-ng-click="updateEvent()">Обновить</button>
+            </div>
+            <div class="col--1-2">
+                <ul class="tab tab--small tab--full margin--bottom">
+                    <li>
+                        <a data-ng-click="editEventTab = 1" data-ng-class="{'active' : editEventTab == 1}" data-msk-href>Клиент</a>
+                    </li>
+                    <li>
+                        <a data-ng-click="editEventTab = 2" data-ng-class="{'active' : editEventTab == 2}" data-msk-href>Активность</a>
+                    </li>
+                    <li>
+                        <a data-ng-click="editEventTab = 3" data-ng-class="{'active' : editEventTab == 3}" data-msk-href>Линковка</a>
+                    </li>
+                </ul>
+
+                <ul>
+                    <li data-ng-if="editEventTab == 1">
+                        <p class="text--center margin--bottom">
+                            <i class="text--h5 icon-beenhere text--green"></i>
+                            <span>{{client.bookings}} брони</span>
+
+                            <i class="text--h5 icon-subdirectory_arrow_right text--blue"></i>
+                            <span>{{client.movings}} переноса</span>
+
+                            <i class="text--h5 icon-backspace text--red"></i>
+                            <span>{{client.discards}} отмен</span>
+                        </p>
+                        <div class="grid">
+                            <div class="col--2-5">
+                                <div class="position--relative text--center">
+                                    <img src="{{client.userPhoto}}" class="avatar avatar--large" alt="{{client.lastName}} {{client.firstName}}">
+                                    <div class="avatar__desc">
+                                        <span class="text--bold ng-binding">{{client.total | number}}</span>
+                                        <small class="text--small text--muted">руб.</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col--3-5">
+                                <p class="text--h3 text--bold margin--top-large">{{client.lastName}} {{client.firstName}}</p>
+                                <p><span>Беларусь - Минск</span></p>
+                                <p><span>Фотограф</span></p>
+                                <p><i class="text--small text--muted icon-phone"></i>&nbsp;<a href="tel:{{event.phone}}" class="text--small">{{event.phone}}</a></p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <hr class="margin--v-small">
+                            <ul class="tags__list">
+                                <li data-ng-repeat="tag in client.tags">
+                                    <a data-msk-href class="tag">{{tag}}</a>
+                                </li>
+                                <li><a data-msk-href class="button button--mini button--rounded text--muted icon-add"></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li data-ng-if="editEventTab == 2">
+                        <table class="table table--hover table--middle">
+                            <thead>
+                                <tr>
+                                    <th width="40" class="text--center">
+                                        <i class="icon-more_horiz" uib-tooltip="Произошедшие действия"></i>
+                                    </th>
+                                    <th class="text--center" width="50">
+                                        <i class="icon-alarm2" uib-tooltip="Время"></i>
+                                    </th>
+                                    <th>Описание</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="activity in activities">
+                                    <td>
+                                        <span class="activity__status icon icon-alarm_on text--green" uib-tooltip="Бронирование через админа"></span>
+                                    </td>
+                                    <td>21:21</td>
+                                    <td>{{activity.description}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                    <li data-ng-if="editEventTab == 3">
+                        Ссылки
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- <div class="modal__content margin--top-large" data-ng-if="isActivityMode">
+            <table class="table table--hover table--middle">
+                <thead>
+                    <tr>
+                        <th width="40">
+                            <i class="icon-more_horiz" uib-tooltip="Произошедшие действия"></i>
+                        </th>
+                        <th class="text--center" width="50">
+                            <i class="icon-alarm2" uib-tooltip="Время"></i>
+                        </th>
+                        <th class="text--center" width="250">Клиент</th>
+                        <th>Описание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="activity__status icon icon-alarm_on text--green" uib-tooltip="Бронирование через админа"></span>
+                        </td>
+                        <td>18:56</td>
+                        <td>
+                            <div class="activity__status__event">
+                                <div class="activity__status__avatar">
+                                    <img src="http://ph1.photomsk.by/cc/a2/9a//cca29ada63c5f20dc498f86b384c76ea7f03d2fb3fb70a44efcc3f4a7907283a.jpg" alt="Черняк">
+                                </div>
+                                <p>
+                                    <a href="/admin/eventrmation/ff2bf58c-7bdb-4d5a-997c-8f1cf39abbab">
+                                        <span class="activity__status__name">Сергей Черняк</span>
+                                    </a>
+                                    <br>
+                                    <a data-msk-href class="text--muted text--small">+375298778179</a>
+                                </p>
+                            </div>
+                        </td>
+                        <td>
+                            зал Прованс в студия Фотостейдж на 12.04 c 19:00 по 21:00
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> -->
+        <!-- <div class="modal__content margin--top-large" data-ng-if="!isActivityMode">
+            <div class="grid grid--small">
+                <div class="col--1-10">
+                    <img src="http://ph1.photomsk.by/cc/a2/9a//cca29ada63c5f20dc498f86b384c76ea7f03d2fb3fb70a44efcc3f4a7907283a.jpg" width="40" height="40" class="border--rounded" alt="">
+                </div>
+                <div class="col--5-10">
+                    <div class="input__group">
+                        <label class="label">Телефон</label>
+                        <input type="text" class="input margin--reset col--1-1">
+                        <i class="icon-magnifier text--muted"></i>
+                    </div>
+                </div>
+                <div class="col--4-10">
+                    <label class="label">
+                        Тэги
+                    </label>
+                    <input type="text" class="input col--1-1">
+                </div>
+                <div class="col--1-1 margin--top-small">
+                    <label class="label">Описание</label>
+                    <textarea class="input col--1-1" name="name" rows="8" cols="40"></textarea>
+                </div>
+                <div class="col--1-2 margin--top-small">
+                    <label class="label">Начало аренды</label>
+                    <input type="time" class="input col--1-1">
+                </div>
+                <div class="col--1-2 margin--top-small">
+                    <label class="label">Конец аренды</label>
+                    <input type="time" class="input col--1-1">
+                </div>
+            </div>
+        </div> -->
+
+        <section class="modal__footer text--center">
+            <div class="grid grid--collapse">
+                <button class="button button--footer col--1-2" data-ng-click="cancelChanges()">Отменить</button>
+                <button class="button button--footer margin--reset button--success col--1-2" data-ng-click="saveChanges()">Принять</button>
+            </div>
+        </section>
+    </div>
+</div>

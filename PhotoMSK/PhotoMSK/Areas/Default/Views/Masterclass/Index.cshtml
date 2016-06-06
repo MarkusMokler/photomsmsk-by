@@ -1,0 +1,119 @@
+﻿@model PhotoMSK.Areas.Default.ViewData.Masterclass.IndexViewData
+
+@{
+    ViewBag.Title = "Мастер-классы";
+}
+
+<div class="uk-main-page-body">
+    <div class="uk-page-bar-panel">
+        <div class="uk-container uk-container-center">
+            <ul class="uk-margin-remove uk-subnav uk-subnav-line uk-subnav-breadcrumb">
+                <li><a href="~/">Главная</a></li>
+                <li class="uk-active"><a href="#">Мастер-классы</a></li>
+                <li>
+                    <span>найдено <strong>@Model.Page.Elements.Count()</strong> шт.</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="uk-container uk-container-center">
+        <div class="uk-grid">
+            <div class="uk-width-1-2">
+                <h1>Найдите себе событие</h1>
+            </div>
+            <div class="uk-width-1-2">
+
+            </div>
+        </div>
+
+        <div class="uk-grid">
+            <div class="uk-width-1-1">
+                <ul class="uk-tab uk-tab-events" data-uk-tab="{connect:'#tab-content'}">
+                    <li class="uk-active"><a href="#">Мастер классы</a></li>
+                    <li class="uk-disabled"><a href="#">Встречи</a></li>
+                    <li class="uk-tab-responsive uk-active uk-hidden"><a>Tab</a><div class="uk-dropdown uk-dropdown-small"><ul class="uk-nav uk-nav-dropdown"></ul><div></div></div></li>
+                </ul>
+
+                <ul id="tab-content" class="uk-switcher uk-margin-large">
+                    <li class="uk-active">
+                        <div class="uk-grid">
+                            <div class="uk-width-1-4">
+                                <ul class="uk-nav uk-nav-menu uk-nav-side uk-nav-parent-icon">
+                                    <li class="uk-nav-header uk-margin-small-bottom">Категории:</li>
+                                    <li><a href="" class="uk-active">Ретушь фотографий</a></li>
+                                    <li><a href="">Work shop</a></li>
+                                    <li><a href="">Фотосъемки</a></li>
+                                    <li><a href="">Брендинг</a></li>
+                                    <li class="uk-nav-divider"></li>
+
+                                </ul>
+                            </div>
+
+                            <div class="uk-width-3-4">
+                                @foreach (var item in Model.Page.Elements)
+                                {
+                                    <section class="uk-grid uk-master-class">
+                                        <div class="uk-width-1-4">
+                                            @*<img class="uk-border-rounded" src="@item.ImageUrl" alt="Мастер класс" />*@
+                                            <img class="uk-border-rounded" src="@item.ImageUrl" alt="Мастер класс" />
+                                        </div>
+                                        <header class="uk-width-3-4">
+                                            <h1 class="bold uk-margin-remove"><a href="@item.Url" class="uk-link-muted">@item.Title</a> </h1>
+                                            <small class="uk-text-muted"><b>Тема:</b> ретушь фотографий</small>
+                                            <ul class="uk-subnav uk-subnav-line uk-width-1-1 teaser-master-class">
+                                                <li class="teaser-master-class-meta">
+                                                    <i class="uk-master-class-meta-icon icon-clock2"></i>
+                                                    <strong class="uk-margin-small-left bold">@String.Format("{0:HH:mm}", item.Start)</strong>
+                                                    <span class="master-class-time-desc">
+                                                        начало
+                                                    </span>
+                                                </li>
+                                                <li class="teaser-master-class-meta">
+                                                    <i class="uk-master-class-meta-icon icon-clock2"></i>
+                                                    <strong class="uk-margin-small-left bold">@String.Format("{0:HH:mm}", item.End)</strong>
+                                                    <span class="master-class-group-desc">
+                                                        окончание
+                                                    </span>
+                                                </li>
+                                                <li class="teaser-master-class-meta">
+                                                    <i class="uk-master-class-meta-icon icon-users"></i>
+                                                    <strong class="uk-margin-small-left bold">@item.Listeners</strong>
+                                                    <span class="master-class-people-desc">
+                                                        слушателей
+                                                    </span>
+                                                </li>
+                                                <li class="teaser-master-class-meta">
+                                                    <i class="uk-master-class-meta-icon icon-calendar"></i>
+                                                    <strong class="uk-margin-small-left bold">@item.Days</strong>
+                                                    <span class="master-class-people-desc">
+                                                        дня
+                                                    </span>
+                                                </li>
+                                            </ul>
+
+                                            <div class="uk-comment-header uk-master-class-owner">
+                                                <img class="uk-comment-avatar uk-border-circle uk-border-solid" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                                                <h5 class="uk-comment-title">
+                                                    <a href="#" class="uk-link-muted bold">@item.AuthorName</a>
+                                                </h5>
+                                                <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                                                    <li><span class="uk-link-muted">автор МК</span></li>
+                                                </ul>
+                                            </div>
+                                        </header>
+                                        <div>
+
+                                        </div>
+                                    </section>
+                                }
+                            </div>
+                        </div>
+                    </li>
+                    <li>Раздел находится в разработке</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>

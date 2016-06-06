@@ -1,0 +1,44 @@
+<div class="container container--center">
+    <div class="grid margin--top-large">
+        <div class="container--center col--large-1-2 col--medium-1-2 col--small-1-1">
+            <div class="panel panel--box panel--white panel--shadow">
+                <div class="grid">
+
+                    <div class="col--1-1 text--center">
+                        <p class="text--h1 margin--v-large">Добро пожаловать :)</p>
+                        <p class="text--muted margin--bottom">После ввода логина и пароля Вас перенаправит в личный кабинет, а если вы у нас первый раз, то мы предлагаем вам...</p>
+                        <a href="/register" class="button button--success border--rounded">зарегистрироваться</a>
+                    </div>
+
+                    <div class="col--1-1 margin--top">
+                        <div class="orbullet">войти</div>
+                        <div class="orbullet-divider"></div>
+                    </div>
+
+                    <div class="col--1-1">
+                        <div class="grid">
+                            <span class="text--red">{{loginError}}</span>
+                            <div class="col--large-1-1 col--small-1-1">
+                                <label class="label">Логин</label>
+                                <input data-ng-class="{'error': !loginErrorEmpty}" type="text" class="input col--large-1-1 col--small-1-1" data-ng-model="item.userName" tabindex="1" />
+                            </div>
+
+                            <div class="col--large-1-1 col--small-1-1">
+                                <label class="label">Пароль</label>
+                                <input data-ng-class="{'error': !loginErrorEmpty}" type="password" class="input col--large-1-1 col--small-1-1" data-ng-model="item.password" tabindex="2" />
+                            </div>
+
+                        </div>
+                        <div class="grid">
+                            <div class="col--1-1 text--right">
+                                <a class="reset" href="/register" tabindex=5"">восстановить</a>
+                                <a class="reset" href="/" tabindex="4">отмена</a>
+                                <button class="button button--success border--rounded" data-ng-click="login()" tabindex="3">Отправить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

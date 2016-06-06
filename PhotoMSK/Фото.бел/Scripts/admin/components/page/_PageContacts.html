@@ -1,0 +1,45 @@
+﻿
+<div class="grid">
+    <div class="col--8-10 ">
+        <ul class="uk-subnav uk-subnav-pill uk-subnav-line" data-uk-switcher="{connect:'#content-people'}">
+            <li><button class="button uk-active" data-val="all">Все залы</button></li>
+
+            <li><button class="button">Основной</button></li>
+        </ul>
+
+        <hr class="small-line">
+        <ul id="content-people" class="uk-switcher">
+            <li class="uk-active">
+                <ul class="grid">
+                    @for (int i = 0; i < 20; i++)
+                    {
+                        <li class="col--1-1">
+                            <header class="uk-comment-header">
+                                <img class="uk-comment-avatar uk-border-circle" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                                <h4 class="uk-comment-title">Фамилия Имя</h4>
+                                <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                                    <li>
+                                        <small>
+                                            <a href="" class="uk-link-999">Выгнать</a>
+                                        </small>
+                                    </li>
+                                    <li>
+                                        <small>
+                                            <a href="" class="uk-link-999">В черный список</a>
+                                        </small>
+                                    </li>
+                                    <li>
+                                        <small>
+                                            <a href="" class="uk-link-999">Удалить</a>
+                                        </small>
+                                    </li>
+                                </ul>
+                            </header>
+                        </li>
+                    }
+                </ul>
+            </li>
+            <li>Проверка123123</li>
+        </ul>
+    </div>
+</div>

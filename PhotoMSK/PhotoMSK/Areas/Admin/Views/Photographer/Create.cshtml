@@ -1,0 +1,77 @@
+﻿@model PhotoMSK.Models.EditViewModel.Routes.PhotographerEditModel
+@{
+    ViewBag.Title = "Создание новой фотостудии";
+}
+<div id="view-photographer-create" class="uk-container uk-container-center">
+    <div class="uk-grid">
+        <div class="uk-width-1-1 uk-width-small-1-1 uk-width-large-1-1 uk-margin-top uk-text-center uk-grid-margin">
+            <span class="uk-h2">
+                Создание нового фотографа
+            </span>
+            <p class="uk-margin-remove">
+                <small class="uk-text-muted">
+                    После создания нового профиля фотографа Вы будете промодерированы нашими специалистами <br />и в ближайшее время профиль появится в публичном каталоге всех фотографов
+                </small>
+            </p>
+            <hr class="small-line" />
+        </div>
+    </div>
+    <div class="uk-panel uk-panel-space uk-panel--white uk-panel--shadow uk-panel--border-radius uk-margin-top">
+        <ul class="uk-grid uk-grid-small uk-grid-width-1-3 uk-switcher-step" data-role-menu data-uk-switcher="{connect:'#switch-from-content'} ">
+            <li class="uk-active">
+                <a href="" class="uk-link-reset uk-flex uk-flex-middle">
+                    <i class="icon-license"></i>
+                    <span>Контактная информация</span>
+                </a>
+            </li>
+            <li>
+                <a href="" class="uk-link-reset uk-flex uk-flex-middle">
+                    <i class="icon-phone-handset"></i>
+                    <span>Телефоны и адрес</span>
+                </a>
+            </li>
+            <li>
+                <a href="" class="uk-link-reset uk-flex uk-flex-middle">
+                    <i class="icon-cart"></i>
+                    <span>Условия и стоимость</span>
+                </a>
+            </li>
+        </ul>
+        <div class="uk-grid">
+            <div class="uk-width-1-1">
+                <ul id="switch-from-content" data-role-content class="uk-switcher">
+                    <li>
+                        <div class="uk-grid" data-uk-grid-margin>
+                            @Html.Partial("../Shared/RouteCreate/_CoverAndAvatar", Model)
+                            @Html.Partial("../Shared/RouteCreate/_FIOShortcutDescription", Model)
+                            @Html.Partial("../Shared/RouteCreate/_ButtonNextStep", Model)
+                        </div>
+                    </li>
+                    <li>
+                        <div class="uk-grid" data-uk-grid-margin>
+                            @Html.Partial("../Shared/RouteCreate/_Phone", Model)
+                            @Html.Partial("../Shared/RouteCreate/_Location", Model)
+                            @Html.Partial("../Shared/RouteCreate/_ButtonNextStep", Model)
+                        </div>
+                    </li>
+                    <li>
+                        <div class="uk-grid" data-uk-grid-margin>
+                            @Html.Partial("../Shared/RouteCreate/_Pay", Model)
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            var create = new App.Photographer.CreateView();
+            create.render();
+        })
+    </script>
+}

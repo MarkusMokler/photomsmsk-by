@@ -1,0 +1,120 @@
+<div class="content--admin">
+    <div>
+        <data-bread-crumbs />
+    </div>
+
+    <div class="container--fluid">
+        <div class="activity__sort">
+            <div class="grid grid--small">
+                <div class="col--large-8-10 col--medium-7-10">
+                    <!-- <p class="margin--top-small"> -->
+                    Статистика за
+                    <!-- <a data-msk-href class="link text--green">текущий месяц <i class="text--small icon-chevron-down"></i></a></p> -->
+                    <a data-ng-click="before()" class="button button--mini button--rounded icon-arrow_back"></a>
+                    <span uib-dropdown on-toggle="toggled(open)">
+                        <a href id="statistics" class="link text--green" uib-dropdown-toggle>
+                            текущую неделю
+                            <!-- <i class="text--small icon-chevron-down"></i> -->
+                        </a>
+                        <ul uib-dropdown-menu aria-labelledby="statistics">
+                            <li role="menuitem">
+                                <a data-msk-href>неделю</a>
+                            </li>
+                            <li role="menuitem">
+                                <a data-msk-href>месяц</a>
+                            </li>
+                            <li role="menuitem">
+                                <a data-msk-href>год</a>
+                            </li>
+                        </ul>
+                    </span>
+                    <!-- <a ng-click="after()" class="uk-icon-arrow-circle-o-right uk-icon-button">&nbsp;</a> -->
+                    <a data-ng-click="after()" class="button button--mini button--rounded icon-arrow_forward"></a>
+                </div>
+                <div class="col--large-2-10 col--medium-3-10">
+                    <!-- <input type="search" class="input input--search input--small border--rounded col--1-1"> -->
+                    <div class="input__group">
+                        <input type="search" class="input input--search input--small border--rounded margin--reset col--1-1">
+                        <i class="icon-magnifier text--muted"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid margin--top-small">
+            <div class="col--1-1 padding--reset">
+                <div class="panel panel--box panel--white panel--shadow">
+                    <table class="table table--hover table--middle">
+                        <thead>
+                            <tr>
+                                <th>Зал</th>
+                                <th data-ng-repeat-start="item in item.calendarLines[0].weeks">
+                                    ПН-ЧТ
+                                </th>
+                                <th>ПТ-ВС</th>
+
+                                <th data-ng-repeat-end>За неделю</th>
+
+                                <th>Будние <small class="text--small text--muted">часов</small></th>
+                                <th>Выходные <small class="text--small text--muted">часов</small></th>
+
+                                <th>Будние <small class="text--small text--muted">руб.</small></th>
+                                <th>Выходные <small class="text--small text--muted">руб.</small></th>
+
+                                <th>Всего</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="cl in item.calendarLines">
+                                <td>{{cl.name}}</td>
+
+                                <td data-ng-repeat-start="item in cl.weeks">
+                                    {{item.weekHours | number}}
+                                </td>
+                                <td>
+                                    {{item.weekEndHours | number}}
+                                </td>
+
+                                <td data-ng-repeat-end>
+                                    {{item.week+item.weekEnd | number}}
+                                </td>
+                                <td>{{cl.totalWeeksHours | number}}</td>
+                                <td>{{cl.totalWeeksEndsHours | number}}</td>
+
+                                <td>{{cl.totalWeeks | number}}</td>
+                                <td>{{cl.totalWeeksEnds | number}}</td>
+
+
+                                <td>{{cl.totalWeeks+cl.totalWeeksEnds | number}}</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>{{item.total.name}}</td>
+
+                                <td data-ng-repeat-start="iitem in item.total.weeks">
+                                    {{iitem.weekHours | number}}
+                                </td>
+                                <td>
+                                    {{iitem.weekEndHours | number}}
+                                </td>
+
+                                <td data-ng-repeat-end>
+                                    {{iitem.week+iitem.weekEnd | number}}
+                                </td>
+                                <td>{{item.total.totalWeeksHours | number}}</td>
+                                <td>{{item.total.totalWeeksEndsHours | number}}</td>
+
+                                <td>{{item.total.totalWeeks | number}}</td>
+                                <td>{{item.total.totalWeeksEnds | number}}</td>
+
+
+                                <td>{{item.total.totalWeeks+item.total.totalWeeksEnds | number}}</td>
+                            </tr>
+                        </tfoot>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

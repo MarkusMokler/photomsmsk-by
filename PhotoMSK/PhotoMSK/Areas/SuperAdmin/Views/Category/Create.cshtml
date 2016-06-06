@@ -1,0 +1,65 @@
+﻿@model IList<PhotoMSK.Data.Models.Routes.Category>
+
+<div class="uk-container uk-container-center">
+    <div class="uk-grid">
+        <div class="uk-width-1-1 uk-width-small-1-1 uk-width-large-1-1 uk-margin-top uk-text-center">
+            <span class="uk-h2">
+                Создание новой категории
+            </span>
+            <p class="uk-margin-remove">
+                <small class="uk-text-muted">Создаем новую категорию техники</small>
+            </p>
+            <hr class="small-line">
+        </div>
+    </div>
+    <div class="uk-grid">
+        <div class="uk-width-2-10 uk-offset-2-10">
+            <div id="role-avatar" class="uk-margin-bottom">
+                <img src="http://photomsk.by/Content/images/no-avatar.png" class="uk-border-circle uk-text-center">
+                <div class="cropControls cropControlsUpload">  </div><form class="role-avatar_imgUploadForm" style="display: none; visibility: hidden;">  <input type="file" name="img">  </form>
+            </div>
+            <a href="" id="role-change-avatar" class="uk-link-muted uk-border-arround">
+                Загрузить изображение
+            </a>
+        </div>
+        <div class="uk-width-4-10">
+            <h4 class="title-dotted">
+                Информация о категории
+            </h4>
+
+            <div class="uk-grid" data-uk-grid-margin>
+                <div class="uk-width-1-1">
+                    <label class="label-ms">Название</label>
+                    <input class="input-ms uk-width-large-1-1 uk-width-small-1-1" id="LastName" name="LastName" type="text" value="">
+                    <span class="field-validation-valid" data-valmsg-for="LastName" data-valmsg-replace="true"></span>
+                </div>
+                <div class="uk-width-1-1 uk-grid-margin">
+                    <label class="label-ms">Короткая ссылка <i class="icon-help2" data-uk-tooltip="" title="Это ссылка позволит мгновенно перейти к вашей странице"></i></label>
+                    <div class="input-group">
+                        <span class="input-group-addon">www.photomsk.by/</span>
+                        <input class="form-control input-ms uk-width-large-1-1 uk-width-small-1-1" data-val="true" data-val-maxlength="The field Shortcut must be a string or array type with a maximum length of '35'." data-val-maxlength-max="35" id="Shortcut" name="Shortcut" type="text" value="">
+                        <span class="field-validation-valid" data-valmsg-for="Shortcut" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-grid">
+                <div class="uk-width-1-1">
+                    <h4 class="title-dotted">
+                        Бренды категории
+                    </h4>
+
+                    @foreach (var item in Model)
+                    {
+                        foreach (var itemBrand in item.Brands)
+                        {
+                            <label for="item1">
+                                <input type="checkbox" name="" id="item1" class="check">
+                                <span class="line">@itemBrand.Brand</span>
+                            </label>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

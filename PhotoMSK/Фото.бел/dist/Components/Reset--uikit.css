@@ -1,0 +1,17 @@
+.uk-subnav > * {
+  margin: 0;
+  padding: 0;
+}
+.uk-subnav-line > :nth-child(n+2):before {
+  margin: 0;
+}
+.uk-subnav-line > :before {
+  height: 20px;
+}
+.uk-page-bar-panel ul li:first-child a {
+  margin-left: 0;
+}
+.uk-page-bar-panel ul li span {
+  margin: 0 10px;
+  color: #717171;
+}

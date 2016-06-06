@@ -1,0 +1,25 @@
+<div class="container container--center">
+    <div class="grid grid--small grid-col--1-2 widgets-container" ng-repeat="widget in widget.widgets">
+        <div data-ng-if="widget.type=='gallery'">
+            <gallery-widget-view widget="widget" sortableOptions="sortableOptions"></gallery-widget-view>
+        </div>
+        <div data-ng-if="widget.type=='description'">
+            <text-and-desc-widget-view widget="widget"></text-and-desc-widget-view>
+        </div>
+        <div data-ng-if="widget.type=='splitWidget'">
+            <split-widget-view widget="widget"></split-widget-view>
+        </div>
+        <div data-ng-if="widget.type=='containerWidget'">
+            <container-widget-view widget="widget"></container-widget-view>
+        </div>
+        <div data-ng-if="widget.type=='faqWidget'">
+            <faq-widget-view widget="widget"></faq-widget-view>
+        </div>
+        <div data-ng-if="widget.type=='headerWidget'">
+            <header-widget-view widget="widget"></header-widget-view>
+        </div>
+        <div data-ng-if="widget.type=='descriptionWidget'">
+            <description-widget-view widget="widget"></description-widget-view>
+        </div>
+    </div>
+</div>

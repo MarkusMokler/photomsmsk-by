@@ -1,0 +1,9 @@
+﻿<div class="uk-form-row">
+    <input class="input col--large-1-1 col--small-1-1" data-ng-model="phoneAdd.number" type="text" placeholder="+375 29 *** ** **">
+    <button class="button" type="button" data-ng-click="validatePhone()">Подтвердить</button>
+    <div data-ng-show="showConfirm">
+        Введите код в поле
+        <input class="input col--large-1-1 col--small-1-1" data-ng-model="Code" type="text">
+        <button class="button" type="button" data-ng-click="confirm(item.shortcut)">Подтвердить</button>
+    </div>
+</div>

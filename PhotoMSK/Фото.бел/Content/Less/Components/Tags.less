@@ -1,0 +1,185 @@
+// out: ../../css/Components/Tags.css, compress: true
+// Name:            Tags
+// Description:     Defines styles for tags
+//
+// Component:       `tags`
+//
+// Modifiers:       `tags--*`
+//                  `tags--*`
+//
+// ========================================================================
+// Variables
+@tags-background:                      #fff;
+@tags-border-radius:                   0;
+@tags-border-color:                    #bdbdbd;
+@tags-color:                           #171717;
+
+@tags-list-height:                     20px;
+
+@input-padding:                        5px;
+@input-text-color:                     #333;
+@input-background:                     #fff;
+@input-border-radius:                  0;
+@input-border-color:                   #ddd;
+@input-margin:                         10px;
+
+// ========================================================================
+/* ========================================================================
+   Component: Tags
+ ========================================================================== */
+tags-input {
+    & .host{
+        position: relative;
+        margin: 0;
+    }
+
+    & .tags {
+        position: relative;
+        float: left;
+        width: 100%;
+        padding: @input-padding;
+        color: @input-text-color;
+        background: @input-background;
+        border-radius: @input-border-radius;
+        border: 1px solid @input-border-color;
+        margin-bottom: @input-margin;
+        outline: none;
+        border-radius: 4px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        border-radius: 4px;
+        transition: all 200ms;
+
+        & .tag-item {
+            position: relative;
+            background: #eee;
+            border-radius: 3px 0 0 3px;
+            color: #999;
+            display: inline-block;
+            height: 20px;
+            font-size: 13px;
+            line-height: 20px;
+            padding: 0 10px;
+            position: relative;
+            margin: 0 5px 5px 0;
+            text-decoration: none;
+            -webkit-transition: color .2s;
+
+            &:after{
+                content: '';
+                background: #fff;
+                border-bottom: 10px solid transparent;
+                border-left: 7px solid #eee;
+                border-top: 10px solid transparent;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            & .remove-button{
+                margin: 0 0 0 5px;
+                padding: 0;
+                outline: none;
+                cursor: pointer;
+                font: 500 16px 'Roboto', sans-serif;
+                color: rgba(0, 0, 0, 0.5);
+
+                &:hover{
+                    color: rgba(255, 0, 0, 0.9);
+                }
+            }
+        }
+
+        & .tag-list{
+            float: left;
+            display: inline-block;
+        }
+
+        & .input{
+            float: left;
+            width: 100%;
+            margin: 0;
+            padding: 3px;
+            border: none;
+            min-width: 100px;
+
+            &:focus,
+            &:hover{
+                box-shadow: none;
+            }
+        }
+
+        &.focused{
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+    }
+}
+
+
+// Elements tags lsit
+.tags{
+    margin-top: 5px;
+    // Elements 'tags__list'
+    &__list{
+        list-style: none;
+        margin: 0;
+        overflow: hidden;
+        padding: 0;
+        font-size: 0;
+
+        & > li{
+            display: inline-block;
+
+            & .tag{
+                background: #eee;
+                border-radius: 3px 0 0 3px;
+                color: #999;
+                display: inline-block;
+                height: @tags-list-height;
+                font-size: 13px;
+                line-height: @tags-list-height;
+                padding: 0 24px 0 10px;
+                position: relative;
+                margin: 0 5px 5px 0;
+                text-decoration: none;
+                -webkit-transition: color 0.2s;
+
+                &:before{
+                    background: #fff;
+                    border-radius: 10px;
+                    box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+                    content: '';
+                    height: 6px;
+                    right: 10px;
+                    position: absolute;
+                    width: 6px;
+                    top: 6px;
+                }
+                &:after{
+                    content: '';
+                    background: #fff;
+                    border-bottom: (@tags-list-height / 2) solid transparent;
+                    border-left: 7px solid #eee;
+                    border-top: (@tags-list-height / 2) solid transparent;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                }
+
+                &:hover{
+                    background-color: #FF8D58;
+                    color: #fff;
+
+                    &:after{
+                        border-left-color: #FF8D58;
+                    }
+                }
+
+                &.tag--small{
+
+                }
+            }
+        }
+    }
+}

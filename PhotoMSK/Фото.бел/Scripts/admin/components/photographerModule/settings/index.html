@@ -1,0 +1,86 @@
+﻿<div class="content--admin">
+
+    <div><data-bread-crumbs /></div>
+
+    <div class="container container--center">
+        <div class="panel panel--box panel--white panel--shadow">
+            <div class="panel__title">
+                <ul class="tab tab--full">
+                    <li data-ng-click="setTab('tab1')"><a class="active" data-msk-href>Информация</a></li>
+                    <li data-ng-click="setTab('tab2')"><a data-msk-href>Фотографии</a></li>
+                    <li data-ng-click="setTab('tab3')"><a data-msk-href>Контакты</a></li>
+                    <li data-ng-click="setTab('tab4')"><a data-msk-href>Характеристики</a></li>
+                    <li data-ng-click="setTab('tab5')"><a data-msk-href>Pro</a></li>
+                </ul>
+            </div>
+
+            <div class="grid">
+                <div class="col--1-1">
+                    <ul>
+                        <li class="active" data-ng-show="tab=='tab1'">
+                            <div class="grid">
+                                <div class="col--1-1">
+                                    <section class="margin--reset">
+                                        <div class="form-banner">
+                                            <data-admin-logo-page />
+                                        </div>
+                                    </section>
+                                </div>
+
+                                <div class="col--1-1" data-admin-studio-name-page>
+                                </div>
+
+                                <div class="col--1-1 text--center">
+                                    <hr class="margin--v">
+                                    <button class="button button--success border--rounded col--1-3" data-ng-click="updateName()">Сохранить</button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="active" data-ng-show="tab=='tab2'">
+                            <div>
+                                <data-admin-photo-load-page />
+                            </div>
+                            <div class="col--1-1 text--center">
+                                <hr class="margin--v">
+                                <button class="button button--success border--rounded col--1-3" data-ng-click="loadPhoto()">Сохранить</button>
+                            </div>
+                        </li>
+                        <li class="active" data-ng-show="tab=='tab3'">
+                            <div><data-admin-phone-page /></div>
+                            <div>
+                                <data-admin-location-map-page />
+                            </div>
+                            <div>
+                                <data-admin-social-page />
+                            </div>
+                            <div class="col--1-1 text--center">
+                                <hr class="margin--v">
+                                <button class="button button--success border--rounded col--1-3" data-ng-click="phonePage()">Сохранить</button>
+                            </div>
+                        </li>
+                        <li class="active" ng-show="tab=='tab4'">
+                            <div><data-admin-characteristics-page /></div>
+
+                            <div class="col--1-1 text--center">
+                                <hr class="margin--v">
+                                <button class="button button--success border--rounded col--1-3" data-ng-click="updateCharacteristics()">Сохранить</button>
+                            </div>
+                        </li>
+                        <li class="active" data-ng-show="tab=='tab5'">
+                            <div>
+                                <data-admin-pro-page />
+                            </div>
+                            <div class="col--1-1 text--center">
+                                <hr class="margin--v">
+                                <button class="button button--success border--rounded col--1-3" data-ng-click="add()">Сохранить</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <br /><br />
+
+            <button class="button button--danger" data-ng-click="delRoute()">Удалить профиль данного фотографа</button>
+        </div>
+    </div>
+</div>

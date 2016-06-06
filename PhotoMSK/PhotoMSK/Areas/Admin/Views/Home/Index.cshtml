@@ -1,0 +1,142 @@
+﻿@using PhotoMSK.Data.Enums
+@using PhotoMSK.Data.Models
+@model User
+@{
+    ViewBag.Title = "Менеджер аккаунта";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@{
+    List<RouteEntity> routes = Model.UserInformation.Roles.Where(x => x.AccessStatus == AccessStatus.Owner || x.AccessStatus == AccessStatus.Administrator).Select(x => x.Route).ToList();
+    IEnumerable<IGrouping<Type, RouteEntity>> groups = routes.GroupBy(x => x.GetType());
+}
+<div class="uk-container uk-container-center">
+    <div class="uk-flex uk-flex-wrap uk-flex-middle uk-margin">
+        <div class="uk-width-1-5">
+            <div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}">
+                <a class="uk-button uk-button-success" href="#">Добавить</a>
+                <div class="uk-dropdown" style="width: 350px;">
+                    <ul class="uk-sortable uk-grid uk-grid-small uk-grid-width-1-3 uk-text-center" data-uk-sortable="{ dragCustomClass: 'tm-sortable-dragged', handleClass: 'uk-panel' }" data-uk-grid-margin>
+                        <li>
+                            <a class="uk-panel uk-link-reset" href="@Url.Action("Create", "Photostudio")">
+                                <img src="@Url.Content("~/Content/images/admin/svg-dashboard.svg")" width="50" height="50" alt="Dashboard">
+                                <p>Студия</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="uk-panel uk-link-reset" href="@Url.Action("Create", "Photographer")">
+                                <img src="@Url.Content("~/Content/images/svg/svg-photographer.svg")" width="50" height="50" alt="Pages">
+                                <p>Фотограф</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="uk-panel uk-link-reset" href="@Url.Action("Create", "Photomodel")">
+                                <img src="@Url.Content("~/Content/images/admin/svg-menus.svg")" width="50" height="50" alt="Menus">
+                                <p>Модель</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="uk-panel uk-link-reset" href="@Url.Action("Create", "Page")">
+                                <img src="@Url.Content("~/Content/images/admin/svg-pages.svg")" width="50" height="50" alt="Widgets">
+                                <p>Паблик</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="uk-panel uk-link-reset" href="@Url.Action("Create", "MasterClass")">
+                                <img src="@Url.Content("~/Content/images/svg/svg-master-class.svg")" width="50" height="50" alt="Users">
+                                <p>Мастеркласс</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="uk-panel uk-link-reset" href="@Url.Action("Create", "Photoshop")">
+                                <img src="@Url.Content("~/Content/images/svg/svg-photoshop.svg")" width="50" height="50" alt="Settings">
+                                <p>Магазин</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="uk-panel uk-link-reset" href="@Url.Action("Create", "Photorent")">
+                                <img src="@Url.Content("~/Content/images/svg/svg-photoshop.svg")" width="50" height="50" alt="Settings">
+                                <p>Фотопрокат</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <ul class="uk-width-4-5 uk-breadcrumb uk-breadcrumb--arrow">
+            <li><a href="#">Админ панель</a></li>
+            <li><span>Главная</span></li>
+        </ul>
+    </div>
+    <div class="uk-grid uk-grid-small uk-grid-divider" data-uk-grid-margin data-uk-grid-match>
+        <div class="uk-width-large-1-5 uk-width-medium-1-5">
+            <div class="uk-panel uk-panel-divider pad-bottom-60">
+                <ul class="uk-nav uk-nav-menu uk-nav-side uk-nav-parent-icon" data-uk-switcher="{connect:'#tab-content', toggle:' > *:not(.uk-nav-header)'}">
+                    <li class="uk-nav-header uk-margin-small-bottom">Cозданные профили:</li>
+                    <li class="uk-active"><a href="">Все</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li><a href="">Студии</a></li>
+                    <li><a href="">Фотографы</a></li>
+                    <li><a href="">Модели</a></li>
+                    <li><a href="">Паблики</a></li>
+                    <li><a href="">Мастер-классы</a></li>
+                    <li><a href="">Магазины</a></li>
+                    <li><a href="">Аренда техники</a></li>
+                    <li><a href="">Кастинги</a></li>
+                </ul>
+            </div>
+            <div class="uk-panel uk-panel-box uk-panel--white uk-panel--border-line uk-panel--border-radius">
+                <div class="uk-text-center">
+                    <div>
+                        <i class="icon-sun uk-h1 uk-icon-large" style="color: #ffad5a"></i>
+                    </div>
+                    <p class="uk-h3 uk-text-muted">18°C</p>
+                    <p class="uk-h5 uk-margin-remove">Минск</p>
+                    <p class=" uk-margin-remove uk-text-muted"> Беларусь</p>
+                    <h1 class="uk-hidden uk-h3">Weather</h1>
+                    <div class="uk-hidden uk-alert uk-alert-danger">Unable to retrieve weather data.</div>
+                </div>
+            </div>
+        </div>
+        <div class="uk-width-large-4-5 uk-width-medium-4-5">
+            <ul id="tab-content" class="uk-switcher uk-margin">
+                <li>
+                    @Html.Partial("_AlreadyCreateProfileStudios", Model)
+                    @Html.Partial("_AlreadyCreateProfilePhotographers", Model)
+                    @Html.Partial("_AlreadyCreateProfileModels", Model)
+                    @Html.Partial("_AlreadyCreateProfilePublics", Model)
+                    @Html.Partial("_AlreadyCreateProfileMasterClasses", Model)
+                    @Html.Partial("_AlreadyCreateProfilePhotoshops", Model)
+                    @Html.Partial("_AlreadyCreateProfilePhotorent", Model)
+                    @Html.Partial("_AlreadyCreateProfileCasting", Model)
+                </li>
+                <li>
+                    @*Заглушка для разделителя*@
+                </li>
+                <li class="uk-active">
+                    @Html.Partial("_AlreadyCreateProfileStudios", Model)
+                </li>
+                <li>
+                    @Html.Partial("_AlreadyCreateProfilePhotographers", Model)
+                </li>
+                <li>
+                    @Html.Partial("_AlreadyCreateProfileModels", Model)
+                </li>
+                <li>
+                    @Html.Partial("_AlreadyCreateProfilePublics", Model)
+                </li>
+                <li>
+                    @Html.Partial("_AlreadyCreateProfileMasterClasses", Model)
+                </li>
+                <li>
+                    @Html.Partial("_AlreadyCreateProfilePhotoshops", Model)
+                </li>
+                <li>
+                    @Html.Partial("_AlreadyCreateProfilePhotorent", Model)
+                </li>
+                <li>
+                    @Html.Partial("_AlreadyCreateProfileCasting", Model)
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+﻿<div class="content--admin">
+
+    <div><data-bread-crumbs /></div>
+
+    <div class="clear-fix"></div>
+
+    <div class="container--fluid-widget">
+        <div class="grid">
+            <div class="col--1-1">
+                <div class="panel panel--box panel--white panel--shadow" data-ng-repeat="layout in rpLayouts">
+                    <div class="panel__top-bar">
+                        <div class="panel__top-bar__title">
+                            Название {{layout.name}}
+                        </div>
+                        <div class="panel__top-bar__action">
+                            <a data-msk-href data-ng-click="setAsDefault(layout)" class="button button--mini button--success button--rounded icon-light-up"></a>
+                            <a href="/admin/photostudio/{{shortcut}}/routeLayouts/add" class="button button--mini button--success button--rounded icon-add"></a>
+                            <a href="/admin/photostudio/{{shortcut}}/routeLayouts/{{layout.id}}/edit" class="button button--mini button--rounded icon-mode_edit"></a>
+                            <a data-msk-href data-ng-click="deleteRoutePageLayout(layout.id)" class="button button--mini button--rounded icon-delete"></a>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="col--1-1">
+                        </div>
+                        <div class="col--1-1">
+                            <div>
+                            </div>
+                        </div>
+                        <div class="col--1-1">
+                            <div><data-html-viewer code="layout.layout.content" page="layout"></data-html-viewer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel--box panel--white panel--shadow" data-ng-if="rpLayouts.length==0">
+                    <div class="panel__top-bar">
+                        <div class="panel__top-bar__title">
+                            Шаблонов нет
+                        </div>
+                        <div class="panel__top-bar__action">
+                            <a href="/admin/photostudio/{{shortcut}}/routeLayouts/add" class="button button--mini button--success button--rounded icon-add"></a>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="col--1-1">
+                        </div>
+                        <div class="col--1-1">
+                            <div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

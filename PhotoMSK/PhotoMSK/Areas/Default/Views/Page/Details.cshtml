@@ -1,0 +1,210 @@
+﻿@using PhotoMSK.Extensiolns
+@model PhotoMSK.Areas.Default.ViewData.Page.DetailsViewData
+@{
+    ViewBag.Title = "Паблик " + Model.Item.Name;
+    ViewBag.Description = Model.Item.Description;
+    ViewBag.Image = Model.Item.ImageUrl;
+}
+
+@section scripts
+{
+    <script>
+        $(function () {
+            App.isPhotographer = true;
+            App.routeImage = '@Model.Item.ImageUrl';
+            App.owner = '@Model.Item.ID';
+            App.owner = '@Model.Item.ID';
+            App.PhotographerDetails = new App.Photographer.PhotographerDetails();
+            App.PhotographerDetails.render();
+
+            App.WallView.wallCollection.reset(@Model.Item.Wall.ToJson());
+        })
+    </script>
+}
+
+<div class="uk-public-profile">
+    <div class="uk-public-profile-cover">
+        <img src="@Model.Item.CoverImage" alt="">
+
+        <div class="uk-public-profile-user">
+            <div class="uk-container uk-container-center">
+                <div class="uk-grid">
+                    <div class="uk-width-1-3 uk-offset-2-3 uk-text-center">
+                        <div class="uk-public-profile-user-description pad-top uk-panel-space">
+                            <div class="uk-image-background-white uk-border-circle">
+                                @if (Model.Item.Verified)
+                                {
+                                    <div class="uk-public-profile-verified" data-uk-tooltip="{pos:'bottom'}" title="Официальное сообщество"></div>
+                                }
+                                <img src="@Model.Item.ImageUrl">
+                            </div>
+                            <h1 class="uk-public-profile-user-title">@Model.Item.Name</h1>
+                            <small>@Model.Description</small>
+                            <hr style="border-top: 1px solid #CACACA;" />
+                            <small>
+                                @Model.Item.Site
+                            </small>
+                            <p><button class="btn-ms uk-button-success">Подписаться</button></p>
+                            <ul class="uk-subnav uk-subnav-line">
+                                <li class="uk-text-center">
+                                    <span class="uk-navbar-nav-subtitle">3 454 120<div>подписалось</div></span>
+                                </li>
+                                <li class="uk-text-center">
+                                    <span class="uk-navbar-nav-subtitle">3 454 120<div>просмотров</div></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="uk-public-profile-menu">
+        <div class="uk-container uk-container-center">
+            <div class="uk-grid">
+                <div class="uk-width-1-1">
+                    <ul class="uk-tab uk-tab-events" data-uk-tab="{connect:'#tab-public-content'}">
+                        <li class="uk-active"><a href="">Стена</a></li>
+                        <li><a href="#">Видео</a></li>
+                        <li class="uk-disabled"><a href="#">Проекты</a></li>
+                        <li class="uk-disabled"><a href="#">Обсуждение</a></li>
+                        <li class="uk-disabled"><a href="#">Описание</a></li>
+                        <li class="uk-tab-responsive uk-active uk-hidden"><a>Tab</a><div class="uk-dropdown uk-dropdown-small"><ul class="uk-nav uk-nav-dropdown"></ul><div></div></div></li>
+                        <li class="uk-tab-responsive uk-active uk-hidden"><a>Мастер классы</a><div class="uk-dropdown uk-dropdown-small"><ul class="uk-nav uk-nav-dropdown"></ul><div></div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="uk-container uk-container-center">
+
+    <ul id="tab-public-content" class="uk-switcher uk-margin">
+        <li>
+            <div class="uk-grid">
+                <div class="uk-width-4-5">
+                    @* Wall *@
+                    <div id="wall-placeholder">
+                    </div>
+                </div>
+
+                <div class="uk-width-1-5">
+                    <ul class="sidebar-menu online-user">
+                        <li class="static">Подписчики</li>
+                        <li>
+                            <a href="#">
+                                <img src="http://diliat.in/themeforest/sentir/1.1.0/assets/img/avatar/avatar-6.jpg" class="ava-sidebar uk-border-circle" alt="Avatar">
+                                Виктория Субоч
+                                <span class="small-caps">О да, я в сети :)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="http://diliat.in/themeforest/sentir/1.1.0/assets/img/avatar/avatar-7.jpg" class="ava-sidebar uk-border-circle" alt="Avatar">
+                                <i class="fa fa-windows device-status"></i>
+                                Elizabeth Owens
+                                <span class="small-caps">2 часов назад</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="http://diliat.in/themeforest/sentir/1.1.0/assets/img/avatar/avatar-12.jpg" class="ava-sidebar uk-border-circle" alt="Avatar">
+                                Craig Dixon
+                                <span class="small-caps">Last seen 2 часов назад</span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                    <ul class="sidebar-menu online-user">
+                        <li class="static">Контакты</li>
+                        <li>
+                            <a href="#">
+                                <img src="http://diliat.in/themeforest/sentir/1.1.0/assets/img/avatar/avatar-6.jpg" class="ava-sidebar uk-border-circle" alt="Avatar">
+                                Виктория Субоч
+                                <span class="small-caps">О да, я в сети :)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="http://diliat.in/themeforest/sentir/1.1.0/assets/img/avatar/avatar-7.jpg" class="ava-sidebar uk-border-circle" alt="Avatar">
+                                <i class="fa fa-windows device-status"></i>
+                                Elizabeth Owens
+                                <span class="small-caps">2 часов назад</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="http://diliat.in/themeforest/sentir/1.1.0/assets/img/avatar/avatar-12.jpg" class="ava-sidebar uk-border-circle" alt="Avatar">
+                                Craig Dixon
+                                <span class="small-caps">Last seen 2 часов назад</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="uk-grid uk-margin-large-top" data-uk-grid-margin>
+                <div class="uk-width-1-5">
+                    <ul class="uk-nav uk-nav-menu uk-nav-side uk-nav-parent-icon">
+                        <li class="uk-nav-header uk-margin-small-bottom">Категории:</li>
+                        <li><a href="" class="uk-active">Тусовки</a></li>
+                        <li><a href="">Работа</a></li>
+                        <li><a href="">Фотосъемки</a></li>
+                        <li class="uk-nav-divider"></li>
+
+                    </ul>
+                </div>
+                <div class="uk-width-4-5">
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-1-1">
+                            <div class="uk-thumbnail uk-thumbnail-video">
+                                <div class="uk-overlay">
+                                    <img class="uk-border-rounded" src="https://gp1.wac.edgecastcdn.net/806614/photos/photos.500px.net/84343061/ae72b9dd795e94a87473789ea6a487efabb846a8/2048.jpg" alt="">
+                                    <div class="uk-overlay-area uk-border-rounded">
+                                        <div class="uk-overlay-area-content">
+                                            <i class="icon-clock2 uk-icon-large"></i>
+                                            <p>просмотреть видео</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="uk-thumbnail-caption uk-text-left">
+                                    <h3 class="bold uk-margin-remove">Первая наша работа</h3>
+                                    <small class="uk-text-muted"><i class="icon-clock2"></i> Опубликовано 2 дня назад</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @for (int i = 0; i < 10; i++)
+                {
+                    <div class="uk-width-1-3">
+                        <div class="uk-thumbnail uk-thumbnail-video">
+                            <div class="uk-overlay">
+                                <img class="uk-border-rounded" src="https://gp1.wac.edgecastcdn.net/806614/photos/photos.500px.net/84343061/ae72b9dd795e94a87473789ea6a487efabb846a8/2048.jpg" alt="">
+                                <div class="uk-overlay-area uk-border-rounded">
+                                    <div class="uk-overlay-area-content">
+                                        <i class="icon-clock2 uk-icon-large"></i>
+                                        <p>просмотреть видео</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="uk-thumbnail-caption uk-text-left">
+                                <h3 class="bold uk-margin-remove">Первая наша работа</h3>
+                                <small class="uk-text-muted"><i class="icon-clock2"></i> Опубликовано 2 дня назад</small>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,39 @@
+// out: ../../css/Components/Action.css, compress: true
+// Name:            Action
+// Description:     Defines styles for Action
+//
+// Component:       `action`
+//
+//
+// Element:         `action__*`
+//                  `action__*`
+//
+// Modifiers:       `action--*`
+//                  `action--*`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+
+
+
+
+/* ========================================================================
+   Component: Action
+ ========================================================================== */
+.action {
+
+    // Element 'action__parent'
+    &__hover{
+        &:hover .action__hover-element{
+            visibility: visible;
+            transition: all 200ms;
+        }
+    }
+
+    // Element 'action__hover-element'
+    &__hover-element{
+        visibility: hidden;
+        transition: all 200ms;
+    }
+}

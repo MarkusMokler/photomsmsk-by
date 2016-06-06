@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title</title>
+        @Styles.Render("~/Content/uikit/style")
+        @Styles.Render("~/Content/fullcalendar")
+        @Styles.Render("~/Content/jquery-ui")
+        @Styles.Render("~/Content/site-style")
+        <script type="text/javascript">
+        var AC_ID = 62344; var AC_TR = false;
+        (function () {
+            var l = 'http://adlik.akavita.com/acode.js'; var t = 'text/javascript';
+            try {
+                var h = document.getElementsByTagName('head')[0];
+                var s = document.createElement('script'); s.src = l; s.type = t; h.appendChild(s);
+            } catch (e) {
+                document.write(unescape('%3Cscript src="' + l + '" type="' + t + '"%3E%3C/script%3E'));
+            }
+        })();
+        </script>
+    </head>
+    <body>
+
+        @RenderBody()
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/uikit/script")
+        @Scripts.Render("~/bundles/fullcalendar")
+        @Scripts.Render("~/Scripts/lang-all.js")
+        @Scripts.Render("~/Backbone")
+        @Html.Partial("_Templates")
+        @RenderSection("Scripts", false)
+    </body>
+</html>

@@ -1,0 +1,40 @@
+﻿<div class="container container--center">
+    <div class="grid">
+        <div class="col--1-1 text--center">
+            <h2>Один аккаунт — весь мир PhotoMSK!</h2>
+            <span class="text--muted">Выберите аккаунт для входа</span>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col--1-5">
+
+            <div data-uk-sticky="{top:30}">
+                <h5 class="uk-text-bold">Справочник</h5>
+                <ul class="uk-list uk-list-space uk-list-dotted">
+                    <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">Типы аккаунтов</a></li>
+                    <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">Отображение аккаунтов</a></li>
+                    <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">PRO аккаунт</a></li>
+                    <li><a href="#" class="uk-text-small">ещё...</a></li>
+                </ul>    
+            </div>
+
+        </div>
+        <div class="col--3-5">
+            <div class="panel uk-panel-content-box">
+                <ul class="uk-list">
+                   
+                        <li ng-repeat="item in $scope">
+                            <div class="panel uk-panel-hover uk-show-hide">
+                                <img src="{{item.imageUrl}}" class="uk-border-circle float--left uk-margin-right" alt="@{{item.getName()}}" height="70" width="70" />
+                                <p class="uk-h5 uk-text-bold uk-margin-remove">{{item.getName()}}</p>
+                                <i class="text--muted uk-text-small">{{item.shortcut}}</i>
+                                
+                                <a href="/WhiteLabel/select/set/{{item.ID}}" class="uk-show-hide-element button button-success float--right">Войти</a>
+                            </div>
+                        </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

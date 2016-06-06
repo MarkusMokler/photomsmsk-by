@@ -1,0 +1,125 @@
+﻿<div class="content--admin">
+    <div>
+        <data-bread-crumbs />
+    </div>
+
+    <div class="container--fluid">
+        Загрузка админ части
+        <i class="icon-spinner8 text--yellow"></i>
+    </div>
+
+    <!-- <div class="container container--center">
+        <div class="flex flex--wrap flex--middle margin">
+            <div class="col--1-5">
+                <div class="button__dropdown" uib-dropdown dropdown-append-to-body data-ng-cloak>
+                    <a class="button button--success" data-msk-href uib-dropdown-toggle>Добавить</a>
+                    <div aria-labelledby="btn-append-to-body">
+                        <ul class="grid grid--small grid-col--1-3" uib-dropdown-menu style="width: 400px;">
+                            <li class="text--center">
+                                <a class="panel link--reset" href="/admin/photostudio/create">
+                                    <img src="Content/images/admin/svg-dashboard.svg" width="50" height="50" alt="Dashboard">
+                                    <p>Студия</p>
+                                </a>
+                            </li>
+                            <li class="text--center">
+                                <a class="panel link--reset" href="/admin/photographer">
+                                    <img src="Content/images/svg/svg-photographer.svg" width="50" height="50" alt="Pages">
+                                    <p>Фотограф</p>
+                                </a>
+                            </li>
+                            <li class="text--center">
+                                <a class="panel link--reset" href="/admin/photomodel">
+                                    <img src="Content/images/admin/svg-menus.svg" width="50" height="50" alt="Menus">
+                                    <p>Модель</p>
+                                </a>
+                            </li>
+                            <li class="text--center">
+                                <a class="panel link--reset" href="/admin/page">
+                                    <img src="Content/images/admin/svg-pages.svg" width="50" height="50" alt="Widgets">
+                                    <p>Паблик</p>
+                                </a>
+                            </li>
+                            <li class="text--center">
+                                <a class="panel link--reset" href="/admin/masterclass">
+                                    <img src="Content/images/svg/svg-master-class.svg" width="50" height="50" alt="Users">
+                                    <p>Мастеркласс</p>
+                                </a>
+                            </li>
+                            <li class="text--center">
+                                <a class="panel link--reset" href="/admin/photoshop">
+                                    <img src="Content/images/svg/svg-photoshop.svg" width="50" height="50" alt="Settings">
+                                    <p>Магазин</p>
+                                </a>
+                            </li>
+                            <li class="text--center">
+                                <a class="panel link--reset" href="/admin/photorent">
+                                    <img src="Content/images/svg/svg-photoshop.svg" width="50" height="50" alt="Settings">
+                                    <p>Фотопрокат</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid--small grid--divider">
+            <div class="col--large-1-5 col--medium-1-5">
+                <div class="panel panel--divider">
+                    <ul class="uk-nav uk-nav-menu uk-nav-side uk-nav-parent-icon">
+                        <li class="uk-nav-header uk-margin-small-bottom">Cозданные профили:</li>
+                        <li class="active"><a data-msk-href data-ng-click="setTab('tab1')">Все</a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a data-msk-href data-ng-click="setTab('tab2')">Студии</a></li>
+                        <li><a data-msk-href data-ng-click="setTab('tab4')">Модели</a></li>
+                        <li><a data-msk-href data-ng-click="setTab('tab3')">Фотографы</a></li>
+                        <li><a data-msk-href data-ng-click="setTab('tab5')">Паблики</a></li>
+                        <li><a data-msk-href data-ng-click="setTab('tab6')">Мастер-классы</a></li>
+                        <li><a data-msk-href data-ng-click="setTab('tab7')">Магазины</a></li>
+                        <li><a data-msk-href data-ng-click="setTab('tab8')">Аренда техники</a></li>
+                        <li><a data-msk-href data-ng-click="setTab('tab9')">Кастинги</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col--large-4-5 col--medium-4-5" data-ng-cloak>
+                <ul>
+                    <li data-ng-in="tab=='tab1'">
+                        <div data-ng-include src="'Scripts/admin/components/home/_AlreadyCreateProfileStudios.html'"></div>
+                        <div data-ng-include src="'Scripts/admin/components/home/_AlreadyCreateProfilePhotographers.html'"></div>
+                        <div data-ng-include src="'Scripts/admin/components/home/_AlreadyCreateProfileModels.html'"></div>
+                        <div data-ng-include src="'Scripts/admin/components/home/_AlreadyCreateProfilePublics.html'"></div>
+                        <div data-ng-include src="'Scripts/admin/components/home/_AlreadyCreateProfileMasterClasses.html'"></div>
+                        <div data-ng-include src="'Scripts/admin/components/home/_AlreadyCreateProfilePhotoshops.html'"></div>
+                        <div data-ng-include src="'Scripts/admin/components/home/_AlreadyCreateProfilePhotorent.html'"></div>
+                        <div data-ng-include src="'Scripts/admin/components/home/_AlreadyCreateProfileCasting.html'"></div>
+                    </li>
+                    <li data-ng-in="tab=='tab2'">
+                        <div ng-include src="'Scripts/admin/components/home/_AlreadyCreateProfileStudios.html'"></div>
+                    </li>
+                    <li data-ng-in="tab=='tab3'">
+                        <div>
+                            <div ng-include src="'Scripts/admin/components/home/_AlreadyCreateProfilePhotographers.html'"></div>
+                        </div>
+                    </li>
+                    <li data-ng-in="tab=='tab4'">
+                        <div ng-include src="'Scripts/admin/components/home/_AlreadyCreateProfileModels.html'"></div>
+                    </li>
+                    <li data-ng-in="tab=='tab5'">
+                        <div ng-include src="'Scripts/admin/components/home/_AlreadyCreateProfilePublics.html'"></div>
+                    </li>
+                    <li data-ng-in="tab=='tab6'">
+                        <div ng-include src="'Scripts/admin/components/home/_AlreadyCreateProfileMasterClasses.html'"></div>
+                    </li>
+                    <li data-ng-if="tab=='tab7'">
+                        <div ng-include src="'Scripts/admin/components/home/_AlreadyCreateProfilePhotoshops.html'"></div>
+                    </li>
+                    <li data-ng-if="tab=='tab8'">
+                        <div ng-include src="'Scripts/admin/components/home/_AlreadyCreateProfilePhotorent.html'"></div>
+                    </li>
+                    <li data-ng-if="tab=='tab9'">
+                        <div data-ng-include src="'Scripts/admin/components/home/_AlreadyCreateProfileCasting.html'"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div> -->
+﻿</div>

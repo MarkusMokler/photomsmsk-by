@@ -1,0 +1,427 @@
+﻿@using PhotoMSK.Data.Models
+@using PhotoMSK.Data.Models.Attachments
+@using PhotoMSK.Models
+@model Hall
+
+@functions {
+
+
+    private MvcHtmlString Price(double price)
+    {
+        return new MvcHtmlString(string.Format("<strong>{0}</strong> <small>{1:D3}</small>", (int) price/1000, (int) price%1000));
+    }
+
+    private string DayOfWeek(int num)
+    {
+        switch (num)
+        {
+            case 1:
+                return "Понедельник";
+            case 2:
+                return "Вторник";
+            case 3:
+                return "Среда";
+            case 4:
+                return "Четверг";
+            case 5:
+                return "Пятница";
+            case 6:
+                return "Суббота";
+            case 7:
+                return "Воскресенье";
+            case 8:
+                return "Праздничный";
+        }
+        return "Нет такого дня недели )";
+    }
+
+}
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@section scripts{
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $("#WallPost-title").on("keyup", function() {
+                $("#WallPost-extends").show();
+                $(this).off("keyup", this);
+              
+            });
+
+            App.GlobalObj.attachments = [];
+
+
+            $("#WallPost-publish").click(function(date) {
+
+                $.post("/Api/WallPost", {
+                    description: $("#WallPost-description").val(),
+                    title: $("#WallPost-title").val(),
+                    referer: "@Model.ID",
+                    attachments: App.GlobalObj.attachments
+                });
+            });
+
+            $('#calendar').fullCalendar({
+                defaultView: 'agendaWeek',
+                allDaySlot: false,
+                selectable: true,
+                editable: true,
+                firstHour: 8,
+                slotMinutes: 30,
+                defaultEventMinutes: 60,
+                select: function(start, end, allDay) {
+                    var modal = new $.UIkit.modal.Modal("#myModal");
+
+                    modal.show();
+
+                    $("#save").click(function() {
+                        modal.hide();
+                        var title = "Занято";
+                        if (title) {
+                            $('#calendar').fullCalendar('renderEvent',
+                                {
+                                    title: title,
+                                    start: start,
+                                    end: end,
+                                    allDay: allDay,
+                                    editable: true,
+                                },
+                                false // make the event "stick"
+                            );
+                            jQuery.post("Api/Events/", {
+                                    title: title,
+                                    start: start,
+                                    end: end,
+                                    allDay: allDay
+                                }
+                            );
+                        }
+                        $('#calendar').fullCalendar('unselect');
+
+                    });
+                },
+                eventSources: [
+                    {
+                        url: '/Api/Events',
+                        type: 'GET',
+                        data: {
+                            calendarID: '@Model.Calendar.ID',
+                        },
+                        error: function() {
+                            alert('there was an error while fetching events!');
+                        },
+                        color: '@Model.Calendar.Color', // a non-ajax option
+                        textColor: 'black' // a non-ajax option
+                    },
+                ]
+            });
+
+        });
+    </script>
+}
+
+<section>
+    <nav class="nav-reveal">
+        <a class="prev" href="/item1">
+            <span class="icon-wrap">
+                <svg class="icon_svg" width="50" height="50" viewBox="0 0 64 64">
+                    <path id="arrow-left-1" d="M46.077 55.738c0.858 0.867 0.858 2.266 0 3.133s-2.243 0.867-3.101 0l-25.056-25.302c-0.858-0.867-0.858-2.269 0-3.133l25.056-25.306c0.858-0.867 2.243-0.867 3.101 0s0.858 2.266 0 3.133l-22.848 23.738 22.848 23.738z"></path>
+                </svg>
+            </span>
+            <div>
+                <h3><span class="bold">зал:</span>Циклорамус</h3>
+                <img src="http://ppcdn.500px.org/47318526/208e5d3c0e323babad705b15b923741ce164ef71/3.jpg?v=0" alt="Previous thumb">
+            </div>
+        </a>
+        <a class="next" href="/item3">
+            <span class="icon-wrap">
+                <svg class="icon_svg" width="50" height="50" viewBox="0 0 64 64">
+                    <path id="arrow-right-1" d="M17.919 55.738c-0.858 0.867-0.858 2.266 0 3.133s2.243 0.867 3.101 0l25.056-25.302c0.858-0.867 0.858-2.269 0-3.133l-25.056-25.306c-0.858-0.867-2.243-0.867-3.101 0s-0.858 2.266 0 3.133l22.848 23.738-22.848 23.738z"></path>
+                </svg>
+            </span>
+            <div>
+                <h3><span class="bold">зал:</span>Декорус</h3>
+                <img src="http://ppcdn.500px.org/47318526/208e5d3c0e323babad705b15b923741ce164ef71/3.jpg?v=0" alt="Next thumb">
+            </div>
+        </a>
+    </nav>
+</section>
+
+@*
+<section>
+    <nav class="nav-thumbflip hall-navigation">
+        <a class="prev" href="#">
+            <span class="icon-wrap uk-text-center">
+                <svg class="icon_nav" width="32" height="32" viewBox="0 0 64 64">
+                    <path id="arrow-left-5" d="M48 10.667q1.104 0 1.885 0.781t0.781 1.885-0.792 1.896l-16.771 16.771 16.771 16.771q0.792 0.792 0.792 1.896t-0.781 1.885-1.885 0.781q-1.125 0-1.896-0.771l-18.667-18.667q-0.771-0.771-0.771-1.896t0.771-1.896l18.667-18.667q0.771-0.771 1.896-0.771zM32 10.667q1.104 0 1.885 0.781t0.781 1.885-0.792 1.896l-16.771 16.771 16.771 16.771q0.792 0.792 0.792 1.896t-0.781 1.885-1.885 0.781q-1.125 0-1.896-0.771l-18.667-18.667q-0.771-0.771-0.771-1.896t0.771-1.896l18.667-18.667q0.771-0.771 1.896-0.771z"></path>
+                </svg>
+            </span>
+            <img src="http://ppcdn.500px.org/72801531/0e5644302d4d890afdbfc8f50f76ebc03ced9906/600.jpg?v=0" alt="Previous thumb" />
+        </a>
+        <a class="next" href="#">
+            <span class="icon-wrap uk-text-center">
+                <svg class="icon_nav" width="32" height="32" viewBox="0 0 64 64">
+                    <path id="arrow-right-5" d="M29.333 10.667q1.104 0 1.875 0.771l18.667 18.667q0.792 0.792 0.792 1.896t-0.792 1.896l-18.667 18.667q-0.771 0.771-1.875 0.771t-1.885-0.781-0.781-1.885q0-1.125 0.771-1.896l16.771-16.771-16.771-16.771q-0.771-0.771-0.771-1.896 0-1.146 0.76-1.906t1.906-0.76zM13.333 10.667q1.104 0 1.875 0.771l18.667 18.667q0.792 0.792 0.792 1.896t-0.792 1.896l-18.667 18.667q-0.771 0.771-1.875 0.771t-1.885-0.781-0.781-1.885q0-1.125 0.771-1.896l16.771-16.771-16.771-16.771q-0.771-0.771-0.771-1.896 0-1.146 0.76-1.906t1.906-0.76z"></path>
+                </svg>
+            </span>
+            <img src="http://ppcdn.500px.org/72801531/0e5644302d4d890afdbfc8f50f76ebc03ced9906/600.jpg?v=0" alt="Next thumb" />
+        </a>
+    </nav>
+</section>
+*@
+<div class="uk-container uk-container-center pad-top">
+    <div class="uk-grid">
+        <div class="uk-width-1-1 photostudio-title">
+            <h1 class="hall-title">Зал: @Model.Name</h1>
+            <h2 class="uk-comment-meta">
+                <span class="icons-all icon-metro uk-float-left"></span>
+                <span class="meta">Могилевская</span>
+                <span class="icons-all icon-pedestrian uk-float-left"></span>
+                <span class="meta">10 мин. пешком</span>
+            </h2>
+            <hr />
+        </div>
+
+        <div class="uk-width-1-1 pad-top-20">
+            <div class="uk-grid">
+                <div class="uk-width-6-10">
+                    <img src="@Model.TeaserImageUrl" />
+                    <ul class="uk-grid pad-top-20" data-uk-grid-margin>
+                        @foreach (Photo item in Model.Photos.OrderByDescending(x => x.UploadDate).Take(5))
+                        {
+                            <li class="uk-width-2-10">
+                                <img src="@item.Url" alt="">
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="uk-width-4-10">
+                    <ul class="uk-tab uk-text-center" data-uk-tab="{connect:'#tab-content'}">
+                        <li class="uk-active"><a href="" class="uk-navbar-nav-subtitle">ОПИСАНИЕ<div>зала</div></a></li>
+                        <li><a href="" class="uk-navbar-nav-subtitle">ГРАФИК<div>работы</div></a></li>
+                    </ul>
+
+                    <ul id="tab-content" class="uk-switcher uk-margin">
+                        <li>
+                            <table class="uk-table uk-table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td>Площадь:</td>
+                                        <td><strong>@String.Format("{0:0}", Model.Square) кв.м.</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Имульсный свет:</td>
+                                        <td><div class="availability yes"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Естественный свет:</td>
+                                        <td><div class="availability yes"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Помощь со светом:</td>
+                                        <td><div class="availability no"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Уборная:</td>
+                                        <td><div class="availability yes"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Душ:</td>
+                                        <td><div class="availability unknown"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Печать:</td>
+                                        <td><div class="availability yes"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Парковка:</td>
+                                        <td><div class="availability yes"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Фотограф:</td>
+                                        <td>
+                                            <div class="availability question">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+
+                        <li>
+                            <table class="uk-table uk-table-hover uk-table-striped uk-table-condensed uk-text-center">
+                                <tbody>
+                                    @foreach (ScheduleDay item in Model.Schedule.OrderBy(x => x.DayOfWeek))
+                                    {
+                                        <tr>
+                                            <td><strong>@DayOfWeek(item.DayOfWeek)</strong></td>
+                                            <td>@item.TimeStart.ToString("HH:mm") - @item.TimeEnd.ToString("HH:mm")</td>
+                                            <td>@Price(item.Price)</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </li>
+                        <li>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="uk-grid">
+                <div class="uk-width-4-10">
+                    <h2 class="module-title uk-text-center">Рейтинг зала</h2>
+                    @* RATING *@
+                    <div class="container">
+                        <div class="inner">
+                            <div class="rating">
+                                <span class="rating-num">4.0</span>
+                                <div class="rating-stars">
+                                    <span><i class="active icon-star"></i></span>
+                                    <span><i class="active icon-star"></i></span>
+                                    <span><i class="active icon-star"></i></span>
+                                    <span><i class="active icon-star"></i></span>
+                                    <span><i class="icon-star"></i></span>
+                                </div>
+                                <div class="rating-users">
+                                    <i class="icon-user"></i> 1,014,004 всего
+                                </div>
+                            </div>
+
+                            <div class="histo">
+                                <div class="five histo-rate">
+                                    <span class="histo-star">
+                                        <i class="active icon-star"></i> 5
+                                    </span>
+                                    <span class="bar-block">
+                                        <span id="bar-five" class="bar">
+                                            <span>566,784</span>&nbsp;
+                                        </span>
+                                    </span>
+                                </div>
+
+                                <div class="four histo-rate">
+                                    <span class="histo-star">
+                                        <i class="active icon-star"></i> 4
+                                    </span>
+                                    <span class="bar-block">
+                                        <span id="bar-four" class="bar">
+                                            <span>171,298</span>&nbsp;
+                                        </span>
+                                    </span>
+                                </div>
+
+                                <div class="three histo-rate">
+                                    <span class="histo-star">
+                                        <i class="active icon-star"></i> 3
+                                    </span>
+                                    <span class="bar-block">
+                                        <span id="bar-three" class="bar">
+                                            <span>94,940</span>&nbsp;
+                                        </span>
+                                    </span>
+                                </div>
+
+                                <div class="two histo-rate">
+                                    <span class="histo-star">
+                                        <i class="active icon-star"></i> 2
+                                    </span>
+                                    <span class="bar-block">
+                                        <span id="bar-two" class="bar">
+                                            <span>44,525</span>&nbsp;
+                                        </span>
+                                    </span>
+                                </div>
+
+                                <div class="one histo-rate">
+                                    <span class="histo-star">
+                                        <i class="active icon-star"></i> 1
+                                    </span>
+                                    <span class="bar-block">
+                                        <span id="bar-one" class="bar">
+                                            <span>136,457</span>&nbsp;
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @* Comments ratings *@
+                    <ul class="uk-comment-list">
+                        <li>
+                            <article class="uk-comment">
+                                <header class="uk-comment-header">
+                                    <img class="uk-comment-avatar" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                                    <h4 class="uk-comment-title">Роман Лунцевич</h4>
+                                    <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                                        <li><span>2 дня назад</span></li>
+                                        <li><a href="#">Профиль</a></li>
+                                        <li><a href="#">#</a></li>
+                                    </ul>
+
+                                </header>
+                                <div class="uk-comment-body">
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                                </div>
+                            </article>
+                            <ul>
+                                <li>
+                                    <article class="uk-comment">
+                                        <header class="uk-comment-header">
+                                            <img class="uk-comment-avatar" src="https://pp.vk.me/c314926/v314926956/abbd/m9k3bnsQC4M.jpg" width="50" height="50" alt="">
+                                            <h4 class="uk-comment-title">Сергей Щипанов</h4>
+                                            <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                                                <li><span>1 день назад</span></li>
+                                                <li><a href="#">Профиль</a></li>
+                                                <li><a href="#">#</a></li>
+                                            </ul>
+                                        </header>
+                                        <div class="uk-comment-body">
+                                            <p><a href="#">Роман Лунцевич</a>, lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                                        </div>
+                                    </article>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="uk-width-6-10">
+                    <h2 class="module-title uk-text-center">Последние работы</h2>
+                    <div class="best-ph">
+                        <div class="best-ph-image">
+                            <img src="http://ppcdn.500px.org/46371346/9ae1257367d549dbb50bd8b96c7747c179cc3581/2048.jpg" alt="" class="photo_password_white">
+                        </div>
+                        <div class="rating-line">
+                            <div class="rating-line-fill" style="width: 87%;"></div>
+                        </div>
+
+                        <div class="rating-meta">
+                            <div class="left small">Рейтинг 100</div>
+                            <div class="right small">Баллов 720</div>
+                        </div>
+
+                        <div class="clear"></div>
+
+                        <div class="ph-information">
+                            <div class="left">
+                                <img src="http://ppcdn.500px.org/40644916/73e41e6ce7dcefcdf0d3428ea3f148dae32e6eb6/2048.jpg" alt="">
+                            </div>
+                            <div style="margin-left: 60px; padding: 12px 0 0 16px;">
+                                <strong>ANDREW IVASKIV</strong>
+                                <p class="small">Фотограф</p><p>
+                                                             </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

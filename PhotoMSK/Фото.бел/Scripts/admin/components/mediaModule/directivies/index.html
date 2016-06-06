@@ -1,0 +1,10 @@
+﻿<li class="parent active" data-ng-click="open(folder); $event.stopPropagation();" data-ng-class="{'open' : tree_open}">
+    <a>
+        <i class="icon-folder text--yellow"></i>
+        <span>{{folder.name}}&nbsp; <small class="text--small">(12)</small></span>
+    </a>
+    <ul>
+        <folder-entry class="parent open" ng-repeat="item in collection" folder="item" route="route" selected="selected" />
+    </ul>
+
+</li>

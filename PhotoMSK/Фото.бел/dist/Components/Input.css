@@ -1,0 +1,98 @@
+.input {
+  position: relative;
+  padding: 10px;
+  color: #333;
+  background: #fff;
+  border-radius: 0;
+  border: 1px solid #ddd;
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 10px;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  transition: all 200ms;
+}
+.input:focus {
+  border-bottom-color: #FFC716;
+}
+.input__group {
+  position: relative;
+}
+.input__group__desc {
+  position: absolute;
+  top: 42%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+.input__group > [class^='icon-'] {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.input--rounded {
+  border-radius: 100px;
+  border-bottom: 1px solid #ddd;
+}
+.input--search {
+  position: relative;
+  padding: 5px 15px;
+  padding-left: 30px !important;
+  border: 1px solid #dadada;
+  border-radius: 100px;
+}
+.input--tags {
+  border-color: #bdbdbd;
+}
+.input--small {
+  padding: 5px;
+}
+.input--small.input--search {
+  padding-left: 25px !important;
+}
+.input--select {
+  position: relative;
+  margin-bottom: 10px;
+}
+.input--select > select {
+  cursor: pointer;
+  margin-bottom: 0;
+  padding-right: 30px;
+}
+.input--select:after {
+  content: '\e5c5';
+  font-family: 'icomoon';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  font-size: 18px;
+  color: #5F5F5F;
+  transform: translateY(-50%);
+}
+.label {
+  display: block;
+  width: 100%;
+  margin: 5px 0 0 0;
+  font-size: 10px;
+  line-height: 18px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #9b9b9b;
+}
+.label--rounded {
+  margin-left: 10px;
+}
+.form__row + .form__row {
+  margin-top: 15px;
+}
+.form__controls {
+  margin-left: 30%;
+}
+.form__controls .input {
+  margin: 0;
+}
+.label--form {
+  width: 30%;
+  margin-top: 15px;
+  float: left;
+}

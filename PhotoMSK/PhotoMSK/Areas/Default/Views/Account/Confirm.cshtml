@@ -1,0 +1,42 @@
+﻿@model PhotoMSK.Areas.Default.ViewData.Account.ConfirmViewData
+
+@{
+    ViewBag.Title = "Confirm";
+    Layout = "~/Areas/Default/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="uk-container uk-container-center pad-top">
+    <div class="uk-grid">
+        <div class="uk-width-1-1 uk-text-center">
+            <h1><i class="icon-checkmark"></i></h1>
+            <hr />
+        </div>
+
+        <div class="uk-width-4-10 uk-push-1-10">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+
+                    @Html.ValidationSummary(true)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Item.ConfirmCode, "Введите код из СМС")
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.Item.ConfirmCode, new { placeholder = "Введите код из СМС" })
+                            @Html.ValidationMessageFor(model => model.Item.ConfirmCode)
+                        </div>
+                        <input type="submit" value="Отправить" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+
+            <div class="uk-width-1-2">
+                @Html.ActionLink("Вернуться на главную", "Index", "Home")
+            </div>
+
+        </div>
+    </div>
+</div>

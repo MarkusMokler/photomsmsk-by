@@ -1,0 +1,153 @@
+﻿<div><data-bread-crumbs /></div>
+<div class="uk-main-page-body">
+    <div class="container container--center">
+        <div class="grid">
+
+            <div class="col--1-1 text--right">
+                <ul class="uk-subnav uk-subnav-pill" data-uk-switcher="{connect:'#public-page-teaser-content'}">
+                    <li class="uk-active"><a href="#"><i class="icon-th-small"></i></a></li>
+                    <li><a href="#"><i class="icon-th-menu"></i></a></li>
+                </ul>
+                <hr class="small-line" />
+            </div>
+
+            <div class="col--1-4">
+                <div class="panel panel--box uk-panel-shadow uk-panel-category">
+                    <ul class="uk-nav uk-panel-category-top">
+                        <li class="uk-active"><a href="" class="uk-link-reset" title="Модельные агенства">Все</a></li>
+                        <li><hr class="small-line" /></li>
+                        <li><a href="" class="uk-link-reset" title="Модельные агенства">Модельные агенства</a></li>
+                        <li><a href="" class="uk-link-reset" title="Визажисты">Визажисты</a></li>
+                        <li><a href="" class="uk-link-reset" title="Парикмахеры">Парикмахеры</a></li>
+                        <li><a href="" class="uk-link-reset" title="Организаторы">Организаторы</a></li>
+                        <li><a href="" class="uk-link-reset" title="Фотографы">Фотографы</a></li>
+                    </ul>
+                    <div class="uk-panel-category-bottom">
+                        <div class="grid grid--small">
+                            <div class="col--1-1 wall-post-title">
+                                <a href="#" class="uk-link-reset uk-link-999 uk-link-dotted">Категории</a>
+                                <i class="icon-help text--muted uk-align-right wall-post-hot" data-uk-tooltip title="Выберите категории пабликов"></i>
+                            </div>
+
+                            <div class="col--1-2">
+                                <ul class="uk-nav">
+                                    <li>
+                                        <a href="">Абстрактные</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Ню</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Город и архитектура</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Пейзажи</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Городские пейзажи</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Подводный мир</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Еда</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Природа</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="col--1-2">
+                                <ul class="uk-nav">
+                                    <li>
+                                        <a href="">Абстрактные</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Ню</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Город и архитектура</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Пейзажи</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Городские пейзажи</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Подводный мир</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Еда</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Природа</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col--3-4">
+                <ul id="public-page-teaser-content" class="uk-switcher">
+                    <li class="uk-active">
+                        <ul class="grid grid-col--1-4"    ="{target:'.public-teaser-description'}">
+                            
+                                <li ng-repeat="item in page.elements " class="phototechnics-teaser">
+                                    <div class="short_product with_popover phototechnics-teaser-item">
+                                        <a href="{{item.shortcut}}">
+                                            <img class="uk-border-circle" src="{{item.imageUrl}}">
+                                        </a>
+                                        <div class="public-teaser-description">
+                                            <h3 class="text--center phototechnics-teaser-title uk-margin-bottom-remove uk-margin-top">
+                                                <a class="uk-link-muted" href="{{item.shortcut}}">
+                                                    {{item.name}}
+                                                </a>
+                                            </h3>
+                                            <p class="text--center uk-margin-remove">
+                                                <small class="text--muted">1 234 567 подписчиков</small>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="grid grid-col--1-1"    ="{target:'.public-teaser-description'}">
+                            
+                                <li ng-repeat="item in page.elements" class="phototechnics-teaser">
+                                    <div class="grid">
+                                        <div class="col--1-5">
+                                            <a href="{{item.shortcut}}">
+                                                <img class="uk-border-circle" src="{{item.imageUrl}}">
+                                            </a>
+                                        </div>
+                                        <div class="col--4-5">
+                                            <h3 class="phototechnics-teaser-title uk-margin-bottom-remove uk-margin-top">
+                                                <a class="uk-link-muted" href="{{item.shortcut}}">
+                                                    {{item.name}}
+                                                </a>
+                                            </h3>
+                                            <p class="uk-margin-remove">{{item.description}}</p>
+                                            <p class="uk-margin-remove">
+                                                <small class="text--muted">1 234 567 подписчиков</small>
+                                            </p>
+                                            <p><button class="button button-success">Подписаться</button></p>
+                                        </div>
+                                    </div>
+                                </li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="small-line" />
+        <uib-pagination total-items="totalItems" ng-model="currentPage" boundary-links="true" items-per-page="itemsPerPage" max-size="maxSize" num-pages="numPages" class="pagination" ng-change="pageChanged()"></uib-pagination>
+    </div>
+</div>

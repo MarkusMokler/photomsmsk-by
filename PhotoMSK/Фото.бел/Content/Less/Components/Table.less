@@ -1,0 +1,142 @@
+// out: ../../css/Components/Table.css, compress: true
+// Name:            Table
+// Description:     Defines styles for tables
+//
+// Component:       `table`
+//
+// Modifiers:       `table--middle`
+//                  `table--striped`
+//                  `table--condensed`
+//                  `table--hover`
+//
+// States:          `active`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@table-margin-vertical:                         15px;
+@table-padding-vertical:                        8px;
+@table-padding-horizontal:                      8px;
+
+@table-caption-color:                           #999;
+@table-caption-font-size:                       12px;
+
+@table-striped-background:                      #f5f5f5;
+
+@table-condensed-padding-vertical:              4px;
+@table-condensed-padding-horizontal:            8px;
+
+// @table-hover-background:                        #EEE;
+@table-hover-background:                        rgba(255, 231, 161, 0.32);
+
+@table-active-background:                       @table-hover-background;
+
+@table-td-border-color:                         #e5e5e5;
+@table-th-border-color:                         #BFBFBF;
+
+
+/* ========================================================================
+   Component: Table
+ ========================================================================== */
+
+.border--transparent{
+    border-color: transparent !important;
+}
+
+/*
+ * 1. Remove most spacing between table cells.
+ * 2. Block element behavior
+ * 3. Style
+ */
+
+.table {
+    /* 1 */
+    border-collapse: collapse;
+    border-spacing: 0;
+    /* 2 */
+    width: 100%;
+    /* 3 */
+    margin-bottom: @table-margin-vertical;
+}
+
+/*
+ * Add margin if adjacent element
+ */
+
+* + .table { margin-top: @table-margin-vertical; }
+
+.table th {
+    padding: @table-padding-vertical @table-padding-horizontal;
+    border-bottom: 2px solid @table-td-border-color;
+}
+
+.table td {
+    padding: @table-padding-vertical @table-padding-horizontal;
+    border-bottom: 1px solid @table-td-border-color;
+}
+
+/*
+ * Set alignment
+ */
+
+.table th { text-align: left; }
+.table td { vertical-align: top; }
+
+.table thead th { vertical-align: bottom; }
+
+/*
+ * Caption and footer
+ */
+
+.table caption,
+.table tfoot {
+    font-size: @table-caption-font-size;
+    font-style: italic;
+}
+
+.table caption {
+    text-align: left;
+    color: @table-caption-color;
+}
+
+/*
+ * Active State
+ */
+
+.table tbody tr.active {
+    background: @table-active-background;
+}
+
+
+/* Sub-modifier: `table--middle`
+ ========================================================================== */
+
+.table--middle,
+.table--middle td { vertical-align: middle !important; }
+
+
+/* Modifier: `table--striped`
+ ========================================================================== */
+
+.table--striped tbody tr:nth-of-type(odd) {
+    background: @table-striped-background;
+}
+
+
+/* Modifier: `table--condensed`
+ ========================================================================== */
+
+.table--condensed td {
+    padding: @table-condensed-padding-vertical @table-condensed-padding-horizontal;
+}
+
+
+/* Modifier: `table--hover`
+ ========================================================================== */
+
+.table--hover tbody tr:hover {
+    background: @table-hover-background;
+}

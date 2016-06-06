@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "RestTest";
+}
+<div class="uk-container uk-container-center pad-top">
+    <table class="uk-table">
+        <caption>Testting request</caption>
+        <thead>
+            <tr>
+                <th>Request Type</th>
+                <th>Test Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>PUT</td>
+                <td id="put">Result</td>
+            </tr>
+            <tr>
+                <td>Delete</td>
+                <td id="delete">Result</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@section scripts
+{
+    <script>
+        $.ajax({
+            url: '/api/RestTest/1',
+            type: 'DELETE',
+            success: function (result) {
+                $('#delete').html('OK');
+            },
+            error: function (result) {
+                $('#delete').html('Fail');
+            }
+
+        });
+        $.ajax({
+            url: '/api/RestTest/1',
+            type: 'PUT',
+            success: function (result) {
+                $('#put').html('OK');
+            },
+            error: function (result) {
+                $('#put').html('Fail');
+            }
+        });
+
+    </script>
+
+}

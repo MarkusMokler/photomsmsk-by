@@ -1,0 +1,190 @@
+﻿@model PhotoMSK.Data.Models.Routes.Photoshop
+
+<div class="uk-grid uk-grid-divider" data-uk-grid-margin="" data-uk-grid-match="">
+    <div class="uk-width-medium-1-4">
+        <form class="uk-form" method="post">
+
+            <div class="uk-panel uk-panel-divider">
+                <ul class="uk-nestable" data-uk-nestable="{group:'my-group'}">
+                    <li class="uk-nestable-list-item uk-parent">
+                        <div class="uk-nestable-item">
+                            <div class="uk-nestable-handle"></div>
+                            <div data-nestable-action="toggle"></div>
+                            Фотоаппараты
+                        </div>
+                        <ul class="uk-nestable-list">
+                            <li class="uk-nestable-list-item">
+                                <div class="uk-nestable-item">
+                                    <div class="uk-nestable-handle"></div>
+                                    <div data-nestable-action="toggle"></div>
+                                    Зеркальные
+                                </div>
+                            </li>
+                            <li class="uk-nestable-list-item">
+                                <div class="uk-nestable-item">
+                                    <div class="uk-nestable-handle"></div>
+                                    <div data-nestable-action="toggle"></div>
+                                    Беззеркальные
+                                </div>
+                            </li>
+                            <li class="uk-nestable-list-item">
+                                <div class="uk-nestable-item">
+                                    <div class="uk-nestable-handle"></div>
+                                    <div data-nestable-action="toggle"></div>
+                                    Компактные камеры
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="uk-nestable-list-item">
+                        <div class="uk-nestable-item">
+                            <div class="uk-nestable-handle"></div>
+                            <div data-nestable-action="toggle"></div>
+                            Объективы
+                        </div>
+                    </li>
+                    <li class="uk-nestable-list-item">
+                        <div class="uk-nestable-item">
+                            <div class="uk-nestable-handle"></div>
+                            <div data-nestable-action="toggle"></div>
+                            Студийное оборудорвание
+                        </div>
+                    </li>
+                </ul>
+
+                <p class="uk-h3">
+                    Фотоаксессуары
+                </p>
+                <ul class="uk-nestable" data-uk-nestable="{group:'my-group'}">
+                    <li class="uk-nestable-list-item">
+                        <div class="uk-nestable-item">
+                            <div class="uk-nestable-handle"></div>
+                            <div data-nestable-action="toggle"></div>
+                            Фотосумки
+                        </div>
+                    </li>
+                    <li class="uk-nestable-list-item">
+                        <div class="uk-nestable-item">
+                            <div class="uk-nestable-handle"></div>
+                            <div data-nestable-action="toggle"></div>
+                            Рюкзаки
+                        </div>
+                    </li>
+                    <li class="uk-nestable-list-item">
+                        <div class="uk-nestable-item">
+                            <div class="uk-nestable-handle"></div>
+                            <div data-nestable-action="toggle"></div>
+                            Светофильтры
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="uk-panel uk-panel-divider" data-uk-margin>
+                <a class="uk-button" href="#">Добавить категорию</a>
+                <a class="uk-button uk-button-success" href="#">Импорт</a>
+            </div>
+
+        </form>
+    </div>
+    <div class="uk-width-medium-3-4">
+
+        <div class="uk-grid" data-uk-grid-margin="">
+            <ul class="uk-width-1-1 uk-subnav uk-subnav-line">
+                <li>
+                    <div class="uk-button-group" data-uk-button-checkbox="">
+                        <button class="uk-button">Nikon</button>
+                        <button class="uk-button">Canon</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="uk-button-group" data-uk-button-checkbox="">
+                        <button class="uk-button">35mm</button>
+                        <button class="uk-button">50mm</button>
+                        <button class="uk-button">85mm</button>
+                        <button class="uk-button">70-200mm</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="uk-button-group" data-uk-button-checkbox="">
+                        <button class="uk-button">1</button>
+                        <button class="uk-button">1.5</button>
+                        <button class="uk-button">1.6</button>
+                    </div>
+                </li>
+                <li>
+                    <form class="uk-search" data-uk-search="">
+                        <input class="uk-search-field uk-search-field-border uk-width-1-1" type="search" placeholder="Поиск техники..." autocomplete="off">
+                        <div class="uk-dropdown uk-dropdown-search"></div>
+                    </form>
+                </li>
+            </ul>
+            <div class="uk-width-1-1 uk-margin-remove uk-grid-margin">
+                <hr class="small-line ">
+            </div>
+        </div>
+
+        <div class="uk-overflow-container">
+            <table class="uk-table uk-table-statistics uk-table-hover uk-table-condensed">
+                <thead>
+                    <tr class="uk-text-center">
+                        <th></th>
+                        <th class="uk-text-left">Продукт</th>
+                        <th>Цена</th>
+                        <th class="uk-text-left">Наличие</th>
+                        <th>Доставка</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Positions)
+                    {
+                        <tr>
+                            <td>
+                                @switch (item.Status.ToLower())
+                                {
+                                    case "нет":
+                                        {
+                                            <span><i class="uk-icon-circle uk-text-danger"></i></span>
+                                            break;
+                                        }
+                                    case "заказ":
+                                        {
+                                            <span><i class="uk-icon-circle uk-text-warning"></i></span>
+                                            break;
+                                        }
+
+                                    case "склад":
+                                        {
+                                            <span><i class="uk-icon-circle uk-text-success"></i></span>
+                                            break;
+                                        }
+
+                                    default:
+                                        {
+                                            <span><i class="uk-icon-circle uk-text-warning"></i></span>
+                                            break;
+                                        }
+                                }
+                            </td>
+                            <td class="uk-text-left">
+                                <div class="uk-vertical-align">
+                                    <div class="uk-vertical-align-middle">
+                                        <img src="@item.PhototechnicsViewModel.TeaserImage" width="30" height="30" class="uk-border-circle uk-margin-small-right">
+                                        <a href="#" class="uk-link-muted uk-link-dotted">@item.PhototechnicsViewModel.Name</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><b>@item.Price</b> <small class="uk-text-muted">@item.Currency</small></td>
+                            @*<td>@item.Currency</td>*@
+                            <td class="uk-text-left">
+                                <span>@item.Status</span>
+                            </td>
+                            <td>@item.Delivery</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

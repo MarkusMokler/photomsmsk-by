@@ -1,0 +1,78 @@
+﻿@model PhotoMSK.Models.EditViewModel.Routes.RouteEditModel
+
+@* WhiteLabel or PRO *@
+
+<div class="uk-width-1-1">
+    <div class="uk-section">
+        <span class="uk-section__counter">8</span>
+        <span class="uk-section__title">
+            <span class="uk-text-success">PRO</span><small class="uk-text-muted">-аккаунт</small>
+        </span>
+    </div>
+</div>
+<div class="uk-width-1-2">
+    <label class="label-ms">Заголовок</label>
+    @Html.TextBoxFor(model => model.SeoTitle, new { @class = "input-ms uk-width-large-1-1 uk-width-small-1-1" })
+    @Html.ValidationMessageFor(model => model.SeoTitle)
+</div>
+<div class="uk-width-1-2">
+    <p class="uk-text-muted">
+        Это набор слов, по которому вас будут отображать поисковые системы(Google, Yandex и т.д.)
+    </p>
+</div>
+
+<div class="uk-width-1-2">
+    <label class="label-ms">Описание</label>
+    @Html.TextBoxFor(model => model.SeoDescription, new { @class = "input-ms uk-width-large-1-1 uk-width-small-1-1" })
+    @Html.ValidationMessageFor(model => model.SeoDescription)
+</div>
+<div class="uk-width-1-2">
+    <p class="uk-text-muted">
+        Это набор слов, по которому вас будут отображать поисковые системы(Google, Yandex и т.д.)
+    </p>
+</div>
+
+<div class="uk-width-1-2">
+    <label class="label-ms">Ключевые слова</label>
+    @Html.TextAreaFor(model => model.SeoKeywords, new { @class = "input-ms uk-width-large-1-1 uk-width-small-1-1", rows = 7 })
+    @Html.ValidationMessageFor(model => model.SeoKeywords)
+</div>
+<div class="uk-width-1-2">
+    <p class="uk-text-muted">
+        Это набор слов, по которому вас будут отображать поисковые системы(Google, Yandex и т.д.)
+    </p>
+</div>
+<div class="uk-width-1-2">
+    <label class="label-ms">Домен <i class="icon-help2" data-uk-tooltip title="Укажите ваше доменное имя для работы по модели «White Label»"></i></label>
+    <div class="input-group">
+        <span class="input-group-addon">http://www.</span>
+        @Html.TextBoxFor(model => model.Domain, new { @class = "form-control input-ms uk-width-large-1-1 uk-width-small-1-1" })
+        @Html.ValidationMessageFor(model => model.Domain)
+    </div>
+</div>
+<div class="uk-width-1-2">
+    <p class="uk-text-muted">
+        Укажите ваше доменное имя, по которому вас будут отображать поисковые системы(Google, Yandex и т.д.)
+    </p>
+</div>
+
+<div class="uk-width-1-1">
+    <hr class="small-line" />
+</div>
+
+<div class="uk-width-1-1">
+    <header class="uk-text-center">
+        <h2 class="uk-margin-bottom-remove">Темы для вашего сайта:</h2>
+        <small class="uk-text-muted">После создания фотостудии она будет промодерирована нашими специалистами и в ближайшее время появится в публичном каталоге всех фотостудий</small>
+    </header>
+    <ul class="uk-grid uk-grid-width-1-4 uk-margin-top" data-uk-grid-margin data-uk-button-radio>
+        @for (int i = 0; i < 12; i++)
+        {
+            <li>
+                <div class="uk-button uk-button-radio-active">
+                    <img src="http://yootheme.com/images/yootheme/pages/themes_features_responsive.png" alt="">
+                </div>
+            </li>
+        }
+    </ul>
+</div>

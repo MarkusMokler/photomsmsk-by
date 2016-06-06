@@ -1,0 +1,304 @@
+﻿@using Kendo.Mvc.UI
+@using PhotoMSK.Data.Models.Attachments
+@using PhotoMSK.Extensiolns
+@using PhotoMSK.ViewModels.Route
+@model PhotoMSK.Areas.Default.ViewData.Photorent.DetailsViewData
+@{
+    ViewBag.Title = "Прокат  " + Model.RouteDetails.Name;
+    ViewBag.Description = Model.Route.Description;
+    ViewBag.Image = Model.Route.ImageUrl;
+    int count = 1;
+}
+
+@section scripts
+{
+    <script>
+        $(function () {
+            App.routeImage = '@Model.Route.ImageUrl';
+            App.owner = '@Model.Route.ID';
+            App.PhotographerDetails = new App.Photorent.PhotorentDetails({model:@Model.RouteDetails.ToJson()});
+            App.PhotographerDetails.render();
+            App.WallView.WallCollection.reset(@Model.RouteDetails.Wall.ToJson());
+        })
+    </script>
+}
+
+<div class="userprofile photographer" id="px">
+
+    <div id="cover">
+        <div class="wrap">
+            <div class="inside">
+                <img style="width: 100%" src=@(Model.Route.CoverImage ?? "http://pacdn.500px.org/1623045/90732f6fd75497df147984baddc5146b0725e54b/cover_2048.jpg") />
+            </div>
+            <div class="uk-clearfix"></div>
+        </div>
+        <div class="uk-clearfix"></div>
+        <div class="bottom">
+            <div class="fade">
+                <div class="wrapper">
+
+                    <div class="uk-container uk-container-center pad-bottom-20">
+                        <div class="uk-grid">
+                            <div class="uk-width-1-1">
+                                <div class="legend-hero">
+                                    <h1>@Model.RouteDetails.Name</h1>
+                                    <div class="legend-movie up rate nota">@Model.RouteDetails.Raiting</div>
+                                    <div class="legend-movie up rate">PRO</div>
+                                    <div class="legend-movie up">Фотограф,&nbsp;</div>
+                                    <div class="legend-movie up">@Model.RouteDetails.City &nbsp;</div>
+                                </div>
+                            </div>
+                            <div class="uk-width-6-10 pad-top-20">
+                                <div class="uk-grid">
+                                    <div class="uk-width-1-4">
+                                        <img class="img-poster" src="@Model.RouteDetails.ImageUrl" alt="">
+                                    </div>
+                                    <div class="uk-width-3-4">
+                                        <p class="p-sinopse hero">@Model.RouteDetails.Description</p>
+
+                                        @foreach (var item in Model.Route.Phones)
+                                        {
+                                            <div class="tags">@item.Number</div>
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="uk-width-4-10">
+                                <div class="uk-grid">
+                                    <div class="uk-width-1-3">
+                                        <div class="n-big">99.6</div>
+                                    </div>
+
+                                    <div class="uk-width-2-3">
+                                        <ul class="list-rate">
+                                            <li class="list-line"><div class="label-rate">9.3 · Качество</div><div class="bar-progress"><div class="bar-progress filled"></div></div></li>
+                                            <li class="list-line"><div class="label-rate">8.9 · Срок выполнения</div><div class="bar-progress"><div class="bar-progress filled _02"></div></div></li>
+                                            <li class="list-line">
+                                                <div class="label-rate">9.1 · Вежливость</div>
+                                                <div class="bar-progress">
+                                                    <div class="bar-progress filled"></div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="uk-container uk-container-center photographer">
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-1">
+            <div class="uk-tab-center uk-tab-arrow-down">
+                <ul class="uk-tab uk-active" data-uk-tab="{connect:'#photographer-tab'}">
+                    <li class="uk-active"><a href="#">Информация</a></li>
+                    <li class=""><a href="#">Техника</a></li>
+                    <li class=""><a href="#">Тарифы</a></li>
+                    <li class=""><a href="#">Календарь</a></li>
+                </ul>
+            </div>
+            <ul id="photographer-tab" class="uk-switcher uk-margin">
+                <li class="uk-active uk-grid">
+
+                    <div class="uk-width-2-10">
+                        <h1>Жанры</h1>
+                        <hr />
+
+                    </div>
+
+                    <div id="wall-placeholder" class="uk-width-5-10">
+                    </div>
+
+                    <div class="uk-width-3-10">
+                        <h1>Съемки</h1>
+                        <hr />
+                        <ul class="photo-projects">
+                            <li>
+                                <article class="uk-comment">
+                                    <header class="uk-comment-header">
+                                        <img class="img-photo-projects uk-float-left uk-border-rounded" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                                        <h4 class="uk-comment-title">COLOR`s DREAMs</h4>
+                                        <div class="uk-comment-meta">Fashion, Beauty</div>
+                                    </header>
+                                </article>
+                            </li>
+                            <li>
+                                <article class="uk-comment">
+                                    <header class="uk-comment-header">
+                                        <img class="img-photo-projects uk-float-left uk-border-rounded" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                                        <h4 class="uk-comment-title">«Summer Party 2020»</h4>
+                                        <div class="uk-comment-meta">Свадебная съемка</div>
+                                    </header>
+                                </article>
+                            </li>
+                        </ul>
+                        <a class="uk-float-right" href="#">показать все...</a>
+                    </div>
+                    <div class="uk-width-3-10 pad-top-20">
+                        <h1>Фотопроекты</h1>
+                        <hr />
+                        <ul class="photo-projects">
+                            <li>
+                                <article class="uk-comment">
+                                    <header class="uk-comment-header">
+                                        <img class="img-photo-projects uk-float-left uk-border-rounded" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                                        <h4 class="uk-comment-title">«Весна в разгаре 2014»</h4>
+                                        <div class="uk-comment-meta"> 100$ за час.</div>
+                                    </header>
+                                </article>
+                            </li>
+                            <li>
+                                <article class="uk-comment">
+                                    <header class="uk-comment-header">
+                                        <img class="img-photo-projects uk-float-left uk-border-rounded" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                                        <h4 class="uk-comment-title">«Summer Party 2020»</h4>
+                                        <div class="uk-comment-meta">Бесплатный</div>
+                                    </header>
+                                </article>
+                            </li>
+                        </ul>
+                        <a class="uk-float-right" href="#">показать все...</a>
+                    </div>
+
+                </li>
+                <li class="uk-grid uk-grid-small uk-animation-fade" data-uk-scrollspy="{cls:'uk-animation-fade', delay:900}, repeat: true}">
+                    <div class="uk-container uk-container-center">
+                        <div class="uk-grid">
+                            <div class="uk-width-1-1 pad-bottom-20">
+                                <div class="uk-grid">
+                                    <ul class="uk-list uk-width-1-3 uk-subcategory">
+                                        <li><img src="@Url.Content("~/Content/images/category/ico-mcat2.png")"> <a href="#" class="uk-link-muted">Фотоаппараты</a></li>
+                                        <li><img src="@Url.Content("~/Content/images/category/ico-mcat3.png")"> <a href="#" class="uk-link-muted">Видеокамеры</a></li>
+                                        <li><img src="@Url.Content("~/Content/images/category/ico-mcat356.png")"> <a href="#" class="uk-link-muted">Штативы</a></li>
+                                        <li><img src="@Url.Content("~/Content/images/category/ico-mcat167a.png")"> <a href="#" class="uk-link-muted">Сумки для фото/видеотехники</a></li>
+                                    </ul>
+                                    <ul class="uk-list uk-width-1-3 uk-subcategory">
+                                        <li><img src="@Url.Content("~/Content/images/category/ico-mcat22.png")"> <a href="#" class="uk-link-muted">Объективы</a></li>
+                                        <li><img src="@Url.Content("~/Content/images/category/ico-mcat23.png")"> <a href="#" class="uk-link-muted">Вспышки и лампы</a></li>
+                                        <li><img src="@Url.Content("~/Content/images/category/ico-mcat374.png")"> <a href="#" class="uk-link-muted">Светофильтры и конвертеры</a></li>
+                                        <li><img src="@Url.Content("~/Content/images/category/ico-mcat30.png")"> <a href="#" class="uk-link-muted">Аккумуляторы, ЗУ для фото/видеотехники</a></li>
+                                    </ul>
+                                    <ul class="uk-list uk-width-1-3 uk-subcategory">
+                                        <li><img src="@Url.Content("~/Content/images/category/ico-mcat640.png")"> <a href="#" class="uk-link-muted">Экшн-камеры</a></li>
+                                        <li><img src="@Url.Content("~/Content/images/category/ico-mcat9.png")"> <a href="#" class="uk-link-muted">Карты памяти</a></li>
+                                        <li><img src="@Url.Content("~/Content/images/category/ico-mcat156.png")"> <a href="#" class="uk-link-muted">Цифровые фоторамки</a></li>
+                                        <li><img src="@Url.Content("~/Content/images/category/ico-mcat243.png")"> <a href="#" class="uk-link-muted">Бинокли и подзорные трубы</a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+
+                            <div class="uk-width-1-1">
+                                @* TOP Models*@
+                                <div class="uk-grid" data-uk-grid-match>
+                                    <div class="uk-width-3-10">
+                                        <h2>
+                                            <strong class="yellow-color">Вся</strong> фототехника
+                                        </h2>
+                                    </div>
+                                    <div class="uk-width-2-10 uk-text-center">
+                                        <div class="phototechnics-teaser-search">
+                                            <div class="search-background">
+                                                <div class="search-url">
+                                                    <form class="uk-search" data-uk-search>
+                                                        <input class="uk-search-field" type="search" placeholder="поиск...">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-5-10">
+                                        <ul class="uk-subnav phototechnics-teaser-top-filter uk-text-right">
+                                            <li><span class="uk-text-muted">Сортировать по:</span></li>
+                                            <li><a href="#">цене</a></li>
+                                            <li><a class="active" href="#">рейтингу</a></li>
+
+                                            <li><span class="uk-text-muted">Выводить по:</span></li>
+                                            <li>
+                                                <a @if (Model.Technics.PageSize == 20) { Write("class=active"); } href="@Url.Action("Index", "PhototechnicsViewModel", new {from = 0, PageSize = 20})">20</a>
+                                            </li>
+                                            <li>
+                                                <a @if (Model.Technics.PageSize == 50) { Write("class=active"); } href="@Url.Action("Index", "PhototechnicsViewModel", new {from = 0, PageSize = 50})">50</a>
+                                            </li>
+
+                                        </ul>
+                                        <button class="uk-button uk-button-mini uk-button-link uk-link-muted uk-align-right" data-uk-toggle="{target:'#top-filter'}">расширенные настройки ↓</button>
+
+                                    </div>
+                                </div>
+
+                                <hr class="small-line yellow-color" />
+                                <div id="top-filter" class="uk-width-1-1 uk-hidden">
+                                    @* Тут будет фильтр *@
+                                </div>
+
+                                <ul class="uk-grid role-phototechnics-placeholder"></ul>
+                            </div>
+                        </div>
+
+                        <hr class="small-line" />
+                        <ul class="uk-pagination">
+                            @for (int i = 0; i <= Model.Technics.PagesCount; i++)
+                            {
+                                <li><a href="@Url.Action("Index", "PhototechnicsViewModel", new {from = Model.Technics.PageSize*i, PageSize = Model.Technics.PageSize})">@i</a></li>
+                            }
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="uk-grid uk-grid-small">
+                    <div class="uk-width-1-1">
+                        <h1>Описание работы</h1>
+                        <p>В каждый из пакетов услуг входит предсвадебная встреча, организация фотосессии, важные советы и детали. А так же резервное хранение готовых фотографий на жёстком диске в течении 2-х лет. Ну и конечно же – приятное и лёгкое общение, безусловное качество и надёжность предоставляемых услуг.</p>
+                    </div>
+
+                    <div class="uk-grid pad-top-20">
+                        @for (int i = 0; i < 3; i++)
+                        {
+                            <div class="uk-width-medium-1-3">
+                                <div class="uk-panel uk-panel-box">
+                                    <div class="uk-panel-teaser uk-text-center">
+                                        <h2>
+                                            Optimal
+                                            <p>
+                                                <small>тариф</small>
+                                            </p>
+                                        </h2>
+                                        <img class="price-image" src="http://i.imgur.com/pwPaORM.jpg" alt="">
+                                    </div>
+                                    <section class="price">
+                                        <h2>
+                                            <span class="dollar">$</span>199<span class="hours">/4 часа</span>
+                                        </h2>
+                                    </section>
+
+                                    <h3>Входит в пакет:</h3>
+                                    <ul class="uk-list price-list">
+                                        <li class="list-check-item">Предсвадебная встреча</li>
+                                        <li class="list-check-item">Скидка 50% на Love story</li>
+                                        <li class="list-check-item">Фотокнига на 20 разворотов</li>
+                                        <li class="list-check-item">Слайд-шоу</li>
+                                        <li class="list-check-item">Авторская решушь 20 фотографй</li>
+                                        <li class="list-check-item">Тех. ретушь 300 фотографий</li>
+                                    </ul>
+
+                                    <input type="submit" class="btn border-500 booking-button" value="Заказать">
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </li>
+                <li>Bazinga123123123!</li>
+            </ul>
+        </div>
+    </div>
+</div>

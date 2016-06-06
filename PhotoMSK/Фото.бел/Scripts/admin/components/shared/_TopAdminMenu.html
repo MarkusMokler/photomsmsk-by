@@ -1,0 +1,54 @@
+<section class="content">
+
+    <nav class="main-menu" data-ng-class="{'main-menu--medium' : viewMode}">
+        <!-- <div>
+            <a data-msk-href class="link--reset" data-ng-click="changeViewMode()">
+                <i class="icon-menu"></i>
+            </a>
+        </div> -->
+        <!-- <div class="input__group">
+            <input type="search" class="input input--small input__search ng-pristine ng-untouched ng-valid" placeholder="поиск..." data-ng-model="search">
+            <a data-msk-href class="button"><i class="icon-search"></i></a>
+        </div> -->
+
+        <div>
+            <a class="button button--small button--danger" href="admin/route/add">Создать&nbsp;<i class="text--small icon-chevron-down"></i></a>
+        </div>
+        <ul class="main-menu__list">
+            <li>
+                <a href="/">
+                    <i class="icon-screen"></i>
+                    <span class="subtitle">на сайт</span>
+                </a>
+            </li>
+            <li data-ng-controller="userMenuCtrl">
+                <a href="/admin/userinformation/{{userInformation.id}}">
+                    <i class="icon-cog"></i>
+                    <span class="subtitle">настройки</span>
+                </a>
+            </li>
+            <li>
+                <a href="admin/photostudio/{{selectedRouteLeftMenu.shortcut}}/question">
+                    <i class="icon-question"></i>
+                    <span class="subtitle">База знаний</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://jira.ngweb.by/servicedesk/customer/portal/1" target="_blank">
+                    <img src="Content/images/svg/support.svg" width="17" alt="">
+                    <span class="subtitle">Помощь</span>
+                </a>
+            </li>
+        </ul>
+        <div class="main-menu__avatar" data-ng-controller="userMenuCtrl" uib-dropdown dropdown-append-to-body style="position: relative;left: -100px;">
+            <a data-msk-href uib-dropdown-toggle>
+                <img data-ng-src="{{userInformation.userPhoto}}" alt="{{userInformation.lastName}}" data-ng-cloak/>
+            </a>
+            <ul uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
+                <li role="menuitem"><a href="/admin/userinformation/{{userInformation.id}}">Мой профиль</a></li>
+                <li class="divider"></li>
+                <li role="menuitem"><a data-msk-href data-ng-click="authService.logOut()">Выйти</a></li>
+            </ul>
+        </div>
+    </nav>
+</section>

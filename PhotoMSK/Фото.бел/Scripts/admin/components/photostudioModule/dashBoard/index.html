@@ -1,0 +1,332 @@
+<div class="content--admin">
+
+    <div><data-bread-crumbs/></div>
+
+    <div class="container--fluid">
+
+        <div class="grid grid--small">
+            <div class="col--4-5">
+                <button type="button" class="button button--small button--success border--rounded" data-msk-href data-ng-click="showCloseDayModal()"> Закрыть день </button>
+            </div>
+            <div class="col--1-5">
+                <input class="input input--small input--rounded col--1-1" type="search" placeholder="Поиск...">
+            </div>
+
+            <div class="col--1-1">
+                <hr>
+            </div>
+        </div>
+
+        <ul class="active-day grid grid--small grid-col--1-4">
+            <li>
+                <p class="active-day__title">Активность</p>
+                <ul ui-sortable="options1" class="active-day__list ng-eventzone" ng-model="activityEvents">
+                    <li ng-repeat="event in activityEvents">
+                        <div class="active-day__item-header">
+                            <p class="text--bold"><small class="text--small text--muted text--light">с</small> {{event.start | date : 'HH:mm'}} <small class="text--small text--muted text--light">до</small> {{event.end | date : 'HH:mm'}}</p>
+                            <hr class="margin--v-mini">
+                            <div>
+                                <img class="border--radius float--left margin--right-small" src="{{event.userUserPhoto}}" data-ng-if="event.userUserPhoto != null" width="30" alt="">
+                                <div class="activity__status__avatar activity__status__avatar--empty margin--right-small float--left" data-ng-if="event.userUserPhoto == null"></div>
+
+                                <span>{{event.userFirstName}} {{event.userLastName}}</span>
+                                <p><a href="tel:{{event.phone}}" class="text--small text--muted">{{event.phone}}</a></p>
+                            </div>
+                            <div class="clear--fix"></div>
+                            <hr class="margin--v-mini">
+                            <p data-ng-if="event.prePayed > 0">Предоплата: {{event.prePayed}}</p>
+                            <p><span class="text--muted">К оплате:</span>&nbsp;<span class="text--bold">{{getLastPrice(event.price, event.prePayed) | number}}</span></p>
+                            <p class="text--small text--muted">{{event.description}}</p>
+                            <ul class="tags__list" data-ng-if="event.tags != null">
+                                <li>
+                                    <a class="tag" data-msk-href>{{event.tags}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="active-day__item-action">
+                            <i class="icon-menu text--muted"></i>
+                        </div>
+                        <div class="clear--fix"></div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <p class="active-day__title active-day__title--cash">Наличные</p>
+                <ul ui-sortable="options2" class="active-day__list ng-eventzone" data-ng-model="payedEvents">
+                    <li data-ng-repeat="event in payedEvents">
+                        <div class="active-day__item-header">
+                            <p class="text--bold"><small class="text--small text--muted text--light">с</small> {{event.start | date : 'HH:mm'}} <small class="text--small text--muted text--light">до</small> {{event.end | date : 'HH:mm'}}</p>
+                            <hr class="margin--v-mini">
+                            <div>
+                                <img class="border--radius float--left margin--right-small" src="{{event.userUserPhoto}}" data-ng-if="event.userUserPhoto != null" width="30" alt="">
+                                <div class="activity__status__avatar activity__status__avatar--empty margin--right-small float--left" data-ng-if="event.userUserPhoto == null"></div>
+
+                                <span>{{event.userFirstName}} {{event.userLastName}}</span>
+                                <p><a href="tel:{{event.phone}}" class="text--small text--muted">{{event.phone}}</a></p>
+                            </div>
+                            <div class="clear--fix"></div>
+                            <hr class="margin--v-mini">
+                            <p data-ng-if="event.prePayed > 0">Предоплата: {{event.prePayed}}</p>
+                            <p><span class="text--muted">К оплате:</span>&nbsp;<span class="text--bold">{{getLastPrice(event.price, event.prePayed) | number}}</span></p>
+                            <p class="text--small text--muted">{{event.description}}</p>
+                            <ul class="tags__list" data-ng-if="event.tags != null">
+                                <li>
+                                    <a class="tag" data-msk-href>{{event.tags}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="active-day__item-action">
+                            <i class="icon-menu text--muted"></i>
+                        </div>
+                        <div class="clear--fix"></div>
+                    </li>
+                </ul>
+
+                <div class="active-day__no-action" data-ng-if="payedEvents.length==0">
+                    <i class="text--h2 icon-vibration"></i>
+                    <p class="text--bold">Нет активных действий</p>
+                    <small class="text--small text--muted">перетащите сюда прошедшее событие</small>
+                </div>
+                <p class="active-day__summ">
+                    <span class="text--muted">Итого:</span> <span class="text--bold float--right">{{summPayed | number}} <small class="text--small text--light text--muted">бел.руб.</small></span>
+                </p>
+            </li>
+            <li>
+                <p class="active-day__title active-day__title--cash">Безналичные</p>
+                <ul ui-sortable="options3" class="ng-eventzone active-day__list" data-ng-model="debitEvents">
+                    <li data-ng-repeat="event in debitEvents">
+                        <div class="active-day__item-header">
+                            <p class="text--bold"><small class="text--small text--muted text--light">с</small> {{event.start | date : 'HH:mm'}} <small class="text--small text--muted text--light">до</small> {{event.end | date : 'HH:mm'}}</p>
+                            <hr class="margin--v-mini">
+                            <div>
+                                <img class="border--radius float--left margin--right-small" src="{{event.userUserPhoto}}" data-ng-if="event.userUserPhoto != null" width="30" alt="">
+                                <div class="activity__status__avatar activity__status__avatar--empty margin--right-small float--left" data-ng-if="event.userUserPhoto == null"></div>
+
+                                <span>{{event.userFirstName}} {{event.userLastName}}</span>
+                                <p><a href="tel:{{event.phone}}" class="text--small text--muted">{{event.phone}}</a></p>
+                            </div>
+                            <div class="clear--fix"></div>
+                            <hr class="margin--v-mini">
+                            <p data-ng-if="event.prePayed > 0">Предоплата: {{event.prePayed}}</p>
+                            <p><span class="text--muted">К оплате:</span>&nbsp;<span class="text--bold">{{getLastPrice(event.price, event.prePayed) | number}}</span></p>
+                            <p class="text--small text--muted">{{event.description}}</p>
+                            <ul class="tags__list" data-ng-if="event.tags != null">
+                                <li>
+                                    <a class="tag" data-msk-href>{{event.tags}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="active-day__item-action">
+                            <i class="icon-menu text--muted"></i>
+                        </div>
+                        <div class="clear--fix"></div>
+                    </li>
+                </ul>
+
+                <div class="active-day__no-action" data-ng-if="debitEvents.length==0">
+                    <i class="text--h2 icon-vibration"></i>
+                    <p class="text--bold">Нет активных действий</p>
+                    <small class="text--small text--muted">перетащите сюда прошедшее событие</small>
+                </div>
+                <p class="active-day__summ">
+                    <span class="text--muted">Итого:</span> <span class="text--bold float--right">{{summDebit | number}} <small class="text--small text--light text--muted">бел.руб.</small></span>
+                </p>
+            </li>
+            <li>
+                <p class="active-day__title active-day__title--pinalty">Претензии</p>
+                <ul ui-sortable="options4" class="ng-eventzone active-day__list" data-ng-model="missedEvents">
+                    <li data-ng-repeat="event in missedEvents">
+                        <div class="active-day__item-header">
+                            <p class="text--bold"><small class="text--small text--muted text--light">с</small> {{event.start | date : 'HH:mm'}} <small class="text--small text--muted text--light">до</small> {{event.end | date : 'HH:mm'}}</p>
+                            <hr class="margin--v-mini">
+                            <div>
+                                <img class="border--radius float--left margin--right-small" src="{{event.userUserPhoto}}" data-ng-if="event.userUserPhoto != null" width="30" alt="">
+                                <div class="activity__status__avatar activity__status__avatar--empty margin--right-small float--left" data-ng-if="event.userUserPhoto == null"></div>
+
+                                <span>{{event.userFirstName}} {{event.userLastName}}</span>
+                                <p><a href="tel:{{event.phone}}" class="text--small text--muted">{{event.phone}}</a></p>
+                            </div>
+                            <div class="clear--fix"></div>
+                            <hr class="margin--v-mini">
+                            <p data-ng-if="event.prePayed > 0">Предоплата: {{event.prePayed}}</p>
+                            <p><span class="text--muted">К оплате:</span>&nbsp;<span class="text--bold">{{getLastPrice(event.price, event.prePayed) | number}}</span></p>
+                            <p class="text--small text--muted">{{event.description}}</p>
+                            <ul class="tags__list" data-ng-if="event.tags != null">
+                                <li>
+                                    <a class="tag" data-msk-href>{{event.tags}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="active-day__item-action">
+                            <i class="icon-menu text--muted"></i>
+                        </div>
+                        <div class="clear--fix"></div>
+                    </li>
+                </ul>
+                <div class="active-day__no-action" data-ng-if="missedEvents.length==0">
+                    <i class="text--h2 icon-vibration"></i>
+                    <p class="text--bold">Нет активных действий</p>
+                    <small class="text--small text--muted">перетащите сюда прошедшее событие</small>
+                </div>
+                <p class="active-day__summ">
+                    <span class="text--muted">Итого:</span> <span class="text--bold float--right">{{summMissed | number}} <small class="text--small text--light text--muted">руб.</small></span>
+                </p>
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+<div id="3" class="modal" data-ng-class="{'open' : showCloseDay}">
+    <div class="modal__dialog">
+        <a data-msk-href class="modal__close icon-cross-circle" data-ng-click="modalCloseModals()"></a>
+        <section class="modal__header text--center">
+            <div>
+                <p>Итого за день:</p>
+                <br/>
+                Наличными: <input type="text" class="input" data-ng-model="summPayed"/><br/>
+                Безнал: <input type="text" class="input" data-ng-model="summDebit"/><br/>
+                Не оплачено: <input type="text" class="input input-validation-error" data-ng-model="summMissed" readonly="readonly"/><br/>
+                Итого: <input type="text" class="input" data-ng-model="balance.total" readonly="readonly" />
+            </div>
+        </section>
+        <input type="text" class="input" data-ng-model="balance.title" placeholder="Заголовок..."/>
+        <button type="button" class="button" data-msk-href data-ng-click="closeDay()"> Закрыть день </button>
+    </div>
+</div>
+
+<!-- payedEvents Modal -->
+<div id="1" class="modal" data-ng-class="{'open' : showPayedEventsModal}">
+    <div class="modal__dialog">
+        <a data-msk-href class="modal__close icon-cross-circle" data-ng-click="modalCloseModals()"></a>
+        <section class="modal__header text--center">
+            <p class="text--h2 margin--bottom-small">
+                Информация
+            </p>
+            <tbody>
+                <tr>
+                <tr>
+                    <td>
+                        <p data-ng-if="userData.clientType=='Photographer'">Фотограф</p>
+                        <p data-ng-if="userData.clientType!='Photographer'">Не фотограф</p>
+                        <img class="border--rounded" src="{{viewEvent.userUserPhoto}}" width="50" alt="" />
+                        {{viewEvent.userFirstName}} {{viewEvent.userLastName}}<br />
+                        Телефон: {{viewEvent.phone}}<br />
+                    </td>
+                </tr>
+                <td>
+                    <p class="margin--reset" data-ng-if="!viewEvent.isEdit">
+                        Стоимость: <span>{{viewEvent.price | number}}</span>
+                        <small class="text--small text--muted">руб</small>
+                    </p>
+                    <input class="input input--small input--rounded col--1-1" data-ng-if="viewEvent.isEdit" data-ng-model="viewEvent.price" />
+                </td>
+                <td>
+                    <a data-ng-if="!viewEvent.isEdit" data-ng-click="edit(viewEvent)" class="button button--small button--rounded icon-cog"></a>
+                    <a data-ng-if="viewEvent.isEdit" data-ng-click="cancel(viewEvent)" class="button button--small button--rounded icon-cross text--red"></a>
+                    <a data-ng-if="viewEvent.isEdit" data-ng-click="approive(viewEvent)" class="button button--small button--rounded icon-checkmark text--green"></a>
+                    <a data-ng-if="viewEvent.isApproive" class="button button--small button--rounded icon-save" data-ng-click="updateEvent(viewEvent)"></a>
+                </td>
+                </tr>
+            </tbody>
+        </section>
+        <section class="margin--top">
+            <div class="grid">
+                <div class="col--1-1 margin--bottom-small">
+                    <label class="label label--rounded">Заголовок</label>
+                    <input class="input input--rounded col--1-1" data-ng-model="review.title">
+                </div>
+                <div class="col--1-1 margin--bottom-small">
+                    <label class="label">Отзыв от клиента:</label>
+                    <!-- <input class="input col--1-1" data-ng-model="review.description"> -->
+                    <textarea class="input col--1-1" rows="4" data-ng-model="review.description"></textarea>
+                </div>
+                <div class="col--1-2 margin--bottom-small">
+                    <label class="label text--green">Достоинства:</label>
+                    <!-- <input class="input col--1-1" data-ng-model="review.goodComment"> -->
+                    <div class="vote vote--positive">
+                        <div class="vote__info">
+                            <span class="text--small">Осталось 20 слов</span>
+                        </div>
+                        <textarea class="input col--1-1" rows="5" data-ng-model="review.goodComment"></textarea>
+                    </div>
+                </div>
+                <div class="col--1-2 margin--bottom-small">
+                    <label class="label text--red">Недостатки:</label>
+                    <!-- <input class="input col--1-1" data-ng-model="review.badComment"> -->
+                    <div class="vote vote--negative">
+                        <div class="vote__info">
+                            <span class="text--small">Осталось 20 слов</span>
+                        </div>
+                        <textarea class="input col--1-1" rows="5" data-ng-model="review.badComment"></textarea>
+                    </div>
+                </div>
+                <div class="col--1-1 text--center">
+                    <p class="text--muted">Оценка от клиента:</p>
+                    <div data-ng-init="x = 4" class="vote__rating">
+                        <uib-rating data-ng-model="x" max="5" state-on="'icon-star'" state-off="'icon-star_border'" aria-labelledby="icon-star_border"></uib-rating>
+
+                        <div class="text--h3">
+                            <p data-ng-if="x == 1">жуть!</p>
+                            <p data-ng-if="x == 2">ниже среднего</p>
+                            <p data-ng-if="x == 3">нормально</p>
+                            <p data-ng-if="x == 4">хорошо</p>
+                            <p data-ng-if="x == 5">супер!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="modal__footer text--center">
+            <div class="grid grid--collapse">
+                <button class="button button--footer col--1-2" data-ng-click="showPayedEventsModal=!showPayedEventsModal">Отменить</button>
+                <button class="button button--footer button--success col--1-2 margin--reset" data-ng-click="addReview(viewEvent.userID)">Добавить отзыв</button>
+            </div>
+        </section>
+        <span class="popover__penalty--blocked icon-lock"></span>
+        <div class="popover__penalty--border">
+
+        </div>
+    </div>
+</div>
+
+<!-- missedEvents Modal -->
+<div id="2" class="modal" data-ng-class="{'open' : showMissedEventsModal}">
+    <div class="modal__dialog">
+        <a data-msk-href class="modal__close icon-cross-circle" data-ng-click="modalCloseModals()"></a>
+        <section class="modal__header text--center">
+            <p class="text--h2 margin--bottom-small">
+                Претензия
+            </p>
+            <div class="activity__status__event">
+
+                <div class="activity__status__avatar activity__status__avatar--empty" data-ng-if="userData.userPhoto == null"></div>
+                <br />
+
+            </div>
+        </section>
+        <span class="popover__penalty--blocked icon-lock"></span>
+        <div class="popover__penalty--border">
+            <div class="popover__penalty--content">
+                <div>
+                    <span class="label">Текст претензии</span>
+                    <input class="input col--1-1" data-val="true" data-ng-model="penalty.Description" data-val-required="The User name field is required." name="UserName" placeholder="Текст претензии">
+                    <span class="label">Варианты</span>
+                    <select class="input col--1-1" data-val="true" data-ng-model="penalty.Description">
+                        <option selected="selected">Вы не пришли вовремя</option>
+                        <option>Отмена брони на большое количество дней</option>
+                        <option>Не ответчали на звонки</option>
+                    </select>
+                </div>
+                <div>
+                    <span class="label">Сумма претензии</span>
+                    <input class="input col--1-1" data-val="true" data-ng-model="penalty.Price" data-val-required="The User name field is required." name="UserName" placeholder="Сумма штрафа">
+                </div>
+            </div>
+        </div>
+        <section class="modal__footer text--center">
+            <button class="button button--footer button--success col--1-1" data-ng-click="closePenaltyModal()">Выставить претензию</button>
+        </section>
+
+    </div>
+</div>

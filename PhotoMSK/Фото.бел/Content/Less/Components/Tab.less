@@ -1,0 +1,134 @@
+// out: ../../css/Components/Tab.css, compress: true
+// Name:            Tab
+// Description:     Defines styles for tabs
+//
+// Component:       `tab`
+//
+// Modifiers:       `tab--*`
+//                  `tab--*`
+//                  `tab__header--border`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+@tab-header-border:                          rgba(0,0,0,.2);
+@tab-item-danger:                            #da314b;
+@tab-full-item-background-active:            #ff8d58;
+@tab-full-item-padding:                      20px;
+@tab-full-border-bottom-color:               #ddd;
+@tab-full-item-background-hover:             #FFDFD1;
+@tab-full-item-active:                       rgba(255, 199, 22, 1);
+@tab-full-item-hover:                        rgba(255, 199, 22, 0.5);
+/* ========================================================================
+   Component: Tab
+ ========================================================================== */
+.tab {
+    width: 100%;
+    // Modificator 'tab--full'
+    &&--full {
+        font-size: 0;
+        list-style: none;
+        border-bottom: 1px solid @tab-full-border-bottom-color;
+        & > li {
+            display: inline-block;
+
+            & > a {
+                position: relative;
+                display: inline-block;
+                font-size: 14px;
+                line-height: 16px;
+                padding: @tab-full-item-padding;
+                &.active {
+                    box-shadow: 0px 3px 0px @tab-full-item-active;
+                }
+                &:hover{
+                    box-shadow: 0px 3px 0px @tab-full-item-hover;
+                }
+                &:after{
+                    content: '';
+                    position: absolute;
+                    width: 1px;
+                    height: 30px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 0;
+                    border-right: 1px solid #eee;
+                }
+            }
+        }
+    }
+    &&--small{
+        & > li > a {
+            padding: (@tab-full-item-padding / 2);
+            &:after{
+                height: 20px;
+            }
+        }
+    }
+
+    &&--large{
+        & .tab__item{
+            padding: 10px 20px;
+            font-size: 1.3rem;
+
+            &.active{
+                font-weight: 500;
+            }
+        }
+    }
+
+    // *** Component HEADER
+    &__header {
+        border-bottom: 1px solid @tab-header-border;
+        font-size: 0;
+        // Modificatop '--border'
+        &--border {
+            border-bottom: 1px solid @tab-header-border;
+            border-top: 1px solid @tab-header-border;
+            & .tab__item {
+                padding: 7px 10px 4px;
+            }
+        }
+    }
+    // *** Component CONTENT
+    &__item {
+        padding: 4px 6px;
+        display: inline-block;
+        border-bottom: 3px solid transparent;
+        font-size: 1rem;
+        &.active {
+            border-bottom: 3px solid #fd5;
+            box-shadow: 0 1px 0 0 #FFB455;
+        }
+        // Modificatio '--danger'
+        &--danger {
+            background: @tab-item-danger;
+            color: #fff;
+            &:hover {
+                color: #fff;
+            }
+        }
+
+        // Modificator 'tab__item--filter'
+        &--filter{
+            float: right;
+            text-align: center;
+            padding: 5px 20px !important;
+
+            & > small{
+                display: block;
+                font-size: 50%;
+                color: #999;
+            }
+        }
+    }
+    // *** Component CONTENT
+    &__content {
+        margin-top: 10px;
+        & ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+    }
+}

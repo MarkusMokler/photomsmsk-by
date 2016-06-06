@@ -1,0 +1,287 @@
+﻿@model PhotoMSK.Data.Models.Routes.Photorent
+@{
+    ViewBag.Title = "DaylyPrices";
+}
+<div class="uk-container uk-container-center">
+    <h2>DaylyPrices</h2>
+    <div class="uk-grid">
+        <div id="example1" class="uk-width-1-1"></div>
+    </div>
+    <a id="add_car" class="uk-navbar-nav-subtitle uk-text-center uk-button uk-button-success">Добавить</a>
+    <a id="save" class="uk-navbar-nav-subtitle uk-text-center uk-button uk-button-success">Сохранить</a>
+
+    <div id="example">
+        <div id="grid-1"></div>
+        <script>
+
+            function getUrl(model) {
+                return '/api/v2/photorent/'+ '@Model.Shortcut' +'/rentcalendar/' + model.id;
+            }
+
+            function getUrlPost(model) {
+                return '/api/v2/photorent/'+ '@Model.Shortcut' +'/rentcalendar/' + model.shortcut;
+            }
+
+            $(document).ready(function () {
+                $("#grid-1").kendoGrid({
+                    toolbar: ["create", "save", "cancel"],
+                    dataSource: {
+                        type: "jsonp",
+                        transport: {
+                            read: "/api/v2/photorent/" + '@Model.Shortcut' + "/rentcalendar",
+                            create: { url: getUrlPost, type: "POST", dataType: "json" },
+                            update: {
+                                url: getUrl,
+                                dataType: 'json',
+                                type: "PUT"
+                            },
+                            destroy: { url: getUrl, type: "DELETE", dataType: "json" },
+                            parameterMap: function (data, type) {
+                                if (type === "read") {
+
+                                    data.page = data.page - 1;
+                                    return data;
+                                }
+                                return data;
+                            }
+                        },
+                        schema: {
+                            data: function (response) {
+                                return response.elements;
+                            },
+                            total: function (response) {
+                                return response.itemsCount;
+                            },
+                            model: {
+                                id: "id",
+                                fields: {
+                                    id: { type: "string" },
+                                    image: { type: "string" },
+                                    daylyPrice: { type: "number", editable: true },
+                                    weeklyPrice: { type: "number", editable: true },
+                                    monthlyPrice: { type: "number", editable: true },
+                                    hourlyPrice: { type: "number", editable: true },
+                                    name: { type: "string", editable: true },
+                                    phototechnicsID: { type: "string" },
+                                    photorentID: { type: "string" },
+                                    shortcut: {type: "string"}
+                                }
+                            }
+                        },
+                        pageSize: 20,
+                        serverPaging: true,
+                        serverFiltering: true,
+                        serverSorting: true
+                    },
+                    height: 550,
+                    filterable: true,
+                    sortable: true,
+                    pageable: true,
+                    editable: {
+                        mode: "popup",
+                        template: kendo.template($("#popup_editor").html()),
+                        window: {
+                            title: "Editor"
+                        }, confirmation: "Are you sure?" // the confirmation message for destroy command
+                    },
+                    edit: function () {
+                        $("#name").kendoAutoComplete({
+                            minLength: 3,
+                            dataSource: {
+                                type: "jsonp",
+                                transport: {
+                                    read: {
+                                        url: '/api/v2/phototechnics',
+                                        type: "GET",
+                                        dataType: "json",
+                                        data: {
+                                            search: function () {
+                                                return $("#name").data('kendoAutoComplete').value();
+                                            }, maxRows: 20
+                                        }
+                                    }
+                                }, schema: {
+                                    model: {
+                                        fields: {
+                                            name: { type: "string" },
+                                            ImageUrl: { type: "string" },
+                                            id: {type: "string"}
+                                        }
+                                    }
+                                }
+                            }, dataTextField: "name",
+                            dataTextValue: "id",
+                            select: function (e) {
+                                var imageItem = this.dataItem(e.item.index());
+                                $("#image").attr("src", imageItem.imageUrl);
+
+                                var firstRow = $('#grid-1').data().kendoGrid.dataSource.data()[0];
+                                firstRow.set('image', imageItem.imageUrl);
+                                firstRow.set('phototechnicsID', imageItem.id);
+                                firstRow.set('photorentID', $('#grid-1').data().kendoGrid.dataSource.data()[1].get("photorentID"));
+                            }
+                        });
+                    },
+                    columns: [{
+                            field: "image",
+                            title: "image",
+                            template: '<img src="#= image #" alt="image" />',
+                            filterable: false
+                        }, {
+                            title: "name",
+                            field: "name",
+                            filterable: false
+                        }, {
+                            field: "hourlyPrice",
+                            filterable: false
+                        }, {
+                            field: "daylyPrice",
+                            filterable: false
+                        }, {
+                            field: "weeklyPrice",
+                            filterable: false
+                        }, {
+                            field: "monthlyPrice",
+                            filterable: false
+                        }, {
+                            command: ["edit", "destroy"],
+                            title: "&nbsp;"
+                        }
+                    ]
+                });
+            });
+        </script>
+    </div>
+</div>
+
+<!-- Kendo popup template -->
+<script type="text/x-kendo-template" id="popup_editor">
+
+    <p>This is a custom popup editor.</p>
+
+    <div class="k-edit-label">
+        <label for="image">image</label>
+    </div>
+    <div data-container-for="applies_to" class="k-edit-field">
+        <img src="#= image #" alt="image" id="image" />
+    </div>
+
+    <div class="k-edit-label">
+        <label for="type_name">name</label>
+    </div>
+    <div data-container-for="type_name" class="k-edit-field">
+        <input type="text" class="k-input k-textbox" name="applies_to" data-bind="value:name" id="name" />
+    </div>
+
+    <div class="k-edit-label">
+        <label for="hourlyPrice">hourlyPrice</label>
+    </div>
+    <div data-container-for="applies_to" class="k-edit-field">
+        <input type="text" class="k-input k-textbox" name="applies_to" data-bind="value:hourlyPrice" />
+    </div>
+
+    <div class="k-edit-label">
+        <label for="daylyPrice">daylyPrice</label>
+    </div>
+    <div data-container-for="applies_to" class="k-edit-field">
+        <input type="text" class="k-input k-textbox" name="applies_to" data-bind="value:daylyPrice" />
+    </div>
+
+    <div class="k-edit-label">
+        <label for="weeklyPrice">weeklyPrice</label>
+    </div>
+    <div data-container-for="applies_to" class="k-edit-field">
+        <input type="text" class="k-input k-textbox" name="applies_to" data-bind="value:weeklyPrice" />
+    </div>
+
+    <div class="k-edit-label">
+        <label for="monthlyPrice">monthlyPrice</label>
+    </div>
+    <div data-container-for="applies_to" class="k-edit-field">
+        <input type="text" class="k-input k-textbox" name="applies_to" data-bind="value:monthlyPrice" />
+    </div>
+</script>
+
+@section Scripts
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/backgrid.css")" />
+    <script src="@Url.Content("~/Scripts/backgrid.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/autocomplete-cell.js")"></script>
+    <script>
+        $(function () {
+            var RentCalendar = Backbone.Model.extend({
+                url: "/api/RentPosition/",
+            });
+
+            var collection = Backbone.Collection.extend({
+                url: "/api/RentPosition/",
+                model: RentCalendar,
+            });
+
+            var rents = new collection();
+
+            var columns = [
+                {
+                    name: "PhototechnicsViewModel",
+                    label: "Name",
+                    cell: Backgrid.Extension.AutocompleteCell,
+                    autocompleteUrl: "/api/search/",
+                    minTermLength: 3,
+                }, {
+                    name: "hourlyPrice",
+                    label: "На час",
+                    cell: "integer" // An integer cell is a number cell that displays humanized integers
+                }, {
+                    name: "halfDayPrice",
+                    label: "Пол дня",
+                    cell: "integer" // An integer cell is a number cell that displays humanized integers
+                }, {
+                    name: "daylyPrice",
+                    label: "Будний",
+                    cell: "integer" // An integer cell is a number cell that displays humanized integers
+                }, {
+                    name: "hollidayPrice",
+                    label: "Выходной",
+                    cell: "integer" // A cell type for floating point value, defaults to have a precision 2 decimal numbers
+                }, {
+                    name: "weeklyPrice",
+                    label: "Неделя",
+                    cell: "integer" // An integer cell is a number cell that displays humanized integers
+                }, {
+                    name: "monthlyPrice",
+                    label: "Месяц",
+                    cell: "integer" // An integer cell is a number cell that displays humanized integers
+                }
+            ];
+
+            @*rents.reset(@Model.RentCalendars.Select(x => new {x.ID, Phototechnics = x.PhototechnicsViewModel.Name, x.PhototechnicsID, x.PhotorentID,x.HourlyPrice,x.HalfDayPrice,x.WeeklyPrice,x.MonthlyPrice, x.DaylyPrice, x.HollidayPrice}).ToList().ToJson());
+
+            // Initialize a new Grid instance
+            var grid = new Backgrid.Grid({
+                columns: columns,
+                collection: rents
+            });
+
+            // Render the grid and attach the root to your HTML document
+            $("#example1").append(grid.render().el);
+
+            $('#add_car').click(function () {
+                rents.add(new RentCalendar({ PhotorentID: '@Model.ID' }));
+            });
+
+
+            $("#save").click(function () {
+                var myModel;
+                for (var i = 0; i < rents.length; i++) {
+                    myModel = rents.models[i];
+                    if (myModel.isNew()||myModel.hasChanged()) {
+                        myModel.save();
+                    }
+                }
+            });
+        *@
+        })
+    </script>
+}
+
+

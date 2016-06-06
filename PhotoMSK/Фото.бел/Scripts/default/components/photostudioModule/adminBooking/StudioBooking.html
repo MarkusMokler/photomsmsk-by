@@ -1,0 +1,107 @@
+﻿<div class="container container--center  ">
+    <div class="grid">
+        <div class="col--7-10">
+            <h1>Онлайн бронирование студии <i class="icon-streetsign float--right text--muted" data-uk-tooltip="{pos:'left'}" title="Тур: «Как забронировать студию?»"></i></h1>
+            <hr />
+
+            <div class="calendar-header-placeholder"> 
+            </div>
+
+            <div class="booking-calendar">
+                <div id="calendar"></div>
+            </div>
+        </div>
+
+        <div class="col--3-10">
+            <h1>Клиент<i class="icon-circle-cross float--right text--muted" data-uk-tooltip="{pos:'left'}" title="Очистить поля"></i></h1>
+            <hr />
+            <div class="booking-phone  ">
+                <label for="Phone">Телефон</label>
+                <div class="col--1-1 field-container booking-search">
+                    <input class="uk-search-field bold text--center" type="text" value="+375-">
+                    <!-- This is the dropdown, which is injected through JavaScript -->
+                    <div class="uk-dropdown uk-dropdown-search" style="position: absolute;">
+                       
+                    </div>
+                </div>
+                
+                <!--
+    <div class="field-container">
+        <input class="uk-search-field bold text--center" type="text" value="+375-">
+    </div>
+
+
+    <form class="uk-search col--1-1">
+        <input class="uk-search-field col--1-1" type="search" placeholder="" value="+375-">
+        <!-- This is the dropdown, which is injected through JavaScript -->
+    <!--
+    <div class="uk-dropdown uk-dropdown-search" style="position: absolute;">
+        </div>
+    </form>
+    -->
+            </div>
+            <div id="client-placeholder">
+
+            </div>
+            <h3>Бронирование</h3>
+            <hr />
+            <h4>Для данного пользователя бронирование запрещено...</h4>
+            
+            <input type="submit" class="btn border-500 booking-button" value="Забронировать">
+            
+            
+            <div id="booking-list-placeholder">
+                <div class=" ">
+                    <ul class="uk-tab block-booking-title">
+                        <li class="uk-active booking"><a href="#">Бронирование</a></li>
+                    </ul>
+
+                    <ul id="booking" class="uk-switcher uk-margin block-booking-descriptio">
+                        <li id="booking-placeholder" class="uk-active">
+
+                            <article class="uk-article">
+                                <div class="booking-description float--left">
+                                    <div class="uk-article-lead">PhotoLab STUDIO</div>
+                                    <div class="uk-article-meta">Зал: <strong>Classic</strong></div>
+                                </div>
+                                <div class="booking-time float--right">
+                                    <div class="uk-article-lead"><small><i class="icon-clock"></i> 16:00 - 18:00</small></div>
+                                    <div class="uk-article-meta float--right">100000</div>
+                                </div>
+                            </article>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+<div class="container container--center">
+    <div class="grid">
+        <div class="col--8-10">
+            <div class="grid">
+                <div class="col--7-10">
+                    <div class="booking-calendar">
+                        <div id="calendar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(function() {
+
+            var booking = new window.StudioBooking({
+                model: @Model.Halls.Select(x => new {id = x.Calendar.ID.ToString(), color = x.Calendar.Color, name = x.Name, description = x.Description, calendarID = x.Calendar.ID}).ToJson()
+            });
+            booking.render();
+        })
+    </script>
+}

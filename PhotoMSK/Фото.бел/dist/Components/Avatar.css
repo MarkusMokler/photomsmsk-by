@@ -1,0 +1,56 @@
+/* ========================================================================
+   Component: Avatar
+ ========================================================================== */
+.avatar {
+  display: block;
+  height: 40px;
+  width: 40px;
+  border-radius: 40px;
+  color: #fff;
+  line-height: 40px;
+  text-align: center;
+  border: none;
+  outline: none;
+}
+.avatar--large {
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  border-radius: 70px;
+  font-size: 3rem;
+}
+.avatar--small {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 20px;
+}
+.avatar--empty {
+  background: #ddd;
+  font-family: 'icomoon';
+  font-size: 1.5rem;
+}
+.avatar--empty:after {
+  content: "\e99c";
+}
+.avatar--dashed {
+  background: #fff;
+  border: 2px dashed #ddd;
+  color: #ddd;
+}
+.avatar--border-solid {
+  border: 10px solid #eee;
+}
+.avatar__desc {
+  min-width: 200px;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  padding: 10px 20px;
+  background: #fbd73e;
+  border-radius: 100px;
+  transform: translateX(-50%);
+}
+.avatar__desc .text--muted {
+  color: #C5A003 !important;
+}

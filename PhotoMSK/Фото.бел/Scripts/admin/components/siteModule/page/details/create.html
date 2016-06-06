@@ -1,0 +1,151 @@
+<div class="content--admin">
+
+    <div><data-bread-crumbs /></div>
+
+    <div class="container container--center">
+        <div class="grid">
+            <div class="col--1-1">
+                <p class="text--h2 margin--reset">Создание страницы</p>
+                <hr class="margin--v-mini">
+
+                <div class="panel panel--box panel--white panel--shadow">
+                    <div>
+                        <label class="label label--rounded">Тип страницы</label>
+                        <select class="input input--select input--rounded col--1-1" data-ng-model="page.pageType">
+                            <option value="textPage">Текстовая</option>
+                            <option value="landingPage">Лендинг</option>
+                            <option value="requestPage">Страница - запрос</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="label">Опубликовать:</label>
+                        <input type="checkbox" data-ng-model="page.published" />
+                    </div>
+
+                    <div>
+                        <label class="label label--rounded">Название слоя</label>
+                        <div angucomplete-alt
+                             remote-url={{routePages}}
+                             placeholder="Слой..."
+                             pause="500"
+                             selected-object="selected"
+                             title-field="name"
+                             description-field="category"
+                             image-field="photo"
+                             model="results"
+                             remote-url-request-formatter="remoteUrlRequestEn"
+                             searching="rpLayout.name"
+                             input-class="input input--rounded ui-autocomplete-input col--1-1"
+                             no-results="noResults"></div>
+                    </div>
+
+                    <div>
+                        <label class="label label--rounded">Категория</label>
+                        <select class="input input--rounded col--1-1 margin--reset" data-ng-model="selectedCategory" data-ng-options="category.categoryName for category in categoryList"></select>
+                    </div>
+
+                    <div>
+                        <!-- <div data-role-select-placeholder></div> -->
+                        <p class="text--muted text--right text--small">
+                            <i class="icon-add"></i>
+                            <a href="#modal-category" class="link--dotted text--muted" data-role-new-category data-uk-modal>Добавить новую категорию</a>
+                        </p>
+                    </div>
+
+                    <div>
+                        <label class="label label--rounded">Название страницы</label>
+                        <input class="input input--rounded col--1-1" type="text" data-ng-model="page.title" />
+                    </div>
+
+                    <div data-ng-show="page.pageType=='textPage'">
+                        Содержание:
+                        <div class="uk-form-row">
+                            <ui-codemirror ui-codemirror-opts="editorOptions" data-ng-model="page.text"></ui-codemirror>
+                        </div>
+                    </div>
+
+                    <div data-ng-show="page.pageType=='landingPage'">
+                        <div class="uk-form-row">
+                            <label class="label label--rounded">Название страницы</label>
+                            <input class="input input--rounded" type="text" data-ng-model="page.title" />
+                        </div>
+                    </div>
+
+                    <div data-ng-show="page.pageType=='requestPage'">
+                        <div>
+                            <label class="label label--rounded" for="form-h-it">Категория</label>
+                            <select class="input input--rounded" data-ng-model="selectedCategory" data-ng-options="category.categoryName for category in categoryList"></select>
+                        </div>
+
+                        <div>
+                            <div data-role-select-placeholder></div>
+                            <p class="uk-margin-small-top text--muted text--right uk-text-small">
+                                <i class="icon-add"></i>&nbsp;
+                                <a href="#modal-category" class="uk-link-dotted text--muted" data-role-new-category data-uk-modal>Добавить новую категорию</a>
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="col--1-1">
+                        <div>
+                            <data-html-viewer code="selected.originalObject.layout.content"></data-html-viewer>
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="margin--bottom text--center">
+                    <a data-msk-href class="text--muted" data-ng-click="clear()">отменить</a>
+                    <a data-msk-href class="button button--success border--rounded col--1-5" data-ng-click="savePage()">Сохранить</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="modal-category" class="uk-modal">
+    <div class="uk-modal-dialog">
+        <button type="button" class="uk-modal-close uk-close"></button>
+        <div class="uk-modal-header">
+            <h2>Новая категория</h2>
+        </div>
+        <section class="uk-form uk-form-horizontal">
+            <div class="uk-form-row">
+                <label class="uk-form-label" for="form-h-it">Название</label>
+                <div class="uk-form-controls">
+                    <input type="text" data-ng-model="category.categoryName" class="uk-form-large uk-form-large-text col--1-1" placeholder="Название категории" data-role-category-name>
+                </div>
+            </div>
+        </section>
+        <div class="uk-modal-footer text--right">
+            <button type="button" class="button">Отменить</button>
+            <button data-ng-click="createCategory()" type="button" class="button button-success" data-role-save-category>Создать</button>
+        </div>
+    </div>
+</div>
+
+<div id="modal-translite" class="uk-modal">
+    <div class="uk-modal-dialog">
+        <button type="button" class="uk-modal-close uk-close"></button>
+        <div class="uk-modal-header">
+            <h2>Редактирование ссылки на транслите</h2>
+        </div>
+        <section class="uk-form uk-form-horizontal">
+            <div class="uk-form-row">
+                <label class="uk-form-label" for="form-h-it">Название</label>
+                <div class="uk-form-controls">
+                    <input type="text" id="form-h-it" class="uk-form-large uk-form-large-text col--1-1" placeholder="Название_ссылки" data-role-shortcut>
+                </div>
+            </div>
+        </section>
+        <div class="uk-modal-footer text--right">
+            <button type="button" class="button">Отменить</button>
+            <button type="button" class="button button-success" data-role-save-shortcut>Изменить</button>
+        </div>
+    </div>
+</div>

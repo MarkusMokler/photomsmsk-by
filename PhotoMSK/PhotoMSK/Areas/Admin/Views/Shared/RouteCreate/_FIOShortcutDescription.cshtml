@@ -1,0 +1,44 @@
+﻿@*@model PhotoMSK.Data.Models.Routes.Photographer*@
+@model PhotoMSK.Models.EditViewModel.Interfaces.IFioShortcutDescription
+
+@* Фамилия, имя, короткая ссылка и описание *@
+<div class="uk-width-1-1">
+    <div class="uk-section">
+        <span class="uk-section__counter">2</span>
+        <span class="uk-section__title">Информация</span>
+    </div>
+
+    <div class="uk-grid">
+        <div class="uk-width-1-2">
+            <div class="uk-grid" data-uk-grid-margin>
+                <div class="uk-width-1-2">
+                    @*<label class="label-ms">Имя</label>*@
+                    @Html.LabelFor(model => model.FirstName, "Имя", new { @class = "label-ms" })
+                    @Html.TextBoxFor(model => model.FirstName, new { @class = "input-ms uk-width-large-1-1 uk-width-small-1-1" })
+                    @Html.ValidationMessageFor(model => model.FirstName)
+                </div>
+                <div class="uk-width-1-2">
+                    @*<label class="label-ms">Фамилия</label>*@
+                    @Html.LabelFor(model => model.LastName, "Фамилия", new { @class = "label-ms" })
+                    @Html.TextBoxFor(model => model.LastName, new { @class = "input-ms uk-width-large-1-1 uk-width-small-1-1" })
+                    @Html.ValidationMessageFor(model => model.LastName)
+                </div>
+                <div class="uk-width-1-1">
+                    @*<label class="label-ms">Короткая ссылка <i class="icon-help2" data-uk-tooltip title="Это ссылка позволит мгновенно перейти к вашей странице"></i></label>*@
+                    @Html.LabelFor(model => model.Shortcut, "Короткая ссылка", new { @class = "label-ms" })
+                    <div class="input-group">
+                        <span class="input-group-addon">www.photomsk.by/</span>
+                        @Html.TextBoxFor(model => model.Shortcut, new { @class = "form-control input-ms uk-width-large-1-1 uk-width-small-1-1" })
+                        @Html.ValidationMessageFor(model => model.Shortcut)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="uk-width-1-2">
+            @*<label class="label-ms">Коротко о себе <i class="icon-help2" data-uk-tooltip title="Опишите кратко ваши преимущества"></i></label>*@
+            @Html.LabelFor(model => model.Description, "Коротко о себе", new { @class = "label-ms" })
+            @Html.TextAreaFor(model => model.Description, new { @class = "input-ms uk-width-large-1-1 uk-width-small-1-1", rows = 7 })
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+    </div>
+</div>

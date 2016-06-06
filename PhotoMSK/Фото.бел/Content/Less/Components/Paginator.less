@@ -1,0 +1,46 @@
+// out: ../../css/Components/Paginator.css, compress: true
+
+// ****************** Variables **************
+@pag-background-inactive: #e3e2e0;
+@pag-height: 35px;
+
+// ******************* Base *******************
+
+.pagination {
+    margin: 30px 0;
+    font-size: 0;
+
+    & > li {
+        display: inline-block;
+        width: @pag-height;
+        height: @pag-height;
+        font-size: 14px;
+        margin: 0 5px;
+        line-height: @pag-height;
+        border-radius: 100px;
+        text-align: center;
+        cursor: pointer;
+        color: #838280;
+
+        &.active {
+            background: #FFFFFF;
+            box-shadow: 0 0 0 2px #ffbd1e;
+            font-size: 20px;
+            line-height: @pag-height;
+            vertical-align: top;
+        }
+
+        &:hover {
+            box-shadow: 0 0 0 2px @pag-background-inactive;
+        }
+
+        & > a {
+            text-decoration: none;
+        }
+    }
+
+    // Modificator '--center'
+    &--center{
+        text-align: center;
+    }
+}

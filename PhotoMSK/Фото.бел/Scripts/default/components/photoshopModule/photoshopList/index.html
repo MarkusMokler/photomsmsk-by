@@ -1,0 +1,105 @@
+﻿<div class="container container--center  ">
+    <div class="grid">
+        <div class="col--1-1">
+            <ul class="uk-breadcrumb">
+                <li><a href="">Главная</a></li>
+                <li class="uk-active"><span>Фотостудии</span></li>
+            </ul>
+        </div>
+
+        <!-- ---Фотостудии--- -->
+        <div class="col--7-10">
+            <h1 class="article-section">Фотостудии <span class="title-slash-orange">/</span></h1>
+
+           
+                <div ng-repeat="item in page.elements" class="article-item">
+                    <div class="image-article-photostudio">
+                        <a href="#">
+                            <img src="{{item.imageUrl}}" alt="" style="width: 100%;">
+                        </a>
+                    </div>
+
+                    <div class="article-gray-line"></div>
+
+                    <div class="article-title">
+                        <h2><a href="{{item.url}}">{{item.name}}</a></h2>
+                    </div>
+
+                    <div class="photostudio-meta">
+                        <!-- Город фотостудии -->
+                        <p class="meta-desc">
+                            <span class="icons-all icon-place"></span>
+                            <span class="value">{{item.city}}</span>
+                        </p>
+                        <!-- Ст. метро фотостудии -->
+                        <p class="meta-desc">
+                            <span class="icons-all icon-metro"></span>
+                            <span class="value">{{item.metroStation}}</span>
+                        </p>
+                        <!-- Отзывы фотостудии -->
+                        <p class="meta-desc">
+                            <span class="icons-all icon-comments"></span>
+                            <!--        <span class="value"><a href="#">{{item.reviews}} отзыва</a>, @CalculateReviews(item)% положительных</span> -->
+                        </p>
+                    </div>
+
+                    <div class="photostudio-meta">
+                        <p class="meta-desc actual">
+                            <span class="icons-all icon-accept"></span>
+                            <!--          <span class="value">@Actuality(item)</span> -->
+                        </p>
+                        <p class="meta-desc">
+                            <span class="icons-all icon-phone"></span>
+                            <span class="value drop-menu">@string.Join(",", item.Phones.Select(x => x))</span>
+                        </p>
+                    </div>
+                    <!-- Контент фотостудии -->
+                    <div class="article-content">
+                        <p>
+                            @Html.Markdown(item.description)
+                        </p>
+                    </div>
+
+                    <div class="article-spliter">
+                        <hr>
+                    </div>
+                </div>
+            
+
+        </div>
+
+        <<!-- ---Фильтр фотостудий--- -->
+        <div class="col--3-10">
+            <h1 class="article-section">Фильтр <span class="title-slash-orange">/</span></h1>
+        </div>
+    </div>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Page.Elements.First().Shortcut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Page.Elements.First().Name)
+        </th>
+        <th></th>
+    </tr>
+
+  
+        <tr ng-repeat="item in page.elements">
+            <td>
+                @Html.DisplayFor(modelItem => item.Shortcut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id = item.ID}) |
+                @Html.ActionLink("Details", "Details", new {id = item.ID}) |
+                @Html.ActionLink("Delete", "Delete", new {id = item.ID})
+            </td>
+        </tr>
+    
+
+</table>

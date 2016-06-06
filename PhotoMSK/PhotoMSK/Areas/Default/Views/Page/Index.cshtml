@@ -1,0 +1,174 @@
+﻿@using PhotoMSK.ViewModels.Route
+@model PhotoMSK.Areas.Default.ViewData.Page.IndexViewData
+
+<div class="uk-main-page-body">
+    <div class="uk-page-bar-panel">
+        <div class="uk-container uk-container-center">
+            <ul class="uk-margin-remove uk-subnav uk-subnav-line uk-subnav-breadcrumb">
+                <li><a href="~/">Главная</a></li>
+                <li class="uk-active"><a href="#">Паблики</a></li>
+                <li>
+                    <span>найдено <strong>@String.Format("{0:### ### ### ###}", Model.Page.ItemsCount)</strong> шт.</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="uk-container uk-container-center">
+        <div class="uk-grid" data-uk-grid-margin>
+
+            <div class="uk-width-1-1 uk-text-right">
+                <ul class="uk-subnav uk-subnav-pill" data-uk-switcher="{connect:'#public-page-teaser-content'}">
+                    <li class="uk-active"><a href="#"><i class="icon-th-small"></i></a></li>
+                    <li><a href="#"><i class="icon-th-menu"></i></a></li>
+                </ul>
+                <hr class="small-line" />
+            </div>
+
+            <div class="uk-width-1-4">
+                <div class="uk-panel uk-panel-box uk-panel-shadow uk-panel-category">
+                    <ul class="uk-nav uk-panel-category-top">
+                        <li class="uk-active"><a href="" class="uk-link-reset" title="Модельные агенства">Все</a></li>
+                        <li><hr class="small-line" /></li>
+                        <li><a href="" class="uk-link-reset" title="Модельные агенства">Модельные агенства</a></li>
+                        <li><a href="" class="uk-link-reset" title="Визажисты">Визажисты</a></li>
+                        <li><a href="" class="uk-link-reset" title="Парикмахеры">Парикмахеры</a></li>
+                        <li><a href="" class="uk-link-reset" title="Организаторы">Организаторы</a></li>
+                        <li><a href="" class="uk-link-reset" title="Фотографы">Фотографы</a></li>
+                    </ul>
+                    <div class="uk-panel-category-bottom">
+                        <div class="uk-grid uk-grid-small" data-uk-grid-margin>
+                            <div class="uk-width-1-1 wall-post-title">
+                                <a href="#" class="uk-link-reset uk-link-999 uk-link-dotted">Категории</a>
+                                <i class="icon-help uk-text-muted uk-align-right wall-post-hot" data-uk-tooltip title="Выберите категории пабликов"></i>
+                            </div>
+
+                            <div class="uk-width-1-2">
+                                <ul class="uk-nav">
+                                    <li>
+                                        <a href="">Абстрактные</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Ню</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Город и архитектура</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Пейзажи</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Городские пейзажи</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Подводный мир</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Еда</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Природа</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="uk-width-1-2">
+                                <ul class="uk-nav">
+                                    <li>
+                                        <a href="">Абстрактные</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Ню</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Город и архитектура</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Пейзажи</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Городские пейзажи</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Подводный мир</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Еда</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Природа</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="uk-width-3-4">
+                <ul id="public-page-teaser-content" class="uk-switcher">
+                    <li class="uk-active">
+                        <ul class="uk-grid uk-grid-width-1-4" data-uk-grid-margin data-uk-grid-match="{target:'.public-teaser-description'}">
+                            @foreach (var item in Model.Page.Elements)
+                            {
+                                <li class="phototechnics-teaser">
+                                    <div class="short_product with_popover phototechnics-teaser-item">
+                                        <a href="@item.Shortcut">
+                                            <img class="uk-border-circle" src="@item.ImageUrl">
+                                        </a>
+                                        <div class="public-teaser-description">
+                                            <h3 class="uk-text-center phototechnics-teaser-title uk-margin-bottom-remove uk-margin-top">
+                                                <a class="uk-link-muted" href="@item.Shortcut">
+                                                    @item.Name
+                                                </a>
+                                            </h3>
+                                            <p class="uk-text-center uk-margin-remove">
+                                                <small class="uk-text-muted">1 234 567 подписчиков</small>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="uk-grid uk-grid-width-1-1" data-uk-grid-margin data-uk-grid-match="{target:'.public-teaser-description'}">
+                            @foreach (var item in Model.Page.Elements)
+                            {
+                                <li class="phototechnics-teaser">
+                                    <div class="uk-grid">
+                                        <div class="uk-width-1-5">
+                                            <a href="@item.Shortcut">
+                                                <img class="uk-border-circle" src="@item.ImageUrl">
+                                            </a>
+                                        </div>
+                                        <div class="uk-width-4-5">
+                                            <h3 class="phototechnics-teaser-title uk-margin-bottom-remove uk-margin-top">
+                                                <a class="uk-link-muted" href="@item.Shortcut">
+                                                    @item.Name
+                                                </a>
+                                            </h3>
+                                            <p class="uk-margin-remove">@item.Description</p>
+                                            <p class="uk-margin-remove">
+                                                <small class="uk-text-muted">1 234 567 подписчиков</small>
+                                            </p>
+                                            <p><button class="uk-button uk-button-success">Подписаться</button></p>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="small-line" />
+        <ul class="uk-pagination" data-uk-pagination="{pages:@Model.Page.PagesCount, itemsOnPage:@Model.Page.PageSize}">
+            @for (int i = 0; i <= Model.Page.PagesCount; i++)
+            {
+                <li><a href="@Url.Action("Index", "PhototechnicsViewModel", new { from = Model.Page.PageSize * i, PageSize = Model.Page.PageSize })">@i</a></li>
+            }
+        </ul>
+    </div>
+</div>

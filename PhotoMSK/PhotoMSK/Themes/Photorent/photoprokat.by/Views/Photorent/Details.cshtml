@@ -1,0 +1,40 @@
+﻿@using System.Web.Mvc.Html
+@using PhotoMSK.Extensiolns
+@model PhotoMSK.Areas.Default.ViewData.Photorent.DetailsViewData
+
+@section Footer
+{
+    @Html.Partial("~/Themes/Photorent/photoprokat.by/Views/Footer/Footer.cshtml")
+}
+
+@section ToolbarR
+{
+    @Html.Partial("~/Themes/Photorent/photoprokat.by/Views/Toolbar-R/Search.cshtml")
+    @Html.Partial("~/Themes/Photorent/photoprokat.by/Views/Toolbar-R/Cart.cshtml")
+}
+
+@section ToolbarL
+{
+    @Html.Partial("~/Themes/Photorent/photoprokat.by/Views/Toolbar-L/Logo.cshtml")
+}
+
+@section TopA
+{
+    @Html.Partial("~/Themes/Photorent/photoprokat.by/Views/Top-A/MainPageTopMenu.cshtml")
+}
+
+@section MainTop
+{
+    @Html.Partial("~/Themes/Photorent/photoprokat.by/Views/Main-Top/MainCategoryPhotoVideo.cshtml")
+}
+@section scripts
+{
+    <script>
+        App.owner = '@Model.RouteID';
+
+        $(function() {
+            var val = new App.Photorent.PhotorentDetails({ model: @Model.ToJson() });
+            val.render();
+        });
+    </script>
+}

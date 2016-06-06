@@ -1,0 +1,53 @@
+<div><data-bread-crumbs/></div>
+
+<div class="block block--default">
+    <div class="container container--center">
+        <div class="grid grid--small">
+            <div class="col--3-5">
+                <p>
+                    <span class="text--h1">{{item.name}}</span><br>
+                    <span class="text--muted margin--bottom-small">{{item.categorySlug}}</span>
+                </p>
+                <hr>
+                <div class="grid grid--small" data-ng-cloak>
+                    <div class="col--1-2">
+                        <p class="text--h2">
+                            {{item.prices[0].price}} <small class="text--small text--muted">$ / руб.</small>
+                        </p>
+                    </div>
+                    <div class="col--1-2">
+                        <ul class="catalog__item__desc">
+                            <li>{{item.description}}</li>
+                        </ul>
+                        <div class="margin--top-small">
+                            <a data-msk-href class="button icon-heart"></a>
+                            <a data-msk-href class="button icon-cart"></a>
+                            <a data-msk-href class="button icon-cart"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col--2-5">
+                <img src="{{item.imageUrl}}" alt="{{item.name}}" />
+            </div>
+        </div>
+        <div class="grid">
+            <!-- <ul class="list list--horizontal">
+                <li><a data-msk-href>Описание</a></li>
+                <li><a data-msk-href>Характеристики</a></li>
+                <li><a data-msk-href>Цены</a></li>
+                <li><a data-msk-href>Карта</a></li>
+                <li><a data-msk-href>Отзывы</a></li>
+            </ul> -->
+            <div class="col--1-1">
+                <div class="tab__header">
+                    <a data-msk-href class="tab__item active">Описание</a>
+                    <a data-msk-href class="tab__item">Характеристики</a>
+                    <a data-msk-href class="tab__item">Цены</a>
+                    <a data-msk-href class="tab__item">Карта</a>
+                    <a data-msk-href class="tab__item">Отзывы</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

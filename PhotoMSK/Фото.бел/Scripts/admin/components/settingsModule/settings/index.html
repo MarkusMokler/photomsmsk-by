@@ -1,0 +1,127 @@
+<div class="content--admin">
+
+    <div><data-bread-crumbs /></div>
+
+    <div class="container container--center">
+        <div class="panel panel--box panel--white panel--shadow">
+            <div class="panel__title">
+                <ul class="tab tab--full">
+                    <li data-ng-click="setTab('tab1')"><a class="active" data-msk-href>Информация</a></li>
+                    <li data-ng-click="setTab('tab2')"><a data-msk-href>Фотографии</a></li>
+                    <li data-ng-click="setTab('tab3')"><a data-msk-href>Контакты</a></li>
+                    <li data-ng-click="setTab('tab4')"><a data-msk-href>Характеристики</a></li>
+                    <li data-ng-click="setTab('tab5')"><a data-msk-href>Pro</a></li>
+                    <li data-ng-click="setTab('tab6')"><a data-msk-href>Настройки</a></li>
+                    <li data-ng-click="setTab('tab7')"><a data-msk-href>Бронирование</a></li>
+                    
+                </ul>
+            </div>
+
+            <div class="grid">
+                <div class="col--1-1">
+                    <ul>
+                        <li class="active" data-ng-show="tab=='tab1'">
+                            <div class="grid">
+                                <div class="col--1-1">
+                                    <section class="margin--reset">
+                                        <div class="form-banner">
+                                            <data-admin-logo-page />
+                                        </div>
+                                    </section>
+                                </div>
+
+                                <div class="col--1-1" data-admin-studio-name-page>
+
+                                </div>
+
+                                <div class="col--1-1 text--center">
+                                    <hr class="margin--v">
+                                    <button class="button button--success border--rounded col--1-3" data-ng-click="updateName()">Сохранить</button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="active" data-ng-show="tab=='tab2'">
+                            <div>
+                                <data-admin-photo-load-page />
+                            </div>
+                            <div class="col--1-1 text--center">
+                                <hr class="margin--v">
+                                <button class="button button--success border--rounded col--1-3" data-ng-click="loadPhoto()">Сохранить</button>
+                            </div>
+                        </li>
+                        <li class="active" data-ng-show="tab=='tab3'">
+                            <div><data-admin-phone-page /></div>
+                            <div>
+                                <data-admin-location-map-page />
+                            </div>
+                            <div>
+                                <data-admin-social-page />
+                            </div>
+                            <div class="col--1-1 text--center">
+                                <hr class="margin--v">
+                                <button class="button button--success border--rounded col--1-3" data-ng-click="phonePage()">Сохранить</button>
+                            </div>
+                        </li>
+                        <li class="active" ng-show="tab=='tab4'">
+                            <div><data-admin-characteristics-page /></div>
+
+                            <div class="col--1-1 text--center">
+                                <hr class="margin--v">
+                                <button class="button button--success border--rounded col--1-3" data-ng-click="updateCharacteristics()">Сохранить</button>
+                            </div>
+                        </li>
+                        <li class="active" data-ng-show="tab=='tab5'">
+                            <div>
+                                <data-admin-pro-page />
+                            </div>
+                            <div class="col--1-1 text--center">
+                                <hr class="margin--v">
+                                <button class="button button--success border--rounded col--1-3" data-ng-click="add()">Сохранить</button>
+                            </div>
+                        </li>
+                        <li class="active" data-ng-show="tab=='tab6'">
+
+                            <div class="container--fluid">
+
+                                <!-- <div class="activity__sort margin--bottom-small">
+                                    <div class="grid grid--small">
+                                        <div class="col--large-7-10 col--medium-7-10">
+                                            <p class="margin--top-small">
+                                                Смс оповещения
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <h4 class="title-dotted">
+                                    Настройки
+                                </h4>
+
+                                <div class="grid" ng-repeat="setting in settings">
+                                    <route-setting setting="setting"></route-setting>
+                                </div>
+                            </div>
+
+
+                            <div class="col--1-1 text--center">
+                                <hr class="margin--v">
+                                <button class="button button--success border--rounded col--1-3" data-ng-click="add()">Сохранить</button>
+                            </div>
+                        </li>
+                        <li class="active" data-ng-show="tab=='tab7'">
+                            <div>
+                                <data-booking-options />
+                            </div>
+                            <div class="col--1-1 text--center">
+                                <hr class="margin--v">
+                                <button class="button button--success border--rounded col--1-3" data-ng-click="setBookingOptions()">Сохранить</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <br /><br />
+
+            Вы можете <a data-msk-href data-ng-click="delRoute()">удалить эту студию.</a>
+        </div>
+    </div>
+</div>

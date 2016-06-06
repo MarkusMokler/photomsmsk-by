@@ -1,0 +1,60 @@
+/* ========================================================================
+   Component: Palet
+ ========================================================================== */
+.palete {
+  width: 170px;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 3px 0px 0px rgba(226, 228, 231, 0.75);
+  -moz-box-shadow: 0px 3px 0px 0px rgba(226, 228, 231, 0.75);
+  box-shadow: 0px 3px 0px 0px rgba(226, 228, 231, 0.75);
+}
+.palete--round {
+  height: 170px;
+  border-radius: 170px;
+  text-align: center;
+}
+.palete--round .palete-color {
+  height: 50%;
+}
+.palete-color {
+  position: relative;
+}
+.palete-color__lighten {
+  background-color: #ccc;
+}
+.palete--round .palete-color__lighten {
+  border-top-left-radius: 100%;
+}
+.palete--round .palete-color__square {
+  height: 100%;
+}
+.palete-color__square {
+  width: 50%;
+  float: left;
+}
+.palete-color__darken {
+  background-color: #ccc;
+}
+.palete--round .palete-color__darken {
+  border-top-right-radius: 100%;
+}
+.palete-color__content {
+  padding: 10px;
+  color: #a9abab;
+}
+.palete-color__name {
+  font-size: 12px;
+  margin: 0 0 5px 0;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #444545;
+}
+.palete-color__code {
+  font-size: 11px;
+  line-height: .8em;
+  text-transform: uppercase;
+}
+.palete-color__edit {
+  display: block;
+  text-align: center;
+}

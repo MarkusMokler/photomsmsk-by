@@ -1,0 +1,263 @@
+﻿@using PhotoMSK.ViewModels
+@model PhotoMSK.Areas.Default.ViewData.Photostudio.DetailsViewData
+
+
+
+<div class="uk-grid uk-grid-medium" data-uk-grid-margin>
+    <div class="uk-width-1-4 uk-hidden-small">
+        <section class="uk-panel uk-panel-box uk-panel-box--white">
+            <a href="#" class="uk-panel-title uk-panel-title--small uk-text-center">Сегодня в студии</a>
+
+            <ul class="uk-list">
+                @for (int i = 0; i < 4; i++)
+                {
+                    <li>
+                        <a href="#" class="uk-link-reset">
+                            <img class="uk-align-left uk-border-circle" src="http://saratov-room.ru/uploads/saratov/2015/04/oHr2HPYc0mQ-50x50.jpg" alt="В Балаково выберут «самый уродливый дом»">
+                            <strong class="title">В Балаково выберут «самый уродливый дом»</strong>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </section>
+    </div>
+
+    <div class="uk-width-1-1 uk-width-large-3-4 uk-width-medium-3-4 uk-width-small-1-1">
+        <div class="uk-slidenav-position" data-uk-slideshow="{animation: 'scroll'}">
+            <ul class="uk-slideshow">
+                <li>
+                    <div class="uk-panel uk-panel-box uk-panel-box--white">
+                        <div class="uk-grid">
+                            <div class="uk-width-2-3">
+                                <div class="uk-panel-teaser uk-panel-teaser--left">
+                                    <img src="http://studio154.it/studio_fotografico_studio154/wp-content/uploads/2012/03/DaylightStudio1.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="uk-width-1-3">
+                                <h3 class="uk-panel-title">Headline 2</h3>
+                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="uk-panel uk-panel-box uk-panel-box--white">
+                        <div class="uk-grid">
+                            <div class="uk-width-2-3">
+                                <div class="uk-panel-teaser uk-panel-teaser--left">
+                                    <img src="http://www.productionparadise.com/newsletters/920/photos/35599/original/130621-vil1-0036-abc.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="uk-width-1-3">
+                                <h3 class="uk-panel-title">Headline 2</h3>
+                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="uk-hidden-large">
+                <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
+                <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next"></a>
+            </div>
+
+            <ul class="uk-dotnav uk-dotnav--small-dotted uk-position-bottom uk-flex-right">
+                <li data-uk-slideshow-item="0" class="uk-active"><a href="#"><span>Item 1</span></a></li>
+                <li data-uk-slideshow-item="1"><a href="#"><span>Item 2</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="uk-width-1-1">
+        <section class="uk-panel uk-panel-box uk-panel-box--white">
+            <div class="uk-grid uk-grid-small">
+                <div class="uk-width-2-3">
+                    <header class="uk-text-center uk-margin-bottom">
+                        <h3 class="uk-text-bold uk-margin-bottom-remove">Залы</h3>
+                        <span class="uk-text-muted">фотостудии PhotoLab STUDIO</span>
+                        @*<ul class="uk-subnav uk-subnav-pill">
+                                <li class="uk-active"><a href="#">Item</a></li>
+                                <li class=""><a href="#">Item</a></li>
+                                <li class=""><a href="#">Item</a></li>
+                            </ul>*@
+                    </header>
+
+                    <div class="uk-grid uk-grid-small uk-grid-width-1-2" data-uk-grid-margin>
+                        @for (int i = 0; i < 6; i++)
+                        {
+                            <div class="uk-position-relative">
+                                <div class="uk-hall-logotype">
+                                    <a href="#">
+                                        <img class="uk-border-circle" src="http://saratov-room.ru/uploads/saratov/2015/03/Frank-2014-Wallpaper-e1408036294410-50x50.jpg" height="50" width="50">
+                                    </a>
+                                </div>
+                                <figure class="uk-overlay uk-border-rounded">
+                                    <img src="http://www.productionparadise.com/newsletters/920/photos/35599/original/130621-vil1-0036-abc.jpg" alt="">
+                                    <figcaption class="uk-overlay-panel uk-overlay-background uk-text-center">
+                                        <span class="uk-h2 uk-text-bold">Название зала</span>
+                                        <p>краткое описание зала</p>
+                                        <ul class="uk-subnav uk-subnav-line uk-margin-large-top">
+                                            <li>
+                                                <a href="#" class="uk-link-reset">
+                                                    <i class="uk-icon-eye"></i>&nbsp;1 200
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="uk-link-reset">
+                                                    <i class="uk-icon-lock"></i>&nbsp;1
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        }
+                    </div>
+
+                </div>
+
+                <div class="uk-width-1-3">
+                    <header class="uk-text-center uk-margin-bottom">
+                        <h3 class="uk-text-bold uk-margin-bottom-remove">У нас снимают</h3>
+                        <span class="uk-text-muted">фотографы</span>
+                    </header>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+
+@*<div class="uk-grid">
+        <div class="uk-width-1-1">
+            <div class="uk-panel uk-panel-space uk-wall-box-body">
+                <div class="uk-grid" data-uk-grid-margin>
+                    <div class="uk-width-large-1-2 uk-width-medium-1-2 uk-width-small-1-1">
+                        <p>
+                            <strong>Описание</strong>
+                            <hr class="small-line" />
+                            <span class="uk-text-muted">@Model.Item.Description</span>
+                        </p>
+
+                        <strong>Основные характеристики</strong>
+                        <hr class="small-line" />
+
+                        <div class="uk-grid uk-grid-small uk-text-muted" data-uk-grid-margin>
+                            <div class="uk-width-1-3">
+                                Удобства
+                            </div>
+                            <div class="uk-width-2-3">
+                                <ul class="uk-list uk-grid uk-grid-small uk-grid-width-1-2 uk-margin-small" data-uk-grid-margin>
+                                    @for (int j = 0; j < 13; j++)
+                                    {
+                                        <li>
+                                            <i class="uk-icon-wifi"></i>
+                                            <span>
+                                                Интернет
+                                            </span>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+
+                            <div class="uk-width-1-1">
+                                <hr class="small-line" />
+                            </div>
+
+                            <div class="uk-width-1-3">
+                                Оборудование
+                            </div>
+                            <div class="uk-width-2-3">
+                                <ul class="uk-list uk-grid uk-grid-small uk-grid-width-1-2 uk-margin-small" data-uk-grid-margin>
+                                    @for (int j = 0; j < 6; j++)
+                                    {
+                                        <li>
+                                            <i class="uk-icon-wifi"></i>
+                                            <span>
+                                                Моноблоки
+                                            </span>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-width-large-1-2 uk-width-medium-1-2 uk-width-small-1-1">
+                        <div data-uk-slideshow="{autoplay:true}">
+                            <ul class="uk-slideshow">
+                                @foreach (var item in Model.Item.Photos.OrderByDescending(x => x.UploadDate))
+                                {
+                                    <li><img src="@item.Url" alt=""></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-grid" data-uk-grid-margin>
+        <div class="uk-width-large-2-3 uk-width-medium-1-2 uk-width-small-1-1">
+            <div class="uk-panel uk-panel-space uk-wall-box-body">
+                <div class="uk-text-center uk-margin">
+                    <a href="#" class="uk-button uk-button-radius uk-button-news">У нас снимают</a>
+                </div>
+
+                <ul class="uk-grid uk-grid-width-large-1-4 uk-grid-width-medium-1-3 uk-grid-width-small-1-2" data-uk-grid-margin>
+                    @for (int i = 0; i < 4; i++)
+                    {
+                        <li>
+                            <div class="uk-profile-page">
+                                <div class="uk-profile-user-page">
+                                    <div class="uk-profile-user-img">
+                                        <a href="#" class="uk-link-reset">
+                                            <img class="uk-profile-user-img-bgHome" src="http://37.media.tumblr.com/88cbce9265c55a70a753beb0d6ecc2cd/tumblr_n8gxzn78qH1st5lhmo1_1280.jpg">
+                                        </a>
+                                        <a href="#" class="uk-link-reset">
+                                            <img class="uk-profile-user-img-avatar uk-border-circle" src="http://gravatar.com/avatar/288ce55a011c709f4e17aef7e3c86c64?s=200" alt="" height="60" width="60">
+                                        </a>
+                                    </div>
+
+                                    <div class="uk-user-profile-data uk-text-center">
+                                        <p class="uk-h5 uk-text-bold uk-margin-remove">
+                                            <a href="#" class="uk-link-reset">Roman Lunts</a>
+                                        </p>
+                                        <small class="uk-text-small uk-text-muted">Nedo-designer Web site</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <div class="uk-width-large-1-3 uk-width-medium-1-2 uk-width-small-1-1">
+            <div class="uk-panel uk-panel-space uk-wall-box-body">
+                <div class="uk-text-center">
+                    <a href="#" class="uk-button uk-button-radius uk-button-news">Новости</a>
+                </div>
+
+                <ul class="uk-list uk-list-space">
+                    @for (int i = 0; i < 3; i++)
+                    {
+                        <li>
+                            <a href="#" class="uk-clearfix uk-link-muted">
+                                <img src="http://saratov-room.ru/uploads/saratov/2015/02/33258-simple-patterns-tumblr-the-year-of-the-pattern1-50x50.jpg" class="uk-align-medium-left uk-border-circle" height="50" width="50" />
+                                <span>Супер предложение для владельцев тушек NIKON, получи скидку 20%</span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+            <div class="uk-ads-panel uk-margin-top">
+                <div class="uk-ads-panel-content uk-text-center">
+                    <h1 class="uk-text-bold">Яндекс.Директ</h1>
+                </div>
+            </div>
+        </div>
+    </div>*@

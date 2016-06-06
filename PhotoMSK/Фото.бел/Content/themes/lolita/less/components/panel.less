@@ -1,0 +1,86 @@
+// out: ../../css/components/panel.css, compress: true
+@import "Variables.less";
+// Name:            Panel
+// Description:     Defines styles for reusable content areas
+//
+// Component:       `panel`
+//
+// Sub-objects:     `panel__title`
+//                  `panel__badge`
+//                  `panel__teaser`
+//                  `panel__footer`
+//
+// Modifiers:       `panel--box`
+//                  `panel--box-hover`
+//                  `panel--white`
+//                  `panel--box-primary`
+//                  `panel--box-primary-hover`
+//                  `panel--box-secondary`
+//                  `panel--box-secondary-hover`
+//                  `panel--hover`
+//                  `panel--border`
+//                  `panel--header`
+//                  `panel--dashed`
+//                  `panel--divider`
+//                  `panel--border`
+//                  `panel--shadow`
+//
+//                  `panel__booking--calendar`
+//                  `panel__booking--cart`
+//                  `panel__booking--hall`
+//
+//                  `panel__teaser--left`
+//
+//
+//                  `panel--border-right`
+//                  `panel--border-bottom`
+//
+//                  `panel--border--yellow`
+//
+//                  `panel__title--box`
+////
+// Markup:
+//
+// <!-- panel -->
+// <div class="panel">
+//     <div class="panel__badge badge"></div>
+//     <h3 class="panel__title"></h3>
+//     <p></p>
+// </div>
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@panel-box-padding:                     30px;
+@panel-box-border-color:                #E1E1E1;
+@panel-box-border-radius:               3px;
+
+@panel-white-background:                #fff;
+
+/* ========================================================================
+   Component: Panel
+ ========================================================================== */
+
+/*
+ * 1. Needed for `a` elements
+ * 2. Create position context for badges
+ */
+
+.panel {
+
+    // Modificator 'panel--box'
+    &--box{
+        padding: @panel-box-padding;
+        border: 1px solid #E1E1E1;
+        border-radius: @panel-box-border-radius;
+        margin-top: 40px;
+    }
+
+    // Modificator 'panel--white'
+    &--white{
+        background: @panel-white-background;
+    }
+}

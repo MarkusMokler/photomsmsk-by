@@ -1,0 +1,159 @@
+﻿.border-radius (@radius: 5px) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+}
+
+.gradient (@startColor: #eee, @endColor: white) {
+    background-color: @startColor;
+    background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+    background: -webkit-linear-gradient(top, @startColor, @endColor);
+    background: -moz-linear-gradient(top, @startColor, @endColor);
+    background: -ms-linear-gradient(top, @startColor, @endColor);
+    background: -o-linear-gradient(top, @startColor, @endColor);
+}
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+body {
+    background: url(/Themes/zerkalka.by/Content/images/body-bg.jpg) repeat-x left top;
+}
+
+.uk-navbar {
+    border-top: 1px solid #e3e3e3;
+    border-right: 1px solid #cbcbcb;
+    border-bottom: 1px solid #a7a7a7;
+    border-left: 1px solid #cdcdcd;
+    padding: 6px 11px 4px 9px;
+    .border-radius(10px);
+    .gradient(#F3F3F3; #D9D9D9);
+
+    .uk-subnav {
+        > li {
+            > a {
+                color: #4f4f4f;
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+.uk-panel {
+    &.uk-panel-box {
+        &.uk-panel-box-dark {
+            background: #8f8f8f;
+            color: #fff;
+            .border-radius(12px);
+            padding: 9px 9px 9px 40px;
+            border: none;
+        }
+
+        &.uk-panel-left-category {
+            .gradient(#E8E8E8; #D9D9D9);
+            .border-radius(12px);
+
+            .uk-list {
+                > li {
+                    > a {
+                        text-decoration: none;
+                        color: #464747;
+                        font-size: 15px;
+                        line-height: 24px;
+                        padding-left: 30px;
+                        background: url(/Themes/zerkalka.by/Content/images/marker2.png) no-repeat 19px 10px;
+                        display: block;
+
+                        &:hover {
+                            font-style: italic;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.uk-product-item {
+    position: relative;
+    background: #fff;
+    padding: 10px;
+
+    &:hover {
+        padding-top: 0;
+
+        .uk-product-item-description {
+            overflow: visible;
+            display: block;
+            z-index: 999;
+            left: 0;
+            padding: 10px;
+            -webkit-box-shadow: 0px 0px 15px #e7e9eb;
+            -moz-box-shadow: 0px 0px 15px #e7e9eb;
+            box-shadow: 0px 0px 15px #e7e9eb;
+        }
+
+        .uk-product-item-cart {
+            display: none;
+            margin-top: 10px;
+        }
+    }
+
+    .uk-product-item-image {
+        height: 100px;
+    }
+
+    .uk-product-item-description {
+        position: absolute;
+        background: #fff;
+        overflow: hidden;
+        display: none;
+    }
+}
+
+.uk-image-100 {
+    max-height: 100px;
+}
+
+.uk-list-line > li:nth-child(n+2) {
+    border-top: 1px solid #E7E8E8;
+}
+
+.uk-slidenav {
+    color: rgba(255, 255, 255, 0.6);
+
+    &:hover {
+        color: rgba(255, 255, 255, 1);
+    }
+
+    &:focus {
+        color: rgba(255, 255, 255, 1);
+    }
+}
+
+.uk-search {
+    input {
+        &.uk-search {
+            border-top: 1px solid #c4c4c4;
+            border-left: 1px solid #c4c4c4;
+        }
+    }
+
+    .uk-button-search {
+        background: #3F3F3F;
+        color: #CACACA;
+        text-shadow: none;
+    }
+}
+
+.uk-image-marker {
+    width: 16px;
+    height: 17px;
+    background: url(/Themes/zerkalka.by/Content/images/marker1.jpg) no-repeat left top;
+    top: 11px;
+    left: 19px;
+    top: 13px;
+    position: absolute;
+}

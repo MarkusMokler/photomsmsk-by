@@ -1,0 +1,11 @@
+﻿<ul class="nav__list col--6-10 col--medium-5-10">
+    <li data-ng-repeat="item in menuItemWL" data-ng-if="item.publish">
+        <a href="{{item.link}}" data-ng-bind="item.name" data-ng-cloak></a>
+    </li>
+    <li class="repair repair--text">
+        <a href="/search">
+            <i class="icon-magnifier"></i>
+        </a>
+    </li>
+    <!-- <li><a href="/search"><i class="icon-magnifier"></i></a></li> -->
+</ul>

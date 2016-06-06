@@ -1,0 +1,55 @@
+﻿@using PhotoMSK.Areas.Default.ViewData
+@using PhotoMSK.Extensiolns
+@model WhiteLabelViewData
+<div class="uk-width-3-4">
+    <div class="uk-panel">
+        <div class="uk-grid">
+            <div class="uk-width-1-4">
+                <ul class="uk-list">
+                    <li>
+                        <a href="tel:+375296349052" class="uk-link-reset">
+                            <i class="uk-operator uk-operator-velcom"></i>
+                            <strong>+375 <b>(29)</b> 634-90-52</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tel:+375298523251" class="uk-link-reset">
+                            <i class="uk-operator uk-operator-mts"></i>
+                            <strong>+375 <b>(29)</b> 852-32-51</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tel:+375257365395" class="uk-link-reset">
+                            <i class="uk-operator uk-operator-life"></i>
+                            <strong>+375 <b>(25)</b> 736-53-95</strong>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="uk-width-1-4">
+                <ul class="uk-list">
+                    <li class="uk-text-center">
+                        <a href="#modal-call-back" class="uk-link-muted uk-link-reset uk-link-hover" data-uk-modal>
+                            <img src="@Url.Content("~/Themes/Photoshop/ftt.by/Content/images/call-back.jpg")" width="110" />
+                            <br />
+                            <span class="uk-margin-top uk-link-dotted">Обратный звонок</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="uk-width-1-4">
+                <div>
+                    <img src="@Url.Content("~/Themes/Photoshop/ftt.by/Content/images/cart.png")" />
+                    <a href="@Html.MakeUrl(Model.Route, "Cart")" class="uk-link-reset">
+                    <strong>Корзина</strong>
+                    <small data-role-items-count>
+                    0
+                    </small> товара(ов)
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,702 @@
+// out: ../../css/Components/Button.css, compress: true
+// Name:            Button
+// Description:     Defines styles for buttons
+//
+// Component:       `button`
+//
+// Sub-objects:     `button__group`
+//                  `button__dropdown`
+//
+// Modifiers:       `button--primary`
+//                  `button--black`
+//                  `button--success`
+//                  `button--danger`
+//                  `button--warnind`
+//                  `button--rounded`
+//                  `button--delete`
+//                  `button--link`
+//                  `button--mini`
+//                  `button--small`
+//                  `button--large`
+//                  `button--upload`
+//
+// States:          `active`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+@button-height: 30px;
+@button-mini-height: 20px;
+@button-small-height: 25px;
+@button-large-height: 40px;
+@button-line-height: 30px;
+@button-mini-line-height: 20px;
+@button-small-line-height: 25px;
+@button-large-line-height: 40px;
+@button-mini-font-size: 10px;
+@button-small-font-size: 12px;
+@button-large-font-size: 16px;
+@button-padding-horizontal: 12px;
+@button-mini-padding-horizontal: 6px;
+@button-small-padding-horizontal: 10px;
+@button-large-padding-horizontal: 15px;
+@button-font-size: 1rem;
+@button-background: #fff;
+@button-color: #444;
+@button-hover-background: #f5f5f5;
+@button-hover-color: #444;
+@button-active-background: #ddd;
+@button-active-color: #444;
+@button-border-color: #dcdcdc;
+@button-border-radius: 4px;
+@button-rounded-height: 32px;
+@button-rounded-small-height: 27px;
+@button-rounded-mini-height: 22px;
+@button-delete-color: rgba(248, 102, 103, 0.6);
+@button-delete-hover-color: rgba(248, 102, 103, 1);
+@button-primary-background: #00a8e6;
+@button-black-background: #000;
+@button-primary-color: #fff;
+@button-primary-hover-background: #35b3ee;
+@button-black-hover-background: #000;
+@button-primary-hover-color: #fff;
+@button-primary-active-background: #0091ca;
+@button-black-active-background: #000;
+@button-primary-active-color: #fff;
+@button-radio-border: #dcdcdc;
+@button-radio-border-active: rgba(24, 162, 75, 1);
+@button-radio-border-hover: rgba(24, 162, 75, 0.4);
+@button-radio-img-selected: rgba(24, 162, 75, 0.7);
+@button-radio-img-unselected: rgba(248, 102, 103, 0.7);
+@button-success-background: rgba(24, 162, 75, 1);
+@button-success-color: #fff;
+@button-success-hover-background: rgba(24, 162, 75, 1);
+@button-success-hover-color: #fff;
+@button-success-active-background: rgba(24, 162, 75, 0.8);
+@button-success-active-color: #fff;
+@button-footer-success: #49ae65;
+@button-footer-height: 60px;
+@button-footer-background: #eee;
+@button-footer-font-size: 20px;
+@button-footer-line-height: 24px;
+@button-yellow: #fbd73e;
+// @button-danger-background:                      #da314b;
+@button-danger-background: #ed5642;
+@button-danger-color: #fff;
+// @button-danger-hover-background:                #e4354f;
+@button-danger-hover-background: #EC452F;
+@button-danger-hover-color: #fff;
+// @button-danger-active-background:               #c91032;
+@button-danger-active-background: #F16A58;
+@button-danger-active-color: #fff;
+@button-warning-background: #ff4729;
+@button-warning-color: #fff;
+@button-warning-hover-background: #ff5d43;
+@button-warning-hover-color: #fff;
+@button-disabled-background: #f5f5f5;
+@button-disabled-color: #999;
+@button-link-color: #07D;
+@button-link-hover-color: #059;
+@button-link-hover-text-decoration: underline;
+@button-link-disabled-color: #999;
+@button-muted: rgba(228,228,228,0.4);
+@button-muted-hover: rgba(228,228,228,0.7);
+@button-muted-active: rgba(228,228,228,1);
+@button-radio-img-height: 60px;
+/* ========================================================================
+   Component: Button
+ ========================================================================== */
+/*
+ * Removes inner padding and border in Firefox 4+.
+ */
+.button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+/*
+ * 1. Correct inability to style clickable `input` types in iOS.
+ * 2. Remove margins in Chrome, Safari and Opera.
+ * 3. Remove borders for `button`.
+ * 4. Address `overflow` set to `hidden` in IE 8/9/10/11.
+ * 5. Correct `font` properties and `color` not being inherited for `button`.
+ * 6. Address inconsistent `text-transform` inheritance which is only inherit in Firefox and IE
+ * 7. Style
+ * 8. `line-height` is used to create a height
+ * 9. `min-height` is necessary for `input` elements in Firefox and Opera because `line-height` is not working.
+ * 10. Reset button group whitespace hack
+ * 11. Required for `a`.
+ */
+.button {
+    /* 1 */
+    -webkit-appearance: none;
+    /* 2 */
+    margin: 0;
+    /* 3 */
+    border: none;
+    /* 4 */
+    overflow: visible;
+    /* 5 */
+    // font: inherit;
+    color: @button-color;
+    /* 6 */
+    text-transform: none;
+    /* 7 */
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 @button-padding-horizontal;
+    background: @button-background;
+    // vertical-align: middle;
+    vertical-align: inherit;
+
+    /* 8 */
+    line-height: @button-line-height;
+    /* 9 */
+    min-height: @button-height;
+    /* 10 */
+    font-size: @button-font-size;
+    /* 11 */
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid @button-border-color;
+    border-radius: @button-border-radius;
+}
+.button + .button {
+    margin-left: 5px;
+}
+
+.button--footer + .button--footer{
+    margin-left: 0;
+    border-left: 1px solid #ddd;
+}
+.button:not(:disabled) {
+    cursor: pointer;
+}
+/*
+ * Hover
+ * 1. Apply hover style also to focus state
+ * 2. Remove default focus style
+ * 3. Required for `a` elements
+ */
+.button:hover,
+.button:focus {
+    // 1
+    //background-color: @button-hover-background;
+    color: @button-hover-color;
+    /* 2 */
+    outline: none;
+    /* 3 */
+    text-decoration: none;
+}
+/* Active */
+.button:active,
+.button.active {
+    background-color: @button-active-background;
+    color: @button-active-color;
+}
+/* Color modifiers
+ ========================================================================== */
+/*
+ * Modifier: `button--radio`
+ */
+.button--radio {
+    box-shadow: 0 0 0 2px @button-radio-border;
+    border: none;
+    transition: all 200ms;
+    &:hover {
+        box-shadow: 0 0 0 2px @button-radio-border-hover;
+    }
+    &-unselect:hover {
+        box-shadow: 0 0 0 2px @button-radio-img-unselected;
+    }
+}
+.button--radio.active {
+    box-shadow: 0 0 0 2px @button-radio-border-active;
+    background: #fff;
+    color: @button-radio-border-active;
+}
+.button__radio {
+    // Element `button__radio__img`
+    &__img {
+        position: relative;
+        display: inline-block;
+        width: @button-radio-img-height;
+        height: @button-radio-img-height;
+        border-radius: @button-radio-img-height;
+        & > img {
+            width: @button-radio-img-height;
+            height: @button-radio-img-height;
+            border-radius: @button-radio-img-height;
+        }
+        // Modificator `button__radio__img--selected`
+        &--selected {
+            &:after {
+                content: '\e9af';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                font-family: 'icomoon';
+                font-size: 30px;
+                line-height: @button-radio-img-height;
+                color: #fff;
+                border-radius: @button-radio-img-height;
+                background: @button-radio-img-selected;
+            }
+        }
+
+        // Modificator `button__radio__img--unselected`
+        &--unselected{
+            &:before{
+                content: 'занят';
+                position: absolute;
+                color: #fff;
+                bottom: 0;
+                text-align: center;
+                width: 60px;
+                font-size: 10px;
+                z-index: 10;
+            }
+            &:after {
+                content: '\e959';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                font-family: 'icomoon';
+                font-size: 30px;
+                line-height: @button-radio-img-height - 10;
+                color: #fff;
+                border-radius: @button-radio-img-height;
+                background: @button-radio-img-unselected;
+            }
+        }
+    }
+}
+.button__radio--success.active {
+    &:after {
+        content: '';
+        position: absolute;
+    }
+}
+/*
+ * Modifier: `button--rounded`
+ */
+.button {
+    // Modificator `button--rounded`
+    &--rounded {
+        padding: 0;
+        width: @button-rounded-height;
+        height: @button-rounded-height;
+        border-radius: @button-rounded-height;
+        line-height: @button-rounded-height + 1;
+    }
+    // Modificator `button--rounded` for small button
+    &--small {
+        &.button--rounded {
+            padding: 0;
+            height: @button-rounded-small-height;
+            width: @button-rounded-small-height;
+            line-height: @button-rounded-small-height;
+        }
+    }
+    // Modificator `button--rounded` for mini button
+    &--mini {
+        &.button--rounded {
+            padding: 0;
+            height: @button-rounded-mini-height;
+            width: @button-rounded-mini-height;
+            line-height: @button-rounded-mini-height - 2;
+        }
+    }
+}
+/*
+ * Modifier: `button--delete`
+ */
+.button {
+    // Modificator `button--delete`
+    &--delete {
+        background: transparent;
+        border-color: @button-delete-color !important;
+        color: @button-delete-color !important;
+        transition: all 200ms;
+        &:hover {
+            background: @button-delete-hover-color;
+            color: #fff !important;
+            border-color: @button-delete-hover-color;
+        }
+    }
+}
+/*
+ * Modifier: `button--primary`
+ */
+.button--primary {
+    background-color: @button-primary-background;
+    color: @button-primary-color;
+    border-color: @button-primary-background;
+}
+/* Hover */
+.button--primary:hover,
+.button--primary:focus {
+    background-color: @button-primary-hover-background;
+    color: @button-primary-hover-color;
+}
+/* Active */
+.button--primary:active,
+.button--primary.active {
+    background-color: @button-primary-active-background;
+    color: @button-primary-active-color;
+}
+/*
+ * Modifier: `button--black`
+ */
+.button--black {
+    background-color: @button-black-background;
+    color: @button-primary-color;
+    border-color: @button-black-background;
+}
+/* Hover */
+.button--black:hover,
+.button--black:focus {
+    background-color: @button-black-hover-background;
+    color: @button-primary-hover-color;
+}
+/* Active */
+.button--black:active,
+.button--black.active {
+    background-color: @button-black-active-background;
+    color: @button-primary-active-color;
+}
+/*
+ * Modifier: `button--success`
+ */
+.button--success {
+    background-color: @button-success-background !important;
+    color: @button-success-color !important;
+    border-color: @button-success-background !important;
+}
+.button--yellow {
+    background-color: @button-yellow !important;
+    color: #424242 !important;
+    font-weight: 700;
+    text-shadow: 0 1px rgb(255, 234, 144);
+    border: none;
+}
+
+.button--shadow{
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+}
+/* Hover */
+.button--success:hover,
+.button--success:focus {
+    background-color: @button-success-hover-background !important;
+    color: @button-success-hover-color !important;
+}
+/* Active */
+.button--success:active,
+.button--success.active {
+    background-color: @button-success-active-background !important;
+    color: @button-success-active-color !important;
+}
+/*  Footer */
+.button--footer {
+    min-height: @button-footer-height;
+    background: @button-footer-background;
+    font-size: @button-footer-font-size;
+    line-height: @button-footer-line-height;
+    border: 0;
+    border-radius: 0;
+    &:hover{
+        background: #E6E6E6;
+    }
+}
+/*
+ * Modifier: `button--danger`
+ */
+.button--danger {
+    background-color: @button-danger-background;
+    border-color: @button-danger-background;
+    color: @button-danger-color;
+}
+/* Hover */
+.button--danger:hover,
+.button--danger:focus {
+    background-color: @button-danger-hover-background;
+    color: @button-danger-hover-color;
+}
+/* Active */
+.button--danger:active,
+.button--danger.active {
+    background-color: @button-danger-active-background;
+    color: @button-danger-active-color;
+}
+/*
+ * Modifier: `button--danger`
+ */
+.button--warning {
+    background-color: @button-warning-background;
+    border-color: @button-warning-background;
+    color: @button-warning-color;
+}
+/* Hover */
+.button--warning:hover,
+.button--warning:focus {
+    background-color: @button-warning-hover-background;
+    color: @button-warning-hover-color;
+}
+/* Disabled state
+ * Overrides also the color modifiers
+ ========================================================================== */
+/* Equal for all button types */
+.button:disabled {
+    background-color: @button-disabled-background;
+    color: @button-disabled-color;
+}
+/* Modifier: `button--muted`
+ ========================================================================== */
+/* Reset */
+.button--muted,
+.button--muted:hover,
+.button--muted:focus,
+.button--muted:active,
+.button--muted.active,
+.button--muted:disabled {
+    border-color: transparent;
+    background: @button-muted;
+    &:hover {
+        background: @button-muted-hover;
+    }
+    &.active {
+        background: @button-muted-active;
+    }
+}
+/* Modifier: `button--link`
+ ========================================================================== */
+/* Reset */
+.button--link,
+.button--link:hover,
+.button--link:focus,
+.button--link:active,
+.button--link.active,
+.button--link:disabled {
+    border-color: transparent;
+    background: none;
+}
+/* Color */
+.button--link {
+    color: @button-link-color;
+}
+.button--link:hover,
+.button--link:focus,
+.button--link:active,
+.button--link.active {
+    color: @button-link-hover-color;
+    text-decoration: @button-link-hover-text-decoration;
+}
+.button--link:disabled {
+    color: @button-link-disabled-color;
+}
+/* Focus */
+.button--link:focus {
+    outline: 1px dotted;
+}
+/* Size modifiers
+ ========================================================================== */
+.button--mini {
+    min-height: @button-mini-height;
+    padding: 0 @button-mini-padding-horizontal;
+    line-height: @button-mini-line-height;
+    font-size: @button-mini-font-size;
+}
+.button--small {
+    min-height: @button-small-height;
+    padding: 0 @button-small-padding-horizontal;
+    line-height: @button-small-line-height;
+    font-size: @button-small-font-size;
+}
+.button--large {
+    min-height: @button-large-height;
+    padding: 0 @button-large-padding-horizontal;
+    line-height: @button-large-line-height;
+    font-size: @button-font-size;
+}
+.button--upload {
+    padding: 10px 25px;
+    height: 4rem;
+    line-height: 26px;
+    font-weight: 500;
+    color: #a7a69f;
+    border-radius: 2rem;
+    border: 1px solid #ddddd8;
+}
+/* Sub-object `button__group`
+ ========================================================================== */
+/*
+ * 1. Behave like buttons
+ * 2. Create position context for dropdowns
+ * 3. Remove whitespace between child elements when using `inline-block`
+ * 4. Prevent buttons from wrapping
+ * 5. Remove whitespace between child elements when using `inline-block`
+ */
+.button__group {
+    width: 100%;
+    margin: 0;
+    /* 1 */
+    display: inline-block;
+    vertical-align: middle;
+    /* 2 */
+    position: relative;
+    /* 3 */
+    font-size: 0.001px;
+    /* 4 */
+    white-space: nowrap;
+}
+.button__group > * {
+    display: inline-block;
+}
+/* 5 */
+.button__group .button {
+    vertical-align: top;
+}
+// Button group elemets
+.button__group > .button:first-child,
+.button__group > div:first-child .button {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.button__group > .button:last-child,
+.button__group > div:last-child .button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.button__group > .button:nth-child(n+2),
+.button__group > div:nth-child(n+2) .button {
+    margin-left: -1px;
+}
+/* Sub-object: `button__dropdown`
+ ========================================================================== */
+/*
+ * 1. Behave like buttons
+ * 2. Create position context for dropdowns
+ */
+.button__dropdown {
+    /* 1 */
+    display: inline-block;
+    vertical-align: middle;
+    /* 2 */
+    position: relative;
+}
+// Component:       `link`
+//
+//
+// Modifiers:       `link--reset`
+//                  `link--blank`
+//
+//
+// ************** Variables ****************
+@link-margin: 20px;
+/* ========================================================================
+   Component: Link
+ ========================================================================== */
+/*
+ * Removes inner padding and border in Firefox 4+.
+ */
+.link {
+    outline: none;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid;
+    &:hover {
+        text-decoration: none;
+    }
+
+    // Modificator 'link--dashed'
+    &--dashed{
+        border-bottom-style: dashed;
+    }
+
+    // Modificator 'link--dotted'
+    &--dotted{
+        border-bottom: 1px dotted;
+    }
+
+    // Modificator 'link--line'
+    &--line{
+        border-bottom: 1px solid;
+    }
+}
+.link + .link {
+    margin-left: @link-margin;
+}
+.link--blank {
+    border: 1px solid;
+}
+
+
+// Calendar item button
+.calendar {
+    &__hall {
+        &__button {
+            width: 10%;
+            position: relative;
+            display: inline-block;
+            margin: 0 10px 10px 0;
+            margin-right: -1px;
+            text-align: center;
+            vertical-align: top;
+            cursor: pointer;
+            & > a{
+                position: relative;
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                border-radius: 100px;
+                background-size: cover;
+                background-position: center;
+                border: 3px solid #fbd73e;
+                overflow: hidden;
+            }
+
+            & > p{
+                width: 90%;
+                margin: 0 auto;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            &__overlay{
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                opacity: 0.6;
+                &--icon{
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    font-size: 30px;
+                    line-height: 45px;
+                    color: #fff;
+                    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+                }
+            }
+        }
+    }
+}
+
+// *************************************************************
+//                       xLarge 1600 px
+// *************************************************************
+
+
+@media (min-width: 1600px) {
+
+    .calendar__hall__button{
+        width: 6%;
+    }
+
+}

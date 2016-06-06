@@ -1,0 +1,91 @@
+﻿@using TR = PhotoMSK.Areas.Admin.Resources.Photostudio.Edit.Edit;
+@model PhotoMSK.Models.EditViewModel.Routes.PhotostudioEditModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="uk-container uk-container-center">
+    <div class="uk-grid" data-uk-grid-margin>
+        <div class="uk-width-1-1 uk-tab-center">
+            <ul class="uk-tab uk-tab--flip" data-role-tabs>
+                <li class="uk-active"><a href="#">@TR.Information</a></li>
+                <li><a href="#">@TR.Photographies</a></li>
+                <li><a href="#">Контакты</a></li>
+                <li><a href="#">Характеристики</a></li>
+                <li><a href="#">Залы</a></li>
+                <li><a href="#">Участники</a></li>
+                <li><a href="#">Pro</a></li>
+                @*<li class="uk-tab-responsive uk-active uk-hidden"><a>Tab</a><div class="uk-dropdown uk-dropdown-small"><ul class="uk-nav uk-nav-dropdown"></ul><div></div></div></li>*@
+            </ul>
+        </div>
+    </div>
+
+    <div class="uk-panel uk-panel-space uk-panel--white uk-panel--shadow uk-panel--border-radius">
+        <div class="uk-grid">
+            <div class="uk-width-1-1">
+                <ul class="uk-switcher uk-margin-large">
+                    <li class="uk-active">
+                        <div class="uk-grid" data-uk-grid-margin>
+                            @Html.Partial("../Shared/RouteCreate/_CoverAndAvatar", Model)
+                            @Html.Partial("../Shared/RouteCreate/_TitleShortcutDescription", Model)
+                            @Html.Partial("../Shared/RouteCreate/_ButtonSave", Model)
+                        </div>
+                    </li>
+                    <li>
+                        <div class="uk-grid" data-uk-grid-margin>
+                            @Html.Partial("../Shared/RouteCreate/_Image", Model)
+                            @*@Html.Partial("../Shared/RouteCreate/_ImageGallery", Model)*@
+                            @Html.Partial("../Shared/RouteCreate/_ButtonSave", Model)
+                        </div>
+                    </li>
+                    <li>
+                        <div class="uk-grid" data-uk-grid-margin>
+                            @Html.Partial("../Shared/RouteCreate/_Phone", Model)
+                            @Html.Partial("../Shared/RouteCreate/_Location", Model)
+                            @Html.Partial("../Shared/RouteCreate/_Map", Model)
+                            @Html.Partial("../Shared/RouteEdit/_SocialNetwork", Model)
+                            @Html.Partial("../Shared/RouteCreate/_ButtonSave", Model)
+                        </div>
+                    </li>
+                    <li>
+                        @Html.Partial("../Shared/RouteEdit/_Сharacteristics", Model)
+                        <div class="uk-grid" data-uk-grid-margin>
+                            @Html.Partial("../Shared/RouteCreate/_ButtonSave", Model)
+                        </div>
+                    </li>
+                    <li>
+                        <div class="uk-grid" data-uk-grid-margin>
+                            @Html.Partial("../Shared/RouteEdit/_Halls", Model)
+                            @Html.Partial("../Shared/RouteCreate/_ButtonSave", Model)
+                        </div>
+                    </li>
+                    <li>
+                        <div class="uk-grid" data-uk-grid-margin>
+                            @Html.Partial("../Shared/RouteEdit/_Participants", Model)
+                            @Html.Partial("../Shared/RouteCreate/_ButtonSave", Model)
+                        </div>
+                    </li>
+                    <li>
+                        <div class="uk-grid" data-uk-grid-margin>
+                            @Html.Partial("../Shared/RouteEdit/_Pro", Model)
+                            @Html.Partial("../Shared/RouteCreate/_ButtonSave", Model)
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/marked")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(function () {
+            App.owner = '@Model.ID';
+            var edit = new App.Views.Photostudio.EditView();
+            edit.render();
+        })
+    </script>
+}

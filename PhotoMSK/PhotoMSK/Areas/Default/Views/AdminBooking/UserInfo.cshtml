@@ -1,0 +1,233 @@
+﻿@{
+    ViewBag.Title = "Профиль";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="uk-container uk-container-center pad-top-60">
+    <div class="uk-grid">
+        <div class="uk-width-6-10 uk-offset-2-10">
+            <div class="uk-grid">
+                <div class="uk-width-1-2 uk-offset-2-10 uk-text-center">
+                    <img src="http://photomsk.by/Content/images/no-avatar.png" class="hw-150 uk-border-circle uk-text-center">
+                    <div id="upload-drop" class="uk-placeholder uk-text-center">
+                        <a class="uk-form-file uk-link-muted"><i class="icon-camera"></i> Изменить изображение<input id="upload-select" type="file"></a>
+                    </div>
+
+                    <div id="progressbar" class="uk-progress uk-hidden">
+                        <div class="uk-progress-bar" style="width: 0%;">...</div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="title-dotted">
+                Основная информация
+            </h4>
+
+            <div class="uk-grid" data-uk-grid-margin>
+                <div class="uk-width-1-2">
+                    <label class="label-ms">
+                        Фамилия
+                        <i class="icon-help2"></i>
+                    </label>
+                    <input class="input-ms" type="text" name="fullName" id="settings_fullName" value="Лунцевич" maxlength="50">
+                </div>
+                <div class="uk-width-1-2">
+                    <label class="label-ms">
+                        Имя
+                        <i class="icon-help2"></i>
+                    </label>
+                    <input class="input-ms" type="text" name="fullName" id="settings_fullName" value="Ромчик" maxlength="50">
+                </div>
+                <div class="uk-width-1-2">
+                    <label class="label-ms">
+                        Дата рождения
+                        <i class="icon-help2"></i>
+                    </label>
+                    <div class="uk-grid uk-grid-small">
+                        <div class="uk-width-1-4">
+                            <input class="input-ms uk-text-center" type="text" name="fullName" id="settings_fullName" value="01" maxlength="50">
+                        </div>
+                        <div class="uk-width-1-4">
+                            <input class="input-ms uk-text-center" type="text" name="fullName" id="settings_fullName" value="01" maxlength="50">
+                        </div>
+                        <div class="uk-width-2-4">
+                            <input class="input-ms uk-text-center" type="text" name="fullName" id="settings_fullName" value="1989" maxlength="50">
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-2">
+                    <label class="label-ms" for="settings_gender">
+                        Ваш пол
+                        <i class="icon-help2"></i>
+                    </label>
+                    <div class="select-style">
+                        <select class="select-ms" name="gender" id="settings_gender" required="required">
+                            <option value="" selected="selected" disabled="disabled">Выберите ваш пол</option>
+                            <option value="Female">Женский</option>
+                            <option value="Male">Мужской</option>
+                            <option value="NotApplicable">Не определил</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <h4 class="title-dotted">
+                Контакты
+            </h4>
+
+            <div class="uk-grid">
+                <div class="uk-width-1-2">
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-1-1">
+                            <label class="label-ms">
+                                Телефон #1
+                                <a class="label-verified">(проверен)</a>
+                                <i class="icon-help2"></i>
+                            </label>
+                            <div class="input-group">
+                                <input class="input-ms" type="text" name="fullName" id="settings_fullName" value="+375-600-00-00" maxlength="50" placeholder="+375-**-***-**-**">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-submit" type="button">
+                                        Проверить
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="uk-width-1-1">
+                            <label class="label-ms">
+                                Skype
+                                <i class="icon-help2"></i>
+                            </label>
+                            <input class="input-ms" type="text" name="fullName" id="settings_fullName" value="Ромчик" maxlength="50">
+                        </div>
+                        <div class="uk-width-1-1">
+                            <label class="label-ms">
+                                E-mail
+                                <i class="icon-help2"></i>
+                            </label>
+                            <input class="input-ms" type="text" name="fullName" id="settings_fullName" value="Ромчик" maxlength="50">
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-2">
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-1-1">
+                            <label class="label-ms" for="settings_gender">
+                                Страна
+                                <i class="icon-help2"></i>
+                            </label>
+                            <div class="select-style">
+                                <select class="select-ms" name="gender" id="settings_gender" required="required">
+                                    <option value="" selected="selected" disabled="disabled">Выберите страну</option>
+                                    <option value="Female">Беларусь</option>
+                                    <option value="Male">Украина</option>
+                                    <option value="NotApplicable">Россия</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="uk-width-1-1">
+                            <label class="label-ms" for="settings_gender">
+                                Город
+                                <i class="icon-help2"></i>
+                            </label>
+                            <div class="select-style">
+                                <select class="select-ms" name="gender" id="settings_gender" required="required">
+                                    <option value="" selected="selected" disabled="disabled">Выберите ваш город</option>
+                                    <option value="Female">Минск</option>
+                                    <option value="Male">Брест</option>
+                                    <option value="NotApplicable">Гродно</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="title-dotted">
+                Защита
+            </h4>
+            <div class="uk-grid" data-uk-grid-margin>
+                <div class="uk-width-6-10 uk-offset-2-10">
+                    <label class="label-ms show">
+                        Старый пароль
+                        <i class="icon-help2"></i>
+                    </label>
+                    <input class="input-ms" type="password" maxlength="50">
+                </div>
+                <div class="uk-width-1-2">
+                    <label class="label-ms show">
+                        Новый пароль
+                        <i class="icon-help2"></i>
+                    </label>
+                    <input class="input-ms" type="password" maxlength="50">
+                </div>
+                <div class="uk-width-1-2">
+                    <label class="label-ms show">
+                        Повторите пароль
+                        <i class="icon-help2"></i>
+                    </label>
+                    <input class="input-ms" type="password" maxlength="50">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="uk-grid">
+        <div class="uk-width-6-10 uk-offset-2-10">
+            <h4 class="title-dotted">
+                Оповещения о событиях
+            </h4>
+            <div class="uk-grid">
+                <div class="uk-width-6-10 uk-offset-2-10">
+                    <ul class="list-ms">
+                        <li>
+                            <input type="checkbox" class="checkbox-ms" id="RequestsConnectionNotificationEnabled" name="RequestsConnectionNotificationEnabled">
+                            <label class="checkbox-label-ms" for="RequestsConnectionNotificationEnabled">Приглашение на кастинг</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" class="checkbox-ms" id="ConnectsToObjectNotificationEnabled" name="ConnectsToObjectNotificationEnabled">
+                            <label class="checkbox-label-ms" for="ConnectsToObjectNotificationEnabled">Приглашение на съемку</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" class="checkbox-ms" id="ApprovesConnectionRequestNotificationEnabled" name="ApprovesConnectionRequestNotificationEnabled">
+                            <label class="checkbox-label-ms" for="ApprovesConnectionRequestNotificationEnabled">Оповещать меня о всех событиях на E-mail</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" class="checkbox-ms" id="PostsOnProfileNotificationEnabled" name="PostsOnProfileNotificationEnabled">
+                            <label class="checkbox-label-ms" for="PostsOnProfileNotificationEnabled">Оповещать меня о всех событиях на телефон</label>
+                        </li>
+
+                        <li>
+                            <input type="checkbox" class="checkbox-ms" id="MentionsNotificationEnabled" name="MentionsNotificationEnabled">
+                            <label class="checkbox-label-ms" for="MentionsNotificationEnabled">Кто-то говорит обо мне</label>
+                        </li>
+
+                        <li>
+                            <input type="checkbox" class="checkbox-ms" id="FriendJoinsNotificationEnabled" name="FriendJoinsNotificationEnabled">
+                            <label class="checkbox-label-ms" for="FriendJoinsNotificationEnabled">Друг присоединяется новый PhotoMSK</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" class="checkbox-ms" id="ClassicFriendLogsInNotificationEnabled" name="ClassicFriendLogsInNotificationEnabled">
+                            <label class="checkbox-label-ms" for="ClassicFriendLogsInNotificationEnabled">  Другу знаки в их новом профиле на PhotoMSK впервые  </label>
+                        </li>
+                        <li>
+                            <input type="checkbox" class="checkbox-ms" id="MessagingRelatedNotificationsEnabled" name="MessagingRelatedNotificationsEnabled">
+                            <label class="checkbox-label-ms" for="MessagingRelatedNotificationsEnabled">  Кто-то посылает мне сообщение  </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="uk-grid uk-grid-small">
+        <div class="uk-width-1-10 uk-offset-6-10">
+            <button type="reset" class="reset">отмена</button>
+        </div>
+        <div class="uk-width-1-6">
+            <button type="submit" class="btn-ms primary" id="settings_saveSettings" disabled="disabled">Сохранить</button>
+        </div>
+    </div>
+</div>

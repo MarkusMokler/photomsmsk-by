@@ -1,0 +1,1 @@
+.accordion__block{position:relative;border-bottom:1px solid #e8e8e8}.accordion__title{position:relative;padding:5%;color:#000;cursor:pointer}.accordion__title.active:before{content:'';position:absolute;top:50%;left:0;width:5px;height:24px;background-color:#ffc600;margin-left:-1px;z-index:100;transform:translateY(-50%)}.accordion__content{padding:0 5% 5%}

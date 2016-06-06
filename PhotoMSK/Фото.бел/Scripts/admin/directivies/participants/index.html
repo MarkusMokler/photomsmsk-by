@@ -1,0 +1,75 @@
+<div class="container--fluid">
+
+    <div class="grid grid--small grid--divider">
+        <div class="col--2-10">
+            <!-- <a class="button button--success" href="#create-participants" data-uk-modal>Добавить</a> -->
+            <div class="panel panel--divider">
+                <ul class="uk-nav uk-nav-menu uk-nav-side uk-nav-parent-icon">
+                    <li class="active">
+                        <a data-msk-href>Все участники</a>
+                    </li>
+                    <li class="uk-nav-divider"></li>
+                    <li>
+                        <a data-msk-href>Приглашения</a>
+                    </li>
+                    <li>
+                        <a data-msk-href>Руководители</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col--8-10">
+            <div class="panel panel--white">
+                <ul id="tab-participants">
+                    <li class="active" aria-hidden="false">
+                        <table class="table table--hover table--middle">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Пользователь</th>
+                                    <th>Статус</th>
+                                    <th class="text--right">Действие</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="uk-show-hide" ng-repeat="participant in participants">
+                                    <td class="text--center">
+                                        <i class="icon-check_circle text--green"></i>
+                                    </td>
+                                    <td class="text--truncate">
+
+                                        <img class="border--rounded avatar float--left margin--right-small" data-ng-src="{{participant.userPhoto}}" data-ng-if="participant.userPhoto != null" data-ng-cloak>
+                                        <div class="avatar avatar--empty float--left margin--right-small" data-ng-if="participant.userPhoto == null"></div>
+
+                                        <p class="margin--top-small">
+                                            <a href="/admin/userinformation/{{participant.id}}" class="link--reset link--line" data-ng-bind-template="{{participant.lastName}} {{participant.firstName}}" data-ng-cloak></a><br/>
+                                            <small class="text--muted text--small">
+                                                <i class="icon-room"></i>
+                                                Минск</small>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <div data-ng-if="participant.accessStatus != null">
+                                            <span class="text--muted" data-ng-if="participant.accessStatus == 1">Создатель</span>
+                                            <span class="text--muted" data-ng-if="participant.accessStatus == 2">Администратор</span>
+                                            <span class="text--muted" data-ng-if="participant.accessStatus == 3">Преподаватель</span>
+                                            <span class="text--muted" data-ng-if="participant.accessStatus == 4">Ученик</span>
+                                            <span class="text--muted" data-ng-if="participant.accessStatus == 5">Модель</span>
+                                            <span class="text--muted" data-ng-if="participant.accessStatus == 6">Пользователь</span>
+                                            <span class="text--muted" data-ng-if="participant.accessStatus == 7">Подписчик</span>
+                                        </div>
+                                    </td>
+                                    <td class="text--right">
+                                        <!-- <a class="button button--small" data-msk-href>Изменить</a> -->
+                                        <a class="button button--small button-danger" data-ng-if="participant.accessStatus!=1" data-msk-href ng-click="removeAdmin(participant.id)">Выгнать</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>

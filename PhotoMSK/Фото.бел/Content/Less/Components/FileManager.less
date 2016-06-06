@@ -1,0 +1,138 @@
+// out: ../../css/Components/FileManager.css, compress: true
+// Name:            File-manager
+// Description:     Defines styles for File-manager
+//
+// Component:       `file-manager`
+//
+//
+// Element:         `file-manager__*`
+//                  `file-manager__*`
+//
+// Modifiers:       `file-manager--*`
+//                  `file-manager--*`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+
+@fm-top-bar-padding:                     10px;
+@fm-bottom-bar-padding:                  15px;
+
+
+/* ========================================================================
+   Component: File-manager
+ ========================================================================== */
+.file-manager{
+
+    // Element 'file-manager__content'
+    &__content{
+        padding: 10px 0;
+    }
+
+    // Element 'file-manager__top-bar'
+    &__top-bar{
+        padding: @fm-top-bar-padding;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 0;
+    }
+
+    // Element 'file-manager__bottom-bar'
+    &__bottom-bar{
+        padding: @fm-bottom-bar-padding;
+        border-top: 1px solid #ddd;
+    }
+}
+
+// Element 'file-manager__tree'
+.file-manager__tree{
+    ul{
+        & li{
+
+            & a{
+                position: relative;
+                display: inline-block;
+                padding-left: 15px;
+                margin-bottom: 5px;
+                font-size: 12px;
+                line-height: 14px;
+                color: #999;
+                transition: all 200ms;
+                &:hover{
+                    color: #000;
+                    transition: all 200ms;
+
+                    & > span{
+                        border-bottom: 1px solid #999;
+                    }
+                }
+
+                & > i{
+                    font-size: 16px;
+                    line-height: 16px;
+                }
+            }
+
+            & ul{
+                padding-left: 10px;
+            }
+
+            // Element
+            &.parent{
+                & > a:after{
+                    content: '\e91e';
+                    font-family: 'icomoon';
+                    position: absolute;
+                    font-size: 8px;
+                    left: 3px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    transition: all 200ms;
+                }
+                &.open{
+                    & > a:after{
+                        content: '\e914';
+                        transition: all 200ms;
+                    }
+                }
+            }
+
+            // Element
+            &.active > a > span{
+                color: #000;
+            }
+        }
+    }
+}
+
+// ********************************
+//     FileManager Delete
+// ********************************
+
+@fm-delete-height:            50px;
+// ********************************
+.file-manager{
+
+    // Element 'file-manager__delete'
+    &__delete{
+        position: relative;
+
+        & > img{
+            opacity: 0.3;
+        }
+
+        &-icon{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display: block;
+            font-size: @fm-delete-height;
+            line-height: @fm-delete-height;
+            width: @fm-delete-height;
+            height: @fm-delete-height;
+            // border-radius: @fm-delete-height;
+            // border: 2px solid inherite;
+
+            transform: translate(-50%, -50%);
+        }
+    }
+}

@@ -1,0 +1,4 @@
+<div class="container container--center">
+    <div data-ng-if="!widget.isEdit" data-ng-bind-html="widget.content">{{widget.content}}</div>
+    <text-angular data-ng-if="widget.isEdit" data-ng-model="widget.content"></text-angular>
+</div>

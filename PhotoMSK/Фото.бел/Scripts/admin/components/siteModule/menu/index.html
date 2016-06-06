@@ -1,0 +1,78 @@
+<div class="content--admin">
+
+    <div><data-bread-crumbs /></div>
+
+    <div class="container--fluid">
+        <div class="grid">
+
+            <div class="col--1-1">
+                <div class="panel panel--box panel--white panel--shadow">
+                    <div class="panel__top-bar">
+                        <div class="grid grid--small grid--divider">
+                            <div class="col--1-5">
+                                <a href="/admin/photostudio/{{WhiteLabel}}/menu/create" class="button button--mini button--success border--rounded">
+                                    Добавить меню
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid--small grid--divider">
+                        <div class="col--1-5">
+                            <p class="text--h5">
+                                <span class="text--bold">
+                                    Разделы
+                                </span>
+                            </p>
+                            <ul class="list list--vertical">
+                                <li class="margin--botom-small" data-ng-repeat="i in rootNodes">
+                                    <a data-msk-href data-ng-click="setCurrentMenu(i)">
+                                        {{i.name}}
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <hr>
+
+                            <p class="text--h5 text--bold margin--top">Справочник</p>
+                            <ul class="list list--vertical list--dotted">
+                                <li><a data-msk-href target="_blank" class="text--muted">Типы меню</a></li>
+                                <li><a data-msk-href target="_blank" class="text--muted">Отображение элементов меню</a></li>
+                                <li><a data-msk-href target="_blank" class="text--muted">Создание выпадающего меню</a></li>
+                                <li><a data-msk-href class="text--small">ещё...</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col--4-5">
+
+                            <div class="margin--bottom-small">
+                                <div class="widget-bar__content__title">
+                                    <span>
+                                        {{allMenues.menu.name||'Выберите меню из списка'}}<i class="text--small float--right icon-keyboard_arrow_down"></i>
+                                    </span>
+                                </div>
+
+                                <section ui-sortable="sortableOptionsPublish" data-ng-model="allMenues.menu.nodes" class="placeholder--menu-parent ng-menus">
+                                    <div menu-item data-ng-repeat="item in allMenues.menu.nodes" item="item"></div>
+                                </section>
+                            </div>
+
+                            <hr>
+
+                            <div class="margin--top-small">
+                                <div class="widget-bar__content__title">
+                                    <span>
+                                        Не отображаемые элементы меню<i class="text--small float--right icon-keyboard_arrow_down"></i>
+                                    </span>
+                                </div>
+
+                                <section ui-sortable="sortableOptionsNonPublish" data-ng-model="allMenues.freeMenu" class="placeholder--menu-parent ng-menus">
+                                    <div menu-item data-ng-repeat="item in allMenues.freeMenu" item="item"></div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

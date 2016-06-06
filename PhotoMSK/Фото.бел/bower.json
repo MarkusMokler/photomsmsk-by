@@ -1,0 +1,40 @@
+{
+  "name": "photo.bel",
+  "private": true,
+  "dependencies": {
+    "fullcalendar": "2.6.1",
+    "angular": "1.5.3",
+    "angular-animate": "1.5.3",
+    "angular-ui-calendar": "",
+    "angular-ui-codemirror": "0.3.0",
+    "angular-route": "1.5.3",
+    "uikit": "latest",
+    "angular-local-storage": "latest",
+    "angular-moment": "1.0.0-beta.3",
+    "angular-jquery-timepicker": "latest",
+    "international-phone-number": "latest",
+    "nprogress": "latest",
+    "sweetalert2": "latest",
+    "angucomplete-alt": "latest",
+    "ng-tags-input": "3.0.0",
+    "angular-crumble": "latest",
+    "angularjs-slider": "^2.8.0",
+    "ng-file-upload": "12.0.1",
+    "ng-img-crop": "*",
+    "angular-treeview": "*",
+    "angular-ui-tree": "latest",
+    "Chart.js": "latest",
+    "angular-chart.js": "^0.8.8",
+    "textAngular": "latest",
+    "angular-ui-sortable": "^0.13.4",
+    "angular-soundmanager2": "latest"
+  },
+  "resolutions": {
+    "fullcalendar": "2.6.1",
+    "angular": "1.5.x"
+  },
+  "devDependencies": {
+    "angular-color-picker": "^1.0.10",
+    "angular-sticky": "angular-sticky-plugin#^0.1.0"
+  }
+}

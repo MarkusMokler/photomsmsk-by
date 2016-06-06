@@ -1,0 +1,18 @@
+﻿<!-- Галерея изображений -->
+<div class="col--1-1">
+    <ul class="grid grid--small grid-col--1-5">
+        
+            <li ng-repeat="photo in photos">
+                <div class="uk-overlay">
+                    <img src="{{photo.url}}" class="uk-border-rounded" alt="">
+                    <div class="uk-overlay-area">
+                        <div class="uk-overlay-area-content">
+                            <a class="button button-small button-danger role-delete-photo-button" data-id="{{photo.ID}}">Удалить</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        
+    </ul>
+
+</div>

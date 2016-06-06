@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PhotoMSK.Data.Models.ShoppingCart.Order">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAEUAAAgAAAAAAAAAAIAAAAQAAABAAoAAAAUAA=</HashCode>
+      <FileName>Models\ShoppingCart\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PhotoMSK.Data.Models.ShoppingCart.OrderLine">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAEAABAAAQAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ShoppingCart\OrderLine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PhotoMSK.Data.Models.ShoppingCart.PhototechnicsOrderLine">
+    <Position X="3" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAQAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Models\ShoppingCart\OrderLine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PhotoMSK.Data.Models.ShoppingCart.EventOrderLine">
+    <Position X="5.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ShoppingCart\OrderLine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PhotoMSK.Data.Models.Event">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIBAAAAASGgEEAIAAAAAAACCAAABEAECAEigAAAAAA=</HashCode>
+      <FileName>Models\Event.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PhotoMSK.Data.Models.RentCalendar">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAgAAAQEAAgAAhEgAAgIAAAAAAAAAAQQgAAAABBEA=</HashCode>
+      <FileName>Models\RentCalendar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

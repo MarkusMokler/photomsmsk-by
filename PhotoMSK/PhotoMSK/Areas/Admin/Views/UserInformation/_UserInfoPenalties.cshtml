@@ -1,0 +1,25 @@
+﻿@model ICollection<PhotoMSK.ViewModels.PenaltyViewModel.Summary>
+
+    <div class="uk-width-8-10 uk-offset-1-10">
+        <div class="uk-panel uk-panel-box uk-panel-module">
+            <table class="uk-table uk-table-statistics uk-table-hover uk-table-condensed uk-table-middle">
+                <thead>
+                    <tr class="uk-text-center">
+                        <th class="uk-text-left">Paragraph</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody id="penalties">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="uk-text-left">@item.Paragraph</td>
+                            <td>@item.Price</td>
+                            <td>@item.Description</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>

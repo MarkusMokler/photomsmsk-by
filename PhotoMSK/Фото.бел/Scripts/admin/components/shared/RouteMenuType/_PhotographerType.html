@@ -1,0 +1,77 @@
+﻿<div class="aside-menu__title">
+    Фотограф
+    <small data-ng-click="isCollapsed = !isCollapsed">спрятать</small>
+</div>
+<ul class="aside-menu__list" data-ng-show="!isCollapsed">
+    <li>
+        <a href="admin/photographer/{{selectedRouteLeftMenu.shortcut}}/participants">
+            <i class="icon-directions_run"></i>
+            <span>Сотрудники</span>
+        </a>
+    </li>
+    <li class="aside-menu__list__parent" data-ng-class="{'open' : isClientOpen}">
+        <a href="admin/photographer/{{selectedRouteLeftMenu.shortcut}}/clients" data-ng-click="isClientOpen = !isClientOpen">
+            <i class="icon-accessibility"></i>
+            <span>Клиенты</span>
+        </a>
+        <ul class="aside-menu__sublist" data-ng-show="isClientOpen">
+            <li data-ng-repeat="item in clientType"><a href="admin/photographer/{{selectedRouteLeftMenu.shortcut}}/clients/{{item.text}}">{{item.text}}</a></li>
+            <li><a href="admin/photographer/{{selectedRouteLeftMenu.shortcut}}/reviews">Отзывы</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="/admin/photographer/{{selectedRouteLeftMenu.shortcut}}/month">
+            <i class="icon-timelapse"></i>
+            <span>Статистика</span>
+        </a>
+    </li>
+    <li>
+        <a href="/admin/photographer/{{selectedRouteLeftMenu.shortcut}}/prices">
+            <i class="icon-armchair"></i>
+            <span data-ng-if="!iconsOnly">Прайсы</span>
+        </a>
+    </li>
+    <li>
+        <a href="admin/photographer/{{selectedRouteLeftMenu.shortcut}}/photos">
+            <span>Фотографии</span>
+        </a>
+    </li>
+    <li>
+        <a href="admin/photographer/{{selectedRouteLeftMenu.shortcut}}/creative">
+            <span>Креативы</span>
+        </a>
+    </li>
+    <li>
+        <a href="admin/photographer/{{selectedRouteLeftMenu.shortcut}}/books">
+            <span>Книги</span>
+        </a>
+    </li>
+    <li class="aside-menu__list__parent" data-ng-class="{'open' : isProjectsOpen}">
+        <a href="admin/photographer/{{selectedRouteLeftMenu.shortcut}}/projects" data-ng-click="isProjectsOpen = !isProjectsOpen">
+            <!--<i class="icon- "></i>-->
+            <span>Проекты</span>
+        </a>
+        <ul class="aside-menu__sublist" data-ng-show="isProjectsOpen">
+            <li data-ng-repeat="project in projects"><a href="admin/photographer/{{selectedRouteLeftMenu.shortcut}}/project/{{project.id}}/edit">{{project.name}}</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="admin/photographer/{{selectedRouteLeftMenu.shortcut}}/settings">
+            <i class="icon-tune"></i>
+            <span>Настройки</span>
+        </a>
+    </li>
+    <li>
+        <a href="admin/photographer/{{selectedRouteLeftMenu.shortcut}}/booking">
+            <i class="icon-calendar-full"></i>
+            <span>Бронирование</span>
+        </a>
+    </li>
+    <li class="aside-menu__divider"></li>
+    <li>
+        <a data-msk-href data-ng-click="authService.logOut()">
+            <i class="icon-power_settings_new"></i>
+            <span>Выход</span>
+        </a>
+    </li>
+</ul>

@@ -1,0 +1,82 @@
+<div class="grid grid--divider grid--collapse margin--reset">
+    <!--Информация-->
+    <div class="col--2-4">
+        <p class="text--h3 text--muted text--truncate">
+            Информация
+        </p>
+        <hr class="col--1-1 grid--divider-full">
+        <!--Name-->
+        <div ng-show="showOthers">
+            <label class="label label--rounded" for="Name">Название</label>
+            <input class="input input--rounded col--1-1" id="Name" data-ng-model="item.name" name="Name" type="text">
+            <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+        </div>
+        <!--First Name, Last Name-->
+        <div ng-show="showPhotographer">
+            <label class="label label--rounded" for="firstName">Имя</label>
+            <input class="input input--rounded col--1-1" id="firstName" data-ng-model="item.firstName" name="firstName" type="text" required>
+            <span class="field-validation-valid" data-valmsg-for="firstName" data-valmsg-replace="true"></span>
+
+            <label class="label label--rounded" for="lastName">Фамилия</label>
+            <input class="input input--rounded col--1-1" id="lastName" data-ng-model="item.lastName" name="lastName" type="text" required>
+            <span class="field-validation-valid" data-valmsg-for="lastName" data-valmsg-replace="true"></span>
+
+            <label class="label label--rounded" for="country">Страна</label>
+            <input class="input input--rounded col--1-1" id="country" data-ng-model="item.country" name="country" type="text" required>
+            <span class="field-validation-valid" data-valmsg-for="country" data-valmsg-replace="true"></span>
+
+            <label class="label label--rounded" for="city">Город</label>
+            <input class="input input--rounded col--1-1" id="city" data-ng-model="item.city" name="city" type="text" required>
+            <span class="field-validation-valid" data-valmsg-for="city" data-valmsg-replace="true"></span>
+        </div>
+        <!--Shortcut-->
+        <div>
+            <label class="label label--rounded" for="Shortcut">Короткая ссылка</label>
+            <div class="input__group">
+                <span class="input__group-addon">www.фото.бел/</span>
+                <input class="input input--rounded" id="Shortcut" data-ng-model="item.shortcut" name="Shortcut" type="text">
+                <span class="field-validation-valid" data-valmsg-for="Shortcut" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+        <!--Description-->
+        <div>
+            <label class="label" for="Description">Краткое описание</label>
+            <textarea class="input col--1-1" data-ng-model="item.description" cols="20" id="Description" name="Description" rows="8"></textarea>
+            <span class="field-validation-valid" data-valmsg-for="Description" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+
+    <!--Тип профиля-->
+    <div class="col--1-4">
+        <p class="text--h3 text--muted text--truncate">
+            Тип профиля
+        </p>
+        <hr class="col--1-1 grid--divider-full">
+
+        <ul class="grid">
+            <li class="col--1-1 margin--bottom-small" data-ng-repeat="type in routesTypes">
+                <a data-msk-href data-ng-click="setType(type.type)" data-ng-class="routeTypeSelected == type.type ? 'active' : ''" class="button button--white button--radio border--radius text--bold col--1-1">
+                    {{type.name}}
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!--Описание-->
+    <div class="col--1-4">
+        <p class="text--h3 text--muted text--truncate">
+            Описание
+        </p>
+        <hr class="col--1-1 grid--divider-full">
+
+        <p class="text--muted">
+            Публичный профиль - это профиль, который будет отображаться в каталоге на сайте.
+        </p>
+        <p class="text--muted margin--top">
+            Посещение нашего портала позволит увеличить ваши продажи в несколько раз.
+        </p>
+        <p class="margin--top-large text--small text--muted text--center">
+            www.фото.бел
+        </p>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+﻿<!--Photos page-->
+<div class="grid grid--small grid--divider">
+    <div>
+        <div>
+            <data-admin-photo-load-page />
+        </div>
+        <div class="col--1-1 text--center">
+            <hr class="margin--v">
+            <button class="button button--success border--rounded col--1-3" data-ng-click="loadPhoto()">Загрузить фотографии</button>
+        </div>
+    </div>
+    <div class="col--8-10">
+        <ul class="grid grid--small grid-col--1-2 grid-col--large-1-6 grid-col--medium-1-4">
+            <li class="margin--bottom-small" data-ng-repeat="photo in photos">
+                <div class="panel panel--box">
+                    <div class="uk-panel-teaser">
+                        <img class="avatar--border" alt="{{photo.name}}" src="/Content/images/no-avatar.png" data-ng-src="{{photo.coverImageUrl}}" height="200" width="200">
+                    </div>
+                    <h2 class="uk-panel-title">
+                        <a data-msk-href>{{photo.name}}</a>
+                    </h2>
+                    <ul class="uk-subnav uk-subnav-line uk-margin-remove">
+                        <li>
+                            <a class="uk-navbar-nav-subtitle text--center">
+                                <i class="uk-icon-eye"></i>
+                                <div>Просмотреть</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/photographer/{{selectedRouteLeftMenu.shortcut}}/photo/{{photo.id}}/edit" class="uk-navbar-nav-subtitle text--center">
+                                <i class="uk-icon-pencil"></i>
+                                <div>Изменить</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/photographer/{{selectedRouteLeftMenu.shortcut}}/photo/{{photo.id}}/delete" class="uk-navbar-nav-subtitle text--center">
+                                <i class="icon-trash"></i>
+                                <div>Удалить</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

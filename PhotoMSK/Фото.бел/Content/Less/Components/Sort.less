@@ -1,0 +1,77 @@
+// out: ../../css/Components/Sort.css, compress: true
+// Name:            Sort
+// Description:     Defines styles for sort
+//
+// Component:       `sort`
+//
+// Modifiers:       `sort--vertical`
+//                  `sort--*`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+@sort-margin: 10px;
+@sort-item-color: #a8a8a8;
+@sort-item-padding: 10px;
+@sort-item-margin: 10px;
+@sort-item-border-radius: 20px;
+@sort-item-background-active: rgba(228, 228, 228, 1);
+@sort-item-background-active-hover: rgba(228, 228, 228, 0.4);
+@sort-item-color-active: #181818;
+/* ========================================================================
+   Component: Sort
+ ========================================================================== */
+.sort {
+    display: inline-block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    // margin-left: @sort-margin;
+    &__item {
+        position: relative;
+        display: inline-block;
+        padding: @sort-item-padding;
+        font-size: 1rem;
+        color: @sort-item-color;
+        border-radius: @sort-item-border-radius;
+        transition: all 200ms;
+        &.active {
+            background: @sort-item-background-active;
+            color: @sort-item-color-active;
+        }
+        &:hover {
+            background: @sort-item-background-active-hover;
+            color: @sort-item-color-active;
+        }
+        & + .sort__item {
+            margin-left: @sort-item-margin;
+        }
+    }
+    // Modificator `sort--small`
+    &--small {
+
+        & .sort__title{
+            display: inline-block;
+            padding: (@sort-item-padding / 2) @sort-item-padding (@sort-item-padding / 2) 0;
+            font-size: 0.8rem;
+            color: #171717;
+            font-weight: 500;
+            color: #999;
+        }
+
+        & .sort__item {
+            position: relative;
+            display: inline-block;
+            padding: (@sort-item-padding / 2) @sort-item-padding;
+            font-size: 0.8rem;
+            color: @sort-item-color;
+            border-radius: @sort-item-border-radius;
+            transition: all 200ms;
+
+            & + .sort__item{
+                margin-left: (@sort-item-margin / 2);
+            }
+        }
+    }
+}

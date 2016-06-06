@@ -1,0 +1,171 @@
+﻿@model PhotoMSK.Areas.Default.ViewData.Wall.IndexViewData
+@{
+    ViewBag.Title = Model.Item.Title;
+    ViewBag.Description = Model.Item.Description;
+    ViewBag.Image = Model.Item.Photos.Any() ? Model.Item.Photos.First().Url : Model.Item.AuthorImage;
+}
+
+<div class="uk-main-page-body">
+    <div class="uk-container uk-container-center pad-top">
+        <div class="uk-grid">
+            <div class="uk-width-2-3">
+                <div class="uk-wall-box-body">
+                    <div class="uk-panel uk-wall-box uk-show-hide">
+                        <div class="uk-width-1-1 wall-post-title">
+                            <div class="uk-grid">
+                                <div class="uk-width-1-2">
+                                    <a href="#">Статья <small class="award">(со стены)</small></a>
+                                </div>
+                                <div class="uk-width-1-2">
+                                    <ul class="uk-subnav uk-float-right">
+                                        <li class="uk-show-hide-element"><a class="uk-text-muted uk-link-reset" data-uk-tooltip title="Удалить запись?"><i class="icon-trash role-delete-wall-post"></i></a></li>
+                                        <li><a href="" class="uk-link-reset" data-uk-tooltip title="Это самая просматриваемая запись на стене автора"><i class="icon-flame wall-post-hot"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <article class="uk-comment">
+                            <div class="uk-comment-body">
+                                @if (string.IsNullOrEmpty(Model.Title))
+                                {
+                                    <div>
+                                        <h1><a class="uk-link-muted" href="#">@Model.Title</a></h1>
+                                    </div>
+                                }
+                                <p class="pad-top-10">@Model.Description</p>
+                            </div>
+                        </article>
+                        <div class="uk-wall-box-gallery pad-top-10">
+                            @if (Model.Item.Videos.Count() > 0)
+                            {
+                                <div class="video-placeholder uk-grid">
+                                    @foreach (var video in Model.Item.Videos)
+                                    {
+                                        <iframe src="@video.Url" class="uk-width-1-1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                    }
+                                </div>
+                            }
+                            @foreach (var photo in Model.Item.Photos)
+                            {
+                                <img src="@photo.Url" />
+                            }
+                        </div>
+                        <ul class="uk-subnav uk-subnav-line">
+                            <li>
+                                <a href="" class="uk-link-999 uk-link-reset">
+                                    <i class="icon-eye uk-text-muted"></i> <span>@Model.Item.Views</span>
+                                </a>
+                            </li>
+                            <li><a href="" class="role-like green-color uk-link-reset uk-link-like"><i class="icon-thumbs-o-up"></i><b> @Model.Item.Likes</b></a></li>
+                            <li><a href="" class="role-dislike pink-color uk-link-reset uk-link-dislike"><b>@Model.Item.Dislikes </b><i class="uk-icon-thumbs-o-down"></i></a></li>
+                            <li>
+                                <div class="uk-button-dropdown" data-uk-dropdown="">
+                                    <a href="" class="uk-link-reset uk-link-999">
+                                        <i class="icon-share2"></i>
+                                    </a>
+                                    <div class="uk-dropdown uk-dropdown-up uk-dropdown-center">
+                                        <ul class="uk-nav uk-nav-dropdown">
+                                            <li>
+                                                <div class="addthis_sharing_toolbox" data-url="http://photomsk.by/Wall/<%- id %>"></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            @foreach (var iter in Model.Item.Participants)
+                            {
+                                <li class="uk-align-right">
+                                    <a href="http://photomsk.by/@iter.Shortcut" data-uk-tooltip title="@iter.Name">
+                                        <img src="@iter.Photo" width="25" height="25" class="uk-border-circle" alt="" title="">
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="uk-wall-box-comment">
+                        <ul class="uk-comment-list">
+                            @foreach (var item in Model.Item.Comments.Comments)
+                            {
+                                if (item.IsAnswer)
+                                {
+                                    <li>
+                                        <ul>
+                                            <li>
+                                                <article class="uk-comment" data-uid="@item.UserInformationID">
+                                                    <header class="uk-comment-header">
+                                                        <img class="uk-comment-avatar uk-border-rounded" src="@Model.Item." width="50" height="50" alt="">
+                                                        <h5 class="uk-comment-title">
+                                                            <a href="#" class="bold uk-link-muted">@Model.Item.Name</a>
+                                                        </h5>
+                                                        <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                                                            <li><a href="#" class="uk-link-muted uk-link-999">jQuery.timeago('@item.CreationTime')</a></li>
+                                                        </ul>
+                                                    </header>
+                                                    <div class="uk-comment-body">
+                                                        <p> , @item.Text</p>
+                                                    </div>
+                                                </article>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <ul>
+                                            <li>
+                                                <article class="uk-comment" data-uid="@item.UserInformationID">
+                                                    <header class="uk-comment-header">
+                                                        <img class="uk-comment-avatar uk-border-rounded" src="@Model.Item.AuthorImage" width="50" height="50" alt="">
+                                                        <h5 class="uk-comment-title">
+                                                            <a href="#" class="bold uk-link-muted">@Model.Item.Name</a>
+                                                        </h5>
+                                                        <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                                                            <li><a href="#" class="uk-link-muted uk-link-999">jQuery.timeago('@item.CreationTime')</a></li>
+                                                        </ul>
+                                                    </header>
+                                                    <div class="uk-comment-body">
+                                                        <p>@item.Text</p>
+                                                    </div>
+                                                </article>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="uk-panel-box-comment-editor">
+                                <ul class="ChatLog">
+                                    <li class="ChatLog-entry">
+                                        <img class="ChatLog-avatar" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" />
+                                        <div class="ChatLog-message">
+                                            <textarea class="textarea-comment role-comment-area" rows="1" placeholder="Добавить комментарий..."></textarea>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="uk-subnav uk-text-right role-comment-buttons">
+                                    <li><button class="uk-button-link uk-text-muted role-comment-cancel">отменить</button></li>
+                                    <li><button class="uk-button uk-button-success uk-button-small role-comment-send">отправить</button></li>
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-1-3">
+                <div class="booking-image uk-text-center pad-top-20">
+                    <img class="uk-border-circle" src="@Model.Item.AuthorImage">
+                    <h1>
+                        <a href="http://photomsk.by/@Model.Item.AuthorShortcut" class="uk-link-muted uk-link-dotted">@Model.Item.Name</a> 
+                    </h1>
+                    <div class="uk-comment-meta">
+                        @*<div class="uk-badge uk-badge-success">PRO</div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

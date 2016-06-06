@@ -1,0 +1,41 @@
+﻿@using PhotoMSK.Extensiolns
+@model PhotoMSK.Areas.Default.ViewData.Photostudio.IframeHallsViewData
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Areas/Default/Views/Shared/_CalendarLayout.cshtml";
+}
+
+
+<div class="calendar-header-placeholder">
+
+</div>
+<div class="booking-calendar">
+    <div id="calendar"></div>
+</div>
+
+@section Scripts
+{
+    @using (Html.Template("calendar-header"))
+    {
+        <div class="booking-hall" data-uk-button-checkbox="">
+            <h3><strong>Календарь</strong></h3>
+            <ul class="uk-subnav uk-subnav-pill uk-subnav-line role-hall-tabs">
+                <li><button class="uk-button uk-active" data-val="all">Все залы</button></li>
+                <% _.each(halls ,function(hall){ %>
+                <li><button class="uk-button" data-calendar="<%- hall.calendarID %>"><%- hall.name %></button></li>
+                <% }) %>
+            </ul>
+        </div>
+    }
+    <script src="@Url.Content("~/Scripts/Application/Views/IFrameCalendar/IFrameCalendar.js")"></script>
+    <script>
+        $(function() {
+
+            var booking = new Application.BaseViews.IFrameCalendar({
+                model: @Model.Item.Halls.Select(x => new {id = x.Calendar.ID.ToString(), color = x.Calendar.Color, name = x.Name, description = x.Description, calendarID = x.Calendar.ID}).ToJson()
+            });
+            booking.render();
+        })
+    </script>
+}

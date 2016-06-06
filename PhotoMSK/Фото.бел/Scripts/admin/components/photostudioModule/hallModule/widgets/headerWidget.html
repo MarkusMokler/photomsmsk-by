@@ -1,0 +1,4 @@
+<div class="container container--center">
+    <h1 data-ng-if="!widget.isEdit">{{widget.content||'Вставьте сюда текст'}}</h1>
+    <input data-ng-if="widget.isEdit" data-ng-model="widget.content" />
+</div>

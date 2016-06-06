@@ -1,0 +1,32 @@
+<div class="content--admin">
+    <div><data-bread-crumbs /></div>
+
+    <div class="container--fluid  ">
+        <div class="activity__sort">
+            <div class="grid grid--small">
+                <div class="col--large-3-10 col--medium-4-10">
+                    <div class="prodrev-row" data-ng-repeat="review in reviews"><br/><br/><hr/>
+                        <div class="rev-user-avatar" style="background:url({{review.user.userPhoto}}) no-repeat 50% 50%;"></div>
+                        <div class="rev-user-data">
+                            <div class="rev-user-name"><a href="/admin/userinformation/{{review.user.id}}">{{review.user.firstName}} {{review.user.lastName}}</a></div>
+                            <div class="rev-time">{{review.date| date:'yyyy-MM-dd HH:mm:ss'}}</div>
+                        </div>
+                        <div class="rev-rating"><span class="rev-rating-desc">Рейтинг:  {{getRating(review.likeStatus.likes,review.likeStatus.dislikes)}}</span></div><br />
+                        <div class="rev-content">{{review.description}}</div><br />
+                        <div class="rev-gallery"></div><br />
+                        <div class="revpc-container">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td width="50%" valign="top"><div class="revpc pros"><span class="rev-hand"> ПЛЮСЫ </span><br/>{{review.goodComment}}</div></td>
+                                        <td width="50%" valign="top"><div class="revpc cons"><span class="rev-hand"> МИНУСЫ </span><br/>{{review.badComment}}</div></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

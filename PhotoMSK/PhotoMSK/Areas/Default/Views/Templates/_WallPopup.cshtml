@@ -1,0 +1,137 @@
+﻿<div class="uk-modal uk-open" style="display: block">
+    <div class="uk-modal-dialog uk-wall-box-body uk-show-hide">
+        <div class="uk-panel uk-wall-box">
+            <div class="uk-width-1-1 wall-post-title">
+                <a href="#">Статья <small class="award">(со стены)</small></a>
+                <i class="icon-flame uk-align-right wall-post-hot"></i>
+                <a class="uk-modal-close uk-close"></a>
+            </div>
+
+            <article class="uk-comment">
+                <header class="uk-comment-header">
+                    <img class="uk-comment-avatar uk-border-circle" src="<%- authorImage %>" width="50" height="50" alt="">
+                    <h5 class="uk-comment-title"><a href="http://photomsk.by/<%- authorShortcut %>" class="bold uk-link-muted"><%- name %></a> <a class="uk-align-right uk-text-muted"><i class="icon-trash uk-show-hide-element role-delete-wall-post"></i></a></h5>
+                    <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                        <li><a href="#" class="uk-link-999"><i class="icon-clock2"></i> <%- jQuery.timeago(date) %></a></li>
+                    </ul>
+                </header>
+                <div class="uk-comment-body">
+                    <% if(typeof(title)!='undefined'){ %>
+                    <div>
+                        <h1><a class="uk-link-muted" href="#"><%- title %></a></h1>
+                    </div>
+                    <% } %>
+                    <p><%= description %></p>
+                </div>
+            </article>
+            <div class="uk-wall-box-gallery pad-top-10">
+                <% if(typeof(videos)!='undefined' && videos!=null && videos.length>0) { %>
+                <div class="video-placeholder uk-grid">
+                    <% _.each(videos,function(iter){%>
+                    <iframe src="<%- iter.url %>" class="uk-width-1-1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <% }) %>
+                </div>
+                <% } %>
+                <div class="photo-list-placeholder photoset-grid-basic" style="align-content: center;" data-layout="<%- grid(photos) %>">
+                    <% _.each(photos,function(iter){%>
+                    <img src="<%- iter.url %>" class="pad-top-20" style="width: 100%"></img>
+                    <% }) %>
+                </div>
+            </div>
+            <ul class="uk-subnav uk-subnav-line">
+                <li>
+                    <a href="" class="uk-link-999 uk-link-reset">
+                        <i class="icon-eye uk-text-muted"></i> <span><%- views %></span>
+                    </a>
+                </li>
+                <li><a class="role-like green-color uk-link-reset uk-link-like"><i class="icon-thumbs-o-up"></i><b> <%- likes %></b></a></li>
+                <li><a class="role-dislike pink-color uk-link-reset uk-link-dislike"><b><%- dislikes %> </b><i class="uk-icon-thumbs-o-down"></i></a></li>
+                <li>
+                    <div class="uk-button-dropdown" data-uk-dropdown="">
+                        <a href="" class="uk-link-reset uk-link-999">
+                            <i class="icon-share2"></i>
+                        </a>
+                        <div class="uk-dropdown uk-dropdown-up uk-dropdown-center">
+                            <ul class="uk-nav uk-nav-dropdown">
+                                <li>
+                                    <div class="addthis_sharing_toolbox" data-url="http://photomsk.by/Wall/<%- id %>"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <% _.each(participants,function(iter){%>
+                <li class="uk-align-right">
+                    <a href="http://photomsk.by/<%- iter.shortcut %>" data-uk-tooltip title="<%= iter.name %>">
+                        <img src="<%- iter.photo %>" width="25" height="25" class="uk-border-circle" alt="" title="">
+                    </a>
+                </li>
+                <% }) %>
+            </ul>
+        </div>
+        <div class="uk-wall-box-comment">
+            <ul class="uk-comment-list">
+                <% _.each(comments,function(iter){%>
+                <% if(iter.isAnswer){ %>
+                <li>
+                    <ul>
+                        <li>
+                            <article class="uk-comment" data-uid="<%- iter.userInformationID %>">
+                                <header class="uk-comment-header">
+                                    <img class="uk-comment-avatar uk-border-rounded" src="<%- iter.photo %>" width="50" height="50" alt="">
+                                    <h5 class="uk-comment-title">
+                                        <a href="#" class="bold uk-link-muted"><%- iter.name %></a>
+                                    </h5>
+                                    <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                                        <li><a href="#" class="uk-link-muted uk-link-999"><%- jQuery.timeago(iter.creationTime) %></a></li>
+                                    </ul>
+                                </header>
+                                <div class="uk-comment-body">
+                                    <p><%- iter.answeredName %>, <%- iter.text %></p>
+                                </div>
+                            </article>
+                        </li>
+                    </ul>
+                </li>
+                <% }else{ %>
+                <li>
+                    <article class="uk-comment" data-uid="<%- iter.userInformationID %>">
+                        <header class="uk-comment-header">
+                            <img class="uk-comment-avatar uk-border-rounded" src="<%- iter.photo %>" width="50" height="50" alt="">
+                            <h5 class="uk-comment-title">
+                                <a href="#" class="bold uk-link-muted"><%- iter.name %></a>
+                            </h5>
+                            <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                                <li><a href="#" class="uk-link-muted uk-link-999"><%- jQuery.timeago(iter.creationTime) %></a></li>
+                            </ul>
+                        </header>
+                        <div class="uk-comment-body">
+                            <p><%- iter.text %></p>
+                        </div>
+                    </article>
+                </li>
+                <% } %>
+                <% }) %>
+            </ul>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="uk-panel-box-comment-editor">
+                    <ul class="ChatLog">
+                        <li class="ChatLog-entry">
+                            <img class="ChatLog-avatar" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" />
+                            <div class="ChatLog-message">
+                                <textarea class="textarea-comment role-comment-area" rows="1" placeholder="Добавить комментарий..."></textarea>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="uk-subnav uk-text-right role-comment-buttons">
+                        <li><button class="uk-button-link uk-text-muted role-comment-cancel">отменить</button></li>
+                        <li><button class="uk-button uk-button-success uk-button-small role-comment-send">отправить</button></li>
+                    </ul>
+                </div>
+            }
+
+        </div>
+
+    </div>
+</div>

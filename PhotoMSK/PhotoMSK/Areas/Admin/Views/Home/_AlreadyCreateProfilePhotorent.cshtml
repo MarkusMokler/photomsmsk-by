@@ -1,0 +1,44 @@
+﻿@using PhotoMSK.Data.Enums
+@using PhotoMSK.Data.Models
+@using PhotoMSK.Data.Models.Routes
+@using PhotoMSK.Models
+@model User
+
+@{
+    List<RouteEntity> routes = Model.UserInformation.Roles.Where(x => x.AccessStatus == AccessStatus.Owner || x.AccessStatus == AccessStatus.Administrator).Select(x => x.Route).ToList();
+    IEnumerable<IGrouping<Type, RouteEntity>> groups = routes.GroupBy(x => x.GetType());
+}
+<div class="uk-grid">
+    <div class="uk-width-1-1">
+        <span class="uk-form-heading uk-text-muted">Список созданных арендных мест</span>
+        <hr class="small-line uk-margin-small-top" />
+    </div>
+</div>
+
+<div class="uk-grid" data-uk-grid-margin>
+    @foreach (var item in routes.OfType<Photorent>())
+    {<div class="uk-width-1-4">
+        <div class="uk-panel uk-panel-space-15">
+            <div class="phototechnics-teaser-item">
+                <a href="@Url.Action("Details", new { area = "Default", controller = "Photorent", shortcut = item.Shortcut })">
+                    <img class="uk-border-circle" src="@item.ImageUrl">
+                </a>
+                <div class="public-teaser-description">
+                    <h3 class="uk-text-center phototechnics-teaser-title uk-margin-bottom-remove uk-margin-top">
+                        <a class="uk-link-muted" href="@Url.Action("Details", new { area = "Default", controller = "Photorent", shortcut = item.Shortcut })">
+                            @item.Name
+                        </a>
+                    </h3>
+
+                    <ul class="uk-subnav uk-subnav-line uk-margin-remove uk-text-nowrap uk-margin-top">
+                        <li class="uk-vertical-align-middle"><span class="uk-badge uk-badge-success uk-link-fff">Активный</span></li>
+                        <li><a href="@Url.Action("Edit", new { area = "Admin", controller = "Photorent", shortcut = item.Shortcut })" class="uk-navbar-nav-subtitle uk-link-999 uk-text-center"><i class="icon-pencil"></i><div>изменить</div></a></li>
+                        <li><a href="@Url.Action("Delete", new { area = "Admin", controller = "Photorent", shortcut = item.Shortcut })" class="uk-navbar-nav-subtitle uk-link-999 uk-text-center"><i class="icon-trash"></i><div>удалить</div></a></li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+</div>

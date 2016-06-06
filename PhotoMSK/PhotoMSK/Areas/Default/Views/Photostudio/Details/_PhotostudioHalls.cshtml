@@ -1,0 +1,48 @@
+﻿@using PhotoMSK.ViewModels
+@model PhotoMSK.Areas.Default.ViewData.Photostudio.DetailsViewData
+
+<div class="uk-grid">
+    <div class="uk-width-large-1-2 uk-width-small-1-1">
+        <div class="uk-panel uk-panel-space uk-wall-box-body">
+            <span class="uk-h2 uk-margin-top-remove">Залы</span>
+            <hr class="small-line" />
+            @*@foreach (HallViewModel.Details item in Model.Item.Halls)
+            {
+                <div class="uk-grid uk-grid-small" data-uk-grid-margin>
+                    <div class="uk-width-1-2">
+                        <a href="@Url.Action("Details", "Hall", new { id = item.ID })">
+                            <img class="uk-border-rounded" src="@item.TeaserImageUrl" />
+                        </a>
+                    </div>
+                    <article class="uk-width-1-2">
+                        <a href="@Url.Action("Details", "Hall", new { id = item.ID })" class="uk-link-line uk-h2 uk-link-muted bold">
+                            @item.Name
+                        </a>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span class="label uk-text-muted">Площадь:</span>
+                                    </td>
+                                    <td>
+                                        <span class="value" title="219"><strong>@String.Format("{0:0}", item.Square) </strong> кв.м.</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label uk-text-muted">Стоимость: </span>
+                                    </td>
+                                    <td>
+                                        <span class="value"><small>от</small> <strong>@item.MinimumPrice</strong> бел. руб.</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        @Html.ActionLink("Подробнее", "Details", "Hall", new { id = item.ID }, new { @class = "uk-button uk-button-read-more uk-button-small uk-float-right" })
+                    </article>
+                    <hr class="uk-width-1-1 small-line uk-margin-small-bottom" />
+                </div>
+            }*@
+        </div>
+    </div>
+</div>

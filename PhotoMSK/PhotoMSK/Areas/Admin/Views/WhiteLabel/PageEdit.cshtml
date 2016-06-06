@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Админ панель сайта";
+
+}
+
+<div class="uk-container uk-container-center">
+    <div class="uk-grid">
+        <div class="uk-width-1-1">
+            <h1 class="uk-margin-bottom-remove">Система управления сайтом</h1>
+            <span class="uk-text-muted uk-text-small">название сайта</span>
+        </div>
+    </div>
+
+    <ul class="uk-tab uk-tab-events" data-uk-tab="{connect:'#site-content'}">
+        <li class="uk-active"><a href="#">Меню</a></li>
+        <li><a href="#">Дизайн</a></li>
+        <li><a href="#">Настройки</a></li>
+        <li><a href="#">Статистика</a></li>
+        <li><a href="#">Магазин</a></li>
+    </ul>
+
+    <ul id="site-content" class="uk-switcher uk-margin-large">
+        <li>
+            <div class="uk-grid uk-grid-divider">
+                <div class="uk-width-1-5">
+                    <ul class="uk-list uk-list-space">
+                        <li class="active">
+                            <a href="#" class="uk-button uk-width-1-1">Текст</a>
+                        </li>
+                        <li>
+                            <a href="#" class="uk-button uk-width-1-1">Настройки слайдера</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="uk-width-4-5">
+                    <p>Введите ваш текст</p>
+                    <textarea class="uk-width-1-1" data-uk-htmleditor="{markdown:true, mode:'tab'}">...</textarea>
+
+                    <div class="uk-float-right">
+                        <a href="" class="uk-button-link uk-link-999 uk-link-line uk-margin-right">отмена</a>
+                        <input type="submit" class="bold uk-button uk-button-reviews uk-button-reviews-success uk-button-reviews-success-border" value="Сохранить">
+                    </div>
+                </div>
+
+            </div>
+        </li>
+    </ul>
+</div>

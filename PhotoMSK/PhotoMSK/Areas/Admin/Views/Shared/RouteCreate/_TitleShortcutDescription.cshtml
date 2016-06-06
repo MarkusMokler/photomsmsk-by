@@ -1,0 +1,36 @@
+﻿@*@model PhotoMSK.Data.Models.Routes.Photostudio*@
+@model PhotoMSK.Models.EditViewModel.Routes.RouteEditModel
+@* Название, короткая ссылка и описание *@
+<div class="uk-width-1-1">
+    <div class="uk-section">
+        <span class="uk-section__counter">2</span>
+        <span class="uk-section__title">Информация</span>
+    </div>
+    <div class="uk-grid">
+        <div class="uk-width-1-2">
+            <div class="uk-grid" data-uk-grid-margin>
+                <div class="uk-width-1-1">
+                    @*<label class="label-ms">Название</label>*@
+                    @Html.LabelFor(model => model.Name, "Название", new { @class = "label-ms" })
+                    @Html.TextBoxFor(model => model.Name, new { @class = "input-ms uk-width-large-1-1 uk-width-small-1-1" })
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+                <div class="uk-width-1-1">
+                    @*<label class="label-ms">Короткая ссылка <i class="icon-help2" data-uk-tooltip title="Это ссылка позволит мгновенно перейти к вашей странице"></i></label>*@
+                    @Html.LabelFor(model => model.Shortcut, "Короткая ссылка", new { @class = "label-ms" })
+                    <div class="input-group">
+                        <span class="input-group-addon">www.photomsk.by/</span>
+                        @Html.TextBoxFor(model => model.Shortcut, new { @class = "form-control input-ms uk-width-large-1-1 uk-width-small-1-1" })
+                        @Html.ValidationMessageFor(model => model.Shortcut)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="uk-width-1-2">
+            @*<label class="label-ms">Краткое описание <i class="icon-help2"></i></label>*@
+            @Html.LabelFor(model => model.Description, "Краткое описание", new { @class = "label-ms" })
+            @Html.TextAreaFor(model => model.Description, new { @class = "input-ms uk-width-large-1-1 uk-width-small-1-1", rows = 7 })
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+    </div>
+</div>

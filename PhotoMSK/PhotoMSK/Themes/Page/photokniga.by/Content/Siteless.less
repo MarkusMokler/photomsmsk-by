@@ -1,0 +1,167 @@
+﻿
+body {
+    padding: 0;
+    font: 12px Tahoma, Arial, sans-serif;
+
+    .uk-block {
+        padding-bottom: 30px;
+    }
+
+    .uk-link-dotted {
+        border-bottom: 1px dotted;
+    }
+
+    .uk-link-line {
+        border-bottom: 1px solid;
+        text-decoration: none;
+    }
+
+    .uk-show-hide {
+        .uk-show-hide-element {
+            opacity: 0;
+            transition: all 0.2s ease-in-out;
+        }
+
+        &:hover {
+            .uk-show-hide-element {
+                opacity: 1;
+                transition: all 0.2s ease-in-out;
+            }
+        }
+    }
+
+    .uk-panel {
+        &.uk-panel-box {
+            border-radius: 0;
+            border: 1px solid #d4d4d4;
+            background: #f2f2f2;
+        }
+
+        &.uk-panel-box-item {
+            background: #fff;
+            border: 1px solid #d4d4d4;
+        }
+    }
+
+    .uk-nav-side {
+        > li {
+            &.uk-active {
+                > a {
+                    background: #1d1d1d;
+                }
+            }
+
+            > a {
+                text-shadow: none;
+                padding: 10px 15px;
+
+                &:hover {
+                    text-shadow: none;
+                    background: #1d1d1d;
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    .uk-button {
+        &.uk-button-cart {
+            background: #4a4645; /* Old browsers */
+            background: -moz-linear-gradient(top, #4a4645 0%, #181212 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4a4645), color-stop(100%,#181212)); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top, #4a4645 0%,#181212 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top, #4a4645 0%,#181212 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top, #4a4645 0%,#181212 100%); /* IE10+ */
+            background: linear-gradient(to bottom, #4a4645 0%,#181212 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4a4645', endColorstr='#181212',GradientType=0 ); /* IE6-9 */
+            border: 1px solid #333;
+            border-radius: 0;
+            text-shadow: none;
+            color: #fff;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .uk-navbar {
+        background: #f3f3f3; /* Old browsers */
+        background: -moz-linear-gradient(top, #f3f3f3 0%, #dbdbdb 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f3f3f3), color-stop(100%,#dbdbdb)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, #f3f3f3 0%,#dbdbdb 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, #f3f3f3 0%,#dbdbdb 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, #f3f3f3 0%,#dbdbdb 100%); /* IE10+ */
+        background: linear-gradient(to bottom, #f3f3f3 0%,#dbdbdb 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f3f3', endColorstr='#dbdbdb',GradientType=0 ); /* IE6-9 */
+        border: none;
+        border-radius: 0;
+        padding: 0 20px;
+        border-bottom: 1px solid #c2c2c2;
+
+        .uk-navbar-nav {
+            > li {
+                > a {
+                    padding: 0;
+                    border-radius: 0 !important;
+                    color: #171717;
+                    font-size: 12px;
+                    border: 1px solid transparent;
+                    text-shadow: none;
+
+                    &:hover {
+                        color: #000;
+                        background: transparent;
+                        box-shadow: none;
+                        cursor: pointer;
+                        text-decoration: underline;
+                    }
+
+                    &:active {
+                        background: transparent;
+                        box-shadow: none;
+                        border: none;
+                    }
+
+                    &:focus {
+                        background: transparent;
+                        box-shadow: none;
+                        border: none;
+                    }
+                }
+
+                &:hover {
+                    background: transparent;
+                    box-shadow: none;
+                    border: none;
+
+                    a {
+                        background: transparent;
+                        box-shadow: none;
+                        border: 1px solid transparent;
+                    }
+                }
+            }
+        }
+    }
+
+    .uk-operator {
+        display: block;
+        height: 18px;
+        width: 16px;
+        float: left;
+        margin-right: 5px;
+
+        &.uk-operator-mts {
+            background: url('http://fotomix.by/bitrix/templates/FOTOMIX_TMP/images/sprite.png') -128px 0 no-repeat;
+        }
+
+        &.uk-operator-velcom {
+            background: url('http://fotomix.by/bitrix/templates/FOTOMIX_TMP/images/sprite.png') -146px 0 no-repeat;
+        }
+
+        &.uk-operator-life {
+            background: url('http://fotomix.by/bitrix/templates/FOTOMIX_TMP/images/sprite.png') -165px 0 no-repeat;
+        }
+    }
+}

@@ -1,0 +1,136 @@
+// out: ../../css/Components/WidgetBar.css, compress: true
+// Name:            WidgetBar
+// Description:     Defines styles for WidgetBar
+//
+// Component:       `widget-bar`
+//
+//
+// Element:         `widget-bar__header`
+//                  `widget-bar__sort`
+//
+// Modifiers:       `widget-bar--*`
+//                  `widget-bar--*`
+//
+// ========================================================================
+// Variables
+// ========================================================================
+
+@wb-width:                              200px;
+
+@wd-tab-background:                     #eee;
+@wd-tab-item-padding:                   10px;
+
+@wb-content-padding:                    10px;
+
+@wb-footer-padding:                     10px;
+
+/* ========================================================================
+   Component: widget-bar
+ ========================================================================== */
+.widget-bar {
+    position: fixed;
+    display: inline-block;
+    width: @wb-width;
+    top: 110px;
+    min-height: 85vh;
+    // margin-top: -30px;
+    background: #fff;
+    // float: right;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    // z-index: 10;
+
+    // Element 'widget-bar__tab'
+    &__tab{
+        background: @wd-tab-background;
+        font-size: 0;
+        box-shadow: inset 0 -4px 10px -6px rgba(0, 0, 0, 0.3);
+
+        & > li{
+            display: inline-block;
+            font-size: 16px;
+
+            & > a{
+                display: inline-block;
+                padding: @wd-tab-item-padding;
+                transition: all 200ms;
+
+                &:hover{
+                    background: rgba(255, 255, 255, 0.4);
+                }
+            }
+
+            &.active > a{
+                background: #fff;
+            }
+        }
+    }
+
+    // Element 'widget-bar__content'
+    &__content{
+        padding: @wb-content-padding 0;
+
+        &__title{
+            padding: (@wb-content-padding / 2) @wb-content-padding;
+            font-size: 12px;
+            background: #eee;
+            border-bottom: 1px solid #ddd;
+            // border-top: 1px solid #ddd;
+        }
+    }
+
+    // Element 'widget-bar__footer'
+    &__footer{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        padding: @wb-footer-padding;
+        border-top: 1px solid #ddd;
+    }
+
+    // Element 'widget-bar__elements'
+    &__elements{
+        position: relative;
+        width: 100%;
+        font-size: 0;
+
+        & > li{
+            position: relative;
+            display: block;
+            background-color: #fff;
+            float: left;
+            width: (@wb-width / 2);
+            height: (@wb-width / 2);
+            border-right: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+
+            & > small{
+                position: absolute;
+                bottom: 10px;
+                width: 100%;
+                text-align: center;
+                font-size: 10px;
+                color: #999;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        // Element 'widget-bar__elements__img'
+        &__img{
+            position: relative;
+            background-size: cover;
+            background-position: center;
+
+            & > img{
+                visibility: hidden;
+                opacity: 0;
+            }
+        }
+    }
+
+    // Element 'widget-bar__filemanager'
+    &__filemanager{
+        padding: 10px;
+    }
+}

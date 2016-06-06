@@ -1,0 +1,74 @@
+﻿<div class="uk-modal uk-open" style="display: block">
+    <div class="uk-modal-dialog uk-modal-dialog-large">
+        <div class="uk-panel uk-wall-box">
+            <div class="uk-width-1-1 wall-post-title uk-text-right">
+                <a class="uk-modal-close uk-close"></a>
+            </div>
+
+            <article class="uk-comment">
+                <img class="uk-comment-avatar uk-border-circle" src="<%- authorImage %>" width="40" height="40" alt="">
+                <h5 class="uk-margin-remove">
+                    <a href="http://photomsk.by/<%- authorShortcut %>" class="uk-link-muted"><%- name %></a> <a class="uk-align-right uk-text-muted"><i class="icon-trash role-delete-wall-post"></i></a>
+                </h5>
+                <div class="uk-comment-meta">
+                    <small class="uk-text-muted uk-text-small">
+                        <i class="uk-icon-clock-o"></i> <%- jQuery.timeago(date) %>
+                    </small>
+                </div>
+
+                <div class="uk-comment-body">
+                    <% if(typeof(title)!='undefined'){ %>
+                    <div>
+                        <h1><a class="uk-link-muted" href="#"><%- title %></a></h1>
+                    </div>
+                    <% } %>
+                    <p><%= description %></p>
+                </div>
+            </article>
+            <div class="uk-wall-box-gallery uk-margin-top">
+                <% if(typeof(videos)!='undefined' && videos!=null && videos.length>0) { %>
+                <div class="video-placeholder uk-grid">
+                    <% _.each(videos,function(iter){%>
+                    <iframe src="<%- iter.url %>" class="uk-width-1-1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <% }) %>
+                </div>
+                <% } %>
+                <div class="photo-list-placeholder photoset-grid-basic" style="align-content: center;" data-layout="<%- grid(photos) %>">
+                    <% _.each(photos,function(iter){%>
+                    <img src="<%- iter.url %>" class="pad-top-20" style="width: 100%"></img>
+                    <% }) %>
+                </div>
+            </div>
+            <ul class="uk-subnav uk-subnav-line">
+                <li>
+                    <a href="" class="uk-link-999 uk-link-reset">
+                        <i class="icon-eye uk-text-muted"></i> <span><%- views %></span>
+                    </a>
+                </li>
+                <li><a class="role-like green-color uk-link-reset uk-link-like"><i class="icon-thumbs-o-up"></i><b> <%- likes %></b></a></li>
+                <li><a class="role-dislike pink-color uk-link-reset uk-link-dislike"><b><%- dislikes %> </b><i class="uk-icon-thumbs-o-down"></i></a></li>
+                <li>
+                    <div class="uk-button-dropdown" data-uk-dropdown="">
+                        <a href="" class="uk-link-reset uk-link-999">
+                            <i class="icon-share2"></i>
+                        </a>
+                        <div class="uk-dropdown uk-dropdown-up uk-dropdown-center">
+                            <ul class="uk-nav uk-nav-dropdown">
+                                <li>
+                                    <div class="addthis_sharing_toolbox" data-url="http://photomsk.by/Wall/<%- id %>"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <% _.each(participants,function(iter){%>
+                <li class="uk-align-right">
+                    <a href="http://photomsk.by/<%- iter.shortcut %>" data-uk-tooltip title="<%= iter.name %>">
+                        <img src="<%- iter.photo %>" width="25" height="25" class="uk-border-circle" alt="" title="">
+                    </a>
+                </li>
+                <% }) %>
+            </ul>
+        </div>
+    </div>
+</div>

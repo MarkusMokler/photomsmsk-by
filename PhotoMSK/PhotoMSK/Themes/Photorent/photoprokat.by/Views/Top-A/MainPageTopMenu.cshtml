@@ -1,0 +1,10 @@
+﻿@using PhotoMSK.Extensiolns
+@model PhotoMSK.Areas.Default.ViewData.WhiteLabelViewData
+
+<nav class="uk-navbar">
+    <ul class="uk-navbar-nav uk-subnav uk-subnav-line">
+        <li><a href="@Html.MakeUrl(Model.Route,"catalog")" class="color-orange"><i class="uk-icon-shopping-cart"></i> Каталог</a></li>
+        <li><a href="@Html.MakeUrl(Model.Route,"news")">Новости</a></li>
+    </ul>
+</nav>
+

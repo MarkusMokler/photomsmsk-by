@@ -1,0 +1,138 @@
+﻿<div class="col--1-1">
+    <div class="uk-section">
+        <span class="uk-section__counter">4</span>
+        <span class="uk-section__title">Данные</span>
+    </div>
+    <div class="grid">
+        <div class="col--1-4">
+            @Html.LabelFor(model => model.Age, "Дата рождения", new { @class = "label" })
+            @Html.TextBoxFor(model => model.Age, new { @class = "input col--large-1-1 col--small-1-1" })
+            @Html.ValidationMessageFor(model => model.Age)
+        </div>
+        <div class="col--1-4">
+            @Html.LabelFor(model => model.Gender, "Пол", new { @class = "label" })
+            @Html.TextBoxFor(model => model.Gender, new { @class = "input col--large-1-1 col--small-1-1" })
+            @Html.ValidationMessageFor(model => model.Gender)
+        </div>
+    </div>
+</div>
+
+<div class="col--1-1">
+    <div class="uk-section">
+        <span class="uk-section__counter">5</span>
+        <span class="uk-section__title">Параметры тела</span>
+    </div>
+
+    <div class="grid">
+        <div class="col--1-2">
+            <label class="label">Рост</label>
+            <div class="input__group">
+                @Html.TextBoxFor(model => model.Height, new { @class = "form-control input col--large-1-1 col--small-1-1" })
+                <span class="input__group-addon">см.</span>
+                @Html.ValidationMessageFor(model => model.Shortcut)
+            </div>
+        </div>
+        <div class="col--1-2">
+            <label class="label">Вес</label>
+            <div class="input__group">
+                @Html.TextBoxFor(model => model.Weight, new { @class = "form-control input col--large-1-1 col--small-1-1" })
+                <span class="input__group-addon">кг.</span>
+                @Html.ValidationMessageFor(model => model.Weight)
+            </div>
+        </div>
+        <div class="col--1-4">
+            <label class="label">Грудь</label>
+            <div class="input__group">
+                @Html.TextBoxFor(model => model.Chest, new { @class = "form-control input col--large-1-1 col--small-1-1" })
+                <span class="input__group-addon">см.</span>
+                @Html.ValidationMessageFor(model => model.Chest)
+            </div>
+        </div>
+        <div class="col--1-4">
+            <label class="label">Талия</label>
+            <div class="input__group">
+                @Html.TextBoxFor(model => model.Waist, new { @class = "form-control input col--large-1-1 col--small-1-1" })
+                <span class="input__group-addon">см.</span>
+                @Html.ValidationMessageFor(model => model.Waist)
+            </div>
+        </div>
+        <div class="col--1-4">
+            <label class="label">Бедра</label>
+            <div class="input__group">
+                @Html.TextBoxFor(model => model.Hips, new { @class = "form-control input col--large-1-1 col--small-1-1" })
+                <span class="input__group-addon">см.</span>
+                @Html.ValidationMessageFor(model => model.Hips)
+            </div>
+        </div>
+       <!-- <div class="col--1-2">
+                <label class="label">Размер груди</label>
+                @Html.TextBoxFor(model => model.Chest, new { @class = "form-control input col--large-1-1 col--small-1-1")
+                @Html.ValidationMessageFor(model => model.Chest)
+            </div> -->
+    </div>
+</div>
+
+<div class="col--1-1">
+    <!-- <div class="grid">
+            <div class="col--2-4 ">
+                <ul class="grid grid--small grid-col--1-3">
+                    @for (int i = 0; i < 10; i++)
+                    {
+                        <li>
+                            <label for="item_1" class="uk-input-checkbox-big">
+                                <input type="checkbox" name="" id="item_1" class="check">
+                                <span class="line">Наличие унитаза</span>
+                            </label>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div> -->
+
+    <div class="uk-section">
+        <span class="uk-section__counter">6</span>
+        <span class="uk-section__title">Голова</span>
+    </div>
+
+    <div class="grid">
+        <div class="col--1-2">
+            <label class="label">Длина волос</label>
+            @Html.TextBoxFor(model => model.HairLength, new { @class = "form-control input col--large-1-1 col--small-1-1" })
+            @Html.ValidationMessageFor(model => model.HairLength)
+        </div>
+        <div class="col--1-2">
+            <label class="label">Цвет волос</label>
+            @Html.TextBoxFor(model => model.HairColor, new { @class = "form-control input col--large-1-1 col--small-1-1" })
+            @Html.ValidationMessageFor(model => model.HairColor)
+        </div>
+        <div class="col--1-2">
+            <label class="label">Цвет глаз</label>
+            @Html.TextBoxFor(model => model.EyesColor, new { @class = "form-control input col--large-1-1 col--small-1-1" })
+            @Html.ValidationMessageFor(model => model.EyesColor)
+        </div>
+        <div class="col--1-2">
+            <label class="label">Тип лица</label>
+            @Html.TextBoxFor(model => model.FaceType, new { @class = "form-control input col--large-1-1 col--small-1-1" })
+            @Html.ValidationMessageFor(model => model.FaceType)
+        </div>
+    </div>
+</div>
+
+<div class="col--1-1">
+    <div class="uk-section">
+        <span class="uk-section__counter">7</span>
+        <span class="uk-section__title">Параметры</span>
+    </div>
+    <div class="grid">
+        <div class="col--1-2">
+            <label class="label">Размер одежды</label>
+            @Html.TextBoxFor(model => model.ClothingSize, new { @class = "form-control input col--large-1-1 col--small-1-1" })
+            @Html.ValidationMessageFor(model => model.ClothingSize)
+        </div>
+        <div class="col--1-2">
+            <label class="label">Размер обуви</label>
+            @Html.TextBoxFor(model => model.ShoesSize, new { @class = "form-control input col--large-1-1 col--small-1-1" })
+            @Html.ValidationMessageFor(model => model.ShoesSize)
+        </div>
+    </div>
+</div>

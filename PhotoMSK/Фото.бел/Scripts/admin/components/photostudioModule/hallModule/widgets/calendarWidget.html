@@ -1,0 +1,32 @@
+﻿<div class="container container--center">
+    <div data-ng-if="!widget.isEdit && widget.calendarWidgets.length!=0">
+        <data-admin-booking-calendar calendars="calendars" calendarid="calendarid"></data-admin-booking-calendar>
+    </div>
+    <div data-ng-if="widget.calendarWidgets.length==0">Календарь пуст. Добавить календари можно в меню редактирования</div>
+    <div data-ng-if="widget.isEdit">
+
+        <div angucomplete-alt
+             remote-url={{hallsByNameUrl}}
+             id="HallAngucomplete"
+             placeholder="Фоны"
+             pause="500"
+             selected-object="selected"
+             title-field="title"
+             description-field="routeName"
+             image-field="image"
+             model="results"
+             remote-url-request-formatter="remoteUrlRequestEn"
+             searching="name"
+             input-class="input col--large-1-1 col--small-1-1 ui-autocomplete-input"
+             no-results="noResults"></div>
+
+        <a data-msk-href data-ng-click="addCalendar(selected)" class="button">Добавить календарь</a>
+        <a data-msk-href data-ng-click="saveCalendars()" class="button">Сохранить настройки</a>
+        <br/>
+        Добавлены:
+        <br/>
+        <div data-ng-repeat="item in widget.calendarWidgets">
+            Календарь {{item.title}} {{item.routeName}}
+        </div>
+    </div>
+</div>

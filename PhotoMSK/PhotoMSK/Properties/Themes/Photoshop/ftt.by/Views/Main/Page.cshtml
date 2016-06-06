@@ -1,0 +1,80 @@
+﻿@using PhotoMSK.Extensiolns
+@model PhotoMSK.Areas.Default.ViewData.Catalog.PageViewData
+
+    <div class="uk-grid" data-uk-grid-margin>
+        <div class="uk-width-1-1">
+            <ul class="uk-breadcrumb">
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">О нашем магазине</a></li>
+                <li><span><i class="uk-icon-long-arrow-right"></i></span></li>
+            </ul>
+        </div>
+        <div class="uk-width-1-5">
+            <ul class="uk-nav uk-nav-side uk-nav-parent-icon" data-uk-nav="{multiple:true}">
+                <li class="uk-parent">
+                    <a href="#">О магазине</a>
+                </li>
+                <li class="uk-parent">
+                    <a href="#">Контакты</a>
+                </li>
+            </ul>
+        </div>
+        <div class="uk-width-4-5">
+            <div class="uk-grid" data-uk-grid-margin>
+                <div class="uk-width-1-1">
+                    <h1>О нашем магазине</h1>
+                    <p>
+                        @Html.Markdown(Model.PageView.Text)
+                    </p>
+                </div>
+                <div class="uk-width-1-3">
+                    <h3>Импортеры в РБ:</h3>
+
+                    <ul class="uk-list uk-list-line">
+                        <li>- ЗАО "Патио"</li>
+                        <li>- ООО "Нереида"</li>
+                        <li>- ООО "Пиксель Электроникс"</li>
+                        <li>- ООО "РакурсТехно"</li>
+                        <li>- ООО "Цифровые технологии"</li>
+                        <li>- ООО "Электросервис и Ко"</li>
+                        <li>- ОДО "Квинтастадор"</li>
+                        <li>- ЗАО "Мир технологий"</li>
+                        <li>- ЧТПУП "Прошоп"</li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @*<ul class="uk-list uk-grid uk-grid-width-1-2" data-uk-grid-margin>
+            <li>
+                <span class="uk-h3">
+                    Настоящий магазин
+                </span>
+                <p>
+                    В нашем каталоге вы найдете подробные описания и фотографии товаров. Наши професиональные консультанты всегда готовы помочь вам советом и предоставить дополнительную информацию.
+                </p>
+            </li>
+            @for (int i = 0; i < 5; i++)
+            {
+                <li>
+                    <span class="uk-h3">
+                        Отзывы на онлайнере
+                    </span>
+                    <p>
+                        В нашем каталоге вы найдете подробные описания и фотографии товаров. Наши професиональные консультанты всегда готовы помочь вам советом и предоставить дополнительную информацию.
+                    </p>
+                </li>
+            }
+        </ul>*@
+
+    @*<div class="uk-grid">
+            <div class="uk-width-1-1">
+                <h1>Условия доставки</h1>
+                <p>
+                    Ftt.by это онлайн-гипермаркет с более чем 80 000 наименований товаров. Мы с вами уже 10 лет и зарекомендовали себя как надежный магазин, поддерживающий новый уровень интернет-торговли. Количество наших клиентов продолжает расти, и мы делаем все, чтобы оправдать ваше доверие. Спасибо, что выбрали ftt.by!
+                </p>
+            </div>
+        </div>*@

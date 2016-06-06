@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Angulars practices - Example square grids</title>
+    <link href="css/border.css" media="screen" rel="stylesheet" />
+    <link href="css/style.css" media="screen" rel="stylesheet" />
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/ngPhotoGrid.js"></script>
+    <script src="js/app.js"></script>
+     <style>
+      body { text-align: center; }
+      .links a { padding: 0 5px ;}
+      .active { color: red;}
+      .content { width: 500px;}
+      .feed-item { width: 48%; float: left; margin: 1%;}
+    </style>
+  </head>
+  <body ng-app='ngApp'>
+    <div class='wrapper' ng-controller="indexCtrl">
+      <div class="header">
+        <h1>
+          <a href="https://github.com/jerryc-nguyen/ng-photo-grid" target="_blank">ngPhotoGrid</a>
+            <small class='small'><i>facebook like photo grid in angularjs.</i></small>
+        </h1>
+      </div>
+      <blockquote><strong><i>Refresh browser (F5) to see other cases of grid was built.</i></strong></blockquote>
+      <p class="links">
+        Examples:
+        <a href="http://jerryc-nguyen.github.io/ng-photo-grid/">Default config</a>
+        <a href="http://jerryc-nguyen.github.io/ng-photo-grid/two-first.html">2 bigs first</a>
+        <a class='active' href="http://jerryc-nguyen.github.io/ng-photo-grid/square.html">Square grids</a>
+        <a href="http://jerryc-nguyen.github.io/ng-photo-grid/full-width.html">Full width</a>
+      <p>
+      <div class='content'>
+
+        <div class="feed-item" data-ng-repeat = "groupImages in squareGridGroup">
+          <div  ng-photo-grid = ""
+                images        = "groupImages"
+                grid-options  = "gridOptionsSquare"
+                ng-class      = "{'loading': isBuildingGrid}"
+                class         = "feed-photos">
+          </div>
+        </div>
+        <p class='small'><i>click on image or turn on firebug to see the callback.</i></p>
+      </div>
+
+      <div class='footer'>
+        <p>by Jerryc Nguyen, <a href="https://github.com/jerryc-nguyen/ng-photo-grid" target="_blank">source on github</a></p>
+      </div>
+    </div>
+  </body>
+</html>

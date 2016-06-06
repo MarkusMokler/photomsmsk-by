@@ -1,0 +1,239 @@
+﻿@using PhotoMSK.Data.Models.Menu
+@model IList<PhotoMSK.Data.Models.Menu.AbstractMenuItem>
+
+@helper DisplayMenu(IList<AbstractMenuItem> list, string str)
+{
+    var ordernum = list.Last().Order;
+
+    if (!string.IsNullOrEmpty(str))
+    {
+        ordernum = ordernum.Replace(str + '.', "");
+    }
+
+    if (string.IsNullOrEmpty(ordernum))
+    { return; }
+
+    if (ordernum.Contains('.'))
+    {
+        ordernum = ordernum.Split('.').First();
+    }
+
+    var count = int.Parse(ordernum);
+
+    for (var i = 0; i <= count; i++)
+    {
+        var prefix = string.IsNullOrEmpty(str) ? "" + i : str + "." + i;
+        var item = list.FirstOrDefault(x => x.Order == prefix);
+
+        if (item == null)
+        {
+            continue;
+        }
+
+        <li data-val="@item.ID" data-order="@item.Order">
+            <div class="uk-nestable-item">
+                <div class="uk-grid uk-grid-small">
+                    <div class="uk-width-1-10">
+                        <div class="uk-nestable-handle"></div>
+                        <div data-nestable-action="toggle"></div>
+                    </div>
+                    <div class="uk-text-left uk-width-3-10">@item.Name</div>
+                    <div class="uk-width-1-10 uk-text-center">
+                        <i class="icon-action icon-show uk-icon-check"></i>
+                    </div>
+                    <div class="uk-width-1-10">
+                        @if (item is PageMenuItem)
+                        {
+                            Write("Страница");
+                        }
+                        else
+                        {
+                            Write("Ссылка");
+                        }
+                    </div>
+                    <div class="uk-width-1-10">-</div>
+                </div>
+            </div>
+            @if (list.Count(x => x.Order.StartsWith(prefix)) > 1)
+            {
+                <ul class="uk-nestable-list">
+                    @DisplayMenu(list.Where(x => x.Order.StartsWith(prefix)).ToList(), prefix)
+                </ul>
+            }
+        </li>
+    }
+
+
+}
+
+<div class="uk-container uk-container-center">
+    <div class="uk-grid uk-flex uk-flex-middle">
+        <div class="uk-width-1-5">
+            <a href="#">
+                <img src="@Url.Content("/Content/images/logo-shape-black.svg")" alt="" />
+            </a>
+        </div>
+        <div class="uk-width-4-5 uk-margin-small-top">
+            <ul class="uk-breadcrumb">
+                <li><a href="#" class="uk-text-bold uk-link-muted">Моё меню</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="uk-grid">
+        <div class="uk-width-1-5">
+
+            <div class="uk-button-back uk-text-center">
+                <a href="@Url.Action("Create", "Menu")" class="uk-button-add uk-button uk-width-1-1 uk-flex uk-flex-middle">
+                    <i class="uk-icon-plus button-add"></i>&nbsp;<span class="uk-text-bold">Добавить меню</span>
+                </a>
+            </div>
+
+            <div class="uk-panel uk-panel-box uk-panel-box-item">
+                <h5 class="uppercase muted">
+                    <span class="uk-text-bold">
+                        Разделы&nbsp;<i class="uk-icon-caret-down"></i>
+                    </span>
+                </h5>
+                <ul class="uk-list uk-list-menu">
+                    <li class="uk-active">
+                        <a href="#">
+                            <i class="uk-icon-database"></i>&nbsp;Верхнее меню
+                        </a>
+                    </li>
+                    @for (int i = 0; i < 6; i++)
+                    {
+                        <li>
+                            <a href="#">
+                                <i class="uk-icon-database"></i>&nbsp;Верхнее меню
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+            @*<div class="uk-panel uk-panel-box uk-panel-box-item">
+                    <span class="uk-text-bold"><span>Закажите звонок</span></span>
+
+                    <p class="uk-text-muted">Проконсультируем по вопросам работы с сайтом.</p>
+                    <p>
+                        <a href="#" class="uk-button uk-width-1-1">Заказать звонок</a>
+                    </p>
+                </div>*@
+
+            <h5 class="uk-text-bold">Справочник</h5>
+            <ul class="uk-list uk-list-space uk-list-dotted">
+                <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">Типы меню</a></li>
+                <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">Отображение элементов меню</a></li>
+                <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">Создание выпадающего меню</a></li>
+                <li><a href="#" class="uk-text-small">ещё...</a></li>
+            </ul>
+        </div>
+
+        <div class="uk-width-4-5">
+            <div class="uk-panel uk-panel-content-box">
+                <div class="uk-table uk-table-hover uk-table-middle">
+                    <thead>
+                        <tr>
+                            <th class="uk-text-center" style="width: 1px;"><i class="uk-icon-arrows-v"></i></th>
+                            <th>Название</th>
+                            <th class="uk-text-center">Отображение</th>
+                            <th class="uk-text-center">Тип страницы</th>
+                            <th class="uk-text-center">Управление</th>
+                        </tr>
+                    </thead>
+                    <div class="uk-panel">
+                        Меню
+                        <ul id="nested" class="uk-nestable">
+                            @if (Model.Any(x => !string.IsNullOrEmpty(x.Order)))
+                            {
+                                @DisplayMenu(Model.Where(x => !string.IsNullOrEmpty(x.Order)).OrderBy(x => x.Order).ToList(), "")
+                            }
+                        </ul>
+                    </div>
+                    <div class="uk-panel">
+                        Неопределенные
+                        <ul id="unordered" class="uk-nestable">
+                            @if (Model.Any(x => string.IsNullOrEmpty(x.Order)))
+                            {
+                                foreach (var item in Model.Where(x => string.IsNullOrEmpty(x.Order)))
+                                {
+                                    <li data-val="@item.ID" data-order="@item.Order">
+                                        <div class="uk-nestable-item">
+                                            <div class="uk-grid uk-grid-small">
+                                                <div class="uk-width-1-10">
+                                                    <div class="uk-nestable-handle"></div>
+                                                    <div data-nestable-action="toggle"></div>
+                                                </div>
+                                                <div class="uk-text-left uk-width-3-10">@item.Name</div>
+                                                <div class="uk-width-1-10 uk-text-center">
+                                                    <i class="icon-action icon-show uk-icon-check"></i>
+                                                </div>
+                                                <div class="uk-width-1-10">
+                                                    @if (item is PageMenuItem)
+                                                    {
+                                                        Write("Страница");
+                                                    }
+                                                    else
+                                                    {
+                                                        Write("Ссылка");
+                                                    }
+                                                </div>
+                                                <div class="uk-width-1-10">-</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script>
+        function calculateNext(item) {
+            var index = $(item).index();
+            var id = $(item).parent().parent().attr("data-order");
+            if (typeof (id) != "undefined") {
+                index = id + "." + index;
+            }
+            $(item).attr("data-order", index);
+
+            window.client.menuItem.update($(item).attr("data-val"), { order: index });
+            var query = $(item).find("li").first();
+            if (query.length !== 0)
+                calculateNext(query);
+
+            item = $(item).next();
+
+            if (item.length !== 0) {
+                calculateNext(item);
+            }
+        }
+
+        $(function () {
+
+            window.client = new $.RestClient("/api/");
+
+            client.add("menuItem");
+
+            var nestable = UIkit.nestable($("#nested"), {});
+            var nestable1 = UIkit.nestable($("#unordered"), {});
+
+            $("#nested").on("change.uk.nestable", function (event, item, action, root) {
+                if ($(root).attr("id") !== "unordered") {
+                    calculateNext($(item).parent().children().first());
+                }
+            });
+
+            $("#unordered").on("change.uk.nestable", function (event, item, action, root) {
+                window.client.menuItem.update($(item).attr("data-val"), { order: "-1" });
+            });
+        })
+    </script>
+}

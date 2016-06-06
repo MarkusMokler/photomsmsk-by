@@ -1,0 +1,39 @@
+﻿
+    <div class="uk-section">
+        <span class="uk-section__counter">2</span>
+        <span class="uk-section__title">Информация</span>
+    </div>
+
+    <div class="grid">
+        <div class="col--1-2">
+            <div class="grid">
+                <div class="col--1-2">
+
+                    <label class="label" for="FirstName">Имя</label>
+                    <input class="input col--small-1-1" id="FirstName" ng-model="item.firstName" type="text" value="">
+                    <span class="field-validation-valid" data-valmsg-for="FirstName" data-valmsg-replace="true"></span>
+                </div>
+                <div class="col--1-2">
+
+                    <label class="label" for="LastName">Фамилия</label>
+                    <input class="input col--small-1-1" id="LastName" ng-model="item.lastName" type="text" value="">
+                    <span class="field-validation-valid" data-valmsg-for="LastName" data-valmsg-replace="true"></span>
+                </div>
+                <div class="col--1-1 grid-margin">
+
+                    <label class="label" for="Shortcut">Короткая ссылка</label>
+                    <div class="input__group">
+                        <span class="input__group-addon">www.photomsk.by/</span>
+                        <input class="form-control input col--large-1-1 col--small-1-1" id="Shortcut" ng-model="item.shortcut" type="text" value="">
+                        <span class="field-validation-valid" data-valmsg-for="Shortcut" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col--1-2">
+
+            <label class="label" for="Description">Коротко о себе</label>
+            <textarea class="input col--small-1-1" cols="20" id="Description" ng-model="item.description" rows="7"></textarea>
+            <span class="field-validation-valid" data-valmsg-for="Description" data-valmsg-replace="true"></span>
+        </div>
+    </div>

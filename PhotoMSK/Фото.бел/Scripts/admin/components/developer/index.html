@@ -1,0 +1,491 @@
+﻿<div class="container container--center  ">
+    <div class="grid">
+        <div class="col--1-1">
+            <article class="uk-article text--center">
+                <h1 class="uk-article-title">PhotoKIT+</h1>
+                <p class="uk-article-meta">страница, которая помогает нам делать сайт быстрее...</p>
+            </article>
+        </div>
+
+        <!-- Менюшка -->
+        <ul class="uk-nav uk-nav-side col--2-10" data-uk-nav="">
+            <li class="uk-nav-header">ELEMENTS</li>
+            <li><a href="#content-form">Form</a></li>
+            <li class="uk-nav-divider"></li>
+        </ul>
+
+        <div class="col--8-10">
+            <form class="uk-form  ">
+                <fieldset class="grid grid--small" data-uk-margin>
+                    <legend id="content-form">Form+</legend>
+                    <div class="col--1-6">
+                        <label class="label show">
+                            Фамилия
+                            <i class="icon-help2"></i>
+                        </label>
+                        <input class="input" type="text" name="fullName" id="settings_fullName" value="Лунцевич" maxlength="50">
+                    </div>
+                    <div class="col--1-6">
+                        <label class="label show">
+                            Пароль
+                            <i class="icon-help2"></i>
+                        </label>
+                        <input class="input" type="password" name="fullName" id="settings_fullName" value="Лунцевич" maxlength="50">
+                    </div>
+                    <div class="col--2-6">
+                        <label class="label" for="settings_gender">
+                            Ваш пол
+                            <i class="icon-help2"></i>
+                        </label>
+                        <div class="select-style">
+                            <select class="select-ms" name="gender" id="settings_gender" required="required">
+                                <option value="" selected="selected" disabled="disabled">Выберите ваш пол</option>
+                                <option value="Female">Женский</option>
+                                <option value="Male">Мужской</option>
+                                <option value="NotApplicable">Не определил</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col--2-6">
+                        <input type="checkbox" class="checkbox-ms" id="RequestsConnectionNotificationEnabled" name="RequestsConnectionNotificationEnabled">
+                        <label class="checkbox-label" for="RequestsConnectionNotificationEnabled">Приглашение на кастинг</label>
+                    </div>
+
+
+                </fieldset>
+
+            </form>
+
+            <h3 class="tm-article-subtitle">Код</h3>
+
+            <pre><code class="xml">
+</code></pre>
+
+
+        </div>
+    </div>
+
+    <div class="grid">
+        <div class="col--1-2 ">
+            <h3 class="tm-article-subtitle">Wall post <small class="text--muted">ver.</small><strong> 3.1</strong></h3>
+
+            <div class="">
+                <div class="panel uk-wall-box  ">
+
+                    <div class="col--1-1 wall-post-title">
+                        <a href="#">Фотосъемка дня <small class="award">(26.10.2014)</small></a>
+                        <i class="icon-flame uk-align-right wall-post-hot"></i>
+                    </div>
+
+                    <article class="uk-comment">
+                        <header class="uk-comment-header">
+                            <img class="uk-comment-avatar uk-border-circle" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                            <h5 class="uk-comment-title"><a href="#" class="bold uk-link-muted">Роман Лунцевич</a></h5>
+                            <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                                <li><a href="#" class="uk-link-999">Публичная фотосъемка</a></li>
+                                <li><a href="#" class="uk-link-999">Вчера в 12:01</a></li>
+                            </ul>
+                        </header>
+                        <div class="uk-comment-body">
+                            <h1><a class="uk-link-muted" href="#">COLOR`s DREAMs</a></h1>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                            <p class="text--right">
+                                <a href="#">Далее...</a>
+                            </p>
+                        </div>
+                    </article>
+                    <div class="uk-wall-box-gallery">
+                        <a href="#">
+                            <img src="http://ppcdn.500px.org/78548275/4bc7922c579a863277ebbc9be4933a6bd2d70f1a/600.jpg?v=0" />
+                        </a>
+                    </div>
+
+                    <ul class="uk-subnav uk-action-link">
+                        <li>
+                            <a href="">
+                                <h4 class="bold">+35k</h4>
+                                <small><i class="uk-action-link-like icon-heart2"></i><span> Лайков</span></small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <h4 class="bold">+3</h4>
+                                <small><i class="icon-forward"></i><span> Репостов</span></small>
+                            </a>
+                        </li>
+                        <li class="uk-align-right">
+                            <a href="#" data-uk-tooltip title="остальные участники">
+                                <div class="show-more uk-border-circle">
+                                    <h3>+2</h3>
+                                </div>
+                            </a>
+                        </li>
+                        @for (int i = 0; i < 5; i++)
+                        {
+                            <li class="uk-align-right">
+                                <a href="#" data-uk-tooltip title="Роман Лунцевич">
+                                    <img src="https://lh4.googleusercontent.com/-ujkssjNpvoA/AAAAAAAAAAI/AAAAAAAAAS4/vnA29LM-DU8/s28-c-k-no/photo.jpg" width="40px" height="40px" class="uk-border-circle" alt="" title="">
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="uk-wall-box-comment">
+                    <ul class="uk-comment-list">
+                        <li>
+                            <article class="uk-comment">
+                                <header class="uk-comment-header">
+                                    <img class="uk-comment-avatar uk-border-rounded" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                                    <h5 class="uk-comment-title">
+                                        <a href="#" class="bold uk-link-muted">Роман Лунцевич</a>
+                                    </h5>
+                                    <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                                        <li><a href="#" class="uk-link-muted uk-link-999">Вчера в 13:01</a></li>
+                                    </ul>
+                                </header>
+                                <div class="uk-comment-body">
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                                </div>
+                            </article>
+                            <ul>
+                                <li>
+                                    <article class="uk-comment">
+                                        <header class="uk-comment-header">
+                                            <img class="uk-comment-avatar uk-border-rounded" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                                            <h5 class="uk-comment-title">
+                                                <a href="#" class="bold uk-link-muted">Роман Лунцевич</a>
+                                            </h5>
+                                            <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                                                <li><a href="#" class="uk-link-muted uk-link-999">Вчера в 13:01</a></li>
+                                            </ul>
+                                        </header>
+                                        <div class="uk-comment-body">
+                                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                                        </div>
+                                    </article>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="uk-panel-box-comment-editor">
+                        <ul class="ChatLog">
+                            <li class="ChatLog-entry">
+                                <img class="ChatLog-avatar" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" />
+                                <div class="ChatLog-message">
+                                    <textarea class="textarea-comment" rows="1" placeholder="Добавить комментарий..."></textarea>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="uk-subnav text--right">
+                            <li><button class="button-link text--muted">отменить</button></li>
+                            <li><button class="button button-success button-small">отправить</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col--1-2">
+            <div class="grid">
+                <div class="col--1-1">
+                    <h3 class="tm-article-subtitle">Wall Editor <small class="text--muted">ver.</small><strong> 2.0</strong></h3>
+                    @Html.Partial("~/Areas/Default/Views/Shared/Templates/Wall/_WallEdit20.cshtml")
+                </div>
+
+                <div class="col--1-1 uk-margin-top">
+                    <h3 class="tm-article-subtitle">Profile shower <small class="text--muted">ver.</small><strong>1.0</strong></h3>
+
+                    <section class="uk-profile uk-profile-shadow">
+                        <header class="uk-profile-cover">
+                            <img src="http://agosto.nl/dir/design/codepen/misty-mountain.jpg" />
+                        </header>
+                        <div>
+                            <div class="uk-profile-avatar">
+                                <img alt="Roman Lunts" class="uk-border-circle" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="120" height="120">
+                                <div class="uk-profile-status uk-profile-status-online"></div>
+                            </div>
+                            <p>Roman Lunts</p>
+                            <p class="uk-profile-meta"><div class="uk-badge uk-badge-success">PRO</div> Nedo-designer Web site</p>
+                            <ul class="uk-subnav uk-subnav-line">
+                                <li>
+                                    <a href="#" class="uk-navbar-nav-subtitle">
+                                        <i class="icon-trash"></i>
+                                        <div class="uk-profile-subtitle">удалить</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/Photostudio/Edit?shortcut=DiMax-STUDIO" class="uk-navbar-nav-subtitle">
+                                        <i class="icon-pencil"></i>
+                                        <div class="uk-profile-subtitle">изменить</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/Photostudio?shortcut=DiMax-STUDIO" class="uk-navbar-nav-subtitle">
+                                        <i class="icon-calendar"></i>
+                                        <div class="uk-profile-subtitle">бронировать</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/Photostudio/Profit?shortcut=DiMax-STUDIO" class="uk-navbar-nav-subtitle">
+                                        <i class="icon-ellipsis"></i>
+                                        <div class="uk-profile-subtitle">ещё</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="col--1-3 uk-margin-top">
+                    <h3 class="tm-article-subtitle">SubMenu <small class="text--muted">ver.</small><strong>1.0</strong></h3>
+
+                    <ul class="uk-nav uk-nav-menu uk-nav-side uk-nav-parent-icon">
+                        <li class="uk-nav-header uk-margin-small-bottom">Категории:</li>
+                        <li class="uk-active"><a href="">Ретушь фотографий</a></li>
+                        <li><a href="">Work shop</a></li>
+                        <li><a href="">Фотосъемки</a></li>
+                        <li><a href="">Брендинг</a></li>
+                    </ul>
+                </div>
+
+                <div class="col--2-3 uk-margin-top">
+                    <h3 class="tm-article-subtitle">Category Menu <small class="text--muted">ver.</small><strong>1.0</strong></h3>
+
+                    <div class="panel panel--box uk-panel-category">
+                        <div class="uk-panel-badge uk-badge uk-badge-danger">новинка</div>
+
+                        <ul class="uk-nav uk-panel-category-top">
+                            <li><a href="" class="uk-link-reset" title="Рекомендации MSK">Рекомендации MSK</a></li>
+                            <li class="uk-active"><a href="" class="uk-link-reset" title="Организаторы">Организаторы</a></li>
+                            <li><a href="" class="uk-link-reset" title="Фотографы">Фотографы</a></li>
+                            <li><a href="" class="uk-link-reset" title="Модельные агенства">Модельные агенства</a></li>
+                            <li><a href="" class="uk-link-reset" title="Визажисты">Визажисты</a></li>
+                            <li><a href="" class="uk-link-reset" title="Парикмахеры">Парикмахеры</a></li>
+                        </ul>
+                        <div class="uk-panel-category-bottom">
+                            <div class="grid grid--small">
+                                <div class="col--1-1 wall-post-title">
+                                    <a href="#" class="uk-link-reset uk-link-999 uk-link-dotted">Категории</a>
+                                    <i class="icon-help text--muted uk-align-right wall-post-hot" data-uk-tooltip title="Выберите категории пабликов"></i>
+                                </div>
+
+                                <div class="col--1-2">
+                                    <ul class="uk-nav">
+                                        <li>
+                                            <a href="">Абстрактные</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Ню</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Город и архитектура</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Пейзажи</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Городские пейзажи</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Подводный мир</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Еда</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Природа</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="col--1-2">
+                                    <ul class="uk-nav">
+                                        <li>
+                                            <a href="">Абстрактные</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Ню</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Город и архитектура</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Пейзажи</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Городские пейзажи</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Подводный мир</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Еда</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Природа</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col--3-4 uk-margin-top">
+            <h3 class="tm-article-subtitle">Master Class shower <small class="text--muted">ver.</small><strong>1.1</strong></h3>
+
+            <section class="grid uk-master-class">
+                <div class="col--1-3">
+                    <img class="uk-border-rounded" src="http://ppcdn.500px.org/72207003/3a25d95a559d4087fcac2219a88f4c0d0d56b8e9/5.jpg" alt="Мастер класс" />
+                </div>
+                <header class="col--2-3">
+                    <h1 class="bold uk-margin-remove"><a href="#" class="uk-link-line uk-link-muted">МК Ивана Меркова</a> </h1>
+                    <ul class="uk-subnav uk-subnav-line col--1-1 teaser-master-class">
+                        <li class="teaser-master-class-meta">
+                            <i class="uk-master-class-meta-icon icon-clock2"></i>
+                            <strong class="uk-margin-small-left bold">10:00</strong>
+                            <span class="master-class-time-desc">
+                                начало
+                            </span>
+                        </li>
+                        <li class="teaser-master-class-meta">
+                            <i class="uk-master-class-meta-icon icon-clock2"></i>
+                            <strong class="uk-margin-small-left bold">18:00</strong>
+                            <span class="master-class-group-desc">
+                                окончание
+                            </span>
+                        </li>
+                        <li class="teaser-master-class-meta">
+                            <i class="uk-master-class-meta-icon icon-users"></i>
+                            <strong class="uk-margin-small-left bold">15-20</strong>
+                            <span class="master-class-people-desc">
+                                слушателей
+                            </span>
+                        </li>
+                        <li class="teaser-master-class-meta">
+                            <i class="uk-master-class-meta-icon icon-calendar"></i>
+                            <strong class="uk-margin-small-left bold">2</strong>
+                            <span class="master-class-people-desc">
+                                дня
+                            </span>
+                        </li>
+                    </ul>
+
+                    <div class="uk-comment-header uk-master-class-owner">
+                        <img class="uk-comment-avatar uk-border-circle uk-border-solid" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                        <h5 class="uk-comment-title">
+                            <a href="#" class="uk-link-muted bold">Роман Лунцевич</a>
+                        </h5>
+                        <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                            <li><a href="#" class="uk-link-muted uk-link-999">преподаватель мастер класса</a></li>
+                        </ul>
+                    </div>
+                </header>
+                <div>
+
+                </div>
+            </section>
+        </div>
+
+        <div class="col--1-4 uk-margin-top">
+            <h3 class="tm-article-subtitle">Modal Rent <small class="text--muted">ver.</small><strong>1.0</strong></h3>
+
+
+            <button class="button" data-uk-modal="{target:'#modal-booking-rent'}">Показать модалку</button>
+
+            <div id="modal-booking-rent" class="uk-modal">
+                <div class="uk-modal-dialog uk-modal-dialog-large uk-modal-dialog-phones">
+                    <a href="" class="uk-modal-close uk-close"></a>
+                    <section class="text--center">
+                        <h2 class="uk-margin-bottom-remove bold">Мария, выберите залы для бронирования:</h2>
+                        <small class="text--muted">вы можете выбрать не один, а несколько залов сразу...</small>
+                    </section>
+                    <section class="panel panel--box uk-margin-top">
+                        <div class="uk-form-row">
+                            <ul id="hall-select" class="grid grid--small grid-col--1-6 uk-nav uk-nav-autocomplete uk-autocomplete-results"   data-button-checkbox>
+                                @for (int i = 0; i < 4; i++)
+                                {
+                                    <li>
+                                        <div id="save" class="bold button button-radio-active col--1-1 role-save-halls">
+                                            <p class="uk-margin-remove">
+                                                <i class="uk-icon-circle" style="color: #3399ff"></i>&nbsp;<strong>Метро Савеловская</strong>
+                                            </p>
+                                            <img class="uk-border-circle" src="http://www.miles-fashion.de/assets/Uploads/_resampled/SetWidth518-Panorama3.jpg" style="height: 50px" alt="">
+                                            <p class="uk-margin-remove">
+                                                <small class="text--muted">150 000 за час</small>
+                                            </p>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </section>
+                    <div class="uk-margin">
+                        <p class="text--h3">Вы также можете взять на студии в аренду:</p>
+
+                        <ul class="grid grid-col--1-4"   data-button-checkbox>
+                            <li>
+                                <div class="button button-radio-active col--1-1">
+                                    <p class="uk-margin-remove">
+                                        <strong>Nikon D800</strong>
+                                    </p>
+                                    <img src="http://www.geek.com/wp-content/uploads/2012/02/D800_ME1.jpg" style="height: 60px;" alt="">
+                                    <p class="uk-margin-remove">
+                                        <small>15$ за съемку</small>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <small class="text--muted float--right uk-margin-bottom">
+                            <a href="#" class="uk-link-999 uk-link-line">Посмотреть больше...</a>
+                        </small>
+                    </div>
+
+                    <div class="uk-margin">
+                        <button id="save" class="bold button button-reviews button-reviews-success button-reviews-success-border col--1-1 role-save-halls">Забронировать фотостудию</button>
+                    </div>
+
+                    <div class="text--center">
+                        <small class="text--muted">
+                            PhotoMSK — мы стараемся сделать лучший фотопортал.
+                        </small>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="review-phone-modal-thanks" class="uk-modal">
+                <div class="uk-modal-dialog uk-modal-dialog-phones text--center">
+                    <a href="" class="uk-modal-close uk-close"></a>
+                    <span class="text--muted">информация о бронировании</span>
+                    <h1 class="uk-heading-large uk-margin-large">Спасибо :)</h1>
+                    <p class="text--muted">
+                        Нам очень важно что вы выбрали <span class="uk-link-dotted">PhotoMSK.by</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col--3-4 uk-margin-top">
+            <div class="uk-mobile">
+                <div class="phone">
+                    <div class="circle"></div>
+                    <div class="circle-fill"></div>
+                    <div class="img-circle">
+                        <i class="uk-icon-phone"></i>
+                        <!-- <i class="uk-icon-qrcode"></i> -->
+                        <!-- <img class="qr-code" src="@Url.Content("~/Content/images/svg/qr-photomsk-by.svg")"> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

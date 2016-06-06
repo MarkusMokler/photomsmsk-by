@@ -1,0 +1,68 @@
+/* ========================================================================
+   Component: Comment
+ ========================================================================== */
+/* Sub-object `comment__header`
+ ========================================================================== */
+.comment__header {
+  margin-bottom: 15px;
+}
+/*
+ * Micro clearfix
+ */
+.comment__header:before,
+.comment__header:after {
+  content: "";
+  display: table;
+}
+.comment__header:after {
+  clear: both;
+}
+/* Sub-object `comment__avatar`
+ ========================================================================== */
+.comment__avatar {
+  margin-right: 10px;
+  float: left;
+}
+/* Sub-object `comment__title`
+ ========================================================================== */
+.comment__title {
+  margin: 5px 0 0 0;
+  font-size: 14px;
+  line-height: 18px;
+}
+/* Sub-object `comment__meta`
+ ========================================================================== */
+.comment__meta {
+  margin: 2px 0 0 0;
+  font-size: 11px;
+  line-height: 16px;
+  color: #999;
+}
+/* Sub-object `comment__body`
+ ========================================================================== */
+/*
+ * Remove margin from the last-child
+ */
+.comment__body > :last-child {
+  margin-bottom: 0;
+}
+/* Sub-object `comment__list`
+ ========================================================================== */
+.comment__list {
+  padding: 0;
+  list-style: none;
+}
+.comment__list .comment + ul {
+  margin: 15px 0 0 0;
+  list-style: none;
+}
+.comment__list > li:nth-child(n+2),
+.comment__list .comment + ul > li:nth-child(n+2) {
+  margin-top: 15px;
+}
+/* Tablet and bigger */
+@media (min-width: 768px) {
+  .comment__list .comment + ul {
+    padding-left: 100px;
+  }
+}

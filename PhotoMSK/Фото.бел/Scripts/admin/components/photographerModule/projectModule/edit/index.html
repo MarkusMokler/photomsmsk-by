@@ -1,0 +1,195 @@
+﻿<div class="content--admin">
+    <div>
+        <data-bread-crumbs />
+    </div>
+
+    <div class="grid">
+        <div class="col--1-1">
+            <div class="panel panel--box panel--white panel--shadow">
+                <div class="panel__title">
+                    <ul class="tab tab--full">
+                        <li data-ng-click="setTab('tab1')"><a class="active" data-msk-href>Информация</a></li>
+                        <li data-ng-click="setTab('tab2')"><a data-msk-href>Фотографии</a></li>
+                        <li data-ng-click="setTab('tab3')"><a data-msk-href>Настройки</a></li>
+                    </ul>
+                </div>
+                <ul>
+                    <!--TAB 1-->
+                    <li data-ng-show="tab=='tab1'">
+                        <div class="grid grid--divider grid--collapse margin--reset">
+                            <div class="col--2-10 text--center">
+                                <p class="text--h3 text--muted text--truncate">
+                                    Проект
+                                    <a data-msk-href data-ng-click="projectAvatarEdit = !projectAvatarEdit" class="button button--small button--rounded icon-cog float--right"></a>
+                                </p>
+                                <hr class="col--1-1 grid--divider-full">
+
+                                <div data-ng-if="!projectAvatarEdit">
+                                    <div class="margin--top">
+                                        <img class="avatar--border-solid" alt="Аватарка проекта" src="/Content/images/no-avatar.png" data-ng-src="{{croppedDataUrl||item.teaserImageUrl}}" height="200" width="200">
+                                    </div>
+                                    <p class="margin--top text--h4">
+                                        <small class="text--small text--muted">проект</small>
+                                        <span class="text--bold">{{project.name}}</span>
+                                    </p>
+                                </div>
+                                <div data-ng-if="projectAvatarEdit">
+                                    <div class="grid">
+                                        <div class="col--1-1 text--center">
+                                            <img class="avatar--border-solid" alt="Аватарка пользователя" src="/Content/images/no-avatar.png" data-ng-src="{{croppedDataUrl||item.teaserImageUrl}}">
+                                        </div>
+
+                                        <div class="col--1-1 text--center margin--top" data-ngf-select data-ng-model="picFile" accept="image/*">
+                                            <a class="button button--small border--rounded" data-msk-href>Выбрать файл</a>
+                                            <p class="margin text--muted">
+                                                Рекомендуемый размер изображения: 500×500
+                                            </p>
+                                        </div>
+
+                                        <div data-ngf-drop data-ng-model="picFile" data-ngf-pattern="image/*" class="col--1-1 cropArea upload__area">
+                                            <img-crop image="picFile  | ngfDataUrl" area-type="square" result-image="croppedDataUrl" data-ng-init="croppedDataUrl=''"></img-crop>
+                                        </div>
+
+                                        <p class="col--1-1 text--center margin--top">
+                                            <a data-msk-href class="button border--rounded button--success" data-ng-click="uploadLogo(croppedDataUrl)">
+                                                Применить
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col--2-4">
+                                <p class="text--h3 text--muted text--truncate">
+                                    Информация
+                                </p>
+                                <hr class="col--1-1 grid--divider-full">
+                                <!--Name-->
+                                <div>
+                                    <label class="label label--rounded" for="Name">Название:</label>
+                                    <input class="input input--rounded col--1-1" id="Name" data-ng-model="project.name" name="Name" type="text">
+                                    <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                                </div>
+                                <!--Price-->
+                                <div>
+                                    <label class="label label--rounded" for="Price">Цена:</label>
+                                    <input class="input input--rounded col--1-1" id="Price" data-ng-model="project.price" name="Price" type="text">
+                                    <span class="field-validation-valid" data-valmsg-for="Price" data-valmsg-replace="true"></span>
+                                </div>
+                                <!--Description-->
+                                <div>
+                                    <label class="label" for="Description">Описание:</label>
+                                    <textarea class="input col--1-1" data-ng-model="project.description" cols="20" id="Description" name="Description" rows="8"></textarea>
+                                    <span class="field-validation-valid" data-valmsg-for="Description" data-valmsg-replace="true"></span>
+                                </div>
+                                <!--Landing Page-->
+                                <div>
+                                    <label class="label label--rounded" for="LandingPageUrl">Страница лендинга:</label>
+                                    <input class="input input--rounded col--1-1" id="LandingPageUrl" data-ng-model="project.landingPageUrl" name="LandingPageUrl" type="text">
+                                    <span class="field-validation-valid" data-valmsg-for="LandingPageUrl" data-valmsg-replace="true"></span>
+                                </div>
+                                <!--Type-->
+                                <div>
+                                    <label class="label label--rounded" for="Type">Тип:</label>
+                                    <input class="input input--rounded col--1-1" id="Type" data-ng-model="project.type" name="Type" type="text">
+                                    <span class="field-validation-valid" data-valmsg-for="Type" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+
+                            <div class="col--1-1 text--center">
+                                <hr class="col--1-1">
+                                <a data-msk-href class="button button--success border--rounded" data-ng-click="updateProject()">Сохранить изменения</a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!--TAB 2 - Фотографии-->
+                    <li data-ng-show="tab=='tab2'">
+                        <div>
+                            <div>
+                                <data-admin-photo-load-page />
+                            </div>
+
+                            <ul ui-sortable ng-model="item.photos" class="grid grid--small grid-col--1-5">
+                                <li ng-repeat="photo in item.photos">
+                                    <img src="{{photo.url}}" />
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col--1-1">
+                            <hr>
+                            <div class="col--1-1 text--right">
+                                <a class="button button--small text--muted" data-msk-href>отмена</a>
+                                <a class="button button--small button--success" data-ng-click="loadPhoto()" data-msk-href>Сохранить</a>
+                            </div>
+                        </div>
+                    </li>
+                    <!--TAB 3 - Настройки-->
+                    <li data-ng-show="tab=='tab3'">
+                        <div class="col--2-4">
+                            <hr class="col--1-1 grid--divider-full">
+                            <!--Discount-->
+                            <div>
+                                <label class="label label--rounded" for="Discount">Скидка:</label>
+                                <input class="input input--rounded col--1-1" id="Discount" data-ng-model="project.settings.discount" name="Discount" type="text">
+                                <span class="field-validation-valid" data-valmsg-for="Discount" data-valmsg-replace="true"></span>
+                            </div>
+                            <!--Seats-->
+                            <div>
+                                <label class="label label--rounded" for="Seats">Количество мест:</label>
+                                <input class="input input--rounded col--1-1" id="Seats" data-ng-model="project.settings.seats" name="Seats" type="text">
+                                <span class="field-validation-valid" data-valmsg-for="Seats" data-valmsg-replace="true"></span>
+                            </div>
+                            <!--Members-->
+                            <div>
+                                <label class="label label--rounded" for="Members">Участники:</label>
+                                <input class="input input--rounded col--1-1" id="Members" data-ng-model="project.settings.members" name="Members" type="text">
+                                <span class="field-validation-valid" data-valmsg-for="Members" data-valmsg-replace="true"></span>
+                            </div>
+                            <!--Time-->
+                            <div>
+                                <label class="label label--rounded" for="Time">Время на проект (мин.):</label>
+                                <input class="input input--rounded col--1-1" id="Time" data-ng-model="project.settings.time" name="Time" type="text">
+                                <span class="field-validation-valid" data-valmsg-for="Time" data-valmsg-replace="true"></span>
+                            </div>
+                            <!--StartingDate-->
+                            <div>
+                                <label class="label" for="StartingDate">Дата начала:</label>
+                                <input class="input input--rounded col--1-1" id="StartingDate" data-ng-model="project.settings.startingDate" name="StartingDate" type="date">
+                                <span class="field-validation-valid" data-valmsg-for="StartingDate" data-valmsg-replace="true"></span>
+                            </div>
+                            <!--Location-->
+                            <div>
+                                <label class="label label--rounded" for="Location">Место проведения:</label>
+                                <input class="input input--rounded col--1-1" id="Location" data-ng-model="project.settings.location" name="Location" type="text">
+                                <span class="field-validation-valid" data-valmsg-for="Location" data-valmsg-replace="true"></span>
+                            </div>
+                            <!--Image-->
+                            <div>
+                                <label class="label label--rounded" for="Image">Наличие образа:</label>
+                                <input class="input input--rounded col--1-1" id="Image" data-ng-model="project.settings.image" name="Image" type="text">
+                                <span class="field-validation-valid" data-valmsg-for="Image" data-valmsg-replace="true"></span>
+                            </div>
+                            <!--ImageQuantity-->
+                            <div>
+                                <label class="label label--rounded" for="ImageQuantity">Кол-во готовых образов:</label>
+                                <input class="input input--rounded col--1-1" id="ImageQuantity" data-ng-model="project.settings.imageQuantity" name="ImageQuantity" type="text">
+                                <span class="field-validation-valid" data-valmsg-for="ImageQuantity" data-valmsg-replace="true"></span>
+                            </div>
+                            <!--PhotoQuantity-->
+                            <div>
+                                <label class="label label--rounded" for="PhotoQuantity">Кол-во отдаваемых фото:</label>
+                                <input class="input input--rounded col--1-1" id="PhotoQuantity" data-ng-model="project.settings.photoQuantity" name="PhotoQuantity" type="text">
+                                <span class="field-validation-valid" data-valmsg-for="PhotoQuantity" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+
+                        <div class="col--1-1 text--center">
+                            <hr class="col--1-1">
+                            <a data-msk-href class="button button--success border--rounded" data-ng-click="updateProject()">Сохранить изменения</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

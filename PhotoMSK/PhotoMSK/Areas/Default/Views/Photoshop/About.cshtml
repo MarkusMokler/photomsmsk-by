@@ -1,0 +1,15 @@
+﻿@using PhotoMSK.Extensiolns
+@model PhotoMSK.Areas.Default.ViewData.Photoshop.AboutViewData
+@{
+    ViewBag.Title = "Photostudio";
+    ViewBag.Description = Model.Item.Description;
+    ViewBag.Image = Model.Item.ImageUrl;
+
+    string imageLink = Model.Item.ImageUrl;
+}
+
+@section scripts
+{
+    @Scripts.Render("~/Scripts/marked")
+    @Scripts.Render("~/bundles/jqueryval")
+}

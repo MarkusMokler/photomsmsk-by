@@ -1,0 +1,45 @@
+﻿@using PhotoMSK.Data.Enums
+@using PhotoMSK.Data.Models
+@using PhotoMSK.Data.Models.Routes
+@using PhotoMSK.Models
+@model User
+@{
+    List<RouteEntity> routes = Model.UserInformation.Roles.Where(x => x.AccessStatus == AccessStatus.Owner || x.AccessStatus == AccessStatus.Administrator).Select(x => x.Route).ToList();
+    IEnumerable<IGrouping<Type, RouteEntity>> groups = routes.GroupBy(x => x.GetType());
+}
+<div class="uk-grid">
+    <div class="uk-width-1-1">
+        <span class="uk-form-heading uk-text-muted">Список созданных студий</span>
+        <hr class="small-line uk-margin-small-top" />
+    </div>
+</div>
+<div class="uk-grid" data-uk-grid-margin>
+    @foreach (var item in routes.OfType<Photostudio>())
+    {
+        <article class="uk-width-1-2">
+            <div class="uk-panel uk-panel-box uk-panel--white uk-panel-border-line uk-panel--border-radius uk-panel--shadow">
+                <div class="uk-panel-teaser">
+                    <img src="@item.CoverImage" alt="Фотостудия ">
+                </div>
+                <div class="uk-grid uk-grid-small">
+                    <div class="uk-width-8-10">
+                        <h2 class="uk-panel-title uk-margin-small-bottom">
+                            <img src="@item.ImageUrl" width="30" height="30" class="uk-border-circle" />
+                            <a href="@Url.Action("Details", new { area = "Default", controller = "Photostudio", shortcut = item.Shortcut})" class="uk-link-muted">
+                                @item.Name
+                            </a>
+                        </h2>
+                        <ul class="uk-subnav uk-subnav-line uk-margin-remove uk-text-nowrap">
+                            <li class="uk-vertical-align-middle"><span class="uk-badge uk-badge-success uk-link-fff">Активная</span></li>
+                            @*<li class="uk-vertical-align-middle"><a href="@Url.Action("Details", new { area = "Default", controller = "Photostudio", shortcut = item.Shortcut})" class="uk-link-999 uk-link-dotted">Просмотреть</a></li>*@
+                            <li><a href="@Url.Action("Edit", new { area = "Admin", controller = "Photostudio", shortcut = item.Shortcut })" class="uk-navbar-nav-subtitle uk-link-999 uk-text-center"><i class="uk-icon-pencil"></i><div>изменить</div></a></li>
+                            <li><a href="@Url.Action("Index", new { area = "Admin", controller = "Photostudio", shortcut = item.Shortcut })" class="uk-navbar-nav-subtitle uk-link-999 uk-text-center"><i class="uk-icon-calendar"></i><div>бронировать</div></a></li>
+                            <li><a href="@Url.Action("Profit", new { area = "Admin", controller = "Photostudio", shortcut = item.Shortcut })" class="uk-navbar-nav-subtitle uk-link-999 uk-text-center"><i class="uk-icon-usd"></i><div>выручка</div></a></li>
+                            <li><a href="#modal-delete" class="uk-navbar-nav-subtitle uk-link-999 uk-text-center" data-uk-modal><i class="uk-icon-trash-o"></i><div>удалить</div></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </article>
+    }
+</div>

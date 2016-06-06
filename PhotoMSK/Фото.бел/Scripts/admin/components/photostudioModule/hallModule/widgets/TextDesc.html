@@ -1,0 +1,31 @@
+<div class="container container--center">
+    <div class="grid apps-container" ui-sortable="options" data-ng-model="files">
+        <div class="col--1-3 text--center">
+            <div class="widgets__empty-img icon-empty-image" data-ng-if="widget.photo.url == null"></div>
+            <img class="col--1-1" src="{{widget.photo.url}}" alt="" data-ng-if="widget.photo.url != null">
+        </div>
+
+        <div class="col--2-3">
+            <p class="text--h2 widgets__empty-title" data-ng-if="!widget.isEdit && widget.name != ''">Впишите сюда текст</p>
+
+            <p class="text--h2" data-ng-if="!widget.isEdit">{{widget.name}}</p>
+
+            <div class="input__group margin--bottom-small" data-ng-if="widget.isEdit">
+                <input class="input input--small input--edit text--h2 col--1-1" data-ng-model="widget.name">
+                <i class="input__group__desc button button--mini button--rounded icon-checkmark" data-ng-click="widget.isEdit = !widget.isEdit" uib-tooltip="Применить"></i>
+            </div>
+
+            <div data-ng-if="!widget.isEdit && widget.description != ''">
+                <span class="widgets__empty-text"></span>
+                <span class="widgets__empty-text"></span>
+                <span class="widgets__empty-text"></span>
+                <span class="widgets__empty-text"></span>
+            </div>
+
+            <div class="input input--edit" data-ng-if="!widget.isEdit" data-ng-bind-html="widget.description">
+
+            </div>
+            <text-angular data-ng-if="widget.isEdit" data-ng-model="widget.description"></text-angular>
+        </div>
+    </div>
+</div>

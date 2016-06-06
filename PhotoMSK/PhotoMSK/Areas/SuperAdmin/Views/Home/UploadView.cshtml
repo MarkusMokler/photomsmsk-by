@@ -1,0 +1,27 @@
+﻿@model PhotoMSK.Data.Models.DbRazorView
+@{
+    ViewBag.Title = "title";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<h2>title</h2>
+<div class="uk-container uk-container-center">
+    @using (Html.BeginForm())
+    {
+        <text>
+            ViewName :
+            @Html.TextBoxFor(x => x.ViewName)
+            <br />
+            themeName :
+
+            @Html.TextBoxFor(x => x.ThemeName)
+            <br />
+            ThemeType:
+            @Html.TextBoxFor(x => x.ThemeType)
+            <br />
+            @Html.TextAreaFor(x => x.RazorContent)
+            <br />
+            <input type="submit" value="submit" />
+        </text>
+    }
+</div>

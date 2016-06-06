@@ -1,0 +1,105 @@
+<div><data-bread-crumbs/></div>
+
+<div class="container container--center">
+    <div class="grid grid--medium">
+        <div class="col--4-10">
+            <p class="text--h2 margin--reset">Аренда фотостудий онлайн</p>
+        </div>
+        <div class="col--6-10 text--right">
+            <span data-ng-cloak>{{page.itemsCount}} студий отсортированы</span>
+            <ul class="sort">
+                <li class="sort__item active"><a data-msk-href>по рейтингу</a></li>
+                <li class="sort__item repair repair--text"><a data-msk-href>по цене</a></li>
+                <li class="sort__item repair repair--text"><a data-msk-href>по площади</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="grid grid--medium">
+
+        <div class="col--7-10">
+            <div class="grid grid--small" data-ng-repeat="item in page.elements">
+                <div class="col--1-1">
+                    <div class="panel panel--box panel--white panel--shadow">
+                        <div class="grid grid--small">
+                            <div class="col--2-10">
+                                <div class="panel__teaser--left">
+                                    <a class="link--reset" data-ng-href="/photostudio/{{item.shortcut}}">
+                                        <img src="{{item.teaserImage}}" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col--1-10">
+                                <div class="grid text--center">
+                                    <div class="col--1-1">
+                                        <span class="text--h2">{{item.hallsCount}}</span>
+                                        <p class="margin--reset">
+                                            <small class="text--muted">зал(а)</small>
+                                        </p>
+                                    </div>
+                                    <div class="col--1-1 margin--top">
+                                        <span class="text--h2">{{item.hallsSquare}}</span>
+                                        <p class="margin--reset">
+                                            <small class="text--muted">кв.м.</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col--large-4-10 col--medium-4-10">
+                                <p class="text--h1 margin--remove">
+                                    <a class="link--reset" href="/photostudio/{{item.shortcut}}">{{item.name}}</a>
+                                </p>
+                                <ul class="uk-subnav uk-subnav-line margin--reset">
+                                    <li>
+                                        <small class="text--muted">{{item.adress}}</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col--large-3-10 col--medium-3-10 text--center">
+                                <div class="margin--top">
+                                    <p>
+                                        <small>от</small>
+                                        <span class="text--h1">{{item.minimumPrice | number}}</span>
+                                    </p>
+
+                                    <a class="button button--success" href="/photostudio/{{item.shortcut}}" data-ng-if="item.allowOnlineBooking">Забронировать online</a>
+
+                                    <a class="button button--small" href="/photostudio/{{item.shortcut}}" data-ng-if="!item.allowOnlineBooking">Просмотреть</a>
+                                    <p class="text--small text--muted margin--bottom-remove" data-ng-if="!item.allowOnlineBooking">
+                                        Нельзя бронировать online
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <uib-pagination boundary-links="true" class="pagination" items-per-page="itemsPerPage" max-size="maxSize" data-ng-change="pageChanged()" ng-model="currentPage" num-pages="numPages" total-items="totalItems"></uib-pagination>
+        </div>
+
+        <div class="col--3-10">
+            <data-photostudio-filter/>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modal_show_maps">
+<div class="modal__dialog">
+    <a class="modal__close" data-msk-href></a>
+    <header class="text--center modal__header">
+        <h1 class="margin--reset">{{mapObj.name}}</h1>
+        <small class="text--muted">{{mapObj.adress}}</small>
+    </header>
+    <div id="map" style="width: 560px; height: 400px">
+        <ya-map ya-after-init="afterMapInit($target)" ya-center="[{{mapObj.longitude}}, {{mapObj.latitude}}]" ya-zoom="12">
+            <ya-geo-object ya-options="{preset:'islands#blackStretchyIcon'}" ya-source="geoObject"></ya-geo-object>
+        </ya-map>
+    </div>
+
+    <div class="modal__footer text--right">
+        <button class="button button--primary uk-modal-close" id="close-modal" type="button">Закрыть</button>
+    </div>
+    <div class="modal__caption text--small">
+        Правила портала «<a class="link--reset link--line" href="/terms" target="_blank">PhotoMSK</a>»
+    </div>
+</div>
+</div>

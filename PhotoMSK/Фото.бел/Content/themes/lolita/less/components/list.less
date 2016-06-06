@@ -1,0 +1,41 @@
+// out: ../../css/components/list.css, compress: true
+// Name:            List
+// Description:     Defines styles to create layouts with list
+//
+// Component:       `list__*`
+//
+//
+// ========================================================================
+
+@list-footer-padding:                     3px;
+
+/* ========================================================================
+   Component: List
+ ========================================================================== */
+
+.list {
+    margin-top: 20px;
+
+    // Element 'list__teaser'
+    &__teaser{
+        display: inline-block;
+        margin-bottom: 10px;
+        background: #fff;
+        border-radius: 3px;
+        border: 1px solid #ddd;
+    }
+
+    // Element 'list__link'
+    &__link{
+        font-style: italic;
+        border-bottom: 1px solid;
+        line-height: 18px;
+    }
+
+    // Element 'list__date'
+    &__date{
+        display: block;
+        text-align: left;
+        margin: 5px 0;
+    }
+}

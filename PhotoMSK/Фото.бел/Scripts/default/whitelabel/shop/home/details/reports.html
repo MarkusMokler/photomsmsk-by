@@ -1,0 +1,189 @@
+﻿
+<div class="container container--center">
+    <div class="grid">
+        <div class="col--1-5">
+
+            <div class="button-back">
+                <ul class="grid grid-col--1-2 grid--small uk-subnav">
+                    <li>
+                        <a href="@Url.Action("Create", "Page")" class="button-add button">
+                            <i class="uk-icon-plus button-add button-big uk-margin-small-top"></i>&nbsp;<span class="uk-text-bold button-add button-big">Доход</span>
+                        </a>
+                    </li>
+                    <li class="uk-margin-remove">
+                        <a href="@Url.Action("Create", "Page")" class="button-add button">
+                            <i class="uk-icon-minus button-minus button-big uk-margin-small-top"></i>&nbsp;<span class="uk-text-bold button-minus button-big">Расход</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <h5 class="uk-text-bold">Метки</h5>
+            <ul class="uk-list uk-list-space" data-button-checkbox>
+                <li>
+                    <button class="button col--1-1 uk-label-filter" style="background-color: #D9534F;"><i class="uk-icon-check"></i>&nbsp;Пробитые чеки</button>
+                </li>
+                <li>
+                    <button class="button col--1-1 uk-label-filter" style="background-color: #428BCA;"><i class="uk-icon-check"></i>&nbsp;Не пробитые чеки</button>
+                </li>
+                <li>
+                    <a href="#modal-add-label" class="uk-text-small uk-link-reset uk-link-muted uk-link-line float--right" data-uk-modal>+ Добавить метку</a>
+                </li>
+            </ul>
+
+            <h5 class="uk-text-bold">Справочник</h5>
+            <ul class="uk-list uk-list-space uk-list-dotted">
+                <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">Редактирование метки</a></li>
+                <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">Добавление новой метки</a></li>
+                <li><a ng-href="#" target="_blank" class="uk-link-muted" href="#">Создание...</a></li>
+                <li><a href="#" class="uk-text-small">ещё...</a></li>
+            </ul>
+        </div>
+
+        <div class="col--4-5">
+            <div class="grid grid--small">
+                <div class="col--1-1">
+                    <div class="panel uk-panel-content-box">
+                        <div>
+                            <span class="uk-text-bold">
+                                Cчета за период с
+                                <input type="text" data-uk-datepicker="{format:'DD.MM.YYYY'}" class="uk-form-large-text text--center" value="20.10.2014">
+                                по
+                                <input type="text" data-uk-datepicker="{format:'DD.MM.YYYY'}" class="uk-form-large-text text--center" value="20.01.2015">
+                            </span>
+                            <button class="button button-success uk-margin-left">сформировать</button>
+
+                            <div class="uk-search float--right">
+                                <input class="uk-search-field" type="search" placeholder="поиск..." autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid--small">
+                <div class="col--1-1">
+                    <div class="panel uk-panel-content-box">
+
+                        <table class="table table--hover table--middle" data-grid="{controls: '#status-users'}">
+                            <thead>
+                                <tr>
+                                    <th style="width: 1px;"></th>
+                                    <th>Название</th>
+                                    <th class="text--center">Метки</th>
+                                    <th>Цена</th>
+                                    <th class="text--center">Скидка</th>
+                                    <th class="text--center">Управление</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                    <tr ng-repeat="i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" class="uk-show-hide">
+                                        <td>
+                                            <i class="uk-icon-arrow-right uk-status-badge-income"></i>
+                                            <i class="uk-icon-arrow-left uk-status-badge-expense"></i>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="uk-link-muted uk-link-dotted uk-link-reset uk-text-bold">Canon 5d Mark III</a>
+                                            <p class="uk-text-small uk-margin-remove">
+                                                <span class="text--muted">(В прокат)</span>
+                                            </p>
+                                        </td>
+                                        <td class="text--center">
+                                            <i class="icon-action icon-show"></i>
+                                        </td>
+                                        <td>
+                                            <strong>35 у.е.</strong>
+                                            <p class="uk-text-small uk-margin-remove text--muted">
+                                                553 000 <small>бел.руб.</small>
+                                            </p>
+                                        </td>
+                                        <td class="text--center">
+                                            <span>-</span>
+                                            <p class="uk-margin-remove uk-text-small text--muted">
+                                                <small>(001-0002)</small>
+                                            </p>
+                                        </td>
+                                        <td class="text--center">
+                                            <div class="uk-show-hide-element">
+                                                <a href="#" class="text--muted uk-link-reset">
+                                                    <i class="uk-icon-pencil" data-uk-tooltip title="Редактировать товар"></i>
+                                                </a>
+                                                <a href="#" class="text--muted uk-link-reset uk-margin-small-left">
+                                                    <i class="uk-icon-trash" data-uk-tooltip title="Удалить товар"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div>
+                        <p class="text--bold text--h1">
+                            <span class="text--h2">Итого:</span>
+                            1 234 567
+                            <span class="text--h3">руб.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<div id="modal-add-label" class="uk-modal">
+    <div class="uk-modal-dialog">
+        <button type="button" class="uk-modal-close uk-close"></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-margin-remove">Добавить новую метку</h2>
+        </div>
+        <section class="uk-form uk-form-horizontal">
+            <div class="uk-form-row">
+                <label class="uk-form-label" for="form-h-it">Название</label>
+                <div class="uk-form-controls">
+                    <input type="text" id="form-h-it" class="uk-form-large uk-form-large-text col--1-1" placeholder="Название">
+                </div>
+            </div>
+            <div class="uk-form-row">
+                <label class="uk-form-label" for="form-h-it">Цвет метки</label>
+                <div class="uk-form-controls">
+                    <input type="text" id="label-custom-color" class="uk-form-large uk-form-large-text col--1-1" maxlength="7" placeholder="#AABBCC">
+                    <small class="text--muted">Введите # и 6 символов шестнадцатиричного значения.</small>
+                </div>
+            </div>
+            <div class="uk-form-row">
+                <div class="float--right">
+                    <ul class="uk-subnav" data-button-radio>
+                        <li><a href="#" class="button uk-form-label-reports uk-link-reset" style="background-color: #D9534F" value="#D9534F"><i class="uk-icon-check"></i></a></li>
+                        <li><a href="#" class="button uk-form-label-reports uk-link-reset" style="background-color: #F0AD4E" value="#F0AD4E"><i class="uk-icon-check"></i></a></li>
+                        <li><a href="#" class="button uk-form-label-reports uk-link-reset" style="background-color: #428BCA"><i class="uk-icon-check"></i></a></li>
+                        <li><a href="#" class="button uk-form-label-reports uk-link-reset" style="background-color: #5CB85C"><i class="uk-icon-check"></i></a></li>
+                        <li><a href="#" class="button uk-form-label-reports uk-link-reset" style="background-color: #34495E"><i class="uk-icon-check"></i></a></li>
+                        <li><a href="#" class="button uk-form-label-reports uk-link-reset" style="background-color: #7F8C8D"><i class="uk-icon-check"></i></a></li>
+                        <li><a href="#" class="button uk-form-label-reports uk-link-reset" style="background-color: #8E44AD"><i class="uk-icon-check"></i></a></li>
+                        <li><a href="#" class="button uk-form-label-reports uk-link-reset" style="background-color: #FFECDB"><i class="uk-icon-check"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <div class="uk-modal-footer text--right">
+            <button type="button" class="button">Отменить</button>
+            <button type="button" class="button button-success">Добавить</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- @section Scripts{
+        <script>
+            $(".uk-form-label-reports").click(function () {
+                var text = $(this).text();
+                $("#label-custom-color").val(text);
+            });
+        </script>
+    } -->

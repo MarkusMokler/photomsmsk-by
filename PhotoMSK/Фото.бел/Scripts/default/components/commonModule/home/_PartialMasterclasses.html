@@ -1,0 +1,18 @@
+﻿<ul class="grid grid-col--large-1-4 grid-col--medium-1-4 grid-col--small-1-2">
+        <li ng-repeat="item in $scope">
+            <div class="uk-align-medium-left">
+                <a href="{{item.shortcut}}" class="uk-link-reset">
+                    <img width="65" height="65" class="uk-border-circle" alt="" src="{{item.imageUrl}}">
+                </a>
+            </div>
+            <small class="text--muted">
+                {{item.start.day}}.{{item.start.month}}.{{item.start.year}} {{item.start.hour}}:00 ({{item.start.dayOfWeek}}) -  {{item.end.hour}}:00
+            </small>
+            <a href="{{item.shortcut}}" class="uk-link-reset">
+                <p class="uk-margin-small uk-text-bold">
+                    {{item.title}}
+                </p>
+            </a>
+            <p class="uk-text-small text--muted uk-margin-remove"><i>ведет: {{item.authorName}}</i></p>
+        </li>
+</ul>

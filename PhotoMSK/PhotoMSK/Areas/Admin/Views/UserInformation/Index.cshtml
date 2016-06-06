@@ -1,0 +1,74 @@
+﻿@using System.Collections.ObjectModel
+@using PhotoMSK.ViewModels.ShoppingCart
+@model PhotoMSK.ViewModels.UserInformationViewModel.Details
+
+<div class="uk-container uk-container-center">
+    <div class="uk-grid uk-grid-small" data-uk-grid-margin>
+        <div class="uk-width-1-1">
+            <ul class="uk-tab uk-tab-events uk-text-center" data-uk-tab="{connect:'#user-info-content', animation: 'fade'}">
+                <li>
+                    <a href="#" class="uk-navbar-nav-subtitle">
+                        Личная информация
+                        <div>пользователя</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="uk-navbar-nav-subtitle">
+                        Защита
+                        <div>данных</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="uk-navbar-nav-subtitle">
+                        Платежи
+                        <div>все</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="uk-navbar-nav-subtitle">
+                        Покупки
+                        <div>пользователя</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="uk-navbar-nav-subtitle">
+                        Карточка
+                        <div>photomsk</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="uk-navbar-nav-subtitle">
+                        История
+                        <div>аренды</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="uk-navbar-nav-subtitle">
+                        Штрафы
+                        <div>пользователя</div>
+                    </a>
+                </li>
+                <li class="uk-tab-responsive uk-active uk-hidden"><a>Tab</a><div class="uk-dropdown uk-dropdown-small"><ul class="uk-nav uk-nav-dropdown"></ul><div></div></div></li>
+            </ul>
+        </div>
+
+        <div class="uk-width-1-1">
+            <ul id="user-info-content" class="uk-switcher">
+                <li class="uk-active">@Html.Partial("_UserInfoPassport")</li>
+                <li>Hello again!</li>
+                <li>Hello again!</li>
+                @if (Model.Orders != null)
+                {
+                    <li>@Html.Partial("_UserInfoOrders", Model.Orders)</li>
+                }
+                else
+                {
+                    <li>@Html.Partial("_UserInfoOrders", new Collection<OrderViewModel.Summary>())</li>
+                }
+                <li>@Html.Partial("_UserInfoPlasticCard", Model.Cards)</li>
+                <li>@Html.Partial("_UserInfoRents", Model.Events)</li>
+                <li>@Html.Partial("_UserInfoPenalties", Model.Penalties)</li>
+            </ul>
+        </div>
+    </div>
+</div>

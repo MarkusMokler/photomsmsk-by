@@ -1,0 +1,51 @@
+﻿@model PhotoMSK.Data.Models.UserInformation
+@{
+    Layout = null;
+}
+<a href="" class="uk-navbar-nav-subtitle">
+    <img class="uk-comment-avatar uk-comment-avatar-35 uk-border-circle" src="@(Model.UserPhoto ?? "https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg")" width="35" height="35" alt="">
+    @Model.FirstName @Model.LastName
+    <i class="uk-icon-caret-down"></i>
+    <div class="uk-text-muted">Мой профиль</div>
+</a>
+
+<div class="uk-dropdown uk-dropdown-flip" style="width: 350px;">
+    <ul class="uk-sortable uk-grid uk-grid-small uk-grid-width-1-3" data-uk-sortable="{ dragCustomClass: 'tm-sortable-dragged', handleClass: 'uk-panel' }">
+        <li>
+            <a class="uk-panel uk-panel-icon" href="@Url.Action("Index", "Home")">
+                <img src="@Url.Content("~/Content/images/admin/svg-dashboard.svg")" width="50" height="50" alt="Dashboard">
+                <p>Мой кабинет</p>
+            </a>
+        </li>
+        <li>
+            <a class="uk-panel uk-panel-icon" href="@Url.Action("Index", "UserInformation")">
+                <img src="@Url.Content("~/Content/images/admin/svg-edit.svg")" width="50" height="50" alt="Pages">
+                <p>Редактировать</p>
+            </a>
+        </li>
+        <li>
+            <a class="uk-panel uk-panel-icon" href="#">
+                <img src="@Url.Content("~/Content/images/admin/svg-menus.svg")" width="50" height="50" alt="Menus">
+                <p>Меню</p>
+            </a>
+        </li>
+        <li>
+            <a class="uk-panel uk-panel-icon" href="@Url.Action("Index", "Blog")">
+                <img src="@Url.Content("~/Content/images/admin/svg-pages.svg")" width="50" height="50" alt="Widgets">
+                <p>Блог</p>
+            </a>
+        </li>
+        <li>
+            <a class="uk-panel uk-panel-icon" href="@Url.Action("Index", "UsersManagement")">
+                <img src="@Url.Content("~/Content/images/admin/svg-users.svg")" width="50" height="50" alt="Users">
+                <p>Пользователи</p>
+            </a>
+        </li>
+        <li>
+            <a class="uk-panel uk-panel-icon" href="#">
+                <img src="@Url.Content("~/Content/images/admin/svg-settings.svg")" width="50" height="50" alt="Settings">
+                <p>Настройки</p>
+            </a>
+        </li>
+    </ul>
+</div>

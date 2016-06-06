@@ -1,0 +1,37 @@
+﻿<h2>{{title}}</h2>
+<h3>Associate your {{loginProvider}} account.</h3>
+
+@using (Html.BeginForm("ExternalLoginConfirmation", "Account", new {ViewBag.ReturnUrl}, FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+{
+    @Html.AntiForgeryToken()
+
+    <h4>Association Form</h4>
+    <hr />
+    @Html.ValidationSummary(true)
+    <p class="text-info">
+        You've successfully authenticated with <strong>{{loginProvider}}</strong>.
+        Please enter a user name for this site below and click the Register button to finish
+        logging in.
+    </p>
+    <div class="form-group">
+        @Html.LabelFor(m => m.item.userName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.item.userName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.item.userName)
+        </div>
+        @Html.LabelFor(model => model.item.phone, "Введите код из СМС")
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.item.phone, new { placeholder = "Введите номер телефона" })
+            @Html.ValidationMessageFor(model => model.item.phone)
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Register" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

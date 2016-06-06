@@ -1,0 +1,21 @@
+﻿<div class="uk-width-2-10">
+    @*<form class="uk-form uk-margin-remove uk-display-inline-block">
+            <input type="text" placeholder="Поиск...">
+        </form>*@
+
+    <form class="uk-form uk-margin-remove uk-search uk-display-inline-block">
+        <input class="uk-search" type="text" placeholder="Поиск товара..." data-role-search-input>
+        <button class="uk-button uk-button-warning"><i class="uk-icon-search"></i></button>
+        <div class="uk-dropdown uk-dropdown-search uk-dropdown-search-450 uk-dropdown-flip uk-margin-small-top">
+            <ul class="uk-nav uk-nav-search uk-autocomplete-results">
+                <li>
+                    <ul data-role-search-results-placeholder></ul>
+                </li>
+                <li class="uk-nav-divider uk-skip"></li>
+                <li data-moreresults="true">
+                    <a href="#">Показать все результаты поиска</a>
+                </li>
+            </ul>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,203 @@
+﻿@using PhotoMSK.Data.Enums
+@using PhotoMSK.Models
+@model PhotoMSK.Areas.Default.ViewData.Masterclass.DetailsViewData
+
+@{
+    ViewBag.Title = "Мастеркласс " + Model.Item.AuthorName;
+    ViewBag.Description = Model.Description;
+    ViewBag.Image = Model.Item.ImageUrl;
+}
+
+<div class="uk-container uk-container-center pad-top master-class">
+
+    <div class="uk-grid">
+        <div class="uk-width-1-1 uk-text-center">
+            <p class="uk-article-meta master-class-type">Мастер-класс по ретуши фотографии</p>
+            <p class="master-class-title">@Model.Item.Title</p>
+        </div>
+    </div>
+
+    <div class="uk-grid">
+        <ul class="uk-subnav uk-subnav-line uk-width-1-1 uk-text-center">
+            <li class="">
+                <i class="master-class-time-icon icon-clock2"></i>
+                <strong class="master-class-time bold">@Model.Item.Days дня по 7:30</strong>
+                <span class="master-class-time-desc">
+                    продолжительность<br>
+                    мастер-класса
+                </span>
+            </li>
+            <li class="">
+                <i class="master-class-people-icon icon-user"></i>
+                <strong class="master-class-people bold">@Model.Item.Listeners</strong>
+                <span class="master-class-people-desc">
+                    слушателей в группе<br />
+                    мастер-класса
+                </span>
+            </li>
+            <li class="">
+                <i class="master-class-group-icon icon-users"></i>
+                <strong class="master-class-group bold">1</strong>
+                <span class="master-class-group-desc">
+                    количество групп<br />
+                    мастер-класса
+                </span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="uk-grid" data-uk-grid-match>
+        <div class="uk-width-1-2">
+            <p>@Model.Item.Description</p>
+        </div>
+        <div class="uk-width-1-2">
+            <div id="master-class-gallery">
+
+                <div class="item"><img src="http://ppcdn.500px.org/75656771/e2f381b0f7259dd97fdb42fbb452d123fcdae866/600.jpg?v=0" alt="Owl Image"></div>
+                <div class="item"><img src="http://ppcdn.500px.org/75656771/e2f381b0f7259dd97fdb42fbb452d123fcdae866/600.jpg?v=0" alt="Owl Image"></div>
+                <div class="item"><img src="http://ppcdn.500px.org/75656771/e2f381b0f7259dd97fdb42fbb452d123fcdae866/600.jpg?v=0" alt="Owl Image"></div>
+                <div class="item"><img src="http://ppcdn.500px.org/75656771/e2f381b0f7259dd97fdb42fbb452d123fcdae866/600.jpg?v=0" alt="Owl Image"></div>
+                <div class="item"><img src="http://ppcdn.500px.org/75656771/e2f381b0f7259dd97fdb42fbb452d123fcdae866/600.jpg?v=0" alt="Owl Image"></div>
+                <div class="item"><img src="http://ppcdn.500px.org/75656771/e2f381b0f7259dd97fdb42fbb452d123fcdae866/600.jpg?v=0" alt="Owl Image"></div>
+                <div class="item"><img src="http://ppcdn.500px.org/75656771/e2f381b0f7259dd97fdb42fbb452d123fcdae866/600.jpg?v=0" alt="Owl Image"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-grid">
+        <div class="uk-width-1-4 uk-offset-1-4">
+            <h1>Преподаватель</h1>
+            <hr />
+            <ul class="rating-list">
+                <li>
+                    <article class="uk-comment">
+                        <header class="uk-comment-header">
+                            <img class="uk-comment-avatar uk-border-rounded" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                            <h4 class="uk-comment-title bold">@Model.Item.AuthorName</h4>
+                            <div class="uk-comment-meta">+7 456 789 789 789</div>
+                        </header>
+                    </article>
+                </li>
+            </ul>
+        </div>
+
+        <div class="uk-width-1-4">
+            <h1>Организатор</h1>
+            <hr />
+            <ul class="rating-list">
+                <li>
+                    <article class="uk-comment">
+                        <header class="uk-comment-header">
+                            <img class="uk-comment-avatar uk-border-rounded" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                            <h4 class="uk-comment-title bold">@Model.Item.Participants.First(x => x.AccessStatus == AccessStatus.Owner).UserInformation.LastName @Model.Item.Participants.First(x => x.AccessStatus == AccessStatus.Owner).UserInformation.FirstName</h4>
+                            <div class="uk-comment-meta">@Model.Item.Phones.First()</div>
+                        </header>
+                    </article>
+                </li>
+                <li>
+                    <article class="uk-comment">
+                        <header class="uk-comment-header">
+                            <img class="uk-comment-avatar uk-border-rounded" src="https://pp.vk.me/c322420/v322420002/59ac/K9Wk902WYAo.jpg" width="50" height="50" alt="">
+                            <h4 class="uk-comment-title bold">Роман Лунцевич</h4>
+                            <div class="uk-comment-meta">+7 456 789 789 789</div>
+                        </header>
+                    </article>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="uk-grid">
+        <div class="uk-width-2-3">
+            <div class="master-class-program">Программа мастер-класса</div>
+
+            <ul class="cbp_tmtimeline">
+                <li>
+                    <time class="cbp_tmtime" datetime="2013-04-10 18:30">
+                        <span>06 июня 2014</span>
+                        <h1>18:30</h1>
+                    </time>
+                    <div class="cbp_tmicon cbp_tmicon-time"></div>
+                    <div class="cbp_tmlabel">
+                        <h2>Саша будет рассказывать:</h2>
+                        <p>Ограничения как инструмент. Лаконичность. Этажи картинки. </p>
+                        <p>Как работать со зрителем и решать конкретные задачи, а не тешить свое самомнение. </p>
+                        <p>Вредные иллюзии и расставание с ними. </p>
+                        <p>Формат продукта и съемки. Эффективное решение от ответа. </p>
+                        <p>Придумывание идей, проектов и фото-сессий – как это делается.</p>
+                    </div>
+                </li>
+                <li>
+                    <time class="cbp_tmtime" datetime="2013-04-11T12:04">
+                        <span>06 июня 2014</span>
+                        <h1>12:04</h1>
+                    </time>
+                    <div class="cbp_tmicon cbp_tmicon-coffe"></div>
+                    <div class="cbp_tmlabel">
+                        <h2>КОФЕ-БРЕЙК</h2>
+                        <p>Будем пробовать немецкий кофе с русским сахаром.</p>
+                    </div>
+                </li>
+                <li>
+                    <time class="cbp_tmtime" datetime="2013-04-13 05:36">
+                        <span>06 июня 2014</span>
+                        <h1>05:36</h1>
+                    </time>
+                    <div class="cbp_tmicon cbp_tmicon-time"></div>
+                    <div class="cbp_tmlabel">
+                        <h2>Саша будет рассказывать:</h2>
+                        <p>Ограничения как инструмент. Лаконичность. Этажи картинки. </p>
+                        <p>Как работать со зрителем и решать конкретные задачи, а не тешить свое самомнение. </p>
+                        <p>Вредные иллюзии и расставание с ними. </p>
+                        <p>Формат продукта и съемки. Эффективное решение от ответа. </p>
+                        <p>Придумывание идей, проектов и фото-сессий – как это делается.</p>
+                    </div>
+                </li>
+                <li>
+                    <time class="cbp_tmtime" datetime="2013-04-15 13:15">
+                        <span>06 июня 2014</span>
+                        <h1>13:15</h1>
+                    </time>
+                    <div class="cbp_tmicon cbp_tmicon-time"></div>
+                    <div class="cbp_tmlabel">
+                        <h2>Саша будет рассказывать:</h2>
+                        <p>Ограничения как инструмент. Лаконичность. Этажи картинки. </p>
+                        <p>Как работать со зрителем и решать конкретные задачи, а не тешить свое самомнение. </p>
+                        <p>Вредные иллюзии и расставание с ними. </p>
+                        <p>Формат продукта и съемки. Эффективное решение от ответа. </p>
+                        <p>Придумывание идей, проектов и фото-сессий – как это делается.</p>
+                    </div>
+                </li>
+                <li>
+                    <time class="cbp_tmtime" datetime="2013-04-16 21:30">
+                        <span>06 июня 2014</span>
+                        <h1>21:30</h1>
+                    </time>
+                    <div class="cbp_tmicon cbp_tmicon-time"></div>
+                    <div class="cbp_tmlabel">
+                        <h2>Courgette daikon</h2>
+                        <p>Parsley amaranth tigernut...</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="uk-width-1-3">
+            <div class="master-class-when">Когда?</div>
+            <div class="uk-grid">
+                <dl class="uk-description-list uk-description-list-horizontal">
+                    <dt class="uk-width-1-10 uk-text-center">
+                        <small class="master-class-when-day-week">воскресенье</small>
+                        <h1 class="master-class-when-day">06</h1>
+                        <span class="master-class-when-month">июня</span>
+                    </dt>
+                    <dd>A description list defines terms and their corresponding descriptions.</dd>
+                    <dt>Lorem ipsum</dt>
+                    <dd>Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</dd>
+                    <dt>A long term is truncated</dt>
+                    <dd>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

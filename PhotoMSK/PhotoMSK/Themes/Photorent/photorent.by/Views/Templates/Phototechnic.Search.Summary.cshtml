@@ -1,0 +1,18 @@
+﻿<div class="uk-grid uk-grid-search uk-grid-small">
+    <div class="uk-width-1-6">
+        <a href="@Html.Raw(PhototechnicsDefinition.Url)">
+            <img src="@Html.Raw(PhototechnicsDefinition.Image)" alt="@Html.Raw(PhototechnicsDefinition.Name)" class="uk-align-medium-left">
+        </a>
+    </div>
+    <div class="uk-width-5-6">
+        <a href="@Html.Raw(PhototechnicsDefinition.Url)" class="uk-link-muted">
+            <strong>@Html.Raw(PhototechnicsDefinition.Name)</strong>
+            <p class="uk-margin-remove uk-text-small">
+                @Html.Raw(PhototechnicsDefinition.ShortDescription)
+            </p>
+            <strong class="uk-float-right">
+                @Html.Raw(PhototechnicsDefinition.Price) бел. руб.
+            </strong>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,225 @@
+﻿<div class="container container--center">
+    <div class="grid">
+
+        <div class="col--3-4">
+
+            <ul class="uk-tab uk-tab-events text--center" data-uk-switcher="{connect:'#table-content'}">
+
+                    <li ng-repeat="item in photostudios">
+                        <a href="#" class="uk-navbar-nav-subtitle">
+                            {{item.name}}
+                            <div>фотостудия</div>
+                        </a>
+                    </li>
+
+
+                    <li ng-repeat="item in photorents">
+                        <a href="#" class="uk-navbar-nav-subtitle">
+                            {{item.name}}
+                            <div>прокат</div>
+                        </a>
+                    </li>
+
+
+                <li style="float: right;">
+                    <a href="" class="uk-navbar-nav-subtitle">
+                        СТАТИСТИКА
+                        <div>клиента</div>
+                    </a>
+                </li>
+            </ul>
+
+            <ul id="table-content" class="uk-switcher uk-margin-top">
+
+                    <li ng-repeat="item in photostudios" id="{{item.shortcut-calendar}}">
+
+                    </li>
+
+
+
+                    <li ng-repeat="rent in Photorents">
+                        <div class="panel panel--box">
+                            <div class="grid">
+                                <ul class="col--1-1 uk-subnav uk-subnav-line">
+                                    <li>
+                                        <div class="button__group" data-button-checkbox>
+                                            <button class="button">Nikon</button>
+                                            <button class="button">Canon</button>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="button__group" data-button-checkbox>
+                                            <button class="button">35mm</button>
+                                            <button class="button">50mm</button>
+                                            <button class="button">85mm</button>
+                                            <button class="button">70-200mm</button>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="button__group" data-button-checkbox>
+                                            <button class="button">1</button>
+                                            <button class="button">1.5</button>
+                                            <button class="button">1.6</button>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <form class="uk-search" data-uk-search="">
+                                            <input class="uk-search-field uk-search-field-border col--1-1" type="search" placeholder="Поиск техники..." autocomplete="off">
+                                            <div class="uk-dropdown uk-dropdown-search"></div>
+                                        </form>
+                                    </li>
+                                </ul>
+                                <div class="col--1-1 uk-margin-remove">
+                                    <hr class="small-line " />
+                                </div>
+                            </div>
+
+                            <table class="table uk-table-statistics table--hover uk-table-condensed table--middle">
+                                <thead>
+                                    <tr class="text--center">
+                                        <th class="text--left">Техника</th>
+                                        <th>Цена</th>
+                                        <th>Наличие</th>
+                                        <th>Скидка</th>
+                                        <th>Корзина</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="penalties">
+                                    <!--
+                                        <tr ng-repeat="item in rent.technics.elements">
+                                            <td class="text--left">
+                                                <div class="uk-vertical-align">
+                                                    <div class="uk-vertical-align-middle">
+                                                        <img src="{{item.image}}" width="30" height="30" class="uk-border-circle uk-margin-small-right">
+                                                        <a href="#" class="uk-link-muted uk-link-dotted">{{item.name}}</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td> <b>@String.Format("{0:### ### ### ###}", item.price)</b> <small class="text--muted">руб.</small></td>
+                                            <td><small><a href="#" class="uk-icon-circle uk-text-danger"></a></small> !!!</td>
+                                            <td>!!!%</td>
+                                            <td><a class="green-color" href="#"><i class="uk-icon-plus-circle"></i></a></td>
+                                        </tr>
+                                    -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+
+                <li>
+                    <div class="panel panel--box">
+                        <h4 class="uk-panel-title">Вся статистика покупок пользователя</h4>
+                        <table class="table uk-table-statistics table--hover uk-table-condensed table--middle">
+                            <thead>
+                                <tr class="text--center">
+                                    <th class="text--left">Тип</th>
+                                    <th>Заголовок</th>
+                                    <th>Дата</th>
+                                    <th>Сумма</th>
+                                </tr>
+                            </thead>
+                            <tbody id="events"></tbody>
+                        </table>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="userinfo" class="col--1-4 margin--top-large">
+            <!-- <div class="text--center">
+                <img src="@Url.Content("~/Content/images/qr-avatar.png")" class="uk-border-circle">
+                <p class="text--muted">
+                    <span class="uk-h4">Отсканируйте QR код на обратной стороне карточки или введите номер карточки в поле поиска</span>
+                </p>
+                </div> -->
+
+                <div class="panel panel__header panel--white panel--box panel--shadow">
+
+                        <div data-ng-if="userInformation != null" class="text--center">
+                            <img class="uk-border-circle" src="{{userInformation.userPhoto}}" />
+                            <h1 class="uk-margin-bottom-remove">
+                                <strong>{{userInformation.lastName}}</strong> {{userInformation.firstName}}
+                            </h1>
+                            <p class="text--muted">
+                                <!-- <span>
+                                        <small>карточка до:</small> 01.01.2014
+                                    </span> -->
+                            </p>
+                        </div>
+
+                        <div ng-if="userInformation == null">
+                            <div id="client-placeholder">
+                                <div class="col--large-1-1 col--small-1-1">
+                                    <label class="label">Фамилия</label>
+                                    <input class="input col--large-1-1 col--small-1-1 role-lastName" data-val="true" data-val-length="The field UserName must be a string with a minimum length of 3 and a maximum length of 160." data-val-length-max="160" data-val-length-min="3" data-val-regex="Логин введен не верно" data-val-regex-pattern="^[A-Za-z0-9_-]{3,15}$" data-val-required="The UserName field is required." id="lastName" name="lastName" type="text" value="">
+                                </div>
+                                <div class="col--large-1-1 col--small-1-1">
+                                    <label class="label">Имя</label>
+                                    <input class="input col--large-1-1 col--small-1-1 role-firstName" data-val="true" data-val-length="The field UserName must be a string with a minimum length of 3 and a maximum length of 160." data-val-length-max="160" data-val-length-min="3" data-val-regex="Логин введен не верно" data-val-regex-pattern="^[A-Za-z0-9_-]{3,15}$" data-val-required="The UserName field is required." id="firstName" name="firstName" type="text" value="">
+                                </div>
+                            </div>
+                        </div>
+
+
+                    <div class=" ">
+                        <button class="button button-mini button-primary uk-align-right role-aditional-show">+ Дополнительно</button>
+                        <div id="aditional-block" class="role-aditional-form" style="display: none">
+                            <div class="grid  ">
+                                <div class="col--1-1">
+                                    <label class="label">
+                                        Описание
+                                    </label>
+                                    <input class="input role-aditional-description" id="role-description" name="role-description" type="text" placeholder="Описание">
+                                </div>
+                                <div class="col--1-1">
+                                    <label class="label">
+                                        Сумма аренды
+                                    </label>
+                                    <div class="input__group">
+                                        <input class="input role-aditional-price" id="role-price" name="role-price" type="text" placeholder="Сумма">
+                                        <span class="input__group-btn">
+                                            <span>руб.</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col--1-1">
+                                    <label class="label">
+                                        Тэги
+                                    </label>
+                                    <div class="input__group">
+                                        <input class="input role-aditional-tags" id="role-price" name="role-price" type="text" placeholder="Сумма">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul id="booking" class="uk-list uk-list-line near-places"></ul>
+
+                    <hr class="small-line">
+                    <div>
+                        <span class="text--h3 text--bold">Итого:</span>
+                        <span class="text--h3 float--right">0<small class="text--small text--muted">руб.</small></span>
+                    </div>
+
+                    <div class="margin--top">
+                        <a data-msk-href class="button button--success col--1-1">Забронировать</a>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @Styles.Render("~/Content/tag-it")
+    @Scripts.Render("~/bundles/tag-it")
+    <script>
+        $(function() {
+
+            var booking = new App.Views.CallHandler({
+                model: @Model.ToJson(),
+                });
+            booking.render();
+        })
+    </script>
+}

@@ -1,0 +1,92 @@
+﻿@model PhotoMSK.Areas.Default.ViewData.Account.RegisterViewData
+@{
+    ViewBag.Title = "Register";
+}
+
+<div class="uk-container uk-container-center pad-top">
+    <div class="uk-grid">
+        <div class="uk-width-1-1">
+            <h1 class="uk-text-center bold">Регистрация</h1>
+            <h4 class="uk-text-center light">Создать новый аккаунт бесплатно.</h4>
+
+            <div class="uk-grid">
+                <div class="uk-width-3-10 uk-push-2-10">
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary()
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Item.UserName, "Логин")
+                            <div class="uk-form-icon">
+                                <i class="icon-user icon-position"></i>
+                                @Html.TextBoxFor(m => m.Item.UserName, new { @class = "form-control", placeholder = "Ваш логин" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Item.Password, "Пароль")
+                            <div class="uk-form-icon">
+                                <i class="icon-key icon-position"></i>
+                                @Html.PasswordFor(m => m.Item.Password, new { @class = "form-control", placeholder = "Пароль" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Item.Phone, "Телефон")
+                            <div class="uk-form-icon">
+                                <i class="icon-phone icon-position"></i>
+                                @Html.TextBoxFor(m => m.Item.Phone, new { @class = "form-control", placeholder = "Телефон", Value = "+375" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" class="btn btn-default" value="Регистрация" />
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="uk-width-3-10 uk-push-2-10">
+                    <div class="LoginBox">
+                        <ul id="login-providers" class="Space--mid list-no-bullets">
+
+                            @Html.Partial("_ExternalLoginsListPartial", new {Action = "ExternalLogin", ViewBag.ReturnUrl})
+                            <li>
+                                <a href="#" id="Facebook" class="Btn Btn--l Btn--icon icon-facebook u-db Btn--facebook">
+                                    <span>Facebook</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" id="LiveID" class="Btn Btn--l Btn--icon icon-liveid u-db Btn--liveid">
+                                    <span>LiveID</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" id="Google" class="Btn Btn--l Btn--icon icon-google u-db Btn--google">
+                                    <span>Google+</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" id="Yahoo" class="Btn Btn--l Btn--icon icon-yahoo u-db Btn--yahoo">
+                                    <span>Yahoo</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                @* OAuth *@
+
+            </div>
+
+            <p class="uk-text-center">После успешной регистрации вы соглашаетесь с <a href="#">правилами</a> сервиса «PhotoMSK™».</p>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

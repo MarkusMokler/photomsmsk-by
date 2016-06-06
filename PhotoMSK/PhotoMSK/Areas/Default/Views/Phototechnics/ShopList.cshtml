@@ -1,0 +1,193 @@
+﻿@model PhotoMSK.Areas.Default.ViewData.Phototechnics.ShopListViewData
+
+@{
+    ViewBag.Title = "Фотомагазины ";
+}
+
+
+
+<div class="uk-container uk-container-center pad-top">
+    <div class="uk-grid">
+        <div class="uk-width-1-1 pad-bottom-20">
+            <ul class="uk-breadcrumb uk-breadcrumb-bottom-line uk-link-muted">
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">Фототехника</a></li>
+                <li><a href="#">Фотомагазины</a></li>
+                <li>
+                    <span>найдено <strong>@Model.Item.Prices.Count</strong> шт.</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="phototechnics-shoplist-teaser">
+        <div class="uk-grid">
+            <div class="uk-width-1-1">
+                <h1 class="phototechnics-title">@Model.Item.Name</h1>
+            </div>
+        </div>
+
+        <div class="uk-grid">
+            <div class="uk-width-1-5">
+                <img src="@Model.Item.ImageUrl" />
+            </div>
+            <div class="uk-width-2-5">
+
+                <div class="">
+                    <a href="#"><i></i></a>
+                    <a href="#" class="uk-link-muted uk-link-dotted">2 отзыва</a>
+                    <button class="uk-button uk-button-success uk-button-small">оставить отзыв</button>
+                </div>
+
+                <div class="pad-top-10">
+                    <p>
+                        @Model.Item.Description
+                    </p>
+                    <p>
+                        <a href="#">Производитель</a>
+                    </p>
+                </div>
+
+                <div class="">
+                    <h1 class="bold">490 – 491 <small>БР</small></h1>
+                </div>
+            </div>
+        </div>
+        <hr />
+    </div>
+    
+    <div class="uk-grid">
+        <table class="uk-table">
+            <tbody>
+                @for (int i = 0; i < 10; i++)
+                {
+                    <tr>
+                        <td class="uk-width-2-10 uk-text-center">
+                            <h1 class="bold"><a href="#">12 490 <small></small></a></h1>
+                            <span class="uk-text-muted">5 096 000 руб.</span>
+                            <p>
+                                <div class="uk-badge uk-badge-success">В наличии</div>
+                            </p>
+                        </td>
+                        <td class="uk-width-6-10">
+                            <p>
+                                Возможно в кредит. Возможен безналичный расчет. Гарантия 24 месяца.
+                                <span>Розовый, Серебристый, Чёрный и Белый! СТБ! ПОДАРОК-Защитная плёнка на экран! Гарантия авторизованного сервис центра Sony! Полный заводской комплект. Русское меню и инструкция. Огромный выбор аксессуаров по низким ценам.</span>
+                            </p>
+                            <p>Бесплатная доставка по городу, возможна платная доставка по Беларуси</p>
+                            <p>Обновлено сегодня</p>
+                        </td>
+                        <td class="uk-width-2-10">
+                            <div>
+                                <a href="http://306.shop.onliner.by">
+                                    <img src="http://content.onliner.by/b2b/306/logotype/9a3086a06c0cfa3c0ebc474b40e9a21c.gif" alt="Snimok" width="88" height="31">
+                                </a>
+                                <a href="http://306.shop.onliner.by#reviews"><i></i></a>
+                                <a href="http://306.shop.onliner.by#reviews">
+                                    210 отзывов
+                                </a>
+                                <a href="http://306.shop.onliner.by">
+                                    <i data-title="Продавец соответствует высоким стандартам торговой площадки Onliner"></i>
+                                </a>
+                            </div>
+
+                            <p>
+                                <a href="#">Проблемы с магазином?</a>
+                            </p>
+
+                            <div class="uk-button-dropdown" data-uk-dropdown>
+                                <a class="uk-link-dotted" href="#">+375-<strong>(29)-600-00-00</strong> <i class="uk-icon-caret-down"></i></a>
+                                <div class="uk-dropdown uk-dropdown-center" style="width: 240px;">
+                                    <div class="section s1">
+                                        <h4 class="uk-text-center">«Snimok»</h4>
+                                        <small class="uk-text-muted">Пн-Пт: 8:00 — 20:00</small>
+
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td><small>velcom</small></td>
+                                                    <td><b>+375-(29)-100-00-00</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><small>МТС</small></td>
+                                                    <td><b>+375-(29)-200-00-00</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><small>life:)</small></td>
+                                                    <td><b>+375-(25)-500-00-00</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><small>Гор.:</small></td>
+                                                    <td><b>+375-(17)-200-00-00</b> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><small>Email:</small></td>
+                                                    <td><a href="mailto:info@snimok.by">info@snimok.by</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        @*
+                            <td class="uk-width-2-10">
+                                                        <div>
+                                                            <span>+375&nbsp;<strong>29</strong>&nbsp;390-10-39</span>
+                                                            <span>+375&nbsp;<strong>29</strong>&nbsp;840-20-84</span>
+                                                            <span>+375&nbsp;<strong>25</strong>&nbsp;602-93-94</span>
+                                                            <p>Skype: <a href="skype:alex_snimok"><strong>alex_snimok</strong></a></p>
+                                                            <span>ICQ: <a href="http://www.icq.com/people/434561079"><strong>434561079</strong></a></span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="uk-width-2-10">
+                                                        <div>
+                                                            <div>
+                                                                <a href="http://306.shop.onliner.by">
+                                                                    <img src="http://content.onliner.by/b2b/306/logotype/9a3086a06c0cfa3c0ebc474b40e9a21c.gif" alt="Snimok" width="88" height="31">
+                                                                </a>
+                                                                <a href="http://306.shop.onliner.by#reviews"><i></i></a>
+                                                                <a href="http://306.shop.onliner.by#reviews">
+                                                                    210 отзывов
+                                                                </a>
+                                                                <a href="http://306.shop.onliner.by">
+                                                                    <i data-title="Продавец соответствует высоким стандартам торговой площадки Onliner"></i>
+                                                                </a>
+                                                            </div>
+                                                            <div>
+                                                                Cегодня работаем с&nbsp;9:00&nbsp;до&nbsp;15:00
+                                                            </div>
+
+                                                            <div>
+                                                                <a href="#">Проблемы с магазином?</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                        *@
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="uk-container uk-container-center pad-top">
+    <div class="uk-grid">
+        <div class="uk-width-1-1">
+            @foreach (var item in Model.Item.Prices)
+            {
+                <h1>Название: @item.Price</h1>
+            }
+
+        </div>
+    </div>
+</div>

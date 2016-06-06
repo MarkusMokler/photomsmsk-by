@@ -1,0 +1,28 @@
+<h4 class="title-dotted">
+    Логотип
+</h4>
+<div class="grid">
+    <div class="col--8-10">
+        <div class="uk-flex uk-flex-center uk-flex-middle">
+            <div class="col--1-2 text--center">
+                <img class="border" alt="Аватарка зала" src="/Content/images/no-avatar.png" data-ng-src="{{croppedDataUrl||item.teaserImageUrl}}" height="200" width="200">
+                <p class="margin--top-small">
+                    <small class="text--muted">Аватар</small>
+                </p>
+            </div>
+            <div class="col--1-2 text--center" data-ngf-select data-ng-model="picFile" accept="image/*">
+                <a class="button--upload" data-msk-href>Выбрать</a>
+                <p class="margin text--muted">
+                    Рекомендуемый размер изображения: 200×200
+                </p>
+            </div>
+
+            <div data-ngf-drop data-ng-model="picFile" data-ngf-pattern="image/*" class="cropArea upload__area" style="width: 100%">
+                <img-crop image="picFile  | ngfDataUrl" area-type="square" result-image="croppedDataUrl" data-ng-init="croppedDataUrl=''" style="width: 100%"></img-crop>
+            </div>
+        </div>
+        <button class="button--success" data-ng-click="uploadLogo(croppedDataUrl)">
+            Сохранить
+        </button>
+    </div>
+</div>
